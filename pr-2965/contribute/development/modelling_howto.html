@@ -1,0 +1,2018 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Feature &amp; Component Modelling How-To &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/development/modelling_howto';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Designing API" href="api_guideline.html" />
+    <link rel="prev" title="Traceability Tooling" href="traceability_tooling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution_request/index.html">How to Contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Documentation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Development</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development_environment.html">Setting Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traceability_tooling.html">Traceability Tooling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Feature &amp; Component Modelling How-To</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guideline.html">Designing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp/index.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rust/index.html">Rust</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python/index.html">Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci/index.html">CI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fork/index.html">Enterprise Forking Guide for S-CORE Repositories</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Contribute</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Development</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Feature &amp; Component Modelling How-To</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="need_container docutils container" id="SNCB-9101b1b0">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__modelling_howto">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Feature &amp; Component Modelling How-To</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_proc_tool">wp__requirements_proc_tool</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__modelling_howto" title="doc__modelling_howto">doc__modelling_howto</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="feature-component-modelling-how-to">
+<h1>Feature &amp; Component Modelling How-To<a class="headerlink" href="#feature-component-modelling-how-to" title="Link to this heading">#</a></h1>
+<p>This guide walks you, step by step, through <strong>what to model at the
+feature level and at the component / module level</strong>, <strong>in which
+repository</strong>, <strong>with which sphinx-needs directives</strong>, and <strong>how the
+elements must be linked</strong> so that the docs-as-code build, the safety /
+security graph checks and the verification dashboard accept the result.</p>
+<p>The canonical reference for this how-to is the <strong>baselibs</strong> feature
+and its modules (<code class="docutils literal notranslate"><span class="pre">docs/features/baselibs/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">docs/modules/baselibs/</span></code> in the build). All other features /
+modules should follow the same pattern.</p>
+<p>Key rule for the repository split:</p>
+<ul class="simple">
+<li><p>The <strong>score repository owns the contract</strong> of a feature –
+<code class="docutils literal notranslate"><span class="pre">stkh_req</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>, <code class="docutils literal notranslate"><span class="pre">feat</span></code> and <code class="docutils literal notranslate"><span class="pre">logic_arc_int(_op)</span></code>.</p></li>
+<li><p>The <strong>module repository owns the realisation</strong> of the feature –
+<code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> / <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">mod</span></code> / <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>,
+<code class="docutils literal notranslate"><span class="pre">comp</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> and all component
+inspections.</p></li>
+</ul>
+<p>Scope – the reduced metamodel actually in use today:</p>
+<ul class="simple">
+<li><p><strong>Feature side:</strong> <code class="docutils literal notranslate"><span class="pre">feat</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code>,
+<code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>, <code class="docutils literal notranslate"><span class="pre">logic_arc_int_op</span></code>.</p></li>
+<li><p><strong>Component / module side:</strong> <code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>, <code class="docutils literal notranslate"><span class="pre">comp</span></code>,
+<code class="docutils literal notranslate"><span class="pre">comp_req</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>.</p></li>
+<li><p><strong>Roots / side inputs:</strong> <code class="docutils literal notranslate"><span class="pre">stkh_req</span></code>, <code class="docutils literal notranslate"><span class="pre">aou_req</span></code>.</p></li>
+<li><p><strong>Verification:</strong> <code class="docutils literal notranslate"><span class="pre">testcase</span></code> (auto-generated from JUnit XML).</p></li>
+<li><p><strong>Inspections:</strong> <code class="docutils literal notranslate"><span class="pre">chklst_req_inspection</span></code>, <code class="docutils literal notranslate"><span class="pre">chklst_arc_inspection</span></code>,
+<code class="docutils literal notranslate"><span class="pre">chklst_impl_inspection</span></code> – one per layer / per file.</p></li>
+</ul>
+<p>Dormant element types
+(<code class="docutils literal notranslate"><span class="pre">dd_sta</span></code>, <code class="docutils literal notranslate"><span class="pre">dd_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">sw_unit*</span></code>,
+<code class="docutils literal notranslate"><span class="pre">real_arc_int*</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_arc_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">*_saf_*</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mod_view_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">plat_saf_dfa</span></code>) are mentioned only where you may
+need to add them later.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#where-things-live-repository-map" id="id1">Where things live (repository map)</a></p></li>
+<li><p><a class="reference internal" href="#step-by-step-at-the-feature-level" id="id2">Step-by-step at the feature level</a></p>
+<ul>
+<li><p><a class="reference internal" href="#step-1-anchor-in-the-stakeholder-requirements-score-repo" id="id3">Step 1 – Anchor in the stakeholder requirements (score repo)</a></p></li>
+<li><p><a class="reference internal" href="#step-2-create-the-feature-directory-in-the-score-repo" id="id4">Step 2 – Create the feature directory in the score repo</a></p></li>
+<li><p><a class="reference internal" href="#step-3-write-the-feature-requirements-feat-req" id="id5">Step 3 – Write the feature requirements (<code class="docutils literal notranslate"><span class="pre">feat_req</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#step-4-declare-the-feature-node-and-the-logical-interfaces" id="id6">Step 4 – Declare the feature node and the logical interfaces</a></p></li>
+<li><p><a class="reference internal" href="#step-5-file-the-feature-requirements-inspection" id="id7">Step 5 – File the feature requirements inspection</a></p></li>
+<li><p><a class="reference internal" href="#what-you-do-not-do-in-the-score-repo" id="id8">What you do <em>not</em> do in the score repo</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-by-step-at-the-module-component-level" id="id9">Step-by-step at the module / component level</a></p>
+<ul>
+<li><p><a class="reference internal" href="#step-6-add-the-feature-architecture-views-in-the-module-repo" id="id10">Step 6 – Add the feature architecture views in the module repo</a></p></li>
+<li><p><a class="reference internal" href="#step-7-create-the-module-directory" id="id11">Step 7 – Create the module directory</a></p></li>
+<li><p><a class="reference internal" href="#step-8-declare-the-module-mod-mod-view-sta" id="id12">Step 8 – Declare the module (<code class="docutils literal notranslate"><span class="pre">mod</span></code> / <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#step-9-declare-the-component-comp-comp-arc-sta" id="id13">Step 9 – Declare the component (<code class="docutils literal notranslate"><span class="pre">comp</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#step-10-write-the-component-requirements-comp-req" id="id14">Step 10 – Write the component requirements (<code class="docutils literal notranslate"><span class="pre">comp_req</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#step-11-file-the-component-inspections" id="id15">Step 11 – File the component inspections</a></p></li>
+<li><p><a class="reference internal" href="#step-12-link-source-code-back-to-the-requirement" id="id16">Step 12 – Link source code back to the requirement</a></p></li>
+<li><p><a class="reference internal" href="#step-13-add-the-verification-testcase" id="id17">Step 13 – Add the verification (<code class="docutils literal notranslate"><span class="pre">testcase</span></code>)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#cross-layer-link-cheat-sheet" id="id18">Cross-layer link cheat sheet</a></p></li>
+<li><p><a class="reference internal" href="#validation-before-opening-a-pr" id="id19">Validation before opening a PR</a></p></li>
+<li><p><a class="reference internal" href="#dormant-elements-add-only-when-needed" id="id20">Dormant elements (add only when needed)</a></p></li>
+<li><p><a class="reference internal" href="#worked-example-baselibs-feature-bitmanipulation-component" id="id21">Worked example: <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> feature + <code class="docutils literal notranslate"><span class="pre">bitmanipulation</span></code> component</a></p></li>
+<li><p><a class="reference internal" href="#quick-checklist-before-merging" id="id22">Quick checklist before merging</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id23">See also</a></p></li>
+</ul>
+</nav>
+<section id="where-things-live-repository-map">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Where things live (repository map)</a><a class="headerlink" href="#where-things-live-repository-map" title="Link to this heading">#</a></h2>
+<p>Two repository tiers are involved.</p>
+<dl>
+<dt><strong>score</strong> (this repo)</dt><dd><p>Owns the <strong>feature contract</strong>, i.e. everything that a downstream
+consumer must be able to rely on without knowing the realisation:</p>
+<ul class="simple">
+<li><p>stakeholder requirements (<code class="docutils literal notranslate"><span class="pre">stkh_req</span></code>),</p></li>
+<li><p>platform-level assumptions (<code class="docutils literal notranslate"><span class="pre">aou_req</span></code>),</p></li>
+<li><p>per-feature <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>,</p></li>
+<li><p>the feature handle <code class="docutils literal notranslate"><span class="pre">feat</span></code> and its published interfaces
+<code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code> / <code class="docutils literal notranslate"><span class="pre">logic_arc_int_op</span></code>,</p></li>
+<li><p>the feature requirements-inspection checklist
+(<code class="docutils literal notranslate"><span class="pre">chklst_req_inspection</span></code> for the feature).</p></li>
+</ul>
+</dd>
+<dt><strong>process_description</strong> (imported)</dt><dd><p>Pulled in via sphinx-needs <code class="docutils literal notranslate"><span class="pre">[[needs.external_needs]]</span></code> in
+<code class="docutils literal notranslate"><span class="pre">docs/ubproject.toml</span></code>. Owns <code class="docutils literal notranslate"><span class="pre">wp__*</span></code>, <code class="docutils literal notranslate"><span class="pre">gd_*</span></code>, <code class="docutils literal notranslate"><span class="pre">tool_req__*</span></code>.
+You only <em>link</em> to them, never edit them from score.</p>
+</dd>
+<dt><strong>module repositories</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">baselibs</span></code>, <code class="docutils literal notranslate"><span class="pre">logging</span></code>, <code class="docutils literal notranslate"><span class="pre">feo</span></code>, <code class="docutils literal notranslate"><span class="pre">persistency</span></code>, …)</dt><dd><p>Each module repository owns the <strong>realisation</strong> of the feature(s)
+it builds:</p>
+<ul class="simple">
+<li><p>the architectural views of the feature
+(<code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> and <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code>) plus the architecture
+inspection (<code class="docutils literal notranslate"><span class="pre">chklst_arc_inspection</span></code>) for the feature – these
+diagrams describe <em>how this module realises the feature</em>, so
+they belong to the module, not to score,</p></li>
+<li><p>the <strong>module documentation</strong> (<code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>,
+module safety plan / package, release note, manual,
+verification report),</p></li>
+<li><p>one folder per <strong>component</strong> with its requirements
+(<code class="docutils literal notranslate"><span class="pre">comp_req</span></code>), architecture (<code class="docutils literal notranslate"><span class="pre">comp</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>),
+optional safety analyses and the detailed-design checklist,</p></li>
+<li><p>all <strong>component-level inspection checklists</strong>
+(<code class="docutils literal notranslate"><span class="pre">chklst_req_inspection</span></code>, <code class="docutils literal notranslate"><span class="pre">chklst_arc_inspection</span></code>,
+<code class="docutils literal notranslate"><span class="pre">chklst_impl_inspection</span></code>).</p></li>
+</ul>
+<p>The module repo <strong>never</strong> redefines <code class="docutils literal notranslate"><span class="pre">feat</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_req</span></code> or
+<code class="docutils literal notranslate"><span class="pre">logic_arc_int*</span></code> – it only <em>links to them</em> through
+<code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> (<code class="docutils literal notranslate"><span class="pre">feat_arc_*</span></code> → <code class="docutils literal notranslate"><span class="pre">feat</span></code>,
+<code class="docutils literal notranslate"><span class="pre">comp</span></code> → <code class="docutils literal notranslate"><span class="pre">feat</span></code>), <code class="docutils literal notranslate"><span class="pre">fulfils</span></code> (<code class="docutils literal notranslate"><span class="pre">feat_arc_*</span></code> → <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>),
+<code class="docutils literal notranslate"><span class="pre">satisfies</span></code> (<code class="docutils literal notranslate"><span class="pre">comp_req</span></code> → <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>) and
+<code class="docutils literal notranslate"><span class="pre">implements</span></code> / <code class="docutils literal notranslate"><span class="pre">uses</span></code> (<code class="docutils literal notranslate"><span class="pre">comp</span></code> → <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>).</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multi-repository docs <strong>are</strong> supported. <code class="docutils literal notranslate"><span class="pre">baselibs</span></code>,
+<code class="docutils literal notranslate"><span class="pre">logging</span></code>, <code class="docutils literal notranslate"><span class="pre">feo</span></code>, … are pulled into the score build through
+the bzlmod dependency graph and sphinx-needs
+<code class="docutils literal notranslate"><span class="pre">[[needs.external_needs]]</span></code> (see <code class="docutils literal notranslate"><span class="pre">docs/ubproject.toml</span></code> for the
+<code class="docutils literal notranslate"><span class="pre">score_process</span></code> entry; module repos are wired up the same way).
+The cross-repo links (<code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils</span></code>, <code class="docutils literal notranslate"><span class="pre">satisfies</span></code>,
+<code class="docutils literal notranslate"><span class="pre">implements</span></code>) resolve by need ID across the aggregated graph.
+The trees shown below therefore live in their respective
+repositories <em>for real</em> – they are not mirrored copies.</p>
+</div>
+<p>File-system layout (the baselibs pattern – mandatory):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>score/                                                 # SCORE REPO
+└── docs/
+    ├── requirements/
+    │   └── stakeholder/index.rst                      # .. stkh_req::
+    ├── platform_assumptions/index.rst                 # platform aou_req
+    └── features/&lt;feature&gt;/                            # feature contract
+        ├── index.rst                                  # .. document:: + abstract / motivation
+        └── docs/
+            ├── requirements/
+            │   ├── index.rst                          # .. feat_req::
+            │   └── chklst_req_inspection.rst
+            └── architecture/
+                └── index.rst                          # .. feat::,
+                                                       # .. logic_arc_int(_op)::
+
+&lt;module-repo&gt;/                                         # MODULE REPO
+├── docs/features/&lt;feature&gt;/                           # feature realisation views
+│   └── docs/
+│       └── architecture/
+│           ├── index.rst                              # .. feat_arc_sta::,
+│           │                                          # .. feat_arc_dyn::
+│           └── chklst_arc_inspection.rst
+│
+├── docs/features/&lt;feature&gt;/docs/safety_analysis/      # optional, ASIL only
+│   ├── fmea.rst                                       # .. feat_saf_fmea::
+│   └── dfa.rst                                        # .. feat_saf_dfa::
+│
+└── docs/modules/&lt;module&gt;/                             # module + components
+    ├── index.rst                                      # toctree for module + components
+    ├── docs/
+    │   ├── index.rst                                  # .. mod::, .. mod_view_sta::
+    │   ├── release/release_note.rst
+    │   ├── safety_mgt/{index,module_safety_plan,
+    │   │                module_safety_package_fdr,
+    │   │                module_safety_plan_fdr,
+    │   │                module_codeowners,
+    │   │                module_safety_analysis_fdr}.rst
+    │   ├── manual/safety_manual.rst
+    │   └── verification/module_verification_report.rst
+    │
+    └── &lt;component&gt;/docs/                              # one folder per component
+        ├── index.rst                                  # component toctree
+        ├── requirements/
+        │   ├── index.rst                              # .. comp_req::
+        │   └── chklst_req_inspection.rst
+        ├── architecture/
+        │   ├── index.rst                              # .. comp::, .. comp_arc_sta::
+        │   └── chklst_arc_inspection.rst
+        ├── safety_analysis/                           # optional, ASIL only
+        │   ├── fmea.rst                               # .. comp_saf_fmea::
+        │   └── dfa.rst                                # .. comp_saf_dfa::
+        └── detailed_design/
+            └── chklst_impl_inspection.rst
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every directive sits inside a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">document::</span></code> block at the top of
+the file (<code class="docutils literal notranslate"><span class="pre">:realizes:</span> <span class="pre">wp__feature_arch</span></code>,
+<code class="docutils literal notranslate"><span class="pre">wp__requirements_feat</span></code>, <code class="docutils literal notranslate"><span class="pre">wp__component_arch</span></code>, …). The
+<code class="docutils literal notranslate"><span class="pre">document</span></code> need carries the safety / security tags of the <em>file</em>
+and is what the inspection checklists fulfil.</p>
+</div>
+</section>
+<section id="step-by-step-at-the-feature-level">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Step-by-step at the feature level</a><a class="headerlink" href="#step-by-step-at-the-feature-level" title="Link to this heading">#</a></h2>
+<p>Goal: from a stakeholder need to a feature that publishes one or more
+<strong>logical interfaces</strong> for downstream components to consume.</p>
+<section id="step-1-anchor-in-the-stakeholder-requirements-score-repo">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Step 1 – Anchor in the stakeholder requirements (score repo)</a><a class="headerlink" href="#step-1-anchor-in-the-stakeholder-requirements-score-repo" title="Link to this heading">#</a></h3>
+<p>If the user need is not yet captured, add it once in
+<code class="docutils literal notranslate"><span class="pre">score/docs/requirements/stakeholder/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">stkh_req</span><span class="p">::</span> Base libraries
+   <span class="nc">:id:</span> stkh_req__functional_req__base_libraries
+   <span class="nc">:reqtype:</span> Functional
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> QM
+   <span class="nc">:status:</span> valid
+
+   The platform shall provide reusable base libraries.
+</pre></div>
+</div>
+<p>Rules:</p>
+<ul class="simple">
+<li><p>One <code class="docutils literal notranslate"><span class="pre">stkh_req</span></code> per user concern, never per implementation detail.</p></li>
+<li><p>No outgoing links – this is a root.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:safety:</span></code> may be <code class="docutils literal notranslate"><span class="pre">QM</span></code> even if a downstream feature is <code class="docutils literal notranslate"><span class="pre">ASIL_B</span></code>;
+the graph check only forbids <code class="docutils literal notranslate"><span class="pre">QM</span> <span class="pre">→</span> <span class="pre">ASIL</span></code> <em>into</em> the safety chain,
+not the other way around.</p></li>
+</ul>
+</section>
+<section id="step-2-create-the-feature-directory-in-the-score-repo">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Step 2 – Create the feature directory in the score repo</a><a class="headerlink" href="#step-2-create-the-feature-directory-in-the-score-repo" title="Link to this heading">#</a></h3>
+<p>The <strong>feature contract</strong> (requirements + published interfaces) is
+owned by score. In the <strong>score repo</strong> create:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>score/docs/features/&lt;feature&gt;/
+├── index.rst                                # document + toctree
+└── docs/
+    ├── requirements/
+    │   ├── index.rst                        # feat_req
+    │   └── chklst_req_inspection.rst
+    └── architecture/
+        └── index.rst                        # feat, logic_arc_int(_op)
+</pre></div>
+</div>
+<p>Note what is <strong>not</strong> here: <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> / <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code> and
+the architecture inspection do <strong>not</strong> live in score – they belong
+to the realising module (Step 6).</p>
+<p><code class="docutils literal notranslate"><span class="pre">index.rst</span></code> declares the feature <em>document</em>, abstract, motivation
+and the toctree – not the <code class="docutils literal notranslate"><span class="pre">feat</span></code> directive itself (which goes in
+<code class="docutils literal notranslate"><span class="pre">docs/architecture/index.rst</span></code> in Step 4). The baselibs file does it
+like this:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_&lt;feature&gt;_feature:</span>
+
+<span class="gh">&lt;Feature Title&gt;</span>
+<span class="gh">###############</span>
+
+<span class="p">..</span> <span class="ow">document</span><span class="p">::</span> <span class="nt">&lt;Feature&gt;</span>
+   <span class="nc">:id:</span> doc__&lt;feature&gt;
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:tags:</span> feature_request
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__feat_request
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:hidden:</span>
+
+   docs/requirements/index.rst
+   docs/requirements/chklst_req_inspection.rst
+   docs/architecture/index.rst
+
+<span class="gh">Abstract / Motivation / Rationale / Safety Impact / …</span>
+<span class="gh">=====================================================</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-write-the-feature-requirements-feat-req">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Step 3 – Write the feature requirements (<code class="docutils literal notranslate"><span class="pre">feat_req</span></code>)</a><a class="headerlink" href="#step-3-write-the-feature-requirements-feat-req" title="Link to this heading">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/docs/requirements/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> <span class="nt">&lt;Feature&gt;</span> Requirements
+   <span class="nc">:id:</span> doc__&lt;feature&gt;_requirements
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__requirements_feat
+
+<span class="p">..</span> <span class="ow">feat_req</span><span class="p">::</span> Multi-Language APIs
+   <span class="nc">:id:</span> feat_req__&lt;feature&gt;__multi_language_apis
+   <span class="nc">:reqtype:</span> Functional
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:satisfies:</span> stkh_req__functional_req__base_libraries
+   <span class="nc">:status:</span> valid
+
+   The feature shall provide APIs for C++, Rust, or both.
+
+<span class="p">..</span> <span class="ow">needextend</span><span class="p">::</span> is_external == False and &quot;__&lt;feature&gt;&quot; in id
+   <span class="nc">:+tags:</span> <span class="nt">&lt;feature&gt;</span>
+</pre></div>
+</div>
+<p>Mandatory links:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:satisfies:</span></code> → at least one <code class="docutils literal notranslate"><span class="pre">stkh_req</span></code>
+(schema: <code class="docutils literal notranslate"><span class="pre">mandatory_links:</span> <span class="pre">satisfies:</span> <span class="pre">stkh_req</span></code>).</p></li>
+</ul>
+<p>Optional links you will need in practice:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:covers:</span></code> → <code class="docutils literal notranslate"><span class="pre">aou_req</span></code> if the requirement is rooted in an
+assumption of use rather than a stakeholder requirement.</p></li>
+</ul>
+<p>Graph rule to remember:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">feat_req</span></code> with <code class="docutils literal notranslate"><span class="pre">:safety:</span> <span class="pre">ASIL_B</span></code> may not link to a stakeholder
+need that breaks the safety propagation. The check is
+<code class="docutils literal notranslate"><span class="pre">tool_req__docs_common_attr_safety_link_check</span></code>.</p></li>
+</ul>
+<p>Tag the requirements file in
+<code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/docs/requirements/chklst_req_inspection.rst</span></code>
+with a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">chklst_req_inspection::</span></code> need (same id pattern as
+<code class="docutils literal notranslate"><span class="pre">baselibs</span></code>).</p>
+</section>
+<section id="step-4-declare-the-feature-node-and-the-logical-interfaces">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Step 4 – Declare the feature node and the logical interfaces</a><a class="headerlink" href="#step-4-declare-the-feature-node-and-the-logical-interfaces" title="Link to this heading">#</a></h3>
+<p>In the <strong>score</strong> repo, in
+<code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/docs/architecture/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_&lt;feature&gt;_architecture:</span>
+
+<span class="gh">Architecture</span>
+<span class="gh">============</span>
+
+<span class="p">..</span> <span class="ow">document</span><span class="p">::</span> <span class="nt">&lt;Feature&gt;</span> Architecture
+   <span class="nc">:id:</span> doc__&lt;feature&gt;_architecture
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__feature_arch
+
+<span class="p">..</span> <span class="ow">feat</span><span class="p">::</span> <span class="nt">&lt;Feature&gt;</span>
+   <span class="nc">:id:</span> feat__&lt;feature&gt;
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:provides:</span> logic_arc_int__&lt;feature&gt;__&lt;iface_a&gt;,
+              logic_arc_int__&lt;feature&gt;__&lt;iface_b&gt;
+
+<span class="gh">Interfaces</span>
+<span class="gh">----------</span>
+
+<span class="p">..</span> <span class="ow">logic_arc_int</span><span class="p">::</span> <span class="nt">&lt;iface_a&gt;</span>
+   <span class="nc">:id:</span> logic_arc_int__&lt;feature&gt;__&lt;iface_a&gt;
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+
+<span class="p">..</span> <span class="ow">logic_arc_int_op</span><span class="p">::</span> open
+   <span class="nc">:id:</span> logic_arc_int_op__&lt;feature&gt;__open
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:included_by:</span> logic_arc_int__&lt;feature&gt;__&lt;iface_a&gt;
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">feat</span></code> node is the <em>blackbox handle</em> of the feature; the only
+links it carries are interface declarations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:provides:</span></code> – the logical interfaces this feature exposes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:uses:</span></code> – the logical interfaces of other features this one
+depends on (use sparingly at the feature node; <code class="docutils literal notranslate"><span class="pre">:uses:</span></code> is mostly
+carried by the components in Step 8).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:includes:</span></code> – only when grouping sub-interfaces.</p></li>
+</ul>
+<p>Rules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">logic_arc_int_op.included_by</span></code> is <strong>mandatory</strong>.</p></li>
+<li><p>Match the safety / security level of the providing feature; the
+graph check <code class="docutils literal notranslate"><span class="pre">tool_req__docs_arch_link_qm_to_safety_req</span></code> will fail
+the build otherwise.</p></li>
+<li><p>No <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> / <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code> here – those views describe
+<em>how a particular module realises the feature</em> and therefore live
+in the module repository (Step 6).</p></li>
+</ul>
+</section>
+<section id="step-5-file-the-feature-requirements-inspection">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Step 5 – File the feature requirements inspection</a><a class="headerlink" href="#step-5-file-the-feature-requirements-inspection" title="Link to this heading">#</a></h3>
+<p>In the <strong>score</strong> repo, next to the requirements file:
+<code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/docs/requirements/chklst_req_inspection.rst</span></code>
+– realises <code class="docutils literal notranslate"><span class="pre">wp__requirements_feat_inspection</span></code>.</p>
+<p>Do <strong>not</strong> hand-write this file. Use the <strong>Requirements Inspection</strong>
+agent described in the sub-section below – it scaffolds the file
+from the baselibs template, runs the per-item analysis recipes
+bundled in the <code class="docutils literal notranslate"><span class="pre">req-inspection-checklist</span></code> skill and fills the
+<code class="docutils literal notranslate"><span class="pre">Passed</span></code> column where the evidence is automatable.</p>
+<section id="generating-inspection-checklists-with-the-requirements-inspection-agent">
+<span id="modelling-howto-inspection-agent"></span><h4>Generating inspection checklists with the Requirements Inspection agent<a class="headerlink" href="#generating-inspection-checklists-with-the-requirements-inspection-agent" title="Link to this heading">#</a></h4>
+<p>Don’t hand-write <code class="docutils literal notranslate"><span class="pre">chklst_req_inspection.rst</span></code> (and, once the agent
+grows the same recipe for architecture and implementation, the other
+two checklist files either). Use the <strong>Requirements Inspection</strong>
+agent shipped in this repo:</p>
+<ul class="simple">
+<li><p>Agent definition: <code class="docutils literal notranslate"><span class="pre">.github/agents/req-inspection.agent.md</span></code></p></li>
+<li><p>Skill (templates, per-item grep recipes, verdict rules):
+<code class="docutils literal notranslate"><span class="pre">.github/skills/req-inspection-checklist/</span></code></p></li>
+</ul>
+<p>The agent operates on the patterns established by <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> and
+<code class="docutils literal notranslate"><span class="pre">persistency</span></code> and follows a fixed approach: load the skill, locate
+the feature’s <code class="docutils literal notranslate"><span class="pre">requirements/</span></code> directory, read <code class="docutils literal notranslate"><span class="pre">:safety:</span></code> /
+<code class="docutils literal notranslate"><span class="pre">:security:</span></code> from <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, create or fill the checklist,
+run every per-item analysis, register the file in the toctree if
+it was new, look up the tracking issue, and flip <code class="docutils literal notranslate"><span class="pre">:status:</span> <span class="pre">draft</span></code>
+to <code class="docutils literal notranslate"><span class="pre">valid</span></code> only when every row has a verdict.</p>
+<section id="how-to-start-the-agent">
+<h5>How to start the agent<a class="headerlink" href="#how-to-start-the-agent" title="Link to this heading">#</a></h5>
+<p>Use the GitHub Copilot CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>copilot<span class="w"> </span>--allow-all-tools<span class="w"> </span>--agent<span class="w"> </span><span class="s2">&quot;Requirements Inspection&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;&lt;feature-name&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>copilot<span class="w"> </span>--allow-all-tools<span class="w"> </span>--agent<span class="w"> </span><span class="s2">&quot;Requirements Inspection&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;lifecycle&quot;</span>
+</pre></div>
+</div>
+<p>The argument to <code class="docutils literal notranslate"><span class="pre">-p</span></code> is the <strong>feature name only</strong> (not a path,
+not the full <code class="docutils literal notranslate"><span class="pre">stkh_req</span></code> ID). The agent works on a single
+feature per run – do not pass several at once.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Today the agent only handles <strong>feature-level</strong> requirements
+inspections (<code class="docutils literal notranslate"><span class="pre">feat_req</span></code> under <code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/</span></code> in
+the score repo). Component-level <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> inspections under
+<code class="docutils literal notranslate"><span class="pre">docs/modules/&lt;module&gt;/&lt;component&gt;/</span></code> in module repositories
+are <strong>not</strong> yet supported – those checklists still have to be
+written by hand from the
+<a class="reference external" href="https://github.com/eclipse-score/process_description/blob/v1.5.4/process/folder_templates/modules/module_name/component_name/docs/requirements/chklst_req_inspection.rst">folder template</a>.</p>
+</div>
+</section>
+<section id="what-the-agent-will-not-do">
+<h5>What the agent will not do<a class="headerlink" href="#what-the-agent-will-not-do" title="Link to this heading">#</a></h5>
+<p>The constraints baked into the agent (see
+<code class="docutils literal notranslate"><span class="pre">.github/agents/req-inspection.agent.md</span></code>):</p>
+<ul class="simple">
+<li><p>It does <strong>not</strong> invent or alter the standard checklist item IDs or
+acceptance criteria – those live in the skill.</p></li>
+<li><p>It does <strong>not</strong> flip <code class="docutils literal notranslate"><span class="pre">:status:</span> <span class="pre">draft</span></code> → <code class="docutils literal notranslate"><span class="pre">:status:</span> <span class="pre">valid</span></code> until
+every <code class="docutils literal notranslate"><span class="pre">Passed</span></code> cell is <code class="docutils literal notranslate"><span class="pre">Yes</span></code> / <code class="docutils literal notranslate"><span class="pre">No</span></code> / <code class="docutils literal notranslate"><span class="pre">N/A</span></code> (with a
+remark) or explicitly empty with a documented expert-review
+remark.</p></li>
+<li><p>It does <strong>not</strong> mark items as <code class="docutils literal notranslate"><span class="pre">Yes</span></code> when the evidence requires a
+human role (safety expert, test expert, TARA) and that evidence
+is not present – it leaves the cell empty and records the gap in
+<code class="docutils literal notranslate"><span class="pre">Remarks</span></code>.</p></li>
+<li><p>It does <strong>not</strong> modify unrelated features in the same run.</p></li>
+</ul>
+<p>If you need the same automation for the <strong>architecture</strong> or
+<strong>implementation</strong> inspections, file an issue against the agent –
+the skill’s per-item recipes are extensible to those two checklist
+flavours, but they are not implemented yet. Until then,
+<code class="docutils literal notranslate"><span class="pre">chklst_arc_inspection.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">chklst_impl_inspection.rst</span></code> are
+still hand-written from the baselibs template.</p>
+</section>
+<section id="when-to-invoke-the-agent">
+<h5>When to invoke the agent<a class="headerlink" href="#when-to-invoke-the-agent" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>New feature: as soon as <code class="docutils literal notranslate"><span class="pre">feat_req</span></code> has at least one valid entry.</p></li>
+<li><p>New component: as soon as <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> has at least one valid
+entry (and once the agent supports it – see above).</p></li>
+<li><p>Existing feature with <code class="docutils literal notranslate"><span class="pre">:status:</span> <span class="pre">draft</span></code> and empty <code class="docutils literal notranslate"><span class="pre">Passed</span></code>
+cells: re-run; the agent re-reads the analysis and only fills
+what changed.</p></li>
+<li><p>Verifying coverage of an existing checklist: invoke and read the
+agent’s status report; if it reports <code class="docutils literal notranslate"><span class="pre">:status:</span> <span class="pre">valid</span></code>, no rows
+were touched.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="what-you-do-not-do-in-the-score-repo">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">What you do <em>not</em> do in the score repo</a><a class="headerlink" href="#what-you-do-not-do-in-the-score-repo" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>No <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> / <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code> – they live in the module
+repo (Step 6).</p></li>
+<li><p>No <code class="docutils literal notranslate"><span class="pre">chklst_arc_inspection</span></code> for the feature – same reason.</p></li>
+<li><p>No <code class="docutils literal notranslate"><span class="pre">comp</span></code>, no <code class="docutils literal notranslate"><span class="pre">comp_req</span></code>, no <code class="docutils literal notranslate"><span class="pre">comp_arc_*</span></code>, no <code class="docutils literal notranslate"><span class="pre">mod*</span></code>.</p></li>
+<li><p>No FMEA / DFA if you are pre-ASIL. <code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code> /
+<code class="docutils literal notranslate"><span class="pre">feat_saf_dfa</span></code> only land once the safety plan calls for them,
+and they live in the module repo.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-by-step-at-the-module-component-level">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Step-by-step at the module / component level</a><a class="headerlink" href="#step-by-step-at-the-module-component-level" title="Link to this heading">#</a></h2>
+<p>Goal: realise the feature in one or more components, group them under
+a module and trace every <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> back to the score-owned
+<code class="docutils literal notranslate"><span class="pre">feat_req</span></code>. <strong>All artefacts in this section live in the module
+repository</strong>, including the architectural views of the feature.</p>
+<section id="step-6-add-the-feature-architecture-views-in-the-module-repo">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Step 6 – Add the feature architecture views in the module repo</a><a class="headerlink" href="#step-6-add-the-feature-architecture-views-in-the-module-repo" title="Link to this heading">#</a></h3>
+<p>The architectural views describe <em>how this module realises the
+feature</em>, so they live in the module repo at exactly the same
+file-system path the score side uses:
+<code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/docs/architecture/index.rst</span></code> (module repo).</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> <span class="nt">&lt;Feature&gt;</span> Realisation
+   <span class="nc">:id:</span> doc__&lt;feature&gt;_arch_realisation
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__feature_arch
+
+<span class="p">..</span> <span class="ow">feat_arc_sta</span><span class="p">::</span> Static Architecture
+   <span class="nc">:id:</span> feat_arc_sta__&lt;feature&gt;__static
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> feat__&lt;feature&gt;
+   <span class="nc">:includes:</span> logic_arc_int__&lt;feature&gt;__&lt;iface_a&gt;
+   <span class="nc">:fulfils:</span> feat_req__&lt;feature&gt;__multi_language_apis
+
+<span class="p">   ..</span> <span class="ow">uml</span><span class="p">::</span> _assets/static_view.puml
+
+<span class="p">..</span> <span class="ow">feat_arc_dyn</span><span class="p">::</span> Open / Close sequence
+   <span class="nc">:id:</span> feat_arc_dyn__&lt;feature&gt;__open_close
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> feat__&lt;feature&gt;
+   <span class="nc">:fulfils:</span> feat_req__&lt;feature&gt;__multi_language_apis
+
+<span class="p">   ..</span> <span class="ow">uml</span><span class="p">::</span> _assets/open_close_seq.puml
+</pre></div>
+</div>
+<p>Mandatory links:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code>: <code class="docutils literal notranslate"><span class="pre">belongs_to:</span> <span class="pre">feat</span></code>,
+<code class="docutils literal notranslate"><span class="pre">fulfils:</span> <span class="pre">feat_req</span> <span class="pre">|</span> <span class="pre">aou_req</span></code>, <code class="docutils literal notranslate"><span class="pre">includes:</span> <span class="pre">logic_arc_int(_op)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code>: <code class="docutils literal notranslate"><span class="pre">belongs_to:</span> <span class="pre">feat</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils:</span> <span class="pre">feat_req</span></code>.</p></li>
+</ul>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> / <code class="docutils literal notranslate"><span class="pre">fulfils</span></code> / <code class="docutils literal notranslate"><span class="pre">includes</span></code> cross the
+repository boundary by ID – they resolve to the score-owned
+<code class="docutils literal notranslate"><span class="pre">feat</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_req</span></code> and <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code> because the score build
+is the consumer of both trees.</p>
+<section id="file-the-feature-architecture-inspection">
+<h4>File the feature architecture inspection<a class="headerlink" href="#file-the-feature-architecture-inspection" title="Link to this heading">#</a></h4>
+<p>In the <strong>module</strong> repo, next to the architecture file:
+<code class="docutils literal notranslate"><span class="pre">docs/features/&lt;feature&gt;/docs/architecture/chklst_arc_inspection.rst</span></code>
+– realises <code class="docutils literal notranslate"><span class="pre">wp__feature_arch_inspection</span></code>.</p>
+<p>The Requirements Inspection agent does not generate this file yet
+(see <a class="reference internal" href="#modelling-howto-inspection-agent"><span class="std std-ref">Generating inspection checklists with the Requirements Inspection agent</span></a>). Copy it from the
+<a class="reference external" href="https://github.com/eclipse-score/process_description/blob/v1.5.4/process/folder_templates/features/feature_name/architecture/chklst_arc_inspection.rst">feature architecture checklist folder template</a>
+and adapt the <code class="docutils literal notranslate"><span class="pre">:id:</span></code> to
+<code class="docutils literal notranslate"><span class="pre">chklst_arc_inspection__&lt;feature&gt;</span></code>.</p>
+</section>
+</section>
+<section id="step-7-create-the-module-directory">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Step 7 – Create the module directory</a><a class="headerlink" href="#step-7-create-the-module-directory" title="Link to this heading">#</a></h3>
+<p>In your module repo at <code class="docutils literal notranslate"><span class="pre">docs/modules/&lt;module&gt;/</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docs/modules/&lt;module&gt;/
+├── index.rst                          # toctree only
+├── docs/                              # module-level docs
+│   ├── index.rst                      # mod, mod_view_sta
+│   ├── release/release_note.rst
+│   ├── safety_mgt/…
+│   ├── manual/safety_manual.rst
+│   └── verification/module_verification_report.rst
+└── &lt;component&gt;/docs/                  # one folder per component
+    ├── index.rst                      # component toctree
+    ├── requirements/{index, chklst_req_inspection}.rst
+    ├── architecture/{index, chklst_arc_inspection}.rst
+    ├── safety_analysis/{fmea, dfa}.rst              # ASIL only
+    └── detailed_design/chklst_impl_inspection.rst
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">docs/modules/&lt;module&gt;/index.rst</span></code> is just navigation
+(baselibs / logging pattern):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">&lt;Module&gt; Module</span>
+<span class="gh">###############</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:titlesonly:</span>
+   <span class="nc">:maxdepth:</span> 2
+
+   ./docs/index
+
+<span class="gh">Components</span>
+<span class="gh">==========</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:titlesonly:</span>
+   <span class="nc">:maxdepth:</span> 1
+   <span class="nc">:glob:</span>
+
+   ./*/docs/index
+</pre></div>
+</div>
+</section>
+<section id="step-8-declare-the-module-mod-mod-view-sta">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Step 8 – Declare the module (<code class="docutils literal notranslate"><span class="pre">mod</span></code> / <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>)</a><a class="headerlink" href="#step-8-declare-the-module-mod-mod-view-sta" title="Link to this heading">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">docs/modules/&lt;module&gt;/docs/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">mod</span><span class="p">::</span> <span class="nt">&lt;Module&gt;</span>
+   <span class="nc">:id:</span> mod__&lt;module&gt;
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:includes:</span> comp__&lt;module&gt;__&lt;comp_a&gt;, comp__&lt;module&gt;__&lt;comp_b&gt;
+
+<span class="p">..</span> <span class="ow">mod_view_sta</span><span class="p">::</span> <span class="nt">&lt;Module&gt;</span>
+   <span class="nc">:id:</span> mod_view_sta__&lt;module&gt;__&lt;module&gt;
+   <span class="nc">:includes:</span> comp__&lt;module&gt;__&lt;comp_a&gt;, comp__&lt;module&gt;__&lt;comp_b&gt;
+   <span class="nc">:belongs_to:</span> mod__&lt;module&gt;
+
+<span class="p">   ..</span> <span class="ow">needarch</span><span class="p">::</span>
+      <span class="nc">:scale:</span> 50
+      <span class="nc">:align:</span> center
+
+      {{ draw_module(need(), needs) }}
+
+<span class="gh">Module Documents</span>
+<span class="gh">================</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+   <span class="nc">:titlesonly:</span>
+
+   release/release_note
+   safety_mgt/index
+   manual/safety_manual
+   verification/module_verification_report
+</pre></div>
+</div>
+<p>Rules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mod.includes</span></code> is mandatory and must list every <code class="docutils literal notranslate"><span class="pre">comp</span></code> of the
+module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code> carries the diagram; <code class="docutils literal notranslate"><span class="pre">mod</span></code> carries the data.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">draw_module</span></code> Jinja helper from
+<code class="docutils literal notranslate"><span class="pre">score_sphinx_bundle</span></code> renders the static view automatically from
+the linked components – prefer it over a hand-drawn PlantUML where
+possible (this is what baselibs / logging / feo use).</p></li>
+</ul>
+</section>
+<section id="step-9-declare-the-component-comp-comp-arc-sta">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Step 9 – Declare the component (<code class="docutils literal notranslate"><span class="pre">comp</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>)</a><a class="headerlink" href="#step-9-declare-the-component-comp-comp-arc-sta" title="Link to this heading">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">docs/modules/&lt;module&gt;/&lt;component&gt;/docs/architecture/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> <span class="nt">&lt;Component&gt;</span> Architecture
+   <span class="nc">:id:</span> doc__&lt;module&gt;_&lt;component&gt;_architecture
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__component_arch
+
+<span class="gh">Component Architecture</span>
+<span class="gh">**********************</span>
+
+<span class="p">..</span> <span class="ow">comp</span><span class="p">::</span> <span class="nt">&lt;module&gt;</span>::<span class="nt">&lt;component&gt;</span>
+   <span class="nc">:id:</span> comp__&lt;module&gt;__&lt;component&gt;
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> feat__&lt;feature&gt;
+   <span class="nc">:implements:</span> logic_arc_int__&lt;feature&gt;__&lt;iface_a&gt;
+   <span class="nc">:uses:</span> logic_arc_int__logging__logging,
+          logic_arc_int__baselibs__json
+
+<span class="p">   ..</span> <span class="ow">needarch</span><span class="p">::</span>
+      <span class="nc">:scale:</span> 50
+      <span class="nc">:align:</span> center
+
+      {{ draw_component(need(), needs) }}
+
+<span class="p">..</span> <span class="ow">comp_arc_sta</span><span class="p">::</span> Static Architecture
+   <span class="nc">:id:</span> comp_arc_sta__&lt;module&gt;__&lt;component&gt;__static
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> comp__&lt;module&gt;__&lt;component&gt;
+   <span class="nc">:fulfils:</span> comp_req__&lt;module&gt;__&lt;component&gt;__store_read
+
+<span class="p">   ..</span> <span class="ow">uml</span><span class="p">::</span> _assets/comp_static.puml
+</pre></div>
+</div>
+<p>If your component <strong>owns</strong> a logical interface (rather than just
+implements one declared at the feature level – this is how the
+<code class="docutils literal notranslate"><span class="pre">logging</span></code> and several baselibs components do it), declare the
+<code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code> / <code class="docutils literal notranslate"><span class="pre">logic_arc_int_op</span></code> in the <strong>same</strong> file:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">logic_arc_int</span><span class="p">::</span> <span class="nt">&lt;component&gt;</span>
+   <span class="nc">:id:</span> logic_arc_int__&lt;feature&gt;__&lt;component&gt;
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+
+<span class="p">..</span> <span class="ow">logic_arc_int_op</span><span class="p">::</span> <span class="nt">&lt;op&gt;</span>
+   <span class="nc">:id:</span> logic_arc_int_op__&lt;feature&gt;__&lt;op&gt;
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> QM
+   <span class="nc">:status:</span> valid
+   <span class="nc">:included_by:</span> logic_arc_int__&lt;feature&gt;__&lt;component&gt;
+</pre></div>
+</div>
+<p>Mandatory links on the <code class="docutils literal notranslate"><span class="pre">comp</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:belongs_to:</span></code> → <code class="docutils literal notranslate"><span class="pre">feat</span></code> – the component declares which
+<strong>feature</strong> it realises.</p></li>
+</ul>
+<p>Typical optional links:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:implements:</span></code> → one or more <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code> provided at
+runtime.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:uses:</span></code> → logical interfaces of other features
+(<code class="docutils literal notranslate"><span class="pre">logging</span></code>, <code class="docutils literal notranslate"><span class="pre">tracing</span></code>, <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> are the dominant
+consumers).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:consists_of:</span></code> → sub-components if you decompose further.</p></li>
+</ul>
+<p>Graph rules:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">QM</span></code> component may not implement an <code class="docutils literal notranslate"><span class="pre">ASIL_B</span></code> logical interface
+(<code class="docutils literal notranslate"><span class="pre">tool_req__docs_arch_link_qm_to_safety_req</span></code>).</p></li>
+<li><p>A security component (<code class="docutils literal notranslate"><span class="pre">security:</span> <span class="pre">YES</span></code>) may only link to security
+needs (<code class="docutils literal notranslate"><span class="pre">tool_req__docs_arch_link_security</span></code>).</p></li>
+</ul>
+</section>
+<section id="step-10-write-the-component-requirements-comp-req">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Step 10 – Write the component requirements (<code class="docutils literal notranslate"><span class="pre">comp_req</span></code>)</a><a class="headerlink" href="#step-10-write-the-component-requirements-comp-req" title="Link to this heading">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">docs/modules/&lt;module&gt;/&lt;component&gt;/docs/requirements/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> <span class="nt">&lt;Component&gt;</span> Requirements
+   <span class="nc">:id:</span> doc__&lt;module&gt;_&lt;component&gt;_requirements
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__requirements_comp
+
+<span class="p">..</span> <span class="ow">comp_req</span><span class="p">::</span> Persist value round-trip
+   <span class="nc">:id:</span> comp_req__&lt;module&gt;__&lt;component&gt;__store_read
+   <span class="nc">:reqtype:</span> Functional
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> comp__&lt;module&gt;__&lt;component&gt;
+   <span class="nc">:satisfies:</span> feat_req__&lt;feature&gt;__store_data
+</pre></div>
+</div>
+<p>Mandatory links:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:satisfies:</span></code> → at least one <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:belongs_to:</span></code> → the parent <code class="docutils literal notranslate"><span class="pre">comp</span></code>.</p></li>
+</ul>
+<p>Optional:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:covers:</span></code> → an <code class="docutils literal notranslate"><span class="pre">aou_req</span></code> (platform or component-local).</p></li>
+</ul>
+<p>ASIL completeness:</p>
+<ul class="simple">
+<li><p>For each <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> with <code class="docutils literal notranslate"><span class="pre">:safety:</span> <span class="pre">ASIL_B</span></code> set the
+<code class="docutils literal notranslate"><span class="pre">complete</span> <span class="pre">test</span> <span class="pre">coverage</span></code> attribute once the test set is judged
+sufficient.</p></li>
+</ul>
+</section>
+<section id="step-11-file-the-component-inspections">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Step 11 – File the component inspections</a><a class="headerlink" href="#step-11-file-the-component-inspections" title="Link to this heading">#</a></h3>
+<p>Three checklist files, one per artefact:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">…/&lt;component&gt;/docs/requirements/chklst_req_inspection.rst</span></code>
+realises <code class="docutils literal notranslate"><span class="pre">wp__requirements_comp_inspection</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">…/&lt;component&gt;/docs/architecture/chklst_arc_inspection.rst</span></code>
+realises <code class="docutils literal notranslate"><span class="pre">wp__component_arch_inspection</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">…/&lt;component&gt;/docs/detailed_design/chklst_impl_inspection.rst</span></code>
+realises <code class="docutils literal notranslate"><span class="pre">wp__sw_implementation_inspection</span></code>.</p></li>
+</ul>
+<p>All three use the same <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">chklst_&lt;…&gt;_inspection::</span></code> directive
+declared in the metamodel. Copy the official folder templates from
+<code class="docutils literal notranslate"><span class="pre">process_description</span></code> (pinned to the version score consumes via
+<code class="docutils literal notranslate"><span class="pre">bazel_dep(name</span> <span class="pre">=</span> <span class="pre">&quot;score_process&quot;,</span> <span class="pre">…)</span></code> in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> – at
+the time of writing, <code class="docutils literal notranslate"><span class="pre">v1.5.4</span></code>) and adapt the <code class="docutils literal notranslate"><span class="pre">:id:</span></code> to
+<code class="docutils literal notranslate"><span class="pre">chklst_&lt;…&gt;_inspection__&lt;module&gt;_&lt;component&gt;</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/process_description/blob/v1.5.4/process/folder_templates/modules/module_name/component_name/docs/requirements/chklst_req_inspection.rst">chklst_req_inspection.rst</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/process_description/blob/v1.5.4/process/folder_templates/modules/module_name/component_name/docs/architecture/chklst_arc_inspection.rst">chklst_arc_inspection.rst</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/process_description/blob/v1.5.4/process/folder_templates/modules/module_name/component_name/docs/detailed_design/chklst_impl_inspection.rst">chklst_impl_inspection.rst</a></p></li>
+</ul>
+<p>The full template tree (per-feature and per-component skeletons,
+including safety / security planning, module safety plan, etc.) is
+browsable in the source under
+<a class="reference external" href="https://github.com/eclipse-score/process_description/tree/v1.5.4/process/folder_templates">process/folder_templates/</a>.</p>
+<p>Safety analyses (<code class="docutils literal notranslate"><span class="pre">…/&lt;component&gt;/docs/safety_analysis/{fmea,dfa}.rst</span></code>)
+are added only when the module safety plan calls for them
+(<code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_saf_dfa</span></code>).</p>
+</section>
+<section id="step-12-link-source-code-back-to-the-requirement">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Step 12 – Link source code back to the requirement</a><a class="headerlink" href="#step-12-link-source-code-back-to-the-requirement" title="Link to this heading">#</a></h3>
+<p>Source code is linked back to requirements (typically <code class="docutils literal notranslate"><span class="pre">comp_req</span></code>) by
+the <strong>docs-as-code source-code linker</strong> (see
+<a class="reference internal" href="traceability_tooling.html"><span class="doc">Traceability Tooling</span></a>). Add a comment
+containing one of these template strings on the line(s) of the
+implementing function/method:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// # req-Id: comp_req__containers_rust__fixed_vector</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">your_function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="sd">/// # req-Id: comp_req__feo__activity</span>
+<span class="k">impl</span><span class="w"> </span><span class="n">Activity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># req-Id: tool_req__docs_common_attr_title</span>
+<span class="c1"># req-Id: tool_req__docs_common_attr_status</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">your_function</span><span class="p">(</span><span class="n">args</span><span class="p">):</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>The linker scans every file (skipping <code class="docutils literal notranslate"><span class="pre">.pyc</span></code>, <code class="docutils literal notranslate"><span class="pre">.so</span></code>, <code class="docutils literal notranslate"><span class="pre">.exe</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.bin</span></code>, <code class="docutils literal notranslate"><span class="pre">.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">.md</span></code> and dot-prefixed paths) and produces a
+<code class="docutils literal notranslate"><span class="pre">source_code_link</span></code> extra field on the linked need, surfaced in the
+rendered page.</p>
+</section>
+<section id="step-13-add-the-verification-testcase">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Step 13 – Add the verification (<code class="docutils literal notranslate"><span class="pre">testcase</span></code>)</a><a class="headerlink" href="#step-13-add-the-verification-testcase" title="Link to this heading">#</a></h3>
+<p>You do <strong>not</strong> write <code class="docutils literal notranslate"><span class="pre">testcase</span></code> directives by hand. You tag the test
+in its source, the framework emits a JUnit XML and the docs-as-code
+test-result linker synthesises the need. The metadata you must set:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">StoreReadTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">Test</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetUp</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;TestType&quot;</span><span class="p">,</span><span class="w">            </span><span class="s">&quot;requirements-based&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;DerivationTechnique&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;boundary-values&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">TEST_F</span><span class="p">(</span><span class="n">StoreReadTest</span><span class="p">,</span><span class="w"> </span><span class="n">RoundTrip</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;FullyVerifies&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="s">&quot;comp_req__&lt;module&gt;__&lt;component&gt;__store_read&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;Description&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Round-trip of an arbitrary blob.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Rules (from <code class="docutils literal notranslate"><span class="pre">gd_req__verification_checks</span></code>):</p>
+<ul class="simple">
+<li><p>Unit Test or Component Integration Test may only <code class="docutils literal notranslate"><span class="pre">FullyVerifies</span></code> /
+<code class="docutils literal notranslate"><span class="pre">PartiallyVerifies</span></code> a <code class="docutils literal notranslate"><span class="pre">comp_req</span></code>.</p></li>
+<li><p>Feature Integration Test may only link to <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>.</p></li>
+<li><p>Platform Integration Test may only link to <code class="docutils literal notranslate"><span class="pre">stkh_req</span></code>.</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">PartiallyVerifies</span></code> on each test when more than one test together
+covers the requirement, then set the <code class="docutils literal notranslate"><span class="pre">complete</span> <span class="pre">test</span> <span class="pre">coverage</span></code>
+attribute on the <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> (ASIL only).</p>
+</section>
+</section>
+<section id="cross-layer-link-cheat-sheet">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Cross-layer link cheat sheet</a><a class="headerlink" href="#cross-layer-link-cheat-sheet" title="Link to this heading">#</a></h2>
+<p>When in doubt, this is the only set of cross-layer links you need
+today:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 26.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>From (component side)</p></th>
+<th class="head"><p>Link</p></th>
+<th class="head"><p>To (feature side)</p></th>
+<th class="head"><p>Mandatory?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">comp_req</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">satisfies</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feat_req</span></code></p></td>
+<td><p>mandatory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">comp</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">belongs_to</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feat</span></code></p></td>
+<td><p>mandatory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">comp</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">implements</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>, <code class="docutils literal notranslate"><span class="pre">real_arc_int_op</span></code></p></td>
+<td><p>optional (mandatory when <code class="docutils literal notranslate"><span class="pre">feat</span></code> <code class="docutils literal notranslate"><span class="pre">:provides:</span></code> the iface)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">comp</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uses</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>, <code class="docutils literal notranslate"><span class="pre">real_arc_int_op</span></code></p></td>
+<td><p>optional</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">feat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">provides</span></code> / <code class="docutils literal notranslate"><span class="pre">uses</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logic_arc_int(_op)</span></code></p></td>
+<td><p>optional, but expected when any component implements it</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Everything else (<code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils</span></code>, <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> inside a
+layer) stays <em>within</em> its layer.</p>
+</section>
+<section id="validation-before-opening-a-pr">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Validation before opening a PR</a><a class="headerlink" href="#validation-before-opening-a-pr" title="Link to this heading">#</a></h2>
+<p>Run the live build and the metamodel checks locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bazel<span class="w"> </span>run<span class="w"> </span>//:run<span class="w"> </span>live_preview
+</pre></div>
+</div>
+<p>What the build will reject:</p>
+<ul class="simple">
+<li><p>Missing mandatory option (<code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">safety</span></code>, <code class="docutils literal notranslate"><span class="pre">security</span></code>,
+<code class="docutils literal notranslate"><span class="pre">reqtype</span></code> for requirements).</p></li>
+<li><p>Missing mandatory link (<code class="docutils literal notranslate"><span class="pre">comp.belongs_to</span></code>,
+<code class="docutils literal notranslate"><span class="pre">comp_req.satisfies</span></code> / <code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>,
+<code class="docutils literal notranslate"><span class="pre">feat_arc_*.belongs_to</span></code> / <code class="docutils literal notranslate"><span class="pre">fulfils</span></code>, …).</p></li>
+<li><p>Dead link (<code class="docutils literal notranslate"><span class="pre">has_forbidden_dead_links</span></code> in <code class="docutils literal notranslate"><span class="pre">needs.json</span></code>): the
+target ID does not exist.</p></li>
+<li><p>Graph check violations: QM → ASIL escalation; security mismatch;
+safety analysis pointing to QM elements.</p></li>
+</ul>
+<p>What the build will <em>warn</em> about (but accept today):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">testcase.fully_verifies</span></code> pointing at the wrong layer (e.g. a unit
+test linking to <code class="docutils literal notranslate"><span class="pre">stkh_req__…</span></code>). The corresponding tool
+requirement <code class="docutils literal notranslate"><span class="pre">tool_req__docs_test_metadata_link_levels</span></code> is still
+<code class="docutils literal notranslate"><span class="pre">:implemented:</span> <span class="pre">NO</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feat</span></code> without <code class="docutils literal notranslate"><span class="pre">:provides:</span></code> even though it has <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>
+<code class="docutils literal notranslate"><span class="pre">includes</span></code> from a <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code>.</p></li>
+<li><p>Missing <code class="docutils literal notranslate"><span class="pre">complete</span> <span class="pre">test</span> <span class="pre">coverage</span></code> attribute on an <code class="docutils literal notranslate"><span class="pre">ASIL_B</span></code>
+<code class="docutils literal notranslate"><span class="pre">comp_req</span></code>.</p></li>
+</ul>
+</section>
+<section id="dormant-elements-add-only-when-needed">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Dormant elements (add only when needed)</a><a class="headerlink" href="#dormant-elements-add-only-when-needed" title="Link to this heading">#</a></h2>
+<p>The following schema types are <em>registered</em> in
+<code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> but have <strong>zero</strong> declarations in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> today.
+Do not introduce them speculatively; add them when the safety plan or
+a release rule starts requiring them:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dd_sta</span></code> / <code class="docutils literal notranslate"><span class="pre">dd_dyn</span></code> – detailed design. Today components jump
+from <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> straight to source code via <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">req-Id:</span></code>. Add DD
+needs once <code class="docutils literal notranslate"><span class="pre">wp__sw_implementation_inspection</span></code> becomes mandatory
+for your module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sw_unit</span></code>, <code class="docutils literal notranslate"><span class="pre">sw_unit_int</span></code> – only useful once a module starts to
+publish sw-unit interfaces formally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real_arc_int</span></code>, <code class="docutils literal notranslate"><span class="pre">real_arc_int_op</span></code> – realised interface
+refinement. Currently every cross-layer <code class="docutils literal notranslate"><span class="pre">implements</span></code> / <code class="docutils literal notranslate"><span class="pre">uses</span></code>
+targets <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>; switch to <code class="docutils literal notranslate"><span class="pre">real_arc_int_op</span></code> when API
+qualification needs the realised signature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">comp_arc_dyn</span></code> – component sequence diagrams (only one usage in
+the entire <code class="docutils literal notranslate"><span class="pre">docs/</span></code> today, in <code class="docutils literal notranslate"><span class="pre">feo</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code> / <code class="docutils literal notranslate"><span class="pre">feat_saf_dfa</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code> /
+<code class="docutils literal notranslate"><span class="pre">comp_saf_dfa</span></code> / <code class="docutils literal notranslate"><span class="pre">plat_saf_dfa</span></code> – safety analyses. Add once
+your module enters the ASIL safety case (the module safety plan
+prescribes which analyses are required).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod_view_dyn</span></code> – module sequence diagrams.</p></li>
+</ul>
+<p>When you do introduce a dormant type, the link contract is already in
+<code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>; re-read it before writing the directive to be sure
+of mandatory vs. optional links and the safety-propagation graph
+checks.</p>
+</section>
+<section id="worked-example-baselibs-feature-bitmanipulation-component">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Worked example: <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> feature + <code class="docutils literal notranslate"><span class="pre">bitmanipulation</span></code> component</a><a class="headerlink" href="#worked-example-baselibs-feature-bitmanipulation-component" title="Link to this heading">#</a></h2>
+<p>The smallest end-to-end excerpt that matches the baselibs sources.
+Each file is annotated with the repository that owns it.</p>
+<p><strong>[score repo]</strong> <code class="docutils literal notranslate"><span class="pre">docs/features/baselibs/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_baselibs_feature:</span>
+
+<span class="gh">Base Libraries</span>
+<span class="gh">###############</span>
+
+<span class="p">..</span> <span class="ow">document</span><span class="p">::</span> Base Libraries
+   <span class="nc">:id:</span> doc__baselibs
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:tags:</span> feature_request
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__feat_request
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:hidden:</span>
+
+   docs/requirements/index.rst
+   docs/requirements/chklst_req_inspection.rst
+   docs/architecture/index.rst
+
+<span class="gh">Abstract</span>
+<span class="gh">========</span>
+…
+</pre></div>
+</div>
+<p><strong>[score repo]</strong>
+<code class="docutils literal notranslate"><span class="pre">docs/features/baselibs/docs/requirements/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> Baselibs Requirements
+   <span class="nc">:id:</span> doc__baselibs_requirements
+   <span class="nc">:status:</span> draft
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__requirements_feat
+
+<span class="p">..</span> <span class="ow">feat_req</span><span class="p">::</span> Bit Manipulation Library
+   <span class="nc">:id:</span> feat_req__baselibs__bitmanipulation
+   <span class="nc">:reqtype:</span> Functional
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:satisfies:</span> stkh_req__functional_req__base_libraries
+   <span class="nc">:status:</span> valid
+
+   The base libraries shall provide bit manipulation utilities for
+   low-level operations on integral types.
+
+<span class="p">..</span> <span class="ow">needextend</span><span class="p">::</span> is_external == False and &quot;__baselibs&quot; in id
+   <span class="nc">:+tags:</span> baselibs
+</pre></div>
+</div>
+<p><strong>[score repo]</strong>
+<code class="docutils literal notranslate"><span class="pre">docs/features/baselibs/docs/architecture/index.rst</span></code>
+(only the contract: <code class="docutils literal notranslate"><span class="pre">feat</span></code> + <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> Baselibs Architecture
+   <span class="nc">:id:</span> doc__baselibs_architecture
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:realizes:</span> wp__feature_arch
+
+<span class="p">..</span> <span class="ow">feat</span><span class="p">::</span> Baselibs
+   <span class="nc">:id:</span> feat__baselibs
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:provides:</span> logic_arc_int__baselibs__bit_manipulation,
+              logic_arc_int__baselibs__json,
+              logic_arc_int__baselibs__memory_shared
+
+<span class="p">..</span> <span class="ow">logic_arc_int</span><span class="p">::</span> Bit Manipulation
+   <span class="nc">:id:</span> logic_arc_int__baselibs__bit_manipulation
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong>
+<code class="docutils literal notranslate"><span class="pre">docs/features/baselibs/docs/architecture/index.rst</span></code>
+(realisation views – merged into the same page by the build):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">feat_arc_sta</span><span class="p">::</span> Baselibs Static Architecture
+   <span class="nc">:id:</span> feat_arc_sta__baselibs__static
+   <span class="nc">:security:</span> YES
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> feat__baselibs
+   <span class="nc">:includes:</span> logic_arc_int__baselibs__bit_manipulation,
+              logic_arc_int__baselibs__json,
+              logic_arc_int__baselibs__memory_shared
+   <span class="nc">:fulfils:</span> feat_req__baselibs__bitmanipulation,
+             feat_req__baselibs__json_library,
+             feat_req__baselibs__memory_library
+
+<span class="p">   ..</span> <span class="ow">uml</span><span class="p">::</span> _assets/baselibs_static.puml
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong> <code class="docutils literal notranslate"><span class="pre">docs/modules/baselibs/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Baselibs Module</span>
+<span class="gh">###############</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:titlesonly:</span>
+   <span class="nc">:maxdepth:</span> 2
+
+   ./docs/index
+
+<span class="gh">Components</span>
+<span class="gh">==========</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:titlesonly:</span>
+   <span class="nc">:maxdepth:</span> 1
+   <span class="nc">:glob:</span>
+
+   ./*/docs/index
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong> <code class="docutils literal notranslate"><span class="pre">docs/modules/baselibs/docs/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">mod</span><span class="p">::</span> Baselibs
+   <span class="nc">:id:</span> mod__baselibs
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> YES
+   <span class="nc">:includes:</span> comp__baselibs__bitmanipulation,
+              comp__baselibs__json,
+              comp__baselibs__memory_shared
+
+<span class="p">..</span> <span class="ow">mod_view_sta</span><span class="p">::</span> Baselibs
+   <span class="nc">:id:</span> mod_view_sta__baselibs__baselibs
+   <span class="nc">:belongs_to:</span> mod__baselibs
+   <span class="nc">:includes:</span> comp__baselibs__bitmanipulation,
+              comp__baselibs__json,
+              comp__baselibs__memory_shared
+
+<span class="p">   ..</span> <span class="ow">needarch</span><span class="p">::</span>
+
+      {{ draw_module(need(), needs) }}
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong>
+<code class="docutils literal notranslate"><span class="pre">docs/modules/baselibs/bitmanipulation/docs/architecture/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> BitManipulation Architecture
+   <span class="nc">:id:</span> doc__baselibs_bitmanipulation_architecture
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> NO
+   <span class="nc">:realizes:</span> wp__component_arch
+
+<span class="gh">Component Architecture</span>
+<span class="gh">**********************</span>
+
+<span class="p">..</span> <span class="ow">comp</span><span class="p">::</span> baselibs::bitmanipulation
+   <span class="nc">:id:</span> comp__baselibs__bitmanipulation
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> feat__baselibs
+   <span class="nc">:implements:</span> logic_arc_int__baselibs__bit_manipulation
+
+<span class="p">   ..</span> <span class="ow">needarch</span><span class="p">::</span>
+
+      {{ draw_component(need(), needs) }}
+
+<span class="p">..</span> <span class="ow">comp_arc_sta</span><span class="p">::</span> Static Architecture
+   <span class="nc">:id:</span> comp_arc_sta__baselibs__bitmanipulation__static
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> comp__baselibs__bitmanipulation
+   <span class="nc">:fulfils:</span> comp_req__baselibs__bitmanipulation__count_set_bits
+
+<span class="p">   ..</span> <span class="ow">uml</span><span class="p">::</span> _assets/bit_static.puml
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong>
+<code class="docutils literal notranslate"><span class="pre">docs/modules/baselibs/bitmanipulation/docs/requirements/index.rst</span></code>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">document</span><span class="p">::</span> BitManipulation Requirements
+   <span class="nc">:id:</span> doc__baselibs_bitmanipulation_requirements
+   <span class="nc">:status:</span> valid
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:security:</span> NO
+   <span class="nc">:realizes:</span> wp__requirements_comp
+
+<span class="p">..</span> <span class="ow">comp_req</span><span class="p">::</span> Count set bits
+   <span class="nc">:id:</span> comp_req__baselibs__bitmanipulation__count_set_bits
+   <span class="nc">:reqtype:</span> Functional
+   <span class="nc">:security:</span> NO
+   <span class="nc">:safety:</span> ASIL_B
+   <span class="nc">:status:</span> valid
+   <span class="nc">:belongs_to:</span> comp__baselibs__bitmanipulation
+   <span class="nc">:satisfies:</span> feat_req__baselibs__bitmanipulation
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong> in the C++ implementation file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// # req-Id: comp_req__baselibs__bitmanipulation__count_set_bits</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="nf">count_set_bits</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>[baselibs module repo]</strong> in the gtest file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TEST</span><span class="p">(</span><span class="n">BitManipulation</span><span class="p">,</span><span class="w"> </span><span class="n">CountSetBits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;TestType&quot;</span><span class="p">,</span><span class="w">            </span><span class="s">&quot;requirements-based&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;DerivationTechnique&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;boundary-values&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;FullyVerifies&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;comp_req__baselibs__bitmanipulation__count_set_bits&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">&quot;Description&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Set-bit count for boundary values.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Rendered result:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">feat_req__baselibs__bitmanipulation</span></code> page shows a
+<code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code> backlink to the <code class="docutils literal notranslate"><span class="pre">comp_req</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> page shows a <code class="docutils literal notranslate"><span class="pre">fully_verified_by</span></code> backlink to the
+testcase, a <code class="docutils literal notranslate"><span class="pre">source_code_link</span></code> to the C++ function and a
+<code class="docutils literal notranslate"><span class="pre">satisfies</span></code> forward link up to the <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">feat__baselibs</span></code> page shows a <code class="docutils literal notranslate"><span class="pre">provided_by</span></code> backlink from
+<code class="docutils literal notranslate"><span class="pre">logic_arc_int__baselibs__bit_manipulation</span></code> and an
+<code class="docutils literal notranslate"><span class="pre">implemented_by</span></code> backlink from
+<code class="docutils literal notranslate"><span class="pre">comp__baselibs__bitmanipulation</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">mod__baselibs</span></code> page (with <code class="docutils literal notranslate"><span class="pre">draw_module</span></code>) shows the
+rendered static module view aggregating all included components.</p></li>
+</ul>
+</section>
+<section id="quick-checklist-before-merging">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Quick checklist before merging</a><a class="headerlink" href="#quick-checklist-before-merging" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">feat_req</span></code> <code class="docutils literal notranslate"><span class="pre">:satisfies:</span></code> at least one <code class="docutils literal notranslate"><span class="pre">stkh_req</span></code>.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> <code class="docutils literal notranslate"><span class="pre">:satisfies:</span></code> at least one <code class="docutils literal notranslate"><span class="pre">feat_req</span></code> and
+<code class="docutils literal notranslate"><span class="pre">:belongs_to:</span></code> a <code class="docutils literal notranslate"><span class="pre">comp</span></code>.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">comp</span></code> <code class="docutils literal notranslate"><span class="pre">:belongs_to:</span></code> a <code class="docutils literal notranslate"><span class="pre">feat</span></code>.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> / <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code> <code class="docutils literal notranslate"><span class="pre">:belongs_to:</span></code> a
+<code class="docutils literal notranslate"><span class="pre">feat</span></code> and <code class="docutils literal notranslate"><span class="pre">:fulfils:</span></code> at least one <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code> <code class="docutils literal notranslate"><span class="pre">:includes:</span></code> the <code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code> the
+feature <code class="docutils literal notranslate"><span class="pre">:provides:</span></code>.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">logic_arc_int_op</span></code> is <code class="docutils literal notranslate"><span class="pre">:included_by:</span></code> exactly one
+<code class="docutils literal notranslate"><span class="pre">logic_arc_int</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod.includes</span></code> lists every <code class="docutils literal notranslate"><span class="pre">comp</span></code> of the module;
+<code class="docutils literal notranslate"><span class="pre">mod_view_sta.belongs_to</span></code> points to that <code class="docutils literal notranslate"><span class="pre">mod</span></code>.</p></li>
+<li><p>Safety / security levels propagate consistently
+(<code class="docutils literal notranslate"><span class="pre">QM</span> <span class="pre">→</span> <span class="pre">QM</span></code> only, <code class="docutils literal notranslate"><span class="pre">ASIL_B</span> <span class="pre">→</span> <span class="pre">ASIL_B</span></code>,
+<code class="docutils literal notranslate"><span class="pre">security</span> <span class="pre">YES</span> <span class="pre">→</span> <span class="pre">security</span> <span class="pre">YES</span></code>).</p></li>
+<li><p>Every implementing function carries a <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">req-Id:</span> <span class="pre">comp_req__…</span></code>
+comment.</p></li>
+<li><p>Every test sets <code class="docutils literal notranslate"><span class="pre">TestType</span></code> + <code class="docutils literal notranslate"><span class="pre">DerivationTechnique</span></code> +
+<code class="docutils literal notranslate"><span class="pre">FullyVerifies</span></code> / <code class="docutils literal notranslate"><span class="pre">PartiallyVerifies</span></code> and – for ASIL –
+the <code class="docutils literal notranslate"><span class="pre">comp_req</span></code> has <code class="docutils literal notranslate"><span class="pre">complete</span> <span class="pre">test</span> <span class="pre">coverage</span> <span class="pre">=</span> <span class="pre">yes</span></code>.</p></li>
+<li><p>The four inspection checklists exist:</p>
+<ul class="simple">
+<li><p>feature: <code class="docutils literal notranslate"><span class="pre">…/docs/requirements/chklst_req_inspection.rst</span></code>,
+<code class="docutils literal notranslate"><span class="pre">…/docs/architecture/chklst_arc_inspection.rst</span></code>,</p></li>
+<li><p>component: <code class="docutils literal notranslate"><span class="pre">…/docs/requirements/chklst_req_inspection.rst</span></code>,
+<code class="docutils literal notranslate"><span class="pre">…/docs/architecture/chklst_arc_inspection.rst</span></code>,
+<code class="docutils literal notranslate"><span class="pre">…/docs/detailed_design/chklst_impl_inspection.rst</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:run</span> <span class="pre">live_preview</span></code> is green and <code class="docutils literal notranslate"><span class="pre">needs.json</span></code>
+contains no <code class="docutils literal notranslate"><span class="pre">has_forbidden_dead_links</span></code>.</p></li>
+</ol>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">See also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="traceability_tooling.html"><span class="doc">Traceability Tooling</span></a> – how to render
+dashboards (<code class="docutils literal notranslate"><span class="pre">needtable</span></code>, <code class="docutils literal notranslate"><span class="pre">needpie</span></code>) from the linked data.</p></li>
+<li><p><a class="reference internal" href="../../platform_management_plan/software_verification.html"><span class="doc">Software verification</span></a> – allowed
+<code class="docutils literal notranslate"><span class="pre">TestType</span></code> / <code class="docutils literal notranslate"><span class="pre">DerivationTechnique</span></code> values and release-time
+quality goals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/features/baselibs/</span></code> and <code class="docutils literal notranslate"><span class="pre">docs/modules/baselibs/</span></code> – the
+canonical sources this how-to mirrors.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="traceability_tooling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Traceability Tooling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="api_guideline.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Designing API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-things-live-repository-map">Where things live (repository map)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-at-the-feature-level">Step-by-step at the feature level</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-anchor-in-the-stakeholder-requirements-score-repo">Step 1 – Anchor in the stakeholder requirements (score repo)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-the-feature-directory-in-the-score-repo">Step 2 – Create the feature directory in the score repo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-write-the-feature-requirements-feat-req">Step 3 – Write the feature requirements (<code class="docutils literal notranslate"><span class="pre">feat_req</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-declare-the-feature-node-and-the-logical-interfaces">Step 4 – Declare the feature node and the logical interfaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-file-the-feature-requirements-inspection">Step 5 – File the feature requirements inspection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-inspection-checklists-with-the-requirements-inspection-agent">Generating inspection checklists with the Requirements Inspection agent</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-start-the-agent">How to start the agent</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-agent-will-not-do">What the agent will not do</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-invoke-the-agent">When to invoke the agent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-do-not-do-in-the-score-repo">What you do <em>not</em> do in the score repo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-at-the-module-component-level">Step-by-step at the module / component level</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-add-the-feature-architecture-views-in-the-module-repo">Step 6 – Add the feature architecture views in the module repo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#file-the-feature-architecture-inspection">File the feature architecture inspection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-create-the-module-directory">Step 7 – Create the module directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-declare-the-module-mod-mod-view-sta">Step 8 – Declare the module (<code class="docutils literal notranslate"><span class="pre">mod</span></code> / <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-declare-the-component-comp-comp-arc-sta">Step 9 – Declare the component (<code class="docutils literal notranslate"><span class="pre">comp</span></code> / <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-write-the-component-requirements-comp-req">Step 10 – Write the component requirements (<code class="docutils literal notranslate"><span class="pre">comp_req</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-11-file-the-component-inspections">Step 11 – File the component inspections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-12-link-source-code-back-to-the-requirement">Step 12 – Link source code back to the requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-13-add-the-verification-testcase">Step 13 – Add the verification (<code class="docutils literal notranslate"><span class="pre">testcase</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-layer-link-cheat-sheet">Cross-layer link cheat sheet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-before-opening-a-pr">Validation before opening a PR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dormant-elements-add-only-when-needed">Dormant elements (add only when needed)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example-baselibs-feature-bitmanipulation-component">Worked example: <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> feature + <code class="docutils literal notranslate"><span class="pre">bitmanipulation</span></code> component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-checklist-before-merging">Quick checklist before merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/contribute/development/modelling_howto.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
