@@ -1,0 +1,11 @@
+@startuml
+
+title Sequence Diagram: Write Key to KVS Instance
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+
+actor -> kvs: Set value for key
+kvs --> actor: Value set for key
+
+@enduml
