@@ -81,3 +81,13 @@ single_version_override(
     module_name = "score_tooling",
     version = "1.1.2",
 )
+
+# rules_diff@1.0.0 depends on ape@1.0.1, which is hosted on gitlab.arm.com.
+# GitHub Actions runners cannot reach gitlab.arm.com, causing `bazel mod deps`
+# to fail with a 403 error. Override rules_diff with a local stub that declares
+# no ape dependency so that the ape module (and its cosmos extension) is
+# removed from the dependency graph entirely.
+local_path_override(
+    module_name = "rules_diff",
+    path = "overrides/rules_diff",
+)
