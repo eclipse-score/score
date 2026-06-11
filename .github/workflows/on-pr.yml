@@ -39,13 +39,14 @@ jobs:
   lint-commits:
     name: check-commit-messages
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
       - name: Run Gitlint Action
-        if: ${{ github.event_name == 'pull_request' }}
         uses: ./.github/actions/gitlint
         with:
           pr-number: ${{ github.event.number }}
