@@ -11,22 +11,46 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Gitlint check
+name: PR Checks
+
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened, synchronize]
+  merge_group:
+    types: [checks_requested]
+
 jobs:
+  formatting-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Setup Bazel
+        uses: bazel-contrib/setup-bazel@0.19.0
+      - name: Run formatting checks
+        run: |
+          bazel test //:format.check
+
+  copyright-check:
+    uses: eclipse-score/cicd-workflows/.github/workflows/copyright.yml@829b3e11ccbf924a5782f7bfed647cb1619fdf78 # v0.0.1
+    with:
+      bazel-target: "run //:copyright.check"
+
   lint-commits:
     name: check-commit-messages
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
       - name: Run Gitlint Action
-        if: ${{ github.event_name == 'pull_request' }}
         uses: ./.github/actions/gitlint
         with:
           pr-number: ${{ github.event.number }}
           base-branch: ${{ github.event.pull_request.base.ref }}
+
+  bazel-lock:
+    uses: eclipse-score/cicd-workflows/.github/workflows/bzlmod-lock-check.yml@93aac16ada7d247bbb6ae926509ddea74cf5213a # main in 2026-06-11
