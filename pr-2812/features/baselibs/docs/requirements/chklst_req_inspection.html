@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -600,7 +600,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-852ccf86">
+  <div class="need_container docutils container" id="SNCB-3629831f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_req_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -802,15 +802,37 @@ See also <a class="external_link reference external" href="https://eclipse-score
 <tr class="row-even"><td><p>REQ_08_01</p></td>
 <td><p>Is the requirement <em>verifiable</em>?</p></td>
 <td><p>If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_test_covered">gd_req__req_attr_test_covered</a> shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>The following feature requirements are high-level and not directly testable</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__core_utilities" title="feat_req__baselibs__core_utilities"><em class="xref need">Core Software Utilities (feat_req__baselibs__core_utilities)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__safety" title="feat_req__baselibs__safety"><em class="xref need">Safety Relevance (feat_req__baselibs__safety)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__multi_language_apis" title="feat_req__baselibs__multi_language_apis"><em class="xref need">Multi-Language APIs (feat_req__baselibs__multi_language_apis)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__consistent_apis" title="feat_req__baselibs__consistent_apis"><em class="xref need">Consistent APIs (feat_req__baselibs__consistent_apis)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__maintainable_design" title="feat_req__baselibs__maintainable_design"><em class="xref need">Maintainable Design (feat_req__baselibs__maintainable_design)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__security" title="feat_req__baselibs__security"><em class="xref need">Security Robustness (feat_req__baselibs__security)</em></a></p></li>
+</ul>
+<p>But these high-level requirements are decomposed into detailed component requirements that are testable.</p>
+<p>Following feature requirements are directly testable:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__json_library" title="feat_req__baselibs__json_library"><em class="xref need">JSON-Library (feat_req__baselibs__json_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__flatbuffers_library" title="feat_req__baselibs__flatbuffers_library"><em class="xref need">FlatBuffers-Library (feat_req__baselibs__flatbuffers_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__result_library" title="feat_req__baselibs__result_library"><em class="xref need">Exception-Free Development ... (feat_req__baselibs__result_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__containers_library" title="feat_req__baselibs__containers_library"><em class="xref need">Container Library (feat_req__baselibs__containers_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__bitmanipulation" title="feat_req__baselibs__bitmanipulation"><em class="xref need">Bit Manipulation Library (feat_req__baselibs__bitmanipulation)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__filesystem_library" title="feat_req__baselibs__filesystem_library"><em class="xref need">Filesystem-Library (feat_req__baselibs__filesystem_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__memory_library" title="feat_req__baselibs__memory_library"><em class="xref need">Memory Library (feat_req__baselibs__memory_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__concurrency_library" title="feat_req__baselibs__concurrency_library"><em class="xref need">Concurrency Library (feat_req__baselibs__concurrency_library)</em></a></p></li>
+</ul>
+<p>For these directly testable features, requirement wording is clear enough to derive test cases, and trace links from feature requirements to lower-level requirements and test cases are available</p>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_08_02</p></td>
 <td><p>Is the requirement verifiable by design or code review in case it is not feasibly testable?</p></td>
 <td><p>In very rare cases a requirement may not be verifiable by test cases, for example a specific non-functional requirement. In this case a requirement analysis verifies the requirement by design/code review. If such a requirement is in scope of this inspection, please check this here and link to the respective review record. A test expert is invited to the inspection to confirm their opinion that the requirement is not testable.</p></td>
-<td></td>
-<td></td>
+<td><p>n/a</p></td>
+<td><p>all testable</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>REQ_09_01</p></td>
