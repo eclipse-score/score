@@ -1065,6 +1065,61 @@ Diagnostics and Fault Management
    The SW-platform shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
 
+-----------------------------
+VSO Scenario Evidence Layer
+----------------------------
+
+.. stkh_req:: Multi-ECU Scenario Evidence Interfaces
+   :id: stkh_req__vso__scenario_evidence
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Enables the system to operate in modern, virtualized or distributed vehicle architectures, supporting safety-critical decisions.
+   :status: valid
+
+   The platform shall provide a scenario evidence layer that monitors and aggregates scenario data for Multi Node support.
+
+.. stkh_req:: Multi-ECU State Management
+   :id: stkh_req__vso__state_manager_integration
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Provide structured evidence to enable safety and state management decisions without conflicting with execution authority.
+   :status: valid
+
+   The platform shall deliver evidence packages and conditionRefs for decision-making.
+   
+ .. stkh_req:: Scenario-level Observability
+   :id: stkh_req__vso__observability
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Enable proactive problem detection and post-incident analysis through comprehensive system metrics for multi-node scenario execution.
+   :status: valid
+
+   The platform shall provide scenario-level observability.
+      
+.. stkh_req:: Multi-ECU Fault Detection and Correlation
+   :id: stkh_req__vso__fault_detection
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Detect and correlate faults across ECUs to enable decisions based on safe recovery.
+   :status: valid
+   
+   The platform shall detect and correlate faults with in ECUs for Multi-ECU fault tolerance.
+
+.. stkh_req:: Multi-ECU Event Notification
+   :id: stkh_req__vso__events_visibility
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Enable event notifications and execution context to fault, lifecycle and other systems.
+   :status: valid
+
+   The platform shall publish and manage scenario-level events.
+
+
 Hardware support
 ----------------
 
