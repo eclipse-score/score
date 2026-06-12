@@ -79,5 +79,5 @@ Generic Assumptions of Use
 
    Note3: Another example is mmap_peer which would allow accessing other processes memory if wrongly used.
 
-.. needextend:: "__os_" in id
+.. needextend:: is_external == False and "__os_" in id
    :+tags: operating_system
