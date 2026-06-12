@@ -34,6 +34,7 @@ Communication (v0.5 beta)
    docs/**/index
    ipc/index
    some_ip_gateway/index
+   dds_gateway/index
 
 Feature flag
 ============
