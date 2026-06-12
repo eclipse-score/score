@@ -31,6 +31,7 @@ Communication (v0.5 beta)
    :titlesonly:
    :hidden:
 
+   dds_gateway/index.rst
    docs/**/index
    ipc/index
    some_ip_gateway/index

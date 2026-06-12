@@ -1,0 +1,16 @@
+@startuml
+
+title Sequence Diagram: Restore Snapshot
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+
+actor -> kvs: Restore snapshot
+
+alt snapshot-restore-success
+    kvs --> actor: Snapshot restored successfully
+else snapshot-restore-error
+    kvs --> actor: Snapshot-Not-Available-Error
+end
+
+@enduml
