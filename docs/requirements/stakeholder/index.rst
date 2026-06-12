@@ -1065,107 +1065,60 @@ Diagnostics and Fault Management
    The SW-platform shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
 
-Vehicle Service Orchestrator
 -----------------------------
-VSO Workload Management
------------------------
+VSO Scenario Evidence Layer
+----------------------------
 
-.. stkh_req:: Container Lifecycle Management
-   :id: stkh_req__vso__workload_control
+.. stkh_req:: Multi-ECU Scenario Evidence Interfaces
+   :id: stkh_req__vso__scenario_evidence
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :rationale: Provide standardized workload control mechanisms consistent with cloud-native practices while meeting automotive reliability requirements.
+   :rationale: Enables the system to operate in modern, virtualized or distributed vehicle architectures, supporting safety-critical decisions.
    :status: valid
 
-   The platform shall provide standardized lifecycle management for containerized workloads,
-   including creation, startup, pause, resume, stop, restart, and deletion operations.
+   The platform shall provide a scenario evidence layer that monitors and aggregates scenario data for Multi Node support.
 
-.. stkh_req:: Vehicle State-Aware Orchestration
-   :id: stkh_req__vso__vehicle_state_awareness
+.. stkh_req:: Multi-ECU State Management
+   :id: stkh_req__vso__state_manager_integration
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :rationale: Enable dynamic workload management based on driving conditions to optimize resource utilization and ensure safety requirements are met.
+   :rationale: Provide structured evidence to enable safety and state management decisions without conflicting with execution authority.
    :status: valid
 
-   The platform shall support scenario-based workload orchestration that automatically adjusts application execution
-   based on vehicle state changes (e.g., driving mode, parking, charging).
-
-
-VSO Mixed-Criticality Support
------------------------------
-.. stkh_req:: ASIL and QM Workload Coexistence
-   :id: stkh_req__vso__asil_qm_coexistence
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :rationale: Enable safe coexistence of safety-critical and quality-managed applications on shared hardware while preventing interference.
-   :status: valid
-
-VSO Resource Management
------------------------
-.. stkh_req:: Workload Isolation
-   :id: stkh_req__vso__workload_isolation
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :rationale: Prevent resource contention and timing violations between workloads of different criticality levels to maintain system safety.
-   :status: valid
-
-   The platform shall enforce strict isolation between workloads using container-based mechanisms (cgroups, namespaces)
-   to prevent resource contention and timing interference across criticality boundaries.
-
-
-VSO Security and Isolation
---------------------------
-.. stkh_req:: Container Security Enforcement
-   :id: stkh_req__vso__security_isolation
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :rationale: Protect the system from compromised or malicious containers through strict security controls and least-privilege enforcement.
-   :status: valid
-
-   The platform shall enforce container security isolation through strict control of user identifiers, group permissions,
-   and Linux capabilities according to the principle of least privilegend maintain safety-critical functionality.
-   :status: valid
-
-   The platform shall provide comprehensive health monitoring for all workloads,
-   including process status, application-level health checks, and resource utilization tracking.
-
-.. stkh_req:: Automatic Fault Recovery
-   :id: stkh_req__vso__fault_tolerance
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :rationale: Maintain system availability and safety by automatically recovering from failures without human intervention.
-   :status: valid
-
-   The platform shall provide automatic recovery mechanisms for failed workloads,
-   including configurable restart policies and state-based corrective actions to minimize operational downtime.
-
-.. stkh_req:: Timing Constraint Enforcement
-   :id: stkh_req__vso__timing_guarantees
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :rationale: Ensure safety-critical applications meet their real-time timing requirements under all operating conditions.
-   :status: valid
-
-   The platform shall validate and enforce timing constraints for safety-critical workloads,
-   detecting violations at millisecond-level precision and triggering immediate corrective actions.
-
-.. stkh_req:: System Observability
+   The platform shall deliver evidence packages and conditionRefs for decision-making.
+   
+ .. stkh_req:: Scenario-level Observability
    :id: stkh_req__vso__observability
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :rationale: Enable proactive problem detection and post-incident analysis through comprehensive system metrics
+   :rationale: Enable proactive problem detection and post-incident analysis through comprehensive system metrics for multi-node scenario execution.
+   :status: valid
+
+   The platform shall provide scenario-level observability.
+      
+.. stkh_req:: Multi-ECU Fault Detection and Correlation
+   :id: stkh_req__vso__fault_detection
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Detect and correlate faults across ECUs to enable decisions based on safe recovery.
    :status: valid
    
-   The platform shall verify System Observability
-   
+   The platform shall detect and correlate faults with in ECUs for Multi-ECU fault tolerance.
+
+.. stkh_req:: Multi-ECU Event Notification
+   :id: stkh_req__vso__events_visibility
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Enable event notifications and execution context to fault, lifecycle and other systems.
+   :status: valid
+
+   The platform shall publish and manage scenario-level events.
+
 
 Hardware support
 ----------------

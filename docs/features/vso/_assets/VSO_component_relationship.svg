@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #2c2c2c; }
+      .text { font-family: Arial, sans-serif; font-size: 13px; fill: #1a1a1a; }
+      .small-text { font-family: Arial, sans-serif; font-size: 11px; fill: #2c2c2c; }
+      .diag-box { fill: #e3f2fd; stroke: #1565c0; stroke-width: 2.5; }
+      .vso-box { fill: #fff8e1; stroke: #ef6c00; stroke-width: 2.5; }
+      .state-box { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 2.5; }
+      .lifecycle-box { fill: #f3e5f5; stroke: #6a1b9a; stroke-width: 2.5; }
+      .arrow { fill: none; stroke: #424242; stroke-width: 1.8; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 8 2.5, 0 5" fill="#424242" />
+    </marker>
+    <marker id="arrowhead-start" markerWidth="8" markerHeight="8" refX="1" refY="2.5" orient="auto">
+      <polygon points="8 0, 0 2.5, 8 5" fill="#424242" />
+    </marker>
+  </defs>
+
+  <!-- White Background -->
+  <rect x="0" y="0" width="900" height="620" fill="#ffffff"/>
+  
+  <!-- Outer Border -->
+  <rect x="5" y="5" width="890" height="610" fill="none" stroke="#cccccc" stroke-width="2" rx="5"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="title">VSO Relationship to S-CORE Components</text>
+  <text x="450" y="55" text-anchor="middle" class="subtitle">Clear Separation of Concerns</text>
+
+  <!-- Diagnostics / OpenSOVD -->
+  <rect x="50" y="105" width="250" height="180" class="diag-box" rx="5"/>
+  <text x="175" y="130" text-anchor="middle" class="subtitle">S-CORE Diagnostics /</text>
+  <text x="175" y="150" text-anchor="middle" class="subtitle">OpenSOVD</text>
+  <text x="175" y="180" text-anchor="middle" class="text">Responsibilities:</text>
+  <text x="175" y="200" text-anchor="middle" class="small-text">• Raw signals: logs, faults, metrics</text>
+  <text x="175" y="220" text-anchor="middle" class="small-text">• Fault lifecycle management</text>
+  <text x="175" y="240" text-anchor="middle" class="small-text">• SOVD API exposure</text>
+  <text x="175" y="260" text-anchor="middle" class="small-text">• DTC management</text>
+
+  <!-- VSO -->
+  <rect x="340" y="105" width="250" height="180" class="vso-box" rx="5"/>
+  <text x="465" y="130" text-anchor="middle" class="subtitle">VSO</text>
+  <text x="465" y="145" text-anchor="middle" class="subtitle">(Evidence Layer)</text>
+  <text x="465" y="175" text-anchor="middle" class="text">Responsibilities:</text>
+  <text x="465" y="195" text-anchor="middle" class="small-text">• Multi-node pipeline monitoring</text>
+  <text x="465" y="215" text-anchor="middle" class="small-text">• Determinism violation detection</text>
+  <text x="465" y="235" text-anchor="middle" class="small-text">• Evidence package generation</text>
+  <text x="465" y="255" text-anchor="middle" class="small-text">• Scenario-level correlation</text>
+
+  <!-- OEM State Manager / Safety Manager -->
+  <rect x="640" y="105" width="250" height="180" class="state-box" rx="5"/>
+  <text x="765" y="130" text-anchor="middle" class="subtitle">OEM State Manager /</text>
+  <text x="765" y="150" text-anchor="middle" class="subtitle">Safety Manager</text>
+  <text x="765" y="180" text-anchor="middle" class="text">Responsibilities:</text>
+  <text x="765" y="200" text-anchor="middle" class="small-text">• Decision-making</text>
+  <text x="765" y="220" text-anchor="middle" class="small-text">• Degrade / Fallback / Maintain</text>
+  <text x="765" y="240" text-anchor="middle" class="small-text">• Entry/Stay/Exit evaluation</text>
+  <text x="765" y="260" text-anchor="middle" class="small-text">• Function Group State mgmt</text>
+
+  <!-- S-CORE Lifecycle -->
+  <rect x="340" y="345" width="250" height="120" class="lifecycle-box" rx="5"/>
+  <text x="465" y="370" text-anchor="middle" class="subtitle">S-CORE Lifecycle</text>
+  <text x="465" y="400" text-anchor="middle" class="text">Responsibilities:</text>
+  <text x="465" y="420" text-anchor="middle" class="small-text">• Application lifecycle execution</text>
+  <text x="465" y="440" text-anchor="middle" class="small-text">• Container/process management</text>
+
+  <!-- Arrows showing data flow -->
+  <!-- Diagnostics to VSO (bidirectional) -->
+  <path d="M 300 195 L 340 195" style="fill: none; stroke: #424242; stroke-width: 1.8; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+  <text x="320" y="185" text-anchor="middle" class="small-text">signals</text>
+  
+  <!-- VSO to OEM State Manager (bidirectional) -->
+  <path d="M 590 195 L 640 195" style="fill: none; stroke: #424242; stroke-width: 1.8; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+  <text x="615" y="185" text-anchor="middle" class="small-text">evidence</text>
+  
+  <!-- VSO to S-CORE Lifecycle (bidirectional) -->
+  <path d="M 465 285 L 465 345" style="fill: none; stroke: #424242; stroke-width: 1.8; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+
+  <!-- Information boxes -->
+  <rect x="50" y="325" width="250" height="140" fill="#ffebee" stroke="#c62828" stroke-width="2.5" rx="5"/>
+  <text x="175" y="345" text-anchor="middle" class="subtitle">What VSO Does NOT Do:</text>
+  <text x="175" y="370" text-anchor="middle" class="small-text">✗ Does NOT own fault lifecycle</text>
+  <text x="175" y="390" text-anchor="middle" class="small-text">✗ Does NOT make decisions</text>
+  <text x="175" y="410" text-anchor="middle" class="small-text">✗ Does NOT execute lifecycle actions</text>
+  <text x="175" y="430" text-anchor="middle" class="small-text">✗ Does NOT manage containers</text>
+  <text x="175" y="450" text-anchor="middle" class="small-text">✗ Does NOT control actuators</text>
+
+  <rect x="640" y="325" width="250" height="140" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5" rx="5"/>
+  <text x="765" y="345" text-anchor="middle" class="subtitle">What VSO Does:</text>
+  <text x="765" y="370" text-anchor="middle" class="small-text">✓ Observes multi-node pipelines</text>
+  <text x="765" y="390" text-anchor="middle" class="small-text">✓ Detects determinism violations</text>
+  <text x="765" y="410" text-anchor="middle" class="small-text">✓ Generates structured evidence</text>
+  <text x="765" y="430" text-anchor="middle" class="small-text">✓ Correlates by scenario_run_id</text>
+  <text x="765" y="450" text-anchor="middle" class="small-text">✓ Provides dashboard notifications</text>
+
+  <!-- Bottom principle box -->
+  <rect x="50" y="495" width="840" height="85" fill="#fff9c4" stroke="#f9a825" stroke-width="2.5" rx="5"/>
+  <text x="470" y="520" text-anchor="middle" class="subtitle">Core Principle</text>
+  <text x="470" y="545" text-anchor="middle" class="text">VSO is a passive observer that generates evidence for decision makers.</text>
+  <text x="470" y="565" text-anchor="middle" class="text">Execution remains in S-CORE Lifecycle. Decision remains OEM-specific.</text>
+</svg>
