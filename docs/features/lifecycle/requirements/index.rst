@@ -23,7 +23,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`.
@@ -33,7 +33,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for ordering the launching of
@@ -45,7 +45,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`
@@ -56,7 +56,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to wait for configurable custom
@@ -68,7 +68,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to pass the output of one or
@@ -79,7 +79,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -90,7 +90,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: QM
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching process with a
@@ -101,7 +101,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process in a state
@@ -113,7 +113,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -124,7 +124,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -136,7 +136,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -147,7 +147,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a terminal or a
@@ -158,7 +158,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for stdin, stdout, stderr
@@ -169,7 +169,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4
+    :derived_from: stkh_req__dependability__safety_features_4
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to be started with security
@@ -180,7 +180,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support a configurable amount of retries in
@@ -191,7 +191,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`
@@ -202,7 +202,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with
@@ -214,7 +214,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4
+    :derived_from: stkh_req__dependability__safety_features_4
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -225,7 +225,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -236,7 +236,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with
@@ -247,7 +247,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -259,7 +259,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__security_features
+    :derived_from: stkh_req__dependability__security_features
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching process with
@@ -270,7 +270,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -282,7 +282,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process to
@@ -296,7 +296,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide launching processes based on conditions.
@@ -306,7 +306,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to conditionally start a process
@@ -318,7 +318,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for per condition configurable
@@ -329,7 +329,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for per condition configurable
@@ -340,7 +340,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall be able to validate the pre-start conditions of the executable using the conditions.
@@ -350,7 +350,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall be able to validate the start of the executable using the conditions.
@@ -360,7 +360,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a way to store the status of the launched process.
@@ -370,7 +370,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a method for condition check based on process state.
@@ -380,7 +380,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a way to configure actions based on condition evaluation i.e. to be able to configure SUCCESS and FAILURE case.
@@ -390,7 +390,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a method for condition check for a path.
@@ -400,7 +400,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a method for condition check for environment variable.
@@ -410,7 +410,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a method to check if all dependencies have been executed.
@@ -420,7 +420,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a method to check if at least one dependency has been executed.
@@ -430,7 +430,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a way to define for each :term:`SWC` (Software Components), its dependencies.
@@ -440,7 +440,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall provide a way to define the stop sequence for each :term:`SWC` (Software Components).
@@ -453,7 +453,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to adopt already running :term:`Processes <Process>`.
@@ -463,7 +463,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to dropping all surveillance
@@ -475,7 +475,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall permit an executable to be launched more than once.
@@ -486,7 +486,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall reject an inconsistent definition of set of executables dependencies.
@@ -497,7 +497,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall be able to stop a process when all it's dependents are stopped if specified in the set of executables.
@@ -508,7 +508,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall permit the stop order of non-dependent processes to be specified.
@@ -519,7 +519,7 @@ Process Management
     :security: NO
     :safety: ASIL_B
     :status: invalid
-    :satisfies: stkh_req__overall_goals__enable_cooperation
+    :derived_from: stkh_req__overall_goals__enable_cooperation
 
     The Launch Manager shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
 
@@ -532,7 +532,7 @@ Run targets
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for :term:`run targets <Run target>` to define
@@ -543,7 +543,7 @@ Run targets
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to start a named :term:`Run target`.
@@ -553,7 +553,7 @@ Run targets
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to switch between different :term:`run targets <Run target>`.
@@ -563,7 +563,7 @@ Run targets
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall have a means for the launched :term:`Processes <Process>`
@@ -579,7 +579,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for configurable timeout
@@ -590,7 +590,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for terminating :term:`Processes <Process>`.
@@ -600,7 +600,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall terminate the :term:`Processes <Process>` based on the
@@ -612,7 +612,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The time to wait, before SIGKILL is sent shall be configurable. In case "0" is
@@ -623,7 +623,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support normal shutdown by terminating all
@@ -635,7 +635,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support slow shutdown by terminating the
@@ -646,7 +646,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support fast shutdown by terminating itself
@@ -657,7 +657,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall exit after performing shutdown operation by
@@ -668,7 +668,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall implement a shutdown by sending a SIGTERM to
@@ -683,7 +683,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for commands to control
@@ -694,7 +694,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for commands to query component
@@ -706,7 +706,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to report status on components via the
@@ -719,7 +719,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to start a named :term:`Run target` respecting the
@@ -734,7 +734,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for monitoring abnormal
@@ -745,7 +745,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for external monitors to get
@@ -757,7 +757,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support :term:`Recovery Action` for the
@@ -768,7 +768,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support switching to a different :term:`Run target` as
@@ -780,7 +780,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support a smart :term:`Watchdog`, configurable
@@ -792,7 +792,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for configurable wait time
@@ -803,7 +803,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for monitoring adopted
@@ -814,7 +814,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to detect and react to failure of the
@@ -825,7 +825,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to detect and react to loss of
@@ -836,7 +836,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall monitor the state of the :term:`Processes <Process>` as
@@ -848,7 +848,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to react to a process failure by
@@ -861,7 +861,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall be able to run in multiple instances with its
@@ -872,7 +872,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall implement time based cyclical monitoring of itself.
@@ -882,7 +882,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall trigger a notification to an external
@@ -893,7 +893,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall not trigger an external :term:`Watchdog`
@@ -904,7 +904,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The :term:`Launch Manager` shall support configuring the :term:`Interval` of
@@ -918,7 +918,7 @@ Logging
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dev_experience__logging_support
+    :derived_from: stkh_req__dev_experience__logging_support
     :status: invalid
 
     The :term:`Launch Manager` shall support OS specific logging facilities to analyze the early
@@ -929,7 +929,7 @@ Logging
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dev_experience__logging_support
+    :derived_from: stkh_req__dev_experience__logging_support
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for logging process launches,
@@ -940,7 +940,7 @@ Logging
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dev_experience__logging_support
+    :derived_from: stkh_req__dev_experience__logging_support
     :status: invalid
 
     The :term:`Launch Manager` logs shall contain timestamp information.
@@ -951,7 +951,7 @@ Logging
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dev_experience__logging_support
+    :derived_from: stkh_req__dev_experience__logging_support
     :status: invalid
 
     The :term:`Launch Manager` shall provide the possibility to log the :term:`DAG`
@@ -963,7 +963,7 @@ Logging
     :reqtype: Functional
     :security: NO
     :safety: QM
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall have the means to log the current dependencies in a format that can be visualized when requested.
@@ -976,7 +976,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__functional_req__file_based
+    :derived_from: stkh_req__functional_req__file_based
     :status: invalid
 
     The launch manager shall provide modular configuration file support to configure process attributes.
@@ -986,7 +986,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The launch manager shall provide modular configuration files support for configurations coming from `OCI runtime configuration<https://github.com/opencontainers/runtime-spec/blob/v1.2.0/config.md>`.
@@ -997,7 +997,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__functional_req__file_based
+    :derived_from: stkh_req__functional_req__file_based
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for extending already running
@@ -1008,7 +1008,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__functional_req__file_based
+    :derived_from: stkh_req__functional_req__file_based
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to clustering set of components
@@ -1020,7 +1020,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall be able to centrally define defaults for specific properties for the set of executables.
@@ -1031,7 +1031,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall check availability of executables in the filesystem only when the executable shall required to be executed.
@@ -1042,7 +1042,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: QM
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall have the means to generate the specified dependencies in a format that can be visualized.
@@ -1053,7 +1053,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: QM
-    :satisfies: stkh_req__execution_model__processes
+    :derived_from: stkh_req__execution_model__processes
     :status: invalid
 
     The Launch Manager shall have a means to validate the configuration offline.

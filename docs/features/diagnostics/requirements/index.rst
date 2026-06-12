@@ -25,7 +25,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd
+   :derived_from: stkh_req__diagnostics__via_sovd
    :status: valid
    :valid_from: v1.0.0
 
@@ -36,7 +36,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__secure_access
+   :derived_from: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__secure_access
    :status: valid
    :valid_from: v1.0.0
 
@@ -47,7 +47,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd
+   :derived_from: stkh_req__diagnostics__via_sovd
    :status: valid
    :valid_from: v1.5.0
 
@@ -58,7 +58,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd
+   :derived_from: stkh_req__diagnostics__via_sovd
    :status: valid
    :valid_from: v1.5.0
 
@@ -69,7 +69,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__secure_access
+   :derived_from: stkh_req__diagnostics__secure_access
    :status: valid
    :valid_from: v1.5.0
 
@@ -80,7 +80,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__distributed_support
+   :derived_from: stkh_req__diagnostics__distributed_support
    :status: valid
    :valid_from: v1.0.0
 
@@ -91,7 +91,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__secure_access
+   :derived_from: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__secure_access
    :status: valid
    :valid_from: v1.0.0
 
@@ -102,7 +102,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd
+   :derived_from: stkh_req__diagnostics__via_sovd
    :status: valid
    :valid_from: v1.0.0
 
@@ -113,7 +113,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__custom_services
+   :derived_from: stkh_req__diagnostics__custom_services
    :status: valid
    :valid_from: v1.0.0
 
@@ -124,7 +124,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__custom_services
+   :derived_from: stkh_req__diagnostics__custom_services
    :status: valid
    :valid_from: v1.5.0
 
@@ -135,7 +135,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting
+   :derived_from: stkh_req__diagnostics__fault_reporting
    :status: valid
    :valid_from: v1.0.0
 
@@ -146,7 +146,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting
+   :derived_from: stkh_req__diagnostics__fault_reporting
    :status: valid
    :valid_from: v1.0.0
 
@@ -157,7 +157,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting
+   :derived_from: stkh_req__diagnostics__fault_reporting
    :status: valid
    :valid_from: v1.5.0
 
@@ -168,7 +168,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting, stkh_req__diagnostics__dtc_read_sovd
+   :derived_from: stkh_req__diagnostics__fault_reporting, stkh_req__diagnostics__dtc_read_sovd
    :status: valid
    :valid_from: v1.0.0
 
@@ -179,7 +179,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting
+   :derived_from: stkh_req__diagnostics__fault_reporting
    :status: valid
    :valid_from: v1.0.0
 
@@ -190,7 +190,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting, stkh_req__diagnostics__dtc_read_sovd
+   :derived_from: stkh_req__diagnostics__fault_reporting, stkh_req__diagnostics__dtc_read_sovd
    :status: valid
    :valid_from: v1.0.0
 
@@ -201,7 +201,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__fault_reporting
+   :derived_from: stkh_req__diagnostics__fault_reporting
    :status: valid
    :valid_from: v1.0.0
 
@@ -212,7 +212,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__uds_ecus
+   :derived_from: stkh_req__diagnostics__uds_ecus
    :status: valid
    :valid_from: v1.0.0
 
@@ -223,7 +223,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__uds_ecus
+   :derived_from: stkh_req__diagnostics__uds_ecus
    :status: valid
    :valid_from: v1.0.0
 
@@ -234,7 +234,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__uds_tester_compat
+   :derived_from: stkh_req__diagnostics__uds_tester_compat
    :status: valid
    :valid_from: v1.5.0
 
@@ -245,7 +245,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__uds_tester_compat
+   :derived_from: stkh_req__diagnostics__uds_tester_compat
    :status: valid
    :valid_from: v1.5.0
 
@@ -256,7 +256,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__dtc_read_sovd
+   :derived_from: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__dtc_read_sovd
    :status: valid
    :valid_from: v1.0.0
 

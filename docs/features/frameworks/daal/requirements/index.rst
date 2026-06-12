@@ -23,7 +23,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__app_architectures__support_time
+   :derived_from: stkh_req__app_architectures__support_time
    :status: valid
 
    The daal framework shall provide Trigger to support a time-based architecture.
@@ -33,7 +33,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__overall_goals__reuse_of_app_soft,stkh_req__execution_model__processes,stkh_req__execution_model__low_power
+   :derived_from: stkh_req__overall_goals__reuse_of_app_soft,stkh_req__execution_model__processes,stkh_req__execution_model__low_power
    :status: valid
 
    Lifecycle of executables should use one generic API
@@ -43,7 +43,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__operating_system
+   :derived_from: stkh_req__functional_req__operating_system
    :status: valid
 
    It should be possible to use the framework with all specified os like qnx and linux
@@ -55,7 +55,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__app_architectures__support_data
+   :derived_from: stkh_req__app_architectures__support_data
    :status: valid
 
    The communication layer should use the IPC Framework
@@ -65,7 +65,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support
    :status: valid
 
    Core Logging API should be used
@@ -75,7 +75,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Singe Shot and Cyclic execution should be possible
@@ -85,7 +85,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Error and Health Management should be availability

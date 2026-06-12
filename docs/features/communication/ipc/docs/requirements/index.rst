@@ -29,7 +29,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data
+   :derived_from: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data
    :status: valid
 
    IPC communication shall be possible without copying to-be-transferred data.
@@ -39,7 +39,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :derived_from: stkh_req__communication__inter_process
    :status: valid
 
    The IPC binding shall ensure confidentiality of its communication.
@@ -49,7 +49,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :derived_from: stkh_req__communication__inter_process
    :status: valid
 
    The IPC binding shall ensure integrity of its communication.
@@ -59,7 +59,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :derived_from: stkh_req__communication__inter_process
    :status: valid
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per

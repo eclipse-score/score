@@ -22,7 +22,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__ai_platform__enablement
+   :derived_from: stkh_req__ai_platform__enablement
    :status: valid
 
    The platform shall support the execution of traditional ML models on embedded automotive hardware.
@@ -32,7 +32,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__safety_critical
+   :derived_from: stkh_req__ai_platform__safety_critical
    :status: valid
 
    The platform shall support deployment of safety-certified inference backends and abstraction layers for ASIL-B use cases.
@@ -42,7 +42,7 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__ai_platform__runtime_efficiency
+   :derived_from: stkh_req__ai_platform__runtime_efficiency
    :status: valid
 
    The platform shall optimize runtime performance and memory usage to meet the constraints of automotive edge hardware.
@@ -52,7 +52,7 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__ai_platform__platform_portability
+   :derived_from: stkh_req__ai_platform__platform_portability
    :status: valid
 
    The platform shall support portable AI components that run on both QNX (ASIL-B) and Linux environments.
@@ -62,7 +62,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__ai_platform__model_security
+   :derived_from: stkh_req__ai_platform__model_security
    :status: valid
 
    The platform shall ensure model artifacts are verified via cryptographic signatures before execution, and model loading is restricted to trusted paths.
@@ -72,7 +72,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
    The platform shall select inference backends statically at build time to ensure deterministic runtime behavior.
