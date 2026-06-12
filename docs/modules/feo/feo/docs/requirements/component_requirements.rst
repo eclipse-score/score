@@ -28,7 +28,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__application
+    :derived_from: feat_req__feo__application
     :status: valid
 
     An application consists of one or more activities executed in one or multiple operating system processes.
@@ -45,7 +45,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity
+    :derived_from: feat_req__feo__activity
     :status: valid
 
     Each activitiy is mapped to exactly one thread within the primary or one of the secondary processes.
@@ -61,7 +61,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__task_chain
+    :derived_from: feat_req__feo__task_chain
     :status: valid
 
     All activities within an application are arranged within a `Task Chain`.
@@ -81,7 +81,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__application, feat_req__feo__agent
+    :derived_from: feat_req__feo__application, feat_req__feo__agent
     :status: valid
 
     The component shall implement a scheduler (aka executor) that manages the execution of activities in correct order.
@@ -92,7 +92,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__service_activity
+    :derived_from: feat_req__feo__service_activity
     :status: valid
 
     The component shall enable the implementation and execution of Service Activities, which are a means to interact
@@ -107,7 +107,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__agent
+    :derived_from: feat_req__feo__agent
     :status: valid
 
     In order to execute activities in secondary processes, the Scheduler shall use agents running in the secondary
@@ -124,7 +124,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity_init, feat_req__feo__activitiy_step, feat_req__feo__activity_shutdown, feat_req__feo__activity
+    :derived_from: feat_req__feo__activity_init, feat_req__feo__activitiy_step, feat_req__feo__activity_shutdown, feat_req__feo__activity
     :status: valid
 
     Each activity shall be mapped to one thread. The mapping cannot be changed at runtime.
@@ -136,7 +136,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__application_lifecycle
+    :derived_from: feat_req__feo__application_lifecycle
     :status: valid
 
     The Application Lifecycle shall consists of 3 phases: Init, Run and Shutdown.
@@ -147,7 +147,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity_init
+    :derived_from: feat_req__feo__activity_init
     :status: valid
 
     Initialization of Activities shall be done during application initialization.
@@ -161,7 +161,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activitiy_step, feat_req__feo__activity_init, feat_req__feo__activity
+    :derived_from: feat_req__feo__activitiy_step, feat_req__feo__activity_init, feat_req__feo__activity
     :status: valid
 
     Each Activity shall be stepped once within each execution of the Task Chain they belong to.
@@ -174,7 +174,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity_shutdown
+    :derived_from: feat_req__feo__activity_shutdown
     :status: valid
 
     Shutdown of activities shall be done during application shutdown.
@@ -188,7 +188,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity, feat_req__feo__task_chain
+    :derived_from: feat_req__feo__activity, feat_req__feo__task_chain
     :status: valid
 
     The component shall provide a configuration mechanism that supports configuring
@@ -203,7 +203,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity
+    :derived_from: feat_req__feo__activity
     :status: valid
 
     It shall be possible to define the component configuration in a pre-defined configuration file.
@@ -214,7 +214,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__activity
+    :derived_from: feat_req__feo__activity
     :status: valid
 
     The mapping of activities to threads is done in the component configuration and cannot be changed at runtime.
@@ -225,7 +225,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__alive_supervision
+    :derived_from: feat_req__feo__alive_supervision
     :status: valid
 
     The component shall provide the functionality to enable the reporting of
@@ -238,7 +238,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__deadline_supervision
+    :derived_from: feat_req__feo__deadline_supervision
     :status: valid
 
     The component shall provide the functionality to enable the reporting of
@@ -251,7 +251,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__logical_supervision
+    :derived_from: feat_req__feo__logical_supervision
     :status: valid
 
     The component shall provide the functionality to enable the reporting of
@@ -264,7 +264,7 @@ FEO Component Requirements
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: feat_req__feo__trustable_computation
+    :derived_from: feat_req__feo__trustable_computation
     :status: valid
 
     The component shall provide mechanisms to check after the computation of
@@ -281,7 +281,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__response_term_request
+    :derived_from: feat_req__feo__response_term_request
     :status: valid
 
     If the primary process receives a termination signal, it shall call the shutdown
@@ -295,7 +295,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__secondary_conn_timeout
+    :derived_from: feat_req__feo__secondary_conn_timeout
     :status: valid
 
     If not all secondary processes connect to the primary in time, the primary shall terminate itself.
@@ -307,7 +307,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__act_startup_error
+    :derived_from: feat_req__feo__act_startup_error
     :status: valid
 
     If an error occurs during the execution of a startup function, the primary process shall abort calling
@@ -321,7 +321,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__act_alloc_error
+    :derived_from: feat_req__feo__act_alloc_error
     :status: valid
 
     During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
@@ -333,7 +333,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__act_timeout
+    :derived_from: feat_req__feo__act_timeout
     :status: valid
 
     If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
@@ -345,7 +345,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__startup_timeout
+    :derived_from: feat_req__feo__startup_timeout
     :status: valid
 
     If not all activities reach their initialized state within a certain period of time (startup timeout),
@@ -357,7 +357,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__act_stepping_error
+    :derived_from: feat_req__feo__act_stepping_error
     :status: valid
 
     If an activity fails in the step function, the primary process shall call shutdown for all activities
@@ -369,7 +369,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: feat_req__feo__act_shutdown_error
+    :derived_from: feat_req__feo__act_shutdown_error
     :status: valid
 
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities

@@ -283,9 +283,9 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__orchestration__obsv_trace_corr
+   :derived_from: feat_req__orchestration__obsv_trace_corr
    :status: valid
-   :belongs_to: comp__orchestrator
+   :satisfied_by: comp__orchestrator
 
    In case, that there is an fault in the orchestration an ERROR message shall be logged.
 
@@ -295,9 +295,9 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__orchestration__orch_single_deploy
+   :derived_from: feat_req__orchestration__orch_single_deploy
    :status: valid
-   :belongs_to: comp__orchestrator
+   :satisfied_by: comp__orchestrator
 
    The orchestrator shall provide an design interface.
 

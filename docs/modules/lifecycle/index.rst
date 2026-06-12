@@ -33,7 +33,7 @@ Lifecycle
    :security: NO
    :safety: ASIL_B
    :tags: lifecycle
-   :satisfies: feat_req__lifecycle__launch_support
+   :derived_from: feat_req__lifecycle__launch_support
    :belongs_to: comp__lifecycle_launch_manager
 
    Dummy requirement

@@ -31,7 +31,7 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     An application consists of one or more activities.
@@ -48,7 +48,7 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     Activities are mapped to threads within primary or secondary processes.
@@ -65,7 +65,7 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     All activities within an application are arranged within a `Task Chain`.
@@ -84,7 +84,7 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     * Service activities are a means to interact with the outside world, e.g. via
@@ -97,7 +97,7 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     In order to execute activities in secondary processes, the executor makes
@@ -120,7 +120,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     The Application Lifecycle consists of 3 phases: Init, Run and Shutdown.
@@ -130,7 +130,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Initialization of activities is done during application initialization.
@@ -145,7 +145,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Each activity is stepped once within each execution of the task chain they belong to.
@@ -157,7 +157,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Shutdown of activities is done during application shutdown.
@@ -174,7 +174,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     The framework shall provide the functionality to enable the reporting of
@@ -186,7 +186,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     The framework shall provide the functionality to enable the reporting of
@@ -198,7 +198,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     The framework shall provide the functionality to enable the reporting of
@@ -210,7 +210,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
     The framework shall provide mechanisms to check after the computation of
@@ -228,7 +228,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If the primary process receives a termination signal, it shall call the shutdown
@@ -242,7 +242,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If not all secondary processes connect to the primary in time, the primary shall terminate itself.
@@ -254,7 +254,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If an error occurs during the execution of a startup function, the primary process shall abort calling
@@ -268,7 +268,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
@@ -280,7 +280,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_1, stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
@@ -292,7 +292,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If not all activities reach their initialized state within a certain period of time (startup timeout),
@@ -304,7 +304,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_1, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If an activity fails in the step function, the primary process shall call shutdown for all activities
@@ -316,7 +316,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities

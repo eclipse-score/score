@@ -22,7 +22,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__dev_experience__idl_support
+   :derived_from: stkh_req__dev_experience__idl_support
    :status: valid
 
    The system shall be modeled in YAML-syntax files. This means the system should
@@ -34,7 +34,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Software Compute Unit Instances shall be considered to have failed
@@ -45,7 +45,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Software Compute Unit instances shall have onInit and onShutdown
@@ -56,7 +56,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Software Compute Units shall have a predetermined number of threads
@@ -68,7 +68,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Software Compute Units shall handle any exceptions in dependency
@@ -79,7 +79,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes
    :status: valid
 
    Software Compute Units shall return an Error with a suitable
@@ -92,7 +92,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
    Software Compute Units shall not interfere with their external
@@ -106,7 +106,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
    Software Compute Units shall signal transient errors as a failure of
@@ -119,7 +119,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
    Software Compute Units shall be considered to have failed permanently if they return a failure on onReset.

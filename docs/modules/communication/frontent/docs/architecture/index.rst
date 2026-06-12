@@ -104,8 +104,8 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__com__event_type
+   :derived_from: feat_req__com__event_type
    :status: valid
-   :belongs_to: comp__com_frontend
+   :satisfied_by: comp__com_frontend
 
    In case, that there is no related Event Type Info source provided in shared memory for a given Event enlisted in the deployment for the proxy, an ERROR message shall be logged.
