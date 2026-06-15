@@ -37,6 +37,7 @@ Task Management
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The executor shall provide a cooperative task runtime for async programming based on the definition of Rust's async model (see `Asynchronous Programming in Rust <https://rust-lang.github.io/async-book>`).
@@ -47,6 +48,7 @@ Task Management
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The executor shall provide guidelines for dividing long-running operations into smaller, cooperatively yielding segments.
@@ -57,6 +59,7 @@ Task Management
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The system shall support execution of tasks containing blocking calls on dedicated OS threads isolated from cooperative scheduling.
@@ -93,6 +96,7 @@ Thread Pool Configuration
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Executor instances shall run tasks on a statically configured thread pool with a fixed thread count.
@@ -103,6 +107,7 @@ Thread Pool Configuration
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Threads within an Executor not involved in safety-critical tasks shall share identical OS-level priority.
@@ -113,6 +118,7 @@ Thread Pool Configuration
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Thread affinity to CPU cores shall be configurable per Executor instance.
@@ -123,6 +129,7 @@ Thread Pool Configuration
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Executor instances shall isolate their thread pools from each other.
@@ -136,6 +143,7 @@ Task Scheduling
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Cooperative tasks within an Executor shall execute without internal priority distinctions.
@@ -146,6 +154,7 @@ Task Scheduling
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The Executor shall support FIFO or fairness-based scheduling among cooperative tasks.
@@ -156,6 +165,7 @@ Task Scheduling
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Scaling of Executor resources shall be achieved through additional Executor instances rather than dynamic thread scaling.
@@ -172,6 +182,7 @@ Program Definition
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The Orchestrator shall provide a runtime-static Program abstraction representing computation logic as execution graphs.
@@ -182,6 +193,7 @@ Program Definition
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Programs shall explicitly define sequential, parallel, conditional execution flows, loops, and timing contracts.
@@ -192,6 +204,7 @@ Program Definition
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Programs shall support explicit event-based synchronization and trigger conditions.
@@ -202,6 +215,7 @@ Program Definition
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Programs shall contain integrated fault-handling logic and execution monitors to enforce timing constraints.
@@ -215,6 +229,7 @@ API Design
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The Orchestrator shall offer a code-first API to integrate directly with application logic without external DSL/IDL.
@@ -228,6 +243,7 @@ Execution Model
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Each Program shall be deployed exclusively on a single Executor instance.
@@ -238,6 +254,7 @@ Execution Model
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Executors may host multiple Programs to support resource sharing.
@@ -248,6 +265,7 @@ Execution Model
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Programs shall communicate exclusively through explicitly defined events.
@@ -274,6 +292,7 @@ Observability Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes, stkh_req__dev_experience__tracing_of_exec
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The Executor and Orchestrator shall expose structured tracing points correlating user-space task scheduling with OS-level scheduling.
@@ -284,6 +303,7 @@ Observability Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes, stkh_req__dev_experience__tracing_of_exec
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Observability shall capture task lifecycle events, Executor queue metrics, and mapping of user-space tasks to OS threads.
@@ -294,6 +314,7 @@ Observability Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes, stkh_req__dev_experience__tracing_of_exec
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Observability shall provide visibility into Program execution flow, event synchronization points, and timing violations.
@@ -304,6 +325,7 @@ Observability Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes, stkh_req__dev_experience__tracing_of_exec
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Tracing points shall integrate seamlessly with established tracing frameworks like Perfetto and LTTng.
@@ -317,6 +339,7 @@ External Supervision Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Executor and Orchestrator frameworks shall expose health indicators for integration with external supervisory systems.
@@ -327,6 +350,7 @@ External Supervision Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    Frameworks shall internally verify task-level health status based on timing constraints and fault-handling execution.
@@ -340,6 +364,7 @@ General Constraints
    :security: NO
    :safety: QM
    :satisfies: stkh_req__execution_model__processes
+   :satisfied_by: feat__orchestration
    :status: valid
 
    The Executor and Orchestrator shall maintain determinism and scalability suitable for mixed-criticality environments.

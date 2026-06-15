@@ -28,6 +28,7 @@ Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -39,6 +40,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -50,6 +52,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__dependability__automotive_safety
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -61,6 +64,7 @@ Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__overall_goals__reuse_of_app_soft
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -72,6 +76,7 @@ Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__overall_goals__reuse_of_app_soft
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -83,6 +88,7 @@ Requirements
    :security: YES
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -94,6 +100,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -105,6 +112,7 @@ Requirements
    :security: NO
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :valid_from: v1.0.0
    :tags: inspected
@@ -121,6 +129,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -132,6 +141,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -143,6 +153,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -154,6 +165,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -165,6 +177,7 @@ Requirements
    :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
@@ -176,10 +189,11 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
+   :satisfied_by: feat__baselibs
    :status: valid
    :tags: inspected
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 
-.. needextend:: is_external == False and "__baselibs" in id 
+.. needextend:: is_external == False and "__baselibs" in id
    :+tags: baselibs
