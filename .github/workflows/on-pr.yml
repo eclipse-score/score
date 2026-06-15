@@ -54,3 +54,21 @@ jobs:
 
   bazel-lock:
     uses: eclipse-score/cicd-workflows/.github/workflows/bzlmod-lock-check.yml@93aac16ada7d247bbb6ae926509ddea74cf5213a # main in 2026-06-11
+
+  docs-build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v6
+
+      - name: Build documentation
+        run: bazel run //:docs
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: github-pages
+          path: _build
+          retention-days: 1
+          if-no-files-found: error
