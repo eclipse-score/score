@@ -1,0 +1,2428 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Writing Rust Code incl. Coding Guidelines &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/development/rust/coding_guidelines';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Rust API design guidelines" href="rust_api_design.html" />
+    <link rel="prev" title="Static Analysis" href="certification/tools/static_analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../contribution_request/index.html">How to Contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation/index.html">Documentation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Development</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../development_environment.html">Setting Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../traceability_tooling.html">Traceability Tooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_guideline.html">Designing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/index.html">C++</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Rust</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="certification/index.html">Certification</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Writing Rust Code incl. Coding Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rust_api_design.html">Rust API design guidelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ci/index.html">CI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fork/index.html">Enterprise Forking Guide for S-CORE Repositories</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Contribute</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Development</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Rust</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Writing Rust Code incl. Coding Guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="writing-rust-code-incl-coding-guidelines">
+<h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-624c7261">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Coding Guidelines Rust</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_development_plan">wp__sw_development_plan</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines">doc__rust_coding_guidelines</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="safety-rust">
+<h2>Safety Rust<a class="headerlink" href="#safety-rust" title="Link to this heading">#</a></h2>
+<p>For writing Rust code in SCORE, especially for safety- and
+security-relevant software, the following guidance and tooling references
+apply.</p>
+<section id="coding-guidelines">
+<h3>Coding Guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h3>
+<p>The following coding guidelines and reference documents are relevant for
+Rust development in SCORE:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference external" href="https://saemobilus.sae.org/standards/ja1020_202603-safety-cybersecurity-recommendations-use-rust-language-critical-systems#view">JA1020_202603: Safety and Cybersecurity Recommendations for the Use of the Rust Language in Critical Systems</a></dt><dd><p>is the primary baseline for safety- and security-related Rust development and in arguing safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332. The current version of JA1020 is from March 2026 and is expected to be updated in the future, with the next version planned for late 2026. It provides a comprehensive set of recommendations for using Rust in safety-critical systems, covering topics such as language features, coding practices, and tool usage.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://coding-guidelines.arewesafetycriticalyet.org/">Safety-Critical Rust Coding Guidelines</a></dt><dd><p>are still under development and currently only define a subset of the
+desired rules.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://anssi-fr.github.io/rust-guide/">Secure Rust Guidelines (unstable)</a></dt><dd><p>complement JA1020. ANSSI focuses more on process and architecture
+guidance, while JA1020 is more concrete regarding tool usage and
+enforceable checks.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://www.kernel.org/doc/Documentation/rust/coding-guidelines.rst">Linux Kernel Rules</a></dt><dd><p>mainly define formatting and documentation requirements for Rust in the
+Linux kernel and do not provide broader static code analysis rules.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language</a></dt><dd><p>overlaps strongly with JA1020 and is therefore primarily relevant as an
+additional cross-reference.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="state-of-rust-safety-critical-tooling">
+<h3>State of Rust Safety-Critical Tooling<a class="headerlink" href="#state-of-rust-safety-critical-tooling" title="Link to this heading">#</a></h3>
+<p>The Safety-Critical Rust Consortium aims to make Rust suitable for use in
+automotive and other safety-critical environments by building and maintaining a
+set of essential tools that are vetted by the community for certification
+purposes. They track the development status of these tools and document their
+progress. The consortium is considering whether to develop specialized training
+materials for safety-critical Rust, though this may require a separate group.
+Their current activities include supporting a qualified compiler (with
+Ferrocene available for some targets), developing a certified core library,
+working on tools for coding style verification, and assessing the need for
+static analysis and code metrics tools. Some tools, such as MC/DC coverage
+reporting and code metrics generators, are still unavailable, and the
+consortium is evaluating what further tooling and support are necessary to
+enable certification and safe use of Rust in automotive applications.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-coding-guidelines">Safety-Critical Coding Guidelines</a></p>
+<p><a class="reference external" href="https://coding-guidelines.arewesafetycriticalyet.org/">Deployed version of Safety-Critical Coding Guidelines</a></p>
+<p><a class="reference external" href="https://rustfoundation.org/safety-critical-rust-consortium">Safety-Critical Rust Consortium</a></p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/tree/main/subcommittee/coding-guidelines/">Safety-Critical Rust Consortium Guidelines</a></p>
+<p><a class="reference external" href="https://google.github.io/learn_unsafe_rust/">Learn unsafe Rust</a></p>
+<p><a class="reference external" href="https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html">Rust language</a></p>
+<p>The linked document provides a current overview of the tooling landscape for
+certifying Rust in safety-critical applications, presenting a
+community-approved list of essential tools and tracking their development
+status. It also explores whether developing specialized training curricula for
+safety-critical Rust is necessary, potentially requiring a separate
+subcommittee. The document details the state of specific tools, such as
+compilers and analysis utilities, by outlining their intended purposes,
+certification requirements, and their availability or progress. While some
+tools, such as the Ferrocene compiler, are already available or being actively
+developed, others remain under evaluation or are not yet accessible.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/blob/main/subcommittee/tooling/mission-statement.md">Mission Statement - Tooling Subcommittee</a></p>
+</section>
+<section id="misra-vs-cert">
+<h3>MISRA vs CERT<a class="headerlink" href="#misra-vs-cert" title="Link to this heading">#</a></h3>
+<p>This issue contrasts the MISRA and CERT coding standards, highlighting their
+different approaches to software safety and security. MISRA is noted for its
+restrictive language subsetting and complex compliance process, often imposing
+outdated or ineffective rules that do not guarantee improved safety or
+security. This can create unnecessary work for developers without clear
+benefits and is sometimes inconsistent across languages. CERT, on the other
+hand, is praised for its focus on practical, consensus-based rules that target
+real security vulnerabilities in existing code, avoiding excessive constraints.
+The overall recommendation is to favor guidelines like CERT’s: practical,
+evidence-based, and focused on real-world issues, over rigid, untested
+standards that hinder adoption and developer productivity.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/75/">MISRA vs Cert</a></p>
+<p>In 2026 the Coding Guidelines Subcommittee of the SCRC are aiming to have
+MISRA C and CERT C mapped to Rust, with</p>
+<ul class="simple">
+<li><p>a bulk of the coding guidelines written</p></li>
+<li><p>a bulk of the Clippy lints necessary written to check the guidelines</p></li>
+</ul>
+</section>
+<section id="rust-tooling-clippy">
+<h3>Rust Tooling: Clippy<a class="headerlink" href="#rust-tooling-clippy" title="Link to this heading">#</a></h3>
+<p>Rust Clippy is a collection of lints (code style and correctness checks) for
+the Rust programming language. It helps developers identify common mistakes,
+improve code quality, and follow best practices by providing warnings and
+suggestions as part of the Rust toolchain. Clippy can be run on Rust projects
+to catch issues that the standard compiler might miss, making it an essential
+tool for writing clean, idiomatic, and efficient Rust code.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/78/">Link to Clippy</a></p>
+</section>
+<section id="rust-tooling-codeql">
+<h3>Rust Tooling: CodeQL<a class="headerlink" href="#rust-tooling-codeql" title="Link to this heading">#</a></h3>
+<p>CodeQL is a code analysis platform based on the QL query language and
+associated tooling. It supports Rust (see
+<a class="reference external" href="https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/">https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/</a>
+and <a class="reference external" href="https://codeql.github.com/codeql-query-help/rust-cwe/">https://codeql.github.com/codeql-query-help/rust-cwe/</a>).</p>
+<p>Typical problem classes detected by CodeQL for Rust include:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>injection vulnerabilities (e.g., SQL injection, path traversal,</dt><dd><p>regex injection, log injection, XSS)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>insecure communication and transport usage (e.g., non-HTTPS URLs,</dt><dd><p>disabled TLS certificate checks)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cryptographic weaknesses (e.g., hard-coded cryptographic values,</dt><dd><p>weak algorithms or weak hashing)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>sensitive data exposure (e.g., cleartext logging, cleartext</dt><dd><p>transmission or storage)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>request and input abuse patterns (e.g., SSRF, uncontrolled allocation</dt><dd><p>size from untrusted input)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>unsafe memory-related patterns relevant at Rust unsafe boundaries</dt><dd><p>(e.g., access-after-lifetime-ended, invalid pointer access,
+constructor initialization issues)</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>CodeQL’s key strength is inter-procedural data-flow/taint tracking,
+which complements compiler and lint checks.</p>
+</section>
+<section id="rust-tooling-miri">
+<h3>Rust Tooling: Miri<a class="headerlink" href="#rust-tooling-miri" title="Link to this heading">#</a></h3>
+<p>Miri is an Undefined Behavior detection tool for Rust. It can run binaries
+and test suites of cargo projects and detect unsafe code that fails to
+uphold its safety requirements.</p>
+<p><a class="reference external" href="https://github.com/rust-lang/miri">Link to Miri</a></p>
+</section>
+<section id="conclusions-for-s-core">
+<h3>Conclusions for S-CORE<a class="headerlink" href="#conclusions-for-s-core" title="Link to this heading">#</a></h3>
+<p>The SAE JA1020 Appendix A.2 contains some rules and recommendations related to the automated tools that support its enforcement. The following table summarizes the coverage of these tools. Where no automated tool exists, the coverage column reflects the need for manual review, process controls, or architecture decisions.</p>
+<p>The classification follows the MISRA convention used by SAE JA1020:</p>
+<blockquote>
+<div><p>Required — Mandatory. Deviations need documented reasoning.
+Advisory — Recommended. Deviations should be documented when practical.
+Document — The decision and its reasoning must be documented regardless of outcome.</p>
+</div></blockquote>
+<p>The matrix below summarizes overall coverage per topic. The <cite>Cargo.toml</cite>
+profiles further below are practical baseline and intentionally
+contains the by JA1020 recommended subset of checks.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 50 </span><span class="caption-text">Overlap Summary Matrix (JA1020_202603 Measures)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 17.6%" />
+<col style="width: 10.3%" />
+<col style="width: 8.8%" />
+<col style="width: 7.4%" />
+<col style="width: 7.4%" />
+<col style="width: 13.2%" />
+<col style="width: 13.2%" />
+<col style="width: 16.2%" />
+<col style="width: 5.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Automated (JA1020)</p></th>
+<th class="head"><p>Section</p></th>
+<th class="head"><p>CodeQL</p></th>
+<th class="head"><p>Clippy</p></th>
+<th class="head"><p>Rustc</p></th>
+<th class="head"><p>Other Tooling / Process</p></th>
+<th class="head"><p>Combined</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Compiler qualification</p></td>
+<td><p>Document, Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.1, 13.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Process/evidence</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dependency management</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.1.1, 6.2.8, 6.4.18, 13.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cargo-audit, cargo-deny, cargo-vet, SBOM</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>async/await decision</p></td>
+<td><p>Document, Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Architecture decision record</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Extension trait guidelines</p></td>
+<td><p>Document, Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review guideline</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimum Supported Rust Version</p></td>
+<td><p>Document, Advisory</p></td>
+<td><p>cargo plugin</p></td>
+<td><p>6.2.3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (stable toolchain pinning, rust-version policy)</p></td>
+<td><p>Toolchain pinning in CI</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shadowing style</p></td>
+<td><p>Document, Advisory</p></td>
+<td><p>Partially, clippy</p></td>
+<td><p>6.2.4, 6.3.4</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (shadow_reuse/shadow_unrelated as warn, shadow_same as allow)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review style guide</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Code review environment</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.5</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Process/tooling setup</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Macro review and testing strategy</p></td>
+<td><p>Document, Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.6</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Tests, trybuild, review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Module file naming</p></td>
+<td><p>Document, Advisory</p></td>
+<td><p>Partially</p></td>
+<td><p>6.2.7</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (no strong built-in lint)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Custom checks</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Default trait implementations</p></td>
+<td><p>Document, Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.9</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Design guideline</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Usage of unwrap in mutex lock</p></td>
+<td><p>Document, Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.10.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (unwrap_used with documented exception policy)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review policy</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Document undesirable but not unsafe hardware effects</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.2.10.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Safety documentation</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>FFI: Check values at boundary</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1, 6.3.1.3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>FFI tests, fuzzing, review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Safe wrapper for unsafe interfaces</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Design/review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Document unsafe assumptions in Safety: clause</p></td>
+<td><p>Required</p></td>
+<td><p>clippy</p></td>
+<td><p>6.3.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (undocumented_unsafe_blocks)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimal scope for unsafe</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (policy/review support, no single strong lint)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cargo-geiger, review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Unsafe block in unsafe function</p></td>
+<td><p>Required</p></td>
+<td><p>clippy</p></td>
+<td><p>6.3.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (supporting only, project-dependent)</p></td>
+<td><p>H (unsafe_op_in_unsafe_fn)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Safety documentation for unsafe functions</p></td>
+<td><p>Required</p></td>
+<td><p>clippy</p></td>
+<td><p>6.3.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (manual documentation/review in profile baseline)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Rustdoc + review process</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Panic documentation on functions</p></td>
+<td><p>Required</p></td>
+<td><p>clippy</p></td>
+<td><p>6.3.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (missing_panics_doc)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Global mutable state with sound wrapper</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review/design</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>FFI rules from ANSII</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>FFI conformance process</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inline assembly rules from reference</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1.4</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Manual asm review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Automated contract versioning</p></td>
+<td><p>Advisory</p></td>
+<td><p>symbols</p></td>
+<td><p>6.3.1.5</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Symbol/ABI diff tooling</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pointer to reference conversion</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.1.6</p></td>
+<td><p>M</p></td>
+<td><p>M (cast_ptr_alignment, ptr_cast_constness, ref_as_ptr, transmute_ptr_to_ptr)</p></td>
+<td><p>M (invalid_reference_casting plus diagnostics)</p></td>
+<td><p>Review/tests</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Define proper panic handling</p></td>
+<td><p>Document, Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.2, 6.4.12</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (panic_in_result_fn as warn; unwrap_used and panicking_overflow_checks evaluated for usefulness)</p></td>
+<td><p>M (panic strategy/profile settings)</p></td>
+<td><p>Panic strategy in CI/profile</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>catch_unwind only for controlled shutdown</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (no direct strong lint)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review policy</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Deref misuse for inheritance</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (no direct strong lint)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review/style</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transitive interior mutability documentation</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.5</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Documentation process</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>No internal mutability in constants</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.5</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (declare_interior_mutable_const)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Prefer cfg!() over #[cfg()]</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.6</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review/custom linting</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Features are additive, not exclusive</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.6</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Cargo feature CI checks</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>No deprecated interfaces from core/std</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.3.7</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (deprecated in lint profile)</p></td>
+<td><p>H (deprecated)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>No nightly features</p></td>
+<td><p>Required</p></td>
+<td><p>rustc</p></td>
+<td><p>6.3.8</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (stable compiler policy; unstable_features on nightly)</p></td>
+<td><p>Stable toolchain enforcement</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>No wildcard in imports</p></td>
+<td><p>Required</p></td>
+<td><p>clippy</p></td>
+<td><p>6.3.9</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (wildcard_imports)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Ensure formatting and lints (e.g., in CI)</p></td>
+<td><p>Advisory</p></td>
+<td><p>rustfmt + clippy</p></td>
+<td><p>6.4.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (CI clippy gate)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>rustfmt in CI</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>No raw identifiers</p></td>
+<td><p>Required</p></td>
+<td><p>grep</p></td>
+<td><p>6.4.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>grep/custom check</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Rustc linter</p></td>
+<td><p>Advisory</p></td>
+<td><p>rustc</p></td>
+<td><p>6.4.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (JA1020-curated rustc baseline profile; extended edition/future lints enabled per toolchain support)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clippy linter</p></td>
+<td><p>Advisory</p></td>
+<td><p>clippy</p></td>
+<td><p>6.4.3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (JA1020 curated warn/deny/allow clippy profile)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Strong typing for error detection at compile time</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.5</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (type system, borrow checker, trait bounds)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Structures replace many arguments</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.5.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (style/review guidance)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review/style</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Testing trait requirements on trait implementations</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.6</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Tests/property tests</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Test coverage on generics</p></td>
+<td><p>Advisory</p></td>
+<td><p>coverage</p></td>
+<td><p>6.4.7, 10.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Coverage tooling</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Avoid as for conversions</p></td>
+<td><p>Required</p></td>
+<td><p>clippy</p></td>
+<td><p>6.4.9</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (as_underscore, cast_lossless, cast_possible_truncation, cast_possible_wrap, cast_ptr_alignment, cast_sign_loss)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Error/Option instead of magic values</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.10</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (partial style support)</p></td>
+<td><p>M (type checks support pattern, no direct rule)</p></td>
+<td><p>Review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Resource Acquisition Is Initialization</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.11</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (ownership and Drop semantics, no direct lint)</p></td>
+<td><p>Review/tests</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Overflow checking</p></td>
+<td><p>Required</p></td>
+<td><p>rustc</p></td>
+<td><p>6.4.12</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (release overflow-checks enabled)</p></td>
+<td><p>Release profile setting</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic memory design</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.13</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Allocator/system design checks</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stack checking</p></td>
+<td><p>Required</p></td>
+<td><p>rustc</p></td>
+<td><p>6.4.13</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (limited compiler support)</p></td>
+<td><p>cargo-call-stack, external analysis</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Concurrency system design (timing constraints)</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.14, 6.4.15.4</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>loom, WCET, system analysis</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Document cancellation safety of async functions</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.15.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Documentation/review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Explicit task dropping intention</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.15.3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (let_underscore_future as supporting signal)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Runtime policy/review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Planning ahead for Pin/Send</p></td>
+<td><p>Document, Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.15.5</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (Send and lifetime trait-bound checks)</p></td>
+<td><p>Design constraints review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimize duplicated dependencies because of versioning</p></td>
+<td><p>Required</p></td>
+<td><p>cargo</p></td>
+<td><p>6.4.16</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cargo tree, cargo-deny</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimal scope for symbols</p></td>
+<td><p>Advisory</p></td>
+<td><p>(clippy)</p></td>
+<td><p>6.4.16</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (redundant_pub_crate as supporting signal)</p></td>
+<td><p>M (unreachable_pub, visibility diagnostics)</p></td>
+<td><p>Visibility checks/review</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Multi-crate design to minimize cyclic dependencies</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.16</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cargo graph, dependency analysis</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Usize should only measure memory, not environment quantities</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.17</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (no direct strong lint)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review/style</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Separation of download and build steps</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.18</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>CI sandboxing/pipeline controls</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p>Special protection of sensitive data</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.19</p></td>
+<td><p>H</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Secret handling process</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Marker traits for formal documentation</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.21</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (trait-bound enforcement mechanism)</p></td>
+<td><p>Review/formal method support</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lifetime and pointers</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.23.1</p></td>
+<td><p>M</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H (borrow checker, lifetime analysis)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-even"><td><p>Atomic access modes</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.23.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (no explicit lint in current JA1020 profile block)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review for ordering rationale</p></td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unintended matches</p></td>
+<td><p>Advisory</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>6.4.23.3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (wildcard_enum_match_arm)</p></td>
+<td><p>M (non_exhaustive_omitted_patterns)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-even"><td><p>Logically significant return values should be #[must_use]</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>9.1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M (let_underscore_must_use)</p></td>
+<td><p>M (unused_results in profile; must_use semantics by language)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Complex drop logic should be called explicitly</p></td>
+<td><p>Required</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>9.2</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>L (no direct strong lint)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Review/tests</p></td>
+<td><p>M</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>During the S-CORE project formatting and clippy checks are enforced. Miri can
+be used to detect undefined behaviors. Also the code should compile with zero
+warnings. Additional guidelines by the Rust Community, the Rust Foundation and
+the Safety-Critical Rust Consortium are applied where applicable but not
+enforced. If possible the usage of <cite>unsafe</cite> is avoided. To keep the code
+<cite>panic</cite>-free only APIs with a proper return value should be used. The goal is
+to have coding guidelines for Rust suitable for safety-critial systems by the
+Safety-Critical Rust Consortium by the end of 2026. Until that, please also
+use Slack score-rust-community channel for discussions and participation in the
+SCRC.</p>
+<p>The adaption of these guidelines will be documented in the S-CORE project
+documentation.</p>
+<div class="admonition-cargo-toml-lint-profile-ja1020-oriented-practical-baseline admonition">
+<p class="admonition-title">Cargo.toml lint profile (JA1020-oriented, practical baseline)</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo.toml</span>
+
+<span class="c1"># Rust compiler lints (rustc)</span>
+<span class="k">[lints.rust]</span>
+<span class="n">unsafe_op_in_unsafe_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">missing_abi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unreachable_pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">missing_docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unused_results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">let_underscore_drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">non_exhaustive_omitted_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Rustc lints recommended to evaluate as warn (JA1020)</span>
+<span class="n">elided_lifetimes_in_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">explicit_outlives_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">macro_use_extern_crate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">meta_variable_misuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">non_local_definitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">redundant_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">single_use_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">trivial_numeric_casts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unit_bindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unnameable_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">variant_size_differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Edition and compatibility lint groups (JA1020 intent)</span>
+<span class="c1"># Enable rust-&lt;YEAR&gt;-* and keyword-idents-&lt;YEAR&gt; lints supported by the</span>
+<span class="c1"># pinned compiler version.</span>
+<span class="n">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1"># Future/availability-dependent rustc lints (enable when available in</span>
+<span class="c1"># the selected toolchain)</span>
+<span class="c1"># must_not_suspend = &quot;warn&quot;</span>
+<span class="c1"># fuzzy_provenance_casts = &quot;warn&quot;</span>
+<span class="c1"># lossy_provenance_casts = &quot;warn&quot;</span>
+
+<span class="c1"># Clippy lints</span>
+<span class="k">[lints.clippy]</span>
+<span class="c1"># Warn</span>
+<span class="n">as_underscore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_lossless</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_possible_truncation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_possible_wrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_sign_loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_ptr_alignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">exit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">format_push_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">infinite_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">iter_over_hash_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">invalid_upcast_comparisons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">lossy_float_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">missing_errors_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">missing_docs_in_private_items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">panic_in_result_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">ptr_cast_constness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">ref_as_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">transmute_ptr_to_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">redundant_type_annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">shadow_reuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">shadow_unrelated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">try_err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">wildcard_enum_match_arm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Deny</span>
+<span class="n">as_ptr_cast_mut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">let_underscore_must_use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">missing_panics_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">undocumented_unsafe_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">wildcard_imports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">declare_interior_mutable_const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+
+<span class="c1"># Allow</span>
+<span class="n">shadow_same</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+<span class="n">implicit_return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+<span class="n">allow_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+
+<span class="c1"># Evaluate for helpfulness (JA1020)</span>
+<span class="n">panicking_overflow_checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unwrap_used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Recommended against because too coarse (JA1020)</span>
+<span class="n">as_conversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+
+<span class="c1"># Release profile requirement</span>
+<span class="k">[profile.release]</span>
+<span class="n">overflow-checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c1"># Required for safety-oriented integer checks</span>
+
+<span class="c1"># Checking of documentation on private items (in clippy.toml)</span>
+<span class="c1"># check-private-items = true</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-cargo-toml-lint-profile-ja1020-oriented-strict-asil-variant admonition">
+<p class="admonition-title">Cargo.toml lint profile (JA1020-oriented, strict/ASIL variant)</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo.toml</span>
+
+<span class="c1"># Rust compiler lints (strict)</span>
+<span class="k">[lints.rust]</span>
+<span class="n">unsafe_op_in_unsafe_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">missing_abi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unreachable_pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">missing_docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unused_results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">let_underscore_drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">non_exhaustive_omitted_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Rustc lints recommended to evaluate as warn (JA1020)</span>
+<span class="n">elided_lifetimes_in_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">explicit_outlives_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">macro_use_extern_crate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">meta_variable_misuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">non_local_definitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">redundant_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">single_use_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">trivial_numeric_casts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unit_bindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unnameable_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">variant_size_differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Edition and compatibility lint groups (JA1020 intent)</span>
+<span class="n">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1"># Clippy lints (strict)</span>
+<span class="k">[lints.clippy]</span>
+<span class="c1"># Warn</span>
+<span class="n">as_underscore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_lossless</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_possible_truncation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_possible_wrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_sign_loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">cast_ptr_alignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">exit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">format_push_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">infinite_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">iter_over_hash_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">invalid_upcast_comparisons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">lossy_float_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">missing_errors_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">missing_docs_in_private_items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">panic_in_result_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">ptr_cast_constness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">ref_as_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">transmute_ptr_to_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">redundant_type_annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">shadow_reuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">shadow_unrelated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">try_err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">wildcard_enum_match_arm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Deny</span>
+<span class="n">as_ptr_cast_mut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">let_underscore_must_use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">missing_panics_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">undocumented_unsafe_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">wildcard_imports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+<span class="n">declare_interior_mutable_const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
+
+<span class="c1"># Allow</span>
+<span class="n">shadow_same</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+<span class="n">implicit_return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+<span class="n">allow_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+
+<span class="c1"># Evaluate for helpfulness (JA1020)</span>
+<span class="n">panicking_overflow_checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+<span class="n">unwrap_used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
+
+<span class="c1"># Recommended against because too coarse (JA1020)</span>
+<span class="n">as_conversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+
+<span class="c1"># Release profile requirement</span>
+<span class="k">[profile.release]</span>
+<span class="n">overflow-checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="c1"># clippy.toml</span>
+<span class="c1"># check-private-items = true</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="explanation-of-ara-applications-in-rust">
+<h2>Explanation of ARA Applications in Rust<a class="headerlink" href="#explanation-of-ara-applications-in-rust" title="Link to this heading">#</a></h2>
+<p>AUTOSAR also shares a public available document that explains how to use Rust in
+ARA applications as Rust is offering safety and performance advantages. While
+ecosystem support is still maturing, Rust-based ARA applications can lead to
+safer, more reliable automotive software, especially in safety-critical and
+high-performance domains.</p>
+<p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/AP/AUTOSAR_AP_EXP_ARARustApplications.pdf">AUTOSAR ARA Applications in Rust</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="certification/tools/static_analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Static Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rust_api_design.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Rust API design guidelines</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-rust">Safety Rust</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guidelines">Coding Guidelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-of-rust-safety-critical-tooling">State of Rust Safety-Critical Tooling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misra-vs-cert">MISRA vs CERT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-clippy">Rust Tooling: Clippy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-codeql">Rust Tooling: CodeQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-miri">Rust Tooling: Miri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-for-s-core">Conclusions for S-CORE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-ara-applications-in-rust">Explanation of ARA Applications in Rust</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/contribute/development/rust/coding_guidelines.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
