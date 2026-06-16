@@ -57,18 +57,4 @@ jobs:
 
   docs-build:
     name: Build documentation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out
-        uses: actions/checkout@v6
-
-      - name: Build documentation
-        run: bazel run //:docs
-
-      - name: Upload documentation artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: github-pages
-          path: _build
-          retention-days: 1
-          if-no-files-found: error
+    uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@dev
