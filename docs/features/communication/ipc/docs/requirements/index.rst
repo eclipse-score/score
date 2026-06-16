@@ -30,6 +30,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data
+   :satisfied_by: feat__com_communication
    :status: valid
 
    IPC communication shall be possible without copying to-be-transferred data.
@@ -40,6 +41,7 @@ Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The IPC binding shall ensure confidentiality of its communication.
@@ -50,6 +52,7 @@ Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The IPC binding shall ensure integrity of its communication.
@@ -60,6 +63,7 @@ Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per

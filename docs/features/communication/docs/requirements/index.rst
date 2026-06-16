@@ -30,6 +30,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide API to support a time-based architecture.
@@ -40,6 +41,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_data
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide API to support a data-driven architecture.
@@ -50,6 +52,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_request
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide API to support a request-driven architecture.
@@ -60,6 +63,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_data,stkh_req__app_architectures__support_time, stkh_req__communication__safe, stkh_req__app_architectures__support_request
+   :satisfied_by: feat__com_communication
    :status: valid
 
    A communication interface consists of a combination of any number of the following elements:
@@ -74,6 +78,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time
+   :satisfied_by: feat__com_communication
    :status: valid
 
    An event-type is part of a communication interface and has:
@@ -90,6 +95,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_request, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    A method is part of a communication interface and has:
@@ -110,6 +116,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_request
+   :satisfied_by: feat__com_communication
    :status: valid
 
    A signal is part of a communication interface and has:
@@ -132,6 +139,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Communication shall be cached based on the producer-consumer pattern.
@@ -142,6 +150,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Multiple service instances shall be able to offer the same interface.
@@ -155,6 +164,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    A service instance is offered under one or more unique names by which it can be discovered.
@@ -170,6 +180,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support versioning of service instances:
@@ -186,6 +197,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The interface to access service instances is agnostic to the binding used to communicate with the service.
@@ -199,6 +211,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support stateless communication.
@@ -213,6 +226,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support multiple service instances per software architecture element.
@@ -226,6 +240,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide service discovery to find available services during runtime. Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).
@@ -243,6 +258,7 @@ Mixed-Criticality safety systems
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support safe communication involving communication partners on the same or multiple
@@ -254,6 +270,7 @@ Mixed-Criticality safety systems
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Consumers with lower criticality shall not be able to corrupt data consumed by partners with higher criticality.
@@ -264,6 +281,7 @@ Mixed-Criticality safety systems
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Consumers with lower criticality shall not be able to modify the order of data consumed by partners with higher
@@ -275,6 +293,7 @@ Mixed-Criticality safety systems
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Consumers with lower criticality shall not be able to duplicate data consumed by other communication partners with
@@ -286,6 +305,7 @@ Mixed-Criticality safety systems
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Consumers with lower criticality shall not be able to drop data before it is consumed by partners with higher
@@ -301,6 +321,7 @@ Performance
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data, stkh_req__app_architectures__support_request
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall enable Zero-Copy communication without copying to-be-transferred data.
@@ -317,6 +338,7 @@ User friendly API for information exchange
    :security: NO
    :safety: QM
    :derived_from: stkh_req__dev_experience__prog_languages
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide a public API for each supported programming language of S-CORE.
@@ -327,6 +349,7 @@ User friendly API for information exchange
    :security: NO
    :safety: QM
    :derived_from: stkh_req__dev_experience__prog_languages
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Each public API shall support the idioms of the programming language it is written in.
@@ -337,6 +360,7 @@ User friendly API for information exchange
    :security: NO
    :safety: QM
    :derived_from: stkh_req__dev_experience__prog_languages
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Each public API shall use core infrastructure of its programming language and accompanying standard libraries,
@@ -354,6 +378,7 @@ Full testability for the user facing API
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The public API shall be fully mockable.
@@ -364,6 +389,7 @@ Full testability for the user facing API
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide a fake binding.
@@ -378,6 +404,7 @@ Multi-binding support
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support multiple bindings.
@@ -391,6 +418,7 @@ Multi-binding support
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The public API of the communication framework shall be binding-agnostic.
@@ -404,6 +432,7 @@ Multi-binding support
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The association of a service instance and the appropriate binding shall be specified in the deployment configuration.
@@ -416,6 +445,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -427,6 +457,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -440,6 +471,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -451,6 +483,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -462,6 +495,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -473,6 +507,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -484,6 +519,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -495,6 +531,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -506,6 +543,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -517,6 +555,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -528,6 +567,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -539,6 +579,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -550,6 +591,7 @@ Cross-VM Extensions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__communication__inter_process
+   :satisfied_by: feat__com_communication
    :status: valid
    :valid_from: v1.0.0
 
@@ -565,6 +607,7 @@ Dynamic deployment at runtime
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    Deployment configuration shall be read from an integrity-checked configuration file at runtime.
@@ -578,6 +621,7 @@ Tracing
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__dev_experience__tracing_of_comm, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall provide infrastructure to enable binding-agnostic, zero-copy, read-only tracing of
@@ -592,6 +636,7 @@ Security Impact
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__dependability__security_features
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support an Access Control Lists in the deployment configuration.
@@ -602,6 +647,7 @@ Security Impact
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__dependability__security_features
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support an Access Control List per service instance.
@@ -612,6 +658,7 @@ Security Impact
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__dependability__security_features
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support an Access Control List for the communication partner offering a service
@@ -624,6 +671,7 @@ Security Impact
    :security: YES
    :safety: QM
    :derived_from: stkh_req__communication__inter_process, stkh_req__dependability__security_features
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support an Access Control List for the communication partner consuming a service
@@ -639,6 +687,7 @@ Safety Impact
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process, stkh_req__communication__safe
+   :satisfied_by: feat__com_communication
    :status: valid
 
    The communication framework shall support safe communication up to ASIL-B.
