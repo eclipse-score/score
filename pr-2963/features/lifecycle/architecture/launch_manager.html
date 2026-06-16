@@ -650,7 +650,7 @@ determining which components need to be started or stopped based on their depend
 <p>This interface provides control functionality for activating and managing run targets.It allows users to trigger execution of configured <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run targets</span></a> through a standardized activation mechanism.</p>
 <section id="static-architecture">
 <h3>Static architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-97238cac">
+<div class="need_container docutils container" id="SNCB-832055ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -696,7 +696,7 @@ determining which components need to be started or stopped based on their depend
 </div>
 </div>
 <p><strong>Operations</strong></p>
-<div class="need_container docutils container" id="SNCB-08f09a3e">
+<div class="need_container docutils container" id="SNCB-7455d814">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__activate_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -763,7 +763,7 @@ which allows the implementation of a state management applications to support dy
 - Failure with detailed error information if any component failed to transition</p></li>
 </ol>
 <p>This unified approach allows external state managers to request any run target activation without needing to know the current system state, as the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> handles the transition logic internally.</p>
-<div class="need_container docutils container" id="SNCB-fce4db07">
+<div class="need_container docutils container" id="SNCB-0b82a77a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_activate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +838,7 @@ which allows the implementation of a state management applications to support dy
 - Exit code evaluation for failure detection</p>
 <section id="id1">
 <h3>Static architecture<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-08f9c042">
+<div class="need_container docutils container" id="SNCB-daff7011">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__lifecycle_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -886,7 +886,7 @@ which allows the implementation of a state management applications to support dy
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7463b932">
+<div class="need_container docutils container" id="SNCB-29a669a2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__run">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -929,7 +929,7 @@ which allows the implementation of a state management applications to support dy
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a6a7bacf">
+<div class="need_container docutils container" id="SNCB-021674f1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__terminate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1017,7 +1017,7 @@ which allows the implementation of a state management applications to support dy
 </section>
 <section id="id2">
 <h3>Dynamic Architecture<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-6c5dbc5f">
+<div class="need_container docutils container" id="SNCB-04fd7086">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__state_machine">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1127,7 +1127,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </ul>
 <section id="id4">
 <h3>Static architecture<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-0c39b13f">
+<div class="need_container docutils container" id="SNCB-a978a4fe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1176,7 +1176,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </div>
 </div>
 <p><strong>Operations</strong></p>
-<div class="need_container docutils container" id="SNCB-b235a076">
+<div class="need_container docutils container" id="SNCB-c45918f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_health">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1221,7 +1221,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </section>
 <section id="id5">
 <h3>Dynamic architecture<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-24ef4d8b">
+<div class="need_container docutils container" id="SNCB-ea6195ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__alive_monitoring">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
