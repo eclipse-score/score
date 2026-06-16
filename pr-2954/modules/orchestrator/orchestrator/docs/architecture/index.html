@@ -618,7 +618,7 @@
                   
   <section id="component-architecture">
 <h1>Component Architecture<a class="headerlink" href="#component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-7f1fe770">
+<div class="need_container docutils container" id="SNCB-d6463f62">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestrator_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -696,7 +696,7 @@
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>The components are designed to cover the expectations from the feature architecture
 (i.e. if already exists a definition it should be taken over and enriched).</p>
-<div class="need_container docutils container" id="SNCB-29afa118">
+<div class="need_container docutils container" id="SNCB-8540cf8e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__orchestrator">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -718,7 +718,8 @@
 <div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">consists of: <span class="consists_of"><span><a class="reference internal" href="#comp__orch_design_impl" title="comp__orchestrator">comp__orch_design_impl</a>, <a class="reference internal" href="#comp__orch_deployment_impl" title="comp__orchestrator">comp__orch_deployment_impl</a></span></span></div>
 <div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/orchestration/architecture/index.html#feat__orchestration" title="comp__orchestrator">feat__orchestration</a></span></span></div>
-<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__orch__orchestrator" title="comp__orchestrator">comp_arc_sta__orch__orchestrator</a>, <a class="reference internal" href="#comp_req__orchestrator__logging" title="comp__orchestrator">comp_req__orchestrator__logging</a>, <a class="reference internal" href="#comp_req__orchestrator__deploy" title="comp__orchestrator">comp_req__orchestrator__deploy</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__orch__orchestrator" title="comp__orchestrator">comp_arc_sta__orch__orchestrator</a></span></span></div>
+<div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="#comp_req__orchestrator__logging" title="comp__orchestrator">comp_req__orchestrator__logging</a>, <a class="reference internal" href="#comp_req__orchestrator__deploy" title="comp__orchestrator">comp_req__orchestrator__deploy</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../../../../features/orchestration/architecture/index.html#logic_arc_int__orchestration__user" title="comp__orchestrator">logic_arc_int__orchestration__user</a>, <a class="reference internal" href="../../../../../features/orchestration/architecture/index.html#logic_arc_int__orchestration__deployment" title="comp__orchestrator">logic_arc_int__orchestration__deployment</a>, <a class="reference internal" href="../../../../../features/orchestration/architecture/index.html#logic_arc_int__orchestration__design" title="comp__orchestrator">logic_arc_int__orchestration__design</a></span></span></div>
 <div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp__orchestrator">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../../features/analysis-infra/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__orchestrator">logic_arc_int__tracing__tracing</a>, <a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="comp__orchestrator">logic_arc_int__communication__user</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__orchestrator" title="comp__orchestrator">mod__orchestrator</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__orch__orchestrator" title="comp__orchestrator">mod_view_sta__orch__orchestrator</a></span></span></div>
@@ -745,7 +746,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5f7ee1c7">
+<div class="need_container docutils container" id="SNCB-ed0482ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__orch__orchestrator">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -797,7 +798,7 @@
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e854791b">
+<div class="need_container docutils container" id="SNCB-c1b0134b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__add_design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -839,7 +840,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c50bf80b">
+<div class="need_container docutils container" id="SNCB-9566aa85">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__desing_done">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -881,7 +882,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-976422e3">
+<div class="need_container docutils container" id="SNCB-7998a048">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__get_deployment_mut">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -923,7 +924,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3a9542a0">
+<div class="need_container docutils container" id="SNCB-386a2aff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__use_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -965,7 +966,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5cdbc137">
+<div class="need_container docutils container" id="SNCB-ce0066d3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__into_program_manager">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1007,7 +1008,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4946b2a8">
+<div class="need_container docutils container" id="SNCB-c5c42cb1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__get_programs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1049,7 +1050,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9c6bc9aa">
+<div class="need_container docutils container" id="SNCB-890671da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__get_shutdown_notifier">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1091,7 +1092,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-af7a92f3">
+<div class="need_container docutils container" id="SNCB-af889935">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__orch_design_impl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1135,7 +1136,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aad7d810">
+<div class="need_container docutils container" id="SNCB-fba50982">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__orch_deployment_impl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1179,7 +1180,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4d59fbba">
+<div class="need_container docutils container" id="SNCB-bee2b870">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__register_invoke_fn">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1221,7 +1222,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-01e00ba1">
+<div class="need_container docutils container" id="SNCB-caf7f7db">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__rim">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1263,7 +1264,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-917c2af1">
+<div class="need_container docutils container" id="SNCB-af99ad7d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__register_event1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1305,7 +1306,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-02b2d4f0">
+<div class="need_container docutils container" id="SNCB-03ca8b5d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__register_if_else_cond">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1347,7 +1348,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d2b579ce">
+<div class="need_container docutils container" id="SNCB-27647015">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__add_program1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1389,7 +1390,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f12d79d4">
+<div class="need_container docutils container" id="SNCB-b03fb101">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__bind_events_as_global">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1431,7 +1432,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d65cbb6d">
+<div class="need_container docutils container" id="SNCB-4f4cc563">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__bind_events_as_local">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1473,7 +1474,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c05d62f0">
+<div class="need_container docutils container" id="SNCB-de01a3e2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__bind_events_as_timer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1515,7 +1516,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6b65ff76">
+<div class="need_container docutils container" id="SNCB-d4d4d1c2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__bind_invoke_to_worker">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1557,7 +1558,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-213251b6">
+<div class="need_container docutils container" id="SNCB-293dc8a3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__bind_shutdown_event_g">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1599,7 +1600,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e44ef496">
+<div class="need_container docutils container" id="SNCB-d9bc63f1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__bind_shutdown_event_l">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1645,7 +1646,7 @@
 </section>
 <section id="functional-requirements">
 <h1>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a5d1bec9">
+<div class="need_container docutils container" id="SNCB-8dc213d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__orchestrator__logging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1666,8 +1667,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__orchestrator" title="comp_req__orchestrator__logging">comp__orchestrator</a></span></span></div>
-<div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/orchestration/requirements/index.html#feat_req__orchestration__obsv_trace_corr" title="comp_req__orchestrator__logging">feat_req__orchestration__obsv_trace_corr</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../../features/orchestration/requirements/index.html#feat_req__orchestration__obsv_trace_corr" title="comp_req__orchestrator__logging">feat_req__orchestration__obsv_trace_corr</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="#comp__orchestrator" title="comp_req__orchestrator__logging">comp__orchestrator</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1689,7 +1690,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b446d778">
+<div class="need_container docutils container" id="SNCB-0ba98e39">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__orchestrator__deploy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1710,8 +1711,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__orchestrator" title="comp_req__orchestrator__deploy">comp__orchestrator</a></span></span></div>
-<div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/orchestration/requirements/index.html#feat_req__orchestration__orch_single_deploy" title="comp_req__orchestrator__deploy">feat_req__orchestration__orch_single_deploy</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../../features/orchestration/requirements/index.html#feat_req__orchestration__orch_single_deploy" title="comp_req__orchestrator__deploy">feat_req__orchestration__orch_single_deploy</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="#comp__orchestrator" title="comp_req__orchestrator__deploy">comp__orchestrator</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="#comp_arc_sta__orch__orchestrator" title="comp_req__orchestrator__deploy">comp_arc_sta__orch__orchestrator</a></span></span></div>
 </span></div>
 </div>
