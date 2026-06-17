@@ -145,6 +145,19 @@ Requirements
 
    The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.
 
+.. feat_req:: Panic-Free Development Support
+   :id: feat_req__baselibs__panic_free_development
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
+   :status: valid
+   :version: 1
+
+   The base libraries shall provide error handling mechanisms that enable development without relying on Rust panics.
+   Where an idiomatic interface requires panics, an additional non-panicking option shall be provided as well.
+
 .. feat_req:: Container Library
    :id: feat_req__baselibs__containers_library
    :reqtype: Functional
@@ -157,6 +170,18 @@ Requirements
    :tags: inspected
 
    The base libraries shall provide a container library offering additional container types not present in the C++ standard library.
+
+.. feat_req:: ABI-Compatible Containers
+   :id: feat_req__baselibs__abi_containers
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__functional_req__base_libraries[version==1] ,stkh_req__communication__abi_compatible[version==1]
+   :satisfied_by: feat__baselibs[version==1]
+   :status: valid
+   :version: 1
+
+   The base libraries shall provide a library of containers that can serve as the basis for ABI-compatible container data structures.
 
 .. feat_req:: Bit Manipulation Library
    :id: feat_req__baselibs__bitmanipulation
