@@ -627,7 +627,8 @@
 ├── handbook/                      -&gt; Background, scope, high-level architecture of the platform features
 │                                     and handbook for the platform [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_handbook">wp__platform_handbook</a>],
 │                                     (e.g., onboarding, development guidelines, etc.)
-├── manuals/                       -&gt; User and integration manual(s)
+├── manuals/                       -&gt; User and integration manual(s) of the platform,
+│                                     may refer in the reference integration repository to the manuals for the modules.
 ├── modules/                       -&gt; Modules of the SW platform. [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__platform_arch">wp__platform_arch</a>]
 ├── platform_management_plan/      -&gt; Overall Platform Management Plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__platform_mgmt">wp__platform_mgmt</a>]
 │                                     containing: [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__project_mgt">wp__project_mgt</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a>],
@@ -714,10 +715,16 @@ README.md                          -&gt; Entrypoint of the repository</pre>
 │   │       └── security_planning/   -&gt; Feature specific security workproducts planning
 │   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_plan">wp__platform_security_plan</a>]
 │   ├── manuals/                     -&gt; Module manual, e.g. integration manual, assumptions of use,
-│   │                                   safety manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>],
-│   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat_aou">wp__requirements_feat_aou</a>],
-│   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a>],
-│   │                                   security_manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__module_security_manual">wp__module_security_manual</a>].
+│   │   │                               safety manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>],
+│   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat_aou">wp__requirements_feat_aou</a>],
+│   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a>],
+│   │   │                               security_manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__module_security_manual">wp__module_security_manual</a>].
+│   │   │                            -&gt; Additional optional user centric documentation (e.g. configuration guide,
+│   │   │                               examples user guide, APIs &amp; usage, performance analysis)
+│   │   ├── config/                  -&gt; Configuration guide (optional)
+│   │   ├── examples/                -&gt; Examples user guide (optional)
+│   │   ├── api_description/         -&gt; API detail description (optional)
+│   │   └── performance/             -&gt; Performance analysis (optional)
 │   ├── release/                     -&gt; Module release note [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note">wp__module_sw_release_note</a>],
 │   │                                   module release plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_plan">wp__module_sw_release_plan</a>],
 │   ├── safety_mgt/                  -&gt; Module safety plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a>],
@@ -742,6 +749,8 @@ README.md                          -&gt; Entrypoint of the repository</pre>
     │   │   │                           Detail design + code inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a>],
     │   │   ├── manuals/             -&gt; User documentation of a single component
     │   │   │                           (e.g., user manual of a library, optional)
+    │   │   │                           (could contain optional subfolders for configuration guide,
+    │   │   │                           examples user guide, APIs &amp; usage, performance analysis, see module manual folder)
     │   │   ├── requirements/        -&gt; Component requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a>],
     │   │   │                           requirements inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a>]
     │   │   ├── safety_analysis/     -&gt; Safety analysis on component level (only if component architecture exists)
@@ -781,10 +790,15 @@ For identification of the single feature, the repository name or module name sho
 │   ├── security_planning/           -&gt; Feature specific security workproducts planning
 │   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_plan">wp__platform_security_plan</a>]
 │   ├── manuals/                     -&gt; Module manual, e.g. integration manual, assumptions of use,
-│   │                                   safety manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>],
-│   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat_aou">wp__requirements_feat_aou</a>],
-│   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a>],
-│   │                                   security_manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__module_security_manual">wp__module_security_manual</a>].
+│   │   │                               safety manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>],
+│   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat_aou">wp__requirements_feat_aou</a>],
+│   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a>],
+│   │   │                               security_manual [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__module_security_manual">wp__module_security_manual</a>].
+│   │   │                            -&gt; Additional optional user centric documentation (e.g. configuration guide, examples user guide, APIs &amp; usage, performance analysis)
+│   │   ├── config/                  -&gt; Configuration guide (optional)
+│   │   ├── examples/                -&gt; Examples user guide (optional)
+│   │   ├── api_description/         -&gt; APIs detail description (optional)
+│   │   └── performance/             -&gt; Performance analysis (optional)
 │   ├── release/                     -&gt; Module release note [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note">wp__module_sw_release_note</a>],
 │   │                                   module release plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_plan">wp__module_sw_release_plan</a>],
 │   ├── safety_mgt/                  -&gt; Module safety plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a>],
@@ -809,6 +823,8 @@ For identification of the single feature, the repository name or module name sho
     │   │   │                           Detail design + code inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a>],
     │   │   ├── manuals/             -&gt; User documentation of a single component
     │   │   │                           (e.g., user manual of a library, optional)
+    │   │   │                           (could contain optional subfolders for configuration guide,
+    │   │   │                           examples user guide, APIs &amp; usage, performance analysis, see module manual folder)
     │   │   ├── requirements/        -&gt; Component requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a>],
     │   │   │                           requirements inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a>]
     │   │   ├── safety_analysis/     -&gt; Safety analysis on component level (only if component architecture exists)
