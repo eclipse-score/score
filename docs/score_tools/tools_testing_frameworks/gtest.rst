@@ -15,7 +15,7 @@
 .. doc_tool:: gtest
    :id: doc_tool__gtest
    :status: draft
-   :version: 1.15.0
+   :tool_version: 1.15.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES

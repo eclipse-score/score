@@ -15,7 +15,7 @@
 .. doc_tool:: gcc
    :id: doc_tool__gcc
    :status: draft
-   :version: 12.x
+   :tool_version: 12.x
    :tcl: HIGH
    :safety_affected: NO
    :security_affected: NO

@@ -15,7 +15,7 @@
 .. doc_tool:: github
    :id: doc_tool__github
    :status: draft
-   :version: cloud
+   :tool_version: cloud
    :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES

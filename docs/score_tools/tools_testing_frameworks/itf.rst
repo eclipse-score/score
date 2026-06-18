@@ -15,7 +15,7 @@
 .. doc_tool:: ITF
    :id: doc_tool__itf
    :status: draft
-   :version: 0.1.0
+   :tool_version: 0.1.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES

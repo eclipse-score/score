@@ -15,7 +15,7 @@
 .. doc_tool:: Bazel
    :id: doc_tool__bazel
    :status: draft
-   :version: 8.3.0
+   :tool_version: 8.3.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES

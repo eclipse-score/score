@@ -35,7 +35,7 @@ SW platform, including an argumentation why.
 
 The verification for such an AoU is done in the same way as for other requirements, i.e. if these are
 non-functional and "non-testable" then a "requirement analysis" is done as described in
-:need:`doc__component_name_req_inspection` checklist item REQ_08_02. To document this a PR is created
+:need:`doc__orchestrator_req_inspection` checklist item REQ_08_02. To document this a PR is created
 to modify the component architecture "fulfils" attribute, add the respective requirements to the
 requirements inspection checklist's scope and document findings like for other inspections.
 

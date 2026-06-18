@@ -320,7 +320,7 @@ Process status: Status of the workflow which "outputs" the work product, derived
 Security Management Feature Specific Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See feature tree documents (created by using :need:`doc__feature_name_security_wp`):
+See feature tree documents (created by using `doc__feature_example_security_planning_wp` in the module_template):
 
 <link to document for every feature>
 

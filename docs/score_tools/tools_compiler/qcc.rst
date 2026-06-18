@@ -15,7 +15,7 @@
 .. doc_tool:: qcc
    :id: doc_tool__qcc
    :status: draft
-   :version: 8.x
+   :tool_version: 8.x
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
