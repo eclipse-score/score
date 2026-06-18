@@ -24,7 +24,10 @@ DR-002-Strat: Eclipse Project Structure for S-Core
 Context / Problem
 -----------------
 
-S-Core needs to decide how its modules are structured within the Eclipse Foundation and GitHub.
+The strategic decision to treat S-Core as a platform rather than a collection of independent
+modules was already taken in DR-001-Strat. This decision record focuses solely on the technical
+question of how to structure the S-Core project within the Eclipse Foundation and GitHub.
+
 Two organisational models are under consideration: keeping all modules within one Eclipse project
 (the current approach), or splitting each module into a separate Eclipse project.
 
@@ -36,8 +39,6 @@ Options Considered
 
 Option 1: One Eclipse Project (currently used)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-*Supports the idea: "S-Core is a platform"* (e.g. same as Android)
 
 All S-Core relevant modules reside together in one GitHub organisation under one Eclipse project.
 
@@ -83,8 +84,6 @@ All S-Core relevant modules reside together in one GitHub organisation under one
     modules in one Eclipse project leads to the necessity of having a big number of Committers
     with various areas of responsibility.
 
-- Community management and building is more complicated due to the size of the project.
-
 **Possible mitigation**
 
 - Eclipse Foundation and PMC must acknowledge and agree that new modules in S-Core are treated
@@ -94,8 +93,6 @@ All S-Core relevant modules reside together in one GitHub organisation under one
 
 Option 2: Multiple Eclipse Projects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-*Supports the idea: "S-Core is a pure integration project"* (e.g. same as Yocto)
 
 Every module becomes its own Eclipse project; a central S-Core project serves as the integration
 project.
@@ -142,17 +139,14 @@ project.
 
 **Possible mitigation**
 
-- S-Core becomes a "parent project" and all other S-Core relevant modules become sub-projects.
-  This would make it clear that the modules are part of the S-Core project and it would still
-  be easily possible to follow Eclipse project handbook rules for every sub-project, e.g. for
-  initial Committer nomination.
+- Currently no possible mitigations known for Cons 1.
 - The Eclipse Foundation technically enables S-Core and all sub-projects/modules to be located
   within the same GitHub organisation.
 
 Conclusion
 ----------
 
-**We proceed with Option 1 and initiate a Proof of Concept for Option 2.**
+**We proceed with Option 1**
 
 Rationale
 ^^^^^^^^^
@@ -167,6 +161,3 @@ Follow-up Actions
 - **X-Core approaches Eclipse Foundation**: Eclipse Foundation and PMC must acknowledge and agree
   that new modules in S-Core are treated as new Eclipse projects for the purpose of initial
   Committer nomination.
-- **POC for Option 2**: The OpenSOVD project and its integration into S-Core will be used as a
-  Proof of Concept (POC) for Option 2.
-- The topic should be revisited after the S-Core v1.0 release is delivered.
