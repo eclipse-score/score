@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -74,7 +74,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DR-002-Infra: Integration Testing in a Distributed Monolith" href="DR-002-infra.html" />
-    <link rel="prev" title="DR-001-Arch: Rust Readiness for Safety-Critical Components" href="DR-001-arch.html" />
+    <link rel="prev" title="DR-002-Arch: Detailed Assessments" href="DR-002-arch/detailed_assessments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -158,8 +158,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../handbook/index.html">
-    Handbook
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
   </a>
 </li>
 
@@ -244,6 +244,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
+    User’s Guide
   </a>
 </li>
 
@@ -360,8 +367,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../handbook/index.html">
-    Handbook
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
   </a>
 </li>
 
@@ -442,6 +449,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -518,6 +532,7 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch.html">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
@@ -529,6 +544,9 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
 </ul>
 </div>
 </nav></div>
@@ -606,7 +624,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2025-09-01</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-3581e12d">
+<div class="need_container docutils container" id="SNCB-e1df9f01">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dev_tools">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -839,12 +857,12 @@ installs have no disadvantages and are significantly easier (development) and fa
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="DR-001-arch.html"
+       href="DR-002-arch/detailed_assessments.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DR-001-Arch: Rust Readiness for Safety-Critical Components</p>
+        <p class="prev-next-title">DR-002-Arch: Detailed Assessments</p>
       </div>
     </a>
     <a class="right-next"
