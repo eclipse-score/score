@@ -59,6 +59,17 @@ Time Synchronization
 
    The **score::time feature** shall provide an API to access the synchronized vehicle time.
 
+.. stkh_req:: Usage of Vehicle Time base API has FFI
+   :id: feat_req__time__vehicle_time_base_api_ffi
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__time__time_base_api_ffi
+   :status: valid
+   :version: 1
+
+   Usage of the vehicle time base API shall be free from interfrences for the consuming components.
+
 .. feat_req:: Vehicle Time base accuracy qualifier
    :id: feat_req__time__vehicle_time_acc_qual_api
    :reqtype: Functional
@@ -76,6 +87,22 @@ Time Synchronization
    * are there any instabilities, like time jumps to the past or to the future
    * does the time increase in a monotonic manner.
 
+.. feat_req:: Reliability of Vehicle Time base accuracy qualifier
+   :id: feat_req__time__vehicle_time_acc_qual_reliability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__time__qualified_time_information
+   :status: valid
+   :version: 1
+
+   The architecture and implementation parts of the time feature shall support to ensure,
+   that the provided accuracy qualifier always reflects the actual quality of the local time base.
+
+   Note:
+   * This does not apply to willful interferences by malicious software components or components in control by malicious actors, which are out of scope of this requirement.
+   * The end-to-end quality of the time information provided by the time base API may require components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting the AUTOSAR Time Synchroization Protocol).
+
 .. feat_req:: Vehicle Time base time point qualifier
    :id: feat_req__time__vehicle_time_time_pt_qual
    :reqtype: Functional
@@ -91,7 +118,7 @@ Time Synchronization
 
 .. feat_req:: Vehicle Time control flow
    :id: feat_req__time__vehicle_time_ctrl_flow
-   :reqtype: Functional
+   :reqtype: Non-Functional
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
@@ -147,6 +174,17 @@ Time Synchronization to absolute external sources
    :version: 1
 
    The **score::time feature** shall provide an API to read the absolute time base, synchronized to external time sources.
+
+.. feat_req:: Usage of Absolute Time base API has FFI
+   :id: feat_req__time__abs_time_base_api_ffi
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__time__time_base_api_ffi
+   :status: valid
+   :version: 1
+
+   Usage of the absolute time base API shall be free from interfrences for the consuming components.
 
 .. feat_req:: Absolute Time base accuracy qualifier
    :id: feat_req__time__abs_acc_qual
