@@ -19,7 +19,7 @@ DR-008-Infra: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
    :status: accepted
    :context: Infrastructure
-   :decision: Option B because Option N loses wrt Maintainability
+   :decision: Option M because of slight IDE usability edge over Option B
 
 Context / Problem
 -----------------
@@ -215,10 +215,6 @@ This uses the external `sphinx-mounts <https://sphinx-mounts.useblocks.com/>`_ e
 `The extension modifies Sphinx internal data structures <https://github.com/useblocks/sphinx-mounts/blob/294526a010dfd8c3be022d154cc8974defd7c7c7/src/sphinx_mounts/mounter.py#L13>`_
 to integrate files outside of the source directory.
 
-TODO:
-Apparently ``:docs_combo`` composes external ``:docs_sources`` trees,
-but does not define a clear cross-repository aggregation mechanism for mount metadata declared by upstream repositories.
-Therefore, Option M does not satisfy all requirements and is not a valid option at this time.
 
 .. mermaid::
 
@@ -239,47 +235,41 @@ Known constraints from the PoC:
 * Per-bundle ``ubproject.toml`` generation is workspace-only (``bazel run``),
   while sandboxed ``bazel build`` skips those workspace writes by design.
 * Nested mounts are not supported.
-* Sphinx warnings and errors point to the ``bazel-bin`` copy of each file,
-  not to the original source.
-  ``sphinx-mounts`` registers the absolute path of the materialised directory
-  (resolved from Bazel runfiles) in ``sphinx.project.Project._docname_to_path``,
-  so that is what Sphinx embeds in its diagnostic output.
-  The ``src_root`` mechanism only generates a ``ubproject.toml`` for IDE use;
-  it does not change the path seen by Sphinx.
-  This violates the hard requirement "errors and warnings point to the original
-  source files if they are in the repo".
 
-Maintainability 💚?: Fails strict cross-repository ``:docs_combo`` requirement in current form.
-Also, using this immature external dependency is risky.
+The live_preview implementation would have to be similar to Option B.
+However, it is less critical because rst files elsewhere in the same repository
+are watched by the existing ``sphinx-autobuild`` setup.
+The ``ibazel`` part is only necessary for generated artifacts.
+
+Maintainability 💚: Equivalent to option B.
 
 Effort 💛: Similar order of magnitude as Option B prototype work.
 
-Speed 💛?: Comparable iterative speed; initial setup and mount resolution add some overhead.
+Speed 💛: Comparable iterative speed; initial setup and mount resolution add some overhead.
 
-UX 😡: Not acceptable while strict cross-repository composition behavior remains unclear/unmet.
-
-Option T: Two Paths
-^^^^^^^^^^^^^^^^^^^
-
-Mix of option B and M.
-
-TODO
+UX 💛: Slight edge in IDE usability. The two step are still necessary for a comprehensive live preview.
 
 Evaluation
 ----------
 
+Options B and M are nearly equivalent across the evaluated goals.
+Option M has a small edge in IDE usability because it avoids re-materializing sources
+and keeps IDE tooling aligned by reading the same ``ubproject.toml`` as Sphinx.
+
+A hybrid of B and M was not sufficiently explored and may be reconsidered later.
+
 In order of importance, most important first.
 
 .. csv-table::
-  :header: Goals, Option B, Option M, Option T
-  :widths: 2, 1, 1, 1
+  :header: Goals, Option B, Option M
+  :widths: 2, 1, 1
 
-  Maintainability, 💚, 💚?, ?
-  Effort,          💛, 💛,  ?
-  Speed,           💛, 💛?, ?
-  UX,              😡, 😡,  ?
+  Maintainability, 💚, 💚
+  Effort,          💛, 💛
+  Speed,           💛, 💛
+  UX,              😡, 💛
 
-**Decision: Option B** because it does not matter.
+**Decision: Option M** because of its slight edge in IDE usability.
 
 Appendix: any_folder experiment
 -------------------------------
