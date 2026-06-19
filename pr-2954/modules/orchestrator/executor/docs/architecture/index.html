@@ -616,7 +616,7 @@
                   
   <section id="component-architecture">
 <h1>Component Architecture<a class="headerlink" href="#component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c593bef0">
+<div class="need_container docutils container" id="SNCB-1843b2ca">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__executor_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -636,6 +636,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">orchestration</span><span class="needs_spacer">, </span><span class="needs_data">executor</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a></span></span></div>
 </span></div>
@@ -691,7 +692,7 @@
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>The components are designed to cover the expectations from the feature architecture
 (i.e. if already exists a definition it should be taken over and enriched).</p>
-<div class="need_container docutils container" id="SNCB-0cd20ad5">
+<div class="need_container docutils container" id="SNCB-d53ce5b4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__orch_executor">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -710,7 +711,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
 <div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/orchestration/architecture/index.html#feat__orchestration" title="comp__orch_executor">feat__orchestration</a></span></span></div>
 <div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp__orch_executor">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../../features/analysis-infra/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__orch_executor">logic_arc_int__tracing__tracing</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__orchestrator" title="comp__orch_executor">mod__orchestrator</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__orch__orchestrator" title="comp__orch_executor">mod_view_sta__orch__orchestrator</a></span></span></div>
@@ -747,7 +749,7 @@
    <span class="nc">:id:</span> real_arc_int__&lt;component&gt;__&lt;Title&gt;
    <span class="nc">:security:</span> <span class="nt">&lt;YES|NO&gt;</span>
    <span class="nc">:safety:</span> <span class="nt">&lt;QM|ASIL_B&gt;</span>
-   <span class="nc">:fulfils:</span> <span class="nt">&lt;link to component requirement id&gt;</span>
+   <span class="nc">:fulfils:</span> <span class="nt">&lt;link to component requirement id&gt;</span>[version==1]
    <span class="nc">:language:</span> cpp
 </pre></div>
 </div>
