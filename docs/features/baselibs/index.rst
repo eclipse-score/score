@@ -33,7 +33,6 @@ Base Libraries (v0.5 beta)
    docs/requirements/index.rst
    docs/requirements/chklst_req_inspection.rst
    docs/architecture/index.rst
-   abi_compatible_data_types/index.rst
 
 Feature flag
 ============
