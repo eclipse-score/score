@@ -18,9 +18,10 @@ Module Safety Plan
 .. document:: Orchestrator Safety Plan
    :id: doc__orchestrator_safety_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__module_safety_plan
+   :realizes: wp__module_safety_plan[version==1]
    :tags: orchestrator
 
 Functional Safety Management Context
@@ -94,15 +95,15 @@ Module Work products List
           - :need:`gd_chklst__safety_plan`
           - :ndf:`copy('status', need_id='gd_chklst__safety_plan')`
           - <Link to issue>
-          - :need:`doc__module_name_safety_plan_fdr`
-          - :ndf:`copy('status', need_id='doc__module_name_safety_plan_fdr')`
+          - :need:`doc__orchestrator_safety_plan_fdr`
+          - :ndf:`copy('status', need_id='doc__orchestrator_safety_plan_fdr')`
 
         * - :need:`wp__fdr_reports` (module Safety Package)
           - :need:`gd_chklst__safety_package`
           - :ndf:`copy('status', need_id='gd_chklst__safety_package')`
           - <Link to issue>
-          - :need:`doc__module_name_safety_package_fdr`
-          - :ndf:`copy('status', need_id='doc__module_name_safety_package_fdr')`
+          - :need:`doc__orchestrator_safety_package_fdr`
+          - :ndf:`copy('status', need_id='doc__orchestrator_safety_package_fdr')`
 
         * - :need:`wp__fdr_reports` (module's Safety Analyses & DFA)
           - Safety Analysis FDR tbd
@@ -122,22 +123,22 @@ Module Work products List
           - :need:`gd_temp__safety_manual`
           - :ndf:`copy('status', need_id='gd_temp__safety_manual')`
           - <Link to issue>
-          - :need:`doc__module_name_safety_manual`
-          - :ndf:`copy('status', need_id='doc__module_name_safety_manual')`
+          - :need:`doc__orchestrator_safety_manual`
+          - :ndf:`copy('status', need_id='doc__orchestrator_safety_manual')`
 
         * - :need:`wp__verification_module_ver_report`
           - :need:`gd_temp__mod_ver_report`
           - :ndf:`copy('status', need_id='gd_temp__mod_ver_report')`
           - <Link to issue>
-          - :need:`doc__module_name_verification_report`
-          - :ndf:`copy('status', need_id='doc__module_name_verification_report')`
+          - :need:`doc__orchestrator_verification_report`
+          - :ndf:`copy('status', need_id='doc__orchestrator_verification_report')`
 
         * - :need:`wp__module_sw_release_note`
           - :need:`gd_temp__rel_mod_rel_note`
           - :ndf:`copy('status', need_id='gd_temp__rel_mod_rel_note')`
           - <Link to issue>
-          - :need:`doc__module_name_release_note`
-          - :ndf:`copy('status', need_id='doc__module_name_release_note')`
+          - :need:`doc__orchestrator_release_note`
+          - :ndf:`copy('status', need_id='doc__orchestrator_release_note')`
 
 Component <name> Work products List
 -----------------------------------
@@ -156,50 +157,50 @@ Component <name> Work products List
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
           - <Link to issue>
-          - :need:`doc__component_name_requirements`
-          - doc :ndf:`copy('status', need_id='doc__component_name_requirements')` & WP below
+          - :need:`doc__orchestrator_requirements`
+          - doc :ndf:`copy('status', need_id='doc__orchestrator_requirements')` & WP below
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
           - <Link to issue>
-          - :need:`doc__component_name_requirements`
-          - doc :ndf:`copy('status', need_id='doc__component_name_requirements')` & WP below
+          - :need:`doc__orchestrator_requirements`
+          - doc :ndf:`copy('status', need_id='doc__orchestrator_requirements')` & WP below
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
           - <link to issue>
-          - :need:`doc__component_name_req_inspection`
-          - :ndf:`copy('status', need_id='doc__component_name_req_inspection')`
+          - :need:`doc__orchestrator_req_inspection`
+          - :ndf:`copy('status', need_id='doc__orchestrator_req_inspection')`
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
           - <Link to issue>
-          - :need:`doc__component_name_architecture`
-          - doc :ndf:`copy('status', need_id='doc__component_name_architecture')` & WP below
+          - :need:`doc__orchestrator_architecture`
+          - doc :ndf:`copy('status', need_id='doc__orchestrator_architecture')` & WP below
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
           - <link to issue>
-          - :need:`doc__component_name_arc_inspection`
-          - :ndf:`copy('status', need_id='doc__component_name_arc_inspection')`
+          - :need:`doc__orchestrator_arc_inspection`
+          - :ndf:`copy('status', need_id='doc__orchestrator_arc_inspection')`
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
           - <Link to issue>
-          - :need:`doc__component_name_fmea`
-          - doc :ndf:`copy('status', need_id='doc__component_name_fmea')` & WP below
+          - :need:`doc__orchestrator_fmea`
+          - doc :ndf:`copy('status', need_id='doc__orchestrator_fmea')` & WP below
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
           - <Link to issue>
-          - :need:`doc__component_name_dfa`
-          - doc :ndf:`copy('status', need_id='doc__component_name_dfa')` & WP below
+          - :need:`doc__orchestrator_dfa`
+          - doc :ndf:`copy('status', need_id='doc__orchestrator_dfa')` & WP below
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
@@ -233,8 +234,8 @@ Component <name> Work products List
           - :need:`gd_guidl__component_classification`
           - :ndf:`copy('status', need_id='gd_guidl__component_classification')`
           - <Link to issue>
-          - :need:`doc__component_name_comp_class`
-          - :ndf:`copy('status', need_id='doc__component_name_comp_class')`
+          - <Link to WP>
+          - <automated>
 
 Note: In case the component is a new development, :need:`wp__sw_component_class` shall be removed from the above list (and also from the folders).
 In case an OSS element is used in the module, part 6 has to be filled out.

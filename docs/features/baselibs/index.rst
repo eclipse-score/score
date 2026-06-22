@@ -20,10 +20,11 @@ Base Libraries (v0.5 beta)
 .. document:: Base Libraries
    :id: doc__baselibs
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :tags: feature_request
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

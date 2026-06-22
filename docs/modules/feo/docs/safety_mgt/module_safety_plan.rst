@@ -15,9 +15,10 @@
 .. document:: FEO Module Safety Plan
    :id: doc__feo_safety_plan
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__module_safety_plan
+   :realizes: wp__module_safety_plan[version==1]
    :tags: module_feo
 
 

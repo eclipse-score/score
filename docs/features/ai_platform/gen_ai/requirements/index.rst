@@ -22,8 +22,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__gen_ai__enablement
+   :derived_from: stkh_req__gen_ai__enablement[version==1]
    :status: valid
+   :version: 1
 
    The platform shall support the execution of Generative AI models (e.g., LLMs) on embedded automotive hardware.
 
@@ -32,8 +33,9 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__gen_ai__interaction
+   :derived_from: stkh_req__gen_ai__interaction[version==1]
    :status: valid
+   :version: 1
 
    The platform shall provide a Prompting Interface for GenAI-based agents, enabling structured prompts, streaming output, and context-aware user interaction.
 
@@ -42,8 +44,9 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__gen_ai__safety_filter
+   :derived_from: stkh_req__gen_ai__safety_filter[version==1]
    :status: valid
+   :version: 1
 
    The platform shall validate all LLM-generated actions via domain-specific policies before they are executed.
 
@@ -52,7 +55,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__gen_ai__vehicle_com
+   :derived_from: stkh_req__gen_ai__vehicle_com[version==1]
    :status: valid
+   :version: 1
 
    The platform shall provide structured APIs (e.g., via MCP) to access vehicle state and invoke safe vehicle commands.

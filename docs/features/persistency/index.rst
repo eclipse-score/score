@@ -20,9 +20,10 @@ Persistency (v0.5 beta)
 .. document:: Persistency
    :id: doc__persistency
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
    :tags: feature_request, persistency
 
 .. toctree::

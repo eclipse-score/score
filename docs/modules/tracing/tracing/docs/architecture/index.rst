@@ -20,8 +20,9 @@ Tracing Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__tracing__tracing
-   :belongs_to: feat__tracing
+   :version: 1
+   :implements: logic_arc_int__tracing__tracing[version==1]
+   :belongs_to: feat__tracing[version==1]
 
    .. needarch::
       :scale: 50

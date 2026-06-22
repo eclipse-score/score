@@ -19,9 +19,10 @@ FMEA (Failure Modes and Effects Analysis)
 .. document:: Orchestrator FMEA
    :id: doc__orchestrator_fmea
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__sw_component_fmea
+   :realizes: wp__sw_component_fmea[version==1]
    :tags: orchestrator
 
 

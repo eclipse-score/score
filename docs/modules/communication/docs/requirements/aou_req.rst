@@ -18,9 +18,10 @@ Assumptions of Use
 .. document:: Communication Assumptions of Use
    :id: doc__communication_aou
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
 
 .. aou_req:: Monotonic Semi-Dynamic Memory Allocation
    :id: aou_req__communication__1
@@ -28,6 +29,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that enough memory is configured for shared memory instances,
    in order that LoLa can perform all necessary allocations (e.g. push-back on a Vector).
@@ -38,6 +40,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that correct maximum number of subscriber is configured for each
    event for each service instance.
@@ -48,6 +51,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
     It shall be ensured that correct maximum number of elements per subscriber is
     configured for each event for each service instance.
@@ -58,6 +62,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
     The ASIL-Level is used to ensure Freedom from Interference (e.g. by configuring access rights).
     Without a proper configured level, this cannot be ensured.
@@ -68,6 +73,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured, that only types that are supported by LoLa are transmitted.
 
@@ -77,6 +83,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that no API calls from the implementation namespace (e.g `impl`)
    are directly invoked or types from within are directly used.
@@ -87,6 +94,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that a miss behavior of event notification, will not harm a safety goal.
 
@@ -96,6 +104,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that a message overflow, which results in message loss will not harm a safety goal.
    If this is not possible, a check for message overflow and necessary actions need to be performed.
@@ -106,6 +115,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that processes with a different ASIL shall be executed within different user-ids.
 
@@ -115,6 +125,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that any configuration item that is read at runtime by LoLa is
    stored on a safety certified filesystem (according to the highest supported safety level).
@@ -125,6 +136,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that LoLa is not used within static context within C++.
 
@@ -134,6 +146,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that no safety goal is harmed, because a service instance is not found.
 
@@ -143,6 +156,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensure that termination (either gracefully or due to a malfunction)
    of a producer will not lead to a violation of a safety goal.
@@ -153,6 +167,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be checked if Allocate() on an event will return a nullptr. If a nullptr is returned,
    the system shall transition to safe state.
@@ -164,6 +179,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that at any time a producer instance per event only holds one AllocateePtr.
 
@@ -173,6 +189,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that Send(const& value) is not invoked while an AllocateePtr is held.
 
@@ -182,6 +199,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that any LoLa API that is bound to a specific event
     instance is not called in a reentrant manner.
@@ -192,6 +210,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that a Skeleton instance is still alive while any AllocateePtr returned by it is used.
 
@@ -201,6 +220,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that Unsubscribe() isn't called on a proxy eventinstance as long as
    any SamplePtr provided by it, is still held.
@@ -211,6 +231,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that any callback passed to LoLa for invocation is not throwing.
 
@@ -220,6 +241,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that all callbacks passed towards LoLa are valid as long as the associated proxy is alive.
 
@@ -229,6 +251,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that the necessary quality of data is produced by the respective skeleton process.
 
@@ -238,6 +261,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that no pointer, pointing to the memory of a SamplePtr
    or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.
@@ -248,6 +272,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that no other code accesses the mapped memory managed by LoLa.
 
@@ -257,6 +282,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that no other code creates shared memory segments beginning with "lola".
 
@@ -266,6 +292,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that the LoLa specific QNX Message Passing end-points are only accessed through LoLa APIs.
 
@@ -275,6 +302,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    If aragen is being used to generate LoLa interfaces, any output produced by aragen
    shall be manually reviewed for its correctness.
@@ -285,6 +313,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that neither variants nor maps are sent via LoLa.
 
@@ -294,6 +323,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    There is no guarantee on the execution time of any function call provided by LoLa.
 
@@ -303,6 +333,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    If event instance "oversubscription" is enabled. LoLa makes no warranty, that proxies/consumers
    can't suffer from data loss! It is the responsibility of the user to adapt scheduling/event-data
@@ -316,6 +347,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    All compiler settings having influence on the binary representation of data exchanged via
    mw::com/LoLa (event, field, service-method payloads) have to be identical for compilation of
@@ -327,6 +359,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    When receiving event or field data via untyped GenericProxyEvent or GenericProxyField, care has to
    be taken, when accessing the corresponding SamplePtr<void> delivered by calls to GetNewSamples():
@@ -339,6 +372,7 @@ Assumptions of Use
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    It shall be ensured that all safety relevant events/fields in the service type,
    are the same in all configurations.

@@ -16,9 +16,10 @@
 .. document:: Traceability Tooling
    :id: doc__traceability_tooling
    :status: valid
+   :version: 1
    :safety: QM
    :security: NO
-   :realizes: wp__requirements_proc_tool
+   :realizes: wp__requirements_proc_tool[version==1]
 
 Traceability Tooling
 ####################

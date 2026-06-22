@@ -22,6 +22,7 @@ Tracing Architecture
    :security: YES
    :safety: QM
    :status: valid
+   :version: 1
    :provides: logic_arc_int__tracing__tracing
 
 
@@ -30,6 +31,7 @@ Tracing Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    .. needarch::
       :scale: 50
@@ -42,4 +44,5 @@ Tracing Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__tracing__tracing

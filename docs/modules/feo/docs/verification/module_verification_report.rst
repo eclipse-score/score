@@ -15,9 +15,10 @@
 .. document:: FEO Module Verification Report
    :id: doc__feo_verification_report
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__verification_module_ver_report
+   :realizes: wp__verification_module_ver_report[version==1]
    :tags: module_template
 
 FEO Module Verification Report

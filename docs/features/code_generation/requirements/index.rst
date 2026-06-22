@@ -22,8 +22,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__dev_experience__idl_support
+   :derived_from: stkh_req__dev_experience__idl_support[version==1]
    :status: valid
+   :version: 1
 
    The system shall be modeled in YAML-syntax files. This means the system should
    use YAML due to the availability of parsers in Rust and C++. The
@@ -34,8 +35,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Unit Instances shall be considered to have failed
    permanently if they fail to initialize.
@@ -45,8 +47,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Unit instances shall have onInit and onShutdown
    called only once during their lifecycle.
@@ -56,8 +59,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Units shall have a predetermined number of threads
    if they spawn any threads at all. Software Compute Units shall not
@@ -68,8 +72,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Units shall handle any exceptions in dependency
    libraries completely inside the standard interface functions. Software Compute Units shall signal an error by returning an Error that contains an ErrorCode other than Success. Software Compute Units shall terminate execution if unhandled exceptions occur.
@@ -79,8 +84,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Units shall return an Error with a suitable
    Errorcode and follow the defined error propagation mechanism to
@@ -92,8 +98,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Units shall not interfere with their external
    lifecycle management by calling their own interface methods
@@ -106,8 +113,9 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Units shall signal transient errors as a failure of
    onUpdate. The responsible Software Compute Unit shall trigger
@@ -119,7 +127,8 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism
+   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
    :status: valid
+   :version: 1
 
    Software Compute Units shall be considered to have failed permanently if they return a failure on onReset.

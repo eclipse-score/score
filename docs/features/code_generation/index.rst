@@ -20,10 +20,11 @@ Code Generation
 .. document:: Code-Generation
    :id: doc__code_generation
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 .. toctree::
    :maxdepth: 1

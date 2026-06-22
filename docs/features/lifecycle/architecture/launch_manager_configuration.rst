@@ -67,7 +67,8 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
    .. uml:: _assets/config_params_static.puml
       :scale: 50

@@ -15,10 +15,11 @@
 .. document:: Documentation Management Plan
    :id: doc__documentation_mgt_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: wp__document_mgt_plan
+   :realizes: wp__document_mgt_plan[version==1]
 
 Documentation Management Plan
 -----------------------------

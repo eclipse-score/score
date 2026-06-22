@@ -15,11 +15,12 @@
 .. doc_tool:: gcc
    :id: doc_tool__gcc
    :status: draft
-   :version: 12.x
+   :version: 1
+   :tool_version: 12.x
    :tcl: HIGH
    :safety_affected: NO
    :security_affected: NO
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_compiler
 
 GCC Compiler Verification Report

@@ -18,9 +18,10 @@ Generic Assumptions of Use
 .. document:: Operating System Assumptions of Use
    :id: doc__os_aou
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
 
 .. aou_req:: No Root Privileges
    :id: aou_req__os__nonroot
@@ -28,6 +29,7 @@ Generic Assumptions of Use
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    No process running on the SW-platform shall request root privileges.
 
@@ -39,6 +41,7 @@ Generic Assumptions of Use
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    If an application or SW-platform component is safety relevant and uses OS functions, it shall only use the safe functions.
 
@@ -51,6 +54,7 @@ Generic Assumptions of Use
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    All components shall only use the public API of the OS components.
 
@@ -60,6 +64,7 @@ Generic Assumptions of Use
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    All components should prefer the use of C++ standard lib over the C lib to call a functionality.
    If C lib must be used, it shall not be mixed with C++ lib for the same functionality.
@@ -70,6 +75,7 @@ Generic Assumptions of Use
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    All components shall only use the privileges that are indispensable for their function.
 

@@ -20,18 +20,20 @@ Requirements
 .. document:: IPC Requirements
    :id: doc__ipc_requirements
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_feat
+   :realizes: wp__requirements_feat[version==1]
 
 .. feat_req:: Zero-Copy Approach
    :id: feat_req__ipc__zero_copy
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_data[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    IPC communication shall be possible without copying to-be-transferred data.
 
@@ -40,9 +42,10 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__inter_process[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The IPC binding shall ensure confidentiality of its communication.
 
@@ -51,9 +54,10 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__inter_process[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The IPC binding shall ensure integrity of its communication.
 
@@ -62,9 +66,10 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__inter_process[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per
    criticality level.

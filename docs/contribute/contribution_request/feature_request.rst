@@ -19,9 +19,10 @@ Feature Request Guideline
 .. document:: Feature Request Guideline
   :id: doc__feature_request_guideline
   :status: valid
+  :version: 1
   :safety: QM
   :security: NO
-  :realizes: wp__training_path
+  :realizes: wp__training_path[version==1]
 
 This Feature Request Guideline is a "How-To for Dummies" for proposing/contributing a new feature or changes to an existing feature.
 This Guideline is based on or references following documents:

@@ -15,9 +15,10 @@
 .. document:: FEO Component Architecture
    :id: doc__component_feo_architecture
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__component_arch
+   :realizes: wp__component_arch[version==1]
    :tags: component_feo
 
 FEO Component Architecture
@@ -63,15 +64,17 @@ Static Architecture
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :belongs_to: feat__feo
+  :version: 1
+  :belongs_to: feat__feo[version==1]
 
 .. comp_arc_sta:: Static Architecture
   :id: comp_arc_sta__feo__main
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :belongs_to: comp__feo_main
-  :fulfils: comp_req__feo__application
+  :version: 1
+  :belongs_to: comp__feo_main[version==1]
+  :fulfils: comp_req__feo__application[version==1]
 
 
   .. uml:: _assets/stat_arch.puml
@@ -86,9 +89,10 @@ Dynamic Architecture
   :id: comp_arc_dyn__feo__main
   :security: YES
   :safety: ASIL_B
-  :fulfils: comp_req__feo__application, comp_req__feo__application_lifecycle, comp_req__feo__scheduler, comp_req__feo__task_chain, comp_req__feo__agent, comp_req__feo__activity_init, comp_req__feo__activitiy_step, comp_req__feo__activity_shutdown
+  :fulfils: comp_req__feo__application[version==1], comp_req__feo__application_lifecycle[version==1], comp_req__feo__scheduler[version==1], comp_req__feo__task_chain[version==1], comp_req__feo__agent[version==1], comp_req__feo__activity_init[version==1], comp_req__feo__activitiy_step[version==1], comp_req__feo__activity_shutdown[version==1]
   :status: valid
-  :belongs_to: comp__feo_main
+  :version: 1
+  :belongs_to: comp__feo_main[version==1]
 
   The actual dynamic call sequence during the execution of a FEO application depends on the distribution
   of activities to processes as well as on the activity dependency graph defining the task chain.
@@ -111,7 +115,8 @@ Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: comp_req__feo__application, comp_req__feo__task_chain, comp_req__feo__comp_cfg, comp_req__feo__act_map_cfg
+  :version: 1
+  :fulfils: comp_req__feo__application[version==1], comp_req__feo__task_chain[version==1], comp_req__feo__comp_cfg[version==1], comp_req__feo__act_map_cfg[version==1]
   :language: rust
 
   See static architecture.
@@ -122,7 +127,8 @@ Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: comp_req__feo__application, comp_req__feo__task_chain, comp_req__feo__comp_cfg, comp_req__feo__act_map_cfg
+  :version: 1
+  :fulfils: comp_req__feo__application[version==1], comp_req__feo__task_chain[version==1], comp_req__feo__comp_cfg[version==1], comp_req__feo__act_map_cfg[version==1]
   :language: rust
 
   See static architecture.
@@ -133,7 +139,8 @@ Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: comp_req__feo__application, comp_req__feo__task_chain, comp_req__feo__comp_cfg, comp_req__feo__act_map_cfg
+  :version: 1
+  :fulfils: comp_req__feo__application[version==1], comp_req__feo__task_chain[version==1], comp_req__feo__comp_cfg[version==1], comp_req__feo__act_map_cfg[version==1]
   :language: rust
 
   See static architecture.
@@ -144,7 +151,8 @@ Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: comp_req__feo__application, comp_req__feo__task_chain, comp_req__feo__comp_cfg, comp_req__feo__act_map_cfg
+  :version: 1
+  :fulfils: comp_req__feo__application[version==1], comp_req__feo__task_chain[version==1], comp_req__feo__comp_cfg[version==1], comp_req__feo__act_map_cfg[version==1]
   :language: rust
 
   See static architecture.
@@ -155,7 +163,8 @@ Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: comp_req__feo__activity
+  :version: 1
+  :fulfils: comp_req__feo__activity[version==1]
   :language: rust
 
   See static architecture.

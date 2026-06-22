@@ -24,9 +24,10 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__extensible_external, stkh_req__communication__supported_net
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__extensible_external[version==1], stkh_req__communication__supported_net[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The SOME/IP Gateway shall support an interface to plug-in a SOME/IP stack implementation.
 
@@ -35,9 +36,10 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__safe
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__safe[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The SOME/IP Gateway shall support an interface to plug-in a E2E protection service implementation.
 
@@ -46,9 +48,10 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__supported_net
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__supported_net[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The SOME/IP protocol implementation shall be fully compatible and complying with the SOME/IP protocol specification from `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_.
 
@@ -57,9 +60,10 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__supported_net
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__supported_net[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The E2E protection implementation shall be fully compatible and complying with the E2E protocol specification from `some-ip.com <https://some-ip.com/>`_.
 
@@ -68,8 +72,9 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__supported_net
-   :satisfied_by: feat__com_communication
+   :derived_from: stkh_req__communication__supported_net[version==1]
+   :satisfied_by: feat__com_communication[version==1]
    :status: valid
+   :version: 1
 
    The Service Discovery implementation shall be fully compatible and complying with the SOME/IP service discovery specification from `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_.

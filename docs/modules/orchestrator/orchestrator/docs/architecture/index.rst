@@ -18,9 +18,10 @@ Component Architecture
 .. document:: Orchestrator Architecture
    :id: doc__orchestrator_architecture
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__component_arch
+   :realizes: wp__component_arch[version==1]
    :tags: orchestration, orchestrator
 
 
@@ -70,10 +71,11 @@ The components are designed to cover the expectations from the feature architect
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :implements: logic_arc_int__orchestration__user, logic_arc_int__orchestration__deployment, logic_arc_int__orchestration__design
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
-   :consists_of: comp__orch_design_impl, comp__orch_deployment_impl
-   :belongs_to: feat__orchestration
+   :version: 1
+   :implements: logic_arc_int__orchestration__user[version==1], logic_arc_int__orchestration__deployment[version==1], logic_arc_int__orchestration__design[version==1]
+   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__communication__user[version==1]
+   :consists_of: comp__orch_design_impl[version==1], comp__orch_deployment_impl[version==1]
+   :belongs_to: feat__orchestration[version==1]
 
    .. needarch::
       :scale: 50
@@ -87,9 +89,10 @@ The components are designed to cover the expectations from the feature architect
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
-   :belongs_to: comp__orchestrator
-   :fulfils: comp_req__orchestrator__deploy
+   :version: 1
+   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__communication__user[version==1]
+   :belongs_to: comp__orchestrator[version==1]
+   :fulfils: comp_req__orchestrator__deploy[version==1]
 
    .. needarch::
       :scale: 50
@@ -120,6 +123,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 
@@ -128,6 +132,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 
@@ -136,6 +141,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 
@@ -144,6 +150,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 .. logic_arc_int_op:: into_program_manager
@@ -151,6 +158,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 .. logic_arc_int_op:: get_programs
@@ -158,6 +166,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 .. logic_arc_int_op:: get_shutdown_notifier
@@ -165,6 +174,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__user
 
 .. Subcomponents
@@ -172,18 +182,20 @@ Interfaces
 .. comp:: Design
    :id: comp__orch_design_impl
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :implements: logic_arc_int__orchestration__design
-   :belongs_to: feat__orchestration
+   :implements: logic_arc_int__orchestration__design[version==1]
+   :belongs_to: feat__orchestration[version==1]
 
 .. comp:: Deployment
    :id: comp__orch_deployment_impl
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :implements: logic_arc_int__orchestration__deployment
-   :belongs_to: feat__orchestration
+   :implements: logic_arc_int__orchestration__deployment[version==1]
+   :belongs_to: feat__orchestration[version==1]
 
 .. Operations
 
@@ -192,6 +204,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__design
 
 .. logic_arc_int_op:: register_invoke_method
@@ -199,6 +212,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__design
 
 .. logic_arc_int_op:: register_event
@@ -206,6 +220,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__design
 
 .. logic_arc_int_op:: register_if_else_condition
@@ -213,6 +228,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__design
 
 .. logic_arc_int_op:: add_program
@@ -220,6 +236,7 @@ Interfaces
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__design
 
 
@@ -228,6 +245,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__deployment
 
 .. logic_arc_int_op:: bind_events_as_local
@@ -235,6 +253,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__deployment
 
 .. logic_arc_int_op:: bind_events_as_timer
@@ -242,6 +261,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__deployment
 
 .. logic_arc_int_op:: bind_invoke_to_worker
@@ -249,6 +269,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__deployment
 
 .. logic_arc_int_op:: bind_shutdown_event_as_global
@@ -256,6 +277,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__deployment
 
 .. logic_arc_int_op:: bind_shutdown_event_as_local
@@ -263,6 +285,7 @@ Interfaces
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__orchestration__deployment
 
 .. .. code-block:: rst
@@ -283,9 +306,10 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: feat_req__orchestration__obsv_trace_corr
+   :derived_from: feat_req__orchestration__obsv_trace_corr[version==1]
    :status: valid
-   :satisfied_by: comp__orchestrator
+   :version: 1
+   :satisfied_by: comp__orchestrator[version==1]
 
    In case, that there is an fault in the orchestration an ERROR message shall be logged.
 
@@ -295,9 +319,10 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: feat_req__orchestration__orch_single_deploy
+   :derived_from: feat_req__orchestration__orch_single_deploy[version==1]
    :status: valid
-   :satisfied_by: comp__orchestrator
+   :version: 1
+   :satisfied_by: comp__orchestrator[version==1]
 
    The orchestrator shall provide an design interface.
 

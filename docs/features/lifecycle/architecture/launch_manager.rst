@@ -68,7 +68,8 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
 **Operations**
 
@@ -77,6 +78,7 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__controlif
 
 
@@ -118,10 +120,11 @@ This unified approach allows external state managers to request any run target a
 .. feat_arc_dyn:: Control interface dynamic architecture activate run target
    :id: feat_arc_dyn__lifecycle__control_if_activate
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_run_target_start, feat_req__lifecycle__switch_run_targets
-   :belongs_to: feat__lifecycle
+   :fulfils: feat_req__lifecycle__control_commands[version==1], feat_req__lifecycle__request_run_target_start[version==1], feat_req__lifecycle__switch_run_targets[version==1]
+   :belongs_to: feat__lifecycle[version==1]
 
    .. uml:: _assets/control_interface_start_sequence.puml
       :scale: 50
@@ -168,7 +171,8 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__lifecycle__process_state_comm, feat_req__lifecycle__liveliness_detection
+   :version: 1
+   :fulfils: feat_req__lifecycle__process_state_comm[version==1], feat_req__lifecycle__liveliness_detection[version==1]
    :includes: logic_arc_int_op__lifecycle__run, logic_arc_int_op__lifecycle__terminate,
 
    .. needarch::
@@ -182,6 +186,7 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__lifecycle_if
 
 .. logic_arc_int_op:: terminate
@@ -189,6 +194,7 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__lifecycle_if
 
 
@@ -248,9 +254,10 @@ Dynamic Architecture
    :id: feat_arc_dyn__lifecycle__state_machine
    :security: YES
    :status: valid
+   :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_run_target_start, feat_req__lifecycle__switch_run_targets
-   :belongs_to: feat__lifecycle
+   :fulfils: feat_req__lifecycle__control_commands[version==1], feat_req__lifecycle__request_run_target_start[version==1], feat_req__lifecycle__switch_run_targets[version==1]
+   :belongs_to: feat__lifecycle[version==1]
 
    .. uml:: _assets/lifecycle_state_machine.puml
       :scale: 50
@@ -326,7 +333,8 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
    .. needarch::
       :scale: 50
@@ -341,6 +349,7 @@ Static architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__alive_if
 
 
@@ -351,10 +360,11 @@ Dynamic architecture
    :id: feat_arc_dyn__lifecycle__alive_monitoring
    :security: YES
    :status: valid
+   :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__monitoring_processes, feat_req__lifecycle__polling_interval,, feat_req__lifecycle__failure_detect
+   :fulfils: feat_req__lifecycle__monitoring_processes[version==1], feat_req__lifecycle__polling_interval[version==1], , feat_req__lifecycle__failure_detect[version==1]
    :includes:
-   :belongs_to: feat__lifecycle
+   :belongs_to: feat__lifecycle[version==1]
 
    .. uml:: _assets/alive_monitoring_dynamic.puml
       :scale: 50

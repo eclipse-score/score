@@ -15,6 +15,7 @@
 .. mod:: Logging
    :id: mod__logging
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :includes: comp__logging
@@ -22,7 +23,7 @@
 .. mod_view_sta:: Logging
    :id: mod_view_sta__logging__logging
    :includes: comp__logging
-   :belongs_to: mod__logging
+   :belongs_to: mod__logging[version==1]
 
    .. needarch::
       :scale: 50

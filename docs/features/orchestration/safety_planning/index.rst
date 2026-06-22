@@ -19,9 +19,10 @@ Feature Safety Planning
 .. document:: Orchestration Safety WPs
    :id: doc__orchestration_safety_wp
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_safety_plan
+   :realizes: wp__platform_safety_plan[version==1]
    :tags: orchestration
 
 

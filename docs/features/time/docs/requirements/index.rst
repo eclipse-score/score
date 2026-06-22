@@ -23,8 +23,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__vehicle_time_sync
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall synchronize the local clock with an external **Time Master** using the gPTP protocol (IEEE 802.1AS).
 
@@ -33,8 +34,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__vehicle_time_sync
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall synchronize the local time, see feat_req__time__vehicle_time__sync, base with **Time Master** within a defined
    precision, based on the system setup.
@@ -51,8 +53,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__vehicle_time_api
+   :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to access the synchronized vehicle time.
 
@@ -61,8 +64,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__vehicle_time_api
+   :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read the accuracy qualifier of the local synchronized time base.
 
@@ -77,8 +81,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__vehicle_time_api
+   :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read the time point qualifier of the local synchronized time base.
 
@@ -89,8 +94,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__vehicle_time_api
+   :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an access its data via specified APIs in a fast and very efficient manner,
    avoiding, if possible, kernel calls, resource manager involvement and so on.
@@ -108,8 +114,9 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__debugging
+   :derived_from: stkh_req__dev_experience__debugging[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide a mechanism to log the internal state of the synchronization process,
    to be able to debug and diagnose the synchronization process.
@@ -124,8 +131,9 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__time__absolute_time_sync
+   :derived_from: stkh_req__time__absolute_time_sync[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall support synchronization with external time sources, such as UTC time from GPS.
 
@@ -134,8 +142,9 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__time__absolute_time_api
+   :derived_from: stkh_req__time__absolute_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read the absolute time base, synchronized to external time sources.
 
@@ -144,8 +153,9 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__time__absolute_time_api
+   :derived_from: stkh_req__time__absolute_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read accuracy qualifier of the absolute time base, synchronized to external time sources.
 
@@ -169,8 +179,9 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__time__absolute_time_api
+   :derived_from: stkh_req__time__absolute_time_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read security qualifier of the absolute time base, synchronized to external time sources.
 
@@ -186,8 +197,9 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__debugging
+   :derived_from: stkh_req__dev_experience__debugging[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide a mechanism to log the internal state of the absolute time synchronization process,
    to be able to debug and diagnose the synchronization process.
@@ -200,8 +212,9 @@ Local Clock
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__high_precision_clock_api
+   :derived_from: stkh_req__time__high_precision_clock_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read the high precision clock in nanoseconds precision.
 
@@ -214,8 +227,9 @@ Local Clock
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__monotonic_clock_api
+   :derived_from: stkh_req__time__monotonic_clock_api[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide an API to read monotonic, not adjustable clock value.
 
@@ -227,8 +241,9 @@ Testability
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__mockup_public_apis
+   :derived_from: stkh_req__dev_experience__mockup_public_apis[version==1]
    :status: valid
+   :version: 1
 
    The **score::time feature** shall provide support for mocking its public interfaces, enabling unit,
    component and integration testing of applications.

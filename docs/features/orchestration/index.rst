@@ -21,9 +21,10 @@ Orchestration (v0.5 beta)
 .. document:: Orchestration
    :id: doc__orchestration
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
    :tags: feature_request, change_management, orchestration
 
 

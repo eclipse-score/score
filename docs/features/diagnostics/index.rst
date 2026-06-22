@@ -20,10 +20,11 @@ Diagnostic and Fault Management
 .. document:: Diagnostics
    :id: doc__diagnostics
    :status: draft
+   :version: 1
    :safety: QM
    :security: YES
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

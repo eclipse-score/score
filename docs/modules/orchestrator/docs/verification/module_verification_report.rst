@@ -18,9 +18,10 @@ Verification Report
 .. document:: Orchestrator Verification Report
    :id: doc__orchestrator_verification_report
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__verification_module_ver_report
+   :realizes: wp__verification_module_ver_report[version==1]
    :tags: orchestrator
 
 

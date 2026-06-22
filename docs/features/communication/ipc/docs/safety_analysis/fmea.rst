@@ -19,9 +19,10 @@ FMEA (Failure Modes and Effects Analysis)
 .. document:: IPC FMEA
    :id: doc__ipc_fmea
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__feature_fmea
+   :realizes: wp__feature_fmea[version==1]
 
 
 Failure Mode List

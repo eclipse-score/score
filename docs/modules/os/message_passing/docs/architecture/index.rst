@@ -20,8 +20,9 @@ Message Passing Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__os__message_passing
-   :belongs_to: feat__os
+   :version: 1
+   :implements: logic_arc_int__os__message_passing[version==1]
+   :belongs_to: feat__os[version==1]
 
    .. needarch::
       :scale: 50
@@ -34,6 +35,7 @@ Message Passing Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    .. needarch::
       :scale: 50
@@ -46,6 +48,7 @@ Message Passing Component Architecture
    :security: YES
    :safety: QM
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__message_passing
 
 .. logic_arc_int_op:: Notify
@@ -53,6 +56,7 @@ Message Passing Component Architecture
    :security: YES
    :safety: QM
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__message_passing
 
 .. logic_arc_int_op:: RequestDisconnect
@@ -60,4 +64,5 @@ Message Passing Component Architecture
    :security: YES
    :safety: QM
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__message_passing

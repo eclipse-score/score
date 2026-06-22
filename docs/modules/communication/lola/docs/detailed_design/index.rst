@@ -18,9 +18,10 @@ Detailed Design
 .. document:: LoLa Detailed Design
    :id: doc__lola_detailed_design
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__sw_implementation
+   :realizes: wp__sw_implementation[version==1]
 
 Detailed Design for Component: LoLa
 ===================================

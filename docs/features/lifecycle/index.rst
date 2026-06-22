@@ -21,10 +21,11 @@ Lifecycle
 .. document:: Lifecycle
    :id: doc__lifecycle
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. feat:: Lifecycle
@@ -32,6 +33,7 @@ Lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :provides: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
 
 Feature Flag

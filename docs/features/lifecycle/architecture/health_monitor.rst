@@ -93,7 +93,8 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
    .. needarch::
       :scale: 50
@@ -106,6 +107,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__alive_if
 
 .. logic_arc_int_op:: configure_maximum_time
@@ -113,6 +115,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: link_condition
@@ -120,6 +123,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: mark_start
@@ -127,6 +131,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: mark_end
@@ -134,6 +139,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: on_timer_expiry
@@ -141,6 +147,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: enable_monitoring
@@ -148,6 +155,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: disable_monitoring
@@ -155,6 +163,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: check_configuration
@@ -162,6 +171,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 
@@ -175,9 +185,10 @@ Dynamic Architecture
    :id: feat_arc_dyn__lifecycle__app_health_moni
    :security: YES
    :status: invalid
+   :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__process_monitoring
-   :belongs_to: feat__lifecycle
+   :fulfils: feat_req__lifecycle__process_monitoring[version==1]
+   :belongs_to: feat__lifecycle[version==1]
 
    .. uml:: _assets/application_health_monitoring_dynamic.puml
       :scale: 50
@@ -226,7 +237,8 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
    .. needarch::
       :scale: 50
@@ -239,6 +251,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: add_exit_point
@@ -246,6 +259,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: add_allowed_transition
@@ -253,6 +267,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: link_condition
@@ -260,6 +275,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: record_checkpoint
@@ -267,6 +283,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: enable
@@ -274,6 +291,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: disable
@@ -281,6 +299,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: verify
@@ -288,6 +307,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 
@@ -298,9 +318,10 @@ Dynamic Architecture
    :id: feat_arc_dyn__lifecycle__app_ctrl_flow_moni
    :security: YES
    :status: invalid
+   :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__process_monitoring
-   :belongs_to: feat__lifecycle
+   :fulfils: feat_req__lifecycle__process_monitoring[version==1]
+   :belongs_to: feat__lifecycle[version==1]
 
    .. uml:: _assets/logical_sup.puml
       :scale: 50

@@ -18,9 +18,10 @@ Requirements
 .. document:: Executor Requirements
    :id: doc__executor_requirements
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
    :tags: executor
 
 

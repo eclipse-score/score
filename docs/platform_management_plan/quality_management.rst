@@ -18,9 +18,10 @@ Quality Management / Platform Quality Management Plan
 .. document:: Platform Quality Management Plan
    :id: doc__platform_quality_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__qms_plan
+   :realizes: wp__qms_plan[version==1]
    :tags: platform_management
 
 Purpose

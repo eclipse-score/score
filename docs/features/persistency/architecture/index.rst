@@ -20,9 +20,10 @@ Architecture
 .. document:: Persistency KVS Feature Architecture
    :id: doc__persistency_architecture
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__feature_arch
+   :realizes: wp__feature_arch[version==1]
    :tags: persistency
 
 
@@ -31,6 +32,7 @@ Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :provides: logic_arc_int__persistency__interface
 
 
@@ -41,7 +43,8 @@ Logical Interfaces
    :id: logic_arc_int__persistency__interface
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__async_api
+   :fulfils: feat_req__persistency__async_api[version==1]
    :status: valid
+   :version: 1
 
    .. uml:: _assets/kvs_interface.puml

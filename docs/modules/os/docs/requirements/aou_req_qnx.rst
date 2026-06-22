@@ -18,9 +18,10 @@ Assumptions of Use - QNX
 .. document:: QNX Assumptions of Use
    :id: doc__os_aou_qnx
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
 
 Note: Document is draft until all relevant restrictions from the QNX safety manual(s) are included.
 
@@ -35,7 +36,7 @@ SW platform, including an argumentation why.
 
 The verification for such an AoU is done in the same way as for other requirements, i.e. if these are
 non-functional and "non-testable" then a "requirement analysis" is done as described in
-:need:`doc__component_name_req_inspection` checklist item REQ_08_02. To document this a PR is created
+:need:`doc__orchestrator_req_inspection` checklist item REQ_08_02. To document this a PR is created
 to modify the component architecture "fulfils" attribute, add the respective requirements to the
 requirements inspection checklist's scope and document findings like for other inspections.
 
@@ -45,6 +46,7 @@ requirements inspection checklist's scope and document findings like for other i
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    see QNX OsSafetyManual, expect to be verified by requirements analysis
 

@@ -15,10 +15,11 @@
 .. document:: FEO Implementation Inspection Checklist
    :id: doc__impl_inspection_component_feo
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
-   :realizes: wp__sw_implementation_inspection
+   :realizes: wp__sw_implementation_inspection[version==1]
 
 FEO Implementation Inspection Checklist
 =======================================

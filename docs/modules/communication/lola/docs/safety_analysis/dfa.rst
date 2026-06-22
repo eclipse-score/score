@@ -19,9 +19,10 @@ DFA (Dependent Failure Analysis)
 .. document:: lola DFA
    :id: doc__lola_dfa
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__sw_component_dfa
+   :realizes: wp__sw_component_dfa[version==1]
 
 
 Dependent Failure Initiators

@@ -15,11 +15,11 @@
 .. doc_tool:: clang-format
    :id: doc_tool__clang_format
    :status: evaluated
-   :version: 19.1.1
+   :tool_version: 19.1.1
    :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_static_analysis_code_quality
 
 Clang-Format Verification Report

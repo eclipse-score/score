@@ -18,9 +18,10 @@ Platform Quality Manager Election
 .. document:: Platform Quality Manager
    :id: doc__platform_quality_manager
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__qms_plan
+   :realizes: wp__qms_plan[version==1]
 
 Elected Committer(s)
 ====================

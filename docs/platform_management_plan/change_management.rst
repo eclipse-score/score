@@ -15,10 +15,11 @@
 .. document:: Change Management Plan
    :id: doc__platform_change_management_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: wp__chm_plan
+   :realizes: wp__chm_plan[version==1]
 
 .. _change_mgmt_plan:
 

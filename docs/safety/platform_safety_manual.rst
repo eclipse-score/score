@@ -19,9 +19,10 @@ Platform Safety Manual
 .. document:: Platform Safety Manual
    :id: doc__score_platform_safety_manual
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__module_safety_manual
+   :realizes: wp__module_safety_manual[version==1]
 
 
 Introduction/Scope

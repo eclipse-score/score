@@ -15,9 +15,10 @@
 .. document:: Handbook
    :id: doc__platform_handbook
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_handbook
+   :realizes: wp__platform_handbook[version==1]
    :hide:
 
 .. raw:: html

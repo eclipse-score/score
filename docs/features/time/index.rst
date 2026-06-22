@@ -20,10 +20,11 @@ Time
 .. document:: Time
    :id: doc__time
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: time, feature_request, change_management
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

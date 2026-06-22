@@ -19,9 +19,10 @@ Software Development Plan
 .. document:: Software Development Plan
    :id: doc__software_development_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__sw_development_plan
+   :realizes: wp__sw_development_plan[version==1]
    :tags: platform_management
 
 Purpose

@@ -15,9 +15,10 @@
 .. document:: FEO Component Assumptions of Use Requirements
    :id: doc__component_feo_aou_reqs
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__requirements_comp_aou
+   :realizes: wp__requirements_comp_aou[version==1]
    :tags: component_feo
 
 FEO Component Assumption of Use Requirements

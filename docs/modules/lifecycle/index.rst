@@ -30,30 +30,33 @@ Lifecycle
    :id: comp_req__lifecycle__launch
    :reqtype: Functional
    :status: invalid
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: lifecycle
-   :derived_from: feat_req__lifecycle__launch_support
-   :belongs_to: comp__lifecycle_launch_manager
+   :derived_from: feat_req__lifecycle__launch_support[version==1]
+   :belongs_to: comp__lifecycle_launch_manager[version==1]
 
    Dummy requirement
 
 .. comp:: Launch Manager
    :id: comp__lifecycle_launch_manager
    :status: valid
+   :version: 1
    :safety: ASIL_B
-   :implements: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
-   :uses: logic_arc_int__logging__logging, logic_arc_int__baselibs__json, logic_arc_int__os__unistd, logic_arc_int__lifecycle__lifecycle_if
+   :implements: logic_arc_int__lifecycle__controlif[version==1], logic_arc_int__lifecycle__alive_if[version==1]
+   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__baselibs__json[version==1], logic_arc_int__os__unistd[version==1], logic_arc_int__lifecycle__lifecycle_if[version==1]
    :security: NO
-   :belongs_to: feat__lifecycle
+   :belongs_to: feat__lifecycle[version==1]
 
 .. comp_arc_sta:: Launch Manager Static View
    :id: comp_arc_sta__lifecycle__launch_manager
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :belongs_to: comp__lifecycle_launch_manager
-   :fulfils: comp_req__lifecycle__launch
+   :belongs_to: comp__lifecycle_launch_manager[version==1]
+   :fulfils: comp_req__lifecycle__launch[version==1]
 
    .. needarch::
       :scale: 50
@@ -64,20 +67,22 @@ Lifecycle
 .. comp:: Health Monitor
    :id: comp__lifecycle_healthmonitor
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :implements: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
-   :uses: logic_arc_int__lifecycle__alive_if
-   :belongs_to: feat__lifecycle
+   :implements: logic_arc_int__lifecycle__deadline_monitor_if[version==1], logic_arc_int__lifecycle__logical_monitor_if[version==1]
+   :uses: logic_arc_int__lifecycle__alive_if[version==1]
+   :belongs_to: feat__lifecycle[version==1]
 
 .. comp_arc_sta:: Health Monitor Static View
    :id: comp_arc_sta__lifecycle__healthmonitor
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :uses: logic_arc_int__lifecycle__alive_if
-   :belongs_to: comp__lifecycle_healthmonitor
-   :fulfils: comp_req__lifecycle__launch
+   :uses: logic_arc_int__lifecycle__alive_if[version==1]
+   :belongs_to: comp__lifecycle_healthmonitor[version==1]
+   :fulfils: comp_req__lifecycle__launch[version==1]
 
    .. needarch::
       :scale: 50

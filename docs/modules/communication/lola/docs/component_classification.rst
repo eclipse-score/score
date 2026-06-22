@@ -20,9 +20,10 @@ Component Classification
 .. document:: lola Component Classification
    :id: doc__lola_comp_class
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__sw_component_class
+   :realizes: wp__sw_component_class[version==1]
 
 | Classification of lola
 |

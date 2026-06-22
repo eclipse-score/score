@@ -20,10 +20,11 @@ Communication (v0.5 beta)
 .. document:: Communication
    :id: doc__com
    :status: valid
+   :version: 1
    :tags: feature_request
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 .. toctree::
    :maxdepth: 1
@@ -31,7 +32,6 @@ Communication (v0.5 beta)
    :titlesonly:
    :hidden:
 
-   dds_gateway/index.rst
    docs/**/index
    ipc/index
    some_ip_gateway/index

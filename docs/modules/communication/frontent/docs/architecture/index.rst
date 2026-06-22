@@ -20,18 +20,20 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :implements: logic_arc_int__communication__user
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
-   :belongs_to: feat__com_communication
+   :version: 1
+   :implements: logic_arc_int__communication__user[version==1]
+   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1]
+   :belongs_to: feat__com_communication[version==1]
 
 .. comp_arc_sta:: mw::com Frontend Architecture
    :id: comp_arc_sta__com__frontend
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
-   :belongs_to: comp__com_frontend
-   :fulfils: comp_req__communication__logging
+   :version: 1
+   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1]
+   :belongs_to: comp__com_frontend[version==1]
+   :fulfils: comp_req__communication__logging[version==1]
 
    .. needarch::
       :scale: 50
@@ -44,6 +46,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: Offer Service
@@ -51,6 +54,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: Update
@@ -58,6 +62,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: Send
@@ -65,6 +70,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: StartFindService
@@ -72,6 +78,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: CreateProxy
@@ -79,6 +86,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: Subscribe
@@ -86,6 +94,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 .. logic_arc_int_op:: GetNewSamples
@@ -93,6 +102,7 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__communication__user
 
 
@@ -104,8 +114,9 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: feat_req__com__event_type
+   :derived_from: feat_req__com__event_type[version==1]
    :status: valid
-   :satisfied_by: comp__com_frontend
+   :version: 1
+   :satisfied_by: comp__com_frontend[version==1]
 
    In case, that there is no related Event Type Info source provided in shared memory for a given Event enlisted in the deployment for the proxy, an ERROR message shall be logged.

@@ -29,6 +29,7 @@ Module Documents Orchestrator
    :id: mod__orchestrator
    :includes: comp__orchestrator, comp__orch_executor
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
 

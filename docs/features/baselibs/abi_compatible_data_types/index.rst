@@ -20,10 +20,11 @@ ABI Compatible Data Types
 .. document:: ABI Compatible Data Types
    :id: doc__abi_compatible_data_types
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :tags: feature_request, change_management, abi_compatible_data_types
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

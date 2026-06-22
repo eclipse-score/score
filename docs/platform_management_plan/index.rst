@@ -15,9 +15,10 @@
 .. document:: Platform Management Plan
    :id: doc__platform_mgt_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_mgmt
+   :realizes: wp__platform_mgmt[version==1]
    :tags: platform_management
 
 Platform Management Plan

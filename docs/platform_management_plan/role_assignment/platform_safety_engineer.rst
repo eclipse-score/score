@@ -18,9 +18,10 @@ Platform Safety Engineer Election
 .. document:: Platform Safety Engineer
    :id: doc__platform_safety_engineer
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_safety_plan
+   :realizes: wp__platform_safety_plan[version==1]
 
 Elected Committer(s)
 ====================

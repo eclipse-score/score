@@ -18,9 +18,10 @@ Release Note
 .. document:: Orchestrator Release Note
    :id: doc__orchestrator_release_note
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__module_sw_release_note
+   :realizes: wp__module_sw_release_note[version==1]
    :tags: orchestrator
 
 
@@ -80,7 +81,7 @@ Release Note
 |  Performed Verification
 |  ----------------------
 |  This release note is based on the verification as documented in module verification report
-|  :need:`doc__module_name_verification_report`.
+|  :need:`doc__orchestrator_verification_report`.
 |
 | Known Issues
 | ------------

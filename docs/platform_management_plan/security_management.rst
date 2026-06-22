@@ -15,9 +15,10 @@
 .. document:: Platform Security Plan
    :id: doc__score_platform_security_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_security_plan, wp__tailoring_work_products
+   :realizes: wp__platform_security_plan[version==1], wp__tailoring_work_products[version==1]
    :tags: platform_management
 
 Security management / Platform Security Plan
@@ -320,7 +321,7 @@ Process status: Status of the workflow which "outputs" the work product, derived
 Security Management Feature Specific Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See feature tree documents (created by using :need:`doc__feature_name_security_wp`):
+See feature tree documents (created by using `doc__feature_example_security_planning_wp` in the module_template):
 
 <link to document for every feature>
 

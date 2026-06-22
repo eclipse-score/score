@@ -17,12 +17,14 @@
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    Placeholder for the external provided OS. It is expected that this feature will be used to document the requirements and dependencies of the S-CORE software platform to the operating system environment and other OS related SW components.
 
 .. mod:: OS
    :id: mod__os
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :includes: comp__os_libc, comp__os_message_passing
@@ -31,7 +33,7 @@
 .. mod_view_sta:: OS (external)
    :id: mod_view_sta__os__os
    :includes: comp__os_libc, comp__os_message_passing, comp__os_libcpp, comp__os_autosd
-   :belongs_to: mod__os
+   :belongs_to: mod__os[version==1]
 
    The module "OS" is not a part of the S-CORE SW-Platform, but it is a crucial external SW element.
    Its components are modelled in S-CORE to be able to describe dependencies of S-CORE features to this external component.
