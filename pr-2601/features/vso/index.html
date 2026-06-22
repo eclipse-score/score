@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -606,7 +606,7 @@
                   
   <section id="vehicle-service-orchestrator">
 <span id="vso-feature"></span><h1>Vehicle Service Orchestrator<a class="headerlink" href="#vehicle-service-orchestrator" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8b52f22e">
+<div class="need_container docutils container" id="SNCB-956adab2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__vso">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -626,6 +626,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>0</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
 </span></div>
@@ -658,252 +659,377 @@
 </section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>We propose adding a vehicle-specialized orchestration framework that adapts cloud-native container technologies to the in-vehicle environment.
-The Vehicle Service Orchestrator (VSO) extends cloud-native orchestration with vehicle-specific capabilities,
-enabling applications developed in the cloud to be deployed to the vehicle without modification.
-It supports explicit resource management for mixed-criticality workloads and provides execution guarantees and automatic recovery for safety-critical applications.</p>
-<p>The term “Vehicle Service Orchestrator” reflects the orchestrator’s role in managing services under the unique operational conditions of a vehicle,
-rather than simply adapting a cloud-native orchestrator.
-Unlike traditional container orchestrators designed for scalable datacenter environments,
-a vehicle-specific orchestrator must account for constrained compute budgets,
-strict isolation between workloads of differing criticality,
-and continuous operation under varying driving conditions.
-The name emphasizes that its primary purpose is to coordinate and safeguard in-vehicle services in a manner appropriate for automotive constraints,
-bridging cloud-native development models with the operational realities of the vehicle environment.</p>
-<p>The intent of this feature request is to define a high-level architecture for the Vehicle Service Orchestrator.
-The components listed throughout this document may require detailed feature requests in the future respectively.</p>
+<p>Vehicle Service Orchestrator (VSO) is a Multi-node Scenario Evidence Layer for Eclipse SDV S-CORE.</p>
+<p>VSO defines multi-node scenario contracts (pipeline chains) and subscribes to runtime/diagnostic/platform signals.
+monitors pipeline execution determinism, detects policy violations at scenario level, and correlates evidence using scenario_run_id.</p>
+<p>VSO does NOT own diagnostic fault lifecycle, does NOT decide Function Group State, and does NOT execute application lifecycle.
+VSO hands off determinism evidence packages and conditionRefs to Safety Managers for final safety decisions and approvals.
+Execution is performed by S-CORE Lifecycle.</p>
+<p><strong>Core Proposal:</strong></p>
+<ul class="simple">
+<li><p>VSO does not execute</p></li>
+<li><p>VSO does not decide</p></li>
+<li><p>VSO observes multi-node scenario pipelines</p></li>
+<li><p>VSO detects determinism policy violations</p></li>
+<li><p>VSO generates structured evidence</p></li>
+<li><p>VSO delivers evidence packages for decisions and statemanagement.</p></li>
+</ul>
+<p>Execution remains in S-CORE Lifecycle. Safety Decisions remain external to S-CORE.</p>
+<p>The intent of this feature request is to define the architecture and interfaces for the Vehicle Service Orchestrator
+as a scenario evidence layer that complements existing S-CORE Diagnostics, Lifecycle and Orchestrator components.</p>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<section id="complexity-and-platform-dependency-in-vehicle-software-deployment">
-<h3>1. Complexity and Platform Dependency in Vehicle Software Deployment<a class="headerlink" href="#complexity-and-platform-dependency-in-vehicle-software-deployment" title="Link to this heading">#</a></h3>
-<p>Current vehicle software deployment faces significant constraints due to complex multi-stage validation processes,
-platform-specific customized builds, and limited update mechanisms.
-In a typical deployment scenario, any modification to an application requires repeated validation across the development, testing, and vehicle environments,
-and each validation stage must faithfully reproduce the same execution environment.
-Integration issues frequently occur due to environment inconsistencies,
-and model-specific builds are unavoidable because each vehicle ECU uses different hardware architectures (x86, ARM, RISC-V)
-and different OS conditions (Linux distributions, kernel versions, library dependencies).</p>
-<p>During OTA updates, a full system reboot is often required, rollback capabilities are limited, and recovering from update failures is challenging.
-Version management also becomes unnecessarily complex.
-To address these challenges, vehicle-optimized orchestration technology is required—one that enables “build once, run anywhere” through container-based deployment,
-defines deployment state with a declarative Manifest, and supports automated rollout and rollback.
-A lightweight solution that accounts for limited in-vehicle resources and real-time constraints is essential.</p>
+<section id="problem-statement">
+<h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h3>
+<p>Modern SDV scenario pipelines (L3 Highway, Parking/Valet, ADAS services) span HPC, Zonal Controllers and ECUs.
+Policy based decisions become ineffective without VSO Evidences, such as decisions to switch Autonomous mode to Manual mode, or degrade to a lower ASIL level.
+Pipeline stages have timing, resource, dependency and diagnostic constraints.</p>
+<p><strong>What goes wrong without VSO:</strong></p>
+<ul class="simple">
+<li><p>Raw diagnostic data is available, but scenario-level operational evidence is not standardized</p></li>
+<li><p>Policy violation data is often lost, late, or not correlated by scenario_run_id</p></li>
+<li><p>Orchestrators may accidentally become state decision makers</p></li>
+<li><p>Diagnostic fault lifecycle and scenario policy lifecycle may be mixed</p></li>
+<li><p>Debug escalation is ad-hoc and not contract-driven</p></li>
+<li><p>Lack of structured evidence for safety decsisions and learning</p></li>
+<li><p>Fleet/cloud analysis loses context and root-cause evidence</p></li>
+<li><p>No standard for multi-node scenario evidence layer</p></li>
+<li><p>Missing determinism monitoring layer</p></li>
+</ul>
+<p><strong>Gap Analysis:</strong></p>
+<ul class="simple">
+<li><p><strong>S-CORE Diagnostics</strong> → “what happened” (raw signals, faults, logs)</p></li>
+<li><p><strong>VSO</strong> → “did multi-node pipeline break determinism ?” (scenario-level evidence)</p></li>
+<li><p><strong>OEM State Manager</strong> → “what should we do” (decision-making)</p></li>
+<li><p><strong>S-CORE Lifecycle</strong> → “execute decision” (lifecycle actions)</p></li>
+</ul>
+<p>S-CORE already has Diagnostics, Lifecycle, Orchestrator, Logging, and FEO-related building blocks.
+VSO is proposed as a scenario evidence policy layer that consumes those signals without duplicating their ownership.</p>
 </section>
-<section id="application-behavior-in-mixed-criticality-domains">
-<h3>2. Application Behavior in Mixed-Criticality Domains<a class="headerlink" href="#application-behavior-in-mixed-criticality-domains" title="Link to this heading">#</a></h3>
-<p>Vehicle software is composed of applications with variant execution requirements depending on their safety level.
-For example, an ASIL-D Automatic Emergency Braking (AEB) system requires strict timing guarantees,
-while a QM-level infotainment system can tolerate delays.
-This mixed-critical structure also applies when distributing workloads across high-performance and low-performance ECUs.</p>
-<p>Expected issues in this execution model include resource contention and inappropriate node placement between critical and non-critical applications.
-For instance, an infotainment application consuming excessive CPU resources could delay object detection in AEB or increase braking response time—posing a significant safety risk.</p>
-<p>To address these challenges, ASIL-D applications must be allocated dedicated CPU cores and memory, while QM applications should share resources.
-Furthermore, dynamic resource reallocation is necessary to ensure the execution guarantees and timing requirements of safety-critical functions when driving conditions change (e.g., urban → highway).
-Since standard cloud-native orchestration does not inherently understand ASIL concepts or guarantee prioritization for safety-critical workloads,
-a vehicle-optimized orchestrator is required.</p>
+<section id="why-vso-fits-s-core">
+<h3>Why VSO Fits S-CORE<a class="headerlink" href="#why-vso-fits-s-core" title="Link to this heading">#</a></h3>
+<p><strong>S-CORE Direction:</strong></p>
+<ul class="simple">
+<li><p>Common open-source SDV runtime foundation</p></li>
+<li><p>Modular, extensible, safety-ready stack</p></li>
+<li><p>Feature requests can propose structural changes and new functionality</p></li>
+</ul>
+<p><strong>Diagnostics Direction:</strong></p>
+<ul class="simple">
+<li><p>S-CORE Diagnostics proposes SOVD-based diagnostics</p></li>
+<li><p>Real-time fault access and advanced data handling</p></li>
+<li><p>Diagnostic feature scope</p></li>
+</ul>
+<p><strong>VSO Alignment:</strong></p>
+<p>VSO aligns with S-CORE’s feature request process by introducing a bounded, scenario operational feature
+that does not bypass safety or execution authority. VSO complements existing S-CORE components:</p>
+<ul class="simple">
+<li><p><strong>Diagnostics:</strong> VSO consumes diagnostic outputs; it does not redefine diagnostics</p></li>
+<li><p><strong>VSO:</strong> VSO generates evidence; safety managers make decisions</p></li>
+<li><p><strong>Lifecycle:</strong> VSO observes; Lifecycle executes</p></li>
+</ul>
 </section>
 </section>
 <section id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
-<section id="selection-of-a-cloud-native-orchestration-foundation">
-<h3>1. Selection of a Cloud-Native Orchestration Foundation<a class="headerlink" href="#selection-of-a-cloud-native-orchestration-foundation" title="Link to this heading">#</a></h3>
-<p>This feature is built upon cloud-native orchestration technologies that have already been validated at scale in cloud environments.
-Container orchestration systems proven in the cloud provide core capabilities such as declarative deployment, automatic recovery, and rolling updates,
-all of which can be directly applied to address the complexity and platform dependency issues found in vehicle software deployment.
-By optimizing these proven cloud technologies for the in-vehicle environment, development time can be reduced while improving overall system reliability.</p>
+<section id="multi-node-scenario-awareness">
+<h3>Multi-node Scenario Awareness<a class="headerlink" href="#multi-node-scenario-awareness" title="Link to this heading">#</a></h3>
+<p><strong>What “true multi-node awareness” actually means:</strong></p>
+<p>A system is multi-node aware only if a control entity can answer all four questions at runtime:</p>
+<ol class="arabic simple">
+<li><p>Which nodes exist right now?</p></li>
+<li><p>What is the role and capability of each node?</p></li>
+<li><p>What is the real-time health of each node (not just apps)?</p></li>
+<li><p>Can workloads be safely placed / moved / stopped across nodes?</p></li>
+</ol>
+<p>S-CORE today can only partially answer #4 inside a single node.</p>
+<p><strong>Health signals S-CORE already provides (baseline):</strong></p>
+<ol class="arabic simple">
+<li><p>Component alive / heartbeat</p></li>
+<li><p>Lifecycle state (Init, Running, Error, Terminated)</p></li>
+<li><p>Local application failures</p></li>
+<li><p>Controlled shutdown / restart hooks</p></li>
+</ol>
+<p>These are necessary, but not sufficient for multi-node decision.</p>
+<p><strong>Additional signal categories required for true multi-node awareness:</strong></p>
+<ul class="simple">
+<li><p><strong>CATEGORY A:</strong> Node Identity &amp; Topology Signals</p></li>
+<li><p><strong>CATEGORY B:</strong> Node Liveness &amp; Reachability Signals</p></li>
+<li><p><strong>CATEGORY C:</strong> Resource Availability (Node-Level)</p></li>
+<li><p><strong>CATEGORY D:</strong> Safety Capability &amp; ASIL Compatibility Signals</p></li>
+<li><p><strong>CATEGORY E:</strong> Workload Placement Feedback (Cross-Node)</p></li>
+<li><p><strong>CATEGORY F:</strong> Fault Domain &amp; Failure Propagation Signals</p></li>
+</ul>
+<p><strong>VSO Solution: Multi-node Scenario Evidence Layer</strong></p>
+<p>VSO addresses these gaps by:</p>
+<ul class="simple">
+<li><p>Defining and identifying pipeline chains per Node</p></li>
+<li><p>Monitoring end-to-end determinism</p></li>
+<li><p>Detecting and correlating violations</p></li>
+<li><p>Generating structured evidence packages</p></li>
+</ul>
+<p>OEM State / Safety Manager subscribes and receives:</p>
+<ul class="simple">
+<li><p>Violation type</p></li>
+<li><p>Affected nodes</p></li>
+<li><p>Confidence level</p></li>
+<li><p>conditionRefs for execution adaptation</p></li>
+<li><p>evidence quality metrics (freshness, completeness)</p></li>
+</ul>
 </section>
-<section id="extension-architecture-for-vehicle-specific-capabilities">
-<h3>2. Extension Architecture for Vehicle-Specific Capabilities<a class="headerlink" href="#extension-architecture-for-vehicle-specific-capabilities" title="Link to this heading">#</a></h3>
-<p>The reason we adopted an extension architecture—adding vehicle-specific capabilities instead of using the existing cloud-native orchestrator as-is—is
-the fundamental difference between vehicle and cloud environments.
-Cloud systems assume virtually infinite scalability, persistent network connectivity, and 99.9% availability,
-whereas vehicles operate under constrained resources, intermittent connectivity, 99.9999% availability requirements, and stringent real-time constraints.
-In particular, mixed-criticality management based on ASIL levels is a requirement unique to automotive systems and does not exist in cloud environments.
-Therefore, while the base orchestration features are reused, extensions such as mixed-criticality awareness, real-time scheduling,
-and vehicle-specific health checks are added.</p>
+<section id="determinism-monitoring">
+<h3>Determinism Monitoring<a class="headerlink" href="#determinism-monitoring" title="Link to this heading">#</a></h3>
+<p>VSO defines and monitors <strong>determinism contracts</strong> enabling multi-node scenarios.</p>
+<p><strong>Key Concepts:</strong></p>
+<ul class="simple">
+<li><p><strong>Multi-node Scenario:</strong> A defined pipeline chain and execution dependencies (e.g., L3 Highway: Perception → Fusion → Planning across HPC and zone nodes)</p></li>
+<li><p><strong>Determinism Contract:</strong> Constraints that ensure timing, ordering, and resource guarantees for the entire pipeline (e.g., end-to-end latency ≤ budget, stage ordering preserved, CPU &lt; 90%)</p></li>
+<li><p><strong>Determinism Evidence:</strong> Scenario-level evidence capturing violations of pipeline determinism across nodes</p></li>
+<li><p><strong>Scenario Policy:</strong> Rules for classifying evidence as OK, WATCH, WARN, VIOLATED, or RECOVERED</p></li>
+<li><p><strong>Evidence Package:</strong> Structured package delivered to OEM State Manager / Safety Manager (scenario_run_id, pipeline_id, affected_nodes, violation_type, confidence)</p></li>
+</ul>
 </section>
-<section id="declarative-manifest-based-configuration">
-<h3>3. Declarative Manifest-Based Configuration<a class="headerlink" href="#declarative-manifest-based-configuration" title="Link to this heading">#</a></h3>
-<p>Defining ASIL levels, resource allocations, and dependencies through a declarative Manifest separates the responsibilities of developers and integrators
-while reducing deployment complexity.
-In traditional workflows, developers must manually manage platform-specific build scripts, environment variables, and resource settings,
-requiring repetitive adjustments whenever the vehicle model or ECU changes.
-With a declarative Manifest, developers specify what to deploy, while the orchestrator determines how to deploy it.
-This allows developers to focus on application logic while integrators adjust only the Manifest to support diverse vehicle environments.</p>
-</section>
-<section id="portability-without-application-code-changes">
-<h3>4. Portability Without Application Code Changes<a class="headerlink" href="#portability-without-application-code-changes" title="Link to this heading">#</a></h3>
-<p>The decision to allow cloud-developed applications to be deployed to vehicles without modifying their code is driven by the need for development productivity and ecosystem utilization.
-Previously, porting a cloud application to a vehicle required manual adjustments to platform-specific library dependencies, environment variables,
-and network configurations—introducing delays and increasing the likelihood of errors.
-Container-based deployment encapsulates the application and all of its dependencies into an image, ensuring a consistent execution environment across cloud and vehicle platforms.
-The orchestrator abstracts environment-specific differences such as networking, storage, and security.
-This enables immediate reuse of cloud-validated applications and frameworks (e.g., AI inference engines, data processing pipelines) within the vehicle
-while significantly reducing integration overhead through consistent cloud-to-vehicle development environments.</p>
-</section>
-<section id="container-based-isolation-and-resource-management">
-<h3>5. Container-Based Isolation and Resource Management<a class="headerlink" href="#container-based-isolation-and-resource-management" title="Link to this heading">#</a></h3>
-<p>Managing all applications—including the Executor—within containers ensures explicit resource management and consistent runtime environments.
-Previously, the Executor existed as a Rust package with implicit and manually maintained resource allocation,
-which risked violating FEO guarantees when additional applications were introduced.
-Through container isolation, each Executor can be explicitly assigned dedicated CPU cores, memory, and GPU resources.
-cgroup and namespace isolation prevents interference from other workloads.
-Additionally, container images enable “build once, run anywhere,” providing platform independence across heterogeneous hardware architectures such as x86, ARM, and RISC-V.</p>
-</section>
-<section id="real-time-monitoring-and-automatic-recovery-mechanisms">
-<h3>6. Real-Time Monitoring and Automatic Recovery Mechanisms<a class="headerlink" href="#real-time-monitoring-and-automatic-recovery-mechanisms" title="Link to this heading">#</a></h3>
-<p>The design choice to support real-time monitoring and automated recovery of resource usage, timing metrics, and health status is essential
-due to the safety requirements and operational complexity of vehicle environments.
-Previously, when the Executor crashed or timing constraints were violated, issues were only logged and required manual investigation and restart,
-with little visibility into root causes.
-In vehicular systems, interruptions to safety-critical functions can directly affect human life, making millisecond-level fault detection and recovery indispensable.
-Periodic health checks via a Liveness Probe, timing-constraint validation using a Timing Probe, and immediate restart policies upon failure ensure
-continuity of critical functions without human intervention.
-Collecting metrics such as CPU and memory usage, per-task execution time, and timing violation counts enables both post-incident analysis and proactive prevention.</p>
+<section id="clear-boundaries">
+<h3>Clear Boundaries<a class="headerlink" href="#clear-boundaries" title="Link to this heading">#</a></h3>
+<p>VSO maintains strict boundaries to avoid conflicting with existing S-CORE components:</p>
+<p><strong>VSO Is:</strong></p>
+<ul class="simple">
+<li><p>Multi-node scenario evidence layer</p></li>
+<li><p>Pipeline determinism monitoring layer</p></li>
+<li><p>Scenario contract manager</p></li>
+<li><p>Debug/focused collection response coordinator</p></li>
+<li><p>Evidence package generator</p></li>
+<li><p>Diagnostic visibility publisher</p></li>
+<li><p>Operator/dashboard notification source</p></li>
+</ul>
+<p><strong>VSO Is Not:</strong></p>
+<ul class="simple">
+<li><p>ASIL safety decision layer</p></li>
+<li><p>Diagnostic Fault Manager</p></li>
+<li><p>DTC lifecycle owner</p></li>
+<li><p>OEM Decision Manager replacement</p></li>
+<li><p>Lifecycle/Execution replacement</p></li>
+<li><p>Container/process/resource controller</p></li>
+<li><p>Actuator/trajectory/emergency braking controller</p></li>
+</ul>
 </section>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
 <section id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
-<p>A Vehicle Service Orchestrator is a structured and declarative framework for managing the execution flow, timing constraints, and error handling of containers.
-Developers can define application control flows and resource-management policies in a platform-independent manner,
-while the orchestration automates container deployment, execution guarantees, and dynamic resource allocation.
-This clearly separates application logic from infrastructure management, enabling stable and vehicle-optimized operation.</p>
+<p>VSO is a Multi-node Scenario Evidence Layer that monitors pipeline chain determinism per node and generates evidence for state and Safety Management.</p>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p>Runtime timing (multi-node)</p></li>
+<li><p>Diagnostic data / fault status</p></li>
+<li><p>Platform resource metrics (per node)</p></li>
+</ul>
+<p><strong>VSO Processing:</strong></p>
+<ul class="simple">
+<li><p>Multi-node pipeline monitoring</p></li>
+<li><p>Determinism contract evaluation</p></li>
+<li><p>Per-node evidence correlation</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p>Determinism violation evidence package</p></li>
+<li><p>conditionRefs for execution adaptation</p></li>
+<li><p>Diagnostic/decisions event notification</p></li>
+</ul>
 </section>
 <section id="system-architecture">
 <h3>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading">#</a></h3>
-<p>The system follows a three-layer architecture specialized for in-vehicle environments:
-- <strong>API Layer:</strong> API Server Allows the user to configure(add/remove) the Manifest
-- <strong>Orchestration Layer:</strong> vehicleData FilterGateway, ActionController and StateManager coordinate workloads
-- <strong>Agent Layer:</strong> NodeAgent handles execution on each node
-- <strong>Runtime Layer:</strong> Container engine performs actual container operations</p>
-<img alt="Vehicle Service Orchestrator Architecture" src="../../_images/VSO_architecture.svg" />
 </section>
-<section id="core-components">
-<h3>Core Components<a class="headerlink" href="#core-components" title="Link to this heading">#</a></h3>
-<dl class="simple">
-<dt><strong>APIServer</strong></dt><dd><p>Interfaces with user to add or remove the manifest(scenarios)</p>
-</dd>
-<dt><strong>Vehicle Data Filtergateway</strong></dt><dd><p>Services are automatically controlled based on changes in vehicle state.</p>
-</dd>
-<dt><strong>ActionController</strong></dt><dd><p>Scenario-based workload control and real-time scheduling</p>
-</dd>
-<dt><strong>StateManager</strong></dt><dd><p>Tracking container lifecycle and managing state transitions</p>
-</dd>
-<dt><strong>NodeAgent</strong></dt><dd><p>Container execution and resource management per node</p>
-</dd>
-</dl>
+<section id="s-core-platform-architecture-with-vso-integration">
+<h3>S-CORE Platform Architecture with VSO Integration<a class="headerlink" href="#s-core-platform-architecture-with-vso-integration" title="Link to this heading">#</a></h3>
+<p>VSO is integrated as a Multi-node Evidence Layer within the Eclipse SDV S-CORE platform architecture, positioned between
+the Diagnostics module and OEM/Vehicle components. The diagram below shows the complete platform architecture with VSO’s
+position and interactions:</p>
+<img alt="Eclipse SDV S-CORE Platform Architecture with VSO Integration" class="align-center" src="../../_images/SCORE_architecture_with_VSO.svg" />
 </section>
-<section id="workload-lifecycle-management">
-<h3>Workload Lifecycle Management<a class="headerlink" href="#workload-lifecycle-management" title="Link to this heading">#</a></h3>
-</section>
-<section id="standard-command-set">
-<h3>Standard Command Set<a class="headerlink" href="#standard-command-set" title="Link to this heading">#</a></h3>
-<p>Seven essential workload commands are supported:</p>
+<section id="vso-architecture-details">
+<h3>VSO Architecture Details<a class="headerlink" href="#vso-architecture-details" title="Link to this heading">#</a></h3>
+<p>The system follows a modular architecture integrated within the S-CORE ecosystem:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">create</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pause</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">resume</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">restart</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></li>
+<li><p><strong>Data Inputs Layer:</strong> Per-node signals (Runtime Plane, Diagnostics Module, Platform Resources)</p></li>
+<li><p><strong>VSO Core Modules:</strong> Scenario Contract Management, Evidence Aggregation, Evidence Package Generation, Response Management</p></li>
+<li><p><strong>Output Layer:</strong> OEM State Manager / Safety Manager integration, S-CORE Lifecycle handoff</p></li>
 </ul>
-<p>All commands are delivered via remote procedure calls and follow a standardized response format.</p>
+<img alt="Vehicle Service Orchestrator Architecture - Multi-node Pipeline Evidence Layer" src="../../_images/VSO_architecture.svg" />
 </section>
-<section id="container-state-model">
-<h3>Container State Model<a class="headerlink" href="#container-state-model" title="Link to this heading">#</a></h3>
-<p>Containers are managed across five main states:</p>
+<section id="evidence-state-response-matrix">
+<h3>Evidence State Response Matrix<a class="headerlink" href="#evidence-state-response-matrix" title="Link to this heading">#</a></h3>
+<p>VSO classifies evidence into six states with corresponding observability and response actions:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 25.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Observability</p></th>
+<th class="head"><p>Evidence</p></th>
+<th class="head"><p>Handoff</p></th>
+<th class="head"><p>Visibility / Notify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OK</p></td>
+<td><p>NORMAL</p></td>
+<td><p>none</p></td>
+<td><p>none</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class="row-odd"><td><p>WATCH</p></td>
+<td><p>optional light observe</p></td>
+<td><p>monitor</p></td>
+<td><p>optional info</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class="row-even"><td><p>WARN</p></td>
+<td><p>FOCUSED_DEBUG 30s</p></td>
+<td><p>pre-snapshot</p></td>
+<td><p>package + condRef</p></td>
+<td><p>Dashboard WARN</p></td>
+</tr>
+<tr class="row-odd"><td><p>VIOLATED</p></td>
+<td><p>INTENSIVE_DIAG 60s</p></td>
+<td><p>freeze snapshot</p></td>
+<td><p>package + condRef + quality</p></td>
+<td><p>event + Dashboard ERROR</p></td>
+</tr>
+<tr class="row-even"><td><p>INCOMPLETE</p></td>
+<td><p>source health report</p></td>
+<td><p>mark incomplete</p></td>
+<td><p>package LOW confidence</p></td>
+<td><p>Dashboard WARN</p></td>
+</tr>
+<tr class="row-odd"><td><p>RECOVERED</p></td>
+<td><p>NORMAL</p></td>
+<td><p>archive snapshot</p></td>
+<td><p>recovery package</p></td>
+<td><p>Dashboard INFO</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<img alt="VSO Evidence State Response Matrix - Observability Escalation" class="align-center" src="../../_images/VSO_evidence_state_matrix.svg" />
+</section>
+<section id="data-flow">
+<h3>Data Flow<a class="headerlink" href="#data-flow" title="Link to this heading">#</a></h3>
+<p><strong>Per-Node Data Inputs:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Diagnostics Module:</strong> logs, fault status, debug controls</p></li>
+<li><p><strong>Platform Resource:</strong> CPU/memory, node pressure/health</p></li>
+<li><p><strong>Runtime Plane:</strong> stage timing, deadline events, lifecycle signals</p></li>
+</ol>
+<p><strong>VSO Processing:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Data Subscription:</strong> Subscribe to Diag/Platform signals per node</p></li>
+<li><p><strong>Evidence Aggregation:</strong> Correlate runtime, diagnostic, fault, log, and resource signals by scenario_run_id</p></li>
+<li><p><strong>Scenario Evidence Violation:</strong> Generate scenario-level root-cause evidence package model</p></li>
+<li><p><strong>Response Management:</strong> Execute notification and recovery actions</p></li>
+</ol>
+<p><strong>Output to Decision Layer:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>OEM State Manager / Safety Manager:</strong> Receives violation evidence package from VSO</p></li>
+<li><p><strong>Decision:</strong> OEM/Safety Manager decides (degrade / fallback / maintain)</p></li>
+<li><p><strong>Execution:</strong> Sends command to S-CORE Lifecycle</p></li>
+<li><p><strong>S-CORE Lifecycle:</strong> Executes lifecycle transition per OEM/Safety Manager decision</p></li>
+</ol>
+</section>
+<section id="integration-with-s-core-components">
+<h3>Integration with S-CORE Components<a class="headerlink" href="#integration-with-s-core-components" title="Link to this heading">#</a></h3>
+<p><strong>Relationship to S-CORE Diagnostics / OpenSOVD:</strong></p>
 <ul class="simple">
-<li><p><strong>Created:</strong> Image ready for execution</p></li>
-<li><p><strong>Running:</strong> Active execution</p></li>
-<li><p><strong>Paused:</strong> Memory preserved, execution suspended</p></li>
-<li><p><strong>Exited:</strong> Normal or error termination</p></li>
-<li><p><strong>Restarting:</strong> Automatic recovery in progress</p></li>
+<li><p><strong>Diagnostics/OpenSOVD:</strong> Raw signals (logs, faults, metrics), Fault lifecycle management, SOVD API exposure</p></li>
+<li><p><strong>VSO:</strong> Multi-node pipeline determinism evidence, Violation evidence generation, Evidence package handoff</p></li>
+<li><p><strong>OEM State Manager/Safety Manager:</strong> Decision (degrade / fallback / maintain), Entry/stay/exit evaluation</p></li>
+<li><p><strong>S-CORE Lifecycle:</strong> Application lifecycle execution</p></li>
 </ul>
-<p>Transitions between these states follow strict rules enforced by the StateManager.</p>
-</section>
-<section id="scenario-based-automation">
-<h3>Scenario-Based Automation<a class="headerlink" href="#scenario-based-automation" title="Link to this heading">#</a></h3>
-</section>
-<section id="conditional-execution-engine">
-<h3>Conditional Execution Engine<a class="headerlink" href="#conditional-execution-engine" title="Link to this heading">#</a></h3>
-<p>Services are automatically controlled based on changes in vehicle state.
-Scenario information is retrieved from a distributed key-value store, and corresponding actions are executed automatically when conditions are met.
-Integration with real-time data streams ensures immediate responsiveness.</p>
-</section>
-<section id="resource-management-and-isolation">
-<h3>Resource Management and Isolation<a class="headerlink" href="#resource-management-and-isolation" title="Link to this heading">#</a></h3>
-</section>
-<section id="container-security-isolation">
-<h3>Container Security Isolation<a class="headerlink" href="#container-security-isolation" title="Link to this heading">#</a></h3>
-<p>User identifiers, group permissions, and Linux capabilities are strictly controlled according to the principle of least privilege.
-Restricting privileged mode and applying security contexts strengthens system-level protection.</p>
-</section>
-<section id="performance-optimization">
-<h3>Performance Optimization<a class="headerlink" href="#performance-optimization" title="Link to this heading">#</a></h3>
-<p>Processor and memory usage are tracked in real time, allowing early detection of resource shortages.
-Parallel container creation, asynchronous processing, and automatic scaling optimize startup times and maximize efficiency.</p>
-</section>
-<section id="monitoring-and-recovery">
-<h3>Monitoring and Recovery<a class="headerlink" href="#monitoring-and-recovery" title="Link to this heading">#</a></h3>
-</section>
-<section id="state-monitoring">
-<h3>State Monitoring<a class="headerlink" href="#state-monitoring" title="Link to this heading">#</a></h3>
-<p>Comprehensive health checks continuously monitor:</p>
-<ul class="simple">
-<li><p>Process status</p></li>
-<li><p>Port connectivity</p></li>
-<li><p>Application-level health (Liveness Probe)</p></li>
-<li><p>Timing constraints (Timing Probe)</p></li>
-</ul>
-<p>process status, port connectivity, and application-level health.Failure recovery is automated according to restart policies.
-Failed containers are automatically restarted, and state-based corrective actions minimize operational downtime.
-Customized recovery logic is applied depending on the error type.</p>
+<p>VSO consumes diagnostic outputs; it does not redefine diagnostics.
+VSO monitors pipeline determinism and generates violation evidence.
+OEM State Manager / Safety Manager receives evidence and makes decisions.
+S-CORE Lifecycle executes decisions. VSO does not decide or execute.</p>
+<img alt="VSO Relationship to S-CORE Components - Clear Separation of Concerns" class="align-center" src="../../_images/VSO_component_relationship.svg" />
 </section>
 <section id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
 <p>The related requirements can be found in <a class="reference internal" href="requirements/index.html"><span class="doc">Requirements</span></a>.</p>
 </section>
 </section>
+<section id="value-to-eclipse-sdv-s-core">
+<h2>Value to Eclipse SDV S-CORE<a class="headerlink" href="#value-to-eclipse-sdv-s-core" title="Link to this heading">#</a></h2>
+<section id="for-developers">
+<h3>For Developers<a class="headerlink" href="#for-developers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Scenario-level root-cause evidence</p></li>
+<li><p>Evidences escalation by contract</p></li>
+<li><p>Reusable sample scenarios (L3 Highway, Parking/Valet)</p></li>
+</ul>
+</section>
+<section id="for-platform">
+<h3>For Platform<a class="headerlink" href="#for-platform" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Clear boundaries with Diagnostics/State/Lifecycle</p></li>
+<li><p>Reduced duplicate orchestration logic</p></li>
+<li><p>Reusable evidence package model</p></li>
+<li><p>Modular integration with existing S-CORE components</p></li>
+</ul>
+</section>
+<section id="for-oems-tier-1s">
+<h3>For OEMs/Tier-1s<a class="headerlink" href="#for-oems-tier-1s" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Better decision making (decisions to switch Autonomous mode to Manual mode, or degrade to a lower ASIL level.)</p></li>
+<li><p>Fleet learning readiness</p></li>
+<li><p>Operational degradation traceability</p></li>
+<li><p>Structured evidence for safety analysis</p></li>
+</ul>
+<p><strong>VSO Complements S-CORE:</strong></p>
+<ul class="simple">
+<li><p><strong>S-CORE Diagnostics:</strong> VSO turns diagnostic/runtime signals into scenario-level evidence</p></li>
+<li><p><strong>OEM State Manager:</strong> VSO delivers structured evidence instead of unstructured symptoms</p></li>
+<li><p><strong>S-CORE Lifecycle:</strong> VSO keeps execution responsibility in the lifecycle layer</p></li>
+</ul>
+</section>
+</section>
 <section id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
-<p>This feature is designed as an optional extension module that does not modify the existing S-CORE architecture.
-No changes are required to the current Executors (FEO, Lifecycle, Orchestration) or to application logic.
-Container-based deployment and resource-management features are applied only to services that require them,
-while existing process-based workloads remain fully preserved.</p>
-<p>The Manifest operates as an additional configuration layer that can be used alongside the existing Launch mechanism rather than replacing it.
-The image-delivery pipeline, data formats, and OS initialization procedures (Linux/QNX) remain unchanged.
+<ul class="simple">
+<li><p>VSO operates as a passive observer consuming existing diagnostic/runtime signals</p></li>
+<li><p>OEM State Manager integration is optional and OEM-specific</p></li>
+<li><p>VSO can operate as PerNode in virtualization scenario as well as multi node scenario</p></li>
+<li><p>Existing fault management and lifecycle workflows remain fully preserved</p></li>
+</ul>
+<p>VSO can be enabled or disabled via the feature flag without affecting existing S-CORE functionality.</p>
+<p>The image-delivery pipeline, data formats, and OS initialization procedures (Linux/QNX) remain unchanged.
 Furthermore, safety and security features complement—rather than replace—current mechanisms,
 ensuring full backward compatibility for the entire platform and all existing applications.</p>
 </section>
 <section id="security-impact">
 <h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
-<p>The introduction of a Vehicle Service Orchestrator has security implications due to its system-level capabilities and distributed nature.
-The orchestrator manages container lifecycle, resource allocation, and network access—all of which pose risks if accessed by unauthorized actors.</p>
-<p>Container isolation provides security boundaries, but misconfigured containers or privileged containers could expose the host system.
-Remote procedure calls between orchestration components introduce network attack surfaces that must be secured with mutual TLS and authentication.
+<p>The introduction of a Vehicle Service Orchestrator has security implications due to its system-level capabilities and distributed nature.</p>
+<p>Remote procedure calls between orchestration components introduce network attack surfaces that must be secured with mutual TLS and authentication.
 The distributed key-value store used for configuration must be protected against unauthorized modification.</p>
 <p>To mitigate these risks, the Vehicle Service Orchestrator shall:</p>
 <ul class="simple">
-<li><p>Enforce the principle of least privilege for all containers</p></li>
-<li><p>Restrict privileged mode and dangerous Linux capabilities</p></li>
 <li><p>Implement mutual TLS authentication for all inter-component communication</p></li>
-<li><p>Apply security contexts (SELinux, AppArmor) to containers</p></li>
 <li><p>Validate and sanitize all Manifest inputs</p></li>
 <li><p>Audit all orchestrator operations for security monitoring</p></li>
 </ul>
 <p>Since the orchestrator manages both QM and ASIL workloads, a security breach must not violate safety guarantees.
-Resource isolation mechanisms (cgroups, namespaces) must be robust enough to prevent QM workload compromises from affecting ASIL workloads.
 The orchestrator components themselves must be developed with safety-appropriate quality standards to provide FFI (Freedom From Interference) guarantees.</p>
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
 <p>The Vehicle Service Orchestrator is classified as <strong>ASIL_B</strong> due to its role in managing safety-critical workloads.</p>
 <p>While the orchestrator does not directly implement safety functions (e.g., braking, steering),
-it provides the runtime environment and resource guarantees necessary for safety-critical applications to meet their timing and reliability requirements.
+it ensure the runtime decisions and resource guarantees necessary for safety-critical applications to meet their timing and reliability requirements.
 A failure in the orchestrator’s resource allocation, timing enforcement, or automatic recovery mechanisms could indirectly impact safety by:</p>
 <ul class="simple">
 <li><p>Causing timing violations in ASIL-D applications (e.g., delayed object detection in AEB)</p></li>
@@ -915,20 +1041,14 @@ A failure in the orchestrator’s resource allocation, timing enforcement, or au
 <li><p>ASIL-level workloads are allocated dedicated, isolated resources</p></li>
 <li><p>Timing constraints are continuously validated with millisecond-level precision</p></li>
 <li><p>Automatic recovery mechanisms ensure continuity of critical functions</p></li>
-<li><p>The orchestrator enforces FFI (Freedom From Interference) between criticality levels</p></li>
 <li><p>Health checks and monitoring detect failures immediately</p></li>
 </ul>
-<p>The core orchestrator components (ActionController, StateManager, NodeAgent) must be developed according to ASIL_B quality standards.
-Safety analysis (FMEA, DFA) will be conducted to identify and mitigate potential failure modes.</p>
+<p>Safety analysis (FMEA, DFA) will be conducted to identify and mitigate potential failure modes.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
-<p>The Vehicle Service Orchestrator is built upon open-source container technologies.
-The base container runtime and orchestration concepts are freely available under permissive licenses (Apache 2.0, MIT).</p>
-<p>However, specific implementation choices may introduce license considerations:</p>
+<p>The Vehicle Service Orchestrator is built upon open-source technologies. However, specific implementation choices may introduce license considerations:</p>
 <ul class="simple">
-<li><p>Container runtime engines (e.g., containerd, runc) are typically Apache 2.0 licensed</p></li>
-<li><p>Kubernetes components (if used as a base) are Apache 2.0 licensed</p></li>
 <li><p>Linux kernel features (cgroups, namespaces) are GPL but do not affect userspace licensing</p></li>
 <li><p>Automotive-specific extensions will be developed as S-CORE components under Apache 2.0</p></li>
 </ul>
@@ -936,11 +1056,9 @@ The base container runtime and orchestration concepts are freely available under
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
-<p>For developers familiar with cloud-native technologies (Kubernetes, Docker), the Vehicle Service Orchestrator will feel familiar
-with automotive-specific extensions for ASIL levels and real-time constraints.</p>
+<p>For developers the Vehicle Service Orchestrator will feel familiar with automotive-specific extensions for ASIL levels and real-time constraints.</p>
 <p>For automotive engineers unfamiliar with containers, the following learning path is recommended:</p>
 <ol class="arabic simple">
-<li><p><strong>Container Basics:</strong> Understand container images, isolation, and resource management</p></li>
 <li><p><strong>Declarative Configuration:</strong> Learn Manifest-based deployment vs. imperative scripting</p></li>
 <li><p><strong>Mixed-Criticality Concepts:</strong> Understand ASIL_Based resource allocation and FFI</p></li>
 <li><p><strong>Orchestration Patterns:</strong> Learn automatic recovery, health checks, and state management</p></li>
@@ -948,53 +1066,18 @@ with automotive-specific extensions for ASIL levels and real-time constraints.</
 </ol>
 <p>Reference implementations, tutorials, and example Manifests will be provided to accelerate onboarding.</p>
 </section>
-<section id="rejected-ideas">
-<h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
-<section id="process-based-orchestration-without-containers">
-<h3>Process-Based Orchestration Without Containers<a class="headerlink" href="#process-based-orchestration-without-containers" title="Link to this heading">#</a></h3>
-<p>Managing workloads as native processes without container isolation was considered but rejected.
-Containers provide explicit resource boundaries, consistent runtime environments, and platform portability that are difficult to achieve with bare processes.
-The “build once, run anywhere” benefit of containers significantly outweighs the overhead of container runtime.</p>
-</section>
-<section id="full-kubernetes-deployment">
-<h3>Full Kubernetes Deployment<a class="headerlink" href="#full-kubernetes-deployment" title="Link to this heading">#</a></h3>
-<p>Deploying unmodified Kubernetes as the vehicle orchestrator was considered but rejected.
-Kubernetes assumes datacenter-scale resources, persistent network connectivity, and does not understand automotive safety concepts (ASIL levels, timing constraints).
-The resource overhead and complexity of Kubernetes are inappropriate for constrained vehicle environments.
-An automotive-optimized orchestrator provides better resource efficiency and safety integration.</p>
-</section>
-<section id="static-configuration-without-scenario-based-automation">
-<h3>Static Configuration Without Scenario-Based Automation<a class="headerlink" href="#static-configuration-without-scenario-based-automation" title="Link to this heading">#</a></h3>
-<p>Using static configuration files without dynamic scenario-based automation was considered but rejected.
-Vehicles operate in highly dynamic environments (urban vs. highway, parking vs. driving) that require runtime adaptation.
-Static configuration cannot optimize resource allocation or workload placement based on driving conditions.
-Scenario-based automation is essential for efficient mixed-criticality management.</p>
-</section>
-</section>
 <section id="open-issues">
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Define detailed Manifest schema and validation rules</p></li>
 <li><p>Specify distributed key-value store selection and configuration</p></li>
-<li><p>Determine container runtime selection (containerd vs. alternatives)</p></li>
 <li><p>Define metrics collection format and integration with S-CORE monitoring</p></li>
 <li><p>Specify integration points with existing S-CORE Lifecycle Management</p></li>
-<li><p>Determine OTA update flow for containerized workloads</p></li>
 <li><p>Define certification and qualification strategy for ASIL_B components</p></li>
 <li><p>Specify testing strategy for mixed-criticality scenarios</p></li>
-<li><p>Determine multi-ECU orchestration and cross-node communication patterns</p></li>
 <li><p>Define failure mode analysis and safety case structure</p></li>
-<li><p>Specify resource reservation strategy for different driving scenarios</p></li>
 <li><p>Determine integration with S-CORE::COM for inter-container communication</p></li>
 </ul>
-</section>
-<section id="footnotes">
-<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
-<p># <strong>***</strong>
-# .. [#v1] “Kubernetes Documentation”, Kubernetes, <a class="reference external" href="https://kubernetes.io/docs/">https://kubernetes.io/docs/</a>.
-# .. [#v2] “ISO 26262 Road vehicles — Functional safety”, ISO, <a class="reference external" href="https://www.iso.org/standard/68383.html">https://www.iso.org/standard/68383.html</a>.
-# .. [#v3] “OCI Runtime Specification”, Open Container Initiative, <a class="reference external" href="https://github.com/opencontainers/runtime-spec">https://github.com/opencontainers/runtime-spec</a>.
-# <strong>****</strong></p>
 </section>
 </section>
 
@@ -1048,34 +1131,31 @@ Scenario-based automation is essential for efficient mixed-criticality managemen
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-flag">Feature flag</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complexity-and-platform-dependency-in-vehicle-software-deployment">1. Complexity and Platform Dependency in Vehicle Software Deployment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-behavior-in-mixed-criticality-domains">2. Application Behavior in Mixed-Criticality Domains</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-vso-fits-s-core">Why VSO Fits S-CORE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-a-cloud-native-orchestration-foundation">1. Selection of a Cloud-Native Orchestration Foundation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-architecture-for-vehicle-specific-capabilities">2. Extension Architecture for Vehicle-Specific Capabilities</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declarative-manifest-based-configuration">3. Declarative Manifest-Based Configuration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portability-without-application-code-changes">4. Portability Without Application Code Changes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-based-isolation-and-resource-management">5. Container-Based Isolation and Resource Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-time-monitoring-and-automatic-recovery-mechanisms">6. Real-Time Monitoring and Automatic Recovery Mechanisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-node-scenario-awareness">Multi-node Scenario Awareness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determinism-monitoring">Determinism Monitoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clear-boundaries">Clear Boundaries</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workload-lifecycle-management">Workload Lifecycle Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-command-set">Standard Command Set</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-state-model">Container State Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-based-automation">Scenario-Based Automation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-execution-engine">Conditional Execution Engine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-management-and-isolation">Resource Management and Isolation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-security-isolation">Container Security Isolation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-optimization">Performance Optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-recovery">Monitoring and Recovery</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-monitoring">State Monitoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-platform-architecture-with-vso-integration">S-CORE Platform Architecture with VSO Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vso-architecture-details">VSO Architecture Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-state-response-matrix">Evidence State Response Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data Flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-s-core-components">Integration with S-CORE Components</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-to-eclipse-sdv-s-core">Value to Eclipse SDV S-CORE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-developers">For Developers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-platform">For Platform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-oems-tier-1s">For OEMs/Tier-1s</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
@@ -1083,14 +1163,7 @@ Scenario-based automation is essential for efficient mixed-criticality managemen
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-impact">License Impact</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#process-based-orchestration-without-containers">Process-Based Orchestration Without Containers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-kubernetes-deployment">Full Kubernetes Deployment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-configuration-without-scenario-based-automation">Static Configuration Without Scenario-Based Automation</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-issues">Open Issues</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
   </nav></div>
 

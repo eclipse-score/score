@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -539,16 +539,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Persistency (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/chklst_arc_inspection.html">Architecture Inspection Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="requirements/chklst_req_inspection.html">Persistency Requirements Inspection Checklist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/safety_analysis_fdr.html">Safety Analysis Checklist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_planning/index.html">Feature Safety Work Products List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security_planning/index.html">Feature Security Planning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security_analysis/stride.html">Persistency STRIDE</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -615,8 +607,8 @@
                 <article class="bd-article">
                   
   <section id="persistency-v0-5-beta">
-<h1>Persistency (v0.5 beta)<a class="headerlink" href="#persistency-v0-5-beta" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-ddb04f51">
+<span id="features-persistency"></span><h1>Persistency (v0.5 beta)<a class="headerlink" href="#persistency-v0-5-beta" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-5dde02da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -636,6 +628,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
 </span></div>
@@ -662,55 +655,11 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="architecture/index.html">Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="architecture/index.html#description">Description</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="architecture/index.html#rationale-behind-architecture-decomposition">Rationale Behind Architecture Decomposition</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/index.html#glossary">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/index.html#static-architecture">Static Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/index.html#dynamic-architecture">Dynamic Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/index.html#logical-interfaces">Logical Interfaces</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="architecture/chklst_arc_inspection.html">Architecture Inspection Checklist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="architecture/chklst_arc_inspection.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/chklst_arc_inspection.html#checklist">Checklist</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/index.html#aou-requirements">AoU Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/chklst_req_inspection.html">Persistency Requirements Inspection Checklist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/fmea.html#failure-mode-list">Failure Mode List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/fmea.html#fmea">FMEA</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/dfa.html#dependent-failure-initiators">Dependent Failure Initiators</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html#shared-resources">Shared resources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html#communication-between-the-two-elements">Communication between the two elements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html#shared-information-inputs">Shared information inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html#unintended-impact">Unintended impact</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="safety_analysis/dfa.html#dfa">DFA</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="safety_analysis/safety_analysis_fdr.html">Safety Analysis Checklist</a></li>
-<li class="toctree-l1"><a class="reference internal" href="safety_planning/index.html">Feature Safety Work Products List</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="safety_planning/index.html#tailoring">Tailoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_planning/index.html#safety-work-products-list">Safety Work products List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety_planning/index.html#feature-safety-package">Feature Safety Package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html#feature-documents-status">Feature Documents Status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html#feature-requirements-status">Feature Requirements Status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html#feature-aou-status">Feature AoU Status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html#feature-architecture-status">Feature Architecture Status</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="security_planning/index.html">Feature Security Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security_analysis/stride.html">Persistency STRIDE</a></li>
 </ul>
 </div>
 <section id="feature-flag">
@@ -813,7 +762,6 @@ image is installed.</p>
 development process. Key elements of it are listed in the process descriptions
 of safety management and safety analysis. In the safety analysis we will
 analyze the impact of the feature.</p>
-<p><a class="reference internal" href="safety_analysis/fmea.html#doc__persistency_fmea" title="doc__persistency_fmea"><em class="xref need">Persistency FMEA (doc__persistency_fmea)</em></a></p>
 <p>We use an iterative development process and apply results from the next steps
 back to the feature request.</p>
 <p>To ensure the freedom of interference the feature key-value storage should not
