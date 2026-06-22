@@ -1089,7 +1089,7 @@ VSO Scenario Evidence Layer
 
    The platform shall deliver evidence packages and conditionRefs for decision-making.
    
- .. stkh_req:: Scenario-level Observability
+.. stkh_req:: Scenario-level Observability
    :id: stkh_req__vso__observability
    :reqtype: Functional
    :security: YES
