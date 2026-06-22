@@ -268,34 +268,6 @@ The system follows a modular architecture integrated within the S-CORE ecosystem
 .. image:: _assets/VSO_architecture.svg
    :alt: Vehicle Service Orchestrator Architecture - Multi-node Pipeline Evidence Layer
 
-Core Components
----------------
-
-**Scenario Management**
-
-The Scenario Management module handles:
-
-- **Scenario Contract Registration:** Define scenario scope, pipeline dependencies, evidence requirements, and response policy
-- **Monitoring Server:** Subscribe to runtime/diagnostic/platform signals per node
-- **Scenario Data Collector:** Collect timing, deadline events, resource metrics, and diagnostic data
-
-**State Manager**
-
-The State Manager tracks:
-
-- **Multi-node Scenario State:** Monitor pipeline execution across nodes
-- **Policy Manager:** Evaluate determinism contracts and classify evidence states
-- **Scenario Policy Evaluator:** Apply policy rules (OK, WATCH, WARN, VIOLATED, RECOVERED)
-
-**Action Controller**
-
-The Action Controller coordinates:
-
-- **Response Management:** Observability escalation, snapshot freeze, handoff
-- **Diagnostic Event Publication:** Notify diagnostic systems of violations
-- **Evidence Package Handoff:** Deliver structured evidence to OEM State Manager / Safety Manager
-- **Dashboard Notification:** Alert operators of WARN/ERROR states
-
 Evidence State Response Matrix
 -------------------------------
 
@@ -414,7 +386,6 @@ For Platform
 
 For OEMs/Tier-1s
 ----------------
--
 - Better decision making (decisions to switch Autonomous mode to Manual mode, or degrade to a lower ASIL level.)
 - Fleet learning readiness
 - Operational degradation traceability
@@ -502,9 +473,9 @@ For developers the Vehicle Service Orchestrator will feel familiar with automoti
 For automotive engineers unfamiliar with containers, the following learning path is recommended:
 
 1. **Declarative Configuration:** Learn Manifest-based deployment vs. imperative scripting
-3. **Mixed-Criticality Concepts:** Understand ASIL_Based resource allocation and FFI
-4. **Orchestration Patterns:** Learn automatic recovery, health checks, and state management
-5. **Vehicle-Specific Adaptations:** Understand timing probes, scenario-based automation, and constrained resource management
+2. **Mixed-Criticality Concepts:** Understand ASIL_Based resource allocation and FFI
+3. **Orchestration Patterns:** Learn automatic recovery, health checks, and state management
+4. **Vehicle-Specific Adaptations:** Understand timing probes, scenario-based automation, and constrained resource management
 
 Reference implementations, tutorials, and example Manifests will be provided to accelerate onboarding.
 
@@ -524,7 +495,6 @@ Open Issues
 
 Footnotes
 =========
-# *******
-# .. [#v1] "Vehicle Service Orchestrator: A Multi-node Scenario Evidence Layer for Eclipse SDV S-CORE", Eclipse Foundation,
-# .. [#v2] "ISO 26262 Road vehicles — Functional safety", ISO, https://www.iso.org/standard/68383.html.
-# ********
+.. [#v1] "Vehicle Service Orchestrator: A Multi-node Scenario Evidence Layer for Eclipse SDV S-CORE", Eclipse Foundation,
+.. [#v2] "ISO 26262 Road vehicles — Functional safety", ISO, https://www.iso.org/standard/68383.html.
+
