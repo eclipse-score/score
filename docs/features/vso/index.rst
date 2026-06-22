@@ -246,7 +246,7 @@ System Architecture
 -------------------
 
 S-CORE Platform Architecture with VSO Integration
-------------------------------------------------
+--------------------------------------------------
 
 VSO is integrated as a Multi-node Evidence Layer within the Eclipse SDV S-CORE platform architecture, positioned between 
 the Diagnostics module and OEM/Vehicle components. The diagram below shows the complete platform architecture with VSO's 
@@ -257,7 +257,7 @@ position and interactions:
    :align: center
 
 VSO Architecture Details
------------------------
+-------------------------
 
 The system follows a modular architecture integrated within the S-CORE ecosystem:
 
@@ -491,10 +491,3 @@ Open Issues
 - Specify testing strategy for mixed-criticality scenarios
 - Define failure mode analysis and safety case structure
 - Determine integration with S-CORE::COM for inter-container communication
-
-
-Footnotes
-=========
-.. [#v1] "Vehicle Service Orchestrator: A Multi-node Scenario Evidence Layer for Eclipse SDV S-CORE", Eclipse Foundation,
-.. [#v2] "ISO 26262 Road vehicles — Functional safety", ISO, https://www.iso.org/standard/68383.html.
-
