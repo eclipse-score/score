@@ -614,7 +614,7 @@
                   
   <section id="writing-rust-code-incl-coding-guidelines">
 <h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-624c7261">
+<div class="need_container docutils container" id="SNCB-89882d22">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -667,7 +667,11 @@ apply.</p>
 Rust development in SCORE:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt><a class="reference external" href="https://saemobilus.sae.org/standards/ja1020_202603-safety-cybersecurity-recommendations-use-rust-language-critical-systems#view">JA1020_202603: Safety and Cybersecurity Recommendations for the Use of the Rust Language in Critical Systems</a></dt><dd><p>is the primary baseline for safety- and security-related Rust development and in arguing safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332. The current version of JA1020 is from March 2026 and is expected to be updated in the future, with the next version planned for late 2026. It provides a comprehensive set of recommendations for using Rust in safety-critical systems, covering topics such as language features, coding practices, and tool usage.</p>
+<dt>A safety- and cybersecurity-oriented Rust baseline is used as the primary</dt><dd><p>reference for safety- and security-related development and for arguing
+safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332.
+It provides a comprehensive set of recommendations for using Rust in
+safety-critical systems, including language features, coding practices, and
+tool usage.</p>
 </dd>
 </dl>
 </li>
@@ -678,8 +682,8 @@ desired rules.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><a class="reference external" href="https://anssi-fr.github.io/rust-guide/">Secure Rust Guidelines (unstable)</a></dt><dd><p>complement JA1020. ANSSI focuses more on process and architecture
-guidance, while JA1020 is more concrete regarding tool usage and
+<dt><a class="reference external" href="https://anssi-fr.github.io/rust-guide/">Secure Rust Guidelines (unstable)</a></dt><dd><p>complement this baseline. ANSSI focuses more on process and architecture
+guidance, while the baseline is more concrete regarding tool usage and
 enforceable checks.</p>
 </dd>
 </dl>
@@ -691,7 +695,7 @@ Linux kernel and do not provide broader static code analysis rules.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language</a></dt><dd><p>overlaps strongly with JA1020 and is therefore primarily relevant as an
+<dt><a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language</a></dt><dd><p>overlaps strongly with this baseline and is therefore primarily relevant as an
 additional cross-reference.</p>
 </dd>
 </dl>
@@ -814,34 +818,36 @@ uphold its safety requirements.</p>
 </section>
 <section id="conclusions-for-s-core">
 <h3>Conclusions for S-CORE<a class="headerlink" href="#conclusions-for-s-core" title="Link to this heading">#</a></h3>
-<p>The SAE JA1020 Appendix A.2 contains some rules and recommendations related to the automated tools that support its enforcement. The following table summarizes the coverage of these tools. Where no automated tool exists, the coverage column reflects the need for manual review, process controls, or architecture decisions.</p>
-<p>The classification follows the MISRA convention used by SAE JA1020:</p>
-<blockquote>
-<div><p>Required — Mandatory. Deviations need documented reasoning.
-Advisory — Recommended. Deviations should be documented when practical.
-Document — The decision and its reasoning must be documented regardless of outcome.</p>
-</div></blockquote>
-<p>The matrix below summarizes overall coverage per topic. The <cite>Cargo.toml</cite>
-profiles further below are practical baseline and intentionally
-contains the by JA1020 recommended subset of checks.</p>
+<p>The current baseline includes general Rust safety and security topics together
+with related rules and recommendations. The following table shows how each
+topic is captured in practice, including automated checks (by tool and tool option) and supporting
+process measures. Where no automated check exists, coverage is captured
+through manual review, process controls, or architecture decisions.</p>
+<p>The classification follows a MISRA-style convention:</p>
+<ul class="simple">
+<li><p>Required — Mandatory. Deviations need documented reasoning.</p></li>
+<li><p>Advisory — Recommended. Deviations should be documented when practical.</p></li>
+<li><p>Document — The decision and its reasoning must be documented regardless of outcome.</p></li>
+</ul>
+<p>The matrix below summarizes overall coverage for these topics. The
+<cite>Cargo.toml</cite> profiles further below provide a practical baseline and
+intentionally contain a recommended subset of checks.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 50 </span><span class="caption-text">Overlap Summary Matrix (JA1020_202603 Measures)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 50 </span><span class="caption-text">Overlap Summary Matrix (Baseline Measures)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 17.6%" />
-<col style="width: 10.3%" />
-<col style="width: 8.8%" />
-<col style="width: 7.4%" />
-<col style="width: 7.4%" />
-<col style="width: 13.2%" />
-<col style="width: 13.2%" />
-<col style="width: 16.2%" />
-<col style="width: 5.9%" />
+<col style="width: 19.0%" />
+<col style="width: 11.1%" />
+<col style="width: 9.5%" />
+<col style="width: 7.9%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 17.5%" />
+<col style="width: 6.3%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Automated (JA1020)</p></th>
-<th class="head"><p>Section</p></th>
+<th class="head"><p>Automated (Baseline)</p></th>
 <th class="head"><p>CodeQL</p></th>
 <th class="head"><p>Clippy</p></th>
 <th class="head"><p>Rustc</p></th>
@@ -856,7 +862,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.1, 13.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -878,7 +883,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.1.1, 6.2.8, 6.4.18, 13.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -900,7 +904,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -922,7 +925,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -941,7 +943,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Minimum Supported Rust Version</p></td>
 <td><p>Document, Advisory</p></td>
 <td><p>cargo plugin</p></td>
-<td><p>6.2.3</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -957,7 +958,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Shadowing style</p></td>
 <td><p>Document, Advisory</p></td>
 <td><p>Partially, clippy</p></td>
-<td><p>6.2.4, 6.3.4</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -976,7 +976,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.5</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -998,7 +997,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.6</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1017,7 +1015,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Module file naming</p></td>
 <td><p>Document, Advisory</p></td>
 <td><p>Partially</p></td>
-<td><p>6.2.7</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1036,7 +1033,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.9</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1058,7 +1054,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.10.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1077,7 +1072,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.2.10.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1099,7 +1093,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1, 6.3.1.3</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1121,7 +1114,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1140,7 +1132,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Document unsafe assumptions in Safety: clause</p></td>
 <td><p>Required</p></td>
 <td><p>clippy</p></td>
-<td><p>6.3.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1162,7 +1153,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1178,7 +1168,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Unsafe block in unsafe function</p></td>
 <td><p>Required</p></td>
 <td><p>clippy</p></td>
-<td><p>6.3.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1194,7 +1183,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Safety documentation for unsafe functions</p></td>
 <td><p>Required</p></td>
 <td><p>clippy</p></td>
-<td><p>6.3.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1210,7 +1198,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Panic documentation on functions</p></td>
 <td><p>Required</p></td>
 <td><p>clippy</p></td>
-<td><p>6.3.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1232,7 +1219,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1254,7 +1240,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1276,7 +1261,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1.4</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1295,7 +1279,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Automated contract versioning</p></td>
 <td><p>Advisory</p></td>
 <td><p>symbols</p></td>
-<td><p>6.3.1.5</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1317,7 +1300,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.1.6</p></td>
 <td><p>M</p></td>
 <td><p>M (cast_ptr_alignment, ptr_cast_constness, ref_as_ptr, transmute_ptr_to_ptr)</p></td>
 <td><p>M (invalid_reference_casting plus diagnostics)</p></td>
@@ -1330,7 +1312,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.2, 6.4.12</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1346,7 +1327,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1365,7 +1345,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.3</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1384,7 +1363,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.5</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1406,7 +1384,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.5</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1428,7 +1405,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.6</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1450,7 +1426,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.6</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1472,7 +1447,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.3.7</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1488,7 +1462,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>No nightly features</p></td>
 <td><p>Required</p></td>
 <td><p>rustc</p></td>
-<td><p>6.3.8</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1504,7 +1477,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>No wildcard in imports</p></td>
 <td><p>Required</p></td>
 <td><p>clippy</p></td>
-<td><p>6.3.9</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1523,7 +1495,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Ensure formatting and lints (e.g., in CI)</p></td>
 <td><p>Advisory</p></td>
 <td><p>rustfmt + clippy</p></td>
-<td><p>6.4.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1539,7 +1510,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>No raw identifiers</p></td>
 <td><p>Required</p></td>
 <td><p>grep</p></td>
-<td><p>6.4.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1558,7 +1528,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Rustc linter</p></td>
 <td><p>Advisory</p></td>
 <td><p>rustc</p></td>
-<td><p>6.4.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1567,7 +1536,7 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>H (JA1020-curated rustc baseline profile; extended edition/future lints enabled per toolchain support)</p></td>
+<td><p>H (curated rustc baseline profile; extended edition/future lints enabled per toolchain support)</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1577,12 +1546,11 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Clippy linter</p></td>
 <td><p>Advisory</p></td>
 <td><p>clippy</p></td>
-<td><p>6.4.3</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
 </td>
-<td><p>H (JA1020 curated warn/deny/allow clippy profile)</p></td>
+<td><p>H (curated warn/deny/allow clippy profile)</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1599,7 +1567,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.5</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1621,7 +1588,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.5.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1640,7 +1606,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.6</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1659,7 +1624,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Test coverage on generics</p></td>
 <td><p>Advisory</p></td>
 <td><p>coverage</p></td>
-<td><p>6.4.7, 10.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1678,7 +1642,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Avoid as for conversions</p></td>
 <td><p>Required</p></td>
 <td><p>clippy</p></td>
-<td><p>6.4.9</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1700,7 +1663,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.10</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1716,7 +1678,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.11</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1732,7 +1693,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Overflow checking</p></td>
 <td><p>Required</p></td>
 <td><p>rustc</p></td>
-<td><p>6.4.12</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1751,7 +1711,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.13</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1770,7 +1729,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Stack checking</p></td>
 <td><p>Required</p></td>
 <td><p>rustc</p></td>
-<td><p>6.4.13</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1789,7 +1747,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.14, 6.4.15.4</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1811,7 +1768,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.15.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1833,7 +1789,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.15.3</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1852,7 +1807,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.15.5</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1868,7 +1822,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-even"><td><p>Minimize duplicated dependencies because of versioning</p></td>
 <td><p>Required</p></td>
 <td><p>cargo</p></td>
-<td><p>6.4.16</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1887,7 +1840,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <tr class="row-odd"><td><p>Minimal scope for symbols</p></td>
 <td><p>Advisory</p></td>
 <td><p>(clippy)</p></td>
-<td><p>6.4.16</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1903,7 +1855,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.16</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1925,7 +1876,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.17</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1944,7 +1894,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.18</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -1966,7 +1915,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.19</p></td>
 <td><p>H</p></td>
 <td><ul class="simple">
 <li></li>
@@ -1985,7 +1933,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.21</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -2004,7 +1951,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.23.1</p></td>
 <td><p>M</p></td>
 <td><ul class="simple">
 <li></li>
@@ -2023,12 +1969,11 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.23.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
 </td>
-<td><p>L (no explicit lint in current JA1020 profile block)</p></td>
+<td><p>L (no explicit lint in current baseline profile block)</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -2042,7 +1987,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>6.4.23.3</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -2061,7 +2005,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>9.1</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -2080,7 +2023,6 @@ contains the by JA1020 recommended subset of checks.</p>
 <li></li>
 </ul>
 </td>
-<td><p>9.2</p></td>
 <td><ul class="simple">
 <li></li>
 </ul>
@@ -2102,14 +2044,14 @@ warnings. Additional guidelines by the Rust Community, the Rust Foundation and
 the Safety-Critical Rust Consortium are applied where applicable but not
 enforced. If possible the usage of <cite>unsafe</cite> is avoided. To keep the code
 <cite>panic</cite>-free only APIs with a proper return value should be used. The goal is
-to have coding guidelines for Rust suitable for safety-critial systems by the
+to have coding guidelines for Rust suitable for safety-critical systems by the
 Safety-Critical Rust Consortium by the end of 2026. Until that, please also
 use Slack score-rust-community channel for discussions and participation in the
 SCRC.</p>
 <p>The adaption of these guidelines will be documented in the S-CORE project
 documentation.</p>
-<div class="admonition-cargo-toml-lint-profile-ja1020-oriented-practical-baseline admonition">
-<p class="admonition-title">Cargo.toml lint profile (JA1020-oriented, practical baseline)</p>
+<div class="admonition-cargo-toml-lint-profile-safety-oriented-practical-baseline admonition">
+<p class="admonition-title">Cargo.toml lint profile (safety-oriented, practical baseline)</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo.toml</span>
 
 <span class="c1"># Rust compiler lints (rustc)</span>
@@ -2122,7 +2064,7 @@ documentation.</p>
 <span class="n">let_underscore_drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">non_exhaustive_omitted_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 
-<span class="c1"># Rustc lints recommended to evaluate as warn (JA1020)</span>
+<span class="c1"># Rustc lints recommended to evaluate as warn</span>
 <span class="n">elided_lifetimes_in_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">explicit_outlives_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">macro_use_extern_crate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
@@ -2135,7 +2077,7 @@ documentation.</p>
 <span class="n">unnameable_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">variant_size_differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 
-<span class="c1"># Edition and compatibility lint groups (JA1020 intent)</span>
+<span class="c1"># Edition and compatibility lint groups (baseline intent)</span>
 <span class="c1"># Enable rust-&lt;YEAR&gt;-* and keyword-idents-&lt;YEAR&gt; lints supported by the</span>
 <span class="c1"># pinned compiler version.</span>
 <span class="n">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span>
@@ -2186,11 +2128,11 @@ documentation.</p>
 <span class="n">implicit_return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
 <span class="n">allow_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
 
-<span class="c1"># Evaluate for helpfulness (JA1020)</span>
+<span class="c1"># Evaluate for helpfulness</span>
 <span class="n">panicking_overflow_checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">unwrap_used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 
-<span class="c1"># Recommended against because too coarse (JA1020)</span>
+<span class="c1"># Recommended against because too coarse</span>
 <span class="n">as_conversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
 
 <span class="c1"># Release profile requirement</span>
@@ -2202,8 +2144,8 @@ documentation.</p>
 </pre></div>
 </div>
 </div>
-<div class="admonition-cargo-toml-lint-profile-ja1020-oriented-strict-asil-variant admonition">
-<p class="admonition-title">Cargo.toml lint profile (JA1020-oriented, strict/ASIL variant)</p>
+<div class="admonition-cargo-toml-lint-profile-safety-oriented-strict-asil-variant admonition">
+<p class="admonition-title">Cargo.toml lint profile (safety-oriented, strict/ASIL variant)</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo.toml</span>
 
 <span class="c1"># Rust compiler lints (strict)</span>
@@ -2216,7 +2158,7 @@ documentation.</p>
 <span class="n">let_underscore_drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">non_exhaustive_omitted_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 
-<span class="c1"># Rustc lints recommended to evaluate as warn (JA1020)</span>
+<span class="c1"># Rustc lints recommended to evaluate as warn</span>
 <span class="n">elided_lifetimes_in_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">explicit_outlives_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">macro_use_extern_crate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
@@ -2229,7 +2171,7 @@ documentation.</p>
 <span class="n">unnameable_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">variant_size_differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 
-<span class="c1"># Edition and compatibility lint groups (JA1020 intent)</span>
+<span class="c1"># Edition and compatibility lint groups (baseline intent)</span>
 <span class="n">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span>
 
 <span class="c1"># Clippy lints (strict)</span>
@@ -2272,11 +2214,11 @@ documentation.</p>
 <span class="n">implicit_return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
 <span class="n">allow_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
 
-<span class="c1"># Evaluate for helpfulness (JA1020)</span>
+<span class="c1"># Evaluate for helpfulness</span>
 <span class="n">panicking_overflow_checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 <span class="n">unwrap_used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
 
-<span class="c1"># Recommended against because too coarse (JA1020)</span>
+<span class="c1"># Recommended against because too coarse</span>
 <span class="n">as_conversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
 
 <span class="c1"># Release profile requirement</span>
