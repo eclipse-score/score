@@ -37,20 +37,24 @@ Coding Guidelines
 The following coding guidelines and reference documents are relevant for
 Rust development in SCORE:
 
-* `JA1020_202603: Safety and Cybersecurity Recommendations for the Use of the Rust Language in Critical Systems <https://saemobilus.sae.org/standards/ja1020_202603-safety-cybersecurity-recommendations-use-rust-language-critical-systems#view>`_
-   is the primary baseline for safety- and security-related Rust development and in arguing safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332. The current version of JA1020 is from March 2026 and is expected to be updated in the future, with the next version planned for late 2026. It provides a comprehensive set of recommendations for using Rust in safety-critical systems, covering topics such as language features, coding practices, and tool usage.
+* A safety- and cybersecurity-oriented Rust baseline is used as the primary
+   reference for safety- and security-related development and for arguing
+   safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332.
+   It provides a comprehensive set of recommendations for using Rust in
+   safety-critical systems, including language features, coding practices, and
+   tool usage.
 * `Safety-Critical Rust Coding Guidelines <https://coding-guidelines.arewesafetycriticalyet.org/>`_
    are still under development and currently only define a subset of the
    desired rules.
 * `Secure Rust Guidelines (unstable) <https://anssi-fr.github.io/rust-guide/>`_
-   complement JA1020. ANSSI focuses more on process and architecture
-   guidance, while JA1020 is more concrete regarding tool usage and
+   complement this baseline. ANSSI focuses more on process and architecture
+   guidance, while the baseline is more concrete regarding tool usage and
    enforceable checks.
 * `Linux Kernel Rules <https://www.kernel.org/doc/Documentation/rust/coding-guidelines.rst>`_
    mainly define formatting and documentation requirements for Rust in the
    Linux kernel and do not provide broader static code analysis rules.
 * `MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language <https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf>`_
-   overlaps strongly with JA1020 and is therefore primarily relevant as an
+   overlaps strongly with this baseline and is therefore primarily relevant as an
    additional cross-reference.
 
 
@@ -175,87 +179,90 @@ uphold its safety requirements.
 Conclusions for S-CORE
 ----------------------
 
-The SAE JA1020 Appendix A.2 contains some rules and recommendations related to the automated tools that support its enforcement. The following table summarizes the coverage of these tools. Where no automated tool exists, the coverage column reflects the need for manual review, process controls, or architecture decisions.
+The current baseline includes general Rust safety and security topics together
+with related rules and recommendations. The following table shows how each
+topic is captured in practice, including automated checks (by tool and tool option) and supporting
+process measures. Where no automated check exists, coverage is captured
+through manual review, process controls, or architecture decisions.
 
-The classification follows the MISRA convention used by SAE JA1020:
+The classification follows a MISRA-style convention:
 
-    Required — Mandatory. Deviations need documented reasoning.
-    Advisory — Recommended. Deviations should be documented when practical.
-    Document — The decision and its reasoning must be documented regardless of outcome.
+*   Required — Mandatory. Deviations need documented reasoning.
+*   Advisory — Recommended. Deviations should be documented when practical.
+*   Document — The decision and its reasoning must be documented regardless of outcome.
 
-The matrix below summarizes overall coverage per topic. The `Cargo.toml`
-profiles further below are practical baseline and intentionally
-contains the by JA1020 recommended subset of checks.
+The matrix below summarizes overall coverage for these topics. The
+`Cargo.toml` profiles further below provide a practical baseline and
+intentionally contain a recommended subset of checks.
 
+.. csv-table:: Overlap Summary Matrix (Baseline Measures)
+   :header: "Name", "Type", "Automated (Baseline)", "CodeQL", "Clippy", "Rustc", "Other Tooling / Process", "Combined"
+   :widths: 24, 14, 12, 10, 18, 18, 22, 8
 
-.. csv-table:: Overlap Summary Matrix (JA1020_202603 Measures)
-   :header: "Name", "Type", "Automated (JA1020)", "Section", "CodeQL", "Clippy", "Rustc", "Other Tooling / Process", "Combined"
-   :widths: 24, 14, 12, 10, 10, 18, 18, 22, 8
-
-   "Compiler qualification", "Document, Required", "-", "6.1, 13.1", "-", "-", "-", "Process/evidence", "M"
-   "Dependency management", "Required", "-", "6.1.1, 6.2.8, 6.4.18, 13.1", "-", "-", "-", "cargo-audit, cargo-deny, cargo-vet, SBOM", "H"
-   "async/await decision", "Document, Advisory", "-", "6.2.1", "-", "-", "-", "Architecture decision record", "M"
-   "Extension trait guidelines", "Document, Advisory", "-", "6.2.2", "-", "-", "-", "Review guideline", "M"
-   "Minimum Supported Rust Version", "Document, Advisory", "cargo plugin", "6.2.3", "-", "-", "M (stable toolchain pinning, rust-version policy)", "Toolchain pinning in CI", "H"
-   "Shadowing style", "Document, Advisory", "Partially, clippy", "6.2.4, 6.3.4", "-", "M (shadow_reuse/shadow_unrelated as warn, shadow_same as allow)", "-", "Review style guide", "M"
-   "Code review environment", "Advisory", "-", "6.2.5", "-", "-", "-", "Process/tooling setup", "M"
-   "Macro review and testing strategy", "Document, Advisory", "-", "6.2.6", "-", "-", "-", "Tests, trybuild, review", "M"
-   "Module file naming", "Document, Advisory", "Partially", "6.2.7", "-", "L (no strong built-in lint)", "-", "Custom checks", "M"
-   "Default trait implementations", "Document, Advisory", "-", "6.2.9", "-", "-", "-", "Design guideline", "M"
-   "Usage of unwrap in mutex lock", "Document, Advisory", "-", "6.2.10.1", "-", "M (unwrap_used with documented exception policy)", "-", "Review policy", "M"
-   "Document undesirable but not unsafe hardware effects", "Advisory", "-", "6.2.10.2", "-", "-", "-", "Safety documentation", "M"
-   "FFI: Check values at boundary", "Required", "-", "6.3.1, 6.3.1.3", "-", "-", "-", "FFI tests, fuzzing, review", "M"
-   "Safe wrapper for unsafe interfaces", "Required", "-", "6.3.1", "-", "-", "-", "Design/review", "M"
-   "Document unsafe assumptions in Safety: clause", "Required", "clippy", "6.3.1", "-", "H (undocumented_unsafe_blocks)", "-", "-", "H"
-   "Minimal scope for unsafe", "Required", "-", "6.3.1", "-", "M (policy/review support, no single strong lint)", "-", "cargo-geiger, review", "M"
-   "Unsafe block in unsafe function", "Required", "clippy", "6.3.1", "-", "M (supporting only, project-dependent)", "H (unsafe_op_in_unsafe_fn)", "-", "H"
-   "Safety documentation for unsafe functions", "Required", "clippy", "6.3.1", "-", "M (manual documentation/review in profile baseline)", "-", "Rustdoc + review process", "M"
-   "Panic documentation on functions", "Required", "clippy", "6.3.1", "-", "H (missing_panics_doc)", "-", "-", "H"
-   "Global mutable state with sound wrapper", "Required", "-", "6.3.1.1", "-", "-", "-", "Review/design", "M"
-   "FFI rules from ANSII", "Required", "-", "6.3.1.2", "-", "-", "-", "FFI conformance process", "M"
-   "Inline assembly rules from reference", "Required", "-", "6.3.1.4", "-", "-", "-", "Manual asm review", "M"
-   "Automated contract versioning", "Advisory", "symbols", "6.3.1.5", "-", "-", "-", "Symbol/ABI diff tooling", "H"
-   "Pointer to reference conversion", "Required", "-", "6.3.1.6", "M", "M (cast_ptr_alignment, ptr_cast_constness, ref_as_ptr, transmute_ptr_to_ptr)", "M (invalid_reference_casting plus diagnostics)", "Review/tests", "M"
-   "Define proper panic handling", "Document, Required", "-", "6.3.2, 6.4.12", "-", "M (panic_in_result_fn as warn; unwrap_used and panicking_overflow_checks evaluated for usefulness)", "M (panic strategy/profile settings)", "Panic strategy in CI/profile", "H"
-   "catch_unwind only for controlled shutdown", "Required", "-", "6.3.2", "-", "L (no direct strong lint)", "-", "Review policy", "M"
-   "Deref misuse for inheritance", "Required", "-", "6.3.3", "-", "L (no direct strong lint)", "-", "Review/style", "M"
-   "Transitive interior mutability documentation", "Advisory", "-", "6.3.5", "-", "-", "-", "Documentation process", "M"
-   "No internal mutability in constants", "Required", "-", "6.3.5", "-", "H (declare_interior_mutable_const)", "-", "-", "H"
-   "Prefer cfg!() over #[cfg()]", "Required", "-", "6.3.6", "-", "-", "-", "Review/custom linting", "M"
-   "Features are additive, not exclusive", "Required", "-", "6.3.6", "-", "-", "-", "Cargo feature CI checks", "H"
-   "No deprecated interfaces from core/std", "Required", "-", "6.3.7", "-", "M (deprecated in lint profile)", "H (deprecated)", "-", "H"
-   "No nightly features", "Required", "rustc", "6.3.8", "-", "-", "H (stable compiler policy; unstable_features on nightly)", "Stable toolchain enforcement", "H"
-   "No wildcard in imports", "Required", "clippy", "6.3.9", "-", "H (wildcard_imports)", "-", "-", "H"
-   "Ensure formatting and lints (e.g., in CI)", "Advisory", "rustfmt + clippy", "6.4.1", "-", "H (CI clippy gate)", "-", "rustfmt in CI", "H"
-   "No raw identifiers", "Required", "grep", "6.4.1", "-", "-", "-", "grep/custom check", "H"
-   "Rustc linter", "Advisory", "rustc", "6.4.2", "-", "-", "H (JA1020-curated rustc baseline profile; extended edition/future lints enabled per toolchain support)", "-", "H"
-   "Clippy linter", "Advisory", "clippy", "6.4.3", "-", "H (JA1020 curated warn/deny/allow clippy profile)", "-", "-", "H"
-   "Strong typing for error detection at compile time", "Advisory", "-", "6.4.5", "-", "-", "H (type system, borrow checker, trait bounds)", "-", "H"
-   "Structures replace many arguments", "Advisory", "-", "6.4.5.2", "-", "L (style/review guidance)", "-", "Review/style", "M"
-   "Testing trait requirements on trait implementations", "Required", "-", "6.4.6", "-", "-", "-", "Tests/property tests", "H"
-   "Test coverage on generics", "Advisory", "coverage", "6.4.7, 10.1", "-", "-", "-", "Coverage tooling", "H"
-   "Avoid as for conversions", "Required", "clippy", "6.4.9", "-", "H (as_underscore, cast_lossless, cast_possible_truncation, cast_possible_wrap, cast_ptr_alignment, cast_sign_loss)", "-", "-", "H"
-   "Error/Option instead of magic values", "Advisory", "-", "6.4.10", "-", "M (partial style support)", "M (type checks support pattern, no direct rule)", "Review", "M"
-   "Resource Acquisition Is Initialization", "Required", "-", "6.4.11", "-", "-", "M (ownership and Drop semantics, no direct lint)", "Review/tests", "M"
-   "Overflow checking", "Required", "rustc", "6.4.12", "-", "-", "H (release overflow-checks enabled)", "Release profile setting", "H"
-   "Dynamic memory design", "Required", "-", "6.4.13", "-", "-", "-", "Allocator/system design checks", "M"
-   "Stack checking", "Required", "rustc", "6.4.13", "-", "-", "M (limited compiler support)", "cargo-call-stack, external analysis", "M"
-   "Concurrency system design (timing constraints)", "Required", "-", "6.4.14, 6.4.15.4", "-", "-", "-", "loom, WCET, system analysis", "M"
-   "Document cancellation safety of async functions", "Advisory", "-", "6.4.15.1", "-", "-", "-", "Documentation/review", "M"
-   "Explicit task dropping intention", "Advisory", "-", "6.4.15.3", "-", "L (let_underscore_future as supporting signal)", "-", "Runtime policy/review", "M"
-   "Planning ahead for Pin/Send", "Document, Advisory", "-", "6.4.15.5", "-", "-", "M (Send and lifetime trait-bound checks)", "Design constraints review", "M"
-   "Minimize duplicated dependencies because of versioning", "Required", "cargo", "6.4.16", "-", "-", "-", "cargo tree, cargo-deny", "H"
-   "Minimal scope for symbols", "Advisory", "(clippy)", "6.4.16", "-", "M (redundant_pub_crate as supporting signal)", "M (unreachable_pub, visibility diagnostics)", "Visibility checks/review", "M"
-   "Multi-crate design to minimize cyclic dependencies", "Advisory", "-", "6.4.16", "-", "-", "-", "cargo graph, dependency analysis", "M"
-   "Usize should only measure memory, not environment quantities", "Required", "-", "6.4.17", "-", "L (no direct strong lint)", "-", "Review/style", "M"
-   "Separation of download and build steps", "Advisory", "-", "6.4.18", "-", "-", "-", "CI sandboxing/pipeline controls", "H"
-   "Special protection of sensitive data", "Advisory", "-", "6.4.19", "H", "-", "-", "Secret handling process", "H"
-   "Marker traits for formal documentation", "Advisory", "-", "6.4.21", "-", "-", "M (trait-bound enforcement mechanism)", "Review/formal method support", "M"
-   "Lifetime and pointers", "Advisory", "-", "6.4.23.1", "M", "-", "H (borrow checker, lifetime analysis)", "-", "H"
-   "Atomic access modes", "Advisory", "-", "6.4.23.2", "-", "L (no explicit lint in current JA1020 profile block)", "-", "Review for ordering rationale", "M"
-   "Unintended matches", "Advisory", "-", "6.4.23.3", "-", "M (wildcard_enum_match_arm)", "M (non_exhaustive_omitted_patterns)", "-", "M"
-   "Logically significant return values should be #[must_use]", "Required", "-", "9.1", "-", "M (let_underscore_must_use)", "M (unused_results in profile; must_use semantics by language)", "-", "M"
-   "Complex drop logic should be called explicitly", "Required", "-", "9.2", "-", "L (no direct strong lint)", "-", "Review/tests", "M"
+   "Compiler qualification", "Document, Required", "-", "-", "-", "-", "Process/evidence", "M"
+   "Dependency management", "Required", "-", "-", "-", "-", "cargo-audit, cargo-deny, cargo-vet, SBOM", "H"
+   "async/await decision", "Document, Advisory", "-", "-", "-", "-", "Architecture decision record", "M"
+   "Extension trait guidelines", "Document, Advisory", "-", "-", "-", "-", "Review guideline", "M"
+   "Minimum Supported Rust Version", "Document, Advisory", "cargo plugin", "-", "-", "M (stable toolchain pinning, rust-version policy)", "Toolchain pinning in CI", "H"
+   "Shadowing style", "Document, Advisory", "Partially, clippy", "-", "M (shadow_reuse/shadow_unrelated as warn, shadow_same as allow)", "-", "Review style guide", "M"
+   "Code review environment", "Advisory", "-", "-", "-", "-", "Process/tooling setup", "M"
+   "Macro review and testing strategy", "Document, Advisory", "-", "-", "-", "-", "Tests, trybuild, review", "M"
+   "Module file naming", "Document, Advisory", "Partially", "-", "L (no strong built-in lint)", "-", "Custom checks", "M"
+   "Default trait implementations", "Document, Advisory", "-", "-", "-", "-", "Design guideline", "M"
+   "Usage of unwrap in mutex lock", "Document, Advisory", "-", "-", "M (unwrap_used with documented exception policy)", "-", "Review policy", "M"
+   "Document undesirable but not unsafe hardware effects", "Advisory", "-", "-", "-", "-", "Safety documentation", "M"
+   "FFI: Check values at boundary", "Required", "-", "-", "-", "-", "FFI tests, fuzzing, review", "M"
+   "Safe wrapper for unsafe interfaces", "Required", "-", "-", "-", "-", "Design/review", "M"
+   "Document unsafe assumptions in Safety: clause", "Required", "clippy", "-", "H (undocumented_unsafe_blocks)", "-", "-", "H"
+   "Minimal scope for unsafe", "Required", "-", "-", "M (policy/review support, no single strong lint)", "-", "cargo-geiger, review", "M"
+   "Unsafe block in unsafe function", "Required", "clippy", "-", "M (supporting only, project-dependent)", "H (unsafe_op_in_unsafe_fn)", "-", "H"
+   "Safety documentation for unsafe functions", "Required", "clippy", "-", "M (manual documentation/review in profile baseline)", "-", "Rustdoc + review process", "M"
+   "Panic documentation on functions", "Required", "clippy", "-", "H (missing_panics_doc)", "-", "-", "H"
+   "Global mutable state with sound wrapper", "Required", "-", "-", "-", "-", "Review/design", "M"
+   "FFI rules from ANSII", "Required", "-", "-", "-", "-", "FFI conformance process", "M"
+   "Inline assembly rules from reference", "Required", "-", "-", "-", "-", "Manual asm review", "M"
+   "Automated contract versioning", "Advisory", "symbols", "-", "-", "-", "Symbol/ABI diff tooling", "H"
+   "Pointer to reference conversion", "Required", "-", "M", "M (cast_ptr_alignment, ptr_cast_constness, ref_as_ptr, transmute_ptr_to_ptr)", "M (invalid_reference_casting plus diagnostics)", "Review/tests", "M"
+   "Define proper panic handling", "Document, Required", "-", "-", "M (panic_in_result_fn as warn; unwrap_used and panicking_overflow_checks evaluated for usefulness)", "M (panic strategy/profile settings)", "Panic strategy in CI/profile", "H"
+   "catch_unwind only for controlled shutdown", "Required", "-", "-", "L (no direct strong lint)", "-", "Review policy", "M"
+   "Deref misuse for inheritance", "Required", "-", "-", "L (no direct strong lint)", "-", "Review/style", "M"
+   "Transitive interior mutability documentation", "Advisory", "-", "-", "-", "-", "Documentation process", "M"
+   "No internal mutability in constants", "Required", "-", "-", "H (declare_interior_mutable_const)", "-", "-", "H"
+   "Prefer cfg!() over #[cfg()]", "Required", "-", "-", "-", "-", "Review/custom linting", "M"
+   "Features are additive, not exclusive", "Required", "-", "-", "-", "-", "Cargo feature CI checks", "H"
+   "No deprecated interfaces from core/std", "Required", "-", "-", "M (deprecated in lint profile)", "H (deprecated)", "-", "H"
+   "No nightly features", "Required", "rustc", "-", "-", "H (stable compiler policy; unstable_features on nightly)", "Stable toolchain enforcement", "H"
+   "No wildcard in imports", "Required", "clippy", "-", "H (wildcard_imports)", "-", "-", "H"
+   "Ensure formatting and lints (e.g., in CI)", "Advisory", "rustfmt + clippy", "-", "H (CI clippy gate)", "-", "rustfmt in CI", "H"
+   "No raw identifiers", "Required", "grep", "-", "-", "-", "grep/custom check", "H"
+   "Rustc linter", "Advisory", "rustc", "-", "-", "H (curated rustc baseline profile; extended edition/future lints enabled per toolchain support)", "-", "H"
+   "Clippy linter", "Advisory", "clippy", "-", "H (curated warn/deny/allow clippy profile)", "-", "-", "H"
+   "Strong typing for error detection at compile time", "Advisory", "-", "-", "-", "H (type system, borrow checker, trait bounds)", "-", "H"
+   "Structures replace many arguments", "Advisory", "-", "-", "L (style/review guidance)", "-", "Review/style", "M"
+   "Testing trait requirements on trait implementations", "Required", "-", "-", "-", "-", "Tests/property tests", "H"
+   "Test coverage on generics", "Advisory", "coverage", "-", "-", "-", "Coverage tooling", "H"
+   "Avoid as for conversions", "Required", "clippy", "-", "H (as_underscore, cast_lossless, cast_possible_truncation, cast_possible_wrap, cast_ptr_alignment, cast_sign_loss)", "-", "-", "H"
+   "Error/Option instead of magic values", "Advisory", "-", "-", "M (partial style support)", "M (type checks support pattern, no direct rule)", "Review", "M"
+   "Resource Acquisition Is Initialization", "Required", "-", "-", "-", "M (ownership and Drop semantics, no direct lint)", "Review/tests", "M"
+   "Overflow checking", "Required", "rustc", "-", "-", "H (release overflow-checks enabled)", "Release profile setting", "H"
+   "Dynamic memory design", "Required", "-", "-", "-", "-", "Allocator/system design checks", "M"
+   "Stack checking", "Required", "rustc", "-", "-", "M (limited compiler support)", "cargo-call-stack, external analysis", "M"
+   "Concurrency system design (timing constraints)", "Required", "-", "-", "-", "-", "loom, WCET, system analysis", "M"
+   "Document cancellation safety of async functions", "Advisory", "-", "-", "-", "-", "Documentation/review", "M"
+   "Explicit task dropping intention", "Advisory", "-", "-", "L (let_underscore_future as supporting signal)", "-", "Runtime policy/review", "M"
+   "Planning ahead for Pin/Send", "Document, Advisory", "-", "-", "-", "M (Send and lifetime trait-bound checks)", "Design constraints review", "M"
+   "Minimize duplicated dependencies because of versioning", "Required", "cargo", "-", "-", "-", "cargo tree, cargo-deny", "H"
+   "Minimal scope for symbols", "Advisory", "(clippy)", "-", "M (redundant_pub_crate as supporting signal)", "M (unreachable_pub, visibility diagnostics)", "Visibility checks/review", "M"
+   "Multi-crate design to minimize cyclic dependencies", "Advisory", "-", "-", "-", "-", "cargo graph, dependency analysis", "M"
+   "Usize should only measure memory, not environment quantities", "Required", "-", "-", "L (no direct strong lint)", "-", "Review/style", "M"
+   "Separation of download and build steps", "Advisory", "-", "-", "-", "-", "CI sandboxing/pipeline controls", "H"
+   "Special protection of sensitive data", "Advisory", "-", "H", "-", "-", "Secret handling process", "H"
+   "Marker traits for formal documentation", "Advisory", "-", "-", "-", "M (trait-bound enforcement mechanism)", "Review/formal method support", "M"
+   "Lifetime and pointers", "Advisory", "-", "M", "-", "H (borrow checker, lifetime analysis)", "-", "H"
+   "Atomic access modes", "Advisory", "-", "-", "L (no explicit lint in current baseline profile block)", "-", "Review for ordering rationale", "M"
+   "Unintended matches", "Advisory", "-", "-", "M (wildcard_enum_match_arm)", "M (non_exhaustive_omitted_patterns)", "-", "M"
+   "Logically significant return values should be #[must_use]", "Required", "-", "-", "M (let_underscore_must_use)", "M (unused_results in profile; must_use semantics by language)", "-", "M"
+   "Complex drop logic should be called explicitly", "Required", "-", "-", "L (no direct strong lint)", "-", "Review/tests", "M"
 
 
 During the S-CORE project formatting and clippy checks are enforced. Miri can
@@ -264,7 +271,7 @@ warnings. Additional guidelines by the Rust Community, the Rust Foundation and
 the Safety-Critical Rust Consortium are applied where applicable but not
 enforced. If possible the usage of `unsafe` is avoided. To keep the code
 `panic`-free only APIs with a proper return value should be used. The goal is
-to have coding guidelines for Rust suitable for safety-critial systems by the
+to have coding guidelines for Rust suitable for safety-critical systems by the
 Safety-Critical Rust Consortium by the end of 2026. Until that, please also
 use Slack score-rust-community channel for discussions and participation in the
 SCRC.
@@ -272,7 +279,7 @@ SCRC.
 The adaption of these guidelines will be documented in the S-CORE project
 documentation.
 
-.. admonition:: Cargo.toml lint profile (JA1020-oriented, practical baseline)
+.. admonition:: Cargo.toml lint profile (safety-oriented, practical baseline)
 
    .. code-block:: toml
 
@@ -288,7 +295,7 @@ documentation.
       let_underscore_drop = "warn"
       non_exhaustive_omitted_patterns = "warn"
 
-      # Rustc lints recommended to evaluate as warn (JA1020)
+      # Rustc lints recommended to evaluate as warn
       elided_lifetimes_in_paths = "warn"
       explicit_outlives_requirements = "warn"
       macro_use_extern_crate = "warn"
@@ -301,7 +308,7 @@ documentation.
       unnameable_types = "warn"
       variant_size_differences = "warn"
 
-      # Edition and compatibility lint groups (JA1020 intent)
+      # Edition and compatibility lint groups (baseline intent)
       # Enable rust-<YEAR>-* and keyword-idents-<YEAR> lints supported by the
       # pinned compiler version.
       unused = { level = "warn", priority = -1 }
@@ -352,11 +359,11 @@ documentation.
       implicit_return = "allow"
       allow_attributes = "allow"
 
-      # Evaluate for helpfulness (JA1020)
+      # Evaluate for helpfulness
       panicking_overflow_checks = "warn"
       unwrap_used = "warn"
 
-      # Recommended against because too coarse (JA1020)
+      # Recommended against because too coarse
       as_conversions = "allow"
 
       # Release profile requirement
@@ -367,7 +374,7 @@ documentation.
       # check-private-items = true
 
 
-.. admonition:: Cargo.toml lint profile (JA1020-oriented, strict/ASIL variant)
+.. admonition:: Cargo.toml lint profile (safety-oriented, strict/ASIL variant)
 
    .. code-block:: toml
 
@@ -383,7 +390,7 @@ documentation.
       let_underscore_drop = "warn"
       non_exhaustive_omitted_patterns = "warn"
 
-      # Rustc lints recommended to evaluate as warn (JA1020)
+      # Rustc lints recommended to evaluate as warn
       elided_lifetimes_in_paths = "warn"
       explicit_outlives_requirements = "warn"
       macro_use_extern_crate = "warn"
@@ -396,7 +403,7 @@ documentation.
       unnameable_types = "warn"
       variant_size_differences = "warn"
 
-      # Edition and compatibility lint groups (JA1020 intent)
+      # Edition and compatibility lint groups (baseline intent)
       unused = { level = "warn", priority = -1 }
 
       # Clippy lints (strict)
@@ -439,11 +446,11 @@ documentation.
       implicit_return = "allow"
       allow_attributes = "allow"
 
-      # Evaluate for helpfulness (JA1020)
+      # Evaluate for helpfulness
       panicking_overflow_checks = "warn"
       unwrap_used = "warn"
 
-      # Recommended against because too coarse (JA1020)
+      # Recommended against because too coarse
       as_conversions = "allow"
 
       # Release profile requirement

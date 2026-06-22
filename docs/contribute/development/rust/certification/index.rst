@@ -16,16 +16,16 @@ Certification
 ##############
 
 
-JA1020_202603 and Rust Certification
-====================================
+Rust Certification Guidance
+===========================
 
-SAE JA1020_202603 describes certification-relevant guidance for Rust and its
+This section summarizes certification-relevant guidance for Rust and its
 tooling, especially in the context of ISO 26262 and RTCA DO-178C/DO-332.
 
 Key points for practice:
 
 * Tool confidence and qualification must be explicitly defined for compiler and
-   crates (see JA1020 section 6.1).
+   crates.
 * Depending on project context and integrity level, three paths are considered:
    qualified tools, strong downstream verification that detects tool faults, or
    comprehensive confidence evidence for tool usage.
@@ -40,7 +40,7 @@ Key points for practice:
    safety cases and should not replace structured qualification or verification
    arguments.
 
-For SCORE, JA1020 should be used as baseline guidance for certification
+For SCORE, this baseline guidance should be used for certification
 strategy, while project-specific safety case evidence is documented in the
 corresponding plans and work products.
 

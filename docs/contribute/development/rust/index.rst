@@ -16,8 +16,8 @@ Rust
 ####
 
 For safety- and security-related Rust development, SCORE uses
-`SAE JA1020_202603 <https://saemobilus.sae.org/standards/ja1020_202603-safety-cybersecurity-recommendations-use-rust-language-critical-systems#view>`_
-as a baseline reference for recommended practices, in addition to the
+widely adopted safety- and cybersecurity-oriented Rust guidance as a
+baseline reference for recommended practices, in addition to the
 project-specific guidance linked below.
 
 .. toctree::
