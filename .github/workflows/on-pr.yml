@@ -23,8 +23,18 @@ jobs:
   formatting-check:
     runs-on: ubuntu-latest
     steps:
+      - name: Show workspace
+        run: |
+          pwd
+          echo "$GITHUB_WORKSPACE"
+          ls -Rali
       - name: Checkout repository
         uses: actions/checkout@v6
+      - name: Show workspace
+        run: |
+          pwd
+          echo "$GITHUB_WORKSPACE"
+          ls -Rali
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.19.0
       - name: Run formatting checks
