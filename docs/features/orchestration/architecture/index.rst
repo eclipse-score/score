@@ -18,9 +18,10 @@ Feature Architecture
 .. document:: Orchestration Architecture
    :id: doc__orchestration_architecture
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feature_arch
+   :realizes: wp__feature_arch[version==1]
    :tags: orchestration
 
 .. feat:: Orchestration
@@ -28,6 +29,7 @@ Feature Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :provides: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
 
 
@@ -68,9 +70,9 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: invalid
-   :fulfils: feat_req__orchestration__orch_static_graphs, feat_req__orchestration__exec_async_rt
+   :fulfils: feat_req__orchestration__orch_static_graphs[version==1], feat_req__orchestration__exec_async_rt[version==1]
    :includes: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
-   :belongs_to: feat__orchestration
+   :belongs_to: feat__orchestration[version==1]
 
    .. needarch::
       :scale: 50
@@ -130,7 +132,8 @@ The public API for the frontend is defined as:
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
    .. needarch::
       :scale: 50
@@ -143,6 +146,7 @@ The public API for the frontend is defined as:
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    .. needarch::
       :scale: 50
@@ -155,6 +159,7 @@ The public API for the frontend is defined as:
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
 
    .. needarch::

@@ -15,10 +15,11 @@
 .. document:: FEO Feature Architecture Inspection Checklist
    :id: doc__arch_inspection_frameworks_feo
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
-   :realizes: wp__sw_arch_verification
+   :realizes: wp__sw_arch_verification[version==1]
 
 FEO Feature Architecture Inspection Checklist
 =============================================

@@ -15,6 +15,7 @@
 .. mod:: Tracing
    :id: mod__tracing
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :includes: comp__tracing
@@ -22,7 +23,7 @@
 .. mod_view_sta:: Tracing
    :id: mod_view_sta__tracing__tracing
    :includes: comp__tracing
-   :belongs_to: mod__tracing
+   :belongs_to: mod__tracing[version==1]
 
    .. needarch::
       :scale: 50

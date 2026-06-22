@@ -19,9 +19,10 @@ FMEA (Failure Modes and Effects Analysis)
 .. document:: Orchestration FMEA
    :id: doc__orchestration_fmea
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feature_fmea
+   :realizes: wp__feature_fmea[version==1]
    :tags: orchestration
 
 

@@ -15,10 +15,11 @@
 .. document:: Software Verification Plan
    :id: doc__verification_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: wp__verification_plan
+   :realizes: wp__verification_plan[version==1]
 
 
 .. _software_verification_plan:

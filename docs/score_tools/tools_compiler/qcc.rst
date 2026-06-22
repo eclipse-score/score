@@ -15,11 +15,12 @@
 .. doc_tool:: qcc
    :id: doc_tool__qcc
    :status: draft
-   :version: 8.x
+   :version: 1
+   :tool_version: 8.x
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_compiler
 
 QCC Compiler Verification Report

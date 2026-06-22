@@ -18,9 +18,10 @@ Security & Cryptography
 .. document:: Security & Crpyto Feature Requirements
    :id: doc__security_crypto_feat_reqs
    :status: valid
+   :version: 1
    :safety: QM
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

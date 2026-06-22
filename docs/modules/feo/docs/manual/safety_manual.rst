@@ -15,9 +15,10 @@
 .. document:: FEO Module Safety Manual
    :id: doc__feo_safety_manual
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__module_safety_manual
+   :realizes: wp__module_safety_manual[version==1]
    :tags: module_feo
 
 
@@ -68,6 +69,7 @@ Assumptions on the Environment
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    The Rust core lib used to build FEO shall be qualified according to the same ASIL level as the FEO framework.
 

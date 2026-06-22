@@ -16,10 +16,11 @@
 .. document:: FEO Feature Requirements Inspection Checklist
    :id: doc__req_inspection_frameworks_feo
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
-   :realizes: wp__requirements_inspect
+   :realizes: wp__requirements_inspect[version==1]
 
 
 FEO Feature Requirement Inspection Checklist

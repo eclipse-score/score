@@ -18,9 +18,10 @@ Release Note
 .. document:: Communication Release Note
    :id: doc__communication_release_note
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__module_sw_release_note
+   :realizes: wp__module_sw_release_note[version==1]
    :tags: communication
 
 

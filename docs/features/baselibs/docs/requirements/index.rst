@@ -18,17 +18,20 @@ Requirements
 .. document:: Baselibs Requirements
    :id: doc__baselibs_requirements
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_feat
+   :realizes: wp__requirements_feat[version==1]
 
 .. feat_req:: Core Software Utilities
    :id: feat_req__baselibs__core_utilities
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall include core software utilities and common infrastructure components needed by multiple platform modules.
@@ -38,8 +41,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
+   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B for selected functionalities.
@@ -49,8 +54,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__dependability__automotive_safety
+   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dev_experience__prog_languages[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide APIs for C++, Rust, or both, depending on the requirements of consuming platform components.
@@ -60,8 +67,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__overall_goals__reuse_of_app_soft
+   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dev_experience__prog_languages[version==1], stkh_req__overall_goals__reuse_of_app_soft[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide consistent APIs while respecting language-specific idioms.
@@ -71,8 +80,10 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__overall_goals__reuse_of_app_soft
+   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__overall_goals__reuse_of_app_soft[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall be designed for maintainability and code reuse.
@@ -82,8 +93,10 @@ Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall adhere to secure coding standards to prevent vulnerabilities across platform components.
@@ -93,8 +106,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide a JSON-Library with parsing functionality.
@@ -104,8 +119,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :valid_from: v1.0.0
    :tags: inspected
 
@@ -120,8 +137,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.
@@ -131,8 +150,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide a container library offering additional container types not present in the C++ standard library.
@@ -142,8 +163,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide bit manipulation utilities for low-level operations on integral types.
@@ -153,8 +176,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
+   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
@@ -164,8 +189,10 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The baselibs shall provide a memory management library that includes utilities for shared memory operations, polymorphic memory resources, position-independent pointers, endianness conversion, and inter-process synchronization mechanisms.
@@ -175,11 +202,13 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
    :status: valid
+   :version: 1
    :tags: inspected
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 
-.. needextend:: is_external == False and "__baselibs" in id 
+.. needextend:: is_external == False and "__baselibs" in id
    :+tags: baselibs

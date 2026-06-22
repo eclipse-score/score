@@ -15,9 +15,10 @@
 .. document:: Project Management Plan
    :id: doc__project_mgt_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__project_mgt
+   :realizes: wp__project_mgt[version==1]
    :tags: platform_management
 
 .. _pmp_pm_plan:

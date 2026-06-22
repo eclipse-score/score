@@ -19,9 +19,10 @@ DFA (Dependent Failure Analysis)
 .. document:: IPC DFA
    :id: doc__ipc_dfa
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__feature_dfa
+   :realizes: wp__feature_dfa[version==1]
 
 Dependent Failure Initiators
 ----------------------------

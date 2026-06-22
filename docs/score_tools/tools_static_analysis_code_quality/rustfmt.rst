@@ -15,11 +15,11 @@
 .. doc_tool:: rustfmt
    :id: doc_tool__rustfmt
    :status: evaluated
-   :version: 1.8.0 (exact version shall be derived from qualified Rust compiler)
+   :tool_version: 1.8.0 (exact version shall be derived from qualified Rust compiler)
    :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_static_analysis_code_quality
 
 Rustfmt Verification Report

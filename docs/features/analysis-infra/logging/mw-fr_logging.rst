@@ -18,10 +18,11 @@ Feature Request
 .. document:: doc__logging
    :id: doc__logging
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 Feature flag

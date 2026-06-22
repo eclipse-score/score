@@ -15,10 +15,11 @@
 .. document:: Configuration Management Plan
    :id: doc__config_mgt_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: wp__config_mgt_plan
+   :realizes: wp__config_mgt_plan[version==1]
 
 Config management / Configuration Management Plan
 -------------------------------------------------

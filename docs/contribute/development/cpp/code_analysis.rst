@@ -18,9 +18,10 @@ Code Analysis C++
 .. document:: Static Code Analysis C++
    :id: doc__cpp_code_analysis
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__sw_development_plan
+   :realizes: wp__sw_development_plan[version==1]
 
    Guideline for Static Code Analysis
 

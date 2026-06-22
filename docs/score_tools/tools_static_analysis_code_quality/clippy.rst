@@ -15,11 +15,11 @@
 .. doc_tool:: clippy
    :id: doc_tool__clippy
    :status: evaluated
-   :version: 1.90.0 (see [1])
+   :tool_version: 1.90.0 (see [1])
    :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_static_analysis_code_quality
 
 Clippy Verification Report

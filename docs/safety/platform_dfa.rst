@@ -19,9 +19,10 @@ Platform DFA (Dependent Failure Analysis)
 .. document:: Platform DFA
    :id: doc__score_platform_dfa
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__platform_dfa
+   :realizes: wp__platform_dfa[version==1]
    :tags:
 
 .. note:: The platform DFA is only performed once at platform level to analyse the dependencies between the features of the platform.

@@ -20,10 +20,11 @@ Base Libraries (v0.5 beta)
 .. document:: Base Libraries
    :id: doc__baselibs
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :tags: feature_request
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::
@@ -32,7 +33,6 @@ Base Libraries (v0.5 beta)
    docs/requirements/index.rst
    docs/requirements/chklst_req_inspection.rst
    docs/architecture/index.rst
-   abi_compatible_data_types/index.rst
 
 Feature flag
 ============

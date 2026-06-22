@@ -15,9 +15,10 @@
 .. document:: FEO Feature Architecture
    :id: doc__frameworks_feo_feat_arch
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__feature_arch
+   :realizes: wp__feature_arch[version==1]
 
 
 FEO Feature Architecture
@@ -100,6 +101,7 @@ Static Architecture
     :security: YES
     :safety: ASIL_B
     :status: valid
+    :version: 1
     :provides: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
 
 .. feat_arc_sta:: Static Architecture
@@ -107,9 +109,10 @@ Static Architecture
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: feat_req__feo__application, feat_req__feo__activity, feat_req__feo__task_chain, feat_req__feo__agent
+  :version: 1
+  :fulfils: feat_req__feo__application[version==1], feat_req__feo__activity[version==1], feat_req__feo__task_chain[version==1], feat_req__feo__agent[version==1]
   :includes: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
-  :belongs_to: feat__feo
+  :belongs_to: feat__feo[version==1]
 
   .. uml:: _assets/stat_arch.puml
      :scale: 50
@@ -123,9 +126,10 @@ Dynamic Architecture
   :id: feat_arc_dyn__feo__main
   :security: YES
   :safety: ASIL_B
-  :fulfils: feat_req__feo__application, feat_req__feo__activity, feat_req__feo__task_chain, feat_req__feo__agent
+  :fulfils: feat_req__feo__application[version==1], feat_req__feo__activity[version==1], feat_req__feo__task_chain[version==1], feat_req__feo__agent[version==1]
   :status: valid
-  :belongs_to: feat__feo
+  :version: 1
+  :belongs_to: feat__feo[version==1]
 
   .. uml:: _assets/dyn_arch.puml
      :scale: 50
@@ -140,7 +144,8 @@ Logical Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: feat_req__feo__application, feat_req__feo__activity
+  :version: 1
+  :fulfils: feat_req__feo__application[version==1], feat_req__feo__activity[version==1]
 
   See static architecture.
 
@@ -150,7 +155,8 @@ Logical Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: feat_req__feo__application, feat_req__feo__activity, feat_req__feo__task_chain, feat_req__feo__agent
+  :version: 1
+  :fulfils: feat_req__feo__application[version==1], feat_req__feo__activity[version==1], feat_req__feo__task_chain[version==1], feat_req__feo__agent[version==1]
 
   See static architecture.
 
@@ -160,7 +166,8 @@ Logical Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: feat_req__feo__application, feat_req__feo__activity, feat_req__feo__task_chain, feat_req__feo__agent
+  :version: 1
+  :fulfils: feat_req__feo__application[version==1], feat_req__feo__activity[version==1], feat_req__feo__task_chain[version==1], feat_req__feo__agent[version==1]
 
   See static architecture.
 
@@ -170,7 +177,8 @@ Logical Interfaces
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: feat_req__feo__application_lifecycle
+  :version: 1
+  :fulfils: feat_req__feo__application_lifecycle[version==1]
 
   See static architecture.
 

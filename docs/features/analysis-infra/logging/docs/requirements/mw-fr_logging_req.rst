@@ -24,8 +24,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support local timestamps for each log entry.
 
@@ -34,8 +36,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support original timestamps for routed log entries.
 
@@ -44,8 +48,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support timestamp synchronization for log entries coming from different :term:`logging nodes <logging node>`.
 
@@ -54,8 +60,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging framework shall support a log level for each log entry.
 
@@ -64,8 +72,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging framework shall prioritize logs in case of resource conflicts to ensure critical logs are not lost.
 
@@ -74,8 +84,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support logging of early startup events to capture critical initialization information.
 
@@ -84,8 +96,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support :term:`logging entity identifiers<logging entity identifier>` for each log entry.
 
@@ -94,8 +108,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support filtering by :term:`log levels <Log level>`.
 
@@ -104,8 +120,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support filtering by :term:`logging entity identifiers<logging entity identifier>`.
 
@@ -114,8 +132,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall detect and report any message loss.
 
@@ -124,8 +144,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall provide mechanisms to handle message loss gracefully.
 
@@ -136,8 +158,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow context-specific :term:`log level` activation at runtime to enable fine-grained control over logging behavior.
 
@@ -146,8 +170,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support user application as log source.
 
@@ -156,8 +182,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support :term:`component` features and :term:` platform` as log sources.
 
@@ -166,8 +194,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support console as a log sink.
 
@@ -176,8 +206,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support local file system as log sink.
 
@@ -188,8 +220,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support cloud-native drives via network as log sinks.
 
@@ -198,8 +232,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support network channels, including a second dedicated Ethernet channel, as log sinks.
 
@@ -208,8 +244,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall ensure logs appear on stdout when running unit tests.
 
@@ -218,8 +256,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__boot_logging
+   :derived_from: stkh_req__dev_experience__boot_logging[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support logging of data to memory which survives a reboot
    cycle.
@@ -229,8 +269,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support configuration of :term:`log levels <Log level>`.
 
@@ -239,8 +281,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support configuration of the log storage device.
 
@@ -249,8 +293,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support multiple log storage devices.
 
@@ -259,8 +305,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support configurable :term:`log storage strategy`.
 
@@ -269,8 +317,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow configuration of internal buffers sizes.
 
@@ -279,8 +329,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow configuration of storage size per log file.
 
@@ -289,8 +341,10 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow configuration of permission settings for log access.
 
@@ -299,8 +353,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow configuration of log filters.
 
@@ -309,8 +365,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow configuration of logging entity IDs.
 
@@ -319,8 +377,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support on-demand functionality, such as enabling or disabling log storage.
 
@@ -329,8 +389,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall provide fallback configurations, such as application-wide or system-wide defaults.
 
@@ -339,8 +401,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall allow extensions for custom log types.
 
@@ -349,8 +413,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    In case of recoverable error, the logging :term:`framework` shall continue the current operations.
 
@@ -359,8 +425,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    In case of non-recoverable error, the logging :term:`framework` shall deactivate silently and set an error state reported on shutdown.
 
@@ -369,8 +437,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall ensure that user applications are not affected by logging :term:`framework` errors.
 
@@ -379,8 +449,10 @@ Requirements
    :reqtype: Interface
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support QNX and Linux operating systems (encapsulated via OSAL).
 
@@ -389,8 +461,10 @@ Requirements
    :reqtype: Interface
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support, stkh_req__dev_experience__prog_languages
+   :derived_from: stkh_req__dev_experience__logging_support[version==1], stkh_req__dev_experience__prog_languages[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support C++, Rust, and Python programming languages.
 
@@ -399,8 +473,10 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall minimize storage resource consumption.
 
@@ -409,8 +485,10 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall minimize communication channel resource consumption.
 
@@ -419,8 +497,10 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall minimize runtime resource consumption.
 
@@ -429,8 +509,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall have low impact on overall system performance.
 
@@ -439,8 +521,10 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall provide:term:` QoS` for handling overflows or dropping log messages.
 .. ist "rovide QoS for handling overflows or dropping log messages." doppelt zu den loos detection req.?
@@ -450,8 +534,10 @@ Requirements
    :reqtype: Interface
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support, stkh_req__overall_goals__enable_cooperation
+   :derived_from: stkh_req__dev_experience__logging_support[version==1], stkh_req__overall_goals__enable_cooperation[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall be :term:`DLT` compatible.
 
@@ -462,8 +548,10 @@ Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support, stkh_req__dependability__security_features
+   :derived_from: stkh_req__dev_experience__logging_support[version==1], stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall ensure that only authorized users can access log files.
 
@@ -472,8 +560,10 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__safe_comput
+   :derived_from: stkh_req__functional_req__safe_comput[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall support the ASIL level of the user function to ensure compliance with the safety requirements of the application.
 
@@ -484,7 +574,9 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__logging[version==1]
    :status: valid
+   :version: 1
 
    The logging :term:`framework` shall be classified according to the overall system's safety concept if logging information is part of the verification strategy.

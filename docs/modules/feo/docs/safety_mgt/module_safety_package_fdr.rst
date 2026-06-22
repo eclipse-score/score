@@ -15,9 +15,10 @@
 .. document:: FEO Module Safety Package Formal Review
    :id: doc__feo_safety_package_fdr
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__fdr_reports
+   :realizes: wp__fdr_reports[version==1]
    :tags: module_feo
 
 FEO Module Safety Package Formal Review Report

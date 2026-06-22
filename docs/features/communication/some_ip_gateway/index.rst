@@ -22,10 +22,11 @@ SOME/IP-Gateway
 .. document:: SOME_IP-Gateway
    :id: doc__some_ip_gateway
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :tags: contribution_request, feature_request
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

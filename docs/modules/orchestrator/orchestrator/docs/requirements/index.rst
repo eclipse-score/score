@@ -18,9 +18,10 @@ Requirements
 .. document:: Orchestrator Requirements
    :id: doc__orchestrator_requirements
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
    :tags: orchestrator
 
 
@@ -32,7 +33,7 @@ Requirements
 ..    :reqtype: Process
 ..    :security: YES
 ..    :safety: ASIL_B
-..    :satisfies: feat_req__feature_name__some_title
+..    :derived_from: feat_req__feature_name__some_title
 ..    :status: invalid
 
 ..    The Component shall do xyz to another component to bring it to this condition at this time

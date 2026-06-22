@@ -22,8 +22,9 @@ Logging Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :provides: logic_arc_int__log_cpp__logging, logic_arc_int__log_rust__logging_rust
-   :uses: logic_arc_int__baselibs__json, logic_arc_int__baselibs__filesystem
+   :uses: logic_arc_int__baselibs__json[version==1], logic_arc_int__baselibs__filesystem[version==1]
 
 
 .. logic_arc_int:: Logging
@@ -31,6 +32,7 @@ Logging Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
 
 .. logic_arc_int:: Logging Rust
@@ -38,10 +40,12 @@ Logging Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
 .. logic_arc_int_op:: Log
    :id: logic_arc_int_op__logging__log
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__log_cpp__logging

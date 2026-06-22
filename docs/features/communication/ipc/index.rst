@@ -20,10 +20,11 @@ Inter-process Communication
 .. document:: Inter-process Communication
    :id: doc__com_ipc
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: contribution_request, feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 .. toctree::
    :maxdepth: 1

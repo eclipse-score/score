@@ -41,6 +41,7 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :provides: logic_arc_int__communication__user
 
 .. feat_arc_sta:: Feature Architecture Communication
@@ -48,9 +49,10 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
    :includes: logic_arc_int__communication__user
-   :belongs_to: feat__com_communication
+   :belongs_to: feat__com_communication[version==1]
 
    .. needarch::
       :scale: 50
@@ -132,7 +134,8 @@ The public API for the frontend is defined as:
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__com__interfaces
+   :version: 1
+   :fulfils: feat_req__com__interfaces[version==1]
 
    .. needarch::
       :scale: 50

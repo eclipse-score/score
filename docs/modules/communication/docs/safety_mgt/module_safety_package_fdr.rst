@@ -20,9 +20,10 @@ Safety Package Formal Review Report
 .. document:: Communication Safety Package Formal Review
    :id: doc__communication_safety_package_fdr
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__fdr_reports
+   :realizes: wp__fdr_reports[version==1]
 
 
 

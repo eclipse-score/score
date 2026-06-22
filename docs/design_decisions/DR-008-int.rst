@@ -1,0 +1,298 @@
+..
+   Copyright (c) 2026 Contributors to the Eclipse Foundation
+
+   See the NOTICE file(s) distributed with this work for additional
+   information regarding copyright ownership.
+
+   This program and the accompanying materials are made available under the
+   terms of the Apache License Version 2.0 which is available at
+   https://www.apache.org/licenses/LICENSE-2.0
+
+   SPDX-License-Identifier: Apache-2.0
+
+DR-008-Int: S-CORE integration scope in reference_integration repository
+========================================================================
+
+- **Date:** 2026-06-11
+
+.. dec_rec:: Integration scope in reference_integration repository
+   :id: dec_rec__int__scope_reference_integration
+   :status: accepted
+   :context: Integration
+   :decision: Option 4
+
+Context / Problem
+-----------------
+
+Currently there is no clear definition of scope and responsibilities of the ``reference_integration`` repository.
+The process of integration of S-CORE modules is time consuming and leaves open space for misalignment
+between the process and the feature teams.
+
+Goals and Requirements
+^^^^^^^^^^^^^^^^^^^^^^
+
+- **Effort**: The integration process should be as efficient as possible with clear feedback loops.
+- **Independence**: Modules should be independent with their implementation scope.
+- **Integration**: Modules should have clear common requirements for S-CORE release integration.
+- **Clear Ownership**: Each module should have a clear vision of responsibilities for integrating into reference_integration.
+- **Maintainability**: Keep long-term maintenance effort low.
+
+Non-Goals
+~~~~~~~~~
+
+- Controlling every release of each Module - Modules can release independently and some releases can be not integrated into S-CORE.
+
+Options Considered
+------------------
+
+Option 1: Execute only Feature Integration Tests in reference_integration repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reference_integration repository is a place where only Feature Integration Tests are executed.
+Every Module is responsible for executing static tests, UTs, CITs in their respective repositories,
+used configurations, compiling flags and workflows should be aligned with S-CORE guidelines.
+
+Reference_integration will provide a means to conduct continuous integration, based on only Feature Integration Tests,
+of latest Modules states to ensure early feedback and breaking changes notifications.
+
+For S-CORE releases, Modules need to deliver artifacts from local tests as their release assets to be used for certification and documentation.
+
+Pros:
+
+* Modules have full control over their own scope
+* Quick integration jobs in reference_integration repository as only Feature Integration tests are executed
+
+Cons:
+
+* No control over configuration, compiling flags, variants
+* Documentation and artifacts are distributed across different repositories
+* Full-stack S-CORE release might resolve to different version of dependencies that were tested in Module repositories which makes the release not compliant with S-CORE release requirements.
+
+Option 2: Re-execute all quality checks in the reference_integration repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reference_integration repository is a place where all kinds of tests - static, UTs, CITs, FITs are re-executed
+for full verification of the S-CORE full-stack. Every Module needs to ensure their tests are executable in reference_integration
+repository. For the verification process, common configuration, compiling flags are used across all Modules to ensure the compliance with current S-CORE guidelines.
+
+Reference_integration will provide a means to conduct continuous integration of latest Modules states to ensure early feedback and breaking changes notifications.
+
+All necessary artifacts and single documentation build are generated in reference_integration repository to be used for certification and documentation
+of S-CORE releases.
+
+Pros:
+
+* Single point of truth for configurations, compiling flags, documentation and certification artifacts
+* Better control over resolved dependencies
+* Better traceability of the tests and documentation for full-stack S-CORE releases
+
+Cons:
+
+* Additional effort for the Module teams to maintain their tests and dependencies to be fully executable in reference_integration repository
+* Longer integration jobs in reference_integration repository as all tests are executed
+
+Option 3: Front-load quality checks in modules with lightweight reference_integration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Modules follow the S-CORE process and run quality tooling in their own context against their own resolved
+dependency set. Across modules, teams agree on *what* quality tooling and toolchains to use, but each
+module runs them independently. Most importantly, teams agree on dependency versions for the upcoming
+S-CORE release: if a module is releasing a new version into the next S-CORE release, every module that
+depends on it must migrate to that version before the release. Modules minimize non-dev, non-S-CORE
+dependencies in their MODULE.bazel files.
+
+Module Owners deliver as part of their release artifacts in the common form allowing aggregation and
+full documentation build in reference_integration. Bazel dependency analysis will allow verification
+that collected artifacts are valid for S-CORE release - resolved dependencies for the Module (in scope of their repository)
+must match the dependencies for S-CORE release and resolved in reference_integration.
+
+Continous integration of latest Modules based on hashes from their main branches will not allow verification
+of the artifacts and full documentation build. That will remain exclusive for S-CORE releases.
+
+Module-side activities required for an S-CORE release integration:
+
+* Automated quality checks (static analysis, unit tests, CITs) using the tooling and versions
+  agreed centrally and tracked in the S-CORE tools evaluation list — see
+  `score_tools_evaluation_list <https://eclipse-score.github.io/score/main/score_tools/score_tools_evaluation_list.html>`_
+  (single source of truth for tool versions, classification, and qualification reports).
+* Manual quality checks per the S-CORE quality workflow, including
+  `process conformance checks <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workflow.html#wf__exe_featprocess_conformance_checks>`_,
+  `work-product reviews <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workflow.html#wf__exe_wp_review>`_,
+  and the
+  `QMS report <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workproducts.html#wp__qms_report>`_.
+* Resolution of all static-analysis findings and security vulnerabilities reported in the
+  `Eclipse S-CORE security overview <https://github.com/orgs/eclipse-score/security/overview>`_ —
+  open findings block integration into the S-CORE release.
+* `Module Release Notes <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note>`_
+  produced from the S-CORE module release-note template and verified per the
+  `module release-note workflow <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_mod_rel_note>`_.
+
+reference_integration activities required for an S-CORE release:
+
+* Feature Integration Tests (FITs).
+* Bazel-graph based consistency and dependency-resolution checks.
+* Consolidation of module safety artifacts (test results, coverage, analysis reports).
+* Full documentation build (release builds only).
+* Generation and verification of the
+  `Platform Release Notes <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_platform_rel_note>`_
+  (derived where possible from the module release notes), the
+  `Platform Handbook <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_platform_handbook>`_,
+  and the
+  `Platform Verification Report <https://eclipse-score.github.io/process_description/main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report>`_.
+
+.. _option3_infographic:
+
+.. figure:: _assets/DR-008-int-option3_infographic.svg
+  :align: center
+  :width: 75%
+
+  Option 3 visual breakdown
+
+Pros:
+
+* Verifying quality where it originates is more reliable — modules have full knowledge of their domain, their specific quality requirements, and the exact dependency context they were tested against
+* Technically simpler reference_integration with a well-defined, minimal scope
+* Avoids re-executing all checks in a different dependency context, which can mask or introduce issues
+* Provides early feedback through regular release candidate publishing
+
+Cons:
+
+* Requires tighter communication and coordination across module teams
+* Agreeing on and enforcing a shared dependency manifest adds process overhead
+* Backward compatibility guarantees need to be actively maintained across all modules
+
+Option 4: Stable known good with module-scoped validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reference_integration repository maintains a stable known good, a pinned set of Module versions
+that are verified to work together. When a new Module release candidate, third-party dependency,
+dev tool version, or toolchain update appears, a new candidate is created by updating the known
+good set and running a two-stage validation pipeline.
+
+In the first stage, reference_integration performs integration-scoped checks on the full stack.
+This includes building the integrated platform for supported targets, running Platform Integration
+Tests and Feature Integration Tests, and retrieving the resolved dependency set, including
+transitive dependencies. In the second stage, each Module is validated in its own repository
+context, but against the dependency versions resolved by reference_integration. Temporary override
+mechanisms, such as injected lock data or MODULE.bazel patching, can be used during the pipeline
+run without changing the released Module sources. Stage 2 runs a minimal baseline of component and
+unit tests, which can be extended with additional checks where a Module needs broader validation.
+
+This keeps quality checks close to the owning Module while still validating the exact dependency
+set selected by the full-stack integration. Failures can optionally be delegated into automatically
+created pull requests in the affected Module repositories, allowing the normal Module CI to provide
+diagnostics. Quality reports are consolidated from both the integration-scoped and Module-scoped
+stages.
+
+To support this flow, Modules keep their public dependency footprint minimal and continue to use
+quality tooling as development dependencies where appropriate. Modules additionally provide a small
+integration or acceptance test set that proves black-box usability when consumed as a dependency.
+
+Pros:
+
+* Validates the dependency set actually resolved by the full-stack while keeping Module tests in their natural repository context
+* Provides a short feedback loop through stable known good promotion and frequent candidate updates
+* Avoids promoting quality tooling dependencies into the released dependency footprint of each Module
+* Makes failures easier to diagnose by keeping ownership and CI execution close to the responsible Module
+
+Cons:
+
+* Requires additional orchestration to inject resolved dependency versions into Module-scoped validation runs
+* Consolidation of documentation and some release artifacts remains more complex than in a fully centralized setup
+* Temporary validation state must be governed carefully so release evidence stays consistent and auditable
+
+Comparison
+----------
+
+.. list-table:: Reference_integration options comparison
+   :header-rows: 1
+   :widths: 24 16 16 20 24
+
+   * - Criterion
+     - Option 1
+     - Option 2
+     - Option 3
+     - Option 4
+   * - Quality checks location
+     - Module repositories only
+     - reference_integration (re-executed)
+     - Module repositories (front-loaded)
+     - Split between reference_integration and Module repositories
+   * - Feature integration tests
+     - reference_integration
+     - reference_integration
+     - reference_integration
+     - reference_integration
+   * - Dependency mismatch risk
+     - High
+     - Low
+     - Low (via version agreements)
+     - Low (validated against resolved full-stack set)
+   * - Integration job duration
+     - Short
+     - Long
+     - Short
+     - Medium
+   * - Artifact & documentation consolidation
+     - Distributed across repositories
+     - Single point of truth
+     - Consolidated at release time
+     - Consolidated reports, documentation still more involved
+   * - Module team maintenance effort
+     - Low
+     - High
+     - Medium
+     - Medium
+   * - Cross-module coordination overhead
+     - Low
+     - Medium (triage of CI failures)
+     - Medium (shared dependency manifest)
+     - Medium (stable known good rollout)
+   * - Traceability for S-CORE release
+     - Weak
+     - Strong
+     - Strong (via release artifacts)
+     - Strong (via combined integration and Module evidence)
+
+Evaluation
+----------
+
+Option 1 makes S-CORE provide a set of SEooCs without being a full-stack project that has been selected
+in :need:`dec_rec__strat__consistent_stack_vs_reference`.
+Modules are responsible for their own compliance with the S-CORE release requirements, which makes it difficult
+to validate the final S-CORE release for the process compliance.
+The biggest risk is that Module A can deliver a release and artifacts with dependency on Module B in version x.y.z,
+but in reference_integration thus overall S-CORE release, Module B will be resolved in version x.y.z+1,
+which makes Module A artifacts not compliant.
+
+Option 2 truly makes S-CORE a full-stack project and provides a single point of truth for the
+configurations, compiling flags, variants, documentation and certification artifacts.
+However, it requires additional effort for the module teams to maintain their tests and dependencies to be fully
+executable in the reference_integration repository with both public APIs and tests.
+It allows generating a single documentation build with full traceability across different repositories which will stay persistent
+and will not require external linking.
+
+Option 3 front-loads quality verification into the modules themselves and keeps reference_integration
+lightweight. It addresses the dependency mismatch risk of Option 1 through coordinated version
+agreements across modules rather than by re-executing checks centrally. However, it relies on
+disciplined inter-module coordination and backward compatibility guarantees, which adds process
+overhead and requires a shared dependency manifest to remain manageable.
+
+Option 4 combines the full-stack validation goal of Option 2 with the local ownership model of
+Option 3. The stable known good concept keeps reference_integration focused on validating concrete
+integration candidates, while the Module-scoped second stage ensures that component and unit tests
+run in the Module's own environment but against the exact dependency set selected by the integrated
+stack. This addresses the main dependency mismatch concern without forcing all quality tooling into
+the public dependency footprint of every Module.
+
+Compared with Option 2, Option 4 reduces the risk of building an overly centralized integration
+setup that is harder for Module teams and downstream users to reproduce. Compared with Option 3,
+it improves feedback on dependency and compatibility issues by testing against a pinned, evolving
+full-stack baseline rather than relying only on version agreements. The remaining cost is additional
+pipeline orchestration and a need to define how documentation and release evidence are consolidated
+when Module validation runs with temporary dependency overrides.
+
+**Decision:** Option 4 got positive feedback and was selected by the community.
+We accept the additional orchestration needed to validate Modules against the dependency set
+resolved by reference_integration, in exchange for shorter feedback loops, stronger confidence in
+the stable known good baseline, and quality checks that remain close to the owning Module context.

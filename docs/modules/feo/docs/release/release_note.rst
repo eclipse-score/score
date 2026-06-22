@@ -15,9 +15,10 @@
 .. document:: FEO Module Release Note
    :id: doc__feo_release_note
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__module_sw_release_note
+   :realizes: wp__module_sw_release_note[version==1]
    :tags: module_feo
 
 

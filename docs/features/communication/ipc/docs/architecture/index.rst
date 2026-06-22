@@ -20,9 +20,10 @@ Architecture
 .. document:: IPC Architecture
    :id: doc__ipc_architecture
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feature_arch
+   :realizes: wp__feature_arch[version==1]
 
 Overview
 --------
@@ -223,9 +224,10 @@ Dynamic Architecture
    :id: feat_arc_dyn__communication__ipc
    :security: YES
    :status: valid
+   :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__com__depl_config_runtime
-   :belongs_to: feat__com_communication
+   :fulfils: feat_req__com__depl_config_runtime[version==1]
+   :belongs_to: feat__com_communication[version==1]
 
    .. uml:: _assets/dyn_arch.puml
       :scale: 50

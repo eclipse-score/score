@@ -15,9 +15,10 @@
 .. document:: FEO Feature Requirements
    :id: doc__frameworks_feo_feat_reqs
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__requirements_feat
+   :realizes: wp__requirements_feat[version==1]
 
 FEO Feature Requirements
 ========================
@@ -31,8 +32,10 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     An application consists of one or more activities.
 
@@ -48,8 +51,10 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     Activities are mapped to threads within primary or secondary processes.
     Each activity is mapped to exactly one thread and provides the following functions:
@@ -65,8 +70,10 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     All activities within an application are arranged within a `Task Chain`.
     There is exactly one task chain per application.
@@ -84,8 +91,10 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     * Service activities are a means to interact with the outside world, e.g. via
       network communication, direct sensor input or direct actuator output
@@ -97,8 +106,10 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     In order to execute activities in secondary processes, the executor makes
     use of an `Agent` for each secondary process and possibly also the primary process.
@@ -120,8 +131,10 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     The Application Lifecycle consists of 3 phases: Init, Run and Shutdown.
 
@@ -130,8 +143,10 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     Initialization of activities is done during application initialization.
 
@@ -145,8 +160,10 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     Each activity is stepped once within each execution of the task chain they belong to.
 
@@ -157,8 +174,10 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
+    :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     Shutdown of activities is done during application shutdown.
 
@@ -174,8 +193,10 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     The framework shall provide the functionality to enable the reporting of
     alive supervision checkpoint to an external health management system
@@ -186,8 +207,10 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     The framework shall provide the functionality to enable the reporting of
     deadline supervision checkpoints to an external health management system
@@ -198,8 +221,10 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     The framework shall provide the functionality to enable the reporting of
     logical supervision checkpoints to an external health management system
@@ -210,8 +235,10 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     The framework shall provide mechanisms to check after the computation of
     an Activity if the result is trustable.
@@ -228,8 +255,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If the primary process receives a termination signal, it shall call the shutdown
     function of all remaining activities in arbitrary sequence and terminate itself.
@@ -242,8 +271,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If not all secondary processes connect to the primary in time, the primary shall terminate itself.
     The startup functions shall not be triggered.
@@ -254,8 +285,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If an error occurs during the execution of a startup function, the primary process shall abort calling
     startup functions and terminate itself. For all of the activities
@@ -268,8 +301,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
     and report an error to the executor in case of failure.
@@ -280,8 +315,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
     successfully started activities in arbitrary sequence and terminate itself.
@@ -292,8 +329,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If not all activities reach their initialized state within a certain period of time (startup timeout),
     the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
@@ -304,8 +343,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_1, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If an activity fails in the step function, the primary process shall call shutdown for all activities
     in arbitrary sequence and terminate itself.
@@ -316,8 +357,10 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features_4, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :satisfied_by: feat__feo[version==1]
     :status: valid
+    :version: 1
 
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
     in arbitrary sequence and terminate itself.

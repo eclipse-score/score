@@ -15,10 +15,11 @@
 .. document:: FEO Feature Safety Analysis Inspection Checklist
    :id: doc__saf_ana_inspec_frameworks_feo
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
-   :realizes: wp__training_path
+   :realizes: wp__training_path[version==1]
 
 FEO Feature Safety Analysis Checklist
 =====================================

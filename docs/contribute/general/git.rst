@@ -15,9 +15,10 @@
 .. document:: Git Guidelines
    :id: doc__git_coding_guidelines
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__sw_development_plan
+   :realizes: wp__sw_development_plan[version==1]
 
 .. _git_guidelines:
 

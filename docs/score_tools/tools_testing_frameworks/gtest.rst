@@ -15,11 +15,12 @@
 .. doc_tool:: gtest
    :id: doc_tool__gtest
    :status: draft
-   :version: 1.15.0
+   :version: 1
+   :tool_version: 1.15.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_testing_frameworks
 
 GoogleTest (GTest) Verification Report

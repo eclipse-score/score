@@ -16,9 +16,10 @@
 .. document:: Baselibs Requirements Inspection Checklist
    :id: doc__baselibs_req_inspection
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_inspect
+   :realizes: wp__requirements_inspect[version==1]
 
 
 Requirement Inspection Checklist

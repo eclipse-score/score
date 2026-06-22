@@ -18,10 +18,11 @@ Fixed execution order framework (FEO) (v0.5 beta)
 .. document:: Fixed execution order framework
    :id: doc__frameworks_feo
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: feature_request, frameworks_feo
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::

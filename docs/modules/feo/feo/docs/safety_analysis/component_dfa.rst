@@ -15,9 +15,10 @@
 .. document:: FEO Component DFA
    :id: doc__component_feo_dfa
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__sw_component_dfa
+   :realizes: wp__sw_component_dfa[version==1]
    :tags: coponent_feo
 
 
