@@ -1065,9 +1065,8 @@ Diagnostics and Fault Management
    The SW-platform shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
 
------------------------------
 VSO Scenario Evidence Layer
-----------------------------
+---------------------------
 
 .. stkh_req:: Multi-ECU Scenario Evidence Interfaces
    :id: stkh_req__vso__scenario_evidence
