@@ -614,7 +614,7 @@
                   
   <section id="writing-rust-code-incl-coding-guidelines">
 <h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-89882d22">
+<div class="need_container docutils container" id="SNCB-2be02eca">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2050,186 +2050,15 @@ use Slack score-rust-community channel for discussions and participation in the
 SCRC.</p>
 <p>The adaption of these guidelines will be documented in the S-CORE project
 documentation.</p>
-<div class="admonition-cargo-toml-lint-profile-safety-oriented-practical-baseline admonition">
-<p class="admonition-title">Cargo.toml lint profile (safety-oriented, practical baseline)</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo.toml</span>
-
-<span class="c1"># Rust compiler lints (rustc)</span>
-<span class="k">[lints.rust]</span>
-<span class="n">unsafe_op_in_unsafe_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">missing_abi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unreachable_pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">missing_docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unused_results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">let_underscore_drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">non_exhaustive_omitted_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Rustc lints recommended to evaluate as warn</span>
-<span class="n">elided_lifetimes_in_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">explicit_outlives_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">macro_use_extern_crate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">meta_variable_misuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">non_local_definitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">redundant_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">single_use_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">trivial_numeric_casts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unit_bindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unnameable_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">variant_size_differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Edition and compatibility lint groups (baseline intent)</span>
-<span class="c1"># Enable rust-&lt;YEAR&gt;-* and keyword-idents-&lt;YEAR&gt; lints supported by the</span>
-<span class="c1"># pinned compiler version.</span>
-<span class="n">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span>
-
-<span class="c1"># Future/availability-dependent rustc lints (enable when available in</span>
-<span class="c1"># the selected toolchain)</span>
-<span class="c1"># must_not_suspend = &quot;warn&quot;</span>
-<span class="c1"># fuzzy_provenance_casts = &quot;warn&quot;</span>
-<span class="c1"># lossy_provenance_casts = &quot;warn&quot;</span>
-
-<span class="c1"># Clippy lints</span>
-<span class="k">[lints.clippy]</span>
-<span class="c1"># Warn</span>
-<span class="n">as_underscore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_lossless</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_possible_truncation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_possible_wrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_sign_loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_ptr_alignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">exit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">format_push_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">infinite_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">iter_over_hash_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">invalid_upcast_comparisons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">lossy_float_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">missing_errors_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">missing_docs_in_private_items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">panic_in_result_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">ptr_cast_constness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">ref_as_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">transmute_ptr_to_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">redundant_type_annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">shadow_reuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">shadow_unrelated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">try_err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">wildcard_enum_match_arm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Deny</span>
-<span class="n">as_ptr_cast_mut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">let_underscore_must_use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">missing_panics_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">undocumented_unsafe_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">wildcard_imports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">declare_interior_mutable_const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-
-<span class="c1"># Allow</span>
-<span class="n">shadow_same</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-<span class="n">implicit_return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-<span class="n">allow_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-
-<span class="c1"># Evaluate for helpfulness</span>
-<span class="n">panicking_overflow_checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unwrap_used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Recommended against because too coarse</span>
-<span class="n">as_conversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-
-<span class="c1"># Release profile requirement</span>
-<span class="k">[profile.release]</span>
-<span class="n">overflow-checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c1"># Required for safety-oriented integer checks</span>
-
-<span class="c1"># Checking of documentation on private items (in clippy.toml)</span>
-<span class="c1"># check-private-items = true</span>
-</pre></div>
-</div>
-</div>
-<div class="admonition-cargo-toml-lint-profile-safety-oriented-strict-asil-variant admonition">
-<p class="admonition-title">Cargo.toml lint profile (safety-oriented, strict/ASIL variant)</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo.toml</span>
-
-<span class="c1"># Rust compiler lints (strict)</span>
-<span class="k">[lints.rust]</span>
-<span class="n">unsafe_op_in_unsafe_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">missing_abi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unreachable_pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">missing_docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unused_results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">let_underscore_drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">non_exhaustive_omitted_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Rustc lints recommended to evaluate as warn</span>
-<span class="n">elided_lifetimes_in_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">explicit_outlives_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">macro_use_extern_crate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">meta_variable_misuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">non_local_definitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">redundant_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">single_use_lifetimes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">trivial_numeric_casts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unit_bindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unnameable_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">variant_size_differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Edition and compatibility lint groups (baseline intent)</span>
-<span class="n">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">}</span>
-
-<span class="c1"># Clippy lints (strict)</span>
-<span class="k">[lints.clippy]</span>
-<span class="c1"># Warn</span>
-<span class="n">as_underscore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_lossless</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_possible_truncation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_possible_wrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_sign_loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">cast_ptr_alignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">exit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">format_push_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">infinite_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">iter_over_hash_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">invalid_upcast_comparisons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">lossy_float_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">missing_errors_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">missing_docs_in_private_items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">panic_in_result_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">ptr_cast_constness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">ref_as_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">transmute_ptr_to_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">redundant_type_annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">shadow_reuse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">shadow_unrelated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">try_err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">wildcard_enum_match_arm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Deny</span>
-<span class="n">as_ptr_cast_mut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">let_underscore_must_use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">missing_panics_doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">undocumented_unsafe_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">wildcard_imports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-<span class="n">declare_interior_mutable_const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span>
-
-<span class="c1"># Allow</span>
-<span class="n">shadow_same</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-<span class="n">implicit_return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-<span class="n">allow_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-
-<span class="c1"># Evaluate for helpfulness</span>
-<span class="n">panicking_overflow_checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-<span class="n">unwrap_used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span>
-
-<span class="c1"># Recommended against because too coarse</span>
-<span class="n">as_conversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
-
-<span class="c1"># Release profile requirement</span>
-<span class="k">[profile.release]</span>
-<span class="n">overflow-checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-
-<span class="c1"># clippy.toml</span>
-<span class="c1"># check-private-items = true</span>
-</pre></div>
-</div>
-</div>
+<p>The recommended <code class="docutils literal notranslate"><span class="pre">[lints.rust]</span></code>, <code class="docutils literal notranslate"><span class="pre">[lints.clippy]</span></code>, and <code class="docutils literal notranslate"><span class="pre">[profile.release]</span></code>
+settings are maintained centrally in the
+<a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies repository</a>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml">Practical baseline (relaxed)</a> —
+suitable for general SCORE components.</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/Cargo.toml">Strict / ASIL variant</a> —
+for safety-critical code requiring stricter enforcement.</p></li>
+</ul>
 </section>
 </section>
 <section id="explanation-of-ara-applications-in-rust">
