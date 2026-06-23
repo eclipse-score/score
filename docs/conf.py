@@ -25,6 +25,13 @@ extensions = [
     "score_sphinx_bundle",
 ]
 
+# Serve files from docs/_assets and load our own CSS overrides last so they win
+# over the styles shipped by the score_docs_as_code bundle.
+html_static_path = ["_assets"]
+html_css_files = [
+    "css/custom.css",
+]
+
 # Hide both sidebars on the users_guide landing page (left: html_sidebars, right: secondary_sidebar_items)
 html_sidebars = {
     "users_guide/index": [],
