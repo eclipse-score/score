@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -541,7 +542,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../service_discovery/index.html">SOME/IP Gateway Service Discovery</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="../../dds_gateway/index.html">DDS Gateway</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
@@ -549,7 +549,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../time/index.html">Time</a></li>
 </ul>
@@ -622,7 +622,7 @@
 <h1>SOME/IP Gateway Requirements<a class="headerlink" href="#some-ip-gateway-requirements" title="Link to this heading">#</a></h1>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4e7b6df0">
+<div class="need_container docutils container" id="SNCB-e8ba38c4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__some_ip_gateway__stack_plugin_ifc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -642,6 +642,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__extensible_external" title="feat_req__some_ip_gateway__stack_plugin_ifc">stkh_req__communication__extensible_external</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__supported_net" title="feat_req__some_ip_gateway__stack_plugin_ifc">stkh_req__communication__supported_net</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../../docs/architecture/index.html#feat__com_communication" title="feat_req__some_ip_gateway__stack_plugin_ifc">feat__com_communication</a></span></span></div>
@@ -666,7 +667,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cb4bbc32">
+<div class="need_container docutils container" id="SNCB-cd2e9e62">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__some_ip_gateway__e2e_plugin_ifc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -686,6 +687,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__some_ip_gateway__e2e_plugin_ifc">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../../docs/architecture/index.html#feat__com_communication" title="feat_req__some_ip_gateway__e2e_plugin_ifc">feat__com_communication</a></span></span></div>
@@ -710,7 +712,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e504fe3e">
+<div class="need_container docutils container" id="SNCB-1dee017b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__some_ip_gateway__someip_protocol">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -730,6 +732,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__supported_net" title="feat_req__some_ip_gateway__someip_protocol">stkh_req__communication__supported_net</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../../docs/architecture/index.html#feat__com_communication" title="feat_req__some_ip_gateway__someip_protocol">feat__com_communication</a></span></span></div>
@@ -754,7 +757,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bd906a4c">
+<div class="need_container docutils container" id="SNCB-6f26b379">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__some_ip_gateway__e2e_specs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -774,6 +777,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__supported_net" title="feat_req__some_ip_gateway__e2e_specs">stkh_req__communication__supported_net</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../../docs/architecture/index.html#feat__com_communication" title="feat_req__some_ip_gateway__e2e_specs">feat__com_communication</a></span></span></div>
@@ -798,7 +802,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-20680a1b">
+<div class="need_container docutils container" id="SNCB-59b4f395">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__some_ip_gateway__someip_sd_protocol">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -818,6 +822,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__supported_net" title="feat_req__some_ip_gateway__someip_sd_protocol">stkh_req__communication__supported_net</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../../docs/architecture/index.html#feat__com_communication" title="feat_req__some_ip_gateway__someip_sd_protocol">feat__com_communication</a></span></span></div>

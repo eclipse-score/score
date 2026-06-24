@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DDS Gateway &#8212; S-CORE  documentation</title>
+    <title>Persistency Requirements Inspection Checklist &#8212; S-CORE  documentation</title>
   
   
   
@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -62,7 +63,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/dds_gateway/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/persistency/requirements/chklst_req_inspection';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
@@ -73,8 +74,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Configuration" href="../../configuration/index.html" />
-    <link rel="prev" title="SOME/IP Gateway Service Discovery" href="../some_ip_gateway/service_discovery/index.html" />
+    <link rel="next" title="Security &amp; Cryptography" href="../../security_crypto/index.html" />
+    <link rel="prev" title="Requirements" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -531,20 +532,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../docs/architecture/index.html">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../docs/requirements/index.html">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ipc/index.html">Inter-process Communication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../some_ip_gateway/index.html">SOME/IP-Gateway</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">DDS Gateway</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Persistency (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html">Requirements</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Persistency Requirements Inspection Checklist</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
@@ -591,9 +590,9 @@
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Features</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Communication (v0.5 beta)</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Persistency (v0.5 beta)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DDS Gateway</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Persistency Requirements Inspection Checklist</span></li>
   </ul>
 </nav>
 </div>
@@ -610,18 +609,18 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dds-gateway">
-<h1>DDS Gateway<a class="headerlink" href="#dds-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4863845d">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__dds_gateway">
+  <section id="persistency-requirements-inspection-checklist">
+<h1>Persistency Requirements Inspection Checklist<a class="headerlink" href="#persistency-requirements-inspection-checklist" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-3655156b">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feature_persistency_requirements_chklst">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">DDS-Gateway</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency Requirements Inspection Checklist</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -631,9 +630,10 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">contribution_request</span><span class="needs_spacer">, </span><span class="needs_data">feature_request</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -642,7 +642,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__dds_gateway" title="doc__dds_gateway">doc__dds_gateway</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__feature_persistency_requirements_chklst" title="doc__feature_persistency_requirements_chklst">doc__feature_persistency_requirements_chklst</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -655,166 +655,141 @@
 </table>
 </div>
 </div>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>The DDS Gateway introduces a communication bridge within the S-CORE communication stack.
-It enables controlled and configurable data exchange between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> (intra-ECU
-communication via IPC binding) and DDS-based systems (inter-ECU
-communication), allowing integration with distributed DDS environments
-while preserving existing application implementations.</p>
-</section>
-<section id="architecture-concept">
-<h2>Architecture Concept<a class="headerlink" href="#architecture-concept" title="Link to this heading">#</a></h2>
-<p>The DDS Gateway acts as a centralized communication bridge between local
-<code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS domains, enabling inter-ECU
-communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS transport.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==============================</span>        <span class="o">==============================</span>
-           <span class="n">ECU</span> <span class="mi">1</span>                              <span class="n">ECU</span> <span class="mi">2</span>
-<span class="o">==============================</span>        <span class="o">==============================</span>
-
-<span class="o">+-------------------------+</span>           <span class="o">+-------------------------+</span>
-<span class="o">|</span>     <span class="n">Application</span> <span class="n">A</span>       <span class="o">|</span>           <span class="o">|</span>     <span class="n">Application</span> <span class="n">B</span>       <span class="o">|</span>
-<span class="o">|</span>   <span class="p">(</span><span class="n">mw</span><span class="p">::</span><span class="n">com</span> <span class="n">LoLa</span><span class="p">)</span>        <span class="o">|</span>           <span class="o">|</span>   <span class="p">(</span><span class="n">mw</span><span class="p">::</span><span class="n">com</span> <span class="n">LoLa</span><span class="p">)</span>        <span class="o">|</span>
-<span class="o">+-----------+-------------+</span>           <span class="o">+-----------+-------------+</span>
-            <span class="o">|</span>                                     <span class="o">^</span>
-            <span class="o">|</span>  <span class="n">mw</span><span class="p">::</span><span class="n">com</span> <span class="p">(</span><span class="n">LoLa</span> <span class="o">-</span> <span class="n">IPC</span><span class="p">)</span>               <span class="o">|</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span> <span class="p">(</span><span class="n">LoLa</span> <span class="o">-</span> <span class="n">IPC</span><span class="p">)</span>
-            <span class="n">v</span>                                     <span class="o">|</span>
-    <span class="o">+---------------------+</span>               <span class="o">+---------------------+</span>
-    <span class="o">|</span>     <span class="n">DDS</span> <span class="n">Gateway</span>     <span class="o">|</span>               <span class="o">|</span>     <span class="n">DDS</span> <span class="n">Gateway</span>     <span class="o">|</span>
-    <span class="o">|</span>       <span class="p">(</span><span class="n">ECU</span> <span class="mi">1</span><span class="p">)</span>       <span class="o">|</span>               <span class="o">|</span>       <span class="p">(</span><span class="n">ECU</span> <span class="mi">2</span><span class="p">)</span>       <span class="o">|</span>
-    <span class="o">+----------+----------+</span>               <span class="o">+----------+----------+</span>
-               <span class="o">|</span>                                     <span class="o">^</span>
-               <span class="o">|</span>                                     <span class="o">|</span>
-               <span class="n">v</span>                                     <span class="o">|</span>
-      <span class="o">===================</span>   <span class="n">DDS</span> <span class="n">NETWORK</span>   <span class="o">===================</span>
-               <span class="o">|</span>                                     <span class="o">^</span>
-   <span class="o">==============================</span>                    <span class="o">|</span>
-            <span class="n">ECU</span> <span class="mi">3</span>                                    <span class="o">|</span>
-   <span class="o">==============================</span>                    <span class="o">|</span>
-               <span class="o">|</span>                                     <span class="o">|</span>
-               <span class="n">v</span>                                     <span class="o">|</span>
-    <span class="o">+---------------------+</span>                          <span class="o">|</span>
-    <span class="o">|</span>   <span class="n">DDS</span> <span class="n">Application</span>   <span class="o">|--------------------------+</span>
-    <span class="o">|</span>     <span class="p">(</span><span class="n">optional</span><span class="p">)</span>      <span class="o">|</span>
-    <span class="o">+---------------------+</span>
-</pre></div>
+<p><strong>Purpose</strong></p>
+<p>The purpose of this requirement inspection checklist is to collect the topics to be checked during requirements inspection.</p>
+<p><strong>Checklist</strong></p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">Persistency Requirements Inspection Checklist</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 9.1%" />
+<col style="width: 27.3%" />
+<col style="width: 45.5%" />
+<col style="width: 5.5%" />
+<col style="width: 5.5%" />
+<col style="width: 7.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Review ID</p></th>
+<th class="head"><p>Acceptance Criteria</p></th>
+<th class="head"><p>Guidance</p></th>
+<th class="head"><p>Passed</p></th>
+<th class="head"><p>Remarks</p></th>
+<th class="head"><p>Issue link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REQ_01_01</p></td>
+<td><p>Is the requirement sentence template used?</p></td>
+<td><p>see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_templates.html#gd_temp__req_formulation">gd_temp__req_formulation</a>, this includes the use of “shall”.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_02_01</p></td>
+<td><p>Is the requirement description <em>comprehensible</em> ?</p></td>
+<td><p>If you think the requirement is hard to understand, comment here.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_02_02</p></td>
+<td><p>Is the requirement description <em>unambiguous</em> ?</p></td>
+<td><p>Especially search for “weak words” like “about”, “etc.”, “relevant” and others (see the internet documentation on this). This check shall be supported by tooling.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_02_03</p></td>
+<td><p>Is the requirement description <em>atomic</em> ?</p></td>
+<td><p>A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The sentence template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_02_04</p></td>
+<td><p>Is the requirement description <em>feasible</em> ?</p></td>
+<td><p>Expectation is that at the time of the inspection the requirement has already some implementation. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_impl">gd_req__req_attr_impl</a> shows this. In case the requirement is not mature enough at the time of inspection (i.e. not implemented at least as “proof-of-concept”), a development expert should be invited to the Pull-Request review to explicitly check this item.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_02_05</p></td>
+<td><p>Is the requirement description <em>independent from implementation</em> ?</p></td>
+<td><p>This checkpoint should improve requirements definition in the sense that the “what” is described and not the “how” - the latter should be described in architecture/design derived from the requirement. But there can also be a good reason for this, for example we would require using a file format like JSON and even specify the formatting standard already on stakeholder requirement level because we want to be compatible. A finding in this checkpoint does not mean there is a safety problem in the requirement.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_03_01</p></td>
+<td><p>For stakeholder requirements: Is the <em>rationale</em> correct?</p></td>
+<td><p>Rationales explain why the top level requirements were invented. Do those cover the requirement?</p></td>
+<td><p>N/A</p></td>
+<td><p>No stakeholder requirements for Persistency KVS needed.</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_03_02</p></td>
+<td><p>For other requirements: Is the <em>linkage to the parent requirement</em> correct?</p></td>
+<td><p>Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_04_01</p></td>
+<td><p>Is the requirement <em>internally and externally consistent</em>?</p></td>
+<td><p>Does the requirement contradict other requirements within the same or higher levels? One may restrict the search to the feature for component requirements, for features to other features using same components.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_05_01</p></td>
+<td><p>Do the software requirements consider <em>timing constraints of the parent requirement</em>?</p></td>
+<td><p>This bullet point encourages to think about timing constraints even if those are not explicitly mentioned in the parent requirement. If the reviewer of a requirement already knows or suspects that the implementation will be time consuming, one should think of the expectation of a “user”.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_06_01</p></td>
+<td><p>Does the Requirement consider <em>external interfaces</em>?</p></td>
+<td><p>The SW platform’s external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the data consumed and set on these interfaces. Are output values completely defined?</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_07_01</p></td>
+<td><p>Is the <em>ASIL Attribute</em> set correctly?</p></td>
+<td><p>Derived requirements are checked automatically, see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage_safety">gd_req__req_linkage_safety</a>. But for the top level requirements this needs to be checked for correctness. Also AoU from external components need check for correct ASIL as those are the “origin” of safety requirements towards the SW platform.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_07_02</p></td>
+<td><p>Is the attribute <em>security</em> set correctly?</p></td>
+<td><p>Stakeholder requirements security attribute should be set based on Threat Analysis and Risk Assessment (TARA) (process is TBD). Checklist item is supported by automated check: “Every requirement which satisfies a requirement with security attribute set to YES inherits this”. Expectation is that the feature/component requirements/architecture may also be subject to a Software Security Criticality Analysis (process is TBD).</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_08_01</p></td>
+<td><p>Is the requirement <em>verifiable</em>?</p></td>
+<td><p>Expectation is that at the time of the inspection already tests are created for the requirement. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_test_covered">gd_req__req_attr_test_covered</a> shows this. In case the requirement is not mature enough at the time of inspection (i.e. missing test cases), a test expert should be invited to the Pull-Request review to explicitly check this item.</p></td>
+<td><p>Yes</p></td>
+<td><p>No remarks</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/960">https://github.com/eclipse-score/score/issues/960</a></p></td>
+</tr>
+<tr class="row-even"><td><p>REQ_09_01</p></td>
+<td><p>Do the feature requirements defining a safety mechanism contain the error reaction leading to a safe state?</p></td>
+<td><p>Alternatively to the safe state there could also be “repair” mechanisms. Also do not forget to consider REQ_05_01 for these.</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Each DDS Gateway instance connects to:
-- Local <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> participants (IPC binding)
-- A DDS domain for inter-ECU communication</p>
-<p>The gateway is responsible for:</p>
-<ul class="simple">
-<li><p>Translating data in both directions between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> and DDS representations</p></li>
-<li><p>Routing data across DDS domains</p></li>
-<li><p>configure QOS on DDS for each route</p></li>
-<li><p>Applying  E2E protection</p></li>
-</ul>
-</section>
-<section id="scope">
-<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
-<p>The DDS Gateway provides:</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>Bridging between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS via the gateway:</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> → DDS GW → <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> (inter-ECU communication via DDS)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> → DDS GW → DDS applications</p></li>
-<li><p>DDS applications → DDS GW → <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code></p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>Configurable routing:</p>
-<ul>
-<li><p>Mapping between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> events(TBD for fields and methods) and DDS topics</p></li>
-<li><p>Support for DDS domain-based routing</p></li>
-</ul>
-</li>
-<li><p>Dynamic Type handling:</p>
-<ul>
-<li><p>Runtime type definition via configuration or via dynamic library</p></li>
-<li><p>No dependency on DDS IDL generation</p></li>
-<li><p>Enables data translation and consistent serialization across middleware boundaries</p></li>
-<li><p>Supports DDS standard encodings (e.g., XCDR1 and XCDR2) for interoperability</p></li>
-</ul>
-</li>
-<li><p>End-to-End (E2E) protection:</p>
-<ul>
-<li><p>Centralized handling of Counter, CRC, and DataID</p></li>
-<li><p>Validation and protection configurable per route</p></li>
-</ul>
-</li>
-<li><p>DDS stack abstraction:</p>
-<ul>
-<li><p>Pluggable DDS implementations via defined interfaces</p></li>
-</ul>
-</li>
-<li><p>Execution and performance model:</p>
-<ul>
-<li><p>Asynchronous processing using internal worker queues</p></li>
-<li><p>Support for configurable priority-based routing</p></li>
-<li><p>High-priority routes can be processed with dedicated queues and worker pools to achieve low-latency data delivery</p></li>
-<li><p>Normal-priority routes are handled via standard processing queues</p></li>
-<li><p>Priority configuration is defined per route</p></li>
-</ul>
-</li>
-<li><p>DDS QoS configurability:</p>
-<ul>
-<li><p>Ability to configure DDS Quality of Service (QoS) policies per route</p></li>
-<li><p>Enables tuning of reliability, durability, and latency behavior based on use case</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>S-CORE currently focuses on local communication via <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> but does
-not provide a standardized mechanism for inter-ECU communication using DDS-based
-systems.</p>
-<p>In mixed middleware environments:</p>
-<ul class="simple">
-<li><p>Integration with DDS requires custom adapters</p></li>
-<li><p>Applications may need to embed DDS logic, reducing abstraction</p></li>
-<li><p>Communication with native DDS applications is not standardized</p></li>
-<li><p>Inter-ECU communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS is not standardized</p></li>
-<li><p>Multi-domain DDS setups are difficult to manage consistently</p></li>
-</ul>
-<p>The DDS Gateway addresses these challenges by introducing a centralized,
-configurable component responsible for bridging and routing communication
-across middleware boundaries.</p>
-</section>
-<section id="key-value">
-<h2>Key Value<a class="headerlink" href="#key-value" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Standardized integration with DDS systems</p></li>
-<li><p>Direct interoperability with native DDS applications via the gateway</p></li>
-<li><p>Standardized inter-ECU communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS</p></li>
-<li><p>Clean separation between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS</p></li>
-<li><p>Reduced integration effort</p></li>
-<li><p>Support for distributed and multi-domain systems</p></li>
-<li><p>Performance and determinism:</p>
-<ul>
-<li><p>Low-latency processing for high-priority data flows</p></li>
-<li><p>Controlled execution via configurable worker queues</p></li>
-<li><p>Predictable behavior for mixed criticality communication</p></li>
-</ul>
-</li>
-<li><p>Interoperability across heterogeneous systems:</p>
-<ul>
-<li><p>Enables communication between systems with different architectures
-(e.g., 32-bit / 64-bit, different endianness)</p></li>
-<li><p>Ensures consistent data representation via Dynamic Type handling</p></li>
-</ul>
-</li>
-<li><p>Centralized handling of safety (E2E) and type management</p></li>
-</ul>
-</section>
-<section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
-<p>The detailed Feature Request is available here:</p>
-<ul class="simple">
-<li><p>DDS Gateway Feature Request:https://github.com/eclipse-score/score/issues/2726</p></li>
-</ul>
-</section>
+<p>The following requirements in “valid” state and with “inspected” tag set are in the scope of this inspection:</p>
+<p class="needs_filter_warning" id="needtable-features/persistency/requirements/chklst_req_inspection-0">No needs passed the filters</p>
+<p>And also the following AoUs in “valid” state and with “inspected” tag set (for these please answer the questions above as if the AoUs are requirements, except questions REQ_03_01 and REQ_03_02):</p>
+<p class="needs_filter_warning" id="needtable-features/persistency/requirements/chklst_req_inspection-1">No needs passed the filters</p>
 </section>
 
 
@@ -828,20 +803,20 @@ across middleware boundaries.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../some_ip_gateway/service_discovery/index.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SOME/IP Gateway Service Discovery</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../configuration/index.html"
+       href="../../security_crypto/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Configuration</p>
+        <p class="prev-next-title">Security &amp; Cryptography</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -857,27 +832,10 @@ across middleware boundaries.</p>
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-concept">Architecture Concept</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-value">Key Value</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/dds_gateway/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/persistency/requirements/chklst_req_inspection.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

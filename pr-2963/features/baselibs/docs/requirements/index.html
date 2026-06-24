@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -533,7 +534,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chklst_req_inspection.html">Requirement Inspection Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../abi_compatible_data_types/index.html">ABI Compatible Data Types</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../code_generation/index.html">Code Generation</a></li>
@@ -543,7 +543,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../time/index.html">Time</a></li>
 </ul>
@@ -611,7 +611,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c0ff6cf6">
+<div class="need_container docutils container" id="SNCB-a5824368">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -631,6 +631,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat">wp__requirements_feat</a></span></span></div>
 </span></div>
@@ -654,7 +655,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0bc6e315">
+<div class="need_container docutils container" id="SNCB-8f74c250">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__core_utilities">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -675,6 +676,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__core_utilities">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__core_utilities">feat__baselibs</a></span></span></div>
@@ -699,7 +701,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4fb28671">
+<div class="need_container docutils container" id="SNCB-db02cecc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -720,6 +722,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__safety">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="feat_req__baselibs__safety">stkh_req__dependability__automotive_safety</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__safety">feat__baselibs</a></span></span></div>
@@ -744,7 +747,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9e646e57">
+<div class="need_container docutils container" id="SNCB-1977fea7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__multi_language_apis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -765,6 +768,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__multi_language_apis">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__baselibs__multi_language_apis">stkh_req__dev_experience__prog_languages</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="feat_req__baselibs__multi_language_apis">stkh_req__dependability__automotive_safety</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__multi_language_apis">feat__baselibs</a></span></span></div>
@@ -789,7 +793,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0049ea9d">
+<div class="need_container docutils container" id="SNCB-453b606e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__consistent_apis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -810,6 +814,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__consistent_apis">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__baselibs__consistent_apis">stkh_req__dev_experience__prog_languages</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__overall_goals__reuse_of_app_soft" title="feat_req__baselibs__consistent_apis">stkh_req__overall_goals__reuse_of_app_soft</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__consistent_apis">feat__baselibs</a></span></span></div>
@@ -834,7 +839,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e037420b">
+<div class="need_container docutils container" id="SNCB-0633a5b5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__maintainable_design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -855,6 +860,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__maintainable_design">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__overall_goals__reuse_of_app_soft" title="feat_req__baselibs__maintainable_design">stkh_req__overall_goals__reuse_of_app_soft</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__maintainable_design">feat__baselibs</a></span></span></div>
@@ -879,7 +885,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1cd48ed5">
+<div class="need_container docutils container" id="SNCB-c24fb650">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__security">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -900,6 +906,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__security">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__security">feat__baselibs</a></span></span></div>
@@ -924,7 +931,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dd056a03">
+<div class="need_container docutils container" id="SNCB-4ef2bbb0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__json_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -945,6 +952,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__json_library">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__json_library">feat__baselibs</a></span></span></div>
@@ -969,7 +977,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4b5e992e">
+<div class="need_container docutils container" id="SNCB-78568b0b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__flatbuffers_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -991,6 +999,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__flatbuffers_library">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__flatbuffers_library">feat__baselibs</a></span></span></div>
@@ -1021,7 +1030,7 @@ the separation is done on component level.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8d86ecb8">
+<div class="need_container docutils container" id="SNCB-23acbecc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__result_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1042,6 +1051,7 @@ the separation is done on component level.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__result_library">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__result_library">feat__baselibs</a></span></span></div>
@@ -1066,7 +1076,54 @@ the separation is done on component level.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2079293b">
+<div class="need_container docutils container" id="SNCB-79123cf4">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__panic_free_development">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Panic-Free Development Support</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__panic_free_development">stkh_req__functional_req__base_libraries</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__panic_free_development">feat__baselibs</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The base libraries shall provide error handling mechanisms that enable development without relying on Rust panics.
+Where an idiomatic interface requires panics, an additional non-panicking option shall be provided as well.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__baselibs__panic_free_development" title="feat_req__baselibs__panic_free_development">feat_req__baselibs__panic_free_development</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-21183096">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__containers_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1087,6 +1144,7 @@ the separation is done on component level.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__containers_library">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__containers_library">feat__baselibs</a></span></span></div>
@@ -1111,7 +1169,53 @@ the separation is done on component level.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d104c886">
+<div class="need_container docutils container" id="SNCB-4afdc8ea">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__abi_containers">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">ABI-Compatible Containers</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__abi_containers">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__baselibs__abi_containers">stkh_req__communication__abi_compatible</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__abi_containers">feat__baselibs</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The base libraries shall provide a library of containers that can serve as the basis for ABI-compatible container data structures.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__baselibs__abi_containers" title="feat_req__baselibs__abi_containers">feat_req__baselibs__abi_containers</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-151a3d84">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__bitmanipulation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1132,6 +1236,7 @@ the separation is done on component level.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__bitmanipulation">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__bitmanipulation">feat__baselibs</a></span></span></div>
@@ -1156,7 +1261,7 @@ the separation is done on component level.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6fbc8264">
+<div class="need_container docutils container" id="SNCB-f7f7e868">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__filesystem_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1177,6 +1282,7 @@ the separation is done on component level.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__filesystem_library">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="feat_req__baselibs__filesystem_library">stkh_req__dependability__automotive_safety</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__filesystem_library">feat__baselibs</a></span></span></div>
@@ -1201,7 +1307,7 @@ the separation is done on component level.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f2ec37f9">
+<div class="need_container docutils container" id="SNCB-2a053d6a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__memory_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1222,6 +1328,7 @@ the separation is done on component level.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__memory_library">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__memory_library">feat__baselibs</a></span></span></div>
@@ -1246,7 +1353,7 @@ the separation is done on component level.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9e913392">
+<div class="need_container docutils container" id="SNCB-826efde3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__concurrency_library">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1267,6 +1374,7 @@ the separation is done on component level.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">inspected</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__concurrency_library">stkh_req__functional_req__base_libraries</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__baselibs" title="feat_req__baselibs__concurrency_library">feat__baselibs</a></span></span></div>

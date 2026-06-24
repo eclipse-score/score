@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -536,7 +537,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ipc/index.html">Inter-process Communication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../some_ip_gateway/index.html">SOME/IP-Gateway</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../dds_gateway/index.html">DDS Gateway</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
@@ -544,7 +544,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../time/index.html">Time</a></li>
 </ul>
@@ -612,7 +612,7 @@
                   
   <section id="requirements">
 <span id="com-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-fea1016a">
+<div class="need_container docutils container" id="SNCB-a9b4a1bd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__communication_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -632,6 +632,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat">wp__requirements_feat</a></span></span></div>
 </span></div>
@@ -655,7 +656,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-32d78e2c">
+<div class="need_container docutils container" id="SNCB-798a5d7e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__time_based_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -676,6 +677,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__time_based_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__time_based_arch">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__time_based_arch">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__time_based_arch">feat__com_communication</a></span></span></div>
@@ -700,7 +702,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8a57aac2">
+<div class="need_container docutils container" id="SNCB-74137ce7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_driven_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -721,6 +723,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_driven_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__data_driven_arch">stkh_req__app_architectures__support_data</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_driven_arch">feat__com_communication</a></span></span></div>
@@ -745,7 +748,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eb43bec5">
+<div class="need_container docutils container" id="SNCB-9186f55f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__request_driven_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -766,6 +769,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__request_driven_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__request_driven_arch">stkh_req__app_architectures__support_request</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__request_driven_arch">feat__com_communication</a></span></span></div>
@@ -790,7 +794,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d210dbf6">
+<div class="need_container docutils container" id="SNCB-0522c79b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__interfaces">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -811,6 +815,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__interfaces">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__interfaces">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__interfaces">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__interfaces">stkh_req__communication__safe</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__interfaces">stkh_req__app_architectures__support_request</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__interfaces">feat__com_communication</a></span></span></div>
@@ -842,7 +847,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a2a53dc9">
+<div class="need_container docutils container" id="SNCB-49b8ba95">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__event_type">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -863,6 +868,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__event_type">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__event_type">stkh_req__app_architectures__support_time</a></span></span></div>
 <div class="line">derives: <span class="derived_from"><span><a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#comp_req__communication__logging" title="feat_req__com__event_type">comp_req__communication__logging</a></span></span></div>
@@ -895,7 +901,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7c56e1ac">
+<div class="need_container docutils container" id="SNCB-63fb95df">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__method">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -916,6 +922,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__method">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__method">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__method">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__method">feat__com_communication</a></span></span></div>
@@ -951,7 +958,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-505ec739">
+<div class="need_container docutils container" id="SNCB-8cc68e9e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__signal">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -972,6 +979,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__signal">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__signal">stkh_req__app_architectures__support_request</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__signal">feat__com_communication</a></span></span></div>
@@ -1010,7 +1018,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-527032d7">
+<div class="need_container docutils container" id="SNCB-e25fe89a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__producer_consumer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1031,6 +1039,7 @@ The service instance offering the trigger can:</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__producer_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__producer_consumer">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__producer_consumer">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__producer_consumer">feat__com_communication</a></span></span></div>
@@ -1055,7 +1064,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a1e4d4bf">
+<div class="need_container docutils container" id="SNCB-9e793e52">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1076,6 +1085,7 @@ The service instance offering the trigger can:</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_instance">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__service_instance">feat__com_communication</a></span></span></div>
@@ -1105,7 +1115,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9fff9407">
+<div class="need_container docutils container" id="SNCB-44021197">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance_names">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1126,6 +1136,7 @@ The service instance offering the trigger can:</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance_names">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_instance_names">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__service_instance_names">feat__com_communication</a></span></span></div>
@@ -1157,7 +1168,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-04214409">
+<div class="need_container docutils container" id="SNCB-6a3b3d21">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__versioning">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1178,6 +1189,7 @@ discovery.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__versioning">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__versioning">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__versioning">feat__com_communication</a></span></span></div>
@@ -1211,7 +1223,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-914a9e6d">
+<div class="need_container docutils container" id="SNCB-36841990">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_location_transparency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1232,6 +1244,7 @@ discovery.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_location_transparency">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_location_transparency">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__service_location_transparency">feat__com_communication</a></span></span></div>
@@ -1261,7 +1274,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-03456f9f">
+<div class="need_container docutils container" id="SNCB-a644e820">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__stateless_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1282,6 +1295,7 @@ discovery.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__stateless_communication">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__stateless_communication">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__stateless_communication">feat__com_communication</a></span></span></div>
@@ -1314,7 +1328,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1a1ae6f6">
+<div class="need_container docutils container" id="SNCB-2a9e75dc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance_granularity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1335,6 +1349,7 @@ discovery.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance_granularity">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_instance_granularity">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__service_instance_granularity">feat__com_communication</a></span></span></div>
@@ -1364,7 +1379,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5db090e1">
+<div class="need_container docutils container" id="SNCB-9d78ec38">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_discovery">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1385,6 +1400,7 @@ discovery.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_discovery">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_discovery">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__service_discovery">feat__com_communication</a></span></span></div>
@@ -1416,7 +1432,7 @@ discovery.</p>
 </div>
 <section id="mixed-criticality-safety-systems">
 <h2>Mixed-Criticality safety systems<a class="headerlink" href="#mixed-criticality-safety-systems" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-529d1f3e">
+<div class="need_container docutils container" id="SNCB-390f82ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__safe_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1437,6 +1453,7 @@ discovery.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__safe_communication">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__safe_communication">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__safe_communication">feat__com_communication</a></span></span></div>
@@ -1462,7 +1479,7 @@ criticality levels.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a2fe5720">
+<div class="need_container docutils container" id="SNCB-3c6c29f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_corruption">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1483,6 +1500,7 @@ criticality levels.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_corruption">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_corruption">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_corruption">feat__com_communication</a></span></span></div>
@@ -1507,7 +1525,7 @@ criticality levels.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f450c72a">
+<div class="need_container docutils container" id="SNCB-22118696">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_reordering">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1528,6 +1546,7 @@ criticality levels.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_reordering">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_reordering">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_reordering">feat__com_communication</a></span></span></div>
@@ -1553,7 +1572,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2f4e4186">
+<div class="need_container docutils container" id="SNCB-1ef53f60">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_repetition">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1574,6 +1593,7 @@ criticality.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_repetition">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_repetition">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_repetition">feat__com_communication</a></span></span></div>
@@ -1599,7 +1619,7 @@ higher criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a97c4d22">
+<div class="need_container docutils container" id="SNCB-92c62118">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_loss">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1620,6 +1640,7 @@ higher criticality.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_loss">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_loss">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_loss">feat__com_communication</a></span></span></div>
@@ -1648,7 +1669,7 @@ criticality.</p></td>
 </section>
 <section id="performance">
 <h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-92b8657e">
+<div class="need_container docutils container" id="SNCB-7562b29c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__zero_copy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1669,6 +1690,7 @@ criticality.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__zero_copy">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_request</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__zero_copy">feat__com_communication</a></span></span></div>
@@ -1700,7 +1722,7 @@ criticality.</p></td>
 </div>
 <section id="user-friendly-api-for-information-exchange">
 <h3>User friendly API for information exchange<a class="headerlink" href="#user-friendly-api-for-information-exchange" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-6770eccc">
+<div class="need_container docutils container" id="SNCB-0ab95153">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_lang">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1721,6 +1743,7 @@ criticality.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__com__multi_lang">stkh_req__dev_experience__prog_languages</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__multi_lang">feat__com_communication</a></span></span></div>
@@ -1745,7 +1768,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2c3c109b">
+<div class="need_container docutils container" id="SNCB-21f95673">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lang_idioms">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1766,6 +1789,7 @@ criticality.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__com__lang_idioms">stkh_req__dev_experience__prog_languages</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__lang_idioms">feat__com_communication</a></span></span></div>
@@ -1790,7 +1814,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4a5a02ef">
+<div class="need_container docutils container" id="SNCB-263ffa8b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lang_infra">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1811,6 +1835,7 @@ criticality.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__com__lang_infra">stkh_req__dev_experience__prog_languages</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__lang_infra">feat__com_communication</a></span></span></div>
@@ -1845,7 +1870,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="full-testability-for-the-user-facing-api">
 <h2>Full testability for the user facing API<a class="headerlink" href="#full-testability-for-the-user-facing-api" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f81a9a1d">
+<div class="need_container docutils container" id="SNCB-e6d8f5fd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__testability_mock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1866,6 +1891,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__testability_mock_api">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__testability_mock_api">feat__com_communication</a></span></span></div>
@@ -1890,7 +1916,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b9b95200">
+<div class="need_container docutils container" id="SNCB-6b3d5979">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__testability_fake_binding">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1911,6 +1937,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__testability_fake_binding">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__testability_fake_binding">feat__com_communication</a></span></span></div>
@@ -1938,7 +1965,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="multi-binding-support">
 <h2>Multi-binding support<a class="headerlink" href="#multi-binding-support" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-7c5199d7">
+<div class="need_container docutils container" id="SNCB-3a957447">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_binding_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1959,6 +1986,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__multi_binding_support">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__multi_binding_support">feat__com_communication</a></span></span></div>
@@ -1988,7 +2016,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-704894be">
+<div class="need_container docutils container" id="SNCB-0f3adf7e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__binding_agnostic_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2009,6 +2037,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__binding_agnostic_api">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__binding_agnostic_api">feat__com_communication</a></span></span></div>
@@ -2038,7 +2067,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-239f9f63">
+<div class="need_container docutils container" id="SNCB-315a5c72">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_binding_depl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2059,6 +2088,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__multi_binding_depl">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__multi_binding_depl">feat__com_communication</a></span></span></div>
@@ -2086,7 +2116,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="cross-vm-extensions">
 <h2>Cross-VM Extensions<a class="headerlink" href="#cross-vm-extensions" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-9474b962">
+<div class="need_container docutils container" id="SNCB-65219609">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__one_way_sharing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2108,6 +2138,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__one_way_sharing">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__one_way_sharing">feat__com_communication</a></span></span></div>
@@ -2132,7 +2163,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bad22a1e">
+<div class="need_container docutils container" id="SNCB-45addfec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__readonly_vm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2154,6 +2185,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__readonly_vm">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__readonly_vm">feat__com_communication</a></span></span></div>
@@ -2178,7 +2210,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5bde51fa">
+<div class="need_container docutils container" id="SNCB-6b38e3bc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__consistent_data">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2200,6 +2232,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__consistent_data">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__consistent_data">feat__com_communication</a></span></span></div>
@@ -2224,7 +2257,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0c2e4365">
+<div class="need_container docutils container" id="SNCB-24fb31f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lock_free_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2246,6 +2279,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__lock_free_access">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__lock_free_access">feat__com_communication</a></span></span></div>
@@ -2270,7 +2304,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2dd67c79">
+<div class="need_container docutils container" id="SNCB-54d6fd52">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__producer_timestamps">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2292,6 +2326,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__producer_timestamps">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__producer_timestamps">feat__com_communication</a></span></span></div>
@@ -2316,7 +2351,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-32487c25">
+<div class="need_container docutils container" id="SNCB-4b04f667">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__streamed_data">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2338,6 +2373,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__streamed_data">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__streamed_data">feat__com_communication</a></span></span></div>
@@ -2362,7 +2398,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-770b545f">
+<div class="need_container docutils container" id="SNCB-652bd022">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__configurable_queues">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2384,6 +2420,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__configurable_queues">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__configurable_queues">feat__com_communication</a></span></span></div>
@@ -2408,7 +2445,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-63f45072">
+<div class="need_container docutils container" id="SNCB-eeae5352">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lock_free_queue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2430,6 +2467,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__lock_free_queue">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__lock_free_queue">feat__com_communication</a></span></span></div>
@@ -2454,7 +2492,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ef476836">
+<div class="need_container docutils container" id="SNCB-2be8b81d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__bi_directional_comm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2476,6 +2514,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__bi_directional_comm">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__bi_directional_comm">feat__com_communication</a></span></span></div>
@@ -2500,7 +2539,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9a89da60">
+<div class="need_container docutils container" id="SNCB-e6fe7bd7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__async_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2522,6 +2561,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__async_support">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__async_support">feat__com_communication</a></span></span></div>
@@ -2546,7 +2586,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a542ba68">
+<div class="need_container docutils container" id="SNCB-dfb274cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__shared_memory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2568,6 +2608,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__shared_memory">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__shared_memory">feat__com_communication</a></span></span></div>
@@ -2592,7 +2633,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8982b1da">
+<div class="need_container docutils container" id="SNCB-a670733e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_notifications">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2614,6 +2655,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_notifications">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_notifications">feat__com_communication</a></span></span></div>
@@ -2638,7 +2680,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-47e4d701">
+<div class="need_container docutils container" id="SNCB-1f387425">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__config_notifications">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2660,6 +2702,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__config_notifications">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__config_notifications">feat__com_communication</a></span></span></div>
@@ -2687,7 +2730,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="dynamic-deployment-at-runtime">
 <h2>Dynamic deployment at runtime<a class="headerlink" href="#dynamic-deployment-at-runtime" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-bb4f6a51">
+<div class="need_container docutils container" id="SNCB-26e22dd3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__depl_config_runtime">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2708,6 +2751,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__depl_config_runtime">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__depl_config_runtime">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__depl_config_runtime">feat__com_communication</a></span></span></div>
@@ -2735,7 +2779,7 @@ whenever possible and meaningful.</p>
 </div>
 <section id="tracing">
 <h3>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-16145fd5">
+<div class="need_container docutils container" id="SNCB-ef47a707">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__tracing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2756,6 +2800,7 @@ whenever possible and meaningful.</p>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__tracing_of_comm" title="feat_req__com__tracing">stkh_req__dev_experience__tracing_of_comm</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__tracing">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__tracing">feat__com_communication</a></span></span></div>
@@ -2784,7 +2829,7 @@ communication.</p></td>
 </section>
 <section id="security-impact">
 <h3>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-4f1d7991">
+<div class="need_container docutils container" id="SNCB-98f21b5e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_placement">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2805,6 +2850,7 @@ communication.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_placement">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_placement">stkh_req__dependability__security_features</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__acl_placement">feat__com_communication</a></span></span></div>
@@ -2829,7 +2875,7 @@ communication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5849a0c8">
+<div class="need_container docutils container" id="SNCB-0774e01f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_per_service_instance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2850,6 +2896,7 @@ communication.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_per_service_instance">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_per_service_instance">stkh_req__dependability__security_features</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__acl_per_service_instance">feat__com_communication</a></span></span></div>
@@ -2874,7 +2921,7 @@ communication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-499ded94">
+<div class="need_container docutils container" id="SNCB-5b512efd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_for_producer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2895,6 +2942,7 @@ communication.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_for_producer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_for_producer">stkh_req__dependability__security_features</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__acl_for_producer">feat__com_communication</a></span></span></div>
@@ -2921,7 +2969,7 @@ An entry in the ACL corresponds to an allowed consumer.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-277ba8f6">
+<div class="need_container docutils container" id="SNCB-90f84901">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_for_consumer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2942,6 +2990,7 @@ An entry in the ACL corresponds to an allowed consumer.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_for_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_for_consumer">stkh_req__dependability__security_features</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__acl_for_consumer">feat__com_communication</a></span></span></div>
@@ -2971,7 +3020,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
 </section>
 <section id="safety-impact">
 <h3>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-01e3ecf9">
+<div class="need_container docutils container" id="SNCB-0e75fb39">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__asil">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2992,6 +3041,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__asil">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__asil">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__asil">feat__com_communication</a></span></span></div>
