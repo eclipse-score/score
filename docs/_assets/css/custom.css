@@ -15,14 +15,19 @@
  * Loaded after the score_docs_as_code bundle, so rules here win. */
 
 /* Background of the colored card header (octicon + title) on the landing pages.
- * Change the color value below to whatever you like. */
+ * Change the color value below to whatever you like.
+ *
+ * NOTE: the !important here is unavoidable. The bundled theme rule
+ * ".score-grid .sd-card-header" in score_design.css declares the header
+ * background-color with !important. An !important declaration can only be
+ * overridden by another !important declaration, so we must mirror it here. */
 html .score-grid .sd-card-header {
     background-color: #eef1f5 !important;
 }
 
 /* Title text inside the card header (the line above "^^^"). */
 html .score-grid .sd-card-header {
-    color: #1a2733 !important;       /* text color */
+    color: #1a2733;                  /* text color */
     font-size: 1.2em;                /* text size */
     font-weight: 900;                /* boldness */
     /* font-family: "Arial", sans-serif; */
@@ -67,6 +72,7 @@ html .bd-content .score-grid .sd-card .sd-card-body {
 html .bd-content .score-grid .sd-card .sd-card-body {
     color: #1a2733;                  /* text color */
     font-size: 1em;                  /* text size */
+    text-align: left;                /* left-align body text (sphinx-design centers by default) */
     /* font-family: "Arial", sans-serif; */
 }
 
@@ -116,49 +122,46 @@ html .bd-content section:has(> .score-grid) > h2 {
 
 /* ---------------------------------------------------------------------------
  * Chapter: Introduction  (.score-grid-intro)
- * Proposed color: happy lilac (vibrant).
- * A more saturated lilac than the very pale purple used by the Reference
- * Integration section, so the hero/intro card stands out clearly while the
- * two purple-ish chapters remain easy to tell apart.
+ * Proposed color: very light green.
  * ------------------------------------------------------------------------- */
 
 /* Header background (same as body). */
 html .score-grid-intro .sd-card-header {
-    background-color: #ede0fb !important;
+    background-color: #eaf7ee !important;
 }
 
 /* Card / body background. */
 html .bd-content .score-grid-intro .sd-card,
 html .bd-content .score-grid-intro .sd-card .sd-card-body {
-    background-color: #ede0fb;
+    background-color: #eaf7ee;
 }
 
 /* Title + icon: dark so they stay readable on the light header. */
 html .score-grid-intro .sd-card-header,
 html .score-grid-intro .sd-card-header .sd-octicon {
-    color: #36204f !important;
+    color: #1d2c22;
 }
 
 /* ---------------------------------------------------------------------------
  * Chapter: Get started with S-CORE  (.score-grid-getstarted)
- * Proposed color: very light green.
+ * Proposed color: happy lilac (vibrant).
  * ------------------------------------------------------------------------- */
 
 /* Header background (same as body). */
 html .score-grid-getstarted .sd-card-header {
-    background-color: #eaf7ee !important;
+    background-color: #ede0fb !important;
 }
 
 /* Card / body background. */
 html .bd-content .score-grid-getstarted .sd-card,
 html .bd-content .score-grid-getstarted .sd-card .sd-card-body {
-    background-color: #eaf7ee;
+    background-color: #ede0fb;
 }
 
 /* Title + icon: dark so they stay readable on the light header. */
 html .score-grid-getstarted .sd-card-header,
 html .score-grid-getstarted .sd-card-header .sd-octicon {
-    color: #1d2c22 !important;
+    color: #36204f;
 }
 
 /* ---------------------------------------------------------------------------
@@ -180,7 +183,7 @@ html .bd-content .score-grid-artifacts .sd-card .sd-card-body {
 /* Title + icon: dark so they stay readable on the light header. */
 html .score-grid-artifacts .sd-card-header,
 html .score-grid-artifacts .sd-card-header .sd-octicon {
-    color: #16292c !important;
+    color: #16292c;
 }
 
 /* ---------------------------------------------------------------------------
@@ -202,7 +205,7 @@ html .bd-content .score-grid-processes .sd-card .sd-card-body {
 /* Title + icon: dark so they stay readable on the light header. */
 html .score-grid-processes .sd-card-header,
 html .score-grid-processes .sd-card-header .sd-octicon {
-    color: #33291a !important;
+    color: #33291a;
 }
 
 /* ---------------------------------------------------------------------------
@@ -224,7 +227,7 @@ html .bd-content .score-grid-refintegration .sd-card .sd-card-body {
 /* Title + icon: dark so they stay readable on the light header. */
 html .score-grid-refintegration .sd-card-header,
 html .score-grid-refintegration .sd-card-header .sd-octicon {
-    color: #271a33 !important;
+    color: #271a33;
 }
 
 /* ---------------------------------------------------------------------------
@@ -246,5 +249,5 @@ html .bd-content .score-grid-infratooling .sd-card .sd-card-body {
 /* Title + icon: dark so they stay readable on the light header. */
 html .score-grid-infratooling .sd-card-header,
 html .score-grid-infratooling .sd-card-header .sd-octicon {
-    color: #331a1f !important;
+    color: #331a1f;
 }
