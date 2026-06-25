@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DDS Gateway &#8212; S-CORE  documentation</title>
+    <title>DDS Binding and Gateway &#8212; S-CORE  documentation</title>
   
   
   
@@ -532,7 +532,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">DDS Gateway</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DDS Binding and Gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/architecture/index.html">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/requirements/index.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ipc/index.html">Inter-process Communication</a></li>
@@ -593,7 +593,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Communication (v0.5 beta)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DDS Gateway</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DDS Binding and Gateway</span></li>
   </ul>
 </nav>
 </div>
@@ -610,9 +610,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dds-gateway">
-<h1>DDS Gateway<a class="headerlink" href="#dds-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-39168ca9">
+  <section id="dds-binding-and-gateway">
+<h1>DDS Binding and Gateway<a class="headerlink" href="#dds-binding-and-gateway" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-d0ebf544">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__dds_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -657,17 +657,69 @@
 </div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>The DDS Gateway introduces a communication bridge within the S-CORE communication stack.
-It enables controlled and configurable data exchange between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> (intra-ECU
-communication via IPC binding) and DDS-based systems (inter-ECU
-communication), allowing integration with distributed DDS environments
-while preserving existing application implementations.</p>
+<p>This feature introduces DDS communication support for <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> and a
+reference DDS Gateway implementation.</p>
+<p>DDS communication is provided as a binding beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>. This allows
+applications to use the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> abstraction while the communication is
+transported over a DDS network, based on the service and deployment
+configuration selected by the integrator.</p>
+<p>In addition, the DDS Gateway provides a reference translation concept between
+local <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS-based inter-ECU communication.
+It enables controlled and configurable data exchange between intra-ECU
+<code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> participants and DDS-based systems while preserving
+existing application implementations.</p>
 </section>
 <section id="architecture-concept">
 <h2>Architecture Concept<a class="headerlink" href="#architecture-concept" title="Link to this heading">#</a></h2>
-<p>The DDS Gateway acts as a centralized communication bridge between local
-<code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS domains, enabling inter-ECU
-communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS transport.</p>
+<p>The DDS feature supports two integration concepts:</p>
+<ul class="simple">
+<li><p>Direct DDS binding usage beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code></p></li>
+<li><p>Reference DDS Gateway based translation</p></li>
+</ul>
+<section id="direct-dds-binding-concept">
+<h3>Direct DDS Binding Concept<a class="headerlink" href="#direct-dds-binding-concept" title="Link to this heading">#</a></h3>
+<p>In this concept, an application uses the regular <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> API and service
+definition. The integrator selects DDS as the communication binding through
+the service/deployment configuration. The application does not directly use
+DDS APIs, but its communication is transported over the DDS network.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==============================</span>        <span class="o">==============================</span>
+           <span class="n">ECU</span> <span class="mi">1</span>                              <span class="n">ECU</span> <span class="mi">2</span>
+<span class="o">==============================</span>        <span class="o">==============================</span>
+
+<span class="o">+-------------------------+</span>           <span class="o">+-------------------------+</span>
+<span class="o">|</span>     <span class="n">Application</span> <span class="n">A</span>       <span class="o">|</span>           <span class="o">|</span>     <span class="n">Application</span> <span class="n">B</span>       <span class="o">|</span>
+<span class="o">|</span>        <span class="p">(</span><span class="n">mw</span><span class="p">::</span><span class="n">com</span><span class="p">)</span>        <span class="o">|</span>           <span class="o">|</span>        <span class="p">(</span><span class="n">mw</span><span class="p">::</span><span class="n">com</span><span class="p">)</span>        <span class="o">|</span>
+<span class="o">+-----------+-------------+</span>           <span class="o">+-----------+-------------+</span>
+            <span class="o">|</span>                                     <span class="o">^</span>
+            <span class="o">|</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span> <span class="n">API</span>                         <span class="o">|</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span> <span class="n">API</span>
+            <span class="n">v</span>                                     <span class="o">|</span>
+    <span class="o">+---------------------+</span>               <span class="o">+---------------------+</span>
+    <span class="o">|</span>   <span class="n">DDS</span> <span class="n">Binding</span>       <span class="o">|</span>               <span class="o">|</span>   <span class="n">DDS</span> <span class="n">Binding</span>       <span class="o">|</span>
+    <span class="o">|</span> <span class="n">beneath</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span>     <span class="o">|</span>               <span class="o">|</span> <span class="n">beneath</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span>     <span class="o">|</span>
+    <span class="o">+----------+----------+</span>               <span class="o">+----------+----------+</span>
+               <span class="o">|</span>                                     <span class="o">^</span>
+               <span class="o">|</span> <span class="n">DDS</span>                                 <span class="o">|</span> <span class="n">DDS</span>
+               <span class="n">v</span>                                     <span class="o">|</span>
+      <span class="o">===================</span>   <span class="n">DDS</span> <span class="n">NETWORK</span>   <span class="o">===================</span>
+</pre></div>
+</div>
+<p>The DDS binding provides the DDS communication layer beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>.
+It is responsible for runtime type handling, creation of DDS communication
+entities, conversion between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> samples and DDS data representation,
+DDS routing, QoS configuration, and interaction with the underlying DDS stack.</p>
+<p>Applications continue to use the standard <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> programming model,
+while the selected binding transports the data over DDS.
+The application programming model remains unchanged. Publishers and subscribers
+continue to allocate and populate typed <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> samples, while the DDS
+binding performs the conversion to the DDS data representation and interacts
+with the underlying DDS stack.</p>
+</section>
+<section id="reference-dds-gateway-concept">
+<h3>Reference DDS Gateway Concept<a class="headerlink" href="#reference-dds-gateway-concept" title="Link to this heading">#</a></h3>
+<p>The DDS Gateway is a reference implementation that demonstrates one possible
+translation concept between local <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS
+domains. In this concept, the applications continue to use <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code>
+locally, while the gateway performs the translation and routing to DDS.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==============================</span>        <span class="o">==============================</span>
            <span class="n">ECU</span> <span class="mi">1</span>                              <span class="n">ECU</span> <span class="mi">2</span>
 <span class="o">==============================</span>        <span class="o">==============================</span>
@@ -699,71 +751,75 @@ communication between <code class="docutils literal notranslate"><span class="pr
     <span class="o">+---------------------+</span>
 </pre></div>
 </div>
-<p>Each DDS Gateway instance connects to:
-- Local <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> participants (IPC binding)
-- A DDS domain for inter-ECU communication</p>
+<p>The reference DDS Gateway is implemented using the DDS communication binding
+beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>. The gateway focuses on translation between local
+<code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS communication while reusing the
+common DDS communication layer.</p>
+<p>The reference DDS Gateway is one such implementation built on top of the
+DDS communication binding. The binding architecture also supports deployment
+solutions without an explicit gateway process.</p>
+<p>Each DDS Gateway instance connects to:</p>
+<ul class="simple">
+<li><p>Local <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> participants (IPC binding)</p></li>
+<li><p>A DDS domain for inter-ECU communication</p></li>
+</ul>
 <p>The gateway is responsible for:</p>
 <ul class="simple">
-<li><p>Translating data in both directions between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> and DDS representations</p></li>
-<li><p>Routing data across DDS domains</p></li>
-<li><p>configure QOS on DDS for each route</p></li>
-<li><p>Applying  E2E protection</p></li>
+<li><p>Translating between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS communication</p></li>
+<li><p>Managing configurable translation routes</p></li>
+<li><p>Applying End-to-End (E2E) protection</p></li>
+<li><p>Scheduling translation through configurable worker queues (e.g., Mailbox and Queue policies)</p></li>
 </ul>
+</section>
 </section>
 <section id="scope">
 <h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
-<p>The DDS Gateway provides:</p>
+<p>This feature provides:</p>
+<section id="dds-communication-binding">
+<h3>DDS Communication Binding<a class="headerlink" href="#dds-communication-binding" title="Link to this heading">#</a></h3>
+<p>The DDS communication binding provides DDS communication beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>.</p>
+<p>It provides:</p>
+<ul class="simple">
+<li><p>Communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> applications over DDS using the standard
+<code class="docutils literal notranslate"><span class="pre">mw::com</span></code> programming model</p></li>
+<li><p>Mapping between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> events (TBD for fields and methods) and DDS topics</p></li>
+<li><p>Support for DDS domain-based routing</p></li>
+<li><p>Runtime type definition via configuration (e.g. JSON) or dynamic library</p></li>
+<li><p>Runtime creation of DDS entities (Topics, DataReaders, and DataWriters)</p></li>
+<li><p>True Zero-generation workflow with no dependency on DDS IDL generation</p></li>
+<li><p>Conversion between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> raw memory samples and the DDS runtime data representation</p></li>
+<li><p>Serialization and deserialization using the underlying DDS stack</p></li>
+<li><p>Support for DDS standard encodings (e.g., XCDR1 and XCDR2)</p></li>
+<li><p>Per-route DDS Quality of Service (QoS) configuration</p></li>
+<li><p>Pluggable DDS stack implementations via defined abstract interfaces</p></li>
+</ul>
+</section>
+<section id="reference-dds-gateway">
+<h3>Reference DDS Gateway<a class="headerlink" href="#reference-dds-gateway" title="Link to this heading">#</a></h3>
+<p>The DDS Gateway is the reference implementation for translating between
+<code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS.</p>
+<p>It provides:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>Bridging between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS via the gateway:</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> → DDS GW → <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> (inter-ECU communication via DDS)</p></li>
+<dt>Bridging between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> → DDS GW → <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> → DDS GW → DDS applications</p></li>
 <li><p>DDS applications → DDS GW → <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>Configurable routing:</p>
-<ul>
-<li><p>Mapping between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> events(TBD for fields and methods) and DDS topics</p></li>
-<li><p>Support for DDS domain-based routing</p></li>
-</ul>
-</li>
-<li><p>Dynamic Type handling:</p>
-<ul>
-<li><p>Runtime type definition via configuration or via dynamic library</p></li>
-<li><p>No dependency on DDS IDL generation</p></li>
-<li><p>Enables data translation and consistent serialization across middleware boundaries</p></li>
-<li><p>Supports DDS standard encodings (e.g., XCDR1 and XCDR2) for interoperability</p></li>
-</ul>
-</li>
-<li><p>End-to-End (E2E) protection:</p>
-<ul>
-<li><p>Centralized handling of Counter, CRC, and DataID</p></li>
-<li><p>Validation and protection configurable per route</p></li>
-</ul>
-</li>
-<li><p>DDS stack abstraction:</p>
-<ul>
-<li><p>Pluggable DDS implementations via defined interfaces</p></li>
-</ul>
-</li>
+<li><p>Centralized End-to-End (E2E) protection</p></li>
 <li><p>Execution and performance model:</p>
 <ul>
 <li><p>Asynchronous processing using internal worker queues</p></li>
 <li><p>Support for configurable priority-based routing</p></li>
-<li><p>High-priority routes can be processed with dedicated queues and worker pools to achieve low-latency data delivery</p></li>
+<li><p>High-priority routes can be processed with dedicated queues and worker pools</p></li>
 <li><p>Normal-priority routes are handled via standard processing queues</p></li>
-<li><p>Priority configuration is defined per route</p></li>
-</ul>
-</li>
-<li><p>DDS QoS configurability:</p>
-<ul>
-<li><p>Ability to configure DDS Quality of Service (QoS) policies per route</p></li>
-<li><p>Enables tuning of reliability, durability, and latency behavior based on use case</p></li>
 </ul>
 </li>
 </ul>
+</section>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
@@ -772,25 +828,30 @@ not provide a standardized mechanism for inter-ECU communication using DDS-based
 systems.</p>
 <p>In mixed middleware environments:</p>
 <ul class="simple">
-<li><p>Integration with DDS requires custom adapters</p></li>
-<li><p>Applications may need to embed DDS logic, reducing abstraction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span></code> does not provide a standardized DDS communication binding</p></li>
+<li><p>Different projects implement DDS integration using project-specific solutions</p></li>
+<li><p>Integration with DDS requires project-specific bindings or adapters</p></li>
+<li><p>Applications may need to embed DDS-specific logic, reducing abstraction</p></li>
 <li><p>Communication with native DDS applications is not standardized</p></li>
 <li><p>Inter-ECU communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS is not standardized</p></li>
-<li><p>Multi-domain DDS setups are difficult to manage consistently</p></li>
+<li><p>Multi-domain DDS deployments are difficult to configure consistently</p></li>
 </ul>
-<p>The DDS Gateway addresses these challenges by introducing a centralized,
-configurable component responsible for bridging and routing communication
-across middleware boundaries.</p>
+<p>This feature addresses these challenges by introducing a reusable DDS
+communication binding beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> together with a reference DDS
+Gateway implementation.</p>
+<p>The DDS binding provides standardized DDS communication for <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>
+applications, while the reference gateway demonstrates one possible approach
+for translating between local <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS-based
+communication.</p>
 </section>
 <section id="key-value">
 <h2>Key Value<a class="headerlink" href="#key-value" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Standardized integration with DDS systems</p></li>
-<li><p>Direct interoperability with native DDS applications via the gateway</p></li>
+<li><p>Standardized DDS communication support through an <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> binding</p></li>
+<li><p>Reference DDS Gateway implementation for <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> to DDS translation</p></li>
+<li><p>Supports multiple integration concepts through a common DDS communication layer</p></li>
+<li><p>Direct interoperability with native DDS applications</p></li>
 <li><p>Standardized inter-ECU communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS</p></li>
-<li><p>Clean separation between <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> and DDS</p></li>
-<li><p>Reduced integration effort</p></li>
-<li><p>Support for distributed and multi-domain systems</p></li>
 <li><p>Performance and determinism:</p>
 <ul>
 <li><p>Low-latency processing for high-priority data flows</p></li>
@@ -812,7 +873,7 @@ across middleware boundaries.</p>
 <h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
 <p>The detailed Feature Request is available here:</p>
 <ul class="simple">
-<li><p>DDS Gateway Feature Request:https://github.com/eclipse-score/score/issues/2726</p></li>
+<li><p>DDS Gateway Feature Request: <a class="reference external" href="https://github.com/eclipse-score/score/issues/2726">https://github.com/eclipse-score/score/issues/2726</a></p></li>
 </ul>
 </section>
 </section>
@@ -865,8 +926,16 @@ across middleware boundaries.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-concept">Architecture Concept</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-concept">Architecture Concept</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-dds-binding-concept">Direct DDS Binding Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-dds-gateway-concept">Reference DDS Gateway Concept</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dds-communication-binding">DDS Communication Binding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-dds-gateway">Reference DDS Gateway</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-value">Key Value</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
