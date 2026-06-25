@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-DDS Gateway
-===========
+DDS Binding and Gateway
+=======================
 
 .. document:: DDS-Gateway
    :id: doc__dds_gateway
@@ -26,18 +26,75 @@ DDS Gateway
 
 Overview
 --------
+This feature introduces DDS communication support for ``mw::com`` and a
+reference DDS Gateway implementation.
 
-The DDS Gateway introduces a communication bridge within the S-CORE communication stack.
-It enables controlled and configurable data exchange between ``mw::com (LoLa)`` (intra-ECU
-communication via IPC binding) and DDS-based systems (inter-ECU
-communication), allowing integration with distributed DDS environments
-while preserving existing application implementations.
+DDS communication is provided as a binding beneath ``mw::com``. This allows
+applications to use the ``mw::com`` abstraction while the communication is
+transported over a DDS network, based on the service and deployment
+configuration selected by the integrator.
+
+In addition, the DDS Gateway provides a reference translation concept between
+local ``mw::com (LoLa)`` communication and DDS-based inter-ECU communication.
+It enables controlled and configurable data exchange between intra-ECU
+``mw::com (LoLa)`` participants and DDS-based systems while preserving
+existing application implementations.
 
 Architecture Concept
 --------------------
-The DDS Gateway acts as a centralized communication bridge between local
-``mw::com (LoLa)`` communication and DDS domains, enabling inter-ECU
-communication between ``mw::com`` participants via DDS transport.
+
+The DDS feature supports two integration concepts:
+
+- Direct DDS binding usage beneath ``mw::com``
+- Reference DDS Gateway based translation
+
+Direct DDS Binding Concept
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+In this concept, an application uses the regular ``mw::com`` API and service
+definition. The integrator selects DDS as the communication binding through
+the service/deployment configuration. The application does not directly use
+DDS APIs, but its communication is transported over the DDS network.
+
+::
+
+   ==============================        ==============================
+              ECU 1                              ECU 2
+   ==============================        ==============================
+
+   +-------------------------+           +-------------------------+
+   |     Application A       |           |     Application B       |
+   |        (mw::com)        |           |        (mw::com)        |
+   +-----------+-------------+           +-----------+-------------+
+               |                                     ^
+               | mw::com API                         | mw::com API
+               v                                     |
+       +---------------------+               +---------------------+
+       |   DDS Binding       |               |   DDS Binding       |
+       | beneath mw::com     |               | beneath mw::com     |
+       +----------+----------+               +----------+----------+
+                  |                                     ^
+                  | DDS                                 | DDS
+                  v                                     |
+         ===================   DDS NETWORK   ===================
+
+The DDS binding provides the DDS communication layer beneath ``mw::com``.
+It is responsible for runtime type handling, creation of DDS communication
+entities, conversion between ``mw::com`` samples and DDS data representation,
+DDS routing, QoS configuration, and interaction with the underlying DDS stack.
+
+Applications continue to use the standard ``mw::com`` programming model,
+while the selected binding transports the data over DDS.
+The application programming model remains unchanged. Publishers and subscribers
+continue to allocate and populate typed ``mw::com`` samples, while the DDS
+binding performs the conversion to the DDS data representation and interacts
+with the underlying DDS stack.
+
+Reference DDS Gateway Concept
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The DDS Gateway is a reference implementation that demonstrates one possible
+translation concept between local ``mw::com (LoLa)`` communication and DDS
+domains. In this concept, the applications continue to use ``mw::com (LoLa)``
+locally, while the gateway performs the translation and routing to DDS.
 
 ::
 
@@ -71,60 +128,74 @@ communication between ``mw::com`` participants via DDS transport.
        |     (optional)      |
        +---------------------+
 
+The reference DDS Gateway is implemented using the DDS communication binding
+beneath ``mw::com``. The gateway focuses on translation between local
+``mw::com (LoLa)`` communication and DDS communication while reusing the
+common DDS communication layer.
+
+The reference DDS Gateway is one such implementation built on top of the 
+DDS communication binding. The binding architecture also supports deployment 
+solutions without an explicit gateway process.
+
 Each DDS Gateway instance connects to:
+
 - Local ``mw::com (LoLa)`` participants (IPC binding)
 - A DDS domain for inter-ECU communication
 
 The gateway is responsible for:
 
-- Translating data in both directions between ``mw::com`` and DDS representations
-- Routing data across DDS domains
-- configure QOS on DDS for each route
-- Applying  E2E protection
-
+- Translating between ``mw::com (LoLa)`` and DDS communication
+- Managing configurable translation routes
+- Applying End-to-End (E2E) protection
+- Scheduling translation through configurable worker queues (e.g., Mailbox and Queue policies)
 
 Scope
 -----
-The DDS Gateway provides:
 
-- Bridging between ``mw::com (LoLa)`` and DDS via the gateway:
-   - ``mw::com (LoLa)`` → DDS GW → ``mw::com (LoLa)`` (inter-ECU communication via DDS)
+This feature provides:
+
+DDS Communication Binding
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The DDS communication binding provides DDS communication beneath ``mw::com``.
+
+It provides:
+
+- Communication between ``mw::com`` applications over DDS using the standard
+  ``mw::com`` programming model
+- Mapping between ``mw::com`` events (TBD for fields and methods) and DDS topics
+- Support for DDS domain-based routing
+- Runtime type definition via configuration (e.g. JSON) or dynamic library
+- Runtime creation of DDS entities (Topics, DataReaders, and DataWriters)
+- True Zero-generation workflow with no dependency on DDS IDL generation
+- Conversion between ``mw::com`` raw memory samples and the DDS runtime data representation
+- Serialization and deserialization using the underlying DDS stack
+- Support for DDS standard encodings (e.g., XCDR1 and XCDR2)
+- Per-route DDS Quality of Service (QoS) configuration
+- Pluggable DDS stack implementations via defined abstract interfaces
+
+Reference DDS Gateway
+~~~~~~~~~~~~~~~~~~~~~
+
+The DDS Gateway is the reference implementation for translating between
+``mw::com (LoLa)`` and DDS.
+
+It provides:
+
+- Bridging between ``mw::com (LoLa)`` and DDS:
+   - ``mw::com (LoLa)`` → DDS GW → ``mw::com (LoLa)``
    - ``mw::com (LoLa)`` → DDS GW → DDS applications
    - DDS applications → DDS GW → ``mw::com (LoLa)``
 
-- Configurable routing:
-
-  - Mapping between ``mw::com`` events(TBD for fields and methods) and DDS topics
-  - Support for DDS domain-based routing
-
-- Dynamic Type handling:
-
-  - Runtime type definition via configuration or via dynamic library
-  - No dependency on DDS IDL generation
-  - Enables data translation and consistent serialization across middleware boundaries
-  - Supports DDS standard encodings (e.g., XCDR1 and XCDR2) for interoperability
-
-- End-to-End (E2E) protection:
-
-  - Centralized handling of Counter, CRC, and DataID
-  - Validation and protection configurable per route
-
-- DDS stack abstraction:
-
-  - Pluggable DDS implementations via defined interfaces
+- Centralized End-to-End (E2E) protection
 
 - Execution and performance model:
 
   - Asynchronous processing using internal worker queues
   - Support for configurable priority-based routing
-  - High-priority routes can be processed with dedicated queues and worker pools to achieve low-latency data delivery
+  - High-priority routes can be processed with dedicated queues and worker pools
   - Normal-priority routes are handled via standard processing queues
-  - Priority configuration is defined per route
 
-- DDS QoS configurability:
-
-  - Ability to configure DDS Quality of Service (QoS) policies per route
-  - Enables tuning of reliability, durability, and latency behavior based on use case
 
 Motivation
 ----------
@@ -135,26 +206,32 @@ systems.
 
 In mixed middleware environments:
 
-- Integration with DDS requires custom adapters
-- Applications may need to embed DDS logic, reducing abstraction
+- ``mw::com`` does not provide a standardized DDS communication binding
+- Different projects implement DDS integration using project-specific solutions
+- Integration with DDS requires project-specific bindings or adapters
+- Applications may need to embed DDS-specific logic, reducing abstraction
 - Communication with native DDS applications is not standardized
 - Inter-ECU communication between ``mw::com`` participants via DDS is not standardized
-- Multi-domain DDS setups are difficult to manage consistently
+- Multi-domain DDS deployments are difficult to configure consistently
 
 
-The DDS Gateway addresses these challenges by introducing a centralized,
-configurable component responsible for bridging and routing communication
-across middleware boundaries.
+This feature addresses these challenges by introducing a reusable DDS
+communication binding beneath ``mw::com`` together with a reference DDS
+Gateway implementation.
+
+The DDS binding provides standardized DDS communication for ``mw::com``
+applications, while the reference gateway demonstrates one possible approach
+for translating between local ``mw::com (LoLa)`` communication and DDS-based
+communication.
 
 Key Value
 ---------
 
-- Standardized integration with DDS systems
-- Direct interoperability with native DDS applications via the gateway
+- Standardized DDS communication support through an ``mw::com`` binding
+- Reference DDS Gateway implementation for ``mw::com (LoLa)`` to DDS translation
+- Supports multiple integration concepts through a common DDS communication layer
+- Direct interoperability with native DDS applications
 - Standardized inter-ECU communication between ``mw::com`` participants via DDS
-- Clean separation between ``mw::com (LoLa)`` and DDS
-- Reduced integration effort
-- Support for distributed and multi-domain systems
 
 - Performance and determinism:
 
@@ -175,4 +252,4 @@ Reference
 
 The detailed Feature Request is available here:
 
-- DDS Gateway Feature Request:https://github.com/eclipse-score/score/issues/2726
+- DDS Gateway Feature Request: https://github.com/eclipse-score/score/issues/2726
