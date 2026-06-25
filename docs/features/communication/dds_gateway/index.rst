@@ -187,7 +187,10 @@ It provides:
    - ``mw::com (LoLa)`` → DDS GW → DDS applications
    - DDS applications → DDS GW → ``mw::com (LoLa)``
 
-- Centralized End-to-End (E2E) protection
+- End-to-End (E2E) protection:
+  - The translation layer performs generation and validation of Counter, CRC, and DataID
+  - Independent of the underlying DDS stack implementation
+  - Validation and protection configurable per route
 
 - Execution and performance model:
 
@@ -245,7 +248,10 @@ Key Value
     (e.g., 32-bit / 64-bit, different endianness)
   - Ensures consistent data representation via Dynamic Type handling
 
-- Centralized handling of safety (E2E) and type management
+- End-to-End (E2E) protection:
+  - The translation layer performs generation and validation of Counter, CRC, and DataID
+  - Independent of the underlying DDS stack implementation
+  - Validation and protection configurable per route
 
 Reference
 ---------
