@@ -14,7 +14,7 @@
 
 .. document:: Software Verification Plan
    :id: doc__verification_plan
-   :status: draft
+   :status: valid
    :version: 1
    :safety: ASIL_B
    :security: YES
@@ -108,7 +108,7 @@ The following types of integrations are applicable:
    the :need:`doc__pull_request_guideline` as any other artifact.
 
 The test methods and techniques shall be selected based on the characteristics and specified behavior
-of the software element under test. This shall ensure proper testing from unit level to feature integration level.
+of the software element under test. This shall ensure proper testing from unit level to platform integration level.
 Specific recommendations for each test level are provided in the following sections of this verification plan.
 
 The following examples serve as illustration and inspiration for test selection:
@@ -212,7 +212,7 @@ Static code analysis is part of the :need:`wp__sw_implementation`. It is support
 the :need:`doc__software_development_plan`
 
 As an additional measure the resource usage evaluation ``resource-usage`` should also be considered
-for level 3 testing as this is the level executed also on reference hardware with the integrated
+for level 3 (software platform level) testing as this is the level executed also on reference hardware with the integrated
 platform. This can help to identify resource constraints on "system" level from a security and safety
 perspective.
 
@@ -436,8 +436,15 @@ to follow the :need:`gd_guidl__verification_specification` and :need:`gd_req__ve
 Test execution and result analysis
 ----------------------------------
 
-The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
-needs to be performed by the :need:`rl__contributor`.
+The execution of the tests is based on a full automation defined by build pipelines. The analysis of
+the test results needs to be performed by the :need:`rl__contributor`.
+
+Release test execution
+^^^^^^^^^^^^^^^^^^^^^^
+Results of the test execution are captured in the verification reports for the modules and platform
+as release work products documenting the clear pass/fail result for each executed test case id.
+Also, any  deviation in the test execution scope for skipped or not executed tests will be documented
+in the release documentation and the respective reasoning will be provided.
 
 Manual test execution
 ^^^^^^^^^^^^^^^^^^^^^
