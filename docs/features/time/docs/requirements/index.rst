@@ -59,7 +59,7 @@ Time Synchronization
 
    The **score::time feature** shall provide an API to access the synchronized vehicle time.
 
-.. stkh_req:: Usage of Vehicle Time base API has FFI
+.. feat_req:: Usage of Vehicle Time base API has FFI
    :id: feat_req__time__vehicle_time_base_api_ffi
    :reqtype: Non-Functional
    :security: NO
@@ -88,7 +88,7 @@ Time Synchronization
    * does the time increase in a monotonic manner.
 
 .. feat_req:: Reliability of Vehicle Time base accuracy qualifier
-   :id: feat_req__time__vehicle_time_acc_qual_reliability
+   :id: feat_req__time__veh_time_reliable_accur_qual
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
