@@ -245,18 +245,18 @@ Time Synchronization to absolute external sources
 Local Clock
 ^^^^^^^^^^^^^^^^^^^^
 
-.. feat_req:: High precision clock API
-   :id: feat_req__time__high_prec_clock_api
+.. feat_req:: High resolution clock API
+   :id: feat_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__time__high_precision_clock_api[version==1]
+   :derived_from: stkh_req__time__high_res_clock_api[version==1]
    :status: valid
    :version: 1
 
-   The **score::time feature** shall provide an API to read the high precision clock in nanoseconds precision.
+   The **score::time feature** shall provide an API to read the high resolution clock in nanoseconds resolution.
 
-   Note: to which clock the high precision clock is mapped, depends on the system design.
+   Note: to which clock the high resolution clock is mapped, depends on the system design.
 
    *Use case:* such clocks might be used for time-critical applications, such as audio/video streaming, event logging, and diagnostics.
 

@@ -906,7 +906,7 @@ Time
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :rationale: Depending on the user needs and their SW platform configuration, it can be guaranteed that applications can rely on the quality rating of the time reference of a certain time base, even in case of interferences induces into or by QM-rated software components involved in the synchronization process.
+   :rationale: Depending on the user needs and their SW platform configuration, it can be guaranteed that applications can rely on the quality rating of the time reference of a certain time base, even in case of interferences induced into or by QM-rated software components involved in the synchronization process.
    :status: valid
    :version: 1
 
@@ -917,7 +917,7 @@ Time
    * The end-to-end quality of the time information provided by the time base API may require components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting the AUTOSAR Time Synchroization Protocol).
 
 .. stkh_req:: Local High Resolution Clock API
-   :id: stkh_req__time__high_resolution_clock_api
+   :id: stkh_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
