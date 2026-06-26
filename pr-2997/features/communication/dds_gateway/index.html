@@ -612,7 +612,7 @@
                   
   <section id="dds-binding-and-gateway">
 <h1>DDS Binding and Gateway<a class="headerlink" href="#dds-binding-and-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-13ba4ecd">
+<div class="need_container docutils container" id="SNCB-53de5490">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__dds_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -678,10 +678,9 @@ existing application implementations.</p>
 </ul>
 <section id="direct-dds-binding-concept">
 <h3>Direct DDS Binding Concept<a class="headerlink" href="#direct-dds-binding-concept" title="Link to this heading">#</a></h3>
-<p>In this concept, an application uses the regular <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> API and service
-definition. The integrator selects DDS as the communication binding through
-the service/deployment configuration. The application does not directly use
-DDS APIs, but its communication is transported over the DDS network.</p>
+<p>In this concept, an application uses the regular <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> API.The integrator selects DDS as
+the communication binding through the service/deployment configuration.
+The application does not directly use DDS APIs, but its communication is transported over the DDS network.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==============================</span>        <span class="o">==============================</span>
            <span class="n">ECU</span> <span class="mi">1</span>                              <span class="n">ECU</span> <span class="mi">2</span>
 <span class="o">==============================</span>        <span class="o">==============================</span>
@@ -695,7 +694,6 @@ DDS APIs, but its communication is transported over the DDS network.</p>
             <span class="n">v</span>                                     <span class="o">|</span>
     <span class="o">+---------------------+</span>               <span class="o">+---------------------+</span>
     <span class="o">|</span>   <span class="n">DDS</span> <span class="n">Binding</span>       <span class="o">|</span>               <span class="o">|</span>   <span class="n">DDS</span> <span class="n">Binding</span>       <span class="o">|</span>
-    <span class="o">|</span> <span class="n">beneath</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span>     <span class="o">|</span>               <span class="o">|</span> <span class="n">beneath</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span>     <span class="o">|</span>
     <span class="o">+----------+----------+</span>               <span class="o">+----------+----------+</span>
                <span class="o">|</span>                                     <span class="o">^</span>
                <span class="o">|</span> <span class="n">DDS</span>                                 <span class="o">|</span> <span class="n">DDS</span>
@@ -704,9 +702,16 @@ DDS APIs, but its communication is transported over the DDS network.</p>
 </pre></div>
 </div>
 <p>The DDS binding provides the DDS communication layer beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>.
-It is responsible for runtime type handling, creation of DDS communication
-entities, conversion between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> samples and DDS data representation,
-DDS routing, QoS configuration, and interaction with the underlying DDS stack.</p>
+It is responsible for runtime type handling, runtime serialization and
+deserialization, creation of DDS communication entities, conversion between
+<code class="docutils literal notranslate"><span class="pre">mw::com</span></code> samples and DDS runtime data representation, DDS communication
+routing, QoS configuration, and interaction with the underlying DDS stack.</p>
+<p>Communication is established by mapping mw::com events to DDS Topics.
+In DDS, a Topic represents a named communication channel associated with a
+specific data type.Based on the deployment configuration, the DDS binding
+creates the required DDS Topics, DataReaders and DataWriters. DDS Domains
+provide communication isolation and may be used to separate communication
+routes (for example, QM and ASIL communication).</p>
 <p>Applications continue to use the standard <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> programming model,
 while the selected binding transports the data over DDS.
 The application programming model remains unchanged. Publishers and subscribers
@@ -751,10 +756,6 @@ locally, while the gateway performs the translation and routing to DDS.</p>
     <span class="o">+---------------------+</span>
 </pre></div>
 </div>
-<p>The reference DDS Gateway is implemented using the DDS communication binding
-beneath <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>. The gateway focuses on translation between local
-<code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> communication and DDS communication while reusing the
-common DDS communication layer.</p>
 <p>The reference DDS Gateway is one such implementation built on top of the
 DDS communication binding. The binding architecture also supports deployment
 solutions without an explicit gateway process.</p>
@@ -782,16 +783,26 @@ solutions without an explicit gateway process.</p>
 <ul class="simple">
 <li><p>Communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> applications over DDS using the standard
 <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> programming model</p></li>
-<li><p>Mapping between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> events (TBD for fields and methods) and DDS topics</p></li>
-<li><p>Support for DDS domain-based routing</p></li>
+<li><p>Configuration-driven mapping between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> and DDS:</p>
+<ul>
+<li><p>Each <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> event is mapped to one DDS Topic</p></li>
+<li><p>DDS Topic data is mapped back to the corresponding <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> event</p></li>
+<li><p>DDS deployment configuration extends the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> deployment
+configuration with DDS-specific attributes such as runtime type references,
+QoS policies and DDS Domain IDs</p></li>
+<li><p>Standard DDS endpoint discovery is used to determine the availability of
+configured DDS endpoints and map this to the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> availability model</p></li>
+</ul>
+</li>
+<li><p>Support for configurable DDS domain-based routing</p></li>
 <li><p>Runtime type definition via configuration (e.g. JSON) or dynamic library</p></li>
-<li><p>Runtime creation of DDS entities (Topics, DataReaders, and DataWriters)</p></li>
-<li><p>True Zero-generation workflow with no dependency on DDS IDL generation</p></li>
-<li><p>Conversion between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> raw memory samples and the DDS runtime data representation</p></li>
-<li><p>Serialization and deserialization using the underlying DDS stack</p></li>
-<li><p>Support for DDS standard encodings (e.g., XCDR1 and XCDR2)</p></li>
+<li><p>Runtime creation of DDS entities (Topics, DataReaders and DataWriters)</p></li>
+<li><p>Runtime conversion between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> raw memory samples and the DDS runtime data representation using runtime type definitions</p></li>
+<li><p>Runtime serialization and deserialization performed by the DDS binding usingconfigured runtime type definitions</p></li>
+<li><p>Support for standard DDS serialization encodings (e.g. XCDR1 and XCDR2)</p></li>
+<li><p>True zero-generation workflow with no dependency on DDS IDL generation</p></li>
 <li><p>Per-route DDS Quality of Service (QoS) configuration</p></li>
-<li><p>Pluggable DDS stack implementations via defined abstract interfaces</p></li>
+<li><p>Pluggable DDS stack implementations via defined abstract interfaces,isolating DDS-stack-specific APIs from the DDS communication binding</p></li>
 </ul>
 </section>
 <section id="reference-dds-gateway">
@@ -853,6 +864,7 @@ communication.</p>
 <li><p>Standardized DDS communication support through an <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> binding</p></li>
 <li><p>Reference DDS Gateway implementation for <code class="docutils literal notranslate"><span class="pre">mw::com</span> <span class="pre">(LoLa)</span></code> to DDS translation</p></li>
 <li><p>Supports multiple integration concepts through a common DDS communication layer</p></li>
+<li><p>DDS-stack-independent runtime type handling through a common abstraction layer</p></li>
 <li><p>Direct interoperability with native DDS applications</p></li>
 <li><p>Standardized inter-ECU communication between <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> participants via DDS</p></li>
 <li><p>Performance and determinism:</p>
