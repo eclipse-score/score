@@ -609,7 +609,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-d1d4b207">
+  <div class="need_container docutils container" id="SNCB-fe41bf59">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -617,7 +617,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -726,7 +726,7 @@ automated software build at any time.</p>
 the <a class="reference internal" href="../contribute/contribution_request/index.html#doc__pull_request_guideline" title="doc__pull_request_guideline"><em class="xref need">Pull Request Guideline (doc__pull_request_guideline)</em></a> as any other artifact.</p></li>
 </ol>
 <p>The test methods and techniques shall be selected based on the characteristics and specified behavior
-of the software element under test. This shall ensure proper testing from unit level to feature integration level.
+of the software element under test. This shall ensure proper testing from unit level to platform integration level.
 Specific recommendations for each test level are provided in the following sections of this verification plan.</p>
 <p>The following examples serve as illustration and inspiration for test selection:
 Resource Usage Evaluation is selected when requirements address resource management or when data
@@ -839,7 +839,7 @@ sufficient freedom from interference with safety critical software parts.</p>
 <p>Static code analysis is part of the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>. It is supported by tooling as mentioned in
 the <a class="reference internal" href="software_development.html#doc__software_development_plan" title="doc__software_development_plan"><em class="xref need">Software Development Plan (doc__software_development_plan)</em></a></p>
 <p>As an additional measure the resource usage evaluation <code class="docutils literal notranslate"><span class="pre">resource-usage</span></code> should also be considered
-for level 3 testing as this is the level executed also on reference hardware with the integrated
+for level 3 (software platform level) testing as this is the level executed also on reference hardware with the integrated
 platform. This can help to identify resource constraints on “system” level from a security and safety
 perspective.</p>
 <p>Additionally, while <code class="docutils literal notranslate"><span class="pre">requirements-based</span></code> testing is not mandatory to cover 100% of the stakeholder
@@ -1061,8 +1061,15 @@ to follow the <a class="external_link reference external" href="https://eclipse-
 </section>
 <section id="test-execution-and-result-analysis">
 <h3>Test execution and result analysis<a class="headerlink" href="#test-execution-and-result-analysis" title="Link to this heading">#</a></h3>
-<p>The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
-needs to be performed by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>.</p>
+<p>The execution of the tests is based on a full automation defined by build pipelines. The analysis of
+the test results needs to be performed by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>.</p>
+<section id="release-test-execution">
+<h4>Release test execution<a class="headerlink" href="#release-test-execution" title="Link to this heading">#</a></h4>
+<p>Results of the test execution are captured in the verification reports for the modules and platform
+as release work products documenting the clear pass/fail result for each executed test case id.
+Also, any  deviation in the test execution scope for skipped or not executed tests will be documented
+in the release documentation and the respective reasoning will be provided.</p>
+</section>
 <section id="manual-test-execution">
 <h4>Manual test execution<a class="headerlink" href="#manual-test-execution" title="Link to this heading">#</a></h4>
 <p>The automation rate for test case execution is expected to be above 99%.</p>
@@ -1299,6 +1306,7 @@ This includes physical maintenance as well as virtual access.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-execution-and-result-analysis">Test execution and result analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#release-test-execution">Release test execution</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-test-execution">Manual test execution</a></li>
 </ul>
 </li>
