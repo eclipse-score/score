@@ -83,6 +83,12 @@ deserialization, creation of DDS communication entities, conversion between
 ``mw::com`` samples and DDS runtime data representation, DDS communication
 routing, QoS configuration, and interaction with the underlying DDS stack.
 
+In DDS, a Topic represents a named communication channel associated with a
+specific data type.The DDS binding maps ``mw::com`` events to DDS Topics and creates the
+required DDS Topics, DataReaders and DataWriters from the deployment
+configuration. DDS Domains provide communication isolation and may be used to separate
+communication routes (for example, QM and ASIL communication).
+
 Applications continue to use the standard ``mw::com`` programming model,
 while the selected binding transports the data over DDS.
 The application programming model remains unchanged. Publishers and subscribers
