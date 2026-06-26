@@ -50,10 +50,9 @@ The DDS feature supports two integration concepts:
 
 Direct DDS Binding Concept
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-In this concept, an application uses the regular ``mw::com`` API and service
-definition. The integrator selects DDS as the communication binding through
-the service/deployment configuration. The application does not directly use
-DDS APIs, but its communication is transported over the DDS network.
+In this concept, an application uses the regular ``mw::com`` API.The integrator selects DDS as 
+the communication binding through the service/deployment configuration. 
+The application does not directly use DDS APIs, but its communication is transported over the DDS network.
 
 ::
 
@@ -82,11 +81,12 @@ deserialization, creation of DDS communication entities, conversion between
 ``mw::com`` samples and DDS runtime data representation, DDS communication
 routing, QoS configuration, and interaction with the underlying DDS stack.
 
+Communication is established by mapping mw::com events to DDS Topics.
 In DDS, a Topic represents a named communication channel associated with a
-specific data type.The DDS binding maps ``mw::com`` events to DDS Topics and creates the
-required DDS Topics, DataReaders and DataWriters from the deployment
-configuration. DDS Domains provide communication isolation and may be used to separate
-communication routes (for example, QM and ASIL communication).
+specific data type.Based on the deployment configuration, the DDS binding
+creates the required DDS Topics, DataReaders and DataWriters. DDS Domains
+provide communication isolation and may be used to separate communication
+routes (for example, QM and ASIL communication).
 
 Applications continue to use the standard ``mw::com`` programming model,
 while the selected binding transports the data over DDS.
