@@ -946,7 +946,7 @@ Monitoring, Notification and Recovery
 
     The :term:`Launch Manager` shall be able to run in multiple instances with its
     own configurations on a system.
-    TODO. Shift to a later release? 
+    TODO. Shift to a later release?
 
 .. comp_req:: Launch manager self health check
     :id: feat_req__lifecycle__lm_self_health_check
@@ -998,7 +998,7 @@ Monitoring, Notification and Recovery
 Logging
 -------
 
-.. feat_req:: Logging slog2 and file support
+.. comp_req:: Logging slog2 and file support
     :id: feat_req__lifecycle__slog2_logging
     :reqtype: Functional
     :security: NO
@@ -1010,7 +1010,7 @@ Logging
     The :term:`Launch Manager` shall support OS specific logging facilities to analyze the early
     boot sequence.
 
-.. feat_req:: Logging state transitions
+.. comp_req:: Logging state transitions
     :id: feat_req__lifecycle__process_logging_support
     :reqtype: Functional
     :security: NO
@@ -1022,7 +1022,7 @@ Logging
     The :term:`Launch Manager` shall provide support for logging process launches,
     :term:`Processes <Process>` exit/recovery, internal tasks, and interaction with external monitor.
 
-.. feat_req:: Logging timestamp
+.. comp_req:: Logging timestamp
     :id: feat_req__lifecycle__log_timestamp
     :reqtype: Functional
     :security: NO
@@ -1034,7 +1034,7 @@ Logging
     The :term:`Launch Manager` logs shall contain timestamp information.
 
 
-.. feat_req:: Logging DAG
+.. comp_req:: Logging DAG
     :id: feat_req__lifecycle__dag_logging_controlif
     :reqtype: Functional
     :security: NO
@@ -1047,7 +1047,7 @@ Logging
     in a human readable format, triggered via :term:`Control Interface`.
 
 
-.. feat_req:: Configuration dependency view
+.. comp_req:: Configuration dependency view
     :id: feat_req__lifecycle__dependency_visu
     :reqtype: Functional
     :security: NO
@@ -1061,7 +1061,7 @@ Logging
 Configuration file
 ------------------
 
-.. feat_req:: Configuration file support
+.. comp_req:: Configuration file support
     :id: feat_req__lifecycle__modular_config_support
     :reqtype: Functional
     :security: NO
@@ -1072,7 +1072,7 @@ Configuration file
 
     The launch manager shall provide modular configuration file support to configure process attributes.
 
-.. feat_req:: Runtime configuration compliance
+.. comp_req:: Runtime configuration compliance
     :id: feat_req__lifecycle__runtime_config_compat
     :reqtype: Functional
     :security: NO
@@ -1109,7 +1109,7 @@ Configuration file
     as modules.
 
 
-.. feat_req:: Global process properties
+.. comp_req:: Global process properties
     :id: feat_req__lifecycle__central_default_defines
     :reqtype: Functional
     :security: NO
@@ -1121,7 +1121,7 @@ Configuration file
     The Launch Manager shall be able to centrally define defaults for specific properties for the set of executables.
 
 
-.. feat_req:: Lazy check of configured commands
+.. comp_req:: Lazy check of configured commands
     :id: feat_req__lifecycle__lazy_check
     :reqtype: Functional
     :security: NO
@@ -1145,7 +1145,7 @@ Configuration file
     The Launch Manager shall have the means to generate the specified dependencies in a format that can be visualized.
 
 
-.. feat_req:: Configuration Verification tool
+.. comp_req:: Configuration Verification tool
     :id: feat_req__lifecycle__offline_config_valid
     :reqtype: Functional
     :security: NO
