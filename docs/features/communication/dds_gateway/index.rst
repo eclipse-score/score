@@ -178,10 +178,8 @@ It provides:
 - Support for configurable DDS domain-based routing
 - Runtime type definition via configuration (e.g. JSON) or dynamic library
 - Runtime creation of DDS entities (Topics, DataReaders and DataWriters)
-- Runtime conversion between ``mw::com`` raw memory samples and the DDS runtime
-data representation using runtime type definitions
-- Runtime serialization and deserialization performed by the DDS binding using
-configured runtime type definitions
+- Runtime conversion between ``mw::com`` raw memory samples and the DDS runtime data representation using runtime type definitions
+- Runtime serialization and deserialization performed by the DDS binding usingconfigured runtime type definitions
 - Support for standard DDS serialization encodings (e.g. XCDR1 and XCDR2)
 - True zero-generation workflow with no dependency on DDS IDL generation
 - Per-route DDS Quality of Service (QoS) configuration
