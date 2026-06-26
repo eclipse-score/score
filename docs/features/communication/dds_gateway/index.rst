@@ -70,8 +70,7 @@ DDS APIs, but its communication is transported over the DDS network.
                v                                     |
        +---------------------+               +---------------------+
        |   DDS Binding       |               |   DDS Binding       |
-       | beneath mw::com     |               | beneath mw::com     |
-       +----------+----------+               +----------+----------+
+       +----------+----------+               +----------+----------+                       
                   |                                     ^
                   | DDS                                 | DDS
                   v                                     |
