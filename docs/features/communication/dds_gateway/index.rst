@@ -186,7 +186,8 @@ configured runtime type definitions
 - Support for standard DDS serialization encodings (e.g. XCDR1 and XCDR2)
 - True zero-generation workflow with no dependency on DDS IDL generation
 - Per-route DDS Quality of Service (QoS) configuration
-- Pluggable DDS stack implementations via defined abstract interfaces
+- Pluggable DDS stack implementations via defined abstract interfaces,
+  isolating DDS-stack-specific APIs from the DDS communication binding
 
 Reference DDS Gateway
 ~~~~~~~~~~~~~~~~~~~~~
