@@ -42,7 +42,7 @@ Task Management
    :status: valid
    :version: 1
 
-   The executor shall provide a cooperative task runtime for async programming based on the definition of Rust's async model (see `Asynchronous Programming in Rust <https://rust-lang.github.io/async-book>`).
+   The executor shall provide a cooperative123 task runtime for async programming based on the definition of Rust's async model (see `Asynchronous Programming in Rust <https://rust-lang.github.io/async-book>`).
 
 .. feat_req:: Yielding Guidelines for Long Operations
    :id: feat_req__orchestration__exec_yielding

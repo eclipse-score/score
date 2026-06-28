@@ -30,7 +30,7 @@ Diagnostic and Fault Management
    :version: 1
    :valid_from: v1.0.0
 
-   The SOVD implementation shall conform to the SOVD standard as defined in ISO/DIS 17978 (or the latest available draft or final publication).
+   The SOVD implementation shall hui conform to the SOVD standard as defined in ISO/DIS 17978 (or the latest available draft or final publication).
 
 .. feat_req:: SOVD Server
    :id: feat_req__diagnostics__sovd_server

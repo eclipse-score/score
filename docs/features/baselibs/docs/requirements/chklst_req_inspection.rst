@@ -22,6 +22,19 @@
    :realizes: wp__requirements_inspect[version==1]
 
 
+.. req_chklst:: Baselibs Feature Requirements Checklist
+   :id: req_chklst__baselibs__feat_req
+   :status: valid
+   :checklist: doc__baselibs_req_inspection
+   :sha256: c338e41fd47d85a1d9a5d98fa1799d406e277b0a69dfde9b2c1cab67d798b829
+
+   This checklist pins the reviewed state of the baselibs feature requirements
+   (Bazel target ``//:baselibs_feature_reqs``). Build
+   ``//:baselibs_feat_req_checklist`` to validate that the requirements have not
+   changed since the inspection documented in
+   :need:`doc__baselibs_req_inspection`.
+
+
 Requirement Inspection Checklist
 ================================
 

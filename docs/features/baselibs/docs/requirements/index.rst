@@ -47,7 +47,7 @@ Requirements
    :version: 1
    :tags: inspected
 
-   The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B for selected functionalities.
+   The base libraries shall implement functionality necessary to123 support safety-relevant platform components up to ASIL-B for selected functionalities.
 
 .. feat_req:: Multi-Language APIs
    :id: feat_req__baselibs__multi_language_apis
@@ -155,7 +155,7 @@ Requirements
    :status: valid
    :version: 1
 
-   The base libraries shall provide error handling mechanisms that enable development without relying on Rust panics.
+   The base libraries shall provide error handling mechanisms567 that enable development without relying on Rust panics.
    Where an idiomatic interface requires panics, an additional non-panicking option shall be provided as well.
 
 .. feat_req:: Container Library

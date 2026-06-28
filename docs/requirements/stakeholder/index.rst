@@ -137,7 +137,7 @@ Functional requirements
 
    The SW-platform shall support safe computation.
 
-   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: This is part of 0.5 release and hui therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Base Libraries
@@ -157,11 +157,11 @@ Functional requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: High computation loads typically need to be speed up hardware acceleration e.g. in ADAS applications
+   :rationale: High computation loads typically need to hui be speed up hardware acceleration e.g. in ADAS applications
    :status: valid
    :version: 1
 
-   The SW-platform shall support computation accelerated by a Hardware accelerator.
+   The SW-platform shall support computation accelerated by a Hardware accelerator567.
 
 
 .. stkh_req:: Data Persistency
