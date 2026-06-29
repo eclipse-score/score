@@ -52,7 +52,7 @@ Interfaces
 .. logic_arc_int:: IJson
    :id: logic_arc_int__baselibs__json
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :status: valid
    :version: 1
 
