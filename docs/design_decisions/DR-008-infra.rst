@@ -13,7 +13,7 @@
 DR-008-Infra: Generating documentation sources via Bazel
 ========================================================
 
-- **Date:** 2026-05-28
+- **Date:** 2026-06-29
 
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
