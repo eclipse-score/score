@@ -47,7 +47,7 @@ Requirements
    :version: 1
    :tags: inspected
 
-   The base libraries shall implement functionality necessary to123 support safety-relevant platform components up to ASIL-B for selected functionalities.
+   The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B for selected functionalities.
 
 .. feat_req:: Multi-Language APIs
    :id: feat_req__baselibs__multi_language_apis

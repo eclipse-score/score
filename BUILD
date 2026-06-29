@@ -67,19 +67,3 @@ docs(
     ],
     source_dir = "docs",
 )
-
-load("@score_docs_as_code//:docs.bzl", "architecture_checklist", "assumptions_of_use", "component_architecture", "component_requirements", "docs", "feature_architecture", "feature_requirements", "filtered_needs_json", "requirements_checklist", "sphinx_needs_to_md", "sphinx_needs_to_trlc")
-
-
-feature_requirements(
-    name = "baselibs_feature_reqs",  # only the "bitmanipulation" component
-    feature = "baselibs",
-    visibility = ["//visibility:public"],
-)
-
-requirements_checklist(
-    name = "baselibs_feat_req_checklist",
-    checklist_id = "req_chklst__baselibs__feat_req",
-    deps = [":baselibs_feature_reqs"],
-    visibility = ["//visibility:public"],
-)

@@ -42,7 +42,7 @@ Diagnostic and Fault Management
    :version: 1
    :valid_from: v1.0.0
 
-   The diagnostic system shall include a central SOVD server that exposes diagnostic functionality via a standard REST interface.
+   The diagnostic system shall 123include a central SOVD server that exposes diagnostic functionality via a standard REST interface.
 
 .. feat_req:: SOVD Configuration
    :id: feat_req__diagnostics__sovd_config

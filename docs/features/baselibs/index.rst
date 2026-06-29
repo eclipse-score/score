@@ -31,7 +31,6 @@ Base Libraries (v0.5 beta)
    :hidden:
 
    docs/requirements/index.rst
-   docs/requirements/chklst_req_inspection.rst
    docs/architecture/index.rst
 
 Feature flag

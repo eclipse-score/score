@@ -38,7 +38,7 @@ Launching Processes
     :status: invalid
     :version: 1
 
-    The :term:`Launch Manager` shall hui provide support for ordering the launching of
+    The :term:`Launch Manager` shall provide support for ordering the launching of
     :term:`Processes <Process>` based on the dependencies.
 
 
