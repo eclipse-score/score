@@ -1,9 +1,8 @@
-.. dec_rec:: One Format for Access Control List(s) (ACL)
+```{dec_rec} One Format for Access Control List(s) (ACL)
    :id: dec_rec__platform__acl_concept
    :status: proposed
-   :version: 1
-   :affects: <link>
-
+   :decision: open
+```
 
    Context
    -------
