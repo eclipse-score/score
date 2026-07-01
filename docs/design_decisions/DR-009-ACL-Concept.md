@@ -1,9 +1,9 @@
-```{dec_rec} One Format for Access Control List(s) (ACL)
+.. dec_rec:: One Format for Access Control List(s) (ACL)
    :id: dec_rec__platform__acl_concept
    :status: proposed
    :version: 1
    :affects: <link>
-```
+
 
    Context
    -------
@@ -86,13 +86,11 @@
   },
   "crypto": 
   {
-	//keyspaceID
 	"0":
 	{
 		"keyspaceName": "tls_auth",
 		"keys": 
 		{
-			//keyID
 			"1":
 			{	
 				"name": "tls_auth_priv",
@@ -105,7 +103,7 @@
 				"name": "tls_auth_pub",
 				"read": [{"uid": -1}],
 				"use": [{"uid": 1, "policy": ""},{"vmid": 4,"uid": 2}],
-				"write": [{uid": 1, "policy": "someipd_t"}]
+				"write": [{"uid": 1, "policy": "someipd_t"}]
 			}
 		}
 	}
