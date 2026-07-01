@@ -52,31 +52,26 @@
 
 	  "services": 
 	  {
-		111: //serviceID
+		"111":
 		{
 		  "serviceName": "someservice",
 		  "serviceInstances": {
-			500: //serviceInstanceID
+			"500":
 			{
 			  "providerName": "fancy_name",
 			  "criticality": "ASIL-B",
 			  "version": 5,
 			  "tlsenable": 1,
 			  "ipsecenable": 1,
-			  "macsecenable ":1,
-			  //specifics is for oem/user specifics: e.g. some state machine aka allow access to everyone if in state X
+			  "macsecenable":1,			  
 			  "specifics": {},
 			  "allow": 
 			  {
 				"uids": 
 				{
-				  //rights: "write" --> r+w to data & control, e.g. publisher in publish subscribe, m:n --> "m", 1:1 --> both
-				  //        "read" --> r to data & rw on control, e.g. subscriber in publish subscribe, m:n --> "n"
-				  //        "monitor" --> r to data & control, e.g. some health monitor checking duration of control blockers
-				  //specifics is for oem/user specifics: e.g. allow uid 101 only to write/publish if in state X
-				  101:{"rights": ["write"],"name": "oem.app.1","version": [],"criticality": "ASIL-B","specifics": {}},
-				  102:{"rights": ["read"],"name": "oem.app.2","version": [],"criticality": "ASIL-B","specifics": {}},
-				  103:{"rights": ["read"],"name": "tier1.daemon.1","version": [],"criticality": "ASIL-B","specifics": {}}
+				  "101":{"rights": ["write"],"name": "oem.app.1","version": [],"criticality": "ASIL-B","specifics": {}},
+				  "102":{"rights": ["read"],"name": "oem.app.2","version": [],"criticality": "ASIL-B","specifics": {}},
+				  "103":{"rights": ["read"],"name": "tier1.daemon.1","version": [],"criticality": "ASIL-B","specifics": {}}
 				},
 				"ips": 
 				{ 
@@ -87,29 +82,29 @@
 			}
 		  }
 		}
-	  } 
+	  },
 	  "crypto": 
 	  {
 		//keyspaceID
-		0:
+		"0":
 		{
 			"keyspaceName": "tls_auth",
 			"keys": 
 			{
 				//keyID
-				1:
+				"1":
 				{	
 					"name": "tls_auth_priv",
 					"read": [],
-					"use": [{"vmid": None, "uid": 1, "policy": "", "otherid": ""},{"vmid": 4,"uid": 2, "policy": ""}],
-					"write": [{"vmid": None, "uid": 1, "policy": "someipd_t"}]
+					"use": [{"uid": 1,"otherid": "special_handling_1"},{"vmid": 4,"uid": 2}],
+					"write": [{"uid": 1, "policy": "someipd_t"}]
 				},
-				2:
+				"2":
 				{ 
 					"name": "tls_auth_pub",
-					"read": [{"vmid": None,  "uid": -1, "policy": ""}],
-					"use": [{"vmid": None,"uid": 1, "policy": ""},{"vmid": 4,"uid": 2, "policy": ""}],
-					"write": [{"vmid": None,"uid": 1, "policy": "someipd_t"}]
+					"read": [{"uid": -1}],
+					"use": [{"uid": 1, "policy": ""},{"vmid": 4,"uid": 2}],
+					"write": [{uid": 1, "policy": "someipd_t"}]
 				}
 			}
 		}
