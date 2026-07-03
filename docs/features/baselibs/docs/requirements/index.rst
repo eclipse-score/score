@@ -235,5 +235,19 @@ Requirements
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 
+.. feat_req:: Hash Library
+   :id: feat_req__baselibs__hash_library
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
+   :status: valid
+   :version: 1
+
+   The base libraries shall provide a hash library supporting cryptographic hash
+   calculation (e.g. SHA-256, SHA-512) and checksum algorithms (e.g. CRC-32) over
+   byte data and streams via a pluggable interface.
+
 .. needextend:: is_external == False and "__baselibs" in id
    :+tags: baselibs
