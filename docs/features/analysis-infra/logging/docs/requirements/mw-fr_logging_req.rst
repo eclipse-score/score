@@ -54,7 +54,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall support timestamp synchronization for log entries coming from different :term:`logging nodes <logging node>`.
 
@@ -80,7 +80,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging framework shall prioritize logs in case of resource conflicts to ensure critical logs are not lost.
 
@@ -93,7 +93,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall support logging of early startup events to capture critical initialization information.
 
@@ -240,7 +240,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall support cloud-native drives via network as log sinks.
 
@@ -306,7 +306,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall support configuration of the log storage device.
 
@@ -319,7 +319,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall support multiple log storage devices.
 
@@ -332,7 +332,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall support configurable :term:`log storage strategy`.
 
@@ -358,7 +358,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall allow configuration of storage size per log file.
 
@@ -371,7 +371,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall allow configuration of permission settings for log access.
 
@@ -462,7 +462,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    In case of non-recoverable error, the logging :term:`framework` shall deactivate silently and set an error state reported on shutdown.
 
@@ -503,7 +503,7 @@ Requirements
    :version: 1
    :valid_from: v1.0.0
 
-   The logging :term:`framework` shall support C++, Rust, and Python programming languages.
+   The logging :term:`framework` shall support C++, Rust programming languages.
 
 .. feat_req:: Resource Consumption - Storage
    :id: feat_req__logging__resource_storage
@@ -566,7 +566,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall provide:term:` QoS` for handling overflows or dropping log messages.
 .. ist "rovide QoS for handling overflows or dropping log messages." doppelt zu den loos detection req.?
@@ -595,7 +595,7 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall ensure that only authorized users can access log files.
 
@@ -623,6 +623,6 @@ Requirements
    :satisfied_by: feat__logging[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The logging :term:`framework` shall be classified according to the overall system's safety concept if logging information is part of the verification strategy.
