@@ -10,7 +10,7 @@ https://www.apache.org/licenses/LICENSE-2.0
 
 SPDX-License-Identifier: Apache-2.0
 -->
-
+(DR-002-Arch)=
 # DR-002-Arch: Library Delivery Model (Static vs. Dynamic)
 
 * **Date:** 2026-05-15
