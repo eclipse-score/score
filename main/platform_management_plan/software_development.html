@@ -625,7 +625,7 @@
                   
   <section id="software-development-plan">
 <span id="sw-development"></span><h1>Software Development Plan<a class="headerlink" href="#software-development-plan" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-996a6934">
+<div class="need_container docutils container" id="SNCB-61f86e19">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__software_development_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -698,8 +698,8 @@ which is based on experience. The criteria for selection are based on the follow
 <li><p>Support of the use of structured constructs</p></li>
 </ul>
 <p>The selected languages form the stakeholder requirements were analysed in the following table:</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 101 </span><span class="caption-text">Selection of design and programming language</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 101 </span><span class="caption-text">Selection of design and programming language</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 33.3%" />
@@ -764,8 +764,8 @@ and <a class="reference internal" href="../contribute/development/rust/rust_api_
 <h3>SW development tools<a class="headerlink" href="#sw-development-tools" title="Link to this heading">#</a></h3>
 <p>This list will evolve into the complete “Tool List” <a class="reference internal" href="../score_tools/index.html#tools"><span class="std std-ref">S-CORE Tools Overview</span></a> for the S-CORE project used for
 tool evaluation and qualification. In the moment the <a class="reference internal" href="software_verification.html#doc__verification_plan" title="doc__verification_plan"><em class="xref need">Software Verification Plan (doc__verification_plan)</em></a>
-contains additional tools used in verification.</p>
-<p>Additional tools for static and dynamic analysis (in addition to compilers and Clang-Tidy) are currently evaluated: <a class="reference external" href="https://github.com/eclipse-score/score/issues/244">#244</a></p>
+contains additional tools used in verification.
+Tools for code analysis (static/dynamic) as discussed in <a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp_code_analysis" title="doc__cpp_code_analysis"><em class="xref need">Static Code Analysis C++ (doc__cpp_code_analysis)</em></a> are documented here.</p>
 <p class="rubric">GitHub</p>
 <p>is used for hosting, versioning and contribution of the software. Within
 pull requests it’s possible to contribute. For contribution a separate process description is
@@ -790,13 +790,36 @@ Sphinx and reStructuredText.</p>
 e.g. in process or concept descriptions</p>
 <p class="rubric">Host Compiler C++</p>
 <p>GCC is used as host C++ compiler with its associated linker. It’s used as a development (compilation and linking) and verification tool
-as it generates compiler warnings and builds unit tests and binaries for SW integration testing.</p>
+as it generates compiler warnings, offers sanitizers and builds unit tests and binaries for SW integration testing.</p>
 <p class="rubric">Target Compiler C++</p>
 <p>QCC the qualify-able compiler/linker from Blackberry offered together with its Posix conform Operating System QNX is planned to be used for target compilation.</p>
 <p class="rubric">Clang-tidy</p>
 <p>is used in conjunction with the Clang compiler to perform static analysis.</p>
+<p class="rubric">GitHub CodeQL</p>
+<p>For Static Code Analysis, <a class="reference external" href="https://codeql.github.com/">CodeQL</a> is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
+It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.</p>
+<p>Core features of CodeQL include:</p>
+<ul class="simple">
+<li><p><strong>Vulnerability Detection</strong>: CodeQL can identify known vulnerabilities in the codebase by comparing it against a database of known issues.</p></li>
+<li><p><strong>Custom Queries</strong>: Developers can write custom queries to identify specific patterns or issues in the codebase that are relevant to the project’s security and quality standards.</p></li>
+<li><p><strong>Integration with CI</strong>: CodeQL can be integrated into the CI pipeline to automatically analyze code changes and provide feedback on potential issues before they are merged into the main codebase.</p></li>
+<li><p><strong>Reporting</strong>: CodeQL provides detailed reports on identified issues, including severity levels and recommendations for remediation.</p></li>
+<li><p><strong>Support for Multiple Languages</strong>: CodeQL supports multiple programming languages, including C++, Rust, and others used in the project.</p></li>
+</ul>
+<p>CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.</p>
+<p>Examples of capabilities include:</p>
+<ul class="simple">
+<li><p>unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)</p></li>
+<li><p>potential runtime errors (e.g., null pointer dereferences, buffer overflows)</p></li>
+<li><p>code quality issues (e.g., dead code, unused variables)</p></li>
+<li><p>incorrect use of APIs (e.g., misuse of cryptographic functions, incorrect error handling)</p></li>
+<li><p>compliance with coding standards (e.g., naming conventions, code complexity)</p></li>
+<li><p>violations of project-specific coding guidelines (e.g., use of certain libraries, adherence to architectural patterns)</p></li>
+</ul>
+<p>Custom queries can be developed to identify specific patterns or issues that are relevant to the project’s security and quality standards.
+This allows for a tailored approach to static code analysis that aligns with the project’s specific requirements and goals.</p>
 <p class="rubric">Host Compiler Rust</p>
-<p>There is currently no selection of a Rust compiler for S-CORE. Pick your own favourite.</p>
+<p>There is currently no selection of a Rust host compiler for S-CORE. Pick your own favourite.</p>
 <p class="rubric">Target Compiler Rust</p>
 <p>The qualified <a class="reference external" href="https://github.com/ferrocene">Ferrocene</a> compiler is planned to be used.</p>
 <p class="rubric">Bazel</p>
