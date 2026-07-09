@@ -170,7 +170,7 @@ The default delivery model is static libraries. Individual modules may opt in to
 | Integrator usability           |      +      |      +       |  ++  |         +         |
 | Maintenance effort             |     ++      |      +       |  --  |         +         |
 
-For detailed update granularity and performance assessments, see [Detailed Assessments](DR-002-arch/detailed_assessments.md).
+For detailed update granularity and performance assessments, see :ref:`Detailed Assessments <DR-002-Arch-detailed-assessments>`).
 
 ## Decision Proposal
 
