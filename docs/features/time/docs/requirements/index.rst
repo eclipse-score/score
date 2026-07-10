@@ -101,7 +101,7 @@ Time Synchronization
 
    Note:
    * This does not apply to willful interferences by malicious software components or components in control by malicious actors, which are out of scope of this requirement.
-   * The end-to-end quality of the time information provided by the time base API may require components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting the AUTOSAR Time Synchroization Protocol).
+   * The end-to-end quality of the time information provided by the time base API requires components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting end-to-end protection extensions of gPTP).
 
 .. feat_req:: Vehicle Time base time point qualifier
    :id: feat_req__time__vehicle_time_time_pt_qual
