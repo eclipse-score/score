@@ -68,7 +68,7 @@ Time Synchronization
    :status: valid
    :version: 1
 
-   Usage of the vehicle time base API shall be free from interfrences for the consuming components.
+   Usage of the vehicle time base API shall be free from interference for the consuming components.
 
 .. feat_req:: Vehicle Time base accuracy qualifier
    :id: feat_req__time__vehicle_time_acc_qual_api
