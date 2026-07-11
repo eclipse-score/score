@@ -1,16 +1,15 @@
-..
-   # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
-   #
-   # See the NOTICE file(s) distributed with this work for additional
-   # information regarding copyright ownership.
-   #
-   # This program and the accompanying materials are made available under the
-   # terms of the Apache License Version 2.0 which is available at
-   # https://www.apache.org/licenses/LICENSE-2.0
-   #
-   # SPDX-License-Identifier: Apache-2.0
-   # *******************************************************************************
+# *******************************************************************************
+# Copyright (c) 2024 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 
 
 Feature Request Guideline
@@ -30,6 +29,13 @@ This Guideline is based on or references following documents:
 * :ref:`Contribution Guideline <contribute_contribution_guideline>`
 * :ref:`Change Management Plan <change_mgmt_plan>`
 * :need:`Feature Template <gd_temp__change_feature_request>`
+
+Scope of This Guideline
+================================
+
+This guideline covers *feature requests* with component-level, single-Feature-Team scope.
+
+Feature requests with platform-level impact or requiring alignment across Feature Team boundaries follow the :need:`FEP Process <dec_rec__proc__fep_process>` instead. This applies if your proposal introduces new platform-level functionality, modifies stable interfaces, has breaking impact on existing integrators, or requires agreement across Feature Team boundaries.
 
 Creation of Feature Request
 ================================
