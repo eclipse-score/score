@@ -623,7 +623,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-32ce147b">
+  <div class="need_container docutils container" id="SNCB-154bde0e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_change_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -775,15 +775,85 @@ created for the Change Request.</p>
 </tbody>
 </table>
 </div>
-</section>
-<section id="routing-to-the-fep-process">
-<h3>Routing to the FEP Process<a class="headerlink" href="#routing-to-the-fep-process" title="Link to this heading">#</a></h3>
-<p><strong>Feature</strong> change requests go through the FEP process (see the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP Process Guide</span></a>).</p>
-<p><strong>Feature Modification</strong> change requests go through the FEP process when the change has major impact, e.g. affecting the platform or other Feature Teams. Feature Teams retain authority over modifications limited to their own domain.</p>
-<p>A clean, exhaustive definition of “major impact” is not achievable up front. This classification is a judgment call made by the responsible <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> at the time the change is proposed, including changes proposed directly as a PR without a prior FEP. A change can be waived from the FEP process by community agreement if it is judged not to warrant it, or pulled into the FEP process after the fact if a maintainer judges it major.</p>
-<p><strong>Component</strong> and <strong>Component Modification</strong> change requests are unaffected by the FEP process.</p>
 <p>Change Request Traceability Impact Analysis requires the following tools:</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_tool_impact_analysis">gd_req__change_tool_impact_analysis</a></p>
+</section>
+<section id="the-decision-record-track-fep-process">
+<h3>The Decision Record Track (FEP Process)<a class="headerlink" href="#the-decision-record-track-fep-process" title="Link to this heading">#</a></h3>
+<p>Change Requests generally follow the four-step
+<a class="reference internal" href="#change-mgmt-workflow"><span class="std std-ref">Change Request Workflow</span></a> below. For most changes, <strong>Analyze</strong> means a
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> reviews the ISSUE/PR and documents the accept/reject decision
+directly there.</p>
+<p>Some changes carry enough governance weight that the decision is worth persisting, and the
+community needs a structured way to reach agreement before implementation starts, rather than
+relying on a single Committer’s review. For these, <strong>Analyze</strong> is specialized into the <strong>FEP
+process</strong>: a Shepherd sponsors the proposal, a time-boxed Final Comment Period
+(silence-as-approval) replaces open-ended review, and the outcome is recorded as a Decision Record
+rather than only documented in the ISSUE. Create, Implement, and Close are unaffected; only the
+Analyze step changes shape. See the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP Process Guide</span></a> for the
+full mechanics (roles, phases, template).</p>
+<p>Today, the following Change Requests are routed onto this track:</p>
+<p><strong>Feature</strong> change requests always go through the FEP process.</p>
+<p><strong>Feature Modification</strong> change requests go through the FEP process when the change has major
+impact, e.g. affecting the platform or other Feature Teams. Feature Teams retain authority over
+modifications limited to their own domain.</p>
+<p>A clean, exhaustive definition of “major impact” is not achievable up front. This classification is
+a judgment call made by the responsible <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> at the time the change is
+proposed, including changes proposed directly as a PR without a prior FEP. A change can be waived
+from the FEP process by community agreement if it is judged not to warrant it, or pulled into the
+FEP process after the fact if a maintainer judges it major.</p>
+<p><strong>Component</strong> and <strong>Component Modification</strong> change requests currently go through the standard
+Analyze step and are not routed onto the FEP track.</p>
+<p>The FEP mechanism itself is not inherently tied to CR type; Feature and major Feature Modification
+are its first applied case. Extending the FEP track to other CR types would be a separate decision,
+not implied by this document.</p>
+<p>FEP tracking-Issue statuses are a refinement of the generic Change Status mapping described below
+under Change Request Attributes, not a competing one:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 97 </span><span class="caption-text">FEP Status Mapping</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>FEP tracking Issue status</p></th>
+<th class="head"><p>Generic Change status</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Needs</span> <span class="pre">Shepherd</span></code></p></td>
+<td><p>open</p></td>
+<td><p>Refines “open”: PR exists, no Shepherd confirmed yet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Shepherded</span></code></p></td>
+<td><p>open</p></td>
+<td><p>Refines “open”: Shepherd confirmed, proposal being shaped.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">Review</span></code></p></td>
+<td><p>in review</p></td>
+<td><p>The Final Comment Period.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Accepted</span></code></p></td>
+<td><p>in implementation</p></td>
+<td><p>FEP merged and recorded as a Decision Record.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Rejected</span></code> / <code class="docutils literal notranslate"><span class="pre">Withdrawn</span></code></p></td>
+<td><p>rejected</p></td>
+<td><p>FCP closed with unresolved objections, or the author withdrew.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Implementing</span></code></p></td>
+<td><p>in implementation</p></td>
+<td><p>Tracking issue stays open; may carry child Task issues.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Implemented</span></code></p></td>
+<td><p>closed</p></td>
+<td><p>Implementation merged; tracking issue closes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="change-request-attributes">
 <h3>Change Request Attributes<a class="headerlink" href="#change-request-attributes" title="Link to this heading">#</a></h3>
@@ -791,8 +861,8 @@ created for the Change Request.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_uid">gd_req__change_attr_uid</a> is identical to the ISSUE number.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_status">gd_req__change_attr_status</a> is defined by the combination of the ISSUE
 state, the state in the Projects dashboard view and the PR status.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 97 </span><span class="caption-text">Change Status</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 98 </span><span class="caption-text">Change Status</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 11.5%" />
 <col style="width: 65.4%" />
@@ -904,11 +974,11 @@ the ISSUE can be set.</p>
 keep the ISSUE status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and set the Projects status <code class="docutils literal notranslate"><span class="pre">Todo</span></code>.</p>
 <p>To reject the change request: Change request status: <code class="docutils literal notranslate"><span class="pre">rejected</span></code>
 set the ISSUE status to <code class="docutils literal notranslate"><span class="pre">Closed</span> <span class="pre">as</span> <span class="pre">not</span> <span class="pre">planned</span></code>.</p>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/score_change_request_workflow_simple.drawio.svg"><img alt="Change Request Simple Workflow Overview" src="../_images/score_change_request_workflow_simple.drawio.svg" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Change Request Simple Workflow Overview</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Change Request Simple Workflow Overview</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>To 2. Analyze the Change Request:</strong></p>
@@ -916,6 +986,10 @@ set the ISSUE status to <code class="docutils literal notranslate"><span class="
 review results are resolved by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>. The results
 are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
 related ISSUE is kept in status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and Projects status <code class="docutils literal notranslate"><span class="pre">Todo</span></code>, means <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code>.</p>
+<p>For Change Requests routed onto the <a class="reference internal" href="#change-mgmt-plan"><span class="std std-ref">Decision Record Track</span></a>, this step is
+performed as described in the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP Process Guide</span></a> instead: a
+Shepherd, not a single Committer, guides the analysis, and the review window is the time-boxed
+Final Comment Period rather than an open-ended <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code> state.</p>
 <p>If the information is sufficient and it is decided to implement the change request, the
 ISSUE status is kept <code class="docutils literal notranslate"><span class="pre">Open</span></code> and the Projects status is set to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code>.</p>
 <p>The decision, if the change request is accepted or rejected must be documented. Safety/Security
@@ -1008,7 +1082,7 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-execution">Change Request Execution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-infrastructure-and-types">Change Request Infrastructure and Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-to-the-fep-process">Routing to the FEP Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-record-track-fep-process">The Decision Record Track (FEP Process)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-attributes">Change Request Attributes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-workflow">Change Request Workflow</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-management-sw-platform-work-products">Change Management SW Platform Work Products</a></li>
