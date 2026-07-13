@@ -13,7 +13,8 @@ SPDX-License-Identifier: Apache-2.0
 
 # DR-002-Arch: Considerations
 
-This page provides detailed considerations for the [Library Delivery Model](../DR-002-arch.md) design decision.
+
+This page provides detailed considerations for the :ref:`Library Delivery Model <DR-002-Arch>` design decision
 
 ## Architectural Note: Internal Composition of Shared Libraries
 
@@ -76,7 +77,8 @@ This composition model applies to all options that involve shared libraries (Opt
 
 ## Cross-Language Interoperability (C++ ↔ Rust)
 
-S-CORE uses both C++ and Rust (see [DR-001-Arch](../DR-001-arch.md)). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):
+:ref:`Library Delivery Model <DR-002-Arch>`).
+S-CORE uses both C++ and Rust (see :ref:`<DR-001-arch>`). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):
 
 ### The Common Denominator: C ABI
 

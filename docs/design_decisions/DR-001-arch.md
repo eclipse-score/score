@@ -10,7 +10,7 @@ https://www.apache.org/licenses/LICENSE-2.0
 
 SPDX-License-Identifier: Apache-2.0
 -->
-
+(DR-001-Arch)=
 # DR-001-Arch: Rust Readiness for Safety-Critical Components
 
 * **Date:** 2026-03-06
