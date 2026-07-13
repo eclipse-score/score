@@ -1,0 +1,1230 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-002-Arch: Library Delivery Model (Static vs. Dynamic) &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-002-arch';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DR-002-Arch: Considerations" href="DR-002-arch/considerations.html" />
+    <link rel="prev" title="DR-001-Arch: Rust Readiness for Safety-Critical Components" href="DR-001-arch.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DR-002-arch/considerations.html">DR-002-Arch: Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-002-arch/detailed_assessments.html">DR-002-Arch: Detailed Assessments</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra-extension.html">DR-001-B-Infra-Extension: S-CORE Build Execution Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!--
+Copyright (c) 2026 Contributors to the Eclipse Foundation
+
+See the NOTICE file(s) distributed with this work for additional
+information regarding copyright ownership.
+
+This program and the accompanying materials are made available under the
+terms of the Apache License Version 2.0 which is available at
+https://www.apache.org/licenses/LICENSE-2.0
+
+SPDX-License-Identifier: Apache-2.0
+-->
+<section id="dr-002-arch-library-delivery-model-static-vs-dynamic">
+<h1>DR-002-Arch: Library Delivery Model (Static vs. Dynamic)<a class="headerlink" href="#dr-002-arch-library-delivery-model-static-vs-dynamic" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2026-05-15</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-c318ab85">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__library_delivery_model">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Library Delivery Model for Platform Modules</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Architecture</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Opt-in per module — static by default, dynamic where justified</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>0</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__arch__library_delivery_model" title="dec_rec__arch__library_delivery_model">dec_rec__arch__library_delivery_model</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<section id="context-problem">
+<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>The S-CORE platform delivers features and modules as compiled libraries that are integrated into downstream products. A fundamental architectural question is whether these libraries should be delivered as static libraries, dynamic/shared libraries, or a combination thereof.</p>
+<p>This decision affects code size, runtime performance, memory usage, updateability, safety certification, security posture, and build system complexity. The choice also directly impacts how modules are built and packaged using the Bazel build system.</p>
+<section id="middleware-deployment-context">
+<h3>Middleware Deployment Context<a class="headerlink" href="#middleware-deployment-context" title="Link to this heading">#</a></h3>
+<p>S-CORE is a middleware platform. In a typical deployment, S-CORE serves as the shared foundation layer upon which <strong>multiple customer applications</strong> run on the same target hardware (ECU / high-performance compute unit). This has critical implications for the library delivery model:</p>
+<ul class="simple">
+<li><p><strong>Multiple consumers per target:</strong> A single ECU may host 5–20+ application binaries that all depend on S-CORE modules (e.g., communication, diagnostics, logging, execution management). The exact number is a downstream deployment decision outside S-CORE’s control, but the linking model determines whether each application carries its own copy of S-CORE code or shares a single instance.</p></li>
+<li><p><strong>Independent lifecycles:</strong> The middleware and the applications above it typically follow different release cadences. A security patch in S-CORE’s communication stack should ideally not require rebuilding and re-deploying all customer applications.</p></li>
+<li><p><strong>OTA update cost:</strong> In automotive deployments, OTA update bandwidth is constrained and update windows are limited. The ability to update the middleware layer independently of applications — or vice versa — directly affects update size, duration, and rollback complexity.</p></li>
+<li><p><strong>Variant management:</strong> Different vehicle lines or ECU configurations may use different subsets of S-CORE modules. The linking model affects how efficiently variants can be managed and updated.</p></li>
+</ul>
+<p>The update granularity question is therefore not merely a convenience concern but a <strong>deployment architecture decision</strong> that affects field serviceability, security response time, and total cost of ownership for OEMs.</p>
+</section>
+</section>
+<section id="considerations">
+<h2>Considerations<a class="headerlink" href="#considerations" title="Link to this heading">#</a></h2>
+<p>Detailed considerations covering all relevant aspects of this decision are documented in a separate page:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch/considerations.html">DR-002-Arch: Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch/detailed_assessments.html">DR-002-Arch: Detailed Assessments</a></li>
+</ul>
+</div>
+<p>The considerations cover:</p>
+<ul class="simple">
+<li><p>Internal composition of shared libraries and API encapsulation</p></li>
+<li><p>Cross-language interoperability (C++ ↔ Rust)</p></li>
+<li><p>Debugging considerations</p></li>
+<li><p>Operating system support (Linux and QNX)</p></li>
+<li><p>License and FOSS compliance</p></li>
+<li><p>ABI stability and versioning</p></li>
+<li><p>Testing strategy</p></li>
+<li><p>Build reproducibility and deployment hermeticity</p></li>
+<li><p>Library initialization order</p></li>
+<li><p>Thread safety and lazy binding</p></li>
+<li><p>Multi-repository architecture</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="options-considered">
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="option-1-static-libraries-only">
+<h3>Option 1: Static Libraries Only<a class="headerlink" href="#option-1-static-libraries-only" title="Link to this heading">#</a></h3>
+<p>All platform modules and features are delivered exclusively as static libraries (<code class="docutils literal notranslate"><span class="pre">.a</span></code> / <code class="docutils literal notranslate"><span class="pre">.rlib</span></code>). Consumers link all dependencies at build time into a single binary.</p>
+<section id="advantages">
+<h4>Advantages<a class="headerlink" href="#advantages" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Performance:</strong> No dynamic linking overhead at startup or runtime. Full link-time optimization (LTO) across the entire binary.</p></li>
+<li><p><strong>Determinism:</strong> The resulting binary is fully self-contained. No runtime dependency resolution, no version conflicts.</p></li>
+<li><p><strong>Safety:</strong> The binary under certification is exactly the binary that was tested and verified. No risk of library substitution at runtime.</p></li>
+<li><p><strong>Security:</strong> Reduced attack surface — no <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> injection, no symbol interposition, no writable GOT/PLT entries.</p></li>
+<li><p><strong>Bazel integration:</strong> Static linking is the natural default in Bazel’s <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> / <code class="docutils literal notranslate"><span class="pre">rust_library</span></code> rules.</p></li>
+</ul>
+</section>
+<section id="disadvantages">
+<h4>Disadvantages<a class="headerlink" href="#disadvantages" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Code size:</strong> Each binary includes its own copy of all library code. With 10+ applications sharing S-CORE, this means 10+ copies of each module in flash.</p></li>
+<li><p><strong>Memory consumption:</strong> Each process loads its own copy of all statically linked library code into RAM. The <code class="docutils literal notranslate"><span class="pre">.text</span></code> segments cannot be shared across processes by the OS kernel.</p></li>
+<li><p><strong>Startup performance in multi-app deployments:</strong> Total flash I/O for loading middleware code scales linearly with the number of applications.</p></li>
+<li><p><strong>Update granularity:</strong> Any change in any S-CORE module requires re-linking and re-deploying <strong>every application binary</strong> that uses it. Security patches cannot be deployed to the middleware independently.</p></li>
+<li><p><strong>Re-certification:</strong> A change in one module may require re-testing the entire linked binary.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="option-2-dynamic-shared-libraries-only">
+<h3>Option 2: Dynamic/Shared Libraries Only<a class="headerlink" href="#option-2-dynamic-shared-libraries-only" title="Link to this heading">#</a></h3>
+<p>All platform modules and features are delivered exclusively as shared libraries (<code class="docutils literal notranslate"><span class="pre">.so</span></code> / <code class="docutils literal notranslate"><span class="pre">.dylib</span></code>). Consumers link against them at runtime via the dynamic linker.</p>
+<section id="id1">
+<h4>Advantages<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Code size:</strong> Shared libraries are stored once on flash regardless of how many binaries use them.</p></li>
+<li><p><strong>Memory consumption:</strong> The OS kernel maps shared library <code class="docutils literal notranslate"><span class="pre">.text</span></code> segments into physical RAM exactly once and shares them across all processes.</p></li>
+<li><p><strong>Update granularity:</strong> A bug fix or security patch can be deployed as a single <code class="docutils literal notranslate"><span class="pre">.so</span></code> replacement without touching any application binary. Applications and middleware can follow independent release cadences.</p></li>
+<li><p><strong>Decoupled build and deployment:</strong> Modules can be built, versioned, and deployed independently of their consumers.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>Disadvantages<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Performance:</strong> Dynamic linking introduces per-call overhead (PLT/GOT indirection). LTO cannot optimize across library boundaries.</p></li>
+<li><p><strong>Determinism:</strong> Runtime behavior depends on which <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions are present on the target.</p></li>
+<li><p><strong>Safety:</strong> Runtime substitution of libraries must be prevented or explicitly controlled. Complicates traceability.</p></li>
+<li><p><strong>Security:</strong> Expanded attack surface — <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> injection, symbol interposition, writable GOT/PLT (unless full RELRO).</p></li>
+<li><p><strong>Bazel integration:</strong> Requires explicit <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> targets. Shared library versioning must be managed manually.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="option-3-both-static-and-dynamic-libraries-simultaneously">
+<h3>Option 3: Both Static and Dynamic Libraries Simultaneously<a class="headerlink" href="#option-3-both-static-and-dynamic-libraries-simultaneously" title="Link to this heading">#</a></h3>
+<p>Every module is always built and delivered in both static and dynamic form. Consumers choose per integration context.</p>
+<section id="id3">
+<h4>Advantages<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Flexibility:</strong> Downstream projects can choose the linking model that fits their deployment scenario.</p></li>
+<li><p><strong>Broad compatibility:</strong> Supports diverse integration targets without constraining the platform delivery.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h4>Disadvantages<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Build complexity:</strong> Every module must be built twice. CI/CD pipelines, testing, and release processes double in scope.</p></li>
+<li><p><strong>Safety / Certification:</strong> Both delivery forms must be tested and qualified separately.</p></li>
+<li><p><strong>Bazel integration:</strong> Requires maintaining parallel build targets for each module.</p></li>
+<li><p><strong>Maintenance cost:</strong> Any API change must be verified for both static and dynamic ABI compatibility.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="option-4-opt-in-per-module">
+<h3>Option 4: Opt-In Per Module<a class="headerlink" href="#option-4-opt-in-per-module" title="Link to this heading">#</a></h3>
+<p>The default delivery model is static libraries. Individual modules may opt in to additionally provide a shared library variant if there is a justified need (e.g., large shared libraries used by many consumers, or modules requiring independent updateability).</p>
+<section id="id5">
+<h4>Advantages<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Pragmatic default:</strong> Static linking provides the best safety, security, and performance properties by default.</p></li>
+<li><p><strong>Targeted flexibility:</strong> Modules with genuine dynamic linking requirements can provide a shared variant without forcing the overhead on all modules.</p></li>
+<li><p><strong>Memory efficiency where it matters:</strong> Large modules used by many applications can opt into dynamic delivery to enable RAM sharing across processes.</p></li>
+<li><p><strong>Controlled complexity:</strong> Build system complexity only increases for modules that explicitly opt in.</p></li>
+<li><p><strong>Update granularity:</strong> Modules most critical for independent updateability can opt into dynamic delivery, enabling targeted partial OTA updates.</p></li>
+<li><p><strong>Safety:</strong> The default safety argument remains simple. Modules opting into dynamic delivery explicitly take responsibility for the additional safety argumentation.</p></li>
+<li><p><strong>Security:</strong> The default case has the smallest attack surface. Security-critical modules that require rapid patching can opt into dynamic delivery.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4>Disadvantages<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Inconsistency:</strong> Not all modules are delivered in the same way.</p></li>
+<li><p><strong>Governance overhead:</strong> Requires a decision process for when a module qualifies for dynamic delivery.</p></li>
+<li><p><strong>Partial duplication:</strong> Opted-in modules still face the dual-build and dual-test cost, albeit only for a subset.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="evaluation-criteria">
+<h2>Evaluation Criteria<a class="headerlink" href="#evaluation-criteria" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Criterion</p></th>
+<th class="head text-center"><p>Static Only</p></th>
+<th class="head text-center"><p>Dynamic Only</p></th>
+<th class="head text-center"><p>Both</p></th>
+<th class="head text-center"><p>Opt-In per Module</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Runtime performance</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>+/-</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code size on flash (multi-app)</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+/-</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>RAM consumption (multi-app)</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+/-</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Middleware update independence</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+/-</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA update size</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Security patch response time</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Safety argumentation</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Security posture (hardening)</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>+/-</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Build system simplicity</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>+/-</p></td>
+</tr>
+<tr class="row-odd"><td><p>Downstream flexibility</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Integrator usability</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maintenance effort</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For detailed update granularity and performance assessments, see <a class="reference internal" href="DR-002-arch/detailed_assessments.html"><span class="std std-doc">Detailed Assessments</span></a>.</p>
+</section>
+<section id="decision-proposal">
+<h2>Decision Proposal<a class="headerlink" href="#decision-proposal" title="Link to this heading">#</a></h2>
+<p><strong>Option 4: Opt-In Per Module</strong> — Static libraries as the default delivery model, with individual modules opting in to additionally provide shared library variants where justified.</p>
+<section id="rationale">
+<h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
+<p>The analysis of all relevant criteria consistently points to Option 4 as the best balance for S-CORE’s middleware role:</p>
+<ol class="arabic simple">
+<li><p><strong>Static by default</strong> provides the strongest guarantees for safety (tested binary = deployed binary), security (no dynamic attack surface), and build simplicity (Bazel’s natural model). For modules that are stable, rarely patched, and used by few consumers, static linking is optimal.</p></li>
+<li><p><strong>Dynamic opt-in</strong> addresses the real-world needs of a middleware platform serving multiple applications on the same hardware:</p>
+<ul class="simple">
+<li><p><strong>Update granularity:</strong> Security patches and bug fixes can be deployed without rebuilding all consumer applications.</p></li>
+<li><p><strong>Memory efficiency:</strong> Large modules shared by many applications benefit from kernel-level page sharing.</p></li>
+<li><p><strong>Cross-language delivery:</strong> Modules consumed across language boundaries benefit from shared library encapsulation.</p></li>
+<li><p><strong>License compliance:</strong> Modules with LGPL transitive dependencies can satisfy license requirements through shared library delivery.</p></li>
+</ul>
+</li>
+<li><p><strong>Mode A (build from source)</strong> should be the standard for shared libraries in the integration repo, preserving compile-time safety. <strong>Mode B (pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code>)</strong> should be used only where true release independence is required, accompanied by strict ABI versioning and CI-integrated compatibility checks.</p></li>
+</ol>
+</section>
+<section id="criteria-for-opting-in-to-dynamic-delivery">
+<h3>Criteria for Opting In to Dynamic Delivery<a class="headerlink" href="#criteria-for-opting-in-to-dynamic-delivery" title="Link to this heading">#</a></h3>
+<p>The opt-in decision involves two distinct perspectives:</p>
+<section id="platform-perspective-s-core-decides">
+<h4>Platform Perspective (S-CORE decides)<a class="headerlink" href="#platform-perspective-s-core-decides" title="Link to this heading">#</a></h4>
+<p>A module should opt in to <strong>additionally provide</strong> a shared library variant if <strong>at least one</strong> of the following applies:</p>
+<ul class="simple">
+<li><p>The module is <strong>large in code size</strong> (e.g., communication stacks, serialization frameworks, crypto libraries) and is architecturally expected to be shared across applications.</p></li>
+<li><p>The module requires <strong>independent updateability</strong> (e.g., frequent security patches, regulatory-driven updates, rapid CVE response).</p></li>
+<li><p>The module is consumed <strong>cross-language</strong> (Rust ↔ C++) and benefits from runtime encapsulation of its language runtime.</p></li>
+<li><p>The module has <strong>LGPL-licensed transitive dependencies</strong>.</p></li>
+<li><p>The module implements a <strong>plugin or extension interface</strong> that requires runtime loading.</p></li>
+</ul>
+<p>The decision to opt in must be documented in the module’s architecture documentation and approved as part of the module’s design review.</p>
+</section>
+<section id="integrator-perspective-oem-customer-decides">
+<h4>Integrator Perspective (OEM/customer decides)<a class="headerlink" href="#integrator-perspective-oem-customer-decides" title="Link to this heading">#</a></h4>
+<p>For opted-in modules that provide both variants, the <strong>integrator decides which variant to use</strong> based on their specific deployment:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Integrator scenario</p></th>
+<th class="head text-center"><p>Recommended variant</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single application on ECU</p></td>
+<td class="text-center"><p>Static — no sharing benefit, simpler safety case</p></td>
+</tr>
+<tr class="row-odd"><td><p>2–5 applications sharing the module</p></td>
+<td class="text-center"><p>Dynamic may be beneficial — evaluate RAM/flash savings vs. ABI management cost</p></td>
+</tr>
+<tr class="row-even"><td><p>5–20+ applications sharing the module</p></td>
+<td class="text-center"><p>Dynamic strongly recommended — significant memory/flash/update benefits</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hard real-time single-purpose controller</p></td>
+<td class="text-center"><p>Static — maximum determinism, no dynamic linking overhead</p></td>
+</tr>
+<tr class="row-even"><td><p>High-performance compute with OTA requirements</p></td>
+<td class="text-center"><p>Dynamic — update granularity and memory sharing outweigh the overhead</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="special-case-infrastructure-libraries-baselibs">
+<h3>Special Case: Infrastructure Libraries (baselibs)<a class="headerlink" href="#special-case-infrastructure-libraries-baselibs" title="Link to this heading">#</a></h3>
+<p>The S-CORE <a class="reference external" href="https://github.com/eclipse-score/baselibs">baselibs</a> module provides foundational utilities consumed by <strong>virtually every other S-CORE module</strong>. Given its nature, baselibs should follow a <strong>differentiated strategy:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>baselibs component type</p></th>
+<th class="head text-center"><p>Delivery model</p></th>
+<th class="head"><p>Rationale</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Template / header-only</strong> (containers, result, language extensions, safecpp)</p></td>
+<td class="text-center"><p><strong>Static only</strong></p></td>
+<td><p>Cannot be shared via <code class="docutils literal notranslate"><span class="pre">.so</span></code> — templates are instantiated in the consumer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Compiled utilities with stable C ABI</strong> (OS abstraction, filesystem, shared memory)</p></td>
+<td class="text-center"><p><strong>Opt-in for <code class="docutils literal notranslate"><span class="pre">.so</span></code></strong></p></td>
+<td><p>Well-defined function-call APIs that can be stabilized.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Serialization (flatbuffers, JSON)</strong></p></td>
+<td class="text-center"><p><strong>Case-by-case</strong></p></td>
+<td><p>If the API is C-ABI-friendly, it can be shared. If it exposes C++ templates, it must remain static.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Key insight:</strong> For a utility library like baselibs, the decision is not “the whole module is static or dynamic” but rather <strong>which sub-components can technically and practically be delivered as shared libraries.</strong></p>
+</section>
+<section id="mandatory-requirements-for-opted-in-modules">
+<h3>Mandatory Requirements for Opted-In Modules<a class="headerlink" href="#mandatory-requirements-for-opted-in-modules" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Expose a <strong>C ABI surface</strong> with <code class="docutils literal notranslate"><span class="pre">-fvisibility=hidden</span></code> and explicit exports.</p></li>
+<li><p>Maintain <strong>Soname versioning</strong> aligned with semantic versioning.</p></li>
+<li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">-Wl,-z,now</span></code> (eager binding)</strong> as mandatory linker flag.</p></li>
+<li><p>Provide <strong>explicit initialization functions</strong> (<code class="docutils literal notranslate"><span class="pre">score_&lt;module&gt;_init()</span></code>) rather than relying on <code class="docutils literal notranslate"><span class="pre">__attribute__((constructor))</span></code>.</p></li>
+<li><p>Include <strong>ABI compliance checks</strong> (<code class="docutils literal notranslate"><span class="pre">abidiff</span></code> or equivalent) in the module’s CI pipeline.</p></li>
+<li><p>Enforce a <strong>toolchain identity CI gate</strong>: verify that all shared libraries and their consumers are built with the same compiler and compiler version.</p></li>
+<li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">RPATH</span></code></strong> (not <code class="docutils literal notranslate"><span class="pre">RUNPATH</span></code>) for library search paths. Set via <code class="docutils literal notranslate"><span class="pre">-Wl,--disable-new-dtags</span></code>.</p></li>
+<li><p>Apply <strong>security hardening flags</strong> for all shared library builds:</p>
+<ul>
+<li><p>Full RELRO: <code class="docutils literal notranslate"><span class="pre">-Wl,-z,relro,-z,now</span></code></p></li>
+<li><p>Stack protection: <code class="docutils literal notranslate"><span class="pre">-fstack-protector-strong</span></code></p></li>
+<li><p>Position-Independent Code: <code class="docutils literal notranslate"><span class="pre">-fPIC</span></code></p></li>
+<li><p>Fortify source: <code class="docutils literal notranslate"><span class="pre">-D_FORTIFY_SOURCE=2</span></code></p></li>
+<li><p>No executable stack: <code class="docutils literal notranslate"><span class="pre">-Wl,-z,noexecstack</span></code></p></li>
+<li><p>Restrict library search paths to platform-controlled directories only</p></li>
+</ul>
+</li>
+<li><p>Statically link all <strong>internal dependencies</strong> into the <code class="docutils literal notranslate"><span class="pre">.so</span></code> — do not expose internal sub-libraries as separate shared objects.</p></li>
+<li><p>Generate a <strong>deployment manifest</strong> with <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions, checksums, and build-IDs as part of the release.</p></li>
+</ul>
+</section>
+</section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<section id="positive">
+<h3>Positive<a class="headerlink" href="#positive" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The default case (static) remains simple for safety argumentation, build system, debugging, and multi-repo integration.</p></li>
+<li><p>Modules that benefit from dynamic delivery can opt in without forcing complexity on the rest of the platform.</p></li>
+<li><p>OEMs gain targeted update granularity for the most critical middleware components while maintaining deterministic behavior for the rest.</p></li>
+<li><p>Cross-language module delivery is cleanly supported where needed.</p></li>
+<li><p>LGPL compliance is addressed structurally rather than through workarounds.</p></li>
+</ul>
+</section>
+<section id="negative-costs">
+<h3>Negative / Costs<a class="headerlink" href="#negative-costs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Opted-in modules carry additional overhead: dual build targets, ABI management, Soname versioning, ABI compliance CI checks, toolchain identity verification, CI/CD toolchain workflow for ABI diff check, and deployment manifest generation.</p></li>
+<li><p>Downstream integrators must understand which modules offer which variants and choose accordingly.</p></li>
+<li><p>A governance process for opt-in decisions must be established and maintained.</p></li>
+<li><p>Debug symbol archives must be maintained per <code class="docutils literal notranslate"><span class="pre">.so</span></code> version for opted-in modules.</p></li>
+</ul>
+</section>
+<section id="follow-up-actions">
+<h3>Follow-Up Actions<a class="headerlink" href="#follow-up-actions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Define the initial set of modules that should opt in (candidates: communication stack, logging, diagnostics, crypto/security).</p></li>
+<li><p>Establish Bazel toolchain defaults for shared libraries (<code class="docutils literal notranslate"><span class="pre">-Wl,-z,now</span></code>, <code class="docutils literal notranslate"><span class="pre">-fvisibility=hidden</span></code>).</p></li>
+<li><p>Integrate <code class="docutils literal notranslate"><span class="pre">abidiff</span></code> or equivalent into the CI pipeline for opted-in module repos.</p></li>
+<li><p>Define the deployment manifest format and tooling.</p></li>
+<li><p>Document the opt-in process in the S-CORE contribution guidelines.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-001-arch.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-001-Arch: Rust Readiness for Safety-Critical Components</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DR-002-arch/considerations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DR-002-Arch: Considerations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#middleware-deployment-context">Middleware Deployment Context</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations">Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-static-libraries-only">Option 1: Static Libraries Only</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-dynamic-shared-libraries-only">Option 2: Dynamic/Shared Libraries Only</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-both-static-and-dynamic-libraries-simultaneously">Option 3: Both Static and Dynamic Libraries Simultaneously</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-4-opt-in-per-module">Option 4: Opt-In Per Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Disadvantages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-proposal">Decision Proposal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-opting-in-to-dynamic-delivery">Criteria for Opting In to Dynamic Delivery</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#platform-perspective-s-core-decides">Platform Perspective (S-CORE decides)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrator-perspective-oem-customer-decides">Integrator Perspective (OEM/customer decides)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-infrastructure-libraries-baselibs">Special Case: Infrastructure Libraries (baselibs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mandatory-requirements-for-opted-in-modules">Mandatory Requirements for Opted-In Modules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive">Positive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-costs">Negative / Costs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-up-actions">Follow-Up Actions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-002-arch.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
