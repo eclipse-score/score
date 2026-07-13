@@ -623,7 +623,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-f730ee7a">
+  <div class="need_container docutils container" id="SNCB-2f866e2c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_req_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -726,7 +726,7 @@ See also <a class="external_link reference external" href="https://eclipse-score
 <td><p>Is the requirement description <em>unambiguous</em> ?</p></td>
 <td><p>Especially search for “weak words” like “about”, “etc.”, “relevant” and others (see the internet documentation on this). This check shall be supported by tooling.</p></td>
 <td><p>YES</p></td>
-<td></td>
+<td><p>Check is supported by tooling and no ambiguities present any more after inspection fixes.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_02_03</p></td>
@@ -754,14 +754,14 @@ See also <a class="external_link reference external" href="https://eclipse-score
 <td><p>Is the <em>linkage to the parent requirement</em> correct?</p></td>
 <td><p>Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.</p></td>
 <td><p>YES</p></td>
-<td></td>
+<td><p>Missing links to <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="stkh_req__dependability__automotive_safety"><em class="xref need">Automotive Safety Integrity... (stkh_req__dependability__automotive_safety)</em></a> added with <a class="reference external" href="https://github.com/eclipse-score/score/issues/2885">https://github.com/eclipse-score/score/issues/2885</a></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_04_01</p></td>
 <td><p>Is the requirement <em>internally and externally consistent</em>?</p></td>
 <td><p>Does the requirement contradict other requirements within the same or higher levels? One may restrict the search to the feature for component requirements, for features to other features using same components. Is the description of the requirement consistent with all its attributes (if not already part of another check, e.g. does the title fit?).</p></td>
 <td><p>YES</p></td>
-<td></td>
+<td><p>No logical inconsistencies, minor naming issues fixed with <a class="reference external" href="https://github.com/eclipse-score/score/issues/2885">https://github.com/eclipse-score/score/issues/2885</a></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>REQ_05_01</p></td>
@@ -797,14 +797,32 @@ See also <a class="external_link reference external" href="https://eclipse-score
 <td><p>Is the <em>security</em> attribute set correctly?</p></td>
 <td><p>For feature requirements this checklist item is supported by automated check: “Every requirement which satisfies a stakeholder requirement with security attribute set to YES inherits this”. But the feature requirements/architecture may additionally also be subject to a <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__feature_security_analysis">wp__feature_security_analysis</a></p></td>
 <td><p>YES</p></td>
-<td></td>
+<td><p>All the feature requirements here inherit from <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="stkh_req__functional_req__base_libraries"><em class="xref need">Base Libraries (stkh_req__functional_req__base_libraries)</em></a> have the security=YES attribute set.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>REQ_08_01</p></td>
 <td><p>Is the requirement <em>verifiable</em>?</p></td>
 <td><p>If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_test_covered">gd_req__req_attr_test_covered</a> shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.</p></td>
 <td><p>YES</p></td>
-<td></td>
+<td><p>The following feature requirements are high-level and not directly testable</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__multi_language_apis" title="feat_req__baselibs__multi_language_apis"><em class="xref need">Multi-Language APIs (feat_req__baselibs__multi_language_apis)</em></a></p></li>
+</ul>
+<p>But these high-level requirements are decomposed into detailed component requirements that are testable.</p>
+<p>Following feature requirements are directly testable:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__utils_library" title="feat_req__baselibs__utils_library"><em class="xref need">Utils Library (feat_req__baselibs__utils_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__json_library" title="feat_req__baselibs__json_library"><em class="xref need">JSON Library (feat_req__baselibs__json_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__flatbuffers_library" title="feat_req__baselibs__flatbuffers_library"><em class="xref need">FlatBuffers Library (feat_req__baselibs__flatbuffers_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__result_library" title="feat_req__baselibs__result_library"><em class="xref need">Result Library (feat_req__baselibs__result_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__containers_library" title="feat_req__baselibs__containers_library"><em class="xref need">Container Library (feat_req__baselibs__containers_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__bitmanipulation" title="feat_req__baselibs__bitmanipulation"><em class="xref need">Bit Manipulation Library (feat_req__baselibs__bitmanipulation)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__filesystem_library" title="feat_req__baselibs__filesystem_library"><em class="xref need">Filesystem Library (feat_req__baselibs__filesystem_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__memory_library" title="feat_req__baselibs__memory_library"><em class="xref need">Memory Library (feat_req__baselibs__memory_library)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#feat_req__baselibs__concurrency_library" title="feat_req__baselibs__concurrency_library"><em class="xref need">Concurrency Library (feat_req__baselibs__concurrency_library)</em></a></p></li>
+</ul>
+<p>For these directly testable features, requirement wording is clear enough to derive test cases, and trace links from feature requirements to lower-level requirements and test cases are available.</p>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_08_02</p></td>
