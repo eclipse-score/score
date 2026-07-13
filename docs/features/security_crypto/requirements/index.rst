@@ -337,6 +337,7 @@ Non-Functional Requirements
    :derived_from: stkh_req__dependability__security_features[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The security component shall contain a set of extendable benchmark tests to derive KPIs from
    running all it's cryptographic operations on different systems.

@@ -36,6 +36,7 @@ Definitions
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     An application consists of one or more activities.
 
@@ -55,6 +56,7 @@ Definitions
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     Activities are mapped to threads within primary or secondary processes.
     Each activity is mapped to exactly one thread and provides the following functions:
@@ -74,6 +76,7 @@ Definitions
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     All activities within an application are arranged within a `Task Chain`.
     There is exactly one task chain per application.
@@ -95,6 +98,7 @@ Definitions
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     * Service activities are a means to interact with the outside world, e.g. via
       network communication, direct sensor input or direct actuator output
@@ -110,6 +114,7 @@ Definitions
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     In order to execute activities in secondary processes, the executor makes
     use of an `Agent` for each secondary process and possibly also the primary process.
@@ -135,6 +140,7 @@ Dynamic Architecture
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     The Application Lifecycle consists of 3 phases: Init, Run and Shutdown.
 
@@ -147,6 +153,7 @@ Dynamic Architecture
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     Initialization of activities is done during application initialization.
 
@@ -164,6 +171,7 @@ Dynamic Architecture
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     Each activity is stepped once within each execution of the task chain they belong to.
 
@@ -178,6 +186,7 @@ Dynamic Architecture
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     Shutdown of activities is done during application shutdown.
 
@@ -197,6 +206,7 @@ Supervision
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     The framework shall provide the functionality to enable the reporting of
     alive supervision checkpoint to an external health management system
@@ -211,6 +221,7 @@ Supervision
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     The framework shall provide the functionality to enable the reporting of
     deadline supervision checkpoints to an external health management system
@@ -225,6 +236,7 @@ Supervision
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     The framework shall provide the functionality to enable the reporting of
     logical supervision checkpoints to an external health management system
@@ -239,6 +251,7 @@ Supervision
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     The framework shall provide mechanisms to check after the computation of
     an Activity if the result is trustable.
@@ -259,6 +272,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If the primary process receives a termination signal, it shall call the shutdown
     function of all remaining activities in arbitrary sequence and terminate itself.
@@ -275,6 +289,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If not all secondary processes connect to the primary in time, the primary shall terminate itself.
     The startup functions shall not be triggered.
@@ -289,6 +304,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If an error occurs during the execution of a startup function, the primary process shall abort calling
     startup functions and terminate itself. For all of the activities
@@ -305,6 +321,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
     and report an error to the executor in case of failure.
@@ -319,6 +336,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
     successfully started activities in arbitrary sequence and terminate itself.
@@ -333,6 +351,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If not all activities reach their initialized state within a certain period of time (startup timeout),
     the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
@@ -347,6 +366,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If an activity fails in the step function, the primary process shall call shutdown for all activities
     in arbitrary sequence and terminate itself.
@@ -361,6 +381,7 @@ Error Handling for S-CORE v0.5
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
+    :valid_from: v2.0.0
 
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
     in arbitrary sequence and terminate itself.
