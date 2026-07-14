@@ -645,7 +645,7 @@ SPDX-License-Identifier: Apache-2.0
 -->
 <section id="dr-002-arch-considerations">
 <h1>DR-002-Arch: Considerations<a class="headerlink" href="#dr-002-arch-considerations" title="Link to this heading">#</a></h1>
-<p>This page provides detailed considerations for the <a class="reference internal" href="../DR-002-arch.html"><span class="std std-doc">Library Delivery Model</span></a> design decision.</p>
+<p>This page provides detailed considerations for the :ref:<code class="docutils literal notranslate"><span class="pre">Library</span> <span class="pre">Delivery</span> <span class="pre">Model</span> <span class="pre">&lt;DR-002-Arch&gt;</span></code> design decision</p>
 <section id="architectural-note-internal-composition-of-shared-libraries">
 <h2>Architectural Note: Internal Composition of Shared Libraries<a class="headerlink" href="#architectural-note-internal-composition-of-shared-libraries" title="Link to this heading">#</a></h2>
 <p>When a module (feature) is delivered as a shared library, this does <strong>not</strong> imply that every internal component of that module is itself a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code>. The standard and recommended pattern is:</p>
@@ -736,7 +736,8 @@ SPDX-License-Identifier: Apache-2.0
 </section>
 <section id="cross-language-interoperability-c-rust">
 <h2>Cross-Language Interoperability (C++ ↔ Rust)<a class="headerlink" href="#cross-language-interoperability-c-rust" title="Link to this heading">#</a></h2>
-<p>S-CORE uses both C++ and Rust (see <a class="reference internal" href="../DR-001-arch.html"><span class="std std-doc">DR-001-Arch</span></a>). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):</p>
+<p>:ref:<code class="docutils literal notranslate"><span class="pre">Library</span> <span class="pre">Delivery</span> <span class="pre">Model</span> <span class="pre">&lt;DR-002-Arch&gt;</span></code>).
+S-CORE uses both C++ and Rust (see :ref:<code class="docutils literal notranslate"><span class="pre">&lt;DR-001-arch&gt;</span></code>). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):</p>
 <section id="the-common-denominator-c-abi">
 <h3>The Common Denominator: C ABI<a class="headerlink" href="#the-common-denominator-c-abi" title="Link to this heading">#</a></h3>
 <p>Neither C++ nor Rust has a stable, cross-language ABI of its own. Cross-language calls require an intermediate <strong>C ABI</strong> (<code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> in both languages). This applies equally to static and dynamic linking:</p>
