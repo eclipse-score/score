@@ -16,18 +16,6 @@
 Communication Module
 ####################
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 2
+The documentation for this module has moved to its own repository:
 
-   ./docs/index
-
-Components
-==========
-
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
-   :glob:
-
-   ./*/docs/index
+`Communication Module Documentation <https://eclipse-score.github.io/communication/>`_
