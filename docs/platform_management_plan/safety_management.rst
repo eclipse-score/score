@@ -478,11 +478,9 @@ Platform Management Plan - Feature Work Product Lists
 
 :need:`doc__com_ipc_safety_wp`
 
-:need:`doc__feo_safety_wp`
-
-:need:`doc__orchestration_safety_wp`
-
 `Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/docs/features/persistency/safety_planning/index.html>`__
+
+`Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/docs/features/lifecycle/safety_planning/index.html>`__
 
 Note: list of features according to :ref:`releases`
 
