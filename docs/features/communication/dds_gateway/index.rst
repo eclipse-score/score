@@ -403,7 +403,7 @@ It provides:
     |                               |
     | DDS discovery                 |
     | DDS Topics                    |
-    | DDS write_cdr()               |
+    | DDS serialized data sending   |
     +-------------+-----------------+
                   |
                   v
@@ -420,7 +420,7 @@ It provides:
     +-------------------------------+
     | DDS Communication Component   |
     |                               |
-    | DDS read_cdr()                |
+    | DDS serialized Data receiving |
     +-------------+-----------------+
                   |
                   | Serialized payload
