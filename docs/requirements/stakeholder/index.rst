@@ -1408,7 +1408,6 @@ Developer experience
    The SW-platform shall support implementation of applications in the following
    programming languages up to the highest ASIL level as defined in :need:`stkh_req__dependability__automotive_safety`:
 
-   * C
    * C++
    * Rust
 
