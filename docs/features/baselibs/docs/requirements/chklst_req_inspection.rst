@@ -16,7 +16,7 @@
 .. document:: Baselibs Requirements Inspection Checklist
    :id: doc__baselibs_req_inspection
    :status: valid
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :realizes: wp__requirements_inspect[version==1]
@@ -171,7 +171,17 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
       - YES
       - Note: None of the requirements here is defining a safety mechanism, yet several components contain operation that could fail and need a safety mechanism. However, defining safety mechanisms is arguably better suited for individual libraries' component requirements.
       -
+    * - REQ_10_01
+      - Is the requirement description *complete* ?
+      - For every requirement in the inspection, follow to its parent (stakeholder) requirement(s) and then check if this/these are fulfilled completely by its/their linked children (feature requirements, including those which are not in scope of the inspection).
+      - NO
+      - Following stakeholder requirements are linked:
 
+        - stkh_req__functional_req__base_libraries :  correctly links to all current baselibs feature requirements
+        - stkh_req__dependability__automotive_safety : correctly links to all current baselibs feature requirements for ASIL_B components, is used to discriminate between safety/non safety feature requirements also in other features
+        - stkh_req__dev_experience__prog_languages : correctly linked in baselibs, but missing in other features, e.g. lifecycle.
+          Additionally the stakeholder requirement refers to C as supported user interface language, which is not correct. - both see `#3090 <https://github.com/eclipse-score/score/issues/3090>`_
+      -
 
 Note: If a Review ID is not applicable for your requirement, then state ""n/a" in status and comment accordingly in remarks. For example "no stakeholder requirement (no rationale needed)"
 
