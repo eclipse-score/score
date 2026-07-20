@@ -623,7 +623,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-3873e4e4">
+  <div class="need_container docutils container" id="SNCB-1b47297e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_change_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -787,22 +787,24 @@ directly there.</p>
 <p>Some changes carry enough governance weight that the decision is worth persisting, and the
 community needs a structured way to reach agreement before implementation starts, rather than
 relying on a single Committer’s review. For these, <strong>Analyze</strong> is specialized into the <strong>FEP
-process</strong>: a Shepherd sponsors the proposal, a time-boxed Final Comment Period
+Track</strong>: a Shepherd sponsors the proposal, a time-boxed Final Comment Period
 (silence-as-approval) fosters quick decision making instead of open-ended review, and the outcome
 is recorded as a Decision Record rather than only documented in the ISSUE. Create, Implement, and
 Close are unaffected; only the Analyze step changes shape. See the
-<a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP Process Guide</span></a> for the full mechanics (roles, phases,
-template).</p>
+<a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">Feature &amp; Enhancement Proposal (FEP)</span></a> for the full mechanics
+(roles, phases, template).</p>
 <p>Today, the following Change Requests are routed onto this track:</p>
-<p><strong>Feature</strong> change requests always go through the FEP process.</p>
-<p><strong>Feature Modification</strong> change requests go through the FEP process when the change has major
+<p><strong>Feature</strong> change requests always go through the FEP Track.</p>
+<p><strong>Feature Modification</strong> change requests go through the FEP Track when the change has major
 impact, e.g. affecting the platform or other Feature Teams. Feature Teams retain authority over
 modifications limited to their own domain.</p>
-<p>A clean, exhaustive definition of “major impact” is not achievable up front. This classification is
-a judgment call made by the responsible <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> at the time the change is
-proposed, including changes proposed directly as a PR without a prior FEP. A change can be waived
-from the FEP process by community agreement if it is judged not to warrant it, or pulled into the
-FEP process after the fact if a <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> judges it major.</p>
+<p>A clean, exhaustive definition of “major impact” is not achievable up front; see the <a class="reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/change_management/change_management_concept.html#key-concept">Key
+Concept</a> in <code class="docutils literal notranslate"><span class="pre">process_description</span></code> for the baseline definition of a change. Classifying a Feature
+Modification as “major” within that baseline is a judgment call made by the responsible
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> at the time the change is proposed, including changes proposed
+directly as a PR without a prior FEP. A change can be waived from the FEP Track by community
+agreement if it is judged not to warrant it, or pulled into the FEP Track after the fact if a
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> judges it major.</p>
 <p><strong>Component</strong> and <strong>Component Modification</strong> change requests go through the standard Analyze step;
 they are not routed onto the FEP Track, so neither a Shepherd nor a Final Comment Period is
 required. The responsible team may still choose to record the change as a Decision Record for a
@@ -993,7 +995,7 @@ review results are resolved by the <a class="external_link reference external" h
 are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
 related ISSUE is kept in status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and Projects status <code class="docutils literal notranslate"><span class="pre">Todo</span></code>, means <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code>.</p>
 <p>For Change Requests routed onto the <a class="reference internal" href="#fep-track"><span class="std std-ref">FEP Track</span></a>, this step is performed as
-described in the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP Process Guide</span></a> instead: a Shepherd, not a
+described in the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP Guide</span></a> instead: a Shepherd, not a
 single Committer, guides the analysis, and review ends in the time-boxed Final Comment Period
 rather than in an open-ended <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code> state.</p>
 <p>If the information is sufficient and it is decided to implement the change request, the
