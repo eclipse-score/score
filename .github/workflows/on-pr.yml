@@ -20,7 +20,27 @@ on:
     types: [checks_requested]
 
 jobs:
+  # Common S-CORE Workflow
+
   common:
     uses: eclipse-score/cicd-workflows/.github/workflows/on-pr.yml@88cb460c47cb49efeb25cd7b73c8945dd1c5bce2 # on-pr/v0.0.0
     permissions:
       contents: read
+
+  # score repo specific additions:
+
+  lint-commits:
+    name: check-commit-messages
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitlint Action
+        uses: ./.github/actions/gitlint
+        with:
+          pr-number: ${{ github.event.number }}
+          base-branch: ${{ github.event.pull_request.base.ref }}
