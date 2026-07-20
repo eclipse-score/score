@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
@@ -616,7 +616,7 @@
                   
   <section id="feature-enhancement-proposal-fep-process">
 <h1>Feature &amp; Enhancement Proposal (FEP) Process<a class="headerlink" href="#feature-enhancement-proposal-fep-process" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-2d949292">
+<div class="need_container docutils container" id="SNCB-d0ba6cec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feature_request_guideline">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -659,15 +659,15 @@
 </table>
 </div>
 </div>
-<p id="feature-request-guideline">This guide describes how to propose a <strong>Feature &amp; Enhancement Proposal (FEP)</strong> in S-CORE. FEPs are
-not a separate change process: they specialize the Analyze step of the standard Change Request
-Workflow — see the Decision Record Track section of the <a class="reference internal" href="../../platform_management_plan/change_management.html#change-mgmt-plan"><span class="std std-ref">Change Management Plan</span></a> — for <em>Feature</em> change requests and <em>Feature Modification</em> change requests with
-major impact, for example changes affecting the platform or other Feature Teams.</p>
-<p>It supersedes the previous ad hoc Feature Request review (GitHub label plus weekly Technical Lead
-review) as the Analyze step for these change requests; the surrounding ISSUE/PR infrastructure and
-lifecycle defined in the Change Management Plan are unchanged. Component-level and single-Feature-
-Team changes are not affected by this guide; they continue through the standard Analyze step
-described in the <a class="reference internal" href="../../platform_management_plan/change_management.html#change-mgmt-plan"><span class="std std-ref">Change Management Plan</span></a>.</p>
+<p id="feature-request-guideline">This guide describes the <strong>Feature &amp; Enhancement Proposal (FEP)</strong>: part of S-CORE’s change
+process, and the Analyze step for <em>Feature</em> change requests and <em>Feature Modification</em> change
+requests with major impact, for example changes affecting the platform or other Feature Teams
+(see the <a class="reference internal" href="../../platform_management_plan/change_management.html#fep-track"><span class="std std-ref">FEP Track</span></a> section of the <a class="reference internal" href="../../platform_management_plan/change_management.html#change-mgmt-plan"><span class="std std-ref">Change Management Plan</span></a>).</p>
+<p>Component-level and single-Feature-Team changes continue through the standard Analyze step
+described in the <a class="reference internal" href="../../platform_management_plan/change_management.html#change-mgmt-plan"><span class="std std-ref">Change Management Plan</span></a>. A Feature Team may still choose
+to record such a change as a Decision Record if it wants a persisted rationale; that choice does
+not by itself require a Shepherd or Final Comment Period, both of which are specific to the FEP
+Track.</p>
 <p>This guide is based on or references the following documents:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../design_decisions/DR-002-proc.html#dec_rec__proc__fep_process" title="dec_rec__proc__fep_process"><em class="xref need">FEP Decision Record (DR-002-Proc) (dec_rec__proc__fep_process)</em></a>, which records the original
@@ -683,14 +683,16 @@ of what was originally decided; it is not updated when this guide evolves.</p>
 </div>
 <section id="roles">
 <h2>Roles<a class="headerlink" href="#roles" title="Link to this heading">#</a></h2>
-<p><strong>Author</strong> - the person proposing the change. Responsible for writing and maintaining the FEP,
-integrating feedback, and driving consensus.</p>
-<p><strong>Shepherd</strong> - an Architecture Community member, not the author, who guides the FEP to maturity and
-judges when it is ready for the Final Comment Period. Finding a Shepherd is the author’s
-responsibility. If no one is willing to shepherd a proposal, it does not proceed.</p>
-<p><strong>Architecture Community</strong> - all architects and Feature Team leads with standing to review FEPs.
-During the Final Comment Period, every member is expected to either raise a substantive objection or
-approve, explicitly or by silence.</p>
+<p><strong>Author</strong> - the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> proposing the change. Responsible for
+writing and maintaining the FEP, integrating feedback, and driving consensus.</p>
+<p><strong>Shepherd</strong> - a <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> of the Architecture Community, not the author,
+who guides the FEP to maturity and judges when it is ready for the Final Comment Period. Finding a
+Shepherd is the author’s responsibility. If no one is willing to shepherd a proposal, it does not
+proceed.</p>
+<p><strong>Architecture Community</strong> - all <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> of the Architecture Community
+(architects and Feature Team leads) with standing to review FEPs. During the Final Comment Period,
+every member is expected to either raise a substantive objection or approve, explicitly or by
+silence.</p>
 </section>
 <section id="labels">
 <h2>Labels<a class="headerlink" href="#labels" title="Link to this heading">#</a></h2>
@@ -748,20 +750,9 @@ accepted design is materially wrong, file a follow-up FEP rather than diverging 
 <section id="fep-template">
 <h2>FEP Template<a class="headerlink" href="#fep-template" title="Link to this heading">#</a></h2>
 <p>FEPs use the same <code class="docutils literal notranslate"><span class="pre">dec_rec</span></code> need type as any other Decision Record (see the <a class="reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/platform/docs/change/decision_record.html">Decision Record
-Template</a> in <code class="docutils literal notranslate"><span class="pre">process_description</span></code> for the canonical field set). The
-<code class="docutils literal notranslate"><span class="pre">:tracking:</span></code> field is the one FEP-specific addition, linking the FEP to its tracking Issue from
+Template</a>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">:tracking:</span></code> field is the one FEP-specific addition, linking the FEP to its tracking Issue from
 Phase 1.</p>
-<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>[...]
-```{dec_rec} &lt;Short imperative title&gt;
-:id: dec_rec__&lt;arch|proc|strat|infra|int&gt;__&lt;slug&gt;
-:status: draft
-:tracking: &lt;GitHub issue URL, required once a Shepherd is confirmed&gt;
-:context: &lt;One sentence: what situation or gap makes this proposal necessary?&gt;
-:decision: &lt;One sentence: what is being proposed?&gt;
-```
-[...]
-</pre></div>
-</div>
 </section>
 <section id="breaking-change-feps-additional-requirements">
 <h2>Breaking Change FEPs - Additional Requirements<a class="headerlink" href="#breaking-change-feps-additional-requirements" title="Link to this heading">#</a></h2>
