@@ -75,6 +75,8 @@ Org Chart and Main Platform Management Plan Responsibilities
 Steering Committees
 ^^^^^^^^^^^^^^^^^^^
 Steering of the project is done with the help of *Lead Circles*.
+The combined :term:`Project Lead Circle (PLC/TLC)` coordinates strategic
+project and technical decisions.
 
 .. _PLCTLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _PLCTLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
@@ -124,7 +126,7 @@ Communities
 ^^^^^^^^^^^
 *Communities* are installed to work on cross functional topics, such as program level architectural decisions,
 commonly used development & testing infrastructure, processes or final integration & release.
-Each *Community* has a *Community Lead* to organize the community`s work.
+Each *Community* has a :term:`Community Lead` to organize the community`s work.
 
 .. _ARCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _ARCLD: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
