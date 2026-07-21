@@ -25,6 +25,7 @@ Requirements
    :derived_from: stkh_req__gen_ai__enablement[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall support the execution of Generative AI models (e.g., LLMs) on embedded automotive hardware.
 
@@ -36,6 +37,7 @@ Requirements
    :derived_from: stkh_req__gen_ai__interaction[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall provide a Prompting Interface for GenAI-based agents, enabling structured prompts, streaming output, and context-aware user interaction.
 
@@ -47,6 +49,7 @@ Requirements
    :derived_from: stkh_req__gen_ai__safety_filter[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall validate all LLM-generated actions via domain-specific policies before they are executed.
 
@@ -58,5 +61,6 @@ Requirements
    :derived_from: stkh_req__gen_ai__vehicle_com[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall provide structured APIs (e.g., via MCP) to access vehicle state and invoke safe vehicle commands.

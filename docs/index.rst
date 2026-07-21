@@ -306,6 +306,7 @@ Infrastructure and Tooling
    modules/index
    contribute/index
 
+   Quality <quality/qms_report.rst>
    Releases <score_releases/index.rst>
    Tools <score_tools/index.rst>
    PMP <platform_management_plan/index.rst>

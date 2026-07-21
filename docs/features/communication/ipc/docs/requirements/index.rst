@@ -34,6 +34,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    IPC communication shall be possible without copying to-be-transferred data.
 
@@ -46,6 +47,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The IPC binding shall ensure confidentiality of its communication.
 
@@ -58,6 +60,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The IPC binding shall ensure integrity of its communication.
 
@@ -70,6 +73,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per
    criticality level.

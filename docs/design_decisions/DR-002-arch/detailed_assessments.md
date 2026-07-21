@@ -10,10 +10,11 @@ https://www.apache.org/licenses/LICENSE-2.0
 
 SPDX-License-Identifier: Apache-2.0
 -->
-
+(DR-002-Arch-detailed-assessments)=
 # DR-002-Arch: Detailed Assessments
 
-This page provides detailed evaluation assessments for the [Library Delivery Model](../DR-002-arch.md) design decision.
+                                                            
+This page provides detailed evaluation assessments for the :ref:`Library Delivery Model <DR-002-Arch>` design decision.
 
 ## Update Granularity — Detailed Assessment
 

@@ -26,6 +26,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`.
 
@@ -37,6 +38,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for ordering the launching of
     :term:`Processes <Process>` based on the dependencies.
@@ -50,6 +52,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`
     in parallel.
@@ -62,6 +65,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support to wait for configurable custom
     conditions, which can be signaled from applications via :term:`Control Interface`.
@@ -75,6 +79,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support to pass the output of one or
     multiple :term:`Processes <Process>` as input arguments to another process.
@@ -87,6 +92,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given set of arguments.
@@ -99,6 +105,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching process with a
     given set of debug arguments in debug mode.
@@ -111,6 +118,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process in a state
     waiting for a debugger connection.
@@ -124,6 +132,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given :term:`UID`/:term:`GID` (user name/Group Identifier).
@@ -136,6 +145,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given priority.
@@ -149,6 +159,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given :term:`Working Directory`.
@@ -161,6 +172,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a terminal or a
     session leader.
@@ -173,6 +185,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for stdin, stdout, stderr
     redirection.
@@ -185,6 +198,7 @@ Launching Processes
     :derived_from: stkh_req__dependability__safety_features_4[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support to be started with security
     policy as non-root.
@@ -197,6 +211,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support a configurable amount of retries in
     case error occurs during startup of a component (e.g. file not available) occurs.
@@ -209,6 +224,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`
     with configured OS-specific capabilities and privileges.
@@ -221,6 +237,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with
     given :term:`File Descriptor` inheritance restrictions.
@@ -229,11 +246,12 @@ Launching Processes
 .. feat_req:: Security policy support
     :id: feat_req__lifecycle__support_secpol_type
     :reqtype: Functional
-    :security: NO
+    :security: YES
     :safety: ASIL_B
     :derived_from: stkh_req__dependability__safety_features_4[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given security policy.
@@ -246,6 +264,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given set of supplementary groups.
@@ -258,6 +277,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with
     certain scheduling policy.
@@ -270,6 +290,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given runmask.
@@ -278,11 +299,12 @@ Launching Processes
 .. feat_req:: ASLR support
     :id: feat_req__lifecycle__aslr_support
     :reqtype: Functional
-    :security: NO
+    :security: YES
     :safety: ASIL_B
     :derived_from: stkh_req__dependability__security_features[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching process with
     :term:`ASLR` (Address Space Layout Randomization).
@@ -295,6 +317,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given set of system resource limits (rlimit).
@@ -308,6 +331,7 @@ Launching Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for launching a process to
     detach from parent.
@@ -323,6 +347,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide launching processes based on conditions.
 
@@ -334,6 +359,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support to conditionally start a process
     or process group based on the return value of a single or multiple :term:`Processes <Process>`
@@ -347,6 +373,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for per condition configurable
     total wait time for launch conditions to be satisfied.
@@ -359,6 +386,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for per condition configurable
     :term:`Polling Interval` for launch conditions to be checked.
@@ -371,6 +399,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall be able to validate the pre-start conditions of the executable using the conditions.
 
@@ -382,6 +411,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall be able to validate the start of the executable using the conditions.
 
@@ -393,6 +423,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a way to store the status of the launched process.
 
@@ -404,6 +435,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a method for condition check based on process state.
 
@@ -415,6 +447,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a way to configure actions based on condition evaluation i.e. to be able to configure SUCCESS and FAILURE case.
 
@@ -426,6 +459,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a method for condition check for a path.
 
@@ -437,6 +471,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a method for condition check for environment variable.
 
@@ -448,6 +483,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a method to check if all dependencies have been executed.
 
@@ -459,6 +495,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a method to check if at least one dependency has been executed.
 
@@ -470,6 +507,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a way to define for each :term:`SWC` (Software Components), its dependencies.
 
@@ -481,6 +519,7 @@ Conditional Launching
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall provide a way to define the stop sequence for each :term:`SWC` (Software Components).
 
@@ -495,6 +534,7 @@ Process Management
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to adopt already running :term:`Processes <Process>`.
 
@@ -506,6 +546,7 @@ Process Management
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support to dropping all surveillance
     and failure reaction activities of :term:`Processes <Process>`.
@@ -519,6 +560,7 @@ Process Management
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall permit an executable to be launched more than once.
 
@@ -531,6 +573,7 @@ Process Management
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall reject an inconsistent definition of set of executables dependencies.
 
@@ -543,6 +586,7 @@ Process Management
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall be able to stop a process when all it's dependents are stopped if specified in the set of executables.
 
@@ -555,6 +599,7 @@ Process Management
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall permit the stop order of non-dependent processes to be specified.
 
@@ -565,6 +610,7 @@ Process Management
     :safety: ASIL_B
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
     :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
 
     The Launch Manager shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
@@ -581,6 +627,7 @@ Run targets
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for :term:`run targets <Run target>` to define
     collections of :term:`Processes <Process>` that can be launched together.
@@ -593,6 +640,7 @@ Run targets
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to start a named :term:`Run target`.
 
@@ -604,6 +652,7 @@ Run targets
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to switch between different :term:`run targets <Run target>`.
 
@@ -615,6 +664,7 @@ Run targets
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall have a means for the launched :term:`Processes <Process>`
     to communicate a state, which represents the launched processes' internal state,
@@ -632,6 +682,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for configurable timeout
     :term:`Interval` to wait for the process to be stopped.
@@ -644,6 +695,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for terminating :term:`Processes <Process>`.
 
@@ -655,6 +707,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall terminate the :term:`Processes <Process>` based on the
     dependency order.
@@ -668,6 +721,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The time to wait, before SIGKILL is sent shall be configurable. In case "0" is
     stated, the SIGKILL shall be sent immediately.
@@ -680,6 +734,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support normal shutdown by terminating all
     process in the dependency order.
@@ -693,6 +748,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support slow shutdown by terminating the
     :term:`Processes <Process>` in the dependency order.
@@ -705,6 +761,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support fast shutdown by terminating itself
     without affecting the started :term:`Processes <Process>`.
@@ -717,6 +774,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall exit after performing shutdown operation by
     stopping all the :term:`Processes <Process>` it owns in the dependency order when requested.
@@ -729,6 +787,7 @@ Terminating Processes
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall implement a shutdown by sending a SIGTERM to
     the process. In case the process does not terminate itself, a SIGKILL shall be sent.
@@ -745,6 +804,7 @@ Control Interface
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for commands to control
     component states.
@@ -757,6 +817,7 @@ Control Interface
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for commands to query component
     states.
@@ -770,6 +831,7 @@ Control Interface
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to report status on components via the
     :term:`Control Interface`.
@@ -784,6 +846,7 @@ Control Interface
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to start a named :term:`Run target` respecting the
     dependencies when requested.
@@ -800,6 +863,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for monitoring abnormal
     termination of :term:`Processes <Process>`.
@@ -812,6 +876,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for external monitors to get
     notified on process life status.
@@ -825,6 +890,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support :term:`Recovery Action` for the
     abnormally terminated :term:`Processes <Process>`.
@@ -837,6 +903,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support switching to a different :term:`Run target` as
     recovery action in case a single process terminated abnormally or lost its
@@ -850,6 +917,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support a smart :term:`Watchdog`, configurable
     per process.
@@ -863,6 +931,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for configurable wait time
     that shall elapse before repeating :term:`Recovery Action`.
@@ -875,6 +944,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for monitoring adopted
     :term:`Processes <Process>`.
@@ -887,6 +957,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to detect and react to failure of the
     process launch.
@@ -899,6 +970,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to detect and react to loss of
     :term:`Liveliness` of the :term:`Processes <Process>` it owns.
@@ -911,6 +983,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall monitor the state of the :term:`Processes <Process>` as
     specified by the set of executables.
@@ -924,6 +997,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to react to a process failure by
     optionally performing one of relaunching the process, stopping the process,
@@ -938,6 +1012,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall be able to run in multiple instances with its
     own configurations on a system.
@@ -950,6 +1025,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall implement time based cyclical monitoring of itself.
 
@@ -961,6 +1037,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall trigger a notification to an external
     :term:`Watchdog` for each successful self monitoring test execution.
@@ -973,6 +1050,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall not trigger an external :term:`Watchdog`
     notification if an internal health check failed.
@@ -985,6 +1063,7 @@ Monitoring, Notification and Recovery
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support configuring the :term:`Interval` of
     the internal health check executions.
@@ -1000,6 +1079,7 @@ Logging
     :derived_from: stkh_req__dev_experience__logging_support[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall support OS specific logging facilities to analyze the early
     boot sequence.
@@ -1012,6 +1092,7 @@ Logging
     :derived_from: stkh_req__dev_experience__logging_support[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for logging process launches,
     :term:`Processes <Process>` exit/recovery, internal tasks, and interaction with external monitor.
@@ -1024,6 +1105,7 @@ Logging
     :derived_from: stkh_req__dev_experience__logging_support[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` logs shall contain timestamp information.
 
@@ -1036,6 +1118,7 @@ Logging
     :derived_from: stkh_req__dev_experience__logging_support[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide the possibility to log the :term:`DAG`
     in a human readable format, triggered via :term:`Control Interface`.
@@ -1049,6 +1132,7 @@ Logging
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall have the means to log the current dependencies in a format that can be visualized when requested.
 
@@ -1063,6 +1147,7 @@ Configuration file
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The launch manager shall provide modular configuration file support to configure process attributes.
 
@@ -1074,6 +1159,7 @@ Configuration file
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The launch manager shall provide modular configuration files support for configurations coming from `OCI runtime configuration<https://github.com/opencontainers/runtime-spec/blob/v1.2.0/config.md>`.
 
@@ -1086,6 +1172,7 @@ Configuration file
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support for extending already running
     session with additional new configuration file.
@@ -1098,6 +1185,7 @@ Configuration file
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The :term:`Launch Manager` shall provide support to clustering set of components
     as modules.
@@ -1111,6 +1199,7 @@ Configuration file
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall be able to centrally define defaults for specific properties for the set of executables.
 
@@ -1123,6 +1212,7 @@ Configuration file
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall check availability of executables in the filesystem only when the executable shall required to be executed.
 
@@ -1135,6 +1225,7 @@ Configuration file
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall have the means to generate the specified dependencies in a format that can be visualized.
 
@@ -1147,5 +1238,6 @@ Configuration file
     :derived_from: stkh_req__execution_model__processes[version==1]
     :status: invalid
     :version: 1
+    :valid_from: v1.0.0
 
     The Launch Manager shall have a means to validate the configuration offline.

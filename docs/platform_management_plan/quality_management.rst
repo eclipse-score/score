@@ -289,8 +289,8 @@ Finally to the Eclipse Foundation if the rules of the Eclipse handbook are not f
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 None
 
-4.4 Quality Management Generic workproducts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4.4 Quality Management Generic work products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table:: Quality related work products
         :header-rows: 1
 

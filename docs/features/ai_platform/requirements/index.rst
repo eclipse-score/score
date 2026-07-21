@@ -25,6 +25,7 @@ Requirements
    :derived_from: stkh_req__ai_platform__enablement[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall support the execution of traditional ML models on embedded automotive hardware.
 
@@ -36,6 +37,7 @@ Requirements
    :derived_from: stkh_req__ai_platform__safety_critical[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall support deployment of safety-certified inference backends and abstraction layers for ASIL-B use cases.
 
@@ -47,6 +49,7 @@ Requirements
    :derived_from: stkh_req__ai_platform__runtime_efficiency[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall optimize runtime performance and memory usage to meet the constraints of automotive edge hardware.
 
@@ -58,6 +61,7 @@ Requirements
    :derived_from: stkh_req__ai_platform__platform_portability[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall support portable AI components that run on both QNX (ASIL-B) and Linux environments.
 
@@ -69,6 +73,7 @@ Requirements
    :derived_from: stkh_req__ai_platform__model_security[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall ensure model artifacts are verified via cryptographic signatures before execution, and model loading is restricted to trusted paths.
 
@@ -80,5 +85,6 @@ Requirements
    :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The platform shall select inference backends statically at build time to ensure deterministic runtime behavior.
