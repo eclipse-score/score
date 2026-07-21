@@ -19,6 +19,7 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
+   :realizes: wp__project_mgt[version==1]
 
 Glossary
 ========
