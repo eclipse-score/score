@@ -182,16 +182,6 @@ Existing LoLa application's deployment remain unchanged unless DDS Gateway commu
 explicitly configured for this application requiring communication over DDS network.
 
 
-Security Impact
-===============
-
-DDS communication may interact with other systems for which security is needed.
-
-Validation of received data, deployment of DDS Security, credential management,
-network protection, and platform hardening remain deployment-specific unless
-covered by another SCORE feature.
-
-
 Safety Impact
 =============
 
