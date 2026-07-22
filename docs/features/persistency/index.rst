@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -14,8 +14,8 @@
 
 .. _features_persistency:
 
-Persistency (v0.5 beta)
-########################
+Persistency
+###########
 
 .. document:: Persistency
    :id: doc__persistency
