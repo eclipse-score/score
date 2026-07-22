@@ -153,6 +153,100 @@ At a high level, `dependable_element` works as follows:
   checklists and glossary — into a single, versioned deliverable with its own
   HTML documentation and traceability report.
 
+### Checks and traceability contributions per rule
+
+The following diagram breaks the `dependable_element` aggregation down into the
+individual `rules_score` rules. For every rule the first compartment lists, in
+plain language, **what that rule checks**; the second compartment lists the
+artifacts the rule contributes to the aggregated `lobster.json` traceability
+report (empty when the rule adds nothing). Each arrow is labelled with the
+macro argument that wires the child rule into its parent.
+
+```mermaid
+classDiagram
+    direction LR
+
+    class DE["dependable_element"]
+    DE : • Actual Bazel build tree of components and units matches the component architecture diagram
+    DE : • Certified scope - real build dependencies stay within the declared whitelist
+    DE : • No dependency on a lower safety level
+    DE : • Every requirement is covered by tests - traceability
+    DE : • Own assumptions of use are always forwarded to dependees
+    DE : • Received AoUs are only chain-forwarded when listed in the aou_forwarding YAML - each with a justification
+    DE : • Every chain-forwarded AoU must exist among the received AoUs - otherwise build fails
+    DE : • All references in the trace report resolve
+    DE : assembles the final trace report - *.lobster + HTML()
+    DE : chain_forwarded_aous.lobster()
+
+    class COMP["component"]
+    COMP : • Requirements are allocated to this component
+    COMP : • Test results of the units are collected
+    COMP : • Requirement-to-test chain is built
+    COMP : component_architecture.lobster()
+    COMP : gtest.lobster - from unit tests()
+    DE --> COMP : components
+
+    class AD["architectural_design"]
+    AD : • All PlantUML diagrams are valid - component architecture, sequence, class
+    AD : • Every participant in the sequence diagram is a real unit from the component diagram
+    AD : • Every interaction in the sequence diagram has a matching interface connection in the component diagram
+    AD : • Every interface used in the component diagram is defined in the internal class diagram
+    AD : • Every method call in the sequence diagram exists as a method of an interface in the class diagram
+    AD : • Public API interfaces are only parsed - consistency check not yet implemented
+    AD : • Clickable navigation links between the diagrams are generated - via linker
+    AD : public_api.lobster()
+    DE --> AD : architectural_design
+
+    class UNIT["unit"]
+    UNIT : • Design class diagram matches the real C++ code [libclang]
+    UNIT : • Unit tests are executed
+    UNIT : unit test result XML - feeds gtest.lobster()
+    COMP --> UNIT : components
+
+    class UD["unit_design"]
+    UD : • Design PlantUML is valid
+    UNIT --> UD : unit_design
+
+    class REQ["feature / component / assumed_system_requirements"]
+    REQ : • TRLC syntax and mandatory fields are correct
+    REQ : • All derived_from references exist
+    REQ : feature.lobster()
+    REQ : component.lobster()
+    REQ : assumed_system.lobster()
+    DE --> REQ : requirements
+
+    class DA["dependability_analysis"]
+    DA : • Safety analyses FMEA and FTA are merged
+    DA : • Linked to the public API interfaces
+    DA : • All references in the trace report resolve
+    DA : safety analysis lobster - merged from fmea()
+    DE --> DA : dependability_analysis
+
+    class FMEA["fmea"]
+    FMEA : • FTA fault tree is syntactically valid
+    FMEA : • FMEA entries are well-formed
+    FMEA : • Fault chains match the failure modes
+    FMEA : failuremodes.lobster()
+    FMEA : controlmeasures.lobster()
+    FMEA : root_causes.lobster()
+    DA --> FMEA : fmea
+
+    class CG["checklist / glossary"]
+    CG : • no check, only collects documents
+    DE --> CG : checklists / glossary
+
+    class AOU["assumptions_of_use"]
+    AOU : • Provides the assumption-of-use declarations - AoU lobster
+    AOU : • Basis for the forwarding check at the dependable_element level
+    AOU : aou.lobster - own assumptions()
+    DE --> AOU : assumptions_of_use
+
+    class TEST["integration tests"]
+    TEST : • Integration test targets of the dependable element
+    TEST : • declared only - not yet wired into a check
+    DE --> TEST : tests
+```
+
 ---
 ## Bringing the two approaches together
 
