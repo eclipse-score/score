@@ -111,11 +111,97 @@ automation can still be increased significantly**:
   a controlled, deterministic pipeline, which makes it hard to argue
   completeness and correctness to an assessor
 
-The following diagram shows the S-CORE process artifacts across requirements
-engineering, architecture design, implementation and verification, together
-with the tracing relationships that link them:
+The following diagram shows the S-CORE process artifacts as they exist in the
+**sphinx-needs / docs-as-code** world, together with the checks that are
+currently implemented against them. Unlike `rules_score`, where every rule
+*contributes* artifacts to `lobster.json`, here `needs.json` is produced from
+the **need directives** (the metamodel types); the `score_metamodel` checks
+*validate* that content rather than adding to it. Accordingly, the first
+compartment of each check box lists **what it checks**, and the second
+compartment lists the `needs.json` field(s) it **guards**. Only
+`score_source_code_linker` genuinely **enriches** `needs.json` (source/test
+links and the `testcase` needs parsed from the test-result XML). Each arrow is
+labelled with the kind of check (per element, or graph over the whole model) or
+the relationship to the metamodel.
 
-![S-CORE process artifacts and their tracing relationships](_assets/DR-009-infra-process-artifacts.svg)
+```mermaid
+classDiagram
+    direction LR
+
+    class SM["score_metamodel + needs.json"] {
+        • Loads metamodel.yaml - need types, attributes, links, tags
+        • Runs every per element check on a single need and every graph check on the full graph
+        • Warnings today, will become fatal - graceful migration
+        • Emits the project-wide needs.json - single machine-readable model
+        needs.json - all needs with attributes and links()
+        merged across repos via external needs()
+    }
+
+    class MM["metamodel.yaml - need types"] {
+        • Requirements - stkh_req, feat_req, comp_req, aou_req, tool_req
+        • Architecture - feat, comp, feat/comp_arc_sta, feat/comp_arc_dyn
+        • Interfaces - logic/real_arc_int, logic/real_arc_int_op, mod, mod_view
+        • Safety analysis - plat/feat/comp_saf_dfa, feat/comp_saf_fmea
+        • Security analysis - feat/comp/plat_sec_threat, *_sec_ana
+        • Process - workflow, workproduct, gd_req, gd_temp, role, std_req, std_wp
+        • Verification - testcase
+        • Decision records - dec_rec
+        needs.json record shape - id, type, options, links, tags()
+    }
+
+    class OPT["check_options - per element"] {
+        • Every mandatory attribute is present
+        • Attribute values match their metamodel regex - safety, security, status, reqtype, id
+        • Mandatory and optional links target the allowed need types
+        guards attributes and links()
+    }
+
+    class EXTRA["check_extra_options - per element"] {
+        • No attribute outside the metamodel definition is used
+        guards - rejects unknown attributes()
+    }
+
+    class IDC["id checks - per element"] {
+        • ID has the correct number of __ segments - check_id_format
+        • ID length within 45 chars - check_id_length
+        • ID feature segment matches the file path - id_contains_feature
+        guards need id()
+    }
+
+    class WORD["wording - per element"] {
+        • Title has no shall / must / will
+        • Requirement content avoids weak words - just, about, really, some, thing
+        guards title and content wording()
+    }
+
+    class GRAPH["graph_checks - graph"] {
+        • A valid need only links to valid needs
+        • QM requirement is not derived from an ASIL requirement
+        • QM architecture element does not fulfil an ASIL requirement
+        • Workproduct only complies to ASPICE 4.0 IIC or std_wp
+        • Configurable parent-relation conditions from the graph_checks config
+        guards cross-need link consistency()
+    }
+
+    class SCL["score_source_code_linker - enriches"] {
+        • Requirements are linked back to their source code - source_code_link
+        • Requirements and testcases are linked to tests - testlink
+        • testcase needs are parsed from the test-result XML - fully/partially_verifies
+        adds source_code_link()
+        adds testlink()
+        adds testcase needs()
+    }
+
+    SM --> MM : defines
+    SM --> OPT : per element check
+    SM --> EXTRA : per element check
+    SM --> IDC : per element check
+    SM --> WORD : per element check
+    SM --> GRAPH : graph check
+    SM --> SCL : enriches needs.json
+    MM ..> OPT : validated against
+    MM ..> GRAPH : validated against
+```
 
 The recently introduced approach named **`dependable_element`** provides
 exactly what sphinx/sphinx-needs is missing: a **high degree of automation
