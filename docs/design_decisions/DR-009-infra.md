@@ -329,7 +329,7 @@ classDiagram
 
     class TEST["integration tests"]
     TEST : • Integration test targets of the dependable element
-    TEST : • declared only - not yet wired into a check
+    TEST : • Requirements traceability
     DE --> TEST : tests
 ```
 
@@ -356,6 +356,31 @@ referenced by the `dependable_element`** as its architecture input, so both
 worlds share one architecture source.
 
 ![Merging sphinx/sphinx-needs and dependable_element](_assets/DR-009-infra-merge.svg)
+
+### Commercial solutions take the same route
+
+This split — a low-friction Sphinx/sphinx-needs authoring surface on top, and a
+separate, lightweight, easy-to-qualify engine underneath — is not unique to
+S-CORE. Established **commercial** offerings follow the very same pattern, for
+the same two reasons:
+
+- **Fast turn-around times.** As shown by
+  [useblocks ubTrace](https://useblocks.com/products/ubtrace), the traceability
+  and analysis work is moved out of the Sphinx build into a dedicated,
+  incremental engine, so authors get quick feedback instead of waiting on a
+  full documentation build.
+- **Qualification.** As shown by the
+  [useblocks qualification documentation](https://safety.useblocks.com/usage/qualification.html),
+  the qualifiable part is kept as a small, self-contained tool rather than the
+  large, dynamically extensible Sphinx framework — precisely because a compact,
+  deterministic component is far easier to qualify for use in a safety context.
+
+In other words, these commercial solutions rely on an architecture comparable to
+`dependable_element` / LOBSTER: a separate, lightweight, easy-to-qualify
+solution is used for the checking and traceability work instead of the Sphinx
+framework itself, while Sphinx/sphinx-needs remains the convenient authoring
+layer. This independently validates the direction proposed in this decision
+record.
 
 ### Goals and Requirements
 
