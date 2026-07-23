@@ -74,7 +74,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Communication (v0.5 beta)" href="../../communication/index.html" />
+    <link rel="next" title="Communication" href="../../communication/index.html" />
     <link rel="prev" title="Code Generation" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -200,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
@@ -403,6 +410,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../score_releases/index.html">
     Releases
   </a>
@@ -530,18 +544,18 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Code Generation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
@@ -609,7 +623,7 @@
                   
   <section id="requirements">
 <span id="codegen-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-e7ec50e9">
+<div class="need_container docutils container" id="SNCB-9d7a4d8c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__definitionlanguage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -629,6 +643,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__idl_support" title="feat_req__code_generation__definitionlanguage">stkh_req__dev_experience__idl_support</a></span></span></div>
@@ -655,7 +670,7 @@ system should prefer YAML over JSON due to its simpler syntax.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-89978a32">
+<div class="need_container docutils container" id="SNCB-231d2c02">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__initialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -675,6 +690,7 @@ system should prefer YAML over JSON due to its simpler syntax.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__initialization">stkh_req__execution_model__processes</a></span></span></div>
@@ -700,7 +716,7 @@ permanently if they fail to initialize.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-815e08de">
+<div class="need_container docutils container" id="SNCB-aa48e605">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__deinitialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -720,6 +736,7 @@ permanently if they fail to initialize.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__deinitialization">stkh_req__execution_model__processes</a></span></span></div>
@@ -745,7 +762,7 @@ called only once during their lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5cf18145">
+<div class="need_container docutils container" id="SNCB-981b67f4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__nomultithreading">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -765,6 +782,7 @@ called only once during their lifecycle.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__nomultithreading">stkh_req__execution_model__processes</a></span></span></div>
@@ -791,7 +809,7 @@ dynamically spawn and join or detach worker threads.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e2e0e0c">
+<div class="need_container docutils container" id="SNCB-4c78bde0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -811,6 +829,7 @@ dynamically spawn and join or detach worker threads.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__error_handling1">stkh_req__execution_model__processes</a></span></span></div>
@@ -836,7 +855,7 @@ libraries completely inside the standard interface functions. Software Compute U
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-52c8030d">
+<div class="need_container docutils container" id="SNCB-7c4685a5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -856,6 +875,7 @@ libraries completely inside the standard interface functions. Software Compute U
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__error_handling2">stkh_req__execution_model__processes</a></span></span></div>
@@ -883,7 +903,7 @@ lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bfeda473">
+<div class="need_container docutils container" id="SNCB-6c816d46">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -903,6 +923,7 @@ lifecycle.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling3">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
@@ -931,7 +952,7 @@ duplication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7d181e13">
+<div class="need_container docutils container" id="SNCB-726f3df3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -951,6 +972,7 @@ duplication.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling4">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
@@ -978,7 +1000,7 @@ the Archetype.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6d8f3446">
+<div class="need_container docutils container" id="SNCB-c9a2632e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -998,6 +1020,7 @@ the Archetype.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling5">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
@@ -1048,7 +1071,7 @@ the Archetype.</p></td>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Communication (v0.5 beta)</p>
+        <p class="prev-next-title">Communication</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

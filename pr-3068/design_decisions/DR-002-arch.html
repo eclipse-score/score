@@ -201,6 +201,13 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
     Releases
   </a>
@@ -403,6 +410,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../score_releases/index.html">
     Releases
   </a>
@@ -546,9 +560,11 @@
 <li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-proc.html">DR-002-Proc: Feature &amp; Enhancement Proposal (FEP) Process</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
@@ -625,11 +641,11 @@ https://www.apache.org/licenses/LICENSE-2.0
 SPDX-License-Identifier: Apache-2.0
 -->
 <section id="dr-002-arch-library-delivery-model-static-vs-dynamic">
-<h1>DR-002-Arch: Library Delivery Model (Static vs. Dynamic)<a class="headerlink" href="#dr-002-arch-library-delivery-model-static-vs-dynamic" title="Link to this heading">#</a></h1>
+<span id="dr-002-arch"></span><h1>DR-002-Arch: Library Delivery Model (Static vs. Dynamic)<a class="headerlink" href="#dr-002-arch-library-delivery-model-static-vs-dynamic" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-15</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-4861ff3c">
+<div class="need_container docutils container" id="SNCB-aa8316f2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__library_delivery_model">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -637,7 +653,7 @@ SPDX-License-Identifier: Apache-2.0
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -649,7 +665,7 @@ SPDX-License-Identifier: Apache-2.0
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Architecture</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Proposal: Opt-in per module — static by default, dynamic where justified</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Opt-in per module — static by default, dynamic where justified</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>0</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -900,7 +916,7 @@ SPDX-License-Identifier: Apache-2.0
 </tbody>
 </table>
 </div>
-<p>For detailed update granularity and performance assessments, see <a class="reference internal" href="DR-002-arch/detailed_assessments.html"><span class="std std-doc">Detailed Assessments</span></a>.</p>
+<p>For detailed update granularity and performance assessments, see :ref:<code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">Assessments</span> <span class="pre">&lt;DR-002-Arch-detailed-assessments&gt;</span></code>).</p>
 </section>
 <section id="decision-proposal">
 <h2>Decision Proposal<a class="headerlink" href="#decision-proposal" title="Link to this heading">#</a></h2>

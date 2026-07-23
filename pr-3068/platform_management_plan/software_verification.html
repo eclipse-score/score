@@ -201,6 +201,13 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
     Releases
   </a>
@@ -403,6 +410,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../score_releases/index.html">
     Releases
   </a>
@@ -542,6 +556,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Software verification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_development.html">Software Development Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -609,7 +624,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-788e0c31">
+  <div class="need_container docutils container" id="SNCB-bf29fe2a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -617,7 +632,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -726,7 +741,7 @@ automated software build at any time.</p>
 the <a class="reference internal" href="../contribute/contribution_request/index.html#doc__pull_request_guideline" title="doc__pull_request_guideline"><em class="xref need">Pull Request Guideline (doc__pull_request_guideline)</em></a> as any other artifact.</p></li>
 </ol>
 <p>The test methods and techniques shall be selected based on the characteristics and specified behavior
-of the software element under test. This shall ensure proper testing from unit level to feature integration level.
+of the software element under test. This shall ensure proper testing from unit level to platform integration level.
 Specific recommendations for each test level are provided in the following sections of this verification plan.</p>
 <p>The following examples serve as illustration and inspiration for test selection:
 Resource Usage Evaluation is selected when requirements address resource management or when data
@@ -781,7 +796,7 @@ QM or ASIL B relevant.</p>
 guidance is given here: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a>. The identifier of the respective
 method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique</em>).</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id1">
-<caption><span class="caption-number">Table 92 </span><span class="caption-text">Software verification methods (TestType)</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 99 </span><span class="caption-text">Software verification methods (TestType)</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Methods</p></th>
 <th class="head"><p>Identifier</p></th>
@@ -839,7 +854,7 @@ sufficient freedom from interference with safety critical software parts.</p>
 <p>Static code analysis is part of the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>. It is supported by tooling as mentioned in
 the <a class="reference internal" href="software_development.html#doc__software_development_plan" title="doc__software_development_plan"><em class="xref need">Software Development Plan (doc__software_development_plan)</em></a></p>
 <p>As an additional measure the resource usage evaluation <code class="docutils literal notranslate"><span class="pre">resource-usage</span></code> should also be considered
-for level 3 testing as this is the level executed also on reference hardware with the integrated
+for level 3 (software platform level) testing as this is the level executed also on reference hardware with the integrated
 platform. This can help to identify resource constraints on “system” level from a security and safety
 perspective.</p>
 <p>Additionally, while <code class="docutils literal notranslate"><span class="pre">requirements-based</span></code> testing is not mandatory to cover 100% of the stakeholder
@@ -866,7 +881,7 @@ at higher levels:</p>
 <section id="test-derivation-methods">
 <h4>Test Derivation Methods<a class="headerlink" href="#test-derivation-methods" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id2">
-<caption><span class="caption-number">Table 93 </span><span class="caption-text">Test case derivation methods (DerivationTechnique)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 100 </span><span class="caption-text">Test case derivation methods (DerivationTechnique)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Methods</p></th>
 <th class="head"><p>Identifier</p></th>
@@ -921,7 +936,7 @@ indicated by <code class="docutils literal notranslate"><span class="pre">explor
 <p>The quality criteria of the software verification activities are defined at the following table. The defined goals are
 to be reached with every contribution.</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id3">
-<caption><span class="caption-number">Table 94 </span><span class="caption-text">Quality criteria and respective goals</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 101 </span><span class="caption-text">Quality criteria and respective goals</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>#</p></th>
 <th class="head"><p>Criterion</p></th>
@@ -1061,8 +1076,15 @@ to follow the <a class="external_link reference external" href="https://eclipse-
 </section>
 <section id="test-execution-and-result-analysis">
 <h3>Test execution and result analysis<a class="headerlink" href="#test-execution-and-result-analysis" title="Link to this heading">#</a></h3>
-<p>The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
-needs to be performed by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>.</p>
+<p>The execution of the tests is based on a full automation defined by build pipelines. The analysis of
+the test results needs to be performed by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>.</p>
+<section id="release-test-execution">
+<h4>Release test execution<a class="headerlink" href="#release-test-execution" title="Link to this heading">#</a></h4>
+<p>Results of the test execution are captured in the verification reports for the modules and platform
+as release work products documenting the clear pass/fail result for each executed test case id.
+Also, any  deviation in the test execution scope for skipped or not executed tests will be documented
+in the release documentation and the respective reasoning will be provided.</p>
+</section>
 <section id="manual-test-execution">
 <h4>Manual test execution<a class="headerlink" href="#manual-test-execution" title="Link to this heading">#</a></h4>
 <p>The automation rate for test case execution is expected to be above 99%.</p>
@@ -1162,29 +1184,6 @@ of test based on <a class="reference external" href="https://pytest.org">pytest<
 <p class="rubric">Rust</p>
 <p>The platform developed in this project supports <a class="reference external" href="https://www.rust-lang.org">Rust</a> as a programming language. Its
 built-in test framework is used to test respective software components.</p>
-<p class="rubric">GitHub CodeQL</p>
-<p>For Static Code Analysis, <a class="reference external" href="https://codeql.github.com/">CodeQL</a> is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
-It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.</p>
-<p>Core features of CodeQL include:</p>
-<ul class="simple">
-<li><p><strong>Vulnerability Detection</strong>: CodeQL can identify known vulnerabilities in the codebase by comparing it against a database of known issues.</p></li>
-<li><p><strong>Custom Queries</strong>: Developers can write custom queries to identify specific patterns or issues in the codebase that are relevant to the project’s security and quality standards.</p></li>
-<li><p><strong>Integration with CI</strong>: CodeQL can be integrated into the CI pipeline to automatically analyze code changes and provide feedback on potential issues before they are merged into the main codebase.</p></li>
-<li><p><strong>Reporting</strong>: CodeQL provides detailed reports on identified issues, including severity levels and recommendations for remediation.</p></li>
-<li><p><strong>Support for Multiple Languages</strong>: CodeQL supports multiple programming languages, including C++, Rust, and others used in the project.</p></li>
-</ul>
-<p>CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.</p>
-<p>Examples of capabilities include:</p>
-<ul class="simple">
-<li><p>unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)</p></li>
-<li><p>potential runtime errors (e.g., null pointer dereferences, buffer overflows)</p></li>
-<li><p>code quality issues (e.g., dead code, unused variables)</p></li>
-<li><p>incorrect use of APIs (e.g., misuse of cryptographic functions, incorrect error handling)</p></li>
-<li><p>compliance with coding standards (e.g., naming conventions, code complexity)</p></li>
-<li><p>violations of project-specific coding guidelines (e.g., use of certain libraries, adherence to architectural patterns)</p></li>
-</ul>
-<p>Custom queries can be developed to identify specific patterns or issues that are relevant to the project’s security and quality standards.
-This allows for a tailored approach to static code analysis that aligns with the project’s specific requirements and goals.</p>
 </section>
 <section id="verification-setups-and-variants">
 <h3>Verification setups and variants<a class="headerlink" href="#verification-setups-and-variants" title="Link to this heading">#</a></h3>
@@ -1299,6 +1298,7 @@ This includes physical maintenance as well as virtual access.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-execution-and-result-analysis">Test execution and result analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#release-test-execution">Release test execution</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-test-execution">Manual test execution</a></li>
 </ul>
 </li>
