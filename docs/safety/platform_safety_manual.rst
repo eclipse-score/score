@@ -34,6 +34,15 @@ Assumptions of Use which are relevant for all users of any platform module.
 The specific Assumptions of Use relevant only for the users of a specific module are documented in the module's safety manual.
 That means that the platform safety manual always has to be read together with all its modules safety manuals.
 
+A platform module may contain both ASIL-relevant and non-ASIL components. A component is in scope
+of the ASIL safety lifecycle if it is intended to be executed from within an ASIL component. Such
+components shall be developed, verified, and released according to the applicable ASIL safety
+process. Components that are not intended to be executed from within an ASIL component may be
+developed to QM, provided that freedom from interference with the safety context is justified in
+the respective module safety manual. The logging module is an example: its
+``mw::log`` frontend is linked into the caller and runs in the safety context ASIL_B, whereas its
+``datarouter`` daemon runs as a separate process and is classified QM.
+
 Assumed Platform Safety Requirements
 ------------------------------------
 
@@ -92,6 +101,14 @@ Safety concept of the SEooC
 The S-CORE SW platform has no safety concept additional to its module's safety concept, as it does not implement additional functionality.
 The expectations towards the execution environment are described in the respective AoU, this is mainly that a safe posix operating system
 integrated into a target hardware which includes safety mechanisms which cover hardware related errors.
+
+A platform module may contain both ASIL-relevant and QM components. The ASIL classification is
+determined at component level based on the execution context rather than at module level.
+Components executing within a safety context are developed according to the applicable ASIL
+process, while components outside the safety context may remain QM, provided that freedom from
+interference is ensured and justified in the module safety manual. For example, the mw::log
+frontend executes within the ASIL-B application and is therefore treated as ASIL-B, whereas the
+datarouter daemon executes as a separate process and remains QM.
 
 
 Safety Anomalies
