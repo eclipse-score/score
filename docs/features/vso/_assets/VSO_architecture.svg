@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1100" width="1200" height="1100">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #2c2c2c; }
+      .text { font-family: Arial, sans-serif; font-size: 13px; fill: #1a1a1a; }
+      .small-text { font-family: Arial, sans-serif; font-size: 11px; fill: #2c2c2c; }
+      .node-box { fill: #e3f2fd; stroke: #1565c0; stroke-width: 2.5; }
+      .vso-box { fill: #fff8e1; stroke: #ef6c00; stroke-width: 2.5; }
+      .output-box { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 2.5; }
+      .data-box { fill: #f3e5f5; stroke: #6a1b9a; stroke-width: 2; }
+      .arrow { fill: none; stroke: #424242; stroke-width: 2.5; marker-end: url(#arrowhead); }
+      .data-arrow { fill: none; stroke: #6a1b9a; stroke-width: 2; stroke-dasharray: 5,5; marker-end: url(#arrowhead-purple); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#424242" />
+    </marker>
+    <marker id="arrowhead-purple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#6a1b9a" />
+    </marker>
+    <marker id="arrowhead-start" markerWidth="10" markerHeight="10" refX="1" refY="3" orient="auto">
+      <polygon points="10 0, 0 3, 10 6" fill="#424242" />
+    </marker>
+    <marker id="arrowhead-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ef6c00" />
+    </marker>
+  </defs>
+
+  <!-- White Background -->
+  <rect x="0" y="0" width="1200" height="1100" fill="#ffffff"/>
+  
+  <!-- Outer Border -->
+  <rect x="5" y="5" width="1190" height="1090" fill="none" stroke="#cccccc" stroke-width="2" rx="5"/>
+
+  <!-- Title -->
+  <text x="600" y="35" text-anchor="middle" class="title">Node-based Architecture with Separate VSO Component</text>
+
+  <!-- Data Inputs Layer (Left Side) -->
+  <text x="150" y="75" text-anchor="middle" class="subtitle">DATA INPUTS (per node)</text>
+  
+  <!-- Node A -->
+  <rect x="20" y="95" width="260" height="250" class="node-box" rx="5"/>
+  <text x="150" y="115" text-anchor="middle" class="subtitle">Node A (ECU1)</text>
+  
+  <!-- VSO in Node A (separate dotted entity) -->
+  <rect x="35" y="125" width="230" height="55" fill="none" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="5,3" rx="4"/>
+  <text x="150" y="138" text-anchor="middle" style="font-size: 11px; fill: #ef6c00; font-weight: bold;">VSO</text>
+  <rect x="45" y="143" width="210" height="30" fill="#fff8e1" stroke="#ef6c00" stroke-width="1" rx="3"/>
+  <text x="150" y="155" text-anchor="middle" style="font-size: 11px; fill: #ef6c00;">Evidence Package</text>
+  <text x="150" y="167" text-anchor="middle" style="font-size: 11px; fill: #ef6c00;">scenario_run_id | node_id | metrics</text>
+  
+  <rect x="30" y="190" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="200" text-anchor="middle" class="text">Lifecycle</text>
+  <text x="150" y="215" text-anchor="middle" class="text" style="font-size: 11px;">timing, deadline events, runtime plane</text>
+  
+  <rect x="30" y="240" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="250" text-anchor="middle" class="small-text">Diagnostics Module</text>
+  <text x="150" y="265" text-anchor="middle" class="small-text">logs, fault status, debug controls</text>
+  
+  <rect x="30" y="290" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="300" text-anchor="middle" class="small-text">Platform Resource</text>
+  <text x="150" y="315" text-anchor="middle" class="small-text">CPU/memory, node health</text>
+
+  <!-- Node B -->
+  <rect x="20" y="375" width="260" height="250" class="node-box" rx="5"/>
+  <text x="150" y="395" text-anchor="middle" class="subtitle">Node B (ECU2)</text>
+  
+  <!-- VSO in Node B (separate dotted entity) -->
+  <rect x="35" y="405" width="230" height="55" fill="none" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="5,3" rx="4"/>
+  <text x="150" y="418" text-anchor="middle" style="font-size: 11px; fill: #ef6c00; font-weight: bold;">VSO</text>
+  <rect x="45" y="423" width="210" height="30" fill="#fff8e1" stroke="#ef6c00" stroke-width="1" rx="3"/>
+  <text x="150" y="435" text-anchor="middle" style="font-size: 11px; fill: #ef6c00;">Evidence Package</text>
+  <text x="150" y="447" text-anchor="middle" style="font-size: 11px; fill: #ef6c00;">scenario_run_id | node_id | metrics</text>
+  
+  <rect x="30" y="470" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="480" text-anchor="middle" class="text">Lifecycle</text>
+  <text x="150" y="495" text-anchor="middle" class="text" style="font-size: 11px;">timing, deadline events, runtime plane</text>
+  
+  <rect x="30" y="520" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="530" text-anchor="middle" class="small-text">Diagnostics Module</text>
+  <text x="150" y="545" text-anchor="middle" class="small-text">logs, fault status, debug controls</text>
+  
+  <rect x="30" y="570" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="580" text-anchor="middle" class="small-text">Platform Resource</text>
+  <text x="150" y="595" text-anchor="middle" class="small-text">CPU/memory, node health</text>
+
+  <!-- Node C -->
+  <rect x="20" y="655" width="260" height="250" class="node-box" rx="5"/>
+  <text x="150" y="675" text-anchor="middle" class="subtitle">Node C (ECU3)</text>
+  
+  <!-- VSO in Node C (separate dotted entity) -->
+  <rect x="35" y="685" width="230" height="55" fill="none" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="5,3" rx="4"/>
+  <text x="150" y="698" text-anchor="middle" style="font-size: 11px; fill: #ef6c00; font-weight: bold;">VSO</text>
+  <rect x="45" y="703" width="210" height="30" fill="#fff8e1" stroke="#ef6c00" stroke-width="1" rx="3"/>
+  <text x="150" y="715" text-anchor="middle" style="font-size: 11px; fill: #ef6c00;">Evidence Package</text>
+  <text x="150" y="727" text-anchor="middle" style="font-size: 11px; fill: #ef6c00;">scenario_run_id | node_id | metrics</text>
+  
+  <rect x="30" y="750" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="760" text-anchor="middle" class="text">Lifecycle</text>
+  <text x="150" y="775" text-anchor="middle" class="text" style="font-size: 11px;">timing, deadline events, runtime plane</text>
+  
+  <rect x="30" y="800" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="810" text-anchor="middle" class="small-text">Diagnostics Module</text>
+  <text x="150" y="825" text-anchor="middle" class="small-text">logs, fault status, debug controls</text>
+  
+  <rect x="30" y="850" width="240" height="40" class="data-box" rx="3"/>
+  <text x="150" y="860" text-anchor="middle" class="small-text">Platform Resource</text>
+  <text x="150" y="875" text-anchor="middle" class="small-text">CPU/memory, node health</text>
+
+  <!-- OEM State and Safety Management -->
+  <rect x="350" y="420" width="340" height="180" class="output-box" rx="5"/>
+  <text x="520" y="445" text-anchor="middle" class="subtitle" style="font-size: 16px;">OEM State and Safety Management</text>
+  <text x="520" y="475" text-anchor="middle" class="text">• Receives data from nodes</text>
+  <text x="520" y="500" text-anchor="middle" class="text">• Decision</text>
+  <text x="520" y="520" text-anchor="middle" class="text">  - Degrade</text>
+  <text x="520" y="540" text-anchor="middle" class="text">  - Fallback</text>
+  <text x="520" y="560" text-anchor="middle" class="text">  - Maintain</text>
+  <text x="520" y="585" text-anchor="middle" class="text">• Executes lifecycle transitions</text>
+  
+  <!-- VSO Component (Separate - Right Side) -->
+  <text x="920" y="125" text-anchor="middle" class="subtitle">VSO</text>
+  
+  <rect x="720" y="145" width="400" height="480" fill="#fff8e1" stroke="#ef6c00" stroke-width="2.5" stroke-dasharray="8,5" rx="5"/>
+  <text x="920" y="165" text-anchor="middle" class="subtitle">Vehicle Service Orchestrator (VSO)</text>
+  <text x="920" y="185" text-anchor="middle" class="small-text" style="font-style: italic;">Separate monitoring and evidence layer</text>
+  
+  <!-- Scenario Contract Management -->
+  <rect x="740" y="205" width="360" height="100" fill="#fff8e1" stroke="#ef6c00" stroke-width="2" rx="3"/>
+  <text x="920" y="225" text-anchor="middle" class="subtitle">Scenario Contract Management</text>
+  <text x="920" y="245" text-anchor="middle" class="small-text">• Scenario Contract Registration</text>
+  <text x="920" y="265" text-anchor="middle" class="small-text">• Monitoring Server</text>
+  <text x="920" y="285" text-anchor="middle" class="small-text">• Data Subscription</text>
+  
+  <!-- Evidence Aggregation -->
+  <rect x="740" y="320" width="360" height="100" fill="#ffecc7" stroke="#ef6c00" stroke-width="2" rx="3"/>
+  <text x="920" y="340" text-anchor="middle" class="subtitle">Evidence Aggregation</text>
+  <text x="920" y="365" text-anchor="middle" class="small-text">Correlate by scenario_run_id:</text>
+  <text x="920" y="385" text-anchor="middle" class="small-text">• Runtime timing &amp; deadline events (multi-node)</text>
+  <text x="920" y="405" text-anchor="middle" class="small-text">• Diagnostic faults &amp; logs (per node)</text>
+
+  <!-- Evidence Package Generation -->
+  <rect x="740" y="435" width="360" height="90" fill="#ffecc7" stroke="#ef6c00" stroke-width="2" rx="3"/>
+  <text x="920" y="455" text-anchor="middle" class="subtitle">Evidence Package Generation</text>
+  <text x="920" y="480" text-anchor="middle" class="small-text">• Violation detection</text>
+  <text x="920" y="500" text-anchor="middle" class="small-text">• Evidence package generation</text>
+  <text x="920" y="520" text-anchor="middle" class="small-text">• Observability &amp; Dashboard alerts</text>
+
+  <!-- Response Management -->
+  <rect x="740" y="540" width="360" height="70" fill="#ffecc7" stroke="#ef6c00" stroke-width="2" rx="3"/>
+  <text x="920" y="560" text-anchor="middle" class="subtitle">Response Management</text>
+  <text x="920" y="580" text-anchor="middle" class="small-text">• Snapshot freeze/archive</text>
+  <text x="920" y="600" text-anchor="middle" class="small-text">• Notification &amp; recovery tracking</text>
+
+  <!-- Bidirectional Arrows from Nodes to OEM State Manager -->
+  <!-- From Node A -->
+  <path d="M 280 250 L 310 250 L 310 440 L 350 440" style="fill: none; stroke: #424242; stroke-width: 2.5; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+  
+  <!-- From Node B -->
+  <path d="M 280 530 L 310 530 L 310 510 L 350 510" style="fill: none; stroke: #424242; stroke-width: 2.5; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+  
+  <!-- From Node C -->
+  <path d="M 280 810 L 310 810 L 310 580 L 350 580" style="fill: none; stroke: #424242; stroke-width: 2.5; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+
+  <!-- Legend -->
+  <text x="50" y="955" class="subtitle">Legend:</text>
+  <rect x="50" y="965" width="100" height="30" class="data-box" rx="3"/>
+  <text x="100" y="985" text-anchor="middle" class="small-text">Data Input</text>
+  
+  <rect x="170" y="965" width="100" height="30" class="vso-box" rx="3"/>
+  <text x="220" y="985" text-anchor="middle" class="small-text">VSO Module</text>
+  
+  <rect x="290" y="965" width="100" height="30" class="output-box" rx="3"/>
+  <text x="340" y="985" text-anchor="middle" class="small-text">Decision/Execute</text>
+  
+  <line x1="420" y1="980" x2="460" y2="980" class="data-arrow"/>
+  <text x="480" y="985" class="small-text">Data flow</text>
+  
+  <path d="M 555 980 L 615 980" style="fill: none; stroke: #424242; stroke-width: 2.5; marker-end: url(#arrowhead); marker-start: url(#arrowhead-start);"/>
+  <text x="630" y="985" class="small-text">Control flow</text>
+
+  <!-- Key Principles -->
+  <rect x="50" y="1015" width="1100" height="70" fill="#fff9c4" stroke="#f9a825" stroke-width="2.5" rx="5"/>
+  <text x="600" y="1040" text-anchor="middle" class="subtitle">Architecture Overview</text>
+  <text x="600" y="1060" text-anchor="middle" class="text">Nodes provide data directly to OEM State Manager for decision-making</text>
+  <text x="600" y="1075" text-anchor="middle" class="text">VSO operates as an independent monitoring and evidence layer (shown separately)</text>
+</svg>
