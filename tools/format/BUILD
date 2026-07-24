@@ -13,24 +13,42 @@
 
 load("@aspect_rules_lint//format:defs.bzl", "format_multirun", "format_test")
 
+alias(
+    name = "yamlfmt_binary",
+    actual = "@score_devcontainer//tools:yamlfmt_binary",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "ruff_binary",
+    actual = "@score_devcontainer//tools:ruff_binary",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "buildifier_binary",
+    actual = "@score_devcontainer//tools:buildifier_binary",
+    visibility = ["//visibility:public"],
+)
+
 format_multirun(
     name = "format.fix",
-    python = "@aspect_rules_lint//format:ruff",
-    starlark = "@buildifier_prebuilt//:buildifier",
+    python = ":ruff_binary",
+    starlark = ":buildifier_binary",
     visibility = [
         "//visibility:public",
     ],
-    yaml = "@aspect_rules_lint//format:yamlfmt",
+    yaml = ":yamlfmt_binary",
 )
 
 format_test(
     name = "format.check",
     no_sandbox = True,
-    python = "@aspect_rules_lint//format:ruff",
-    starlark = "@buildifier_prebuilt//:buildifier",
+    python = ":ruff_binary",
+    starlark = ":buildifier_binary",
     visibility = [
         "//visibility:public",
     ],
     workspace = "//:MODULE.bazel",
-    yaml = "@aspect_rules_lint//format:yamlfmt",
+    yaml = ":yamlfmt_binary",
 )
