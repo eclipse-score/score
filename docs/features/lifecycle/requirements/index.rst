@@ -1068,6 +1068,57 @@ Monitoring, Notification and Recovery
     The :term:`Launch Manager` shall support configuring the :term:`Interval` of
     the internal health check executions.
 
+.. feat_req:: Health Monitor programing language support
+    :id: feat_req__lifecycle__hm_prog_lang
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :status: valid
+    :version: 1
+    :valid_from: v1.0.0
+
+    The :term:`Lifecycle Feature` shall support Rust and C++ programming languages.
+
+.. feat_req:: Health Monitor deadline supervision
+    :id: feat_req__lifecycle__hm_deadline
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :status: valid
+    :version: 1
+    :valid_from: v1.0.0
+
+    The :term:`Lifecycle Feature` shall support deadline supervision to allow
+    monitoring timely execution within applications to detect timing violations.
+
+.. feat_req:: Health Monitor logical supervision
+    :id: feat_req__lifecycle__hm_logical
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :status: valid
+    :version: 1
+    :valid_from: v1.0.0
+
+    The :term:`Lifecycle Feature` shall support logical supervision to allow
+    monitoring execution flow within applications to detect logical errors.
+
+.. feat_req:: Health Monitor checkpoint supervision
+    :id: feat_req__lifecycle__hm_checkpoint
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :status: valid
+    :version: 1
+    :valid_from: v1.0.0
+
+    The :term:`Lifecycle Feature` shall support checkpoint supervision to allow
+    monitoring periodic execution within applications to detect failures.
+
 Logging
 -------
 
