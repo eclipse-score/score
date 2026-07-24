@@ -19,9 +19,6 @@ Glossary
     Lifecycle Feature
       Feature providing support for starting and stopping processes.
 
-    Lifecycle Feature
-      Feature providing support for starting and stopping processes.
-
     Launch Manager
       Component to start and stop processes on a POSIX like operating system.
 
