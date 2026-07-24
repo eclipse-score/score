@@ -172,7 +172,7 @@ Static architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__lifecycle__process_state_comm[version==1], feat_req__lifecycle__liveliness_detection[version==1]
+   :fulfils: feat_req__lifecycle__switch_run_targets[version==1], feat_req__lifecycle__liveliness_detection[version==1]
    :includes: logic_arc_int_op__lifecycle__run, logic_arc_int_op__lifecycle__terminate,
 
    .. needarch::
@@ -266,43 +266,43 @@ Dynamic Architecture
 Requirements
 ------------
 
-- :need:`feat_req__lifecycle__process_state_comm`
+- :need:`comp_req__lifecycle__process_state_comm`
 - :need:`feat_req__lifecycle__custom_cond_support`
 - :need:`feat_req__lifecycle__smart_watchdog_config`
-- :need:`feat_req__lifecycle__process_monitoring`
+- :need:`feat_req__lifecycle__liveliness_detection`
 - :need:`feat_req__lifecycle__process_termination`
-- :need:`feat_req__lifecycle__shutdown_signal`
+- :need:`comp_req__lifecycle__shutdown_signal`
 - :need:`feat_req__lifecycle__launch_support`
 - :need:`feat_req__lifecycle__process_ordering`
 - :need:`feat_req__lifecycle__parallel_launch_support`
-- :need:`feat_req__lifecycle__waitfor_support`
-- :need:`feat_req__lifecycle__process_input_output`
-- :need:`feat_req__lifecycle__process_launch_args`
-- :need:`feat_req__lifecycle__uid_gid_support`
-- :need:`feat_req__lifecycle__total_wait_time_support`
-- :need:`feat_req__lifecycle__polling_interval`
-- :need:`feat_req__lifecycle__launch_priority_support`
-- :need:`feat_req__lifecycle__cwd_support`
-- :need:`feat_req__lifecycle__terminal_support`
-- :need:`feat_req__lifecycle__std_handle_redir`
-- :need:`feat_req__lifecycle__secpol_non_root`
-- :need:`feat_req__lifecycle__retries_configurable`
-- :need:`feat_req__lifecycle__fd_inheritance`
-- :need:`feat_req__lifecycle__support_secpol_type`
-- :need:`feat_req__lifecycle__supplementary_groups`
-- :need:`feat_req__lifecycle__scheduling_policy`
-- :need:`feat_req__lifecycle__runmask_support`
-- :need:`feat_req__lifecycle__aslr_support`
-- :need:`feat_req__lifecycle__process_rlimit_support`
-- :need:`feat_req__lifecycle__detach_parent_process`
+- :need:`feat_req__lifecycle__conditional_startup`
+- :need:`comp_req__lifecycle__process_input_output`
+- :need:`comp_req__lifecycle__process_launch_args`
+- :need:`comp_req__lifecycle__uid_gid_support`
+- :need:`comp_req__lifecycle__total_wait_time_support`
+- :need:`comp_req__lifecycle__polling_interval`
+- :need:`comp_req__lifecycle__launch_priority_support`
+- :need:`comp_req__lifecycle__cwd_support`
+- :need:`comp_req__lifecycle__terminal_support`
+- :need:`comp_req__lifecycle__std_handle_redir`
+- :need:`comp_req__lifecycle__secpol_non_root`
+- :need:`comp_req__lifecycle__retries_configurable`
+- :need:`comp_req__lifecycle__fd_inheritance`
+- :need:`comp_req__lifecycle__support_secpol_type`
+- :need:`comp_req__lifecycle__supplementary_groups`
+- :need:`comp_req__lifecycle__scheduling_policy`
+- :need:`comp_req__lifecycle__runmask_support`
+- :need:`comp_req__lifecycle__aslr_support`
+- :need:`comp_req__lifecycle__process_rlimit_support`
+- :need:`comp_req__lifecycle__detach_parent_process`
 - :need:`feat_req__lifecycle__running_processes`
-- :need:`feat_req__lifecycle__drop_supervsion`
-- :need:`feat_req__lifecycle__multi_start_support`
-- :need:`feat_req__lifecycle__validate_conditions`
-- :need:`feat_req__lifecycle__validation_conditions`
-- :need:`feat_req__lifecycle__consistent_dependencies`
-- :need:`feat_req__lifecycle__stop_process_dependents`
-- :need:`feat_req__lifecycle__stop_order_spec`
+- :need:`comp_req__lifecycle__drop_supervsion`
+- :need:`comp_req__lifecycle__multi_start_support`
+- :need:`comp_req__lifecycle__validate_conditions`
+- :need:`comp_req__lifecycle__validation_conditions`
+- :need:`comp_req__lifecycle__consistent_dependencies`
+- :need:`comp_req__lifecycle__stop_process_dependents`
+- :need:`comp_req__lifecycle__stop_order_spec`
 - :need:`feat_req__lifecycle__oci_compliant`
 
 
@@ -362,7 +362,7 @@ Dynamic architecture
    :status: valid
    :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__monitoring_processes[version==1], feat_req__lifecycle__polling_interval[version==1], , feat_req__lifecycle__failure_detect[version==1]
+   :fulfils: feat_req__lifecycle__smart_watchdog_config[version==1], feat_req__lifecycle__conditional_startup[version==1]
    :includes:
    :belongs_to: feat__lifecycle[version==1]
 
@@ -372,7 +372,7 @@ Dynamic architecture
 
 Requirements
 ------------
-- :need:`feat_req__lifecycle__monitoring_processes`
-- :need:`feat_req__lifecycle__polling_interval`
-- :need:`feat_req__lifecycle__failure_detect`
+- :need:`comp_req__lifecycle__monitoring_processes`
+- :need:`comp_req__lifecycle__polling_interval`
+- :need:`comp_req__lifecycle__failure_detect`
 - :need:`feat_req__lifecycle__liveliness_detection`
