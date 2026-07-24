@@ -115,7 +115,7 @@ Functional requirements
 
    The SW-platform shall provide towards the applications a safe key/value store.
 
-   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: Safety Goal: Intermediate ASIL B, Final ASIL_D.
 
 .. stkh_req:: Safe Configuration
    :id: stkh_req__functional_req__safe_config
@@ -130,7 +130,7 @@ Functional requirements
 
    The SW-platform shall support safe configuration.
 
-   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: Safety Goal: Intermediate ASIL B, Final ASIL_D.
 
 
 .. stkh_req:: Safe Computation
@@ -145,7 +145,7 @@ Functional requirements
 
    The SW-platform shall support safe computation.
 
-   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: Safety Goal: Intermediate ASIL B, Final ASIL_D.
 
 
 .. stkh_req:: Base Libraries
@@ -280,7 +280,7 @@ Dependability
    The SW-platform shall support applications with an automotive safety
    integrity level up to ASIL-B.
 
-   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: Safety Goal: Intermediate ASIL B, Final ASIL_D.
 
 
 .. stkh_req:: Health Management
