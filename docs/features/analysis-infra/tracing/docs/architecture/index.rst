@@ -23,7 +23,7 @@ Tracing Architecture
    :safety: QM
    :status: valid
    :version: 1
-   :provides: logic_arc_int__tracing__tracing
+   :includes: logic_arc_int__tracing__tracing
 
 
 .. logic_arc_int:: Tracing

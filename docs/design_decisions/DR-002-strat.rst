@@ -18,6 +18,7 @@ DR-002-Strat: Eclipse Project Structure for S-Core
 .. dec_rec:: Eclipse Project Structure for S-Core
    :id: dec_rec__strat__eclipse_project_structure
    :status: accepted
+   :version: 1
    :context: Strategy
    :decision: Option 1
 

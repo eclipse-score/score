@@ -35,6 +35,7 @@ Module Documents Orchestrator
 
 .. mod_view_sta:: Orchestrator
    :id: mod_view_sta__orch__orchestrator
+   :version: 1
    :includes: comp__orchestrator, comp__orch_executor
 
    .. needarch::

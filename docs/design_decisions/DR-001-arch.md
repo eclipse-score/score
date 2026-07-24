@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Rust Readiness for Safety-Critical Components
 :id: dec_rec__arch__rust_safety_critical
 :status: accepted
+:version: 1
 :context: Architecture
 :decision: Rust is ready for use in ASIL-B safety-critical components
 ```

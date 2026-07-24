@@ -15,6 +15,7 @@
 .. doc_tool:: Doc-as-Code
    :id: doc_tool__doc_as_code
    :status: evaluated
+   :version: 1
    :tool_version: v2.2.0
    :tcl: LOW
    :safety_affected: YES

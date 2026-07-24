@@ -20,6 +20,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} S-CORE Build Execution Contract
 :id: dec_rec__infra__execution_contract
 :status: accepted
+:version: 1
 :context: Infrastructure
 :decision: Adopt a layered execution contract
 
