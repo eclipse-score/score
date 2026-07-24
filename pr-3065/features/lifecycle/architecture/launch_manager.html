@@ -665,7 +665,7 @@ determining which components need to be started or stopped based on their depend
 <p>This interface provides control functionality for activating and managing run targets.It allows users to trigger execution of configured <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run targets</span></a> through a standardized activation mechanism.</p>
 <section id="static-architecture">
 <h3>Static architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-5f4dc23d">
+<div class="need_container docutils container" id="SNCB-ebb95633">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -712,7 +712,7 @@ determining which components need to be started or stopped based on their depend
 </div>
 </div>
 <p><strong>Operations</strong></p>
-<div class="need_container docutils container" id="SNCB-adde240c">
+<div class="need_container docutils container" id="SNCB-b14f3ad2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__activate_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -780,7 +780,7 @@ which allows the implementation of a state management applications to support dy
 - Failure with detailed error information if any component failed to transition</p></li>
 </ol>
 <p>This unified approach allows external state managers to request any run target activation without needing to know the current system state, as the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> handles the transition logic internally.</p>
-<div class="need_container docutils container" id="SNCB-8c17e63c">
+<div class="need_container docutils container" id="SNCB-8f79d355">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_activate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -856,7 +856,7 @@ which allows the implementation of a state management applications to support dy
 - Exit code evaluation for failure detection</p>
 <section id="id1">
 <h3>Static architecture<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-af47c3dd">
+<div class="need_container docutils container" id="SNCB-3461956a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__lifecycle_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -877,7 +877,7 @@ which allows the implementation of a state management applications to support dy
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_state_comm" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__process_state_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__liveliness_detection</a></span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__switch_run_targets" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__switch_run_targets</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__liveliness_detection</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp__lifecycle_launch_manager" title="logic_arc_int__lifecycle__lifecycle_if">comp__lifecycle_launch_manager</a></span></span></div>
 <div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../index.html#feat__lifecycle" title="logic_arc_int__lifecycle__lifecycle_if">feat__lifecycle</a></span></span></div>
 <div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__run</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
@@ -905,7 +905,7 @@ which allows the implementation of a state management applications to support dy
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d4a9bdb7">
+<div class="need_container docutils container" id="SNCB-2f3fa453">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__run">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -949,7 +949,7 @@ which allows the implementation of a state management applications to support dy
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9681228e">
+<div class="need_container docutils container" id="SNCB-4ba6ca91">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__terminate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1038,7 +1038,7 @@ which allows the implementation of a state management applications to support dy
 </section>
 <section id="id2">
 <h3>Dynamic Architecture<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-8a985a25">
+<div class="need_container docutils container" id="SNCB-e993fe7c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__state_machine">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1090,43 +1090,43 @@ which allows the implementation of a state management applications to support dy
 <section id="id3">
 <h3>Requirements<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_state_comm" title="feat_req__lifecycle__process_state_comm"><em class="xref need">Process state (feat_req__lifecycle__process_state_comm)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__process_state_comm" title="comp_req__lifecycle__process_state_comm"><em class="xref need">Process state (comp_req__lifecycle__process_state_comm)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__custom_cond_support" title="feat_req__lifecycle__custom_cond_support"><em class="xref need">Control interface support (feat_req__lifecycle__custom_cond_support)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__smart_watchdog_config" title="feat_req__lifecycle__smart_watchdog_config"><em class="xref need">Monitoring and recovery: wa... (feat_req__lifecycle__smart_watchdog_config)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_monitoring" title="feat_req__lifecycle__process_monitoring"><em class="xref need">Process monitoring (feat_req__lifecycle__process_monitoring)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="feat_req__lifecycle__liveliness_detection"><em class="xref need">Process liveliness detection (feat_req__lifecycle__liveliness_detection)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_termination" title="feat_req__lifecycle__process_termination"><em class="xref need">Terminating process (feat_req__lifecycle__process_termination)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__shutdown_signal" title="feat_req__lifecycle__shutdown_signal"><em class="xref need">Shutdown signal handling (feat_req__lifecycle__shutdown_signal)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__shutdown_signal" title="comp_req__lifecycle__shutdown_signal"><em class="xref need">Shutdown signal handling (comp_req__lifecycle__shutdown_signal)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_support" title="feat_req__lifecycle__launch_support"><em class="xref need">Support for launching proce... (feat_req__lifecycle__launch_support)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_ordering" title="feat_req__lifecycle__process_ordering"><em class="xref need">Process dependency handling (feat_req__lifecycle__process_ordering)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__parallel_launch_support" title="feat_req__lifecycle__parallel_launch_support"><em class="xref need">Launching processes in para... (feat_req__lifecycle__parallel_launch_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__waitfor_support" title="feat_req__lifecycle__waitfor_support"><em class="xref need">Conditional launching (feat_req__lifecycle__waitfor_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_input_output" title="feat_req__lifecycle__process_input_output"><em class="xref need">Forward process information (feat_req__lifecycle__process_input_output)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_launch_args" title="feat_req__lifecycle__process_launch_args"><em class="xref need">Handling process args (feat_req__lifecycle__process_launch_args)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__uid_gid_support" title="feat_req__lifecycle__uid_gid_support"><em class="xref need">Process user, group IDs sup... (feat_req__lifecycle__uid_gid_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__total_wait_time_support" title="feat_req__lifecycle__total_wait_time_support"><em class="xref need">Condition timeout (feat_req__lifecycle__total_wait_time_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (feat_req__lifecycle__polling_interval)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_priority_support" title="feat_req__lifecycle__launch_priority_support"><em class="xref need">Process priority support (feat_req__lifecycle__launch_priority_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__cwd_support" title="feat_req__lifecycle__cwd_support"><em class="xref need">CWD support (feat_req__lifecycle__cwd_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__terminal_support" title="feat_req__lifecycle__terminal_support"><em class="xref need">Launching terminal (feat_req__lifecycle__terminal_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__std_handle_redir" title="feat_req__lifecycle__std_handle_redir"><em class="xref need">Standard handle redirection (feat_req__lifecycle__std_handle_redir)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__secpol_non_root" title="feat_req__lifecycle__secpol_non_root"><em class="xref need">Non-root support (feat_req__lifecycle__secpol_non_root)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__retries_configurable" title="feat_req__lifecycle__retries_configurable"><em class="xref need">Configurable amount of retries (feat_req__lifecycle__retries_configurable)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__fd_inheritance" title="feat_req__lifecycle__fd_inheritance"><em class="xref need">File descriptor inheritance... (feat_req__lifecycle__fd_inheritance)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__support_secpol_type" title="feat_req__lifecycle__support_secpol_type"><em class="xref need">Security policy support (feat_req__lifecycle__support_secpol_type)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__supplementary_groups" title="feat_req__lifecycle__supplementary_groups"><em class="xref need">Supplementary group support (feat_req__lifecycle__supplementary_groups)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__scheduling_policy" title="feat_req__lifecycle__scheduling_policy"><em class="xref need">Scheduling support (feat_req__lifecycle__scheduling_policy)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__runmask_support" title="feat_req__lifecycle__runmask_support"><em class="xref need">CPU runmask support (feat_req__lifecycle__runmask_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__aslr_support" title="feat_req__lifecycle__aslr_support"><em class="xref need">ASLR support (feat_req__lifecycle__aslr_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_rlimit_support" title="feat_req__lifecycle__process_rlimit_support"><em class="xref need">Resource limit support (feat_req__lifecycle__process_rlimit_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__detach_parent_process" title="feat_req__lifecycle__detach_parent_process"><em class="xref need">Process detach from parent ... (feat_req__lifecycle__detach_parent_process)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__conditional_startup" title="feat_req__lifecycle__conditional_startup"><em class="xref need">Conditional launching (feat_req__lifecycle__conditional_startup)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__process_input_output" title="comp_req__lifecycle__process_input_output"><em class="xref need">Forward process information (comp_req__lifecycle__process_input_output)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__process_launch_args" title="comp_req__lifecycle__process_launch_args"><em class="xref need">Handling process args (comp_req__lifecycle__process_launch_args)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__uid_gid_support" title="comp_req__lifecycle__uid_gid_support"><em class="xref need">Process user, group IDs sup... (comp_req__lifecycle__uid_gid_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__total_wait_time_support" title="comp_req__lifecycle__total_wait_time_support"><em class="xref need">Condition timeout (comp_req__lifecycle__total_wait_time_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__polling_interval" title="comp_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (comp_req__lifecycle__polling_interval)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__launch_priority_support" title="comp_req__lifecycle__launch_priority_support"><em class="xref need">Process priority support (comp_req__lifecycle__launch_priority_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__cwd_support" title="comp_req__lifecycle__cwd_support"><em class="xref need">CWD support (comp_req__lifecycle__cwd_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__terminal_support" title="comp_req__lifecycle__terminal_support"><em class="xref need">Launching terminal (comp_req__lifecycle__terminal_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__std_handle_redir" title="comp_req__lifecycle__std_handle_redir"><em class="xref need">Standard handle redirection (comp_req__lifecycle__std_handle_redir)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__secpol_non_root" title="comp_req__lifecycle__secpol_non_root"><em class="xref need">Non-root support (comp_req__lifecycle__secpol_non_root)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__retries_configurable" title="comp_req__lifecycle__retries_configurable"><em class="xref need">Configurable amount of retries (comp_req__lifecycle__retries_configurable)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__fd_inheritance" title="comp_req__lifecycle__fd_inheritance"><em class="xref need">File descriptor inheritance... (comp_req__lifecycle__fd_inheritance)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__support_secpol_type" title="comp_req__lifecycle__support_secpol_type"><em class="xref need">Security policy support (comp_req__lifecycle__support_secpol_type)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__supplementary_groups" title="comp_req__lifecycle__supplementary_groups"><em class="xref need">Supplementary group support (comp_req__lifecycle__supplementary_groups)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__scheduling_policy" title="comp_req__lifecycle__scheduling_policy"><em class="xref need">Scheduling support (comp_req__lifecycle__scheduling_policy)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__runmask_support" title="comp_req__lifecycle__runmask_support"><em class="xref need">CPU runmask support (comp_req__lifecycle__runmask_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__aslr_support" title="comp_req__lifecycle__aslr_support"><em class="xref need">ASLR support (comp_req__lifecycle__aslr_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__process_rlimit_support" title="comp_req__lifecycle__process_rlimit_support"><em class="xref need">Resource limit support (comp_req__lifecycle__process_rlimit_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__detach_parent_process" title="comp_req__lifecycle__detach_parent_process"><em class="xref need">Process detach from parent ... (comp_req__lifecycle__detach_parent_process)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__running_processes" title="feat_req__lifecycle__running_processes"><em class="xref need">Process adoption (feat_req__lifecycle__running_processes)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__drop_supervsion" title="feat_req__lifecycle__drop_supervsion"><em class="xref need">Dropping process responsibi... (feat_req__lifecycle__drop_supervsion)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__multi_start_support" title="feat_req__lifecycle__multi_start_support"><em class="xref need">Multiple instance of execut... (feat_req__lifecycle__multi_start_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validate_conditions" title="feat_req__lifecycle__validate_conditions"><em class="xref need">Pre-start validation (feat_req__lifecycle__validate_conditions)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validation_conditions" title="feat_req__lifecycle__validation_conditions"><em class="xref need">post-start validation (feat_req__lifecycle__validation_conditions)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__consistent_dependencies" title="feat_req__lifecycle__consistent_dependencies"><em class="xref need">Invalid dependency (feat_req__lifecycle__consistent_dependencies)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_process_dependents" title="feat_req__lifecycle__stop_process_dependents"><em class="xref need">Dangling dependency (feat_req__lifecycle__stop_process_dependents)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_order_spec" title="feat_req__lifecycle__stop_order_spec"><em class="xref need">Coordination stop dependency (feat_req__lifecycle__stop_order_spec)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__drop_supervsion" title="comp_req__lifecycle__drop_supervsion"><em class="xref need">Dropping process responsibi... (comp_req__lifecycle__drop_supervsion)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__multi_start_support" title="comp_req__lifecycle__multi_start_support"><em class="xref need">Multiple instance of execut... (comp_req__lifecycle__multi_start_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__validate_conditions" title="comp_req__lifecycle__validate_conditions"><em class="xref need">Pre-start validation (comp_req__lifecycle__validate_conditions)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__validation_conditions" title="comp_req__lifecycle__validation_conditions"><em class="xref need">post-start validation (comp_req__lifecycle__validation_conditions)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__consistent_dependencies" title="comp_req__lifecycle__consistent_dependencies"><em class="xref need">Invalid dependency (comp_req__lifecycle__consistent_dependencies)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__stop_process_dependents" title="comp_req__lifecycle__stop_process_dependents"><em class="xref need">Dangling dependency (comp_req__lifecycle__stop_process_dependents)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__stop_order_spec" title="comp_req__lifecycle__stop_order_spec"><em class="xref need">Coordination stop dependency (comp_req__lifecycle__stop_order_spec)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__oci_compliant" title="feat_req__lifecycle__oci_compliant"><em class="xref need">OCI Compliant (feat_req__lifecycle__oci_compliant)</em></a></p></li>
 </ul>
 </section>
@@ -1149,7 +1149,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </ul>
 <section id="id4">
 <h3>Static architecture<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-d16005f3">
+<div class="need_container docutils container" id="SNCB-e3b200ea">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1199,7 +1199,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </div>
 </div>
 <p><strong>Operations</strong></p>
-<div class="need_container docutils container" id="SNCB-297fca3d">
+<div class="need_container docutils container" id="SNCB-8392b9db">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_health">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1245,7 +1245,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </section>
 <section id="id5">
 <h3>Dynamic architecture<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-95bd1544">
+<div class="need_container docutils container" id="SNCB-9dd5db60">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__alive_monitoring">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1267,7 +1267,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 <div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../index.html#feat__lifecycle" title="feat_arc_dyn__lifecycle__alive_monitoring">feat__lifecycle</a></span></span></div>
-<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__monitoring_processes" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__monitoring_processes</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__polling_interval</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__failure_detect" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__failure_detect</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__smart_watchdog_config" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__smart_watchdog_config</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__conditional_startup" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__conditional_startup</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1297,9 +1297,9 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 <section id="id6">
 <h3>Requirements<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__monitoring_processes" title="feat_req__lifecycle__monitoring_processes"><em class="xref need">Monitoring and recovery: ad... (feat_req__lifecycle__monitoring_processes)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (feat_req__lifecycle__polling_interval)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__failure_detect" title="feat_req__lifecycle__failure_detect"><em class="xref need">Process launch monitoring (feat_req__lifecycle__failure_detect)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__monitoring_processes" title="comp_req__lifecycle__monitoring_processes"><em class="xref need">Monitoring and recovery: ad... (comp_req__lifecycle__monitoring_processes)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__polling_interval" title="comp_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (comp_req__lifecycle__polling_interval)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#comp_req__lifecycle__failure_detect" title="comp_req__lifecycle__failure_detect"><em class="xref need">Process launch monitoring (comp_req__lifecycle__failure_detect)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="feat_req__lifecycle__liveliness_detection"><em class="xref need">Process liveliness detection (feat_req__lifecycle__liveliness_detection)</em></a></p></li>
 </ul>
 </section>
