@@ -15,6 +15,7 @@
 .. doc_tool:: rustfmt
    :id: doc_tool__rustfmt
    :status: evaluated
+   :version: 1
    :tool_version: 1.8.0 (exact version shall be derived from qualified Rust compiler)
    :tcl: HIGH
    :safety_affected: YES

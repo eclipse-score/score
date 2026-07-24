@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Clippy Integration via rules_lint
 :id: dec_rec__infra__clippy_rules_lint
 :status: accepted
+:version: 1
 :context: Infrastructure
 :decision: Use rules_lint for Clippy in S-CORE modules
 ```

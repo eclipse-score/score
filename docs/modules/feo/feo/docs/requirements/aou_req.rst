@@ -31,6 +31,7 @@ FEO Component Assumption of Use Requirements
    :security: NO
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    Anything shall be done.
 

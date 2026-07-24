@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Consistent Stack vs. Reference Integration
 :id: dec_rec__strat__consistent_stack_vs_reference
 :status: accepted
+:version: 1
 :context: Strategy
 :decision: S-CORE as consistent stack
 ```

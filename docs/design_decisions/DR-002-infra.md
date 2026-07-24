@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Integration Testing in a Distributed Monolith
 :id: dec_rec__infra__int_testing
 :status: accepted
+:version: 1
 :context: Infrastructure
 :decision: two testing layers
 ```

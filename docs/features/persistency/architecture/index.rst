@@ -33,7 +33,7 @@ Architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :provides: logic_arc_int__persistency__interface
+   :includes: logic_arc_int__persistency__interface
 
 
 Logical Interfaces

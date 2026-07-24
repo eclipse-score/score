@@ -18,6 +18,7 @@ Lifecycle
 
 .. mod_view_sta:: Lifecycle
    :id: mod_view_sta__lifecycle__modules
+   :version: 1
    :includes: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
 
    .. needarch::
