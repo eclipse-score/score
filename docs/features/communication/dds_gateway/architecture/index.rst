@@ -89,7 +89,7 @@ Daemon.
    |  |                                          |  |
    |  | - mw::com service adaptation             |  |
    |  | - Runtime type handling                  |  |
-   |  | - Serialization / deserialization        |  |
+   |  | - DDS CDR Serialization / deserialization|  |
    |  | - Route mapping                          |  |
    |  | - Availability-policy evaluation         |  |
    |  | - Configured E2E processing              |  |
@@ -169,7 +169,7 @@ DDS Communication Daemon through runtime IPC.
    | - LoLa service interaction                     |
    | - Route translation                            |
    | - Runtime type handling                        |
-   | - Serialization / deserialization              |
+   | - DDS CDR Serialization / deserialization      |
    | - Availability-policy evaluation               |
    | - Configured E2E processing                    |
    +-----------------------+------------------------+
