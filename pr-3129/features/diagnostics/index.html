@@ -74,7 +74,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="next" title="Feature Architecture" href="architecture/index.html" />
     <link rel="prev" title="Configuration Model" href="../configuration/config_model/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -549,6 +549,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Diagnostic and Fault Management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Feature Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </details></li>
@@ -620,7 +621,7 @@
                   
   <section id="diagnostic-and-fault-management">
 <span id="diagnostics-feature"></span><h1>Diagnostic and Fault Management<a class="headerlink" href="#diagnostic-and-fault-management" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5db67503">
+<div class="need_container docutils container" id="SNCB-a56fd20b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__diagnostics">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -656,49 +657,6 @@
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
 <div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="need_container docutils container" id="SNCB-c5bd2b46">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__diagnostics">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Diagnostics</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
-</span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_std" title="feat__diagnostics">feat_req__diagnostics__sovd_std</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_server" title="feat__diagnostics">feat_req__diagnostics__sovd_server</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_config" title="feat__diagnostics">feat_req__diagnostics__sovd_config</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_config_mgr" title="feat__diagnostics">feat_req__diagnostics__sovd_config_mgr</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_auth_mgr" title="feat__diagnostics">feat_req__diagnostics__sovd_auth_mgr</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_gateway" title="feat__diagnostics">feat_req__diagnostics__sovd_gateway</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_client" title="feat__diagnostics">feat_req__diagnostics__sovd_client</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__sovd_client_core" title="feat__diagnostics">feat_req__diagnostics__sovd_client_core</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__service_app" title="feat__diagnostics">feat_req__diagnostics__service_app</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__oem_plugin" title="feat__diagnostics">feat_req__diagnostics__oem_plugin</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__fault_lib" title="feat__diagnostics">feat_req__diagnostics__fault_lib</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__fault_lib_catalog" title="feat__diagnostics">feat_req__diagnostics__fault_lib_catalog</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__fault_lib_debounce" title="feat__diagnostics">feat_req__diagnostics__fault_lib_debounce</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__fault_manager" title="feat__diagnostics">feat_req__diagnostics__fault_manager</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__fault_catalog_agg" title="feat__diagnostics">feat_req__diagnostics__fault_catalog_agg</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__db" title="feat__diagnostics">feat_req__diagnostics__db</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__db_persistence" title="feat__diagnostics">feat_req__diagnostics__db_persistence</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__classic_adapter" title="feat__diagnostics">feat_req__diagnostics__classic_adapter</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__classic_adapter_odx" title="feat__diagnostics">feat_req__diagnostics__classic_adapter_odx</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__uds2sovd_proxy" title="feat__diagnostics">feat_req__diagnostics__uds2sovd_proxy</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__uds2sovd_odx" title="feat__diagnostics">feat_req__diagnostics__uds2sovd_odx</a>, <a class="reference internal" href="requirements/index.html#feat_req__diagnostics__internal_com" title="feat__diagnostics">feat_req__diagnostics__internal_com</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat__diagnostics" title="feat__diagnostics">feat__diagnostics</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -1014,11 +972,11 @@ Because no FOSS SOVD stack exists currently, it presents an opportunity for S-CO
       </div>
     </a>
     <a class="right-next"
-       href="requirements/index.html"
+       href="architecture/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Feature Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -74,7 +74,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="next" title="Feature Architecture" href="architecture/index.html" />
     <link rel="prev" title="Persistency Requirements Inspection Checklist" href="../persistency/requirements/chklst_req_inspection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -554,6 +554,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Security &amp; Cryptography</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Feature Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </details></li>
@@ -620,7 +621,7 @@
                   
   <section id="security-cryptography">
 <h1>Security &amp; Cryptography<a class="headerlink" href="#security-cryptography" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b0d7f09a">
+<div class="need_container docutils container" id="SNCB-833fc6a4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__security_crypto_feat_reqs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -655,49 +656,6 @@
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
 <div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="need_container docutils container" id="SNCB-4c80f29c">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__security_crypto">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Security &amp; Crypto</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
-</span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sym_symmetric_encrypt" title="feat__security_crypto">feat_req__sec_crypt__sym_symmetric_encrypt</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sym_symm_algo_aes_cbc" title="feat__security_crypto">feat_req__sec_crypt__sym_symm_algo_aes_cbc</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sym_sym_algo_aes_gcm" title="feat__security_crypto">feat_req__sec_crypt__sym_sym_algo_aes_gcm</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sym_sym_algo_aes_ccm" title="feat__security_crypto">feat_req__sec_crypt__sym_sym_algo_aes_ccm</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sym_algo_chacha20" title="feat__security_crypto">feat_req__sec_crypt__sym_algo_chacha20</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__asym_encryption" title="feat__security_crypto">feat_req__sec_crypt__asym_encryption</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__asym_algo_ecdh" title="feat__security_crypto">feat_req__sec_crypt__asym_algo_ecdh</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sig_creation" title="feat__security_crypto">feat_req__sec_crypt__sig_creation</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sig_verification" title="feat__security_crypto">feat_req__sec_crypt__sig_verification</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sig_algo_ecdsa" title="feat__security_crypto">feat_req__sec_crypt__sig_algo_ecdsa</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__mac" title="feat__security_crypto">feat_req__sec_crypt__mac</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__hashing" title="feat__security_crypto">feat_req__sec_crypt__hashing</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__hashing_algo_sha2" title="feat__security_crypto">feat_req__sec_crypt__hashing_algo_sha2</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__hashing_algo_sha3" title="feat__security_crypto">feat_req__sec_crypt__hashing_algo_sha3</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__kdf" title="feat__security_crypto">feat_req__sec_crypt__kdf</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__rng" title="feat__security_crypto">feat_req__sec_crypt__rng</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__rng_algo_chacha20rng" title="feat__security_crypto">feat_req__sec_crypt__rng_algo_chacha20rng</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__cert_management" title="feat__security_crypto">feat_req__sec_crypt__cert_management</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__key_generation" title="feat__security_crypto">feat_req__sec_crypt__key_generation</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__key_import" title="feat__security_crypto">feat_req__sec_crypt__key_import</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__key_storage" title="feat__security_crypto">feat_req__sec_crypt__key_storage</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__key_deletion" title="feat__security_crypto">feat_req__sec_crypt__key_deletion</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__flexible_api" title="feat__security_crypto">feat_req__sec_crypt__flexible_api</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__performance_tooling" title="feat__security_crypto">feat_req__sec_crypt__performance_tooling</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__algo_naming" title="feat__security_crypto">feat_req__sec_crypt__algo_naming</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__no_key_exposure" title="feat__security_crypto">feat_req__sec_crypt__no_key_exposure</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__side_channel_mitigation" title="feat__security_crypto">feat_req__sec_crypt__side_channel_mitigation</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__api_lifecycle" title="feat__security_crypto">feat_req__sec_crypt__api_lifecycle</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__error_handling" title="feat__security_crypto">feat_req__sec_crypt__error_handling</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__security_concept" title="feat__security_crypto">feat_req__sec_crypt__security_concept</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__algo_updates" title="feat__security_crypto">feat_req__sec_crypt__algo_updates</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__reverse_eng_protection" title="feat__security_crypto">feat_req__sec_crypt__reverse_eng_protection</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__production_keys" title="feat__security_crypto">feat_req__sec_crypt__production_keys</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__pqc_readiness" title="feat__security_crypto">feat_req__sec_crypt__pqc_readiness</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__hw_acceleration" title="feat__security_crypto">feat_req__sec_crypt__hw_acceleration</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__sw_fallback" title="feat__security_crypto">feat_req__sec_crypt__sw_fallback</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__trusted_time" title="feat__security_crypto">feat_req__sec_crypt__trusted_time</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__os_protection" title="feat__security_crypto">feat_req__sec_crypt__os_protection</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__access_control" title="feat__security_crypto">feat_req__sec_crypt__access_control</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__ids_integration" title="feat__security_crypto">feat_req__sec_crypt__ids_integration</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__dos_mitigation" title="feat__security_crypto">feat_req__sec_crypt__dos_mitigation</a>, <a class="reference internal" href="requirements/index.html#feat_req__sec_crypt__tls_support" title="feat__security_crypto">feat_req__sec_crypt__tls_support</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat__security_crypto" title="feat__security_crypto">feat__security_crypto</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -907,11 +865,11 @@ quantum-encryption-standards&gt;</cite>:</p>
       </div>
     </a>
     <a class="right-next"
-       href="requirements/index.html"
+       href="architecture/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Feature Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
