@@ -18,6 +18,7 @@
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :includes: logic_arc_int__os__libcpp, logic_arc_int__os__unistd, logic_arc_int__os__mman, logic_arc_int__os__stat, logic_arc_int__os__fcntl
 
    Placeholder for the external provided OS. It is expected that this feature will be used to document the requirements and dependencies of the S-CORE software platform to the operating system environment and other OS related SW components.
 
