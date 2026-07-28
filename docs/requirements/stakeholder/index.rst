@@ -269,7 +269,7 @@ Dependability
 
 .. stkh_req:: Automotive Safety Integrity Level
    :id: stkh_req__dependability__automotive_safety
-   :reqtype: Functional
+   :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :rationale: The SW-platform shall be usable by safety relevant applications.
@@ -878,13 +878,12 @@ Time
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables the system to compare events chronologically.
+   :rationale: Enables the system to compare in-vehicle events chronologically.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide a time synchronization framework to synchronize its clock
-   to Time Master within the vehicle.
+   The SW-platform shall provide a framework to synchronize its local vehicle clock representation to a Time Master within the vehicle.
 
 .. stkh_req:: Vehicle Time base API
    :id: stkh_req__time__vehicle_time_api
@@ -896,7 +895,7 @@ Time
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to synchronized vehicle time.
+   The SW-platform shall provide access to the synchronized vehicle time.
 
 .. stkh_req:: Synchronize the HW clock with Vehicle Time
    :id: stkh_req__time__hw_clock_sync
@@ -904,7 +903,7 @@ Time
    :security: NO
    :safety: QM
    :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v2.0.0
 
@@ -915,12 +914,12 @@ Time
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
+   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, to add a UTC-timestamp to a data set, etc.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
+   The SW-platform shall provide a framework to synchronize its local absolute clock representation to an external-to-vehicle absolute time base (e.g. UTC).
 
 .. stkh_req:: Absolute time base API
    :id: stkh_req__time__absolute_time_api
@@ -934,8 +933,34 @@ Time
 
    The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
 
-.. stkh_req:: Local High precision Clock API
-   :id: stkh_req__time__high_precision_clock_api
+.. stkh_req:: Usage of Time base APIs has FFI
+   :id: stkh_req__time__time_base_api_ffi
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Enables an application requiring a rating up to ASIL-B to use the time base API.
+   :status: valid
+   :version: 1
+
+   Usage of the time base APIs shall be free from interfrences for the consuming components.
+
+.. stkh_req:: Reliable Qualification of Time Information
+   :id: stkh_req__time__qualified_time_information
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Depending on the user needs and their SW platform configuration, it can be guaranteed that applications can rely on the quality rating of the time reference of a certain time base, even in case of interferences induced into or by QM-rated software components involved in the synchronization process.
+   :status: valid
+   :version: 1
+
+   The architecture and common implementation parts of the time synchronization framework shall support to ensure, that the provided qualification information of a synchronized time base always reflects the actual quality of the provided time (stamp) information.
+
+   Note:
+   * This does not apply to willful interferences by malicious software components or components in control by malicious actors, which are out of scope of this requirement.
+   * The end-to-end quality of the time information provided by the time base API requires components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting end-to-end protection extensions of gPTP).
+
+.. stkh_req:: Local High Resolution Clock API
+   :id: stkh_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -944,9 +969,9 @@ Time
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
+   The SW-platform shall provide access to the current high resolution clock from the system time provider in nanoseconds.
 
-   Note: to which clock the high precision clock is mapped, depends on the system design.
+   Note: to which clock the high resolution clock is mapped, depends on the system design.
 
 .. stkh_req:: Local Monotonic Clock API
    :id: stkh_req__time__monotonic_clock_api
@@ -962,9 +987,9 @@ Time
 
    Note: to which clock the monotonic clock is mapped, depends on the system design.
 
+
 AI SW-platform
 --------------
-
 
 .. stkh_req:: On-board ML Workloads
    :id: stkh_req__ai_platform__enablement
