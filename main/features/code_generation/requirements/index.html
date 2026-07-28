@@ -75,7 +75,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Communication" href="../../communication/index.html" />
-    <link rel="prev" title="Code Generation" href="../index.html" />
+    <link rel="prev" title="Feature Architecture" href="../architecture/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -546,6 +546,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Code Generation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Feature Architecture</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
 </ul>
 </details></li>
@@ -623,7 +624,7 @@
                   
   <section id="requirements">
 <span id="codegen-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8e12953a">
+<div class="need_container docutils container" id="SNCB-7a0c95fc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__definitionlanguage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -647,6 +648,7 @@
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__idl_support" title="feat_req__code_generation__definitionlanguage">stkh_req__dev_experience__idl_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__definitionlanguage">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -670,7 +672,7 @@ system should prefer YAML over JSON due to its simpler syntax.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ef73a464">
+<div class="need_container docutils container" id="SNCB-ea294f56">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__initialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -694,6 +696,7 @@ system should prefer YAML over JSON due to its simpler syntax.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__initialization">stkh_req__execution_model__processes</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__initialization">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -716,7 +719,7 @@ permanently if they fail to initialize.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f0d3a85d">
+<div class="need_container docutils container" id="SNCB-183ae3a8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__deinitialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -740,6 +743,7 @@ permanently if they fail to initialize.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__deinitialization">stkh_req__execution_model__processes</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__deinitialization">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -762,7 +766,7 @@ called only once during their lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-03d3d353">
+<div class="need_container docutils container" id="SNCB-6206eeba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__nomultithreading">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -786,6 +790,7 @@ called only once during their lifecycle.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__nomultithreading">stkh_req__execution_model__processes</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__nomultithreading">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -809,7 +814,7 @@ dynamically spawn and join or detach worker threads.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2504142f">
+<div class="need_container docutils container" id="SNCB-350a0361">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -833,6 +838,7 @@ dynamically spawn and join or detach worker threads.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__error_handling1">stkh_req__execution_model__processes</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__error_handling1">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -855,7 +861,7 @@ libraries completely inside the standard interface functions. Software Compute U
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b499d7d5">
+<div class="need_container docutils container" id="SNCB-afa1b1f0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -879,6 +885,7 @@ libraries completely inside the standard interface functions. Software Compute U
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__error_handling2">stkh_req__execution_model__processes</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__error_handling2">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -903,7 +910,7 @@ lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-232b8cda">
+<div class="need_container docutils container" id="SNCB-c03edf71">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -927,6 +934,7 @@ lifecycle.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling3">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__error_handling3">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -952,7 +960,7 @@ duplication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-da393043">
+<div class="need_container docutils container" id="SNCB-cf20d6a3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -976,6 +984,7 @@ duplication.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling4">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__error_handling4">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1000,7 +1009,7 @@ the Archetype.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-70916975">
+<div class="need_container docutils container" id="SNCB-64a94065">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1024,6 +1033,7 @@ the Archetype.</p></td>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling5">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__code_generation" title="feat_req__code_generation__error_handling5">feat__code_generation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1058,12 +1068,12 @@ the Archetype.</p></td>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../architecture/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Code Generation</p>
+        <p class="prev-next-title">Feature Architecture</p>
       </div>
     </a>
     <a class="right-next"
