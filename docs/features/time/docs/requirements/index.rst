@@ -24,6 +24,7 @@ Time Synchronization
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__vehicle_time_sync[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -36,6 +37,7 @@ Time Synchronization
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__vehicle_time_sync[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -56,6 +58,7 @@ Time Synchronization
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -68,6 +71,7 @@ Time Synchronization
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -86,6 +90,7 @@ Time Synchronization
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -100,6 +105,7 @@ Time Synchronization
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -121,6 +127,7 @@ Time Synchronization
    :security: NO
    :safety: QM
    :derived_from: stkh_req__dev_experience__debugging[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -139,6 +146,7 @@ Time Synchronization to absolute external sources
    :security: YES
    :safety: QM
    :derived_from: stkh_req__time__absolute_time_sync[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -151,6 +159,7 @@ Time Synchronization to absolute external sources
    :security: YES
    :safety: QM
    :derived_from: stkh_req__time__absolute_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -163,6 +172,7 @@ Time Synchronization to absolute external sources
    :security: YES
    :safety: QM
    :derived_from: stkh_req__time__absolute_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -190,6 +200,7 @@ Time Synchronization to absolute external sources
    :security: YES
    :safety: QM
    :derived_from: stkh_req__time__absolute_time_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -209,6 +220,7 @@ Time Synchronization to absolute external sources
    :security: NO
    :safety: QM
    :derived_from: stkh_req__dev_experience__debugging[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -225,6 +237,7 @@ Local Clock
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__high_precision_clock_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -241,6 +254,7 @@ Local Clock
    :security: NO
    :safety: QM
    :derived_from: stkh_req__time__monotonic_clock_api[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -256,6 +270,7 @@ Testability
    :security: NO
    :safety: QM
    :derived_from: stkh_req__dev_experience__mockup_public_apis[version==1]
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0

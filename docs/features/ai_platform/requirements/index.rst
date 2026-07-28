@@ -23,6 +23,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__ai_platform__enablement[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -35,6 +36,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__ai_platform__safety_critical[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -47,6 +49,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__ai_platform__runtime_efficiency[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -59,6 +62,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__ai_platform__platform_portability[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -71,6 +75,7 @@ Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__ai_platform__model_security[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -83,6 +88,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0

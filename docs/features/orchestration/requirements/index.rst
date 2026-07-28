@@ -80,6 +80,7 @@ Special Tasks and Preemption
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
    :valid_from: v2.0.0
@@ -92,6 +93,7 @@ Special Tasks and Preemption
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
    :valid_from: v2.0.0
@@ -320,6 +322,7 @@ Special Safety Task Integration
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
    :valid_from: v2.0.0
@@ -432,6 +435,7 @@ General Constraints
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
    :valid_from: v2.0.0
@@ -444,6 +448,7 @@ General Constraints
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1], stkh_req__dependability__security_features[version==1], stkh_req__communication__inter_process[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
    :valid_from: v2.0.0

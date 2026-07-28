@@ -27,6 +27,7 @@ Security & Cryptography
 .. toctree::
    :hidden:
 
+   architecture/index.rst
    requirements/index.rst
 
 

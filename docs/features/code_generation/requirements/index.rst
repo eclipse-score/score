@@ -23,6 +23,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__dev_experience__idl_support[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -37,6 +38,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -50,6 +52,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -63,6 +66,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -77,6 +81,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -90,6 +95,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -105,6 +111,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -121,6 +128,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -136,6 +144,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
