@@ -81,6 +81,7 @@ Special Tasks and Preemption
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    The Executor shall support preemptive scheduling of special safety-critical tasks, guaranteeing their execution.
@@ -92,6 +93,7 @@ Special Tasks and Preemption
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    Safety-critical tasks shall be prioritized separately from standard cooperative tasks.
@@ -319,6 +321,7 @@ Special Safety Task Integration
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    Critical timing or safety paths within Programs shall be executed via preemptive special tasks provided by the Executor.
@@ -430,6 +433,7 @@ General Constraints
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    Preemptive scheduling shall only be activated explicitly for tasks with safety or critical timing constraints.
@@ -441,6 +445,7 @@ General Constraints
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1], stkh_req__dependability__security_features[version==1], stkh_req__communication__inter_process[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    The system shall use the approved IPC feature exclusively for all inter-process synchronization.

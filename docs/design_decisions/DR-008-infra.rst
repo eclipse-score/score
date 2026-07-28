@@ -18,6 +18,7 @@ DR-008-Infra: Generating documentation sources via Bazel
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
    :status: accepted
+   :version: 1
    :context: Infrastructure
    :decision: Option M because of slight IDE usability edge over Option B
 

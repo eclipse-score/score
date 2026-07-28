@@ -22,16 +22,16 @@ Component Configuration Parameters
 
 These parameters specify the arguments needed for spawning a process.
 
-- :need:`feat_req__lifecycle__uid_gid_support`
-- :need:`feat_req__lifecycle__supplementary_groups`
-- :need:`feat_req__lifecycle__runmask_support`
-- :need:`feat_req__lifecycle__launch_priority_support`
-- :need:`feat_req__lifecycle__cwd_support`
-- :need:`feat_req__lifecycle__process_launch_args`
-- :need:`feat_req__lifecycle__std_handle_redir`
-- :need:`feat_req__lifecycle__aslr_support`
-- :need:`feat_req__lifecycle__process_rlimit_support`
-- :need:`feat_req__lifecycle__support_secpol_type`
+- :need:`comp_req__lifecycle__uid_gid_support`
+- :need:`comp_req__lifecycle__supplementary_groups`
+- :need:`comp_req__lifecycle__runmask_support`
+- :need:`comp_req__lifecycle__launch_priority_support`
+- :need:`comp_req__lifecycle__cwd_support`
+- :need:`comp_req__lifecycle__process_launch_args`
+- :need:`comp_req__lifecycle__std_handle_redir`
+- :need:`comp_req__lifecycle__aslr_support`
+- :need:`comp_req__lifecycle__process_rlimit_support`
+- :need:`comp_req__lifecycle__support_secpol_type`
 
 Dependency parameters
 =====================
@@ -54,9 +54,9 @@ Requirements related to the external monitoring
 These parameters specify how the :term:`Launch Manager` itself is monitored.
 
 - :need:`feat_req__lifecycle__lm_self_health_check`
-- :need:`feat_req__lifecycle__lm_ext_watchdog_notify`
-- :need:`feat_req__lifecycle__lm_ext_wdg_failed_test`
-- :need:`feat_req__lifecycle__lm_ext_watchdog_cfg`
+- :need:`comp_req__lifecycle__lm_ext_watchdog_notify`
+- :need:`comp_req__lifecycle__lm_ext_wdg_failed_test`
+- :need:`comp_req__lifecycle__lm_ext_watchdog_cfg`
 
 
 Static Architecture

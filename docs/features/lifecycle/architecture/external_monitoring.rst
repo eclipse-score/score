@@ -49,9 +49,9 @@ Requirements related to the external monitoring
 ===============================================
 
 - :need:`feat_req__lifecycle__lm_self_health_check`
-- :need:`feat_req__lifecycle__lm_ext_watchdog_notify`
-- :need:`feat_req__lifecycle__lm_ext_wdg_failed_test`
-- :need:`feat_req__lifecycle__lm_ext_watchdog_cfg`
+- :need:`comp_req__lifecycle__lm_ext_watchdog_notify`
+- :need:`comp_req__lifecycle__lm_ext_wdg_failed_test`
+- :need:`comp_req__lifecycle__lm_ext_watchdog_cfg`
 
 
 Dynamic Architecture

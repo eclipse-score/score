@@ -454,8 +454,8 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
-      - :need:`doc__platform_dfa`
-      - :ndf:`copy('status', need_id='doc__platform_dfa')`
+      - :need:`doc__score_platform_dfa`
+      - :ndf:`copy('status', need_id='doc__score_platform_dfa')`
 
     * - :need:`wp__platform_safety_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`

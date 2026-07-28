@@ -47,7 +47,7 @@ Goal of this plan is to describe
 * how to backup and recover (including long term storage)
 * how to report the configuration status
 
-note: for definition of "configuration items" check :need:`doc_concept__configuration_process`
+note: for definition of :term:`Configuration Item` check :need:`doc_concept__configuration_process`
 
 
 Approach
@@ -119,7 +119,7 @@ Branches are used as a means of parallel development. In the S-CORE project the 
 
 * local branches - created from "remote" branches, in these the development of the contributors takes place, no restriction on naming.
 * main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
-* release branch - a "remote" branch derived from main branch which is used to prepare a release,
+* :term:`Release Branch` - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
   Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`doc_concept__rel_process`.
 
@@ -127,7 +127,7 @@ The "remote" branch is not "local" to the developer but resides on the "remote" 
 
 In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline (per repository) for these
 (and not multiple ones for each of the work products types which are maintained in separate tools).
-Baselines are created by using the GitHub "tag" function. The tag name shall correspond to
+Baseline tags are created by using the GitHub "tag" function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also :need:`doc__platform_release_management_plan`.
 

@@ -15,6 +15,7 @@
 .. doc_tool:: clang-format
    :id: doc_tool__clang_format
    :status: evaluated
+   :version: 1
    :tool_version: 19.1.1
    :tcl: HIGH
    :safety_affected: YES

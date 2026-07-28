@@ -16,6 +16,8 @@ Glossary
 ========
 
 .. glossary::
+    Lifecycle Feature
+      Feature providing support for starting and stopping processes.
 
     Launch Manager
       Component to start and stop processes on a POSIX like operating system.
@@ -90,7 +92,7 @@ Glossary
 
     Ready Condition
       A configurable condition that must be satisfied before a component is considered ready and operational. Ready conditions can include file system checks, network availability, or custom application-specific signals.
-      
+
       Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.
 
     Liveliness

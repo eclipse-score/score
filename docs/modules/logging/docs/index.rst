@@ -22,6 +22,7 @@
 
 .. mod_view_sta:: Logging
    :id: mod_view_sta__logging__logging
+   :version: 1
    :includes: comp__logging
    :belongs_to: mod__logging[version==1]
 

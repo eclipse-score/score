@@ -34,7 +34,7 @@ Lifecycle
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :provides: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
+   :includes: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
 
 Feature Flag
 ============
@@ -116,6 +116,7 @@ Specification
 
 .. mod_view_sta:: Feature architecture
    :id: mod_view_sta__lifecycle__overview
+   :version: 1
    :includes: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
 
    .. needarch::

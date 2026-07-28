@@ -14,8 +14,8 @@
 
 .. _baselibs_feature:
 
-Base Libraries (v0.5 beta)
-###########################
+Base Libraries
+##############
 
 .. document:: Base Libraries
    :id: doc__baselibs

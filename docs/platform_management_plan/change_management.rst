@@ -15,7 +15,7 @@
 .. document:: Change Management Plan
    :id: doc__platform_change_management_plan
    :status: valid
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
@@ -134,6 +134,90 @@ Changes are clustered in the following types:
 Change Request Traceability Impact Analysis requires the following tools:
 
 :need:`[[title]] <gd_req__change_tool_impact_analysis>`
+
+
+.. _fep_track:
+
+The FEP Track
+^^^^^^^^^^^^^
+
+Change Requests generally follow the four-step
+:ref:`Change Request Workflow <change_mgmt_workflow>` below. For most changes, **Analyze** means a
+:need:`Committer <rl__committer>` reviews the ISSUE/PR and documents the accept/reject decision
+directly there.
+
+Some changes carry enough governance weight that the decision is worth persisting, and the
+community needs a structured way to reach agreement before implementation starts, rather than
+relying on a single Committer's review. For these, **Analyze** is specialized into the **FEP
+Track**: a Shepherd sponsors the proposal, a time-boxed Final Comment Period
+(silence-as-approval) fosters quick decision making instead of open-ended review, and the outcome
+is recorded as a Decision Record rather than only documented in the ISSUE. Create, Implement, and
+Close are unaffected; only the Analyze step changes shape. See the
+:ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>` for the full mechanics
+(roles, phases, template).
+
+Today, the following Change Requests are routed onto this track:
+
+**Feature** change requests always go through the FEP Track.
+
+**Feature Modification** change requests go through the FEP Track when the change has major
+impact, e.g. affecting the platform or other Feature Teams. Feature Teams retain authority over
+modifications limited to their own domain.
+
+A clean, exhaustive definition of "major impact" is not achievable up front; see the `Key
+Concept`_ in ``process_description`` for the baseline definition of a change. Classifying a Feature
+Modification as "major" within that baseline is a judgment call made by the responsible
+:need:`Committer <rl__committer>` at the time the change is proposed, including changes proposed
+directly as a PR without a prior FEP. A change can be waived from the FEP Track by community
+agreement if it is judged not to warrant it, or pulled into the FEP Track after the fact if a
+:need:`Committer <rl__committer>` judges it major.
+
+.. _Key Concept: https://eclipse-score.github.io/process_description/main/process_areas/change_management/change_management_concept.html#key-concept
+
+**Component** and **Component Modification** change requests go through the standard Analyze step;
+they are not routed onto the FEP Track, so neither a Shepherd nor a Final Comment Period is
+required. The responsible team may still choose to record the change as a Decision Record for a
+persisted rationale — that choice does not by itself trigger the FEP Track, since a Shepherd and
+Final Comment Period are specific to Feature and major Feature Modification CRs. Either way, an
+ISSUE is required; the only open question is whether the substantive discussion is captured
+directly in the ISSUE or in a Decision Record referenced from it.
+
+The FEP mechanism itself is not inherently tied to CR type; Feature and major Feature Modification
+are its first applied case. Extending the FEP Track to other CR types would be a separate decision,
+not implied by this document.
+
+FEP tracking-Issue statuses are a refinement of the generic Change Status mapping described below
+under Change Request Attributes, not a competing one:
+
+.. list-table:: FEP Status Mapping
+   :header-rows: 1
+   :widths: 30,20,50
+
+   * - FEP tracking Issue status
+     - Generic Change status
+     - Notes
+   * - ``Draft - Needs Shepherd``
+     - open
+     - Refines "open": PR exists, no Shepherd confirmed yet.
+   * - ``Draft - Shepherded``
+     - open
+     - Refines "open": Shepherd confirmed, proposal being shaped.
+   * - ``Under Review``
+     - in review
+     - The Final Comment Period.
+   * - ``Accepted``
+     - in implementation
+     - FEP merged and recorded as a Decision Record.
+   * - ``Rejected`` / ``Withdrawn``
+     - rejected
+     - FCP closed with unresolved objections, or the author withdrew.
+   * - ``Implementing``
+     - in implementation
+     - Tracking issue stays open; may carry child Task issues.
+   * - ``Implemented``
+     - closed
+     - Implementation merged; tracking issue closes.
+
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -270,6 +354,11 @@ The Change Request is reviewed and analyzed from the :need:`Committer <rl__commi
 review results are resolved by the :need:`Contributor <rl__contributor>`. The results
 are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
 related ISSUE is kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
+
+For Change Requests routed onto the :ref:`FEP Track <fep_track>`, this step is performed as
+described in the :ref:`FEP Guide <feature_request_guideline>` instead: a Shepherd, not a
+single Committer, guides the analysis, and review ends in the time-boxed Final Comment Period
+rather than in an open-ended ``in review`` state.
 
 If the information is sufficient and it is decided to implement the change request, the
 ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
