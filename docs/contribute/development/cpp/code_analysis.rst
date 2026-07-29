@@ -102,13 +102,14 @@ Adress/ Leak Sanitizer (ASAN/LSAN)
 
 If both tools are combined at runtime memory leaks and the corresponding address can be investigated.
 
-Coverage
-========
+Code Coverage
+=============
 
-As required by the verification guideline coverage needs to be calculated for the code which is used in the project. Therefore two approaches should be available:
+As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. Coverage is calculated on the host using LLVM's source-based coverage:
 
-* As a quick solution it is possible to calculate the coverage on the host via gcc.
-* But for a more accurate statement coverage can also be calculated with the qcc compiler with the appropriate libraries and POSIX interfaces. This method will also be used for the reporting.
+* Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.
+
+Since ``qcc`` does not support LLVM's source-based coverage instrumentation, coverage is not collected on the QNX target. LLVM's source-based coverage natively supports MC/DC, which is required for the higher ASIL levels.
 
 To enable this, following tools are used:
 
@@ -116,11 +117,23 @@ To enable this, following tools are used:
 
    object "Coverage" as coverage
    object "gtest" as gtest
-   object "gcov + gcovr" as gcov
+   object "llvm-cov + llvm-profdata" as llvm
    object "host" as host
-   object "QNX" as qnx
 
    coverage --> gtest
-   gtest --> gcov
-   gcov --> host
-   gcov --> qnx
+   gtest --> llvm
+   llvm --> host
+
+Argumentation: Host-based Coverage with Target Test Execution
+------------------------------------------------------------
+
+Measuring code coverage exclusively on the **Linux host** (via LLVM) is considered sufficient for safety certification, provided that a **two-step verification** is performed to demonstrate equivalence on the target:
+
+#. **Quantitative Verification (Host):** The complete test suite is executed on the Linux host with code coverage enabled. This demonstrates that the test cases are structurally complete (100% C0/C1 coverage) and that no dead code exists.
+#. **Qualitative Verification (Target):** The identical test suite is executed on the **QNX target**, but with code coverage instrumentation turned off. This demonstrates that the software compiles, links, and behaves identically on the real target hardware (correctness of execution, no compiler/linker optimization bugs, no endianness or memory alignment issues).
+
+This approach satisfies *ISO 26262-6* for *ASIL_B* for the following reasons:
+
+* **Identical Test Results:** Passing 100% of the tests on both the host and the target demonstrates that the control flow under test is identical.
+* **Mitigation of Target Instrumentation Risks:** Turning off coverage instrumentation on the target is recommended for embedded systems, as active instrumentation alters the timing behavior, memory footprint, and compiler optimizations on the target. Testing the uninstrumented code on QNX ensures that the actual production binary is verified (mitigating "Heisenbugs").
+* **Equivalence Justification:** The host-based coverage measurement is justified by confirming that no platform-specific code paths (e.g., ``#ifdef QNX`` blocks) are bypassed. Any target-specific hardware abstraction layer (HAL) is verified separately via system-level integration tests.
