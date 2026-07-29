@@ -629,7 +629,7 @@
                   
   <section id="code-analysis-c">
 <h1>Code Analysis C++<a class="headerlink" href="#code-analysis-c" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d1be2acf">
+<div class="need_container docutils container" id="SNCB-cb2952ce">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__cpp_code_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -726,6 +726,11 @@
 <li><p>Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.</p></li>
 </ul>
 <p>Since <code class="docutils literal notranslate"><span class="pre">qcc</span></code> does not support LLVM’s source-based coverage instrumentation, coverage is not collected on the QNX target. LLVM’s source-based coverage natively supports MC/DC, which is required for the higher ASIL levels.</p>
+<p>LLVM’s source-based coverage is preferred over <code class="docutils literal notranslate"><span class="pre">gcov</span></code>-based coverage for the following reasons:</p>
+<ul class="simple">
+<li><p><strong>Precision with templates, generics and modern C++:</strong> <code class="docutils literal notranslate"><span class="pre">gcov</span></code> is line-based, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM’s source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.</p></li>
+<li><p><strong>MC/DC support:</strong> <code class="docutils literal notranslate"><span class="pre">gcov</span></code> historically provided no MC/DC support (GCC offers it only from GCC 14 via <code class="docutils literal notranslate"><span class="pre">-fcondition-coverage</span></code>), whereas LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>), which is required for the higher ASIL levels.</p></li>
+</ul>
 <p>To enable this, following tools are used:</p>
 <p class="plantuml" id="needuml-contribute/development/cpp/code_analysis-2">
 <object data="../../../_images/plantuml-0389ac9e9ccc61ef37dbb0c61d2725deb7485922.svg" type="image/svg+xml" style="width:201px;height:337px;background:#FFFFFF;"></object></p>
@@ -739,9 +744,52 @@
 <p>This approach satisfies <em>ISO 26262-6</em> for <em>ASIL_B</em> for the following reasons:</p>
 <ul class="simple">
 <li><p><strong>Identical Test Results:</strong> Passing 100% of the tests on both the host and the target demonstrates that the control flow under test is identical.</p></li>
-<li><p><strong>Mitigation of Target Instrumentation Risks:</strong> Turning off coverage instrumentation on the target is recommended for embedded systems, as active instrumentation alters the timing behavior, memory footprint, and compiler optimizations on the target. Testing the uninstrumented code on QNX ensures that the actual production binary is verified (mitigating “Heisenbugs”).</p></li>
-<li><p><strong>Equivalence Justification:</strong> The host-based coverage measurement is justified by confirming that no platform-specific code paths (e.g., <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">QNX</span></code> blocks) are bypassed. Any target-specific hardware abstraction layer (HAL) is verified separately via system-level integration tests.</p></li>
+<li><p><strong>Mitigation of Target Instrumentation Risks:</strong> The two-step verification deliberately splits the two concerns onto the environment best suited for each: the <strong>host run is instrumented</strong> (to measure structural coverage), and the <strong>target run is uninstrumented</strong> (to confirm the tests still pass on the real production binary). This is the same “measure coverage with instrumentation, then re-run without instrumentation to confirm behaviour” pattern applied across two environments. Running uninstrumented on QNX matters because active instrumentation alters timing behaviour, memory footprint and compiler optimizations on embedded targets (mitigating “Heisenbugs”). Note that <code class="docutils literal notranslate"><span class="pre">qcc</span></code> cannot produce LLVM source-based coverage, so an <em>instrumented</em> coverage run on the target is not an available option.</p></li>
+<li><p><strong>Equivalence Justification:</strong> The host-based coverage measurement is justified by confirming that no platform-specific code paths (e.g., <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">QNX</span></code> blocks) or QNX-only source files are silently bypassed by the host measurement. The reconciliation strategy for such code, and the process a developer uses to identify it, is described in <a class="reference internal" href="#handling-platform-specific-code">Handling Platform-Specific Code</a> below. Any target-specific hardware abstraction layer (HAL) is additionally verified via system-level integration tests.</p></li>
 </ul>
+</section>
+<section id="handling-platform-specific-code">
+<h3>Handling Platform-Specific Code<a class="headerlink" href="#handling-platform-specific-code" title="Link to this heading">#</a></h3>
+<p>Because structural coverage is measured on the <strong>Linux host</strong> while the QNX target is only tested for pass/fail, the coverage <em>baseline</em> (the set of source files and lines expected to be covered) differs between the two environments. Code that is strictly platform-specific therefore needs an explicit reconciliation strategy so that it neither skews the release metrics nor becomes unverified “dead” code in the safety case.</p>
+<p>Three cases are distinguished.</p>
+<section id="linux-only-code-mocks-emulation-host-utilities">
+<h4>Linux-only code (mocks, emulation, host utilities)<a class="headerlink" href="#linux-only-code-mocks-emulation-host-utilities" title="Link to this heading">#</a></h4>
+<p>This code is compiled and executed only on the host and is absent on the QNX target. It must not contribute to the ASIL-B production coverage figures.</p>
+<ul class="simple">
+<li><p>Linux-only helper code and mocks are kept structurally separate from production code (e.g. under dedicated <code class="docutils literal notranslate"><span class="pre">mock/</span></code> or <code class="docutils literal notranslate"><span class="pre">test/</span></code> directories) and are classified as Quality Managed (QM) / test-support code.</p></li>
+<li><p>Such directories are excluded when the coverage report is generated, so this code is not part of the ASIL-B production coverage baseline and cannot inflate or deflate the reported figures.</p></li>
+</ul>
+</section>
+<section id="qnx-only-code-inside-mixed-files-conditional-compilation">
+<h4>QNX-only code inside mixed files (conditional compilation)<a class="headerlink" href="#qnx-only-code-inside-mixed-files-conditional-compilation" title="Link to this heading">#</a></h4>
+<p>For files that are compiled on the host but contain small target-specific blocks (e.g. guarded by <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">__QNX__</span></code>), those blocks are not compiled into the host binary and would otherwise appear as non-covered or non-existent regions.</p>
+<ul class="simple">
+<li><p>These target-only regions are marked with standardized coverage-exclusion markers understood by the coverage report generator, together with a justification stating that the region is executed and verified on the QNX target rather than on the host.</p></li>
+<li><p>The applicable exclusion markers and their justification format are governed centrally (rather than chosen per developer) so that exclusions remain auditable and consistent across repositories.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The exclusion-marker syntax must match the coverage tooling actually in use. Because coverage in S-CORE is produced by <strong>LLVM source-based coverage</strong> (<code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> / <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code>), the marker mechanism supported by that toolchain (line/region exclusion) must be used; <code class="docutils literal notranslate"><span class="pre">lcov</span></code>/<code class="docutils literal notranslate"><span class="pre">gcov</span></code> <code class="docutils literal notranslate"><span class="pre">LCOV_EXCL_*</span></code> markers are <em>not</em> interpreted natively by <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> and must not be assumed to work unless an <code class="docutils literal notranslate"><span class="pre">lcov</span></code> conversion/merge step is explicitly part of the pipeline.</p>
+</div>
+</section>
+<section id="qnx-only-files-excluded-from-the-host-build">
+<h4>QNX-only files excluded from the host build<a class="headerlink" href="#qnx-only-files-excluded-from-the-host-build" title="Link to this heading">#</a></h4>
+<p>Some modules or files are compiled <strong>only</strong> for QNX and cannot be built on the host at all (e.g. sources that call QNX-specific OS APIs). These would report 0% coverage in a host-only measurement.</p>
+<ul class="simple">
+<li><p>Such files are excluded from the <strong>host structural-coverage baseline</strong>, so they do not produce misleading false-negative 0% figures.</p></li>
+<li><p>Because <code class="docutils literal notranslate"><span class="pre">qcc</span></code> cannot produce LLVM source-based coverage, <strong>no structural coverage can be obtained for these files</strong>. This is a <em>justified deviation</em> from the unit-level structural-coverage objective, not a claim of equivalence: the residual risk is that unit-level statement/branch coverage evidence does not exist for this code.</p></li>
+<li><p>The deviation is compensated by verifying these files <strong>on the QNX target</strong> through requirements-based integration tests executed on the real hardware, and by arguing the safety case on the basis of a 100% pass rate of the associated functional requirements. Each such file/module and its compensating verification is recorded so the deviation is traceable and reviewable.</p></li>
+</ul>
+</section>
+<section id="identifying-platform-specific-code">
+<h4>Identifying platform-specific code<a class="headerlink" href="#identifying-platform-specific-code" title="Link to this heading">#</a></h4>
+<p>A developer must be able to determine which code falls into the categories above; this cannot rely on manually reading source for <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> guards, because whole files may be excluded from the host build. The following mechanisms are used:</p>
+<ul class="simple">
+<li><p><strong>Build-set comparison:</strong> The set of source files compiled for the host is compared against the set compiled for the QNX target. Files present only in the QNX build are, by construction, the “QNX-only files” case and are flagged automatically.</p></li>
+<li><p><strong>Explicit exclusion manifest:</strong> Every host-coverage exclusion (whether a per-file exclusion or a within-file region marker) is recorded in a reviewable list, so the complete delta between the host coverage baseline and the full target code base is visible in one place rather than scattered across the sources.</p></li>
+<li><p><strong>CI gate:</strong> The comparison and the manifest are checked in CI, so newly added QNX-only files or new conditional blocks that are not accompanied by a documented exclusion and a compensating target verification cause the quality gate to fail.</p></li>
+</ul>
+</section>
 </section>
 </section>
 </section>
@@ -803,6 +851,13 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-coverage">Code Coverage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumentation-host-based-coverage-with-target-test-execution">Argumentation: Host-based Coverage with Target Test Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-platform-specific-code">Handling Platform-Specific Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-only-code-mocks-emulation-host-utilities">Linux-only code (mocks, emulation, host utilities)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qnx-only-code-inside-mixed-files-conditional-compilation">QNX-only code inside mixed files (conditional compilation)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qnx-only-files-excluded-from-the-host-build">QNX-only files excluded from the host build</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-platform-specific-code">Identifying platform-specific code</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
