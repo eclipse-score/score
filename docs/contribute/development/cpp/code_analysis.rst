@@ -125,7 +125,7 @@ To enable this, following tools are used:
    llvm --> host
 
 Argumentation: Host-based Coverage with Target Test Execution
-------------------------------------------------------------
+-------------------------------------------------------------
 
 Measuring code coverage exclusively on the **Linux host** (via LLVM) is considered sufficient for safety certification, provided that a **two-step verification** is performed to demonstrate equivalence on the target:
 
