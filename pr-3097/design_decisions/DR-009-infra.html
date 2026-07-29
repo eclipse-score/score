@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
   
@@ -63,6 +63,442 @@
     <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
     <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-009-infra';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
@@ -642,7 +1078,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-07-17</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-076e3e8a">
+<div class="need_container docutils container" id="SNCB-b87f31aa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dep_elem_harmonization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -775,11 +1211,96 @@ the traceability checks) lives inside these dynamic extensions rather than in
 a controlled, deterministic pipeline, which makes it hard to argue
 completeness and correctness to an assessor</p></li>
 </ul>
-<p>The following diagram shows the S-CORE process artifacts across requirements
-engineering, architecture design, implementation and verification, together
-with the tracing relationships that link them:</p>
-<p><img alt="S-CORE process artifacts and their tracing relationships" src="../_images/DR-009-infra-process-artifacts.svg" /></p>
-<p>The recently introduced approach named <strong><code class="docutils literal notranslate"><span class="pre">dependable_element</span></code></strong> provides
+<p>The following diagram shows the S-CORE process artifacts as they exist in the
+<strong>sphinx-needs / docs-as-code</strong> world, together with the checks that are
+currently implemented against them. Unlike <code class="docutils literal notranslate"><span class="pre">rules_score</span></code>, where every rule
+<em>contributes</em> artifacts to <code class="docutils literal notranslate"><span class="pre">lobster.json</span></code>, here <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> is produced from
+the <strong>need directives</strong> (the metamodel types); the <code class="docutils literal notranslate"><span class="pre">score_metamodel</span></code> checks
+<em>validate</em> that content rather than adding to it. Accordingly, the first
+compartment of each check box lists <strong>what it checks</strong>, and the second
+compartment lists the <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> field(s) it <strong>guards</strong>. Only
+<code class="docutils literal notranslate"><span class="pre">score_source_code_linker</span></code> genuinely <strong>enriches</strong> <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> (source/test
+links and the <code class="docutils literal notranslate"><span class="pre">testcase</span></code> needs parsed from the test-result XML). Each arrow is
+labelled with the kind of check (per element, or graph over the whole model) or
+the relationship to the metamodel.</p>
+<pre  class="mermaid">
+        classDiagram
+    direction LR
+
+    class SM[&quot;score_metamodel + needs.json&quot;] {
+        • Loads metamodel.yaml - need types, attributes, links, tags
+        • Runs every per element check on a single need and every graph check on the full graph
+        • Warnings today, will become fatal - graceful migration
+        • Emits the project-wide needs.json - single machine-readable model
+        needs.json - all needs with attributes and links()
+        merged across repos via external needs()
+    }
+
+    class MM[&quot;metamodel.yaml - need types&quot;] {
+        • Requirements - stkh_req, feat_req, comp_req, aou_req, tool_req
+        • Architecture - feat, comp, feat/comp_arc_sta, feat/comp_arc_dyn
+        • Interfaces - logic/real_arc_int, logic/real_arc_int_op, mod, mod_view
+        • Safety analysis - plat/feat/comp_saf_dfa, feat/comp_saf_fmea
+        • Security analysis - feat/comp/plat_sec_threat, *_sec_ana
+        • Process - workflow, workproduct, gd_req, gd_temp, role, std_req, std_wp
+        • Verification - testcase
+        • Decision records - dec_rec
+        needs.json record shape - id, type, options, links, tags()
+    }
+
+    class OPT[&quot;check_options - per element&quot;] {
+        • Every mandatory attribute is present
+        • Attribute values match their metamodel regex - safety, security, status, reqtype, id
+        • Mandatory and optional links target the allowed need types
+        guards attributes and links()
+    }
+
+    class EXTRA[&quot;check_extra_options - per element&quot;] {
+        • No attribute outside the metamodel definition is used
+        guards - rejects unknown attributes()
+    }
+
+    class IDC[&quot;id checks - per element&quot;] {
+        • ID has the correct number of __ segments - check_id_format
+        • ID length within 45 chars - check_id_length
+        • ID feature segment matches the file path - id_contains_feature
+        guards need id()
+    }
+
+    class WORD[&quot;wording - per element&quot;] {
+        • Title has no shall / must / will
+        • Requirement content avoids weak words - just, about, really, some, thing
+        guards title and content wording()
+    }
+
+    class GRAPH[&quot;graph_checks - graph&quot;] {
+        • A valid need only links to valid needs
+        • QM requirement is not derived from an ASIL requirement
+        • QM architecture element does not fulfil an ASIL requirement
+        • Workproduct only complies to ASPICE 4.0 IIC or std_wp
+        • Configurable parent-relation conditions from the graph_checks config
+        guards cross-need link consistency()
+    }
+
+    class SCL[&quot;score_source_code_linker - enriches&quot;] {
+        • Requirements are linked back to their source code - source_code_link
+        • Requirements and testcases are linked to tests - testlink
+        • testcase needs are parsed from the test-result XML - fully/partially_verifies
+        adds source_code_link()
+        adds testlink()
+        adds testcase needs()
+    }
+
+    SM --&gt; MM : defines
+    SM --&gt; OPT : per element check
+    SM --&gt; EXTRA : per element check
+    SM --&gt; IDC : per element check
+    SM --&gt; WORD : per element check
+    SM --&gt; GRAPH : graph check
+    SM --&gt; SCL : enriches needs.json
+    MM ..&gt; OPT : validated against
+    MM ..&gt; GRAPH : validated against
+    </pre><p>The recently introduced approach named <strong><code class="docutils literal notranslate"><span class="pre">dependable_element</span></code></strong> provides
 exactly what sphinx/sphinx-needs is missing: a <strong>high degree of automation
 anchored directly in the build system</strong> (Bazel), where work products are
 declared as typed rules, their relationships are checked deterministically, and
@@ -814,6 +1335,98 @@ architecture, assumptions of use, dependability analysis, components, tests,
 checklists and glossary — into a single, versioned deliverable with its own
 HTML documentation and traceability report.</p></li>
 </ul>
+<section id="checks-and-traceability-contributions-per-rule">
+<h3>Checks and traceability contributions per rule<a class="headerlink" href="#checks-and-traceability-contributions-per-rule" title="Link to this heading">#</a></h3>
+<p>The following diagram breaks the <code class="docutils literal notranslate"><span class="pre">dependable_element</span></code> aggregation down into the
+individual <code class="docutils literal notranslate"><span class="pre">rules_score</span></code> rules. For every rule the first compartment lists, in
+plain language, <strong>what that rule checks</strong>; the second compartment lists the
+artifacts the rule contributes to the aggregated <code class="docutils literal notranslate"><span class="pre">lobster.json</span></code> traceability
+report (empty when the rule adds nothing). Each arrow is labelled with the
+macro argument that wires the child rule into its parent.</p>
+<pre  class="mermaid">
+        classDiagram
+    direction LR
+
+    class DE[&quot;dependable_element&quot;]
+    DE : • Actual Bazel build tree of components and units matches the component architecture diagram
+    DE : • Certified scope - real build dependencies stay within the declared whitelist
+    DE : • No dependency on a lower safety level
+    DE : • Every requirement is covered by tests - traceability
+    DE : • Own assumptions of use are always forwarded to dependees
+    DE : • Received AoUs are only chain-forwarded when listed in the aou_forwarding YAML - each with a justification
+    DE : • Every chain-forwarded AoU must exist among the received AoUs - otherwise build fails
+    DE : • All references in the trace report resolve
+    DE : assembles the final trace report - *.lobster + HTML()
+    DE : chain_forwarded_aous.lobster()
+
+    class COMP[&quot;component&quot;]
+    COMP : • Requirements are allocated to this component
+    COMP : • Test results of the units are collected
+    COMP : • Requirement-to-test chain is built
+    COMP : component_architecture.lobster()
+    COMP : gtest.lobster - from unit tests()
+    DE --&gt; COMP : components
+
+    class AD[&quot;architectural_design&quot;]
+    AD : • All PlantUML diagrams are valid - component architecture, sequence, class
+    AD : • Every participant in the sequence diagram is a real unit from the component diagram
+    AD : • Every interaction in the sequence diagram has a matching interface connection in the component diagram
+    AD : • Every interface used in the component diagram is defined in the internal class diagram
+    AD : • Every method call in the sequence diagram exists as a method of an interface in the class diagram
+    AD : • Public API interfaces are only parsed - consistency check not yet implemented
+    AD : • Clickable navigation links between the diagrams are generated - via linker
+    AD : public_api.lobster()
+    DE --&gt; AD : architectural_design
+
+    class UNIT[&quot;unit&quot;]
+    UNIT : • Design class diagram matches the real C++ code [libclang]
+    UNIT : • Unit tests are executed
+    UNIT : unit test result XML - feeds gtest.lobster()
+    COMP --&gt; UNIT : components
+
+    class UD[&quot;unit_design&quot;]
+    UD : • Design PlantUML is valid
+    UNIT --&gt; UD : unit_design
+
+    class REQ[&quot;feature / component / assumed_system_requirements&quot;]
+    REQ : • TRLC syntax and mandatory fields are correct
+    REQ : • All derived_from references exist
+    REQ : feature.lobster()
+    REQ : component.lobster()
+    REQ : assumed_system.lobster()
+    DE --&gt; REQ : requirements
+
+    class DA[&quot;dependability_analysis&quot;]
+    DA : • Safety analyses FMEA and FTA are merged
+    DA : • Linked to the public API interfaces
+    DA : • All references in the trace report resolve
+    DA : safety analysis lobster - merged from fmea()
+    DE --&gt; DA : dependability_analysis
+
+    class FMEA[&quot;fmea&quot;]
+    FMEA : • FTA fault tree is syntactically valid
+    FMEA : • FMEA entries are well-formed
+    FMEA : • Fault chains match the failure modes
+    FMEA : failuremodes.lobster()
+    FMEA : controlmeasures.lobster()
+    FMEA : root_causes.lobster()
+    DA --&gt; FMEA : fmea
+
+    class CG[&quot;checklist / glossary&quot;]
+    CG : • no check, only collects documents
+    DE --&gt; CG : checklists / glossary
+
+    class AOU[&quot;assumptions_of_use&quot;]
+    AOU : • Provides the assumption-of-use declarations - AoU lobster
+    AOU : • Basis for the forwarding check at the dependable_element level
+    AOU : aou.lobster - own assumptions()
+    DE --&gt; AOU : assumptions_of_use
+
+    class TEST[&quot;integration tests&quot;]
+    TEST : • Integration test targets of the dependable element
+    TEST : • Requirements traceability
+    DE --&gt; TEST : tests
+    </pre></section>
 </section>
 <hr class="docutils" />
 <section id="bringing-the-two-approaches-together">
@@ -836,6 +1449,31 @@ world (the single source of truth). Requirements (and assumptions of use) are
 referenced by the <code class="docutils literal notranslate"><span class="pre">dependable_element</span></code></strong> as its architecture input, so both
 worlds share one architecture source.</p>
 <p><img alt="Merging sphinx/sphinx-needs and dependable_element" src="../_images/DR-009-infra-merge.svg" /></p>
+<section id="commercial-solutions-take-the-same-route">
+<h3>Commercial solutions take the same route<a class="headerlink" href="#commercial-solutions-take-the-same-route" title="Link to this heading">#</a></h3>
+<p>This split — a low-friction Sphinx/sphinx-needs authoring surface on top, and a
+separate, lightweight, easy-to-qualify engine underneath — is not unique to
+S-CORE. Established <strong>commercial</strong> offerings follow the very same pattern, for
+the same two reasons:</p>
+<ul class="simple">
+<li><p><strong>Fast turn-around times.</strong> As shown by
+<a class="reference external" href="https://useblocks.com/products/ubtrace">useblocks ubTrace</a>, the traceability
+and analysis work is moved out of the Sphinx build into a dedicated,
+incremental engine, so authors get quick feedback instead of waiting on a
+full documentation build.</p></li>
+<li><p><strong>Qualification.</strong> As shown by the
+<a class="reference external" href="https://safety.useblocks.com/usage/qualification.html">useblocks qualification documentation</a>,
+the qualifiable part is kept as a small, self-contained tool rather than the
+large, dynamically extensible Sphinx framework — precisely because a compact,
+deterministic component is far easier to qualify for use in a safety context.</p></li>
+</ul>
+<p>In other words, these commercial solutions rely on an architecture comparable to
+<code class="docutils literal notranslate"><span class="pre">dependable_element</span></code> / LOBSTER: a separate, lightweight, easy-to-qualify
+solution is used for the checking and traceability work instead of the Sphinx
+framework itself, while Sphinx/sphinx-needs remains the convenient authoring
+layer. This independently validates the direction proposed in this decision
+record.</p>
+</section>
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 </section>
@@ -908,8 +1546,12 @@ worlds share one architecture source.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-approach">Proposed Approach</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-and-traceability-contributions-per-rule">Checks and traceability contributions per rule</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-the-two-approaches-together">Bringing the two approaches together</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commercial-solutions-take-the-same-route">Commercial solutions take the same route</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
 </ul>
