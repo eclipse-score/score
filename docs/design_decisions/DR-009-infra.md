@@ -124,7 +124,7 @@ links and the `testcase` needs parsed from the test-result XML). Each arrow is
 labelled with the kind of check (per element, or graph over the whole model) or
 the relationship to the metamodel.
 
-```mermaid
+```{mermaid}
 classDiagram
     direction LR
 
@@ -248,7 +248,7 @@ artifacts the rule contributes to the aggregated `lobster.json` traceability
 report (empty when the rule adds nothing). Each arrow is labelled with the
 macro argument that wires the child rule into its parent.
 
-```mermaid
+```{mermaid}
 classDiagram
     direction LR
 
