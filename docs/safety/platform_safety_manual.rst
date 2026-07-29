@@ -34,14 +34,14 @@ Assumptions of Use which are relevant for all users of any platform module.
 The specific Assumptions of Use relevant only for the users of a specific module are documented in the module's safety manual.
 That means that the platform safety manual always has to be read together with all its modules safety manuals.
 
-A platform module may contain both ASIL-relevant and non-ASIL components. A component is in scope
-of the ASIL safety lifecycle if it is intended to be executed from within an ASIL component. Such
-components shall be developed, verified, and released according to the applicable ASIL safety
-process. Components that are not intended to be executed from within an ASIL component may be
-developed to QM, provided that freedom from interference with the safety context is justified in
-the respective module safety manual. The logging module is an example: its
-``mw::log`` frontend is linked into the caller and runs in the safety context ASIL_B, whereas its
-``datarouter`` daemon runs as a separate process and is classified QM.
+A platform module may contain both ASIL-relevant and QM components. The
+classification is performed at component level and depends on the intended
+execution context rather than on the module as a whole. Components that are
+intended to execute within an ASIL context are in scope of the applicable ASIL
+safety lifecycle and shall be developed, verified, and released according to
+the corresponding ASIL process. Components that are not intended to execute
+within an ASIL context may remain QM, provided that freedom from interference
+with the safety context is justified in the respective module safety manual.
 
 Assumed Platform Safety Requirements
 ------------------------------------
@@ -102,13 +102,22 @@ The S-CORE SW platform has no safety concept additional to its module's safety c
 The expectations towards the execution environment are described in the respective AoU, this is mainly that a safe posix operating system
 integrated into a target hardware which includes safety mechanisms which cover hardware related errors.
 
-A platform module may contain both ASIL-relevant and QM components. The ASIL classification is
-determined at component level based on the execution context rather than at module level.
-Components executing within a safety context are developed according to the applicable ASIL
-process, while components outside the safety context may remain QM, provided that freedom from
-interference is ensured and justified in the module safety manual. For example, the mw::log
-frontend executes within the ASIL-B application and is therefore treated as ASIL-B, whereas the
-datarouter daemon executes as a separate process and remains QM.
+The platform allows ASIL and QM components to coexist within the same module.
+Where components executing in an ASIL context depend on functionality that has
+no direct safety purpose, freedom from interference shall be ensured between
+the safety-relevant and non-safety-relevant parts. This may require additional
+safety requirements to be allocated to components that otherwise only provide
+QM functionality. Such requirements exist to preserve the integrity of the
+safety context and are applied in addition to the component's functional
+requirements.
+
+For example, the ``mw::log`` frontend is linked into and executed within an
+ASIL-B application. Although logging functionality itself may only provide QM
+services, the frontend forms part of the ASIL execution context and therefore
+must fulfil additional safety requirements derived from the need to maintain
+freedom from interference. In contrast, the ``datarouter`` daemon executes as a
+separate process and may remain QM, provided that the required freedom from
+interference is justified in the module safety manual.
 
 
 Safety Anomalies
