@@ -30,6 +30,12 @@ For writing Rust code in SCORE, especially for safety- and
 security-relevant software, the following guidance and tooling references
 apply.
 
+This page provides the rationale, the guideline and tooling landscape, and a
+project-wide set of practices for writing Rust in SCORE. The concrete,
+enforceable rules (the ``rustc`` / Clippy lint configuration and the release
+profile) are maintained centrally in the ``score_rust_policies`` repository and
+are referenced from the `Conclusions for S-CORE`_ section below.
+
 
 Coding Guidelines
 -----------------
@@ -37,25 +43,25 @@ Coding Guidelines
 The following coding guidelines and reference documents are relevant for
 Rust development in SCORE:
 
-* A safety- and cybersecurity-oriented Rust baseline is used as the primary
-   reference for safety- and security-related development and for arguing
-   safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332.
-   It provides a comprehensive set of recommendations for using Rust in
-   safety-critical systems, including language features, coding practices, and
-   tool usage.
+* A safety- and cybersecurity-oriented Rust baseline (referred to as "the
+  baseline" throughout this document) is used as the primary reference for
+  safety- and security-related development and for arguing safety according to
+  ISO 26262 or RTCA DO-178C combined with RTCA DO-332. It provides a
+  comprehensive set of recommendations for using Rust in safety-critical
+  systems, including language features, coding practices, and tool usage.
 * `Safety-Critical Rust Coding Guidelines <https://coding-guidelines.arewesafetycriticalyet.org/>`_
-   are still under development and currently only define a subset of the
-   desired rules.
+  are still under development and currently only define a subset of the
+  desired rules.
 * `Secure Rust Guidelines (unstable) <https://anssi-fr.github.io/rust-guide/>`_
-   complement this baseline. ANSSI focuses more on process and architecture
-   guidance, while the baseline is more concrete regarding tool usage and
-   enforceable checks.
+  complement this baseline. ANSSI focuses more on process and architecture
+  guidance, while the baseline is more concrete regarding tool usage and
+  enforceable checks.
 * `Linux Kernel Rules <https://www.kernel.org/doc/Documentation/rust/coding-guidelines.rst>`_
-   mainly define formatting and documentation requirements for Rust in the
-   Linux kernel and do not provide broader static code analysis rules.
+  mainly define formatting and documentation requirements for Rust in the
+  Linux kernel and do not provide broader static code analysis rules.
 * `MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language <https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf>`_
-   overlaps strongly with this baseline and is therefore primarily relevant as an
-   additional cross-reference.
+  overlaps strongly with this baseline and is therefore primarily relevant as an
+  additional cross-reference.
 
 
 State of Rust Safety-Critical Tooling
@@ -87,34 +93,21 @@ enable certification and safe use of Rust in automotive applications.
 
 `Rust language <https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html>`_
 
-The linked document provides a current overview of the tooling landscape for
-certifying Rust in safety-critical applications, presenting a
-community-approved list of essential tools and tracking their development
-status. It also explores whether developing specialized training curricula for
-safety-critical Rust is necessary, potentially requiring a separate
-subcommittee. The document details the state of specific tools, such as
-compilers and analysis utilities, by outlining their intended purposes,
-certification requirements, and their availability or progress. While some
-tools, such as the Ferrocene compiler, are already available or being actively
-developed, others remain under evaluation or are not yet accessible.
-
 `Mission Statement - Tooling Subcommittee <https://github.com/rustfoundation/safety-critical-rust-consortium/blob/main/subcommittee/tooling/mission-statement.md>`_
 
 
 MISRA vs CERT
 -------------
 
-This issue contrasts the MISRA and CERT coding standards, highlighting their
-different approaches to software safety and security. MISRA is noted for its
-restrictive language subsetting and complex compliance process, often imposing
-outdated or ineffective rules that do not guarantee improved safety or
-security. This can create unnecessary work for developers without clear
-benefits and is sometimes inconsistent across languages. CERT, on the other
-hand, is praised for its focus on practical, consensus-based rules that target
-real security vulnerabilities in existing code, avoiding excessive constraints.
-The overall recommendation is to favor guidelines like CERT's: practical,
-evidence-based, and focused on real-world issues, over rigid, untested
-standards that hinder adoption and developer productivity.
+MISRA and CERT represent two different approaches to safety- and
+security-oriented coding standards. MISRA relies on restrictive language
+subsetting and a formal compliance process, which can add effort without a
+proportional safety or security benefit and is not always consistent across
+languages. CERT focuses on practical, consensus-based rules that target real
+security vulnerabilities in existing code. For Rust in SCORE the CERT-style
+approach — practical, evidence-based and focused on real-world issues — is
+preferred over rigid language subsetting, which is consistent with the Clippy-
+and compiler-based enforcement used in this project.
 
 `MISRA vs Cert <https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/75/>`_
 
@@ -149,18 +142,18 @@ and https://codeql.github.com/codeql-query-help/rust-cwe/).
 Typical problem classes detected by CodeQL for Rust include:
 
 * injection vulnerabilities (e.g., SQL injection, path traversal,
-   regex injection, log injection, XSS)
+  regex injection, log injection, XSS)
 * insecure communication and transport usage (e.g., non-HTTPS URLs,
-   disabled TLS certificate checks)
+  disabled TLS certificate checks)
 * cryptographic weaknesses (e.g., hard-coded cryptographic values,
-   weak algorithms or weak hashing)
+  weak algorithms or weak hashing)
 * sensitive data exposure (e.g., cleartext logging, cleartext
-   transmission or storage)
+  transmission or storage)
 * request and input abuse patterns (e.g., SSRF, uncontrolled allocation
-   size from untrusted input)
+  size from untrusted input)
 * unsafe memory-related patterns relevant at Rust unsafe boundaries
-   (e.g., access-after-lifetime-ended, invalid pointer access,
-   constructor initialization issues)
+  (e.g., access-after-lifetime-ended, invalid pointer access,
+  constructor initialization issues)
 
 CodeQL's key strength is inter-procedural data-flow/taint tracking,
 which complements compiler and lint checks.
@@ -180,89 +173,73 @@ Conclusions for S-CORE
 ----------------------
 
 The current baseline includes general Rust safety and security topics together
-with related rules and recommendations. The following table shows how each
-topic is captured in practice, including automated checks (by tool and tool option) and supporting
+with related rules and recommendations. The results summarized below show how
+each topic is captured in practice, including automated checks (by tool and tool option) and supporting
 process measures. Where no automated check exists, coverage is captured
 through manual review, process controls, or architecture decisions.
 
 The classification follows a MISRA-style convention:
 
-*   Required — Mandatory. Deviations need documented reasoning.
-*   Advisory — Recommended. Deviations should be documented when practical.
-*   Document — The decision and its reasoning must be documented regardless of outcome.
+* Required — Mandatory. Deviations need documented reasoning.
+* Advisory — Recommended. Deviations should be documented when practical.
+* Document — The decision and its reasoning must be documented regardless of outcome.
 
-The matrix below summarizes overall coverage for these topics. The
+The summary below aggregates the overall coverage for these topics. The
 `Cargo.toml` profiles further below provide a practical baseline and
 intentionally contain a recommended subset of checks.
 
-.. csv-table:: Overlap Summary Matrix (Baseline Measures)
-   :header: "Name", "Type", "Automated (Baseline)", "CodeQL", "Clippy", "Rustc", "Other Tooling / Process", "Combined"
-   :widths: 24, 14, 12, 10, 18, 18, 22, 8
+Summary of Results
+~~~~~~~~~~~~~~~~~~~
 
-   "Compiler qualification", "Document, Required", "-", "-", "-", "-", "Process/evidence", "M"
-   "Dependency management", "Required", "-", "-", "-", "-", "cargo-audit, cargo-deny, cargo-vet, SBOM", "H"
-   "async/await decision", "Document, Advisory", "-", "-", "-", "-", "Architecture decision record", "M"
-   "Extension trait guidelines", "Document, Advisory", "-", "-", "-", "-", "Review guideline", "M"
-   "Minimum Supported Rust Version", "Document, Advisory", "cargo plugin", "-", "-", "M (stable toolchain pinning, rust-version policy)", "Toolchain pinning in CI", "H"
-   "Shadowing style", "Document, Advisory", "Partially, clippy", "-", "M (shadow_reuse/shadow_unrelated as warn, shadow_same as allow)", "-", "Review style guide", "M"
-   "Code review environment", "Advisory", "-", "-", "-", "-", "Process/tooling setup", "M"
-   "Macro review and testing strategy", "Document, Advisory", "-", "-", "-", "-", "Tests, trybuild, review", "M"
-   "Module file naming", "Document, Advisory", "Partially", "-", "L (no strong built-in lint)", "-", "Custom checks", "M"
-   "Default trait implementations", "Document, Advisory", "-", "-", "-", "-", "Design guideline", "M"
-   "Usage of unwrap in mutex lock", "Document, Advisory", "-", "-", "M (unwrap_used with documented exception policy)", "-", "Review policy", "M"
-   "Document undesirable but not unsafe hardware effects", "Advisory", "-", "-", "-", "-", "Safety documentation", "M"
-   "FFI: Check values at boundary", "Required", "-", "-", "-", "-", "FFI tests, fuzzing, review", "M"
-   "Safe wrapper for unsafe interfaces", "Required", "-", "-", "-", "-", "Design/review", "M"
-   "Document unsafe assumptions in Safety: clause", "Required", "clippy", "-", "H (undocumented_unsafe_blocks)", "-", "-", "H"
-   "Minimal scope for unsafe", "Required", "-", "-", "M (policy/review support, no single strong lint)", "-", "cargo-geiger, review", "M"
-   "Unsafe block in unsafe function", "Required", "clippy", "-", "M (supporting only, project-dependent)", "H (unsafe_op_in_unsafe_fn)", "-", "H"
-   "Safety documentation for unsafe functions", "Required", "clippy", "-", "M (manual documentation/review in profile baseline)", "-", "Rustdoc + review process", "M"
-   "Panic documentation on functions", "Required", "clippy", "-", "H (missing_panics_doc)", "-", "-", "H"
-   "Global mutable state with sound wrapper", "Required", "-", "-", "-", "-", "Review/design", "M"
-   "FFI rules from ANSII", "Required", "-", "-", "-", "-", "FFI conformance process", "M"
-   "Inline assembly rules from reference", "Required", "-", "-", "-", "-", "Manual asm review", "M"
-   "Automated contract versioning", "Advisory", "symbols", "-", "-", "-", "Symbol/ABI diff tooling", "H"
-   "Pointer to reference conversion", "Required", "-", "M", "M (cast_ptr_alignment, ptr_cast_constness, ref_as_ptr, transmute_ptr_to_ptr)", "M (invalid_reference_casting plus diagnostics)", "Review/tests", "M"
-   "Define proper panic handling", "Document, Required", "-", "-", "M (panic_in_result_fn as warn; unwrap_used and panicking_overflow_checks evaluated for usefulness)", "M (panic strategy/profile settings)", "Panic strategy in CI/profile", "H"
-   "catch_unwind only for controlled shutdown", "Required", "-", "-", "L (no direct strong lint)", "-", "Review policy", "M"
-   "Deref misuse for inheritance", "Required", "-", "-", "L (no direct strong lint)", "-", "Review/style", "M"
-   "Transitive interior mutability documentation", "Advisory", "-", "-", "-", "-", "Documentation process", "M"
-   "No internal mutability in constants", "Required", "-", "-", "H (declare_interior_mutable_const)", "-", "-", "H"
-   "Prefer cfg!() over #[cfg()]", "Required", "-", "-", "-", "-", "Review/custom linting", "M"
-   "Features are additive, not exclusive", "Required", "-", "-", "-", "-", "Cargo feature CI checks", "H"
-   "No deprecated interfaces from core/std", "Required", "-", "-", "M (deprecated in lint profile)", "H (deprecated)", "-", "H"
-   "No nightly features", "Required", "rustc", "-", "-", "H (stable compiler policy; unstable_features on nightly)", "Stable toolchain enforcement", "H"
-   "No wildcard in imports", "Required", "clippy", "-", "H (wildcard_imports)", "-", "-", "H"
-   "Ensure formatting and lints (e.g., in CI)", "Advisory", "rustfmt + clippy", "-", "H (CI clippy gate)", "-", "rustfmt in CI", "H"
-   "No raw identifiers", "Required", "grep", "-", "-", "-", "grep/custom check", "H"
-   "Rustc linter", "Advisory", "rustc", "-", "-", "H (curated rustc baseline profile; extended edition/future lints enabled per toolchain support)", "-", "H"
-   "Clippy linter", "Advisory", "clippy", "-", "H (curated warn/deny/allow clippy profile)", "-", "-", "H"
-   "Strong typing for error detection at compile time", "Advisory", "-", "-", "-", "H (type system, borrow checker, trait bounds)", "-", "H"
-   "Structures replace many arguments", "Advisory", "-", "-", "L (style/review guidance)", "-", "Review/style", "M"
-   "Testing trait requirements on trait implementations", "Required", "-", "-", "-", "-", "Tests/property tests", "H"
-   "Test coverage on generics", "Advisory", "coverage", "-", "-", "-", "Coverage tooling", "H"
-   "Avoid as for conversions", "Required", "clippy", "-", "H (as_underscore, cast_lossless, cast_possible_truncation, cast_possible_wrap, cast_ptr_alignment, cast_sign_loss)", "-", "-", "H"
-   "Error/Option instead of magic values", "Advisory", "-", "-", "M (partial style support)", "M (type checks support pattern, no direct rule)", "Review", "M"
-   "Resource Acquisition Is Initialization", "Required", "-", "-", "-", "M (ownership and Drop semantics, no direct lint)", "Review/tests", "M"
-   "Overflow checking", "Required", "rustc", "-", "-", "H (release overflow-checks enabled)", "Release profile setting", "H"
-   "Dynamic memory design", "Required", "-", "-", "-", "-", "Allocator/system design checks", "M"
-   "Stack checking", "Required", "rustc", "-", "-", "M (limited compiler support)", "cargo-call-stack, external analysis", "M"
-   "Concurrency system design (timing constraints)", "Required", "-", "-", "-", "-", "loom, WCET, system analysis", "M"
-   "Document cancellation safety of async functions", "Advisory", "-", "-", "-", "-", "Documentation/review", "M"
-   "Explicit task dropping intention", "Advisory", "-", "-", "L (let_underscore_future as supporting signal)", "-", "Runtime policy/review", "M"
-   "Planning ahead for Pin/Send", "Document, Advisory", "-", "-", "-", "M (Send and lifetime trait-bound checks)", "Design constraints review", "M"
-   "Minimize duplicated dependencies because of versioning", "Required", "cargo", "-", "-", "-", "cargo tree, cargo-deny", "H"
-   "Minimal scope for symbols", "Advisory", "(clippy)", "-", "M (redundant_pub_crate as supporting signal)", "M (unreachable_pub, visibility diagnostics)", "Visibility checks/review", "M"
-   "Multi-crate design to minimize cyclic dependencies", "Advisory", "-", "-", "-", "-", "cargo graph, dependency analysis", "M"
-   "Usize should only measure memory, not environment quantities", "Required", "-", "-", "L (no direct strong lint)", "-", "Review/style", "M"
-   "Separation of download and build steps", "Advisory", "-", "-", "-", "-", "CI sandboxing/pipeline controls", "H"
-   "Special protection of sensitive data", "Advisory", "-", "H", "-", "-", "Secret handling process", "H"
-   "Marker traits for formal documentation", "Advisory", "-", "-", "-", "M (trait-bound enforcement mechanism)", "Review/formal method support", "M"
-   "Lifetime and pointers", "Advisory", "-", "M", "-", "H (borrow checker, lifetime analysis)", "-", "H"
-   "Atomic access modes", "Advisory", "-", "-", "L (no explicit lint in current baseline profile block)", "-", "Review for ordering rationale", "M"
-   "Unintended matches", "Advisory", "-", "-", "M (wildcard_enum_match_arm)", "M (non_exhaustive_omitted_patterns)", "-", "M"
-   "Logically significant return values should be #[must_use]", "Required", "-", "-", "M (let_underscore_must_use)", "M (unused_results in profile; must_use semantics by language)", "-", "M"
-   "Complex drop logic should be called explicitly", "Required", "-", "-", "L (no direct strong lint)", "-", "Review/tests", "M"
+The assessment covers different safety- and security-relevant topics from the
+Rust baseline. For each topic the available automated checks (CodeQL, Clippy,
+``rustc`` and other tooling) together with the supporting process measures were
+rated for their combined overall coverage as High (H), Medium (M) or Low (L).
+
+The topics group into the clusters below. None of them falls into the Low
+category, so every topic is addressed by at least a solid combination of
+tooling and process:
+
+* **Unsafe code and FFI boundaries** — documenting and scoping ``unsafe``,
+  safe wrappers, FFI value checks, inline assembly and raw-pointer/reference
+  conversions. The enforceable parts reach High coverage through Clippy
+  (``undocumented_unsafe_blocks``) and ``rustc`` (``unsafe_op_in_unsafe_fn``),
+  with CodeQL adding data-flow checks at pointer/reference boundaries; the
+  remaining boundary checks rely on FFI tests, fuzzing and review (Medium).
+* **Panic, error and overflow handling** — panic documentation and strategy,
+  ``catch_unwind`` usage, ``unwrap`` policy, overflow checks, ``Result`` /
+  ``Option`` over magic values and ``#[must_use]`` return values. Largely High
+  via Clippy (``missing_panics_doc``) and compiler/profile settings (release
+  ``overflow-checks``), complemented by review.
+* **Lint and language hygiene** — import, style and edition rules (no wildcard
+  imports, no raw identifiers, no nightly, no deprecated, ``cfg!``, ``as``
+  casts, shadowing), formatting and the curated Clippy/``rustc`` profiles, and
+  strong typing. This cluster has the strongest automation and is almost
+  entirely High through Clippy and ``rustc``.
+* **Concurrency and async** — async/await decision, timing/concurrency design,
+  cancellation safety, explicit task dropping and ``Pin`` / ``Send`` planning.
+  Predominantly Medium and process-driven (``loom``, WCET analysis,
+  architecture decision records and review).
+* **Memory and resource management** — dynamic-memory design, stack checking,
+  RAII and ``usize`` usage. Medium, driven by design rules and dedicated
+  tooling (allocator/system checks, ``cargo-call-stack``).
+* **Dependencies, features and supply chain** — dependency and duplicate
+  management, additive features, download/build separation, contract/ABI
+  versioning and protection of sensitive data. Mostly High via ``cargo-audit``
+  / ``cargo-deny`` / ``cargo-vet``, SBOM, CI feature checks and symbol/ABI
+  diffing, with CodeQL adding security-focused checks.
+* **Process, documentation and qualification** — compiler qualification, MSRV,
+  review environment, macro/testing strategy, trait/design guidelines, test
+  coverage on generics, symbol visibility and lifetimes. Medium, argued through
+  review, architecture decision records, rustdoc and tests.
+* **Classification:** about half of the topics are *Required* and about half
+  are *Advisory* / *Document*. The *Required* items concentrate on ``unsafe``
+  usage, FFI boundaries, panic and overflow behavior, and dependency
+  management.
+
+In summary, enforceable coding-style and correctness topics are well covered by
+automated tooling (primarily Clippy and ``rustc``), while safety-argument,
+design and process topics rely on documented review and supporting tools.
 
 
 During the S-CORE project formatting and clippy checks are enforced. Miri can
@@ -289,11 +266,51 @@ settings are maintained centrally in the
   for safety-critical code requiring stricter enforcement.
 
 
-Explanation of ARA Applications in Rust
-=======================================
+Tooling Evidence and References
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AUTOSAR also shares a public available document that explains how to use Rust in
-ARA applications as Rust is offering safety and performance advantages. While
+The ``rustc`` and Clippy lints, the Clippy configuration and the release
+profile selected in ``score_rust_policies`` all correspond to documented,
+upstream features. The following authoritative, openly available sources back
+those choices and can be used as evidence for the safety and security argument
+(the CodeQL sources are already linked in the *Rust Tooling: CodeQL* section
+above):
+
+* `Clippy lint index <https://rust-lang.github.io/rust-clippy/master/index.html>`_ —
+  the complete, searchable catalogue of Clippy lints. Every Clippy lint selected
+  in ``score_rust_policies`` (for example ``undocumented_unsafe_blocks``,
+  ``missing_panics_doc``, ``wildcard_imports``, ``declare_interior_mutable_const``,
+  ``unwrap_used``, ``panic_in_result_fn``, ``let_underscore_must_use``,
+  ``wildcard_enum_match_arm`` and the ``cast_*``, ``shadow_*`` and pointer-cast
+  families) is listed here with its lint group and default level.
+* `Clippy configuration <https://doc.rust-lang.org/clippy/configuration.html>`_ —
+  documents the ``clippy.toml`` options used by the policy, including ``msrv``
+  and per-lint configuration, and how lint levels are applied.
+* `rustc lint listing <https://doc.rust-lang.org/rustc/lints/listing/>`_ —
+  the compiler's built-in lints, split into
+  `allowed-by-default <https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html>`_
+  and `warn-by-default <https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html>`_.
+  This documents the ``rustc`` lints enabled by the policy, including
+  ``unsafe_op_in_unsafe_fn`` (denied in the strict profile), ``unreachable_pub``,
+  ``missing_docs``, ``unused_results``, ``let_underscore_drop``,
+  ``elided_lifetimes_in_paths``, ``single_use_lifetimes``,
+  ``trivial_numeric_casts``, ``unit_bindings``, ``unnameable_types``,
+  ``variant_size_differences`` and the ``unused`` group.
+* `Cargo manifest: the [lints] section <https://doc.rust-lang.org/cargo/reference/manifest.html#the-lints-section>`_ —
+  documents the ``[lints.rust]`` and ``[lints.clippy]`` tables and the
+  ``level`` / ``priority`` semantics used by the policy profiles.
+* `Cargo profiles reference <https://doc.rust-lang.org/cargo/reference/profiles.html>`_ —
+  documents the ``overflow-checks`` profile setting used in the policy's
+  ``[profile.release]`` (``overflow-checks = true``). Note that Cargo's release
+  profile defaults to ``overflow-checks = false``, so the policy sets it
+  explicitly.
+
+
+Explanation of ARA Applications in Rust
+---------------------------------------
+
+AUTOSAR also shares a publicly available document that explains how to use Rust
+in ARA applications as Rust offers safety and performance advantages. While
 ecosystem support is still maturing, Rust-based ARA applications can lead to
 safer, more reliable automotive software, especially in safety-critical and
 high-performance domains.
