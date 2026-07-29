@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -614,7 +614,7 @@
                   
   <section id="writing-rust-code-incl-coding-guidelines">
 <h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-2be02eca">
+<div class="need_container docutils container" id="SNCB-42f20cba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -661,45 +661,35 @@
 <p>For writing Rust code in SCORE, especially for safety- and
 security-relevant software, the following guidance and tooling references
 apply.</p>
+<p>This page provides the rationale, the guideline and tooling landscape, and a
+project-wide set of practices for writing Rust in SCORE. The concrete,
+enforceable rules (the <code class="docutils literal notranslate"><span class="pre">rustc</span></code> / Clippy lint configuration and the release
+profile) are maintained centrally in the <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> repository and
+are referenced from the <a class="reference internal" href="#conclusions-for-s-core">Conclusions for S-CORE</a> section below.</p>
 <section id="coding-guidelines">
 <h3>Coding Guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h3>
 <p>The following coding guidelines and reference documents are relevant for
 Rust development in SCORE:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>A safety- and cybersecurity-oriented Rust baseline is used as the primary</dt><dd><p>reference for safety- and security-related development and for arguing
-safety according to ISO 26262 or RTCA DO-178C combined with RTCA DO-332.
-It provides a comprehensive set of recommendations for using Rust in
-safety-critical systems, including language features, coding practices, and
-tool usage.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><a class="reference external" href="https://coding-guidelines.arewesafetycriticalyet.org/">Safety-Critical Rust Coding Guidelines</a></dt><dd><p>are still under development and currently only define a subset of the
-desired rules.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><a class="reference external" href="https://anssi-fr.github.io/rust-guide/">Secure Rust Guidelines (unstable)</a></dt><dd><p>complement this baseline. ANSSI focuses more on process and architecture
+<li><p>A safety- and cybersecurity-oriented Rust baseline (referred to as “the
+baseline” throughout this document) is used as the primary reference for
+safety- and security-related development and for arguing safety according to
+ISO 26262 or RTCA DO-178C combined with RTCA DO-332. It provides a
+comprehensive set of recommendations for using Rust in safety-critical
+systems, including language features, coding practices, and tool usage.</p></li>
+<li><p><a class="reference external" href="https://coding-guidelines.arewesafetycriticalyet.org/">Safety-Critical Rust Coding Guidelines</a>
+are still under development and currently only define a subset of the
+desired rules.</p></li>
+<li><p><a class="reference external" href="https://anssi-fr.github.io/rust-guide/">Secure Rust Guidelines (unstable)</a>
+complement this baseline. ANSSI focuses more on process and architecture
 guidance, while the baseline is more concrete regarding tool usage and
-enforceable checks.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><a class="reference external" href="https://www.kernel.org/doc/Documentation/rust/coding-guidelines.rst">Linux Kernel Rules</a></dt><dd><p>mainly define formatting and documentation requirements for Rust in the
-Linux kernel and do not provide broader static code analysis rules.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language</a></dt><dd><p>overlaps strongly with this baseline and is therefore primarily relevant as an
-additional cross-reference.</p>
-</dd>
-</dl>
-</li>
+enforceable checks.</p></li>
+<li><p><a class="reference external" href="https://www.kernel.org/doc/Documentation/rust/coding-guidelines.rst">Linux Kernel Rules</a>
+mainly define formatting and documentation requirements for Rust in the
+Linux kernel and do not provide broader static code analysis rules.</p></li>
+<li><p><a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6, Applicability of MISRA C:2025 to the Rust Programming Language</a>
+overlaps strongly with this baseline and is therefore primarily relevant as an
+additional cross-reference.</p></li>
 </ul>
 </section>
 <section id="state-of-rust-safety-critical-tooling">
@@ -723,31 +713,19 @@ enable certification and safe use of Rust in automotive applications.</p>
 <p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/tree/main/subcommittee/coding-guidelines/">Safety-Critical Rust Consortium Guidelines</a></p>
 <p><a class="reference external" href="https://google.github.io/learn_unsafe_rust/">Learn unsafe Rust</a></p>
 <p><a class="reference external" href="https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html">Rust language</a></p>
-<p>The linked document provides a current overview of the tooling landscape for
-certifying Rust in safety-critical applications, presenting a
-community-approved list of essential tools and tracking their development
-status. It also explores whether developing specialized training curricula for
-safety-critical Rust is necessary, potentially requiring a separate
-subcommittee. The document details the state of specific tools, such as
-compilers and analysis utilities, by outlining their intended purposes,
-certification requirements, and their availability or progress. While some
-tools, such as the Ferrocene compiler, are already available or being actively
-developed, others remain under evaluation or are not yet accessible.</p>
 <p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/blob/main/subcommittee/tooling/mission-statement.md">Mission Statement - Tooling Subcommittee</a></p>
 </section>
 <section id="misra-vs-cert">
 <h3>MISRA vs CERT<a class="headerlink" href="#misra-vs-cert" title="Link to this heading">#</a></h3>
-<p>This issue contrasts the MISRA and CERT coding standards, highlighting their
-different approaches to software safety and security. MISRA is noted for its
-restrictive language subsetting and complex compliance process, often imposing
-outdated or ineffective rules that do not guarantee improved safety or
-security. This can create unnecessary work for developers without clear
-benefits and is sometimes inconsistent across languages. CERT, on the other
-hand, is praised for its focus on practical, consensus-based rules that target
-real security vulnerabilities in existing code, avoiding excessive constraints.
-The overall recommendation is to favor guidelines like CERT’s: practical,
-evidence-based, and focused on real-world issues, over rigid, untested
-standards that hinder adoption and developer productivity.</p>
+<p>MISRA and CERT represent two different approaches to safety- and
+security-oriented coding standards. MISRA relies on restrictive language
+subsetting and a formal compliance process, which can add effort without a
+proportional safety or security benefit and is not always consistent across
+languages. CERT focuses on practical, consensus-based rules that target real
+security vulnerabilities in existing code. For Rust in SCORE the CERT-style
+approach — practical, evidence-based and focused on real-world issues — is
+preferred over rigid language subsetting, which is consistent with the Clippy-
+and compiler-based enforcement used in this project.</p>
 <p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/75/">MISRA vs Cert</a></p>
 <p>In 2026 the Coding Guidelines Subcommittee of the SCRC are aiming to have
 MISRA C and CERT C mapped to Rust, with</p>
@@ -774,37 +752,19 @@ associated tooling. It supports Rust (see
 and <a class="reference external" href="https://codeql.github.com/codeql-query-help/rust-cwe/">https://codeql.github.com/codeql-query-help/rust-cwe/</a>).</p>
 <p>Typical problem classes detected by CodeQL for Rust include:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>injection vulnerabilities (e.g., SQL injection, path traversal,</dt><dd><p>regex injection, log injection, XSS)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>insecure communication and transport usage (e.g., non-HTTPS URLs,</dt><dd><p>disabled TLS certificate checks)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>cryptographic weaknesses (e.g., hard-coded cryptographic values,</dt><dd><p>weak algorithms or weak hashing)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>sensitive data exposure (e.g., cleartext logging, cleartext</dt><dd><p>transmission or storage)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>request and input abuse patterns (e.g., SSRF, uncontrolled allocation</dt><dd><p>size from untrusted input)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>unsafe memory-related patterns relevant at Rust unsafe boundaries</dt><dd><p>(e.g., access-after-lifetime-ended, invalid pointer access,
-constructor initialization issues)</p>
-</dd>
-</dl>
-</li>
+<li><p>injection vulnerabilities (e.g., SQL injection, path traversal,
+regex injection, log injection, XSS)</p></li>
+<li><p>insecure communication and transport usage (e.g., non-HTTPS URLs,
+disabled TLS certificate checks)</p></li>
+<li><p>cryptographic weaknesses (e.g., hard-coded cryptographic values,
+weak algorithms or weak hashing)</p></li>
+<li><p>sensitive data exposure (e.g., cleartext logging, cleartext
+transmission or storage)</p></li>
+<li><p>request and input abuse patterns (e.g., SSRF, uncontrolled allocation
+size from untrusted input)</p></li>
+<li><p>unsafe memory-related patterns relevant at Rust unsafe boundaries
+(e.g., access-after-lifetime-ended, invalid pointer access,
+constructor initialization issues)</p></li>
 </ul>
 <p>CodeQL’s key strength is inter-procedural data-flow/taint tracking,
 which complements compiler and lint checks.</p>
@@ -819,8 +779,8 @@ uphold its safety requirements.</p>
 <section id="conclusions-for-s-core">
 <h3>Conclusions for S-CORE<a class="headerlink" href="#conclusions-for-s-core" title="Link to this heading">#</a></h3>
 <p>The current baseline includes general Rust safety and security topics together
-with related rules and recommendations. The following table shows how each
-topic is captured in practice, including automated checks (by tool and tool option) and supporting
+with related rules and recommendations. The results summarized below show how
+each topic is captured in practice, including automated checks (by tool and tool option) and supporting
 process measures. Where no automated check exists, coverage is captured
 through manual review, process controls, or architecture decisions.</p>
 <p>The classification follows a MISRA-style convention:</p>
@@ -829,1215 +789,59 @@ through manual review, process controls, or architecture decisions.</p>
 <li><p>Advisory — Recommended. Deviations should be documented when practical.</p></li>
 <li><p>Document — The decision and its reasoning must be documented regardless of outcome.</p></li>
 </ul>
-<p>The matrix below summarizes overall coverage for these topics. The
+<p>The summary below aggregates the overall coverage for these topics. The
 <cite>Cargo.toml</cite> profiles further below provide a practical baseline and
 intentionally contain a recommended subset of checks.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 50 </span><span class="caption-text">Overlap Summary Matrix (Baseline Measures)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 19.0%" />
-<col style="width: 11.1%" />
-<col style="width: 9.5%" />
-<col style="width: 7.9%" />
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-<col style="width: 17.5%" />
-<col style="width: 6.3%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Automated (Baseline)</p></th>
-<th class="head"><p>CodeQL</p></th>
-<th class="head"><p>Clippy</p></th>
-<th class="head"><p>Rustc</p></th>
-<th class="head"><p>Other Tooling / Process</p></th>
-<th class="head"><p>Combined</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Compiler qualification</p></td>
-<td><p>Document, Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Process/evidence</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Dependency management</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>cargo-audit, cargo-deny, cargo-vet, SBOM</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>async/await decision</p></td>
-<td><p>Document, Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Architecture decision record</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Extension trait guidelines</p></td>
-<td><p>Document, Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review guideline</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Minimum Supported Rust Version</p></td>
-<td><p>Document, Advisory</p></td>
-<td><p>cargo plugin</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (stable toolchain pinning, rust-version policy)</p></td>
-<td><p>Toolchain pinning in CI</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Shadowing style</p></td>
-<td><p>Document, Advisory</p></td>
-<td><p>Partially, clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (shadow_reuse/shadow_unrelated as warn, shadow_same as allow)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review style guide</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Code review environment</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Process/tooling setup</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Macro review and testing strategy</p></td>
-<td><p>Document, Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Tests, trybuild, review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Module file naming</p></td>
-<td><p>Document, Advisory</p></td>
-<td><p>Partially</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (no strong built-in lint)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Custom checks</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Default trait implementations</p></td>
-<td><p>Document, Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Design guideline</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Usage of unwrap in mutex lock</p></td>
-<td><p>Document, Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (unwrap_used with documented exception policy)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review policy</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Document undesirable but not unsafe hardware effects</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Safety documentation</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>FFI: Check values at boundary</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>FFI tests, fuzzing, review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Safe wrapper for unsafe interfaces</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Design/review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Document unsafe assumptions in Safety: clause</p></td>
-<td><p>Required</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (undocumented_unsafe_blocks)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Minimal scope for unsafe</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (policy/review support, no single strong lint)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>cargo-geiger, review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Unsafe block in unsafe function</p></td>
-<td><p>Required</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (supporting only, project-dependent)</p></td>
-<td><p>H (unsafe_op_in_unsafe_fn)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Safety documentation for unsafe functions</p></td>
-<td><p>Required</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (manual documentation/review in profile baseline)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Rustdoc + review process</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Panic documentation on functions</p></td>
-<td><p>Required</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (missing_panics_doc)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Global mutable state with sound wrapper</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review/design</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>FFI rules from ANSII</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>FFI conformance process</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Inline assembly rules from reference</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Manual asm review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Automated contract versioning</p></td>
-<td><p>Advisory</p></td>
-<td><p>symbols</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Symbol/ABI diff tooling</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Pointer to reference conversion</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M</p></td>
-<td><p>M (cast_ptr_alignment, ptr_cast_constness, ref_as_ptr, transmute_ptr_to_ptr)</p></td>
-<td><p>M (invalid_reference_casting plus diagnostics)</p></td>
-<td><p>Review/tests</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Define proper panic handling</p></td>
-<td><p>Document, Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (panic_in_result_fn as warn; unwrap_used and panicking_overflow_checks evaluated for usefulness)</p></td>
-<td><p>M (panic strategy/profile settings)</p></td>
-<td><p>Panic strategy in CI/profile</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>catch_unwind only for controlled shutdown</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (no direct strong lint)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review policy</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Deref misuse for inheritance</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (no direct strong lint)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review/style</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Transitive interior mutability documentation</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Documentation process</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>No internal mutability in constants</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (declare_interior_mutable_const)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Prefer cfg!() over #[cfg()]</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review/custom linting</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Features are additive, not exclusive</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Cargo feature CI checks</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>No deprecated interfaces from core/std</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (deprecated in lint profile)</p></td>
-<td><p>H (deprecated)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>No nightly features</p></td>
-<td><p>Required</p></td>
-<td><p>rustc</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (stable compiler policy; unstable_features on nightly)</p></td>
-<td><p>Stable toolchain enforcement</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>No wildcard in imports</p></td>
-<td><p>Required</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (wildcard_imports)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Ensure formatting and lints (e.g., in CI)</p></td>
-<td><p>Advisory</p></td>
-<td><p>rustfmt + clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (CI clippy gate)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>rustfmt in CI</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>No raw identifiers</p></td>
-<td><p>Required</p></td>
-<td><p>grep</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>grep/custom check</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Rustc linter</p></td>
-<td><p>Advisory</p></td>
-<td><p>rustc</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (curated rustc baseline profile; extended edition/future lints enabled per toolchain support)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Clippy linter</p></td>
-<td><p>Advisory</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (curated warn/deny/allow clippy profile)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Strong typing for error detection at compile time</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (type system, borrow checker, trait bounds)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Structures replace many arguments</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (style/review guidance)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review/style</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Testing trait requirements on trait implementations</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Tests/property tests</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Test coverage on generics</p></td>
-<td><p>Advisory</p></td>
-<td><p>coverage</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Coverage tooling</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Avoid as for conversions</p></td>
-<td><p>Required</p></td>
-<td><p>clippy</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (as_underscore, cast_lossless, cast_possible_truncation, cast_possible_wrap, cast_ptr_alignment, cast_sign_loss)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Error/Option instead of magic values</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (partial style support)</p></td>
-<td><p>M (type checks support pattern, no direct rule)</p></td>
-<td><p>Review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Resource Acquisition Is Initialization</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (ownership and Drop semantics, no direct lint)</p></td>
-<td><p>Review/tests</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Overflow checking</p></td>
-<td><p>Required</p></td>
-<td><p>rustc</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (release overflow-checks enabled)</p></td>
-<td><p>Release profile setting</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Dynamic memory design</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Allocator/system design checks</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Stack checking</p></td>
-<td><p>Required</p></td>
-<td><p>rustc</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (limited compiler support)</p></td>
-<td><p>cargo-call-stack, external analysis</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Concurrency system design (timing constraints)</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>loom, WCET, system analysis</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Document cancellation safety of async functions</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Documentation/review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Explicit task dropping intention</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (let_underscore_future as supporting signal)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Runtime policy/review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Planning ahead for Pin/Send</p></td>
-<td><p>Document, Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (Send and lifetime trait-bound checks)</p></td>
-<td><p>Design constraints review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Minimize duplicated dependencies because of versioning</p></td>
-<td><p>Required</p></td>
-<td><p>cargo</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>cargo tree, cargo-deny</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Minimal scope for symbols</p></td>
-<td><p>Advisory</p></td>
-<td><p>(clippy)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (redundant_pub_crate as supporting signal)</p></td>
-<td><p>M (unreachable_pub, visibility diagnostics)</p></td>
-<td><p>Visibility checks/review</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Multi-crate design to minimize cyclic dependencies</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>cargo graph, dependency analysis</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Usize should only measure memory, not environment quantities</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (no direct strong lint)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review/style</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Separation of download and build steps</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>CI sandboxing/pipeline controls</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-odd"><td><p>Special protection of sensitive data</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Secret handling process</p></td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Marker traits for formal documentation</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (trait-bound enforcement mechanism)</p></td>
-<td><p>Review/formal method support</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Lifetime and pointers</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H (borrow checker, lifetime analysis)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>H</p></td>
-</tr>
-<tr class="row-even"><td><p>Atomic access modes</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (no explicit lint in current baseline profile block)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review for ordering rationale</p></td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Unintended matches</p></td>
-<td><p>Advisory</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (wildcard_enum_match_arm)</p></td>
-<td><p>M (non_exhaustive_omitted_patterns)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-even"><td><p>Logically significant return values should be #[must_use]</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M (let_underscore_must_use)</p></td>
-<td><p>M (unused_results in profile; must_use semantics by language)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>M</p></td>
-</tr>
-<tr class="row-odd"><td><p>Complex drop logic should be called explicitly</p></td>
-<td><p>Required</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>L (no direct strong lint)</p></td>
-<td><ul class="simple">
-<li></li>
-</ul>
-</td>
-<td><p>Review/tests</p></td>
-<td><p>M</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="summary-of-results">
+<h4>Summary of Results<a class="headerlink" href="#summary-of-results" title="Link to this heading">#</a></h4>
+<p>The assessment covers different safety- and security-relevant topics from the
+Rust baseline. For each topic the available automated checks (CodeQL, Clippy,
+<code class="docutils literal notranslate"><span class="pre">rustc</span></code> and other tooling) together with the supporting process measures were
+rated for their combined overall coverage as High (H), Medium (M) or Low (L).</p>
+<p>The topics group into the clusters below. None of them falls into the Low
+category, so every topic is addressed by at least a solid combination of
+tooling and process:</p>
+<ul class="simple">
+<li><p><strong>Unsafe code and FFI boundaries</strong> — documenting and scoping <code class="docutils literal notranslate"><span class="pre">unsafe</span></code>,
+safe wrappers, FFI value checks, inline assembly and raw-pointer/reference
+conversions. The enforceable parts reach High coverage through Clippy
+(<code class="docutils literal notranslate"><span class="pre">undocumented_unsafe_blocks</span></code>) and <code class="docutils literal notranslate"><span class="pre">rustc</span></code> (<code class="docutils literal notranslate"><span class="pre">unsafe_op_in_unsafe_fn</span></code>),
+with CodeQL adding data-flow checks at pointer/reference boundaries; the
+remaining boundary checks rely on FFI tests, fuzzing and review (Medium).</p></li>
+<li><p><strong>Panic, error and overflow handling</strong> — panic documentation and strategy,
+<code class="docutils literal notranslate"><span class="pre">catch_unwind</span></code> usage, <code class="docutils literal notranslate"><span class="pre">unwrap</span></code> policy, overflow checks, <code class="docutils literal notranslate"><span class="pre">Result</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Option</span></code> over magic values and <code class="docutils literal notranslate"><span class="pre">#[must_use]</span></code> return values. Largely High
+via Clippy (<code class="docutils literal notranslate"><span class="pre">missing_panics_doc</span></code>) and compiler/profile settings (release
+<code class="docutils literal notranslate"><span class="pre">overflow-checks</span></code>), complemented by review.</p></li>
+<li><p><strong>Lint and language hygiene</strong> — import, style and edition rules (no wildcard
+imports, no raw identifiers, no nightly, no deprecated, <code class="docutils literal notranslate"><span class="pre">cfg!</span></code>, <code class="docutils literal notranslate"><span class="pre">as</span></code>
+casts, shadowing), formatting and the curated Clippy/<code class="docutils literal notranslate"><span class="pre">rustc</span></code> profiles, and
+strong typing. This cluster has the strongest automation and is almost
+entirely High through Clippy and <code class="docutils literal notranslate"><span class="pre">rustc</span></code>.</p></li>
+<li><p><strong>Concurrency and async</strong> — async/await decision, timing/concurrency design,
+cancellation safety, explicit task dropping and <code class="docutils literal notranslate"><span class="pre">Pin</span></code> / <code class="docutils literal notranslate"><span class="pre">Send</span></code> planning.
+Predominantly Medium and process-driven (<code class="docutils literal notranslate"><span class="pre">loom</span></code>, WCET analysis,
+architecture decision records and review).</p></li>
+<li><p><strong>Memory and resource management</strong> — dynamic-memory design, stack checking,
+RAII and <code class="docutils literal notranslate"><span class="pre">usize</span></code> usage. Medium, driven by design rules and dedicated
+tooling (allocator/system checks, <code class="docutils literal notranslate"><span class="pre">cargo-call-stack</span></code>).</p></li>
+<li><p><strong>Dependencies, features and supply chain</strong> — dependency and duplicate
+management, additive features, download/build separation, contract/ABI
+versioning and protection of sensitive data. Mostly High via <code class="docutils literal notranslate"><span class="pre">cargo-audit</span></code>
+/ <code class="docutils literal notranslate"><span class="pre">cargo-deny</span></code> / <code class="docutils literal notranslate"><span class="pre">cargo-vet</span></code>, SBOM, CI feature checks and symbol/ABI
+diffing, with CodeQL adding security-focused checks.</p></li>
+<li><p><strong>Process, documentation and qualification</strong> — compiler qualification, MSRV,
+review environment, macro/testing strategy, trait/design guidelines, test
+coverage on generics, symbol visibility and lifetimes. Medium, argued through
+review, architecture decision records, rustdoc and tests.</p></li>
+<li><p><strong>Classification:</strong> about half of the topics are <em>Required</em> and about half
+are <em>Advisory</em> / <em>Document</em>. The <em>Required</em> items concentrate on <code class="docutils literal notranslate"><span class="pre">unsafe</span></code>
+usage, FFI boundaries, panic and overflow behavior, and dependency
+management.</p></li>
+</ul>
+<p>In summary, enforceable coding-style and correctness topics are well covered by
+automated tooling (primarily Clippy and <code class="docutils literal notranslate"><span class="pre">rustc</span></code>), while safety-argument,
+design and process topics rely on documented review and supporting tools.</p>
 <p>During the S-CORE project formatting and clippy checks are enforced. Miri can
 be used to detect undefined behaviors. Also the code should compile with zero
 warnings. Additional guidelines by the Rust Community, the Rust Foundation and
@@ -2060,15 +864,55 @@ suitable for general SCORE components.</p></li>
 for safety-critical code requiring stricter enforcement.</p></li>
 </ul>
 </section>
+<section id="tooling-evidence-and-references">
+<h4>Tooling Evidence and References<a class="headerlink" href="#tooling-evidence-and-references" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">rustc</span></code> and Clippy lints, the Clippy configuration and the release
+profile selected in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> all correspond to documented,
+upstream features. The following authoritative, openly available sources back
+those choices and can be used as evidence for the safety and security argument
+(the CodeQL sources are already linked in the <em>Rust Tooling: CodeQL</em> section
+above):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rust-lang.github.io/rust-clippy/master/index.html">Clippy lint index</a> —
+the complete, searchable catalogue of Clippy lints. Every Clippy lint selected
+in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> (for example <code class="docutils literal notranslate"><span class="pre">undocumented_unsafe_blocks</span></code>,
+<code class="docutils literal notranslate"><span class="pre">missing_panics_doc</span></code>, <code class="docutils literal notranslate"><span class="pre">wildcard_imports</span></code>, <code class="docutils literal notranslate"><span class="pre">declare_interior_mutable_const</span></code>,
+<code class="docutils literal notranslate"><span class="pre">unwrap_used</span></code>, <code class="docutils literal notranslate"><span class="pre">panic_in_result_fn</span></code>, <code class="docutils literal notranslate"><span class="pre">let_underscore_must_use</span></code>,
+<code class="docutils literal notranslate"><span class="pre">wildcard_enum_match_arm</span></code> and the <code class="docutils literal notranslate"><span class="pre">cast_*</span></code>, <code class="docutils literal notranslate"><span class="pre">shadow_*</span></code> and pointer-cast
+families) is listed here with its lint group and default level.</p></li>
+<li><p><a class="reference external" href="https://doc.rust-lang.org/clippy/configuration.html">Clippy configuration</a> —
+documents the <code class="docutils literal notranslate"><span class="pre">clippy.toml</span></code> options used by the policy, including <code class="docutils literal notranslate"><span class="pre">msrv</span></code>
+and per-lint configuration, and how lint levels are applied.</p></li>
+<li><p><a class="reference external" href="https://doc.rust-lang.org/rustc/lints/listing/">rustc lint listing</a> —
+the compiler’s built-in lints, split into
+<a class="reference external" href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html">allowed-by-default</a>
+and <a class="reference external" href="https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html">warn-by-default</a>.
+This documents the <code class="docutils literal notranslate"><span class="pre">rustc</span></code> lints enabled by the policy, including
+<code class="docutils literal notranslate"><span class="pre">unsafe_op_in_unsafe_fn</span></code> (denied in the strict profile), <code class="docutils literal notranslate"><span class="pre">unreachable_pub</span></code>,
+<code class="docutils literal notranslate"><span class="pre">missing_docs</span></code>, <code class="docutils literal notranslate"><span class="pre">unused_results</span></code>, <code class="docutils literal notranslate"><span class="pre">let_underscore_drop</span></code>,
+<code class="docutils literal notranslate"><span class="pre">elided_lifetimes_in_paths</span></code>, <code class="docutils literal notranslate"><span class="pre">single_use_lifetimes</span></code>,
+<code class="docutils literal notranslate"><span class="pre">trivial_numeric_casts</span></code>, <code class="docutils literal notranslate"><span class="pre">unit_bindings</span></code>, <code class="docutils literal notranslate"><span class="pre">unnameable_types</span></code>,
+<code class="docutils literal notranslate"><span class="pre">variant_size_differences</span></code> and the <code class="docutils literal notranslate"><span class="pre">unused</span></code> group.</p></li>
+<li><p><a class="reference external" href="https://doc.rust-lang.org/cargo/reference/manifest.html#the-lints-section">Cargo manifest: the [lints] section</a> —
+documents the <code class="docutils literal notranslate"><span class="pre">[lints.rust]</span></code> and <code class="docutils literal notranslate"><span class="pre">[lints.clippy]</span></code> tables and the
+<code class="docutils literal notranslate"><span class="pre">level</span></code> / <code class="docutils literal notranslate"><span class="pre">priority</span></code> semantics used by the policy profiles.</p></li>
+<li><p><a class="reference external" href="https://doc.rust-lang.org/cargo/reference/profiles.html">Cargo profiles reference</a> —
+documents the <code class="docutils literal notranslate"><span class="pre">overflow-checks</span></code> profile setting used in the policy’s
+<code class="docutils literal notranslate"><span class="pre">[profile.release]</span></code> (<code class="docutils literal notranslate"><span class="pre">overflow-checks</span> <span class="pre">=</span> <span class="pre">true</span></code>). Note that Cargo’s release
+profile defaults to <code class="docutils literal notranslate"><span class="pre">overflow-checks</span> <span class="pre">=</span> <span class="pre">false</span></code>, so the policy sets it
+explicitly.</p></li>
+</ul>
+</section>
 </section>
 <section id="explanation-of-ara-applications-in-rust">
-<h2>Explanation of ARA Applications in Rust<a class="headerlink" href="#explanation-of-ara-applications-in-rust" title="Link to this heading">#</a></h2>
-<p>AUTOSAR also shares a public available document that explains how to use Rust in
-ARA applications as Rust is offering safety and performance advantages. While
+<h3>Explanation of ARA Applications in Rust<a class="headerlink" href="#explanation-of-ara-applications-in-rust" title="Link to this heading">#</a></h3>
+<p>AUTOSAR also shares a publicly available document that explains how to use Rust
+in ARA applications as Rust offers safety and performance advantages. While
 ecosystem support is still maturing, Rust-based ARA applications can lead to
 safer, more reliable automotive software, especially in safety-critical and
 high-performance domains.</p>
 <p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/AP/AUTOSAR_AP_EXP_ARARustApplications.pdf">AUTOSAR ARA Applications in Rust</a></p>
+</section>
 </section>
 </section>
 
@@ -2126,10 +970,14 @@ high-performance domains.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-clippy">Rust Tooling: Clippy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-codeql">Rust Tooling: CodeQL</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-miri">Rust Tooling: Miri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-for-s-core">Conclusions for S-CORE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-for-s-core">Conclusions for S-CORE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-results">Summary of Results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling-evidence-and-references">Tooling Evidence and References</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-ara-applications-in-rust">Explanation of ARA Applications in Rust</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-ara-applications-in-rust">Explanation of ARA Applications in Rust</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
