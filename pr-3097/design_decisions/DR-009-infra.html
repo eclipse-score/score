@@ -1078,7 +1078,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-07-17</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-b87f31aa">
+<div class="need_container docutils container" id="SNCB-555401cf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dep_elem_harmonization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1476,6 +1476,44 @@ record.</p>
 </section>
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
+<section id="automation">
+<h4>Automation<a class="headerlink" href="#automation" title="Link to this heading">#</a></h4>
+<p>If the checks are not automated, they must be performed manually (for example, using various checklists).
+In commercial projects, a specific person is usually designated as responsible and ultimately liable for the accuracy of these checklists.
+In an open‑source project, an inspection checklist can only serve an informational purpose, since a commercial distributor cannot rely on it.</p>
+<p>If checks are automated, however, a company that reuses the stack for commercial purposes need only
+review the implementation of the checks once and may then rely on their output for each module or component.</p>
+</section>
+<section id="integration-into-the-build-system">
+<h4>Integration into the build system<a class="headerlink" href="#integration-into-the-build-system" title="Link to this heading">#</a></h4>
+<p>The build system is the source of the information for the source code structure of your module as at the end it is building the software. Especially following two points are important:</p>
+<ul class="simple">
+<li><p><strong>variants</strong>. Based on feature flags used in the software one or another path/unit/component can be compiled</p></li>
+<li><p><strong>dependencies</strong>. Build system knows exactly what it builds.</p></li>
+</ul>
+<p>Small example: imagine you want an automated check — a simple one — that verifies your Component Architecture diagram (stored in a .puml file)
+is valid and correctly shows the decomposition of your component into units with the correct names.
+This cannot be done safely in Sphinx/sphinx-needs without parsing the build system output to determine what was actually built.
+Even a manual review is not fully reliable: the reviewer typically does not inspect build files,
+does not know which feature flags are enabled, and therefore cannot be certain which units are used.
+The build system, however, has that information.
+Embedding architecture checks into the build system lets you use build-time data directly and
+therefore perform the check against fully accurate information.</p>
+<p>Another example: suppose you need to ensure that an “ASIL B” component does not use disallowed third‑party QM libraries or depend on modules that are QM.
+Again, the only dependable solution is to rely on the build system’s information;
+any manual review based solely on an architecture diagram is at best an informed guess.</p>
+<p>Conclusion: some checks belong in Sphinx/sphinx-needs, while others are better performed at the build-system level.</p>
+</section>
+<section id="developer-experience-fast-turn-around-times">
+<h4>Developer experience &amp; fast turn-around times<a class="headerlink" href="#developer-experience-fast-turn-around-times" title="Link to this heading">#</a></h4>
+<p>We should consider not only the use case of generating metrics for project reporting, but also the developer experience.
+Automated checks should run immediately and give the developer feedback about whether their recent changes introduced a problem.
+Just as a developer compiles the software to verify that it still builds,
+they should be able to verify that process artifacts — such as component architecture diagrams or public API definitions — remain valid.</p>
+<p>These checks must be fast and reliable, re-running only the steps affected by the recent changes.
+For this reason, checks integrated directly into the build system are a better option than checks run during a Sphinx build.
+A Sphinx-based check would still depend on the build system’s output but may require a full rebuild because it cannot always determine exactly what changed.</p>
+</section>
 </section>
 <section id="non-goals">
 <h3>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h3>
@@ -1483,6 +1521,12 @@ record.</p>
 </section>
 <section id="options-considered">
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="tlrc-and-lobster">
+<h3>TLRC and LOBSTER<a class="headerlink" href="#tlrc-and-lobster" title="Link to this heading">#</a></h3>
+</section>
+<section id="extend-docs-as-code">
+<h3>Extend docs-as-code<a class="headerlink" href="#extend-docs-as-code" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="evaluation">
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
@@ -1552,11 +1596,20 @@ record.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-the-two-approaches-together">Bringing the two approaches together</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commercial-solutions-take-the-same-route">Commercial solutions take the same route</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#automation">Automation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-into-the-build-system">Integration into the build system</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-experience-fast-turn-around-times">Developer experience &amp; fast turn-around times</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tlrc-and-lobster">TLRC and LOBSTER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extend-docs-as-code">Extend docs-as-code</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
