@@ -384,9 +384,52 @@ record.
 
 ### Goals and Requirements
 
+#### Automation
+If the checks are not automated, they must be performed manually (for example, using various checklists).
+In commercial projects, a specific person is usually designated as responsible and ultimately liable for the accuracy of these checklists.
+In an open‑source project, an inspection checklist can only serve an informational purpose, since a commercial distributor cannot rely on it.
+
+If checks are automated, however, a company that reuses the stack for commercial purposes need only
+review the implementation of the checks once and may then rely on their output for each module or component.
+
+#### Integration into the build system
+The build system is the source of the information for the source code structure of your module as at the end it is building the software. Especially following two points are important:
+
+- **variants**. Based on feature flags used in the software one or another path/unit/component can be compiled
+- **dependencies**. Build system knows exactly what it builds.
+
+Small example: imagine you want an automated check — a simple one — that verifies your Component Architecture diagram (stored in a .puml file)
+is valid and correctly shows the decomposition of your component into units with the correct names.
+This cannot be done safely in Sphinx/sphinx-needs without parsing the build system output to determine what was actually built.
+Even a manual review is not fully reliable: the reviewer typically does not inspect build files,
+does not know which feature flags are enabled, and therefore cannot be certain which units are used.
+The build system, however, has that information.
+Embedding architecture checks into the build system lets you use build-time data directly and
+therefore perform the check against fully accurate information.
+
+Another example: suppose you need to ensure that an "ASIL B" component does not use disallowed third‑party QM libraries or depend on modules that are QM.
+Again, the only dependable solution is to rely on the build system’s information;
+any manual review based solely on an architecture diagram is at best an informed guess.
+
+Conclusion: some checks belong in Sphinx/sphinx-needs, while others are better performed at the build-system level.
+
+#### Developer experience & fast turn-around times
+We should consider not only the use case of generating metrics for project reporting, but also the developer experience.
+Automated checks should run immediately and give the developer feedback about whether their recent changes introduced a problem.
+Just as a developer compiles the software to verify that it still builds,
+they should be able to verify that process artifacts — such as component architecture diagrams or public API definitions — remain valid.
+
+These checks must be fast and reliable, re-running only the steps affected by the recent changes.
+For this reason, checks integrated directly into the build system are a better option than checks run during a Sphinx build.
+A Sphinx-based check would still depend on the build system’s output but may require a full rebuild because it cannot always determine exactly what changed.
+
 ### Non-Goals
 
 ## Options Considered
+
+### TLRC and LOBSTER
+
+### Extend docs-as-code
 
 ## Evaluation
 
