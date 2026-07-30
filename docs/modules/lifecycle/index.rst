@@ -29,7 +29,7 @@ Lifecycle
 .. comp_req:: Lifecycle
    :id: comp_req__lifecycle__launch
    :reqtype: Functional
-   :status: invalid
+   :status: valid
    :version: 1
    :security: NO
    :safety: ASIL_B

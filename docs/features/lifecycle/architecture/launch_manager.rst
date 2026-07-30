@@ -362,7 +362,7 @@ Dynamic architecture
    :status: valid
    :version: 1
    :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__monitoring_processes[version==1], feat_req__lifecycle__polling_interval[version==1], , feat_req__lifecycle__failure_detect[version==1]
+   :fulfils: feat_req__lifecycle__monitoring_processes[version==1], feat_req__lifecycle__polling_interval[version==1], feat_req__lifecycle__failure_detect[version==1]
    :includes:
    :belongs_to: feat__lifecycle[version==1]
 

@@ -384,7 +384,7 @@ Conditional Launching
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -650,7 +650,7 @@ Run targets
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -662,7 +662,7 @@ Run targets
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -802,7 +802,7 @@ Control Interface
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -844,7 +844,7 @@ Control Interface
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -942,7 +942,7 @@ Monitoring, Notification and Recovery
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -955,7 +955,7 @@ Monitoring, Notification and Recovery
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
@@ -968,7 +968,7 @@ Monitoring, Notification and Recovery
     :security: NO
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
-    :status: invalid
+    :status: valid
     :version: 1
     :valid_from: v1.0.0
 
