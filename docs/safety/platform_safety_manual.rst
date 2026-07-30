@@ -34,7 +34,8 @@ Assumptions of Use which are relevant for all users of any platform module.
 The specific Assumptions of Use relevant only for the users of a specific module are documented in the module's safety manual.
 That means that the platform safety manual always has to be read together with all its modules safety manuals.
 
-A platform module may contain both ASIL-relevant and QM components. The
+A platform module may contain both ASIL-relevant and QM components, see :ref:`verification-methods`
+for an overview of what is required for ASIL and QM components. The
 classification is performed at component level and depends on the intended
 execution context rather than on the module as a whole. Components that are
 intended to execute within an ASIL context are in scope of the applicable ASIL
