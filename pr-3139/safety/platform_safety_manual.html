@@ -609,7 +609,7 @@
                   
   <section id="platform-safety-manual">
 <h1>Platform Safety Manual<a class="headerlink" href="#platform-safety-manual" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-26bf0cda">
+<div class="need_container docutils container" id="SNCB-c01ea63f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_platform_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -659,14 +659,16 @@ It covers all assumed (Technical) Safety Requirements of the S-CORE SW platform 
 Assumptions of Use which are relevant for all users of any platform module.
 The specific Assumptions of Use relevant only for the users of a specific module are documented in the module’s safety manual.
 That means that the platform safety manual always has to be read together with all its modules safety manuals.</p>
-<p>A platform module may contain both ASIL-relevant and QM components. The
+<p>A platform module may contain both ASIL-relevant and QM components, see <a class="reference internal" href="../platform_management_plan/software_verification.html#verification-methods"><span class="std std-ref">Verification Methods</span></a>
+for an overview of what is required for ASIL and QM components. The
 classification is performed at component level and depends on the intended
 execution context rather than on the module as a whole. Components that are
 intended to execute within an ASIL context are in scope of the applicable ASIL
 safety lifecycle and shall be developed, verified, and released according to
-the corresponding ASIL process. Components that are not intended to execute
-within an ASIL context may remain QM, provided that freedom from interference
-with the safety context is justified in the respective module safety manual.</p>
+the corresponding ASIL process, see <a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__dependability__no_mixed_asil" title="stkh_req__dependability__no_mixed_asil"><em class="xref need">No mixed ASIL (stkh_req__dependability__no_mixed_asil)</em></a>.
+Components that are not intended to executewithin an ASIL context may remain QM,
+provided that freedom from interference with the safety context is justified in
+the respective module safety manual.</p>
 </section>
 <section id="assumed-platform-safety-requirements">
 <h2>Assumed Platform Safety Requirements<a class="headerlink" href="#assumed-platform-safety-requirements" title="Link to this heading">#</a></h2>
