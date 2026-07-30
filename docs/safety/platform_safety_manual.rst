@@ -40,7 +40,7 @@ classification is performed at component level and depends on the intended
 execution context rather than on the module as a whole. Components that are
 intended to execute within an ASIL context are in scope of the applicable ASIL
 safety lifecycle and shall be developed, verified, and released according to
-the corresponding ASIL process, see :ref:`stkh_req__dependability__no_mixed_asil`.
+the corresponding ASIL process, see :need:`stkh_req__dependability__no_mixed_asil`.
 Components that are not intended to executewithin an ASIL context may remain QM,
 provided that freedom from interference with the safety context is justified in
 the respective module safety manual.
