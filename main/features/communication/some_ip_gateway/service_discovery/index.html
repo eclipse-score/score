@@ -659,10 +659,10 @@ Thus it is likely read from one or multiple files.</p>
 This is done by sending an SOME/IP-SD messages containing an OfferService entry to the network.
 As long as the service is locally available the service offering is periodically (according to the configuration) renewed by sending a SOME/IP-SD messages containing an OfferService entry to the network.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-f1521c5f801a35d6681580cf5e575e885adbf830.svg" type="image/svg+xml" style="width:504px;height:398px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-d455b76a5a73e61eaf488fd022b712f6001400d8.svg" type="image/svg+xml" style="width:504px;height:398px;background:#FFFFFF;"></object></p>
 <p>Once the service ceased to exist locally, the SOME/IP communication stack sends a SOME/IP-SD message containing a StopOfferService entry to the network.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-49d57a786541faacedb990008c2dc18296c3ab43.svg" type="image/svg+xml" style="width:505px;height:269px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-1841de68b594395b3880862555ecb0ee855c7a55.svg" type="image/svg+xml" style="width:505px;height:269px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">mw::com::&lt;Proxy&gt;::StartFindService()</span></code> function can tell us that a service is offered or stopped. But using it is awkward / complicated.</p>
@@ -682,7 +682,7 @@ Here, initial reception is the first reception after a previous service loss or 
 <li><p>after a link-down/link-up event</p></li>
 </ul>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-16c2503e9dc218d8170a147698812505d618a7ff.svg" type="image/svg+xml" style="width:461px;height:356px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-9d63ecc141e35913ff6e27d29336699332d3ccd5.svg" type="image/svg+xml" style="width:461px;height:356px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The SOME/IP communication stack can create the service before receiving an OfferService,
@@ -692,7 +692,7 @@ Thus the decision is to create the service only after having received an OfferSe
 </div>
 <p>Upon reception of SOME/IP-SD message containing an StopOfferService entry, the SOME/IP communication stack stops the service offered via IPC as well.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-69b7df11691d6959d738cd08f6b1e31c38c3d2d6.svg" type="image/svg+xml" style="width:611px;height:311px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-398be58298ed4a28cff6385e70f6a670362aa3e4.svg" type="image/svg+xml" style="width:611px;height:311px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the service times out we may internally stop the service, but keep it alive until another timeout is reached.
@@ -707,10 +707,10 @@ If both questions are answered positively, the SOME/IP communication stack respo
 <p>This will <strong>not</strong> trigger creation of the service internally by any means.
 Only lookup of running services is done.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-e0e9087ab186bb029439556c5c22523ce3f71e1d.svg" type="image/svg+xml" style="width:352px;height:300px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-a6a0831ec2be147a79dd2f2fdf6b877e19654cb6.svg" type="image/svg+xml" style="width:352px;height:300px;background:#FFFFFF;"></object></p>
 <p>If a service is configured to be needed and no OfferService has been received yet, the SOME/IP communication stack shall send a SOME/IP-SD message containing a FindService entry.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-e58db1a3bceaf25e68eed74963022f65a32ace1d.svg" type="image/svg+xml" style="width:284px;height:273px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-d0808a5b2efa4826cbc37d6913505603b0800252.svg" type="image/svg+xml" style="width:284px;height:273px;background:#FFFFFF;"></object></p>
 </section>
 </section>
 
@@ -772,7 +772,7 @@ Only lookup of running services is done.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/some_ip_gateway/service_discovery/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/features/communication/some_ip_gateway/service_discovery/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

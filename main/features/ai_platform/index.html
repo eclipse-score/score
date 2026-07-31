@@ -622,7 +622,7 @@
                   
   <section id="ai-platform">
 <span id="ai-platform-feature"></span><h1>AI Platform<a class="headerlink" href="#ai-platform" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-15c3c496">
+<div class="need_container docutils container" id="SNCB-e7e67cde">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -750,7 +750,7 @@ Keeping IOUtils as a separate library helps isolate input handling logic from in
 making it easier to test, reuse, and extend preprocessing across different models and backends.
 This structure allows isolating and certifying components independently, which is essential for scalable safety certification.</p>
 <p class="plantuml">
-<object data="../../_images/plantuml-2b94abb6fff0cbcb7d94eaa18e8c3580811dc840.svg" type="image/svg+xml" style="width:815px;height:520px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-4a2340c82d035e80696b0d67fe86fc14d901f14f.svg" type="image/svg+xml" style="width:815px;height:520px;background:#FFFFFF;"></object></p>
 <p>Key benefits of this concept include:</p>
 <ul class="simple">
 <li><p>Static backend selection at compile time ensures deterministic behavior and reduces runtime complexity</p></li>
@@ -766,7 +766,7 @@ All backend adapters inherit from a shared abstract interface, ensuring consiste
 One of the main challenges of this approach is to find the common set of features between all backend APIs to be abstracted.
 Finding the right balance between abstraction and feature set may be challenging.</p>
 <p class="plantuml">
-<object data="../../_images/plantuml-45186397932e2fad442957b5ef78bfe5f7334251.svg" type="image/svg+xml" style="width:681px;height:235px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-35958c159c7d97a3ae9e342b363085a364c48e9c.svg" type="image/svg+xml" style="width:681px;height:235px;background:#FFFFFF;"></object></p>
 </section>
 <section id="backend-selection-mechanism">
 <h4>Backend Selection Mechanism<a class="headerlink" href="#backend-selection-mechanism" title="Link to this heading">#</a></h4>
@@ -774,7 +774,7 @@ Finding the right balance between abstraction and feature set may be challenging
 Depending on the configuration, either the ONNX Runtime, TensorRT, or a mock adapter is compiled into the application.
 The static backend selection at compile time ensures deterministic behavior and reduces runtime complexity which simplifies certification.</p>
 <p class="plantuml">
-<object data="../../_images/plantuml-8395172fb0103cdb0f5eb21f1dfffa2e6197bd32.svg" type="image/svg+xml" style="width:579px;height:259px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-453be3d2aac002b703d66c05ca8539320cc85596.svg" type="image/svg+xml" style="width:579px;height:259px;background:#FFFFFF;"></object></p>
 </section>
 </section>
 <section id="data-pipelining-and-gpu-communication-abstraction">
@@ -987,7 +987,7 @@ The adapter-based architecture allows better testability and reuse across QNX an
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/ai_platform/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/features/ai_platform/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
