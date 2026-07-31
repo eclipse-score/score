@@ -23,11 +23,11 @@ Tracing Architecture
    :safety: QM
    :status: valid
    :version: 1
-   :includes: logic_arc_int__tracing__tracing
 
 
 .. logic_arc_int:: Tracing
    :id: logic_arc_int__tracing__tracing
+   :included_by: feat__tracing
    :security: YES
    :safety: ASIL_B
    :status: valid

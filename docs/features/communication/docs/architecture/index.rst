@@ -42,7 +42,6 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    :safety:  ASIL_B
    :status: valid
    :version: 1
-   :includes: logic_arc_int__communication__user
 
 .. feat_arc_sta:: Feature Architecture Communication
    :id: feat_arc_sta__com__communication
@@ -131,6 +130,7 @@ The public API for the frontend is defined as:
 
 .. logic_arc_int:: Communication User Interface
    :id: logic_arc_int__communication__user
+   :included_by: feat__com_communication
    :security: YES
    :safety: ASIL_B
    :status: valid

@@ -23,12 +23,12 @@ Logging Architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :includes: logic_arc_int__log_cpp__logging, logic_arc_int__log_rust__logging_rust
    :uses: logic_arc_int__baselibs__json[version==1], logic_arc_int__baselibs__filesystem[version==1]
 
 
 .. logic_arc_int:: Logging
    :id: logic_arc_int__log_cpp__logging
+   :included_by: feat__logging
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -37,6 +37,7 @@ Logging Architecture
 
 .. logic_arc_int:: Logging Rust
    :id: logic_arc_int__log_rust__logging_rust
+   :included_by: feat__logging
    :security: YES
    :safety: ASIL_B
    :status: valid

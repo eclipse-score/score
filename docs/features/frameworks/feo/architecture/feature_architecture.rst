@@ -102,7 +102,6 @@ Static Architecture
     :safety: ASIL_B
     :status: valid
     :version: 1
-    :includes: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
 
 .. feat_arc_sta:: Static Architecture
   :id: feat_arc_sta__feo__main
@@ -141,6 +140,7 @@ Logical Interfaces
 
 .. logic_arc_int:: Activity
   :id: logic_arc_int__feo__activity
+  :included_by: feat__feo
   :security: YES
   :safety: ASIL_B
   :status: valid
@@ -152,6 +152,7 @@ Logical Interfaces
 
 .. logic_arc_int:: Primary Agent
   :id: logic_arc_int__feo__prim_agent
+  :included_by: feat__feo
   :security: YES
   :safety: ASIL_B
   :status: valid
@@ -163,6 +164,7 @@ Logical Interfaces
 
 .. logic_arc_int:: Secondary Agent
   :id: logic_arc_int__feo__sec_agent
+  :included_by: feat__feo
   :security: YES
   :safety: ASIL_B
   :status: valid
@@ -174,6 +176,7 @@ Logical Interfaces
 
 .. logic_arc_int:: Lifecycle Listener
   :id: logic_arc_int__feo__lifecycle
+  :included_by: feat__feo
   :security: YES
   :safety: ASIL_B
   :status: valid
