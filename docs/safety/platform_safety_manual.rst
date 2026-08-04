@@ -104,8 +104,8 @@ The S-CORE SW platform has no safety concept additional to its module's safety c
 The expectations towards the execution environment are described in the respective AoU, this is mainly that a safe posix operating system
 integrated into a target hardware which includes safety mechanisms which cover hardware related errors.
 
-The platform allows ASIL and QM components to coexist within the same module.
-Where components executing in an ASIL context depend on functionality that has
+The platform allows ASIL and QM components to coexist within the same feature.
+Where components executing in an ASIL context may utilize a functionality that has
 no direct safety purpose, freedom from interference shall be ensured between
 the safety-relevant and non-safety-relevant parts. This may require additional
 safety requirements to be allocated to components that otherwise only provide
