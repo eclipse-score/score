@@ -35,15 +35,15 @@ The specific Assumptions of Use relevant only for the users of a specific module
 That means that the platform safety manual always has to be read together with all its modules safety manuals.
 
 A platform module may contain both ASIL-relevant and QM components, see :ref:`verification-methods`
-for an overview of what is required for ASIL and QM components. The
-classification is performed at component level and depends on the intended
-execution context rather than on the module as a whole. Components that are
-intended to execute within an ASIL context are in scope of the applicable ASIL
-safety lifecycle and shall be developed, verified, and released according to
+for an overview of what is required for ASIL and QM components. The applicable classification is
+determined individually for each component based on the safety requirements allocated to it and
+its intended execution context, rather than being derived solely from the classification of the module
+as a whole. Components that are intended to execute within an ASIL context are in scope of the
+applicable ASIL safety lifecycle and shall be developed, verified, and released according to
 the corresponding ASIL process, see :need:`stkh_req__dependability__no_mixed_asil`.
 Components that are not intended to executewithin an ASIL context may remain QM,
 provided that freedom from interference with the safety context is justified in
-the respective module safety manual.
+the respective feature DFA see :need:`wp__feature_dfa`.
 
 Assumed Platform Safety Requirements
 ------------------------------------
@@ -119,7 +119,7 @@ services, the frontend forms part of the ASIL execution context and therefore
 must fulfil additional safety requirements derived from the need to maintain
 freedom from interference. In contrast, the ``datarouter`` daemon executes as a
 separate process and may remain QM, provided that the required freedom from
-interference is justified in the module safety manual.
+interference is justified in the feature DFA see :need:`wp__feature_dfa`.
 
 
 Safety Anomalies
