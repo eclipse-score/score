@@ -15,7 +15,7 @@
 .. doc_tool:: pytest
    :id: doc_tool__pytest
    :status: draft
-   :version: 9.0.1
+   :version: 9.0.3
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
@@ -33,6 +33,8 @@ Pytest is a Python testing framework that supports unit, integration and system
 testing. It provides fixtures, plugins, and multiple reporting formats to help
 developers write readable and maintainable tests for Python projects.
 
+Some S-CORE modules use pytest as a testing framework for unit and integration tests.
+
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
 | Inputs: Pytest-based test files (Python), Configuration files
@@ -47,7 +49,8 @@ Inputs and outputs
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
-- Project: pytest
+- Version: 9.0.3 [1]_ [2]_
+- S-CORE repository: https://github.com/eclipse-score/tooling/tree/main/python_basics/score_pytest
 - Official repository: https://github.com/pytest-dev/pytest
 - Official documentation: https://docs.pytest.org
 - Plugin ecosystem: https://docs.pytest.org/en/stable/reference.html#plugins
@@ -62,6 +65,7 @@ Installation
 .. code-block:: bash
 
     bazel_dep(name = "score_python_basics", version = "x.y.z")
+
 
 Integration
 ~~~~~~~~~~~
@@ -196,6 +200,10 @@ according to ISO 26262.
 ----------------------
 Based on method: validation of the software tool.
 
+.. note::
+  Pytest is an integral component of ITF and may be qualified either as part of the ITF qualification
+  process or independently, in which case the resulting qualification shall also be applicable to ITF.
+
 Requirements and testing aspects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Pytest is an open-source framework and does not provide formal, vendor-defined
@@ -204,3 +212,5 @@ features and plugins used and validate pytest against these requirements.
 
 .. [1] The tool version mentioned in this document is preliminary.
        It is subject to change and will be updated in future.
+.. [2] https://github.com/eclipse-score/tooling/blob/main/python_basics/requirements_3_11.txt or
+       https://github.com/eclipse-score/tooling/blob/main/python_basics/requirements_3_12.txt
