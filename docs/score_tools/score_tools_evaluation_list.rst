@@ -384,7 +384,7 @@ release, as part of the Tool Verification Report.
    * - 3-3
      - pytest
      - Python testing framework
-     - 9.0.1. (see [1]_)
+     - 9.0.3. (see [1]_)
      - YES
      - :need:`rl__testing_community`
      - :need:`doc_tool__pytest`
