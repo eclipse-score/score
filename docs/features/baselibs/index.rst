@@ -22,7 +22,7 @@ Base Libraries
    :status: valid
    :version: 1
    :safety: ASIL_B
-   :tags: feature_request
+   :tags: feature_request, baselibs
    :security: YES
    :realizes: wp__feat_request[version==1]
 

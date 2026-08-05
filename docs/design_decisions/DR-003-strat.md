@@ -20,6 +20,7 @@ SPDX-License-Identifier: Apache-2.0
 :status: proposed
 :context: Strategy
 :decision: Classify every module into one of three maturity levels — Release, Experimental, or Preview — based on requirement coverage and S-CORE process artifact completeness.
+:version: 1
 ```
 
 ---

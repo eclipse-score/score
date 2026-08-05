@@ -222,5 +222,5 @@ Requirements
    calculation (e.g. SHA-256, SHA-512) and checksum algorithms (e.g. CRC-32) over
    byte data and streams via a pluggable interface.
 
-.. needextend:: is_external == False and "__baselibs" in id
+.. needextend:: "c.this_doc()"
    :+tags: baselibs

@@ -249,3 +249,6 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+
+.. needextend:: "c.this_doc()"
+   :+tags: baselibs
