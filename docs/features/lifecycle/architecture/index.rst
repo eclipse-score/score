@@ -47,7 +47,6 @@ Interfaces
    :status: valid
    :version: 1
    :fulfils: feat_req__lifecycle__switch_run_targets[version==1], feat_req__lifecycle__liveliness_detection[version==1]
-   :includes: logic_arc_int_op__lifecycle__run, logic_arc_int_op__lifecycle__terminate,
 
    .. needarch::
       :scale: 50
