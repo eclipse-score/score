@@ -301,7 +301,6 @@ SCRC.
 
 Source usage note: normative decisions in this document are based on the
 S-CORE process and MISRA references (including
-`MISRA Compliance <https://misra.org.uk/compliance/>`_ and
 `MISRA C:2025 Addendum 6 Applicability of MISRA C:2025 to the Rust Programming Language <https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf>`_).
 Research sources such as
 `MISRust (arXiv:2605.23490v1), Table 3 <https://arxiv.org/html/2605.23490v1>`_
