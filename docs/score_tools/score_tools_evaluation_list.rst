@@ -188,7 +188,7 @@ release, as part of the Tool Verification Report.
      - YES
    * - 2a-6
      - Clang + llvm-cov + llvm-profdata
-     - Host C++ compiler used for LLVM source-based coverage instrumentation and reporting workflows
+     - Code coverage tool from LLVM, used with Clang compiler
      - 19.x (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
