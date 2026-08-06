@@ -311,10 +311,10 @@ const runMermaid = async (rerun) => {
     all_mermaids = document.querySelectorAll(".mermaid");
     const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
 
-    if ("False" === "True") {
+    if ("True" === "True") {
         const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
         if(mermaids_to_add_zoom > 0) {
-            var svgs = d3.selectAll("");
+            var svgs = d3.selectAll(".mermaid svg");
             if(all_mermaids.length !== mermaids_processed.length) {
                 setTimeout(() => runMermaid(false), 200);
                 return;
@@ -426,7 +426,7 @@ const runMermaid = async (rerun) => {
                 svg.style.maxWidth = '100%';
                 svg.style.sdisplay = 'block';
 
-                if ("False" === "True") {
+                if ("True" === "True") {
                     setTimeout(() => {
                         const g = svg.querySelector('g');
                         if (g) {
