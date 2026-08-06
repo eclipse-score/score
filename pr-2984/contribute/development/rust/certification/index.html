@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -624,39 +624,20 @@
 tooling, especially in the context of ISO 26262 and RTCA DO-178C/DO-332.</p>
 <p>Key points for practice:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Tool confidence and qualification must be explicitly defined for compiler and</dt><dd><p>crates.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Depending on project context and integrity level, three paths are considered:</dt><dd><p>qualified tools, strong downstream verification that detects tool faults, or
-comprehensive confidence evidence for tool usage.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Qualification evidence is tied to the exact tool version, target</dt><dd><p>architecture, and relevant compiler configuration.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Stable toolchains are expected for certification contexts; nightly features</dt><dd><p>are not recommended for safety-related projects.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Configuration management must include Rust toolchain components (e.g.,</dt><dd><p>compiler, rustup/cargo, clippy/rustdoc), runtime libraries, and external
-crates.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>“Proven in use” arguments alone are considered difficult to justify for</dt><dd><p>safety cases and should not replace structured qualification or verification
-arguments.</p>
-</dd>
-</dl>
-</li>
+<li><p>Determine tool confidence per S-CORE Tool Management process (TI/TD -&gt; TCL).
+TCL is HIGH unless TI=YES and TD=NO; in that case TCL is LOW.</p></li>
+<li><p>If TCL is LOW, tool qualification is required. Apply the “validation of
+software tool” method with requirements, tests, and report updates in the
+Tool Verification Report workflow.</p></li>
+<li><p>Confidence/qualification evidence is valid only for the exact tool version,
+target architecture, and relevant tool configuration; changes require impact
+analysis and re-validation as needed.</p></li>
+<li><p>Proven-in-use is not used as a safety argument in S-CORE (tailored out in
+platform safety management).</p></li>
+<li><p>Use stable toolchains for safety-related development; nightly features are
+not recommended.</p></li>
+<li><p>Configuration management must include compiler, as well as tools like rustup/cargo, clippy/rustdoc,
+CodeQL, runtime libraries, and external crates.</p></li>
 </ul>
 <p>For SCORE, this baseline guidance should be used for certification
 strategy, while project-specific safety case evidence is documented in the

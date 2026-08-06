@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -614,7 +614,7 @@
                   
   <section id="writing-rust-code-incl-coding-guidelines">
 <h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-42f20cba">
+<div class="need_container docutils container" id="SNCB-b2d143d4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -783,65 +783,103 @@ with related rules and recommendations. The results summarized below show how
 each topic is captured in practice, including automated checks (by tool and tool option) and supporting
 process measures. Where no automated check exists, coverage is captured
 through manual review, process controls, or architecture decisions.</p>
-<p>The classification follows a MISRA-style convention:</p>
+<section id="s-core-assurance-model">
+<h4>S-CORE Assurance Model<a class="headerlink" href="#s-core-assurance-model" title="Link to this heading">#</a></h4>
+<p>S-CORE structures Rust guideline compliance around release assurance goals
+instead of a document-lifecycle order. The objective is to keep the argument
+auditable while clearly separating what can be enforced by tools from what must
+be argued by engineering process.</p>
+<section id="toolchain-confidence-strategy">
+<h5>Toolchain confidence strategy<a class="headerlink" href="#toolchain-confidence-strategy" title="Link to this heading">#</a></h5>
+<p>For compilers, analyzers, and relevant build tooling, S-CORE applies the
+Tool Management process (see <a class="reference internal" href="../../../platform_management_plan/tool_management.html"><span class="doc">Tool Management/ Tool Management Plan</span></a>)
+with the defined TI/TD/TCL sequence:</p>
 <ul class="simple">
-<li><p>Required — Mandatory. Deviations need documented reasoning.</p></li>
-<li><p>Advisory — Recommended. Deviations should be documented when practical.</p></li>
-<li><p>Document — The decision and its reasoning must be documented regardless of outcome.</p></li>
+<li><p>Determine tool impact (TI).</p></li>
+<li><p>Determine tool error detection/prevention (TD).</p></li>
+<li><p>Derive TCL from TI and TD.</p></li>
 </ul>
-<p>The summary below aggregates the overall coverage for these topics. The
-<cite>Cargo.toml</cite> profiles further below provide a practical baseline and
-intentionally contain a recommended subset of checks.</p>
-<section id="summary-of-results">
-<h4>Summary of Results<a class="headerlink" href="#summary-of-results" title="Link to this heading">#</a></h4>
-<p>The assessment covers different safety- and security-relevant topics from the
-Rust baseline. For each topic the available automated checks (CodeQL, Clippy,
-<code class="docutils literal notranslate"><span class="pre">rustc</span></code> and other tooling) together with the supporting process measures were
-rated for their combined overall coverage as High (H), Medium (M) or Low (L).</p>
-<p>The topics group into the clusters below. None of them falls into the Low
-category, so every topic is addressed by at least a solid combination of
-tooling and process:</p>
+<p>TCL is HIGH unless TI is YES and TD is NO. If TCL is LOW, tool qualification is
+required. Qualification evidence is produced via requirements, verification
+tests, and report updates in the Tool Verification Report workflow.</p>
+<p>For Rust, this applies to the compiler toolchain, linting/static analysis
+tooling, and relevant build tooling used in safety-relevant work products.</p>
+</section>
+<section id="evidence-validity-boundaries">
+<h5>Evidence validity boundaries<a class="headerlink" href="#evidence-validity-boundaries" title="Link to this heading">#</a></h5>
+<p>In S-CORE, qualification and confidence evidence is valid only within the
+released configuration baseline documented in the corresponding Tool
+Verification Report.</p>
+<p>This baseline includes the documented tool state, the approved deployment
+context, and the project-relevant build/tool settings. Changes are handled
+through configuration and change management (see
+<a class="reference internal" href="../../../platform_management_plan/config_management.html"><span class="doc">Config management / Configuration Management Plan</span></a> and
+<a class="reference internal" href="../../../platform_management_plan/tool_management.html"><span class="doc">Tool Management/ Tool Management Plan</span></a>).</p>
+<p>Before reusing existing evidence after a change, an impact analysis is required;
+the verification scope is updated where needed.</p>
+</section>
+<section id="decision-levels-used-in-s-core">
+<h5>Decision levels used in S-CORE<a class="headerlink" href="#decision-levels-used-in-s-core" title="Link to this heading">#</a></h5>
+<p>S-CORE uses three governance levels:</p>
 <ul class="simple">
-<li><p><strong>Unsafe code and FFI boundaries</strong> — documenting and scoping <code class="docutils literal notranslate"><span class="pre">unsafe</span></code>,
-safe wrappers, FFI value checks, inline assembly and raw-pointer/reference
-conversions. The enforceable parts reach High coverage through Clippy
-(<code class="docutils literal notranslate"><span class="pre">undocumented_unsafe_blocks</span></code>) and <code class="docutils literal notranslate"><span class="pre">rustc</span></code> (<code class="docutils literal notranslate"><span class="pre">unsafe_op_in_unsafe_fn</span></code>),
-with CodeQL adding data-flow checks at pointer/reference boundaries; the
-remaining boundary checks rely on FFI tests, fuzzing and review (Medium).</p></li>
-<li><p><strong>Panic, error and overflow handling</strong> — panic documentation and strategy,
-<code class="docutils literal notranslate"><span class="pre">catch_unwind</span></code> usage, <code class="docutils literal notranslate"><span class="pre">unwrap</span></code> policy, overflow checks, <code class="docutils literal notranslate"><span class="pre">Result</span></code> /
-<code class="docutils literal notranslate"><span class="pre">Option</span></code> over magic values and <code class="docutils literal notranslate"><span class="pre">#[must_use]</span></code> return values. Largely High
-via Clippy (<code class="docutils literal notranslate"><span class="pre">missing_panics_doc</span></code>) and compiler/profile settings (release
-<code class="docutils literal notranslate"><span class="pre">overflow-checks</span></code>), complemented by review.</p></li>
-<li><p><strong>Lint and language hygiene</strong> — import, style and edition rules (no wildcard
-imports, no raw identifiers, no nightly, no deprecated, <code class="docutils literal notranslate"><span class="pre">cfg!</span></code>, <code class="docutils literal notranslate"><span class="pre">as</span></code>
-casts, shadowing), formatting and the curated Clippy/<code class="docutils literal notranslate"><span class="pre">rustc</span></code> profiles, and
-strong typing. This cluster has the strongest automation and is almost
-entirely High through Clippy and <code class="docutils literal notranslate"><span class="pre">rustc</span></code>.</p></li>
-<li><p><strong>Concurrency and async</strong> — async/await decision, timing/concurrency design,
-cancellation safety, explicit task dropping and <code class="docutils literal notranslate"><span class="pre">Pin</span></code> / <code class="docutils literal notranslate"><span class="pre">Send</span></code> planning.
-Predominantly Medium and process-driven (<code class="docutils literal notranslate"><span class="pre">loom</span></code>, WCET analysis,
-architecture decision records and review).</p></li>
-<li><p><strong>Memory and resource management</strong> — dynamic-memory design, stack checking,
-RAII and <code class="docutils literal notranslate"><span class="pre">usize</span></code> usage. Medium, driven by design rules and dedicated
-tooling (allocator/system checks, <code class="docutils literal notranslate"><span class="pre">cargo-call-stack</span></code>).</p></li>
-<li><p><strong>Dependencies, features and supply chain</strong> — dependency and duplicate
-management, additive features, download/build separation, contract/ABI
-versioning and protection of sensitive data. Mostly High via <code class="docutils literal notranslate"><span class="pre">cargo-audit</span></code>
-/ <code class="docutils literal notranslate"><span class="pre">cargo-deny</span></code> / <code class="docutils literal notranslate"><span class="pre">cargo-vet</span></code>, SBOM, CI feature checks and symbol/ABI
-diffing, with CodeQL adding security-focused checks.</p></li>
-<li><p><strong>Process, documentation and qualification</strong> — compiler qualification, MSRV,
-review environment, macro/testing strategy, trait/design guidelines, test
-coverage on generics, symbol visibility and lifetimes. Medium, argued through
-review, architecture decision records, rustdoc and tests.</p></li>
-<li><p><strong>Classification:</strong> about half of the topics are <em>Required</em> and about half
-are <em>Advisory</em> / <em>Document</em>. The <em>Required</em> items concentrate on <code class="docutils literal notranslate"><span class="pre">unsafe</span></code>
-usage, FFI boundaries, panic and overflow behavior, and dependency
-management.</p></li>
+<li><p><strong>Gate:</strong> mandatory release condition; deviations require an approved and
+traceable justification.</p></li>
+<li><p><strong>Guidance:</strong> recommended engineering practice; deviations should be
+documented when they are intentional.</p></li>
+<li><p><strong>Record:</strong> explicit project decision with rationale and outcome must be
+documented.</p></li>
 </ul>
-<p>In summary, enforceable coding-style and correctness topics are well covered by
-automated tooling (primarily Clippy and <code class="docutils literal notranslate"><span class="pre">rustc</span></code>), while safety-argument,
-design and process topics rely on documented review and supporting tools.</p>
+<p>For external traceability, these correspond to common labels
+<em>Required/Advisory/Document</em>.</p>
+<p>This label mapping follows the MISRA-style compliance classification used for
+traceability in safety-oriented coding guidance.</p>
+</section>
+<section id="coverage-summary-in-s-core">
+<h5>Coverage Summary in S-CORE<a class="headerlink" href="#coverage-summary-in-s-core" title="Link to this heading">#</a></h5>
+<p>The assessment combines automated checks (CodeQL, Clippy, <code class="docutils literal notranslate"><span class="pre">rustc</span></code> and related
+tooling) with process controls (reviews, architecture records, focused tests).</p>
+<p>Coverage status is summarized as follows:</p>
+<ul class="simple">
+<li><p>High coverage for automated coding checks and security/supply-chain checks,
+including lint profiles, CodeQL analysis, and dependency controls.</p></li>
+<li><p>High coverage for runtime robustness controls (panic policy, overflow checks,
+and <code class="docutils literal notranslate"><span class="pre">Result</span></code>/<code class="docutils literal notranslate"><span class="pre">Option</span></code> usage patterns).</p></li>
+<li><p>Medium to High coverage for tool confidence activities via TI/TD/TCL
+determination and qualification workflow where required.</p></li>
+<li><p>Medium coverage for topics that remain system-context dependent, in
+particular timing/WCET arguments and change-triggered re-validation scope.</p></li>
+</ul>
+<p>No topic is currently assessed as Low.</p>
+</section>
+<section id="practical-traceability-to-automated-checks">
+<h5>Practical Traceability to Automated Checks<a class="headerlink" href="#practical-traceability-to-automated-checks" title="Link to this heading">#</a></h5>
+<p>To keep the link from safety-oriented requirements to enforceable checks
+explicit, S-CORE uses the following mapping from MISRA-style objective areas to
+tool evidence:</p>
+<ul class="simple">
+<li><p><strong>Unsafe scope and API boundary robustness:</strong>
+<code class="docutils literal notranslate"><span class="pre">rustc</span></code> <code class="docutils literal notranslate"><span class="pre">unsafe_op_in_unsafe_fn</span></code>, Clippy
+<code class="docutils literal notranslate"><span class="pre">undocumented_unsafe_blocks</span></code>, plus CodeQL data-flow checks at unsafe/FFI
+boundaries.</p></li>
+<li><p><strong>Controlled runtime failure behavior:</strong>
+Clippy <code class="docutils literal notranslate"><span class="pre">missing_panics_doc</span></code>, <code class="docutils literal notranslate"><span class="pre">panic_in_result_fn</span></code>, policy constraints on
+<code class="docutils literal notranslate"><span class="pre">unwrap</span></code> usage, and release <code class="docutils literal notranslate"><span class="pre">overflow-checks</span></code>.</p></li>
+<li><p><strong>Deterministic and reviewable interfaces:</strong>
+Clippy <code class="docutils literal notranslate"><span class="pre">wildcard_imports</span></code>, rustc <code class="docutils literal notranslate"><span class="pre">unreachable_pub</span></code> and <code class="docutils literal notranslate"><span class="pre">missing_docs</span></code>,
+and documentation/review process controls.</p></li>
+<li><p><strong>Type and conversion correctness:</strong>
+Clippy <code class="docutils literal notranslate"><span class="pre">cast_*</span></code> checks (for truncation/sign/wrap/alignment risk) and
+project guidance to prefer explicit fallible/infallible conversions.</p></li>
+<li><p><strong>Security and supply-chain integrity:</strong>
+CodeQL security queries, dependency scanning (audit/deny/vet), SBOM, and
+feature/profile checks in CI.</p></li>
+<li><p><strong>Change and qualification traceability:</strong>
+TI/TD/TCL evaluation, Tool Verification Reports, and change-triggered
+re-validation via configuration management.</p></li>
+</ul>
+<p>This mapping is intentionally operational: requirement intent is linked to
+specific automated checks and to the process evidence needed where automation is
+not sufficient.</p>
 <p>During the S-CORE project formatting and clippy checks are enforced. Miri can
 be used to detect undefined behaviors. Also the code should compile with zero
 warnings. Additional guidelines by the Rust Community, the Rust Foundation and
@@ -852,17 +890,28 @@ to have coding guidelines for Rust suitable for safety-critical systems by the
 Safety-Critical Rust Consortium by the end of 2026. Until that, please also
 use Slack score-rust-community channel for discussions and participation in the
 SCRC.</p>
+<p>Source usage note: normative decisions in this document are based on the
+S-CORE process and MISRA references (including
+<a class="reference external" href="https://misra.org.uk/compliance/">MISRA Compliance</a> and
+<a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6 Applicability of MISRA C:2025 to the Rust Programming Language</a>).
+Research sources such as
+<a class="reference external" href="https://arxiv.org/html/2605.23490v1">MISRust (arXiv:2605.23490v1), Table 3</a>
+are used as supporting rationale for topic prioritization, not as normative
+compliance criteria.</p>
 <p>The adaption of these guidelines will be documented in the S-CORE project
 documentation.</p>
 <p>The recommended <code class="docutils literal notranslate"><span class="pre">[lints.rust]</span></code>, <code class="docutils literal notranslate"><span class="pre">[lints.clippy]</span></code>, and <code class="docutils literal notranslate"><span class="pre">[profile.release]</span></code>
 settings are maintained centrally in the
 <a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies repository</a>:</p>
+<p>CodeQL is handled separately from this repository; see <em>Rust Tooling: CodeQL</em>
+above and <a class="reference internal" href="../../../platform_management_plan/software_verification.html"><span class="doc">Software verification</span></a>.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml">Practical baseline (relaxed)</a> —
 suitable for general SCORE components.</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/Cargo.toml">Strict / ASIL variant</a> —
 for safety-critical code requiring stricter enforcement.</p></li>
 </ul>
+</section>
 </section>
 <section id="tooling-evidence-and-references">
 <h4>Tooling Evidence and References<a class="headerlink" href="#tooling-evidence-and-references" title="Link to this heading">#</a></h4>
@@ -971,7 +1020,14 @@ high-performance domains.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-codeql">Rust Tooling: CodeQL</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-tooling-miri">Rust Tooling: Miri</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-for-s-core">Conclusions for S-CORE</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-results">Summary of Results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-assurance-model">S-CORE Assurance Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchain-confidence-strategy">Toolchain confidence strategy</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-validity-boundaries">Evidence validity boundaries</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-levels-used-in-s-core">Decision levels used in S-CORE</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage-summary-in-s-core">Coverage Summary in S-CORE</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-traceability-to-automated-checks">Practical Traceability to Automated Checks</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling-evidence-and-references">Tooling Evidence and References</a></li>
 </ul>
 </li>
