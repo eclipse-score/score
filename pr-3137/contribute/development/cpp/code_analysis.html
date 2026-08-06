@@ -629,7 +629,7 @@
                   
   <section id="code-analysis-c">
 <h1>Code Analysis C++<a class="headerlink" href="#code-analysis-c" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-cb2952ce">
+<div class="need_container docutils container" id="SNCB-8cc106ec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__cpp_code_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -725,11 +725,12 @@
 <ul class="simple">
 <li><p>Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.</p></li>
 </ul>
+<p>In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> and evaluated with <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p>
 <p>Since <code class="docutils literal notranslate"><span class="pre">qcc</span></code> does not support LLVM’s source-based coverage instrumentation, coverage is not collected on the QNX target. LLVM’s source-based coverage natively supports MC/DC, which is required for the higher ASIL levels.</p>
 <p>LLVM’s source-based coverage is preferred over <code class="docutils literal notranslate"><span class="pre">gcov</span></code>-based coverage for the following reasons:</p>
 <ul class="simple">
-<li><p><strong>Precision with templates, generics and modern C++:</strong> <code class="docutils literal notranslate"><span class="pre">gcov</span></code> is line-based, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM’s source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.</p></li>
-<li><p><strong>MC/DC support:</strong> <code class="docutils literal notranslate"><span class="pre">gcov</span></code> historically provided no MC/DC support (GCC offers it only from GCC 14 via <code class="docutils literal notranslate"><span class="pre">-fcondition-coverage</span></code>), whereas LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>), which is required for the higher ASIL levels.</p></li>
+<li><p><strong>Precision with templates, generics and modern C++:</strong> legacy GCC line-based coverage <code class="docutils literal notranslate"><span class="pre">gcov</span></code> is line-oriented, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM’s source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.</p></li>
+<li><p><strong>MC/DC support:</strong> LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>), which is required for the higher ASIL levels.</p></li>
 </ul>
 <p>To enable this, following tools are used:</p>
 <p class="plantuml" id="needuml-contribute/development/cpp/code_analysis-2">
@@ -769,7 +770,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The exclusion-marker syntax must match the coverage tooling actually in use. Because coverage in S-CORE is produced by <strong>LLVM source-based coverage</strong> (<code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> / <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code>), the marker mechanism supported by that toolchain (line/region exclusion) must be used; <code class="docutils literal notranslate"><span class="pre">lcov</span></code>/<code class="docutils literal notranslate"><span class="pre">gcov</span></code> <code class="docutils literal notranslate"><span class="pre">LCOV_EXCL_*</span></code> markers are <em>not</em> interpreted natively by <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> and must not be assumed to work unless an <code class="docutils literal notranslate"><span class="pre">lcov</span></code> conversion/merge step is explicitly part of the pipeline.</p>
+<p>The exclusion-marker syntax must match the coverage tooling actually in use. Because coverage in S-CORE is produced by <strong>LLVM source-based coverage</strong> (<code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> / <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code>), the marker mechanism supported by that toolchain (line/region exclusion) must be used; <code class="docutils literal notranslate"><span class="pre">LCOV_EXCL_*</span></code> markers from lcov/GCC workflows are <em>not</em> interpreted natively by <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> and must not be assumed to work unless an <code class="docutils literal notranslate"><span class="pre">lcov</span></code> conversion/merge step is explicitly part of the pipeline.</p>
 </div>
 </section>
 <section id="qnx-only-files-excluded-from-the-host-build">
