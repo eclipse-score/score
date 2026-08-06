@@ -235,6 +235,14 @@ release, as part of the Tool Verification Report.
      - :need:`rl__infrastructure_tooling_community`
      - N/A
      - YES
+   * - 2b-4
+     - llvm-cov + llvm-profdata
+     - LLVM source-based code coverage toolchain, usable in dedicated Rust/LLVM host workflows
+     - 19.x (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - :need:`doc_tool__clang`
+     - YES
 
 
 2c Python
