@@ -178,69 +178,115 @@ each topic is captured in practice, including automated checks (by tool and tool
 process measures. Where no automated check exists, coverage is captured
 through manual review, process controls, or architecture decisions.
 
-The classification follows a MISRA-style convention:
+S-CORE Assurance Model
+~~~~~~~~~~~~~~~~~~~~~~
 
-* Required — Mandatory. Deviations need documented reasoning.
-* Advisory — Recommended. Deviations should be documented when practical.
-* Document — The decision and its reasoning must be documented regardless of outcome.
+S-CORE structures Rust guideline compliance around release assurance goals
+instead of a document-lifecycle order. The objective is to keep the argument
+auditable while clearly separating what can be enforced by tools from what must
+be argued by engineering process.
 
-The summary below aggregates the overall coverage for these topics. The
-`Cargo.toml` profiles further below provide a practical baseline and
-intentionally contain a recommended subset of checks.
+Toolchain confidence strategy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Summary of Results
-~~~~~~~~~~~~~~~~~~~
+For compilers, analyzers, and relevant build tooling, S-CORE applies the
+Tool Management process (see :doc:`/platform_management_plan/tool_management`)
+with the defined TI/TD/TCL sequence:
 
-The assessment covers different safety- and security-relevant topics from the
-Rust baseline. For each topic the available automated checks (CodeQL, Clippy,
-``rustc`` and other tooling) together with the supporting process measures were
-rated for their combined overall coverage as High (H), Medium (M) or Low (L).
+* Determine tool impact (TI).
+* Determine tool error detection/prevention (TD).
+* Derive TCL from TI and TD.
 
-The topics group into the clusters below. None of them falls into the Low
-category, so every topic is addressed by at least a solid combination of
-tooling and process:
+TCL is HIGH unless TI is YES and TD is NO. If TCL is LOW, tool qualification is
+required. Qualification evidence is produced via requirements, verification
+tests, and report updates in the Tool Verification Report workflow.
 
-* **Unsafe code and FFI boundaries** — documenting and scoping ``unsafe``,
-  safe wrappers, FFI value checks, inline assembly and raw-pointer/reference
-  conversions. The enforceable parts reach High coverage through Clippy
-  (``undocumented_unsafe_blocks``) and ``rustc`` (``unsafe_op_in_unsafe_fn``),
-  with CodeQL adding data-flow checks at pointer/reference boundaries; the
-  remaining boundary checks rely on FFI tests, fuzzing and review (Medium).
-* **Panic, error and overflow handling** — panic documentation and strategy,
-  ``catch_unwind`` usage, ``unwrap`` policy, overflow checks, ``Result`` /
-  ``Option`` over magic values and ``#[must_use]`` return values. Largely High
-  via Clippy (``missing_panics_doc``) and compiler/profile settings (release
-  ``overflow-checks``), complemented by review.
-* **Lint and language hygiene** — import, style and edition rules (no wildcard
-  imports, no raw identifiers, no nightly, no deprecated, ``cfg!``, ``as``
-  casts, shadowing), formatting and the curated Clippy/``rustc`` profiles, and
-  strong typing. This cluster has the strongest automation and is almost
-  entirely High through Clippy and ``rustc``.
-* **Concurrency and async** — async/await decision, timing/concurrency design,
-  cancellation safety, explicit task dropping and ``Pin`` / ``Send`` planning.
-  Predominantly Medium and process-driven (``loom``, WCET analysis,
-  architecture decision records and review).
-* **Memory and resource management** — dynamic-memory design, stack checking,
-  RAII and ``usize`` usage. Medium, driven by design rules and dedicated
-  tooling (allocator/system checks, ``cargo-call-stack``).
-* **Dependencies, features and supply chain** — dependency and duplicate
-  management, additive features, download/build separation, contract/ABI
-  versioning and protection of sensitive data. Mostly High via ``cargo-audit``
-  / ``cargo-deny`` / ``cargo-vet``, SBOM, CI feature checks and symbol/ABI
-  diffing, with CodeQL adding security-focused checks.
-* **Process, documentation and qualification** — compiler qualification, MSRV,
-  review environment, macro/testing strategy, trait/design guidelines, test
-  coverage on generics, symbol visibility and lifetimes. Medium, argued through
-  review, architecture decision records, rustdoc and tests.
-* **Classification:** about half of the topics are *Required* and about half
-  are *Advisory* / *Document*. The *Required* items concentrate on ``unsafe``
-  usage, FFI boundaries, panic and overflow behavior, and dependency
-  management.
+For Rust, this applies to the compiler toolchain, linting/static analysis
+tooling, and relevant build tooling used in safety-relevant work products.
 
-In summary, enforceable coding-style and correctness topics are well covered by
-automated tooling (primarily Clippy and ``rustc``), while safety-argument,
-design and process topics rely on documented review and supporting tools.
+Evidence validity boundaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+In S-CORE, qualification and confidence evidence is valid only within the
+released configuration baseline documented in the corresponding Tool
+Verification Report.
+
+This baseline includes the documented tool state, the approved deployment
+context, and the project-relevant build/tool settings. Changes are handled
+through configuration and change management (see
+:doc:`/platform_management_plan/config_management` and
+:doc:`/platform_management_plan/tool_management`).
+
+Before reusing existing evidence after a change, an impact analysis is required;
+the verification scope is updated where needed.
+
+Decision levels used in S-CORE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+S-CORE uses three governance levels:
+
+* **Gate:** mandatory release condition; deviations require an approved and
+  traceable justification.
+* **Guidance:** recommended engineering practice; deviations should be
+  documented when they are intentional.
+* **Record:** explicit project decision with rationale and outcome must be
+  documented.
+
+For external traceability, these correspond to common labels
+*Required/Advisory/Document*.
+
+This label mapping follows the MISRA-style compliance classification used for
+traceability in safety-oriented coding guidance.
+
+Coverage Summary in S-CORE
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The assessment combines automated checks (CodeQL, Clippy, ``rustc`` and related
+tooling) with process controls (reviews, architecture records, focused tests).
+
+Coverage status is summarized as follows:
+
+* High coverage for automated coding checks and security/supply-chain checks,
+  including lint profiles, CodeQL analysis, and dependency controls.
+* High coverage for runtime robustness controls (panic policy, overflow checks,
+  and ``Result``/``Option`` usage patterns).
+* Medium to High coverage for tool confidence activities via TI/TD/TCL
+  determination and qualification workflow where required.
+* Medium coverage for topics that remain system-context dependent, in
+  particular timing/WCET arguments and change-triggered re-validation scope.
+
+No topic is currently assessed as Low.
+
+Practical Traceability to Automated Checks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To keep the link from safety-oriented requirements to enforceable checks
+explicit, S-CORE uses the following mapping from MISRA-style objective areas to
+tool evidence:
+
+* **Unsafe scope and API boundary robustness:**
+  ``rustc`` ``unsafe_op_in_unsafe_fn``, Clippy
+  ``undocumented_unsafe_blocks``, plus CodeQL data-flow checks at unsafe/FFI
+  boundaries.
+* **Controlled runtime failure behavior:**
+  Clippy ``missing_panics_doc``, ``panic_in_result_fn``, policy constraints on
+  ``unwrap`` usage, and release ``overflow-checks``.
+* **Deterministic and reviewable interfaces:**
+  Clippy ``wildcard_imports``, rustc ``unreachable_pub`` and ``missing_docs``,
+  and documentation/review process controls.
+* **Type and conversion correctness:**
+  Clippy ``cast_*`` checks (for truncation/sign/wrap/alignment risk) and
+  project guidance to prefer explicit fallible/infallible conversions.
+* **Security and supply-chain integrity:**
+  CodeQL security queries, dependency scanning (audit/deny/vet), SBOM, and
+  feature/profile checks in CI.
+* **Change and qualification traceability:**
+  TI/TD/TCL evaluation, Tool Verification Reports, and change-triggered
+  re-validation via configuration management.
+
+This mapping is intentionally operational: requirement intent is linked to
+specific automated checks and to the process evidence needed where automation is
+not sufficient.
 
 During the S-CORE project formatting and clippy checks are enforced. Miri can
 be used to detect undefined behaviors. Also the code should compile with zero
@@ -253,12 +299,24 @@ Safety-Critical Rust Consortium by the end of 2026. Until that, please also
 use Slack score-rust-community channel for discussions and participation in the
 SCRC.
 
+Source usage note: normative decisions in this document are based on the
+S-CORE process and MISRA references (including
+`MISRA Compliance <https://misra.org.uk/compliance/>`_ and
+`MISRA C:2025 Addendum 6 Applicability of MISRA C:2025 to the Rust Programming Language <https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf>`_).
+Research sources such as
+`MISRust (arXiv:2605.23490v1), Table 3 <https://arxiv.org/html/2605.23490v1>`_
+are used as supporting rationale for topic prioritization, not as normative
+compliance criteria.
+
 The adaption of these guidelines will be documented in the S-CORE project
 documentation.
 
 The recommended ``[lints.rust]``, ``[lints.clippy]``, and ``[profile.release]``
 settings are maintained centrally in the
 `score_rust_policies repository <https://github.com/eclipse-score/score_rust_policies>`_:
+
+CodeQL is handled separately from this repository; see *Rust Tooling: CodeQL*
+above and :doc:`/platform_management_plan/software_verification`.
 
 * `Practical baseline (relaxed) <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml>`_ —
   suitable for general SCORE components.
