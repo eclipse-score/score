@@ -179,9 +179,17 @@ release, as part of the Tool Verification Report.
      - N/A
      - YES
    * - 2a-5
-     - llvm-cov + llvm-profdata
-     - Source-based code coverage toolchain from LLVM
+     - gcov
+     - Code coverage tool from GCC / GNU compiler collection
      - T.B.D. (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - N/A
+     - YES
+   * - 2a-6
+     - Clang + llvm-cov + llvm-profdata
+     - Host C++ compiler used for LLVM source-based coverage instrumentation and reporting workflows
+     - 19.x (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__clang`
