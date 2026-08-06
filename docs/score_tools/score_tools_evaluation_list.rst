@@ -179,12 +179,12 @@ release, as part of the Tool Verification Report.
      - N/A
      - YES
    * - 2a-5
-     - gcovr
-     - Code coverage tool (uses gcov from GCC), part of GNU compiler collection
+     - llvm-cov + llvm-profdata
+     - Source-based code coverage toolchain from LLVM
      - T.B.D. (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - :need:`doc_tool__clang`
      - YES
 
 
@@ -547,6 +547,14 @@ release, as part of the Tool Verification Report.
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__qcc`
      - N/A
+   * - 5a-3
+     - Clang
+     - Host C++ compiler used for LLVM source-based coverage instrumentation and reporting workflows
+     - 19.x (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - :need:`doc_tool__clang`
+     - YES
 
 
 5b Rust Compiler

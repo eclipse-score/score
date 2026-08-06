@@ -109,12 +109,15 @@ As required by the verification guideline code coverage needs to be calculated f
 
 * Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.
 
+In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with ``llvm-profdata`` and evaluated with ``llvm-cov``.
+
 Since ``qcc`` does not support LLVM's source-based coverage instrumentation, coverage is not collected on the QNX target. LLVM's source-based coverage natively supports MC/DC, which is required for the higher ASIL levels.
 
 LLVM's source-based coverage is preferred over ``gcov``-based coverage for the following reasons:
 
-* **Precision with templates, generics and modern C++:** ``gcov`` is line-based, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM's source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.
-* **MC/DC support:** ``gcov`` historically provided no MC/DC support (GCC offers it only from GCC 14 via ``-fcondition-coverage``), whereas LLVM/clang supports MC/DC natively (``-fcoverage-mcdc``), which is required for the higher ASIL levels.
+
+* **Precision with templates, generics and modern C++:** legacy GCC line-based coverage ``gcov`` is line-oriented, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM's source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.
+* **MC/DC support:** LLVM/clang supports MC/DC natively (``-fcoverage-mcdc``), which is required for the higher ASIL levels.
 
 To enable this, following tools are used:
 
@@ -168,7 +171,7 @@ For files that are compiled on the host but contain small target-specific blocks
 
 .. note::
 
-   The exclusion-marker syntax must match the coverage tooling actually in use. Because coverage in S-CORE is produced by **LLVM source-based coverage** (``llvm-cov`` / ``llvm-profdata``), the marker mechanism supported by that toolchain (line/region exclusion) must be used; ``lcov``/``gcov`` ``LCOV_EXCL_*`` markers are *not* interpreted natively by ``llvm-cov`` and must not be assumed to work unless an ``lcov`` conversion/merge step is explicitly part of the pipeline.
+   The exclusion-marker syntax must match the coverage tooling actually in use. Because coverage in S-CORE is produced by **LLVM source-based coverage** (``llvm-cov`` / ``llvm-profdata``), the marker mechanism supported by that toolchain (line/region exclusion) must be used; ``LCOV_EXCL_*`` markers from lcov/GCC workflows are *not* interpreted natively by ``llvm-cov`` and must not be assumed to work unless an ``lcov`` conversion/merge step is explicitly part of the pipeline.
 
 QNX-only files excluded from the host build
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
