@@ -179,8 +179,8 @@ release, as part of the Tool Verification Report.
      - N/A
      - YES
    * - 2a-5
-     - gcov
-     - Code coverage tool from GCC / GNU compiler collection
+     - gcovr
+     - Code coverage tool (uses gcov from GCC), part of GNU compiler collection
      - T.B.D. (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
