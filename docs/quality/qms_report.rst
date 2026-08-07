@@ -306,8 +306,8 @@ Quality Management Generic work products
       - :ndf:`copy('status', need_id='doc__feature_persistency_requirements')`
 
     * - :need:`wp__fdr_reports`
-      - :need:`doc__feature_persistency_requirements_chklst`
-      - :ndf:`copy('status', need_id='doc__feature_persistency_requirements_chklst')`
+      - :need:`doc__persistency_req_inspection`
+      - :ndf:`copy('status', need_id='doc__persistency_req_inspection')`
 
     * - :need:`wp__platform_arch`
       - -
