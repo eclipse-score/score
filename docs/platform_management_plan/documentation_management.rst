@@ -15,7 +15,7 @@
 .. document:: Documentation Management Plan
    :id: doc__documentation_mgt_plan
    :status: valid
-   :version: 2
+   :version: 3
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
@@ -115,6 +115,187 @@ docs/contribute
 
 .. _documents_docs_glossary:
 
+.. _documents_docs_features:
+
+Feature documentation
++++++++++++++++++++++
+
+In the following sections all documents of the features, that are
+planned for release v1.0, are listed.
+
+.. _documents_docs_features_baselibs:
+
+docs/features/baselibs
+######################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/baselibs/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_communication:
+
+docs/features/communication
+###########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/communication/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_configuration:
+
+docs/features/configuration
+###########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/configuration/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_diagnostics:
+
+docs/features/diagnostics
+#########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/diagnostics/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_lifecycle:
+
+docs/features/lifecycle
+#######################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/lifecycle/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_frameworks:
+
+.. _documents_docs_features_logging:
+
+docs/features/logging
+#####################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/logging/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_nm:
+
+docs/features/nm
+################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/nm/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_persistency:
+
+docs/features/persistency
+#########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/persistency/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_someip:
+
+docs/features/someip
+####################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/someip/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_time:
+
+docs/features/time
+##################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/time/" in need["docname"]:
+          results.append(need)
+
+
 docs/glossary
 #############
 
@@ -151,7 +332,7 @@ docs/handbook
 .. _documents_docs_manuals:
 
 docs/manuals
-#############
+############
 
 .. needtable::
    :style: table
@@ -163,6 +344,23 @@ docs/manuals
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "manuals/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_modules:
+
+docs/modules
+############
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: docname
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" in need["docname"]:
           results.append(need)
 
 .. _doc_platform_management_plan:
@@ -283,192 +481,3 @@ docs/tools
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "tools/" in need["docname"]:
           results.append(need)
-
-
-.. _documents_docs_features:
-
-Feature documentation
-+++++++++++++++++++++
-
-In the following sections all documents of the features and related modules (components), that are
-planned for release v0.5, are listed.
-
-.. _documents_docs_features_baselibs:
-
-docs/features/baselibs
-######################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/baselibs/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_features_communication:
-
-docs/features/communication
-###########################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/communication/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_features_frameworks:
-
-docs/features/frameworks
-########################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/frameworks/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_features_orchestration:
-
-docs/features/orchestration
-###########################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/orchestration/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_features_persistency:
-
-docs/features/persistency
-#########################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/persistency/" in need["docname"]:
-          results.append(need)
-
-
-.. _documents_docs_modules:
-
-Modules documentation
-+++++++++++++++++++++
-
-.. _documents_docs_modules_communication_docs:
-
-docs/modules/communication/docs
-###############################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/communication/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_modules_feo_docs:
-
-docs/modules/feo/docs
-#####################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/feo/" in need["docname"]:
-          results.append(need)
-
-
-.. _documents_docs_modules_logging_docs:
-
-docs/modules/logging/docs
-#########################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/logging/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_modules_os_docs:
-
-docs/modules/os/docs
-####################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/os/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_modules_tracing_docs:
-
-docs/modules/tracing/docs
-#########################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/tracing/" in need["docname"]:
-          results.append(need)
-
-
-.. _documents_docs_modules_components:
