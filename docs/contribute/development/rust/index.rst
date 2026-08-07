@@ -15,6 +15,11 @@
 Rust
 ####
 
+For safety- and security-related Rust development, SCORE uses
+widely adopted safety- and cybersecurity-oriented Rust guidance as a
+baseline reference for recommended practices, in addition to the
+project-specific guidance linked below.
+
 .. toctree::
    :maxdepth: 1
 
