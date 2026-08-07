@@ -136,8 +136,8 @@ Rust Tooling: CodeQL
 
 CodeQL is a code analysis platform based on the QL query language and
 associated tooling. It supports Rust (see
-https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/
-and https://codeql.github.com/codeql-query-help/rust-cwe/).
+`CodeQL supported languages and frameworks <https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/>`_
+and `CodeQL Rust CWE query help <https://codeql.github.com/codeql-query-help/rust-cwe/>`_).
 
 Typical problem classes detected by CodeQL for Rust include:
 
