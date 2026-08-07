@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 730" width="1000" height="730">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #2c2c2c; }
+      .text { font-family: Arial, sans-serif; font-size: 12px; fill: #1a1a1a; }
+      .small-text { font-family: Arial, sans-serif; font-size: 11px; fill: #2c2c2c; }
+      .header-text { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #ffffff; }
+      .ok-box { fill: #c8e6c9; stroke: #2e7d32; stroke-width: 2.5; }
+      .watch-box { fill: #fff9c4; stroke: #f9a825; stroke-width: 2.5; }
+      .warn-box { fill: #ffe0b2; stroke: #ef6c00; stroke-width: 2.5; }
+      .violated-box { fill: #ffcdd2; stroke: #c62828; stroke-width: 2.5; }
+      .incomplete-box { fill: #e1bee7; stroke: #6a1b9a; stroke-width: 2.5; }
+      .recovered-box { fill: #b3e5fc; stroke: #0277bd; stroke-width: 2.5; }
+      .header-box { fill: #37474f; stroke: #263238; stroke-width: 2.5; }
+    </style>
+  </defs>
+
+  <!-- White Background -->
+  <rect x="0" y="0" width="1000" height="730" fill="#ffffff"/>
+  
+  <!-- Outer Border -->
+  <rect x="5" y="5" width="990" height="720" fill="none" stroke="#cccccc" stroke-width="2" rx="5"/>
+
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" class="title">VSO Evidence State Response Matrix</text>
+  <text x="500" y="55" text-anchor="middle" class="subtitle">Observability Escalation and Response Actions</text>
+
+  <!-- Header Row -->
+  <rect x="50" y="85" width="140" height="50" class="header-box" rx="3"/>
+  <text x="120" y="115" text-anchor="middle" class="header-text">State</text>
+
+  <rect x="200" y="85" width="140" height="50" class="header-box" rx="3"/>
+  <text x="270" y="115" text-anchor="middle" class="header-text">Observability</text>
+
+  <rect x="350" y="85" width="140" height="50" class="header-box" rx="3"/>
+  <text x="420" y="115" text-anchor="middle" class="header-text">Evidence</text>
+
+  <rect x="500" y="85" width="180" height="50" class="header-box" rx="3"/>
+  <text x="590" y="115" text-anchor="middle" class="header-text">Handoff</text>
+
+  <rect x="690" y="85" width="260" height="50" class="header-box" rx="3"/>
+  <text x="820" y="115" text-anchor="middle" class="header-text">Visibility / Notify</text>
+
+  <!-- OK State -->
+  <rect x="50" y="145" width="140" height="70" class="ok-box" rx="3"/>
+  <text x="120" y="165" text-anchor="middle" class="subtitle">OK</text>
+  <text x="120" y="185" text-anchor="middle" class="small-text">Pipeline executing</text>
+  <text x="120" y="200" text-anchor="middle" class="small-text">within constraints</text>
+
+  <rect x="200" y="145" width="140" height="70" class="ok-box" rx="3"/>
+  <text x="270" y="175" text-anchor="middle" class="text">NORMAL</text>
+
+  <rect x="350" y="145" width="140" height="70" class="ok-box" rx="3"/>
+  <text x="420" y="175" text-anchor="middle" class="text">none</text>
+
+  <rect x="500" y="145" width="180" height="70" class="ok-box" rx="3"/>
+  <text x="590" y="175" text-anchor="middle" class="text">none</text>
+
+  <rect x="690" y="145" width="260" height="70" class="ok-box" rx="3"/>
+  <text x="820" y="175" text-anchor="middle" class="text">none</text>
+
+  <!-- WATCH State -->
+  <rect x="50" y="225" width="140" height="70" class="watch-box" rx="3"/>
+  <text x="120" y="245" text-anchor="middle" class="subtitle">WATCH</text>
+  <text x="120" y="265" text-anchor="middle" class="small-text">Minor deviations</text>
+  <text x="120" y="280" text-anchor="middle" class="small-text">detected</text>
+
+  <rect x="200" y="225" width="140" height="70" class="watch-box" rx="3"/>
+  <text x="270" y="250" text-anchor="middle" class="text">optional light</text>
+  <text x="270" y="265" text-anchor="middle" class="text">observe</text>
+
+  <rect x="350" y="225" width="140" height="70" class="watch-box" rx="3"/>
+  <text x="420" y="260" text-anchor="middle" class="text">monitor</text>
+
+  <rect x="500" y="225" width="180" height="70" class="watch-box" rx="3"/>
+  <text x="590" y="260" text-anchor="middle" class="text">optional info</text>
+
+  <rect x="690" y="225" width="260" height="70" class="watch-box" rx="3"/>
+  <text x="820" y="260" text-anchor="middle" class="text">none</text>
+
+  <!-- WARN State -->
+  <rect x="50" y="305" width="140" height="70" class="warn-box" rx="3"/>
+  <text x="120" y="325" text-anchor="middle" class="subtitle">WARN</text>
+  <text x="120" y="345" text-anchor="middle" class="small-text">Constraint violations</text>
+  <text x="120" y="360" text-anchor="middle" class="small-text">approaching threshold</text>
+
+  <rect x="200" y="305" width="140" height="70" class="warn-box" rx="3"/>
+  <text x="270" y="330" text-anchor="middle" class="text">FOCUSED_DEBUG</text>
+  <text x="270" y="350" text-anchor="middle" class="text">(30s collection)</text>
+
+  <rect x="350" y="305" width="140" height="70" class="warn-box" rx="3"/>
+  <text x="420" y="335" text-anchor="middle" class="text">pre-snapshot</text>
+
+  <rect x="500" y="305" width="180" height="70" class="warn-box" rx="3"/>
+  <text x="590" y="335" text-anchor="middle" class="text">package + condRef</text>
+
+  <rect x="690" y="305" width="260" height="70" class="warn-box" rx="3"/>
+  <text x="820" y="335" text-anchor="middle" class="text">Dashboard WARN</text>
+
+  <!-- VIOLATED State -->
+  <rect x="50" y="385" width="140" height="80" class="violated-box" rx="3"/>
+  <text x="120" y="405" text-anchor="middle" class="subtitle">VIOLATED</text>
+  <text x="120" y="425" text-anchor="middle" class="small-text">Determinism contract</text>
+  <text x="120" y="440" text-anchor="middle" class="small-text">breach detected</text>
+  <text x="120" y="455" text-anchor="middle" class="small-text">(critical violation)</text>
+
+  <rect x="200" y="385" width="140" height="80" class="violated-box" rx="3"/>
+  <text x="270" y="415" text-anchor="middle" class="text">INTENSIVE_DIAG</text>
+  <text x="270" y="435" text-anchor="middle" class="text">(60s collection)</text>
+
+  <rect x="350" y="385" width="140" height="80" class="violated-box" rx="3"/>
+  <text x="420" y="420" text-anchor="middle" class="text">freeze snapshot</text>
+
+  <rect x="500" y="385" width="180" height="80" class="violated-box" rx="3"/>
+  <text x="590" y="415" text-anchor="middle" class="text">package + condRef</text>
+  <text x="590" y="435" text-anchor="middle" class="text">+ quality metrics</text>
+
+  <rect x="690" y="385" width="260" height="80" class="violated-box" rx="3"/>
+  <text x="820" y="415" text-anchor="middle" class="text">Diagnostic Event +</text>
+  <text x="820" y="435" text-anchor="middle" class="text">Dashboard ERROR</text>
+
+  <!-- INCOMPLETE State -->
+  <rect x="50" y="475" width="140" height="70" class="incomplete-box" rx="3"/>
+  <text x="120" y="495" text-anchor="middle" class="subtitle">INCOMPLETE</text>
+  <text x="120" y="515" text-anchor="middle" class="small-text">Missing evidence</text>
+  <text x="120" y="530" text-anchor="middle" class="small-text">signals</text>
+
+  <rect x="200" y="475" width="140" height="70" class="incomplete-box" rx="3"/>
+  <text x="270" y="500" text-anchor="middle" class="text">source health</text>
+  <text x="270" y="515" text-anchor="middle" class="text">report</text>
+
+  <rect x="350" y="475" width="140" height="70" class="incomplete-box" rx="3"/>
+  <text x="420" y="505" text-anchor="middle" class="text">mark incomplete</text>
+
+  <rect x="500" y="475" width="180" height="70" class="incomplete-box" rx="3"/>
+  <text x="590" y="500" text-anchor="middle" class="text">package with</text>
+  <text x="590" y="515" text-anchor="middle" class="text">LOW confidence</text>
+
+  <rect x="690" y="475" width="260" height="70" class="incomplete-box" rx="3"/>
+  <text x="820" y="505" text-anchor="middle" class="text">Dashboard WARN</text>
+
+  <!-- RECOVERED State -->
+  <rect x="50" y="555" width="140" height="70" class="recovered-box" rx="3"/>
+  <text x="120" y="575" text-anchor="middle" class="subtitle">RECOVERED</text>
+  <text x="120" y="595" text-anchor="middle" class="small-text">Return to normal</text>
+  <text x="120" y="610" text-anchor="middle" class="small-text">from violation</text>
+
+  <rect x="200" y="555" width="140" height="70" class="recovered-box" rx="3"/>
+  <text x="270" y="585" text-anchor="middle" class="text">NORMAL</text>
+
+  <rect x="350" y="555" width="140" height="70" class="recovered-box" rx="3"/>
+  <text x="420" y="585" text-anchor="middle" class="text">archive snapshot</text>
+
+  <rect x="500" y="555" width="180" height="70" class="recovered-box" rx="3"/>
+  <text x="590" y="585" text-anchor="middle" class="text">recovery package</text>
+
+  <rect x="690" y="555" width="260" height="70" class="recovered-box" rx="3"/>
+  <text x="820" y="585" text-anchor="middle" class="text">Dashboard INFO</text>
+
+  <!-- Legend -->
+  <rect x="50" y="645" width="900" height="70" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="5"/>
+  <text x="500" y="670" text-anchor="middle" class="text">State transitions are managed by VSO Policy Manager based on scenario determinism contracts.</text>
+  <text x="500" y="690" text-anchor="middle" class="text">Evidence packages are delivered to OEM State Manager / Safety Manager. VSO does NOT make execution decisions.</text>
+</svg>

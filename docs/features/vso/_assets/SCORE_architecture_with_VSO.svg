@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 920" width="1400" height="920">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 22px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #2c2c2c; }
+      .text { font-family: Arial, sans-serif; font-size: 13px; fill: #1a1a1a; }
+      .small-text { font-family: Arial, sans-serif; font-size: 11px; fill: #2c2c2c; }
+      .tiny-text { font-family: Arial, sans-serif; font-size: 10px; fill: #2c2c2c; }
+      
+      /* S-CORE Components */
+      .app-box { fill: #e8eaf6; stroke: #3f51b5; stroke-width: 2.5; }
+      .platform-box { fill: #e0f2f1; stroke: #00897b; stroke-width: 2.5; }
+      .runtime-box { fill: #fff3e0; stroke: #ef6c00; stroke-width: 2.5; }
+      .baselib-box { fill: #f3e5f5; stroke: #7b1fa2; stroke-width: 2.5; }
+      .diag-box { fill: #e3f2fd; stroke: #1565c0; stroke-width: 2.5; }
+      
+      /* VSO - Highlighted with distinct color */
+      .vso-box { fill: #fff9c4; stroke: #f9a825; stroke-width: 3.5; }
+      .vso-highlight { fill: #fffde7; stroke: #f57f17; stroke-width: 3; stroke-dasharray: 5,5; }
+      
+      .arrow { fill: none; stroke: #424242; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .vso-arrow { fill: none; stroke: #f9a825; stroke-width: 2; marker-end: url(#arrowhead-vso); stroke-dasharray: 4,4; }
+    </style>
+    
+    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5.5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#424242" />
+    </marker>
+    <marker id="arrowhead-vso" markerWidth="7" markerHeight="7" refX="6.5" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#f9a825" />
+    </marker>
+  </defs>
+
+  <!-- White Background -->
+  <rect x="0" y="0" width="1400" height="900" fill="#ffffff"/>
+  
+  <!-- Outer Border -->
+  <rect x="5" y="5" width="1390" height="890" fill="none" stroke="#cccccc" stroke-width="2" rx="5"/>
+
+  <!-- Title -->
+  <text x="700" y="35" text-anchor="middle" class="title">Eclipse SDV S-CORE Platform Architecture</text>
+  <text x="700" y="58" text-anchor="middle" class="subtitle">with Vehicle Service Orchestrator (VSO) Integration</text>
+
+  <!-- Application Layer -->
+  <rect x="50" y="90" width="1300" height="125" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="2" rx="5"/>
+  <text x="700" y="115" text-anchor="middle" class="subtitle">Application Layer</text>
+  
+  <rect x="80" y="130" width="180" height="68" class="app-box" rx="4"/>
+  <text x="170" y="157" text-anchor="middle" class="text">ADAS Applications</text>
+  <text x="170" y="177" text-anchor="middle" class="small-text">L3 Perception, Fusion,</text>
+  <text x="170" y="191" text-anchor="middle" class="small-text">Planning, Control</text>
+  
+  <rect x="280" y="130" width="180" height="68" class="app-box" rx="4"/>
+  <text x="370" y="157" text-anchor="middle" class="text">Vehicle Functions</text>
+  <text x="370" y="177" text-anchor="middle" class="small-text">Parking, Highway Pilot,</text>
+  <text x="370" y="191" text-anchor="middle" class="small-text">Automated Valet</text>
+  
+  <rect x="480" y="130" width="180" height="68" class="app-box" rx="4"/>
+  <text x="570" y="157" text-anchor="middle" class="text">Infotainment</text>
+  <text x="570" y="177" text-anchor="middle" class="small-text">HMI, Media,</text>
+  <text x="570" y="191" text-anchor="middle" class="small-text">Connectivity Apps</text>
+  
+  <rect x="680" y="130" width="180" height="68" class="app-box" rx="4"/>
+  <text x="770" y="157" text-anchor="middle" class="text">Cloud Services</text>
+  <text x="770" y="177" text-anchor="middle" class="small-text">OTA Updates,</text>
+  <text x="770" y="191" text-anchor="middle" class="small-text">Remote Diagnostics</text>
+
+  <rect x="880" y="130" width="180" height="68" class="app-box" rx="4"/>
+  <text x="970" y="157" text-anchor="middle" class="text">AI/ML Services</text>
+  <text x="970" y="177" text-anchor="middle" class="small-text">Inference Engine,</text>
+  <text x="970" y="191" text-anchor="middle" class="small-text">Model Management</text>
+
+  <rect x="1080" y="130" width="180" height="68" class="app-box" rx="4"/>
+  <text x="1170" y="157" text-anchor="middle" class="text">Safety Monitor</text>
+  <text x="1170" y="177" text-anchor="middle" class="small-text">ASIL Functions,</text>
+  <text x="1170" y="191" text-anchor="middle" class="small-text">Watchdog</text>
+
+  <!-- Mixed Criticality Software Orchestrator Layer -->
+  <rect x="50" y="225" width="1300" height="50" fill="#e1f5fe" stroke="#0277bd" stroke-width="2" rx="5"/>
+  <text x="700" y="255" text-anchor="middle" class="subtitle">Mixed Criticality Software Orchestrator Layer</text>
+
+  <!-- S-CORE Platform Layer -->
+  <rect x="50" y="285" width="970" height="420" fill="#fafafa" stroke="#757575" stroke-width="2.5" rx="5"/>
+  <text x="535" y="313" text-anchor="middle" class="subtitle">S-CORE Platform Components</text>
+
+  <!-- Left Column - Core Services -->
+  <rect x="80" y="335" width="200" height="80" class="platform-box" rx="4"/>
+  <text x="180" y="360" text-anchor="middle" class="text">Lifecycle Manager</text>
+  <text x="180" y="380" text-anchor="middle" class="small-text">Application lifecycle,</text>
+  <text x="180" y="390" text-anchor="middle" class="small-text">State management,</text>
+  <text x="180" y="408" text-anchor="middle" class="small-text">Process control</text>
+
+  <rect x="80" y="430" width="200" height="80" class="platform-box" rx="4"/>
+  <text x="180" y="455" text-anchor="middle" class="text">Orchestrator</text>
+  <text x="180" y="470" text-anchor="middle" class="small-text">Resource allocation,</text>
+  <text x="180" y="485" text-anchor="middle" class="small-text">Workload scheduling,</text>
+  <text x="180" y="503" text-anchor="middle" class="small-text">Container management</text>
+
+  <rect x="80" y="530" width="200" height="80" class="platform-box" rx="4"/>
+  <text x="180" y="555" text-anchor="middle" class="text">Configuration</text>
+  <text x="180" y="570" text-anchor="middle" class="small-text">Key/Value store,</text>
+  <text x="180" y="585" text-anchor="middle" class="small-text">Config management,</text>
+  <text x="180" y="598" text-anchor="middle" class="small-text">Persistency</text>
+
+  <rect x="80" y="620" width="200" height="65" class="platform-box" rx="4"/>
+  <text x="180" y="643" text-anchor="middle" class="text">Security &amp; Crypto</text>
+  <text x="180" y="663" text-anchor="middle" class="small-text">Auth, Encryption,</text>
+  <text x="180" y="676" text-anchor="middle" class="small-text">Key Management</text>
+
+  <!-- Middle Column - Runtime & Monitoring -->
+  <rect x="300" y="335" width="200" height="80" class="runtime-box" rx="4"/>
+  <text x="400" y="360" text-anchor="middle" class="text">Communication</text>
+  <text x="400" y="380" text-anchor="middle" class="small-text">DDS, SOME/IP,</text>
+  <text x="400" y="390" text-anchor="middle" class="small-text">Message Bus,</text>
+  <text x="400" y="408" text-anchor="middle" class="small-text">Network Stack</text>
+
+  <rect x="300" y="430" width="200" height="80" class="diag-box" rx="4"/>
+  <text x="400" y="455" text-anchor="middle" class="text">Diagnostics</text>
+  <text x="400" y="470" text-anchor="middle" class="small-text">SOVD/OpenSOVD,</text>
+  <text x="400" y="485" text-anchor="middle" class="small-text">Fault management,</text>
+  <text x="400" y="503" text-anchor="middle" class="small-text">DTC handling</text>
+
+  <rect x="300" y="530" width="200" height="80" class="runtime-box" rx="4"/>
+  <text x="400" y="555" text-anchor="middle" class="text">Logging &amp; Tracing</text>
+  <text x="400" y="570" text-anchor="middle" class="small-text">System logs,</text>
+  <text x="400" y="585" text-anchor="middle" class="small-text">Distributed tracing,</text>
+  <text x="400" y="598" text-anchor="middle" class="small-text">Event recording</text>
+
+  <rect x="300" y="620" width="200" height="65" class="runtime-box" rx="4"/>
+  <text x="400" y="643" text-anchor="middle" class="text">Time Services</text>
+  <text x="400" y="663" text-anchor="middle" class="small-text">Time sync, PTP,</text>
+  <text x="400" y="676" text-anchor="middle" class="small-text">Timestamp services</text>
+
+  <!-- VSO - Highlighted as NEW component with internal modules -->
+  <rect x="520" y="335" width="240" height="337" class="vso-highlight" rx="5"/>
+  <rect x="530" y="335" width="220" height="337" class="vso-box" rx="4"/>
+  <text x="640" y="358" text-anchor="middle" class="subtitle">VSO</text>
+  <text x="640" y="376" text-anchor="middle" class="small-text">(NEW - Multi Node Evidence Layer)</text>
+  
+  <!-- VSO Label -->
+  <rect x="530" y="335" width="60" height="22" fill="#f57f17" rx="3"/>
+  <text x="560" y="349" text-anchor="middle" style="font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; fill: #ffffff;">NEW</text>
+  
+  <!-- VSO Internal Modules (from Slides 10-11) -->
+  <!-- Scenario Contract Management -->
+  <rect x="540" y="390" width="200" height="60" fill="#fffacd" stroke="#f9a825" stroke-width="1.5" rx="3"/>
+  <text x="640" y="417" text-anchor="middle" class="small-text" style="font-weight: bold;">Scenario Contract Management</text>
+  <text x="640" y="433" text-anchor="middle" class="tiny-text">Contract Registration,</text>
+  <text x="640" y="446" text-anchor="middle" class="tiny-text">Capability/Node Data,</text>
+  <text x="640" y="456" text-anchor="middle" class="tiny-text">Data Subscription</text>
+  
+  <!-- Evidence Aggregation -->
+  <rect x="540" y="468" width="200" height="60" fill="#fffacd" stroke="#f9a825" stroke-width="1.5" rx="3"/>
+  <text x="640" y="485" text-anchor="middle" class="small-text" style="font-weight: bold;">Evidence Aggregation</text>
+  <text x="640" y="501" text-anchor="middle" class="tiny-text">Runtime, Diagnostic,</text>
+  <text x="640" y="514" text-anchor="middle" class="tiny-text">Fault, Log &amp; Resource</text>
+  <text x="640" y="524" text-anchor="middle" class="tiny-text">Signals</text>
+  
+  <!-- Evidence Package Generation -->
+  <rect x="540" y="536" width="200" height="60" fill="#fffacd" stroke="#f9a825" stroke-width="1.5" rx="3"/>
+  <text x="640" y="553" text-anchor="middle" class="small-text" style="font-weight: bold;">Evidence Package Generation</text>
+  <text x="640" y="569" text-anchor="middle" class="tiny-text">Violation Detection,</text>
+  <text x="640" y="582" text-anchor="middle" class="tiny-text">Scenario-level root-cause,</text>
+  <text x="640" y="592" text-anchor="middle" class="tiny-text">Evidence package model</text>
+  
+  <!-- Response Management -->
+  <rect x="540" y="604" width="200" height="60" fill="#fffacd" stroke="#f9a825" stroke-width="1.5" rx="3"/>
+  <text x="640" y="621" text-anchor="middle" class="small-text" style="font-weight: bold;">Response Management</text>
+  <text x="640" y="637" text-anchor="middle" class="tiny-text">Notification,</text>
+  <text x="640" y="650" text-anchor="middle" class="tiny-text">Recovery actions,</text>
+  <text x="640" y="660" text-anchor="middle" class="tiny-text">Debug escalation</text>
+
+  <!-- OEM/Vehicle-Specific Components (Outside S-CORE Platform) -->
+  <text x="1145" y="318" text-anchor="middle" class="subtitle">OEM/Vehicle Components</text>
+  
+  <rect x="1040" y="335" width="210" height="80" class="app-box" rx="4"/>
+  <text x="1145" y="360" text-anchor="middle" class="text">OEM State Manager</text>
+  <text x="1145" y="380" text-anchor="middle" class="small-text">Function Group States,</text>
+  <text x="1145" y="395" text-anchor="middle" class="small-text">Decision making,</text>
+  <text x="1145" y="408" text-anchor="middle" class="small-text">Mode management</text>
+
+  <rect x="1040" y="430" width="210" height="80" class="app-box" rx="4"/>
+  <text x="1145" y="455" text-anchor="middle" class="text">Safety Manager</text>
+  <text x="1145" y="470" text-anchor="middle" class="small-text">ASIL functions,</text>
+  <text x="1145" y="485" text-anchor="middle" class="small-text">Safety monitoring,</text>
+  <text x="1145" y="503" text-anchor="middle" class="small-text">Degradation control</text>
+
+  <rect x="1040" y="530" width="210" height="160" class="app-box" rx="4"/>
+  <text x="1145" y="555" text-anchor="middle" class="text">Vehicle Frameworks</text>
+  <text x="1145" y="572" text-anchor="middle" class="small-text">Vehicle State Management,</text>
+  <text x="1145" y="588" text-anchor="middle" class="small-text">Power Management,</text>
+  <text x="1145" y="604" text-anchor="middle" class="small-text">Update Management,</text>
+  <text x="1145" y="620" text-anchor="middle" class="small-text">Platform Health Monitor,</text>
+  <text x="1145" y="636" text-anchor="middle" class="small-text">Resource Monitor,</text>
+  <text x="1145" y="652" text-anchor="middle" class="small-text">FEO (Execution Order)</text>
+
+  <!-- Platform Stack (Inside S-CORE) -->
+  <rect x="790" y="335" width="210" height="175" class="baselib-box" rx="4"/>
+  <text x="895" y="357" text-anchor="middle" class="text">Base Libraries</text>
+  <text x="895" y="374" text-anchor="middle" class="small-text">Memory management,</text>
+  <text x="895" y="390" text-anchor="middle" class="small-text">Thread pools,</text>
+  <text x="895" y="406" text-anchor="middle" class="small-text">Error handling,</text>
+  <text x="895" y="422" text-anchor="middle" class="small-text">Data structures,</text>
+  <text x="895" y="438" text-anchor="middle" class="small-text">Utilities,</text>
+  <text x="895" y="454" text-anchor="middle" class="small-text">Common interfaces,</text>
+  <text x="895" y="470" text-anchor="middle" class="small-text">Platform abstraction</text>
+
+  <rect x="790" y="530" width="210" height="80" class="baselib-box" rx="4"/>
+  <text x="895" y="555" text-anchor="middle" class="text">Hardware Abstraction</text>
+  <text x="895" y="570" text-anchor="middle" class="small-text">HAL, Device drivers,</text>
+  <text x="895" y="585" text-anchor="middle" class="small-text">Board support,</text>
+  <text x="895" y="598" text-anchor="middle" class="small-text">Platform APIs</text>
+
+  <rect x="790" y="620" width="210" height="65" class="baselib-box" rx="4"/>
+  <text x="895" y="643" text-anchor="middle" class="text">OS Services</text>
+  <text x="895" y="663" text-anchor="middle" class="small-text">Linux kernel, Drivers,</text>
+  <text x="895" y="676" text-anchor="middle" class="small-text">System services</text>
+
+
+
+  <!-- Bottom Layer - Operating System -->
+  <rect x="50" y="710" width="1300" height="90" fill="#eceff1" stroke="#546e7a" stroke-width="2.5" rx="5"/>
+  <text x="700" y="740" text-anchor="middle" class="subtitle">Operating System Layer</text>
+  <text x="700" y="765" text-anchor="middle" class="text">Linux Kernel • Real-time Extensions • Device Drivers • File Systems • Network Stack</text>
+  <text x="700" y="785" text-anchor="middle" class="small-text">Container Runtime (e.g., containerd) • Hypervisor (optional) • Hardware Abstraction</text>
+
+  <!-- Bottom - Hardware -->
+  <rect x="50" y="820" width="1300" height="60" fill="#cfd8dc" stroke="#37474f" stroke-width="2.5" rx="5"/>
+  <text x="700" y="845" text-anchor="middle" class="subtitle">Hardware Platform</text>
+  <text x="700" y="865" text-anchor="middle" class="text">Multi-core SoCs (x86, ARM, RISC-V) • HPC Units • Zone Controllers • GPUs • Accelerators • Network Interfaces • Storage</text>
+
+  <!-- Legend -->
+  <rect x="1260" y="530" width="120" height="160" fill="#ffffff" stroke="#999" stroke-width="1.5" rx="4"/>
+  <text x="1320" y="550" text-anchor="middle" class="small-text" style="font-weight: bold;">Legend</text>
+  
+  <rect x="1268" y="553" width="22" height="13" class="app-box" rx="2"/>
+  <text x="1296" y="568" class="tiny-text">App/OEM</text>
+  
+  <rect x="1268" y="576" width="22" height="13" class="platform-box" rx="2"/>
+  <text x="1296" y="586" class="tiny-text">Platform</text>
+  
+  <rect x="1268" y="594" width="22" height="13" class="runtime-box" rx="2"/>
+  <text x="1296" y="604" class="tiny-text">Runtime</text>
+  
+  <rect x="1268" y="612" width="22" height="13" class="diag-box" rx="2"/>
+  <text x="1296" y="622" class="tiny-text">Diagnostics</text>
+  
+  <rect x="1268" y="630" width="22" height="13" class="vso-box" rx="2"/>
+  <text x="1296" y="640" class="tiny-text" style="font-weight: bold;">VSO (NEW)</text>
+  
+  <rect x="1268" y="643" width="22" height="13" class="baselib-box" rx="2"/>
+  <text x="1296" y="658" class="tiny-text">Base/HAL</text>
+
+</svg>
