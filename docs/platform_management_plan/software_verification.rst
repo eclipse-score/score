@@ -547,10 +547,10 @@ components, documentation, and automated tests.
 The software components of the project written in C++ are unit tested with the help of
 `GoogleTest <https://google.github.io/googletest/>`__.
 
-.. rubric:: gcov/gcovr
+.. rubric:: Code Coverage (llvm-cov/llvm-profdata)
 
-For C++ code the structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
-`gcovr <https://github.com/gcovr/gcovr>`__ - gcov is part of the GNU compiler collection (gcc).
+For C++ code the structural coverage reached by unit testing in the project is evaluated by the llvm-cov/llvm-profdata tool chain
+`llvm-cov <https://llvm.org/docs/CommandGuide/llvm-cov.html>`__ and `llvm-profdata <https://llvm.org/docs/CommandGuide/llvm-profdata.html>`__ are part of the LLVM toolchain.
 
 The C++ unit test tooling supports several coverage metrics:
 
@@ -558,7 +558,7 @@ The C++ unit test tooling supports several coverage metrics:
 - "branch" - used in S-CORE for the ``structural-branch-coverage`` method
 - "function" - used in S-CORE for the ``structural-function-coverage`` as additional supporting coverage value for further analysis.
 
-Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferrocene.
+Note: Rust coverage evidence in S-CORE is primarily generated via Rust/Ferrocene tooling. llvm-cov/llvm-profdata may be used in dedicated host-based LLVM workflows, but this is not the default Rust coverage reporting path.
 
 
 .. rubric:: Integration Testing Framework (ITF)

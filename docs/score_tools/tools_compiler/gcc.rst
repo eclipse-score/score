@@ -34,6 +34,8 @@ GCC is open-source C/C++ compiler. It is widely used in the software development
 
 In the context of the S-CORE project, GCC is used as a development tool to compile software components during the development phase. However, it is not used for production builds of safety-related software components.
 
+The GCC toolchain also provides ``gcov`` for coverage instrumentation/reporting. This capability is available in the project environment if needed, but it is not the primary structural-coverage reporting path used in S-CORE.
+
 Therefore, the safety and security impact of GCC is "NO".
 
 
@@ -198,6 +200,7 @@ Result
 ------
 GCC is not used for production builds nor during software verification phases.
 The tool is used for development purposes only to support early-stage issue identification and resolution.
+Coverage with ``gcov`` remains technically available through the GCC toolchain for dedicated use cases.
 
 
 .. [1] The tool version mentioned in this document is preliminary. It is subject to change and will be updated in future.
