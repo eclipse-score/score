@@ -850,12 +850,13 @@ Time
    :id: stkh_req__time__vehicle_time_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
    :status: valid
    :version: 1
 
    The SW-platform shall provide access to the synchronized vehicle time.
+   Access shall be free from interferences for the consuming components.
 
 .. stkh_req:: Synchronize the HW clock with Vehicle Time
    :id: stkh_req__time__hw_clock_sync
@@ -863,7 +864,7 @@ Time
    :security: NO
    :safety: QM
    :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
-   :status: invalid
+   :status: valid
    :version: 1
 
    The SW-platform shall synchronize the local HW clock to vehicle time.
@@ -883,23 +884,13 @@ Time
    :id: stkh_req__time__absolute_time_api
    :reqtype: Functional
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
    :status: valid
    :version: 1
 
    The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
-
-.. stkh_req:: Usage of Time base APIs has FFI
-   :id: stkh_req__time__time_base_api_ffi
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :rationale: Enables an application requiring a rating up to ASIL-B to use the time base API.
-   :status: valid
-   :version: 1
-
-   Usage of the time base APIs shall be free from interfrences for the consuming components.
+   Access shall be free from interferences for the consuming components.
 
 .. stkh_req:: Reliable Qualification of Time Information
    :id: stkh_req__time__qualified_time_information
@@ -920,12 +911,13 @@ Time
    :id: stkh_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
    :version: 1
 
    The SW-platform shall provide access to the current high resolution clock from the system time provider in nanoseconds.
+   Access shall be free from interferences for the consuming components.
 
    Note: to which clock the high resolution clock is mapped, depends on the system design.
 
@@ -933,12 +925,13 @@ Time
    :id: stkh_req__time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
    :version: 1
 
    The SW-platform shall provide access to the current monotonic clock from the system time provider.
+   Access shall be free from interferences for the consuming components.
 
    Note: to which clock the monotonic clock is mapped, depends on the system design.
 

@@ -52,23 +52,13 @@ Time Synchronization
    :id: feat_req__time__vehicle_time_time_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :status: valid
    :version: 1
 
    The **score::time feature** shall provide an API to access the synchronized vehicle time.
-
-.. feat_req:: Usage of Vehicle Time base API has FFI
-   :id: feat_req__time__vehicle_time_base_api_ffi
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :derived_from: stkh_req__time__time_base_api_ffi
-   :status: valid
-   :version: 1
-
-   Usage of the vehicle time base API shall be free from interference for the consuming components.
+   Usage of this API shall be free from interferences for the consuming components.
 
 .. feat_req:: Vehicle Time base accuracy qualifier
    :id: feat_req__time__vehicle_time_acc_qual_api
@@ -168,23 +158,13 @@ Time Synchronization to absolute external sources
    :id: feat_req__time__abs_base_api
    :reqtype: Functional
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__absolute_time_api[version==1]
    :status: valid
    :version: 1
 
    The **score::time feature** shall provide an API to read the absolute time base, synchronized to external time sources.
-
-.. feat_req:: Usage of Absolute Time base API has FFI
-   :id: feat_req__time__abs_time_base_api_ffi
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :derived_from: stkh_req__time__time_base_api_ffi
-   :status: valid
-   :version: 1
-
-   Usage of the absolute time base API shall be free from interfrences for the consuming components.
+   Usage of this API shall be free from interferences for the consuming components.
 
 .. feat_req:: Absolute Time base accuracy qualifier
    :id: feat_req__time__abs_acc_qual
@@ -249,12 +229,13 @@ Local Clock
    :id: feat_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__high_res_clock_api[version==1]
    :status: valid
    :version: 1
 
    The **score::time feature** shall provide an API to read the high resolution clock in nanoseconds resolution.
+   Usage of this API shall be free from interferences for the consuming components.
 
    Note: to which clock the high resolution clock is mapped, depends on the system design.
 
@@ -264,12 +245,13 @@ Local Clock
    :id: feat_req__time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__monotonic_clock_api[version==1]
    :status: valid
    :version: 1
 
    The **score::time feature** shall provide an API to read monotonic, not adjustable clock value.
+   Usage of this API shall be free from interferences for the consuming components.
 
 Testability
 ^^^^^^^^^^^^
