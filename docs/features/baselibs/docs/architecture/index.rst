@@ -90,6 +90,14 @@ Interfaces
    :status: valid
    :version: 1
 
+.. logic_arc_int:: FlatBuffers
+   :id: logic_arc_int__baselibs__flatbuffers
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
 .. logic_arc_int:: Filesystem
    :id: logic_arc_int__baselibs__filesystem
    :included_by: feat__baselibs
