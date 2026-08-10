@@ -91,8 +91,10 @@ Time Synchronization
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__time__qualified_time_information
+   :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The architecture and implementation parts of the time feature shall support to ensure,
    that the provided accuracy qualifier always reflects the actual quality of the local time base.

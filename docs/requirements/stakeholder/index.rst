@@ -932,6 +932,7 @@ Time
    :rationale: Depending on the user needs and their SW platform configuration, it can be guaranteed that applications can rely on the quality rating of the time reference of a certain time base, even in case of interferences induced into or by QM-rated software components involved in the synchronization process.
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The architecture and common implementation parts of the time synchronization framework shall support to ensure, that the provided qualification information of a synchronized time base always reflects the actual quality of the provided time (stamp) information.
 
