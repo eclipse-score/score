@@ -26,8 +26,10 @@ Symmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide functionality for symmetric encryption and decryption.
 
@@ -37,8 +39,10 @@ Symmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the AES-CBC symmetric encryption algorithm.
 
@@ -48,8 +52,10 @@ Symmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the AES-GCM symmetric encryption algorithm.
 
@@ -59,8 +65,10 @@ Symmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the AES-CCM symmetric encryption algorithm.
 
@@ -70,8 +78,10 @@ Symmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the ChaCha20-Poly1305 symmetric encryption algorithm.
 
@@ -84,8 +94,10 @@ Asymmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide functionality for asymmetric encryption and decryption.
 
@@ -95,8 +107,10 @@ Asymmetric Encryption
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the ECDH algorithm for key exchange.
 
@@ -110,8 +124,10 @@ Digital Signatures
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide functionality to create digital signatures.
 
@@ -121,8 +137,10 @@ Digital Signatures
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide functionality to verify digital signatures.
 
@@ -132,8 +150,10 @@ Digital Signatures
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the ECDSA algorithm for digital signatures.
 
@@ -146,8 +166,10 @@ Message Authentication Code (MAC)
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide functionality for Message Authentication Codes (MAC) to
    ensure message integrity and authenticity.
@@ -161,8 +183,10 @@ Hashing
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide hashing functionality.
 
@@ -172,8 +196,10 @@ Hashing
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the SHA-2 hashing algorithm.
 
@@ -183,8 +209,10 @@ Hashing
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the SHA-3 hashing algorithm.
 
@@ -197,8 +225,10 @@ Key Derivation Functions (KDF)
    :reqtype: Functional
    :security: YES
    :safety: QM
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
    :derived_from: stkh_req__dependability__security_features[version==1]
 
    The security component shall provide Key Derivation Functions (KDFs) to derive one or more
@@ -213,8 +243,10 @@ Random Number Generation
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide a source of entropy for random number generation.
 
@@ -224,8 +256,10 @@ Random Number Generation
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall use the ChaCha20Rng algorithm for random number generation.
 
@@ -238,8 +272,10 @@ Certificate Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide functionality to manage a set of signed and verified
    (trusted) certificates.
@@ -253,8 +289,10 @@ Key Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the secure generation of key material.
 
@@ -264,8 +302,10 @@ Key Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the secure import of key material.
 
@@ -275,8 +315,10 @@ Key Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the secure storage of key material.
 
@@ -286,8 +328,10 @@ Key Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the secure deletion of key material.
 
@@ -297,8 +341,10 @@ Key Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The API of the security component shall allow a selection of the available
    algorithms based on their unique name.
@@ -312,8 +358,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The security component shall contain a set of extendable benchmark tests to derive KPIs from
    running all it's cryptographic operations on different systems.
@@ -324,8 +372,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall use a uniform and unambiguous naming scheme for cryptographic
    algorithms.
@@ -336,8 +386,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The API of the security component shall not reveal key material to its users.
 
@@ -347,8 +399,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall be designed to mitigate side-channel and timing attacks.
 
@@ -358,8 +412,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component API shall provide clear mechanisms for initialization, context management
     (request, reuse, release), and de-initialization of cryptographic resources.
@@ -370,8 +426,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide a structured and consistent mechanism for error reporting
    and logging.
@@ -382,8 +440,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A security concept shall be created for the security component, including security goals,
    plausible attacks, critical failures, and countermeasures.
@@ -394,8 +454,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall allow the updating of its cryptographic algorithms.
 
@@ -405,8 +467,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall withstand reverse engineering of its secrets.
 
@@ -416,8 +480,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall consider the production scenario where initial production keys are
    brought into the system.
@@ -428,8 +494,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall be designed to be ready for post-quantum cryptography.
 
@@ -439,8 +507,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall be able to rely on hardware acceleration for cryptographic
    operations.
@@ -451,8 +521,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A software-only solution for cryptographic operations shall be available as a fallback.
 
@@ -462,8 +534,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall have access to a trusted real-world wall clock.
 
@@ -473,8 +547,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall use system-level means (e.g., co-processor, HSM, TEE) to protect
    its memory and CPU from applications and the normal operating system.
@@ -485,8 +561,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support roles and capability rights management to enforce access
    control to cryptographic functions and key material.
@@ -497,8 +575,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall provide a mechanism to report potential security anomalies or
    threats to an Intrusion Detection System (IDS).
@@ -509,8 +589,10 @@ Non-Functional Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall incorporate measures to mitigate the risk of Denial-of-Service
    (DoS) attacks that could be caused by malicious messages creating exceptional computational
@@ -525,8 +607,10 @@ Secure Communication Protocols
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The security component shall support the Transport Layer Security (TLS) 1.3 protocol for secure
    communication over Ethernet.

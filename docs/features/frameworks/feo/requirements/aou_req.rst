@@ -30,6 +30,7 @@ FEO Feature Assumption of Use Requirements
    :security: NO
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    Something shall be done.
 

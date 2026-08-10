@@ -18,6 +18,7 @@ DR-004-Infra: Bi-directional traceability in docs
 .. dec_rec:: Bi-directional traceability in docs
    :id: dec_rec__infra__traceable_docs
    :status: accepted
+   :version: 1
    :context: Infrastructure
    :decision: Single documentation build
 

@@ -260,7 +260,7 @@ Component Documents Status
 For all the work product documents the status can be seen by following the "Link to WP".
 A summary of the status is also documented in the project's documentation management plan.
 
-See :ref:`documents_docs_modules_feo_components`
+See :ref:`documents_docs_modules_feo_docs`
 
 Component Requirements Status
 -----------------------------

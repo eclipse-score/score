@@ -122,8 +122,7 @@ SW development tools
 This list will evolve into the complete "Tool List" :ref:`tools` for the S-CORE project used for
 tool evaluation and qualification. In the moment the :need:`doc__verification_plan`
 contains additional tools used in verification.
-
-Additional tools for static and dynamic analysis (in addition to compilers and Clang-Tidy) are currently evaluated: `#244 <https://github.com/eclipse-score/score/issues/244>`_
+Tools for code analysis (static/dynamic) as discussed in :need:`doc__cpp_code_analysis` are documented here.
 
 .. rubric:: GitHub
 
@@ -161,7 +160,7 @@ e.g. in process or concept descriptions
 .. rubric:: Host Compiler C++
 
 GCC is used as host C++ compiler with its associated linker. It's used as a development (compilation and linking) and verification tool
-as it generates compiler warnings and builds unit tests and binaries for SW integration testing.
+as it generates compiler warnings, offers sanitizers and builds unit tests and binaries for SW integration testing.
 
 .. rubric:: Target Compiler C++
 
@@ -171,9 +170,36 @@ QCC the qualify-able compiler/linker from Blackberry offered together with its P
 
 is used in conjunction with the Clang compiler to perform static analysis.
 
+.. rubric:: GitHub CodeQL
+
+For Static Code Analysis, `CodeQL <https://codeql.github.com/>`__ is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
+It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.
+
+Core features of CodeQL include:
+
+- **Vulnerability Detection**: CodeQL can identify known vulnerabilities in the codebase by comparing it against a database of known issues.
+- **Custom Queries**: Developers can write custom queries to identify specific patterns or issues in the codebase that are relevant to the project's security and quality standards.
+- **Integration with CI**: CodeQL can be integrated into the CI pipeline to automatically analyze code changes and provide feedback on potential issues before they are merged into the main codebase.
+- **Reporting**: CodeQL provides detailed reports on identified issues, including severity levels and recommendations for remediation.
+- **Support for Multiple Languages**: CodeQL supports multiple programming languages, including C++, Rust, and others used in the project.
+
+CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.
+
+Examples of capabilities include:
+
+- unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)
+- potential runtime errors (e.g., null pointer dereferences, buffer overflows)
+- code quality issues (e.g., dead code, unused variables)
+- incorrect use of APIs (e.g., misuse of cryptographic functions, incorrect error handling)
+- compliance with coding standards (e.g., naming conventions, code complexity)
+- violations of project-specific coding guidelines (e.g., use of certain libraries, adherence to architectural patterns)
+
+Custom queries can be developed to identify specific patterns or issues that are relevant to the project's security and quality standards.
+This allows for a tailored approach to static code analysis that aligns with the project's specific requirements and goals.
+
 .. rubric:: Host Compiler Rust
 
-There is currently no selection of a Rust compiler for S-CORE. Pick your own favourite.
+There is currently no selection of a Rust host compiler for S-CORE. Pick your own favourite.
 
 .. rubric:: Target Compiler Rust
 

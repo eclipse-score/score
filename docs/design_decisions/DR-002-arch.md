@@ -10,16 +10,17 @@ https://www.apache.org/licenses/LICENSE-2.0
 
 SPDX-License-Identifier: Apache-2.0
 -->
-
+(DR-002-Arch)=
 # DR-002-Arch: Library Delivery Model (Static vs. Dynamic)
 
 * **Date:** 2026-05-15
 
 ```{dec_rec} Library Delivery Model for Platform Modules
 :id: dec_rec__arch__library_delivery_model
-:status: proposed
+:status: accepted
+:version: 1
 :context: Architecture
-:decision: Proposal: Opt-in per module — static by default, dynamic where justified
+:decision: Opt-in per module — static by default, dynamic where justified
 ```
 
 ---
@@ -170,7 +171,7 @@ The default delivery model is static libraries. Individual modules may opt in to
 | Integrator usability           |      +      |      +       |  ++  |         +         |
 | Maintenance effort             |     ++      |      +       |  --  |         +         |
 
-For detailed update granularity and performance assessments, see [Detailed Assessments](DR-002-arch/detailed_assessments.md).
+For detailed update granularity and performance assessments, see :ref:`Detailed Assessments <DR-002-Arch-detailed-assessments>`).
 
 ## Decision Proposal
 

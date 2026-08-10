@@ -53,6 +53,7 @@ Assumptions on the Environment
    :security: YES
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    Only the following crates of the FEO module shall be used to build code that runs on
    targets in release builds.
@@ -80,6 +81,7 @@ Assumptions on the Environment
    :security: YES
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    The following items from the Rust std library shall be safety qualified:
 

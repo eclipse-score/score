@@ -41,6 +41,7 @@ Task Management
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The executor shall provide a cooperative task runtime for async programming based on the definition of Rust's async model (see `Asynchronous Programming in Rust <https://rust-lang.github.io/async-book>`).
 
@@ -53,6 +54,7 @@ Task Management
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The executor shall provide guidelines for dividing long-running operations into smaller, cooperatively yielding segments.
 
@@ -65,6 +67,7 @@ Task Management
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The system shall support execution of tasks containing blocking calls on dedicated OS threads isolated from cooperative scheduling.
 
@@ -77,7 +80,10 @@ Special Tasks and Preemption
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
+   :valid_from: v2.0.0
 
    The Executor shall support preemptive scheduling of special safety-critical tasks, guaranteeing their execution.
 
@@ -87,7 +93,10 @@ Special Tasks and Preemption
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
+   :valid_from: v2.0.0
 
    Safety-critical tasks shall be prioritized separately from standard cooperative tasks.
 
@@ -103,6 +112,7 @@ Thread Pool Configuration
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Executor instances shall run tasks on a statically configured thread pool with a fixed thread count.
 
@@ -115,6 +125,7 @@ Thread Pool Configuration
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Threads within an Executor not involved in safety-critical tasks shall share identical OS-level priority.
 
@@ -127,6 +138,7 @@ Thread Pool Configuration
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Thread affinity to CPU cores shall be configurable per Executor instance.
 
@@ -139,6 +151,7 @@ Thread Pool Configuration
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Executor instances shall isolate their thread pools from each other.
 
@@ -154,6 +167,7 @@ Task Scheduling
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Cooperative tasks within an Executor shall execute without internal priority distinctions.
 
@@ -166,6 +180,7 @@ Task Scheduling
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The Executor shall support FIFO or fairness-based scheduling among cooperative tasks.
 
@@ -178,6 +193,7 @@ Task Scheduling
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Scaling of Executor resources shall be achieved through additional Executor instances rather than dynamic thread scaling.
 
@@ -196,6 +212,7 @@ Program Definition
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The Orchestrator shall provide a runtime-static Program abstraction representing computation logic as execution graphs.
 
@@ -208,6 +225,7 @@ Program Definition
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Programs shall explicitly define sequential, parallel, conditional execution flows, loops, and timing contracts.
 
@@ -220,6 +238,7 @@ Program Definition
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Programs shall support explicit event-based synchronization and trigger conditions.
 
@@ -232,6 +251,7 @@ Program Definition
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Programs shall contain integrated fault-handling logic and execution monitors to enforce timing constraints.
 
@@ -247,6 +267,7 @@ API Design
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The Orchestrator shall offer a code-first API to integrate directly with application logic without external DSL/IDL.
 
@@ -262,6 +283,7 @@ Execution Model
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Each Program shall be deployed exclusively on a single Executor instance.
 
@@ -274,6 +296,7 @@ Execution Model
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Executors may host multiple Programs to support resource sharing.
 
@@ -286,6 +309,7 @@ Execution Model
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Programs shall communicate exclusively through explicitly defined events.
 
@@ -298,7 +322,10 @@ Special Safety Task Integration
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
+   :valid_from: v2.0.0
 
    Critical timing or safety paths within Programs shall be executed via preemptive special tasks provided by the Executor.
 
@@ -314,6 +341,7 @@ Observability Requirements
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The Executor and Orchestrator shall expose structured tracing points correlating user-space task scheduling with OS-level scheduling.
 
@@ -326,6 +354,7 @@ Observability Requirements
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Observability shall capture task lifecycle events, Executor queue metrics, and mapping of user-space tasks to OS threads.
 
@@ -338,6 +367,7 @@ Observability Requirements
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Observability shall provide visibility into Program execution flow, event synchronization points, and timing violations.
 
@@ -350,6 +380,7 @@ Observability Requirements
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Tracing points shall integrate seamlessly with established tracing frameworks like Perfetto and LTTng.
 
@@ -365,6 +396,7 @@ External Supervision Requirements
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Executor and Orchestrator frameworks shall expose health indicators for integration with external supervisory systems.
 
@@ -377,6 +409,7 @@ External Supervision Requirements
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    Frameworks shall internally verify task-level health status based on timing constraints and fault-handling execution.
 
@@ -392,6 +425,7 @@ General Constraints
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
+   :valid_from: v2.0.0
 
    The Executor and Orchestrator shall maintain determinism and scalability suitable for mixed-criticality environments.
 
@@ -401,7 +435,10 @@ General Constraints
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
+   :valid_from: v2.0.0
 
    Preemptive scheduling shall only be activated explicitly for tasks with safety or critical timing constraints.
 
@@ -411,7 +448,10 @@ General Constraints
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1], stkh_req__dependability__security_features[version==1], stkh_req__communication__inter_process[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
+   :valid_from: v2.0.0
 
    The system shall use the approved IPC feature exclusively for all inter-process synchronization.
 

@@ -30,7 +30,6 @@ Feature Architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :provides: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
 
 
 Overview
@@ -70,6 +69,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :status: invalid
+   :version: 1
    :fulfils: feat_req__orchestration__orch_static_graphs[version==1], feat_req__orchestration__exec_async_rt[version==1]
    :includes: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
    :belongs_to: feat__orchestration[version==1]
@@ -129,6 +129,7 @@ The public API for the frontend is defined as:
 
 .. logic_arc_int:: Orchestration Interface
    :id: logic_arc_int__orchestration__user
+   :included_by: feat__orchestration
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -143,6 +144,7 @@ The public API for the frontend is defined as:
 
 .. logic_arc_int:: Design Interface
    :id: logic_arc_int__orchestration__design
+   :included_by: feat__orchestration
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -156,6 +158,7 @@ The public API for the frontend is defined as:
 
 .. logic_arc_int:: Deployment Interface
    :id: logic_arc_int__orchestration__deployment
+   :included_by: feat__orchestration
    :security: YES
    :safety: ASIL_B
    :status: valid

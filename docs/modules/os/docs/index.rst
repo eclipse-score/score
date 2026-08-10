@@ -32,6 +32,7 @@
 
 .. mod_view_sta:: OS (external)
    :id: mod_view_sta__os__os
+   :version: 1
    :includes: comp__os_libc, comp__os_message_passing, comp__os_libcpp, comp__os_autosd
    :belongs_to: mod__os[version==1]
 

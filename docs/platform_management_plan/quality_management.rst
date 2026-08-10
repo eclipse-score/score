@@ -289,8 +289,8 @@ Finally to the Eclipse Foundation if the rules of the Eclipse handbook are not f
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 None
 
-4.4 Quality Management Generic workproducts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4.4 Quality Management Generic work products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table:: Quality related work products
         :header-rows: 1
 
@@ -299,12 +299,6 @@ None
 
         * - :need:`wp__chm_plan`
           - :ref:`project_documents_list`
-
-        * - :need:`wp__cmpt_request`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__component_arch`
-          - :ref:`documents_docs_modules_components`
 
         * - :need:`wp__document_mgt_plan`
           - :ref:`project_documents_list`
@@ -375,50 +369,23 @@ None
         * - :need:`wp__qms_report`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__requirements_comp`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__requirements_comp_aou`
-          - :ref:`documents_docs_modules_components`
-
         * - :need:`wp__requirements_feat`
           - :ref:`documents_docs_features`
 
-        * - :need:`wp__requirements_feat_aou`
-          - :ref:`documents_docs_features`
-
         * - :need:`wp__requirements_inspect`
-          - :ref:`project_documents_list`, :ref:`documents_docs_modules`
+          - :ref:`project_documents_list`
 
         * - :need:`wp__requirements_stkh`
           - :ref:`project_documents_list`
 
         * - :need:`wp__sw_arch_verification`
-          - :ref:`project_documents_list`, :ref:`documents_docs_modules`
-
-        * - :need:`wp__sw_component_class`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__sw_component_dfa`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__sw_component_fmea`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__sw_component_dfa`
-          - :ref:`documents_docs_modules_components`
+          - :ref:`project_documents_list`
 
         * - :need:`wp__sw_development_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__sw_implementation`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__sw_implementation_inspection`
-          - :ref:`documents_docs_modules_components`
-
         * - :need:`wp__tailoring_work_products`
-          - :ref:`project_documents_list`, :ref:`documents_docs_features`, :ref:`documents_docs_modules_components`
+          - :ref:`project_documents_list`
 
         * - :need:`wp__tlm_plan`
           - :ref:`project_documents_list`
@@ -426,23 +393,11 @@ None
         * - :need:`wp__tool_verification_report`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__verification_comp_int_test`
-          - :ref:`documents_docs_modules_components`
-
-        * - :need:`wp__verification_feat_int_test`
-          - :ref:`documents_docs_features`
-
-        * - :need:`wp__verification_module_ver_report`
-          - :ref:`documents_docs_modules`
-
         * - :need:`wp__verification_plan`
-          - :ref:`project_documents_list`, :ref:`documents_docs_features`, :ref:`documents_docs_modules_components`
+          - :ref:`project_documents_list`
 
         * - :need:`wp__verification_platform_int_test`
           - :ref:`project_documents_list`
 
         * - :need:`wp__verification_platform_ver_report`
           - :ref:`project_documents_list`
-
-        * - :need:`wp__verification_sw_unit_test`
-          - :ref:`documents_docs_modules_components`

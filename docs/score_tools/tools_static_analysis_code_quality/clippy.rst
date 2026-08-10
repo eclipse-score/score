@@ -15,6 +15,7 @@
 .. doc_tool:: clippy
    :id: doc_tool__clippy
    :status: evaluated
+   :version: 1
    :tool_version: 1.90.0 (see [1])
    :tcl: HIGH
    :safety_affected: YES

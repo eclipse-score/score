@@ -14,15 +14,15 @@
 
 .. _baselibs_feature:
 
-Base Libraries (v0.5 beta)
-###########################
+Base Libraries
+##############
 
 .. document:: Base Libraries
    :id: doc__baselibs
    :status: valid
    :version: 1
    :safety: ASIL_B
-   :tags: feature_request
+   :tags: feature_request, baselibs
    :security: YES
    :realizes: wp__feat_request[version==1]
 

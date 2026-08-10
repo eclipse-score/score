@@ -24,8 +24,10 @@ Terms and definitions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    An individual vehicle configuration property used for vehicle specific adaptations is called ``Parameter``.
 
@@ -35,8 +37,10 @@ Terms and definitions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Group of Parameters which belong to the same functionality and share an integrity protection is called ``Parameter Set``.
 
@@ -49,8 +53,10 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Configuration Management shall provide a central housekeeping for Parameters.
 
@@ -60,8 +66,10 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Every Parameter shall be contained in exactly one Parameter Set.
 
@@ -71,8 +79,10 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Parameters names shall be unique for an ECU project.
 
@@ -82,8 +92,10 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Parameters Set names shall be unique for an ECU project.
 
@@ -93,8 +105,10 @@ Data Housekeeping
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Parameter Set configuration shall contain a mapping of Parameters to Parameter Sets, Parameter names and default values.
 
@@ -104,8 +118,10 @@ Data Housekeeping
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Parameter Set configuration shall be determined solely by a read-only input source, deployed on the target.
 
@@ -115,8 +131,10 @@ Data Housekeeping
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Parameter values shall be modifiable during runtime regarding modification procedure specific for a parameter kind.
 
@@ -129,8 +147,10 @@ Parameter Provision
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Configuration Management shall provide a generic interface, independent of any Parameter definitions, for applications to access Parameters in read-only mode.
 
@@ -140,8 +160,10 @@ Parameter Provision
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A Parameter Set shall be accessible via interface using a key-value principle, where user application passes a Parameter Set name to the interface and its value is returned as result.
 
@@ -154,8 +176,10 @@ Parameter Qualification
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__safe_config[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A Parameter Set shall contain a qualifier to indicate its integrity.
 
@@ -165,7 +189,9 @@ Parameter Qualification
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__safe_config[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    There shall exist an overall qualifier for all Parameter Sets to indicate the state of integrity checks at the point of time of initial provision of parameters.

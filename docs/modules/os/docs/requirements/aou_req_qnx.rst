@@ -56,6 +56,7 @@ requirements inspection checklist's scope and document findings like for other i
    :security: YES
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    not relevant for S-CORE, no target HW
 

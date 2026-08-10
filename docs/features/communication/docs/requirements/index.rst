@@ -34,6 +34,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide API to support a time-based architecture.
 
@@ -46,6 +47,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide API to support a data-driven architecture.
 
@@ -58,6 +60,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide API to support a request-driven architecture.
 
@@ -70,6 +73,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A communication interface consists of a combination of any number of the following elements:
 
@@ -86,6 +90,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    An event-type is part of a communication interface and has:
 
@@ -104,6 +109,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A method is part of a communication interface and has:
 
@@ -126,6 +132,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A signal is part of a communication interface and has:
 
@@ -150,6 +157,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Communication shall be cached based on the producer-consumer pattern.
 
@@ -162,6 +170,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Multiple service instances shall be able to offer the same interface.
 
@@ -177,6 +186,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    A service instance is offered under one or more unique names by which it can be discovered.
    Names follow a POSIX path style.
@@ -194,6 +204,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support versioning of service instances:
 
@@ -212,6 +223,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The interface to access service instances is agnostic to the binding used to communicate with the service.
 
@@ -227,6 +239,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support stateless communication.
 
@@ -243,6 +256,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support multiple service instances per software architecture element.
 
@@ -258,6 +272,7 @@ Requirements
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide service discovery to find available services during runtime. Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).
 
@@ -277,6 +292,7 @@ Mixed-Criticality safety systems
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support safe communication involving communication partners on the same or multiple
    criticality levels.
@@ -290,6 +306,7 @@ Mixed-Criticality safety systems
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Consumers with lower criticality shall not be able to corrupt data consumed by partners with higher criticality.
 
@@ -302,6 +319,7 @@ Mixed-Criticality safety systems
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Consumers with lower criticality shall not be able to modify the order of data consumed by partners with higher
    criticality.
@@ -315,6 +333,7 @@ Mixed-Criticality safety systems
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Consumers with lower criticality shall not be able to duplicate data consumed by other communication partners with
    higher criticality.
@@ -328,6 +347,7 @@ Mixed-Criticality safety systems
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Consumers with lower criticality shall not be able to drop data before it is consumed by partners with higher
    criticality.
@@ -345,6 +365,7 @@ Performance
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall enable Zero-Copy communication without copying to-be-transferred data.
 
@@ -363,6 +384,7 @@ User friendly API for information exchange
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide a public API for each supported programming language of S-CORE.
 
@@ -375,6 +397,7 @@ User friendly API for information exchange
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Each public API shall support the idioms of the programming language it is written in.
 
@@ -387,6 +410,7 @@ User friendly API for information exchange
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Each public API shall use core infrastructure of its programming language and accompanying standard libraries,
    whenever possible and meaningful.
@@ -406,6 +430,7 @@ Full testability for the user facing API
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The public API shall be fully mockable.
 
@@ -418,6 +443,7 @@ Full testability for the user facing API
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide a fake binding.
 
@@ -434,6 +460,7 @@ Multi-binding support
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support multiple bindings.
 
@@ -449,6 +476,7 @@ Multi-binding support
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The public API of the communication framework shall be binding-agnostic.
 
@@ -464,6 +492,7 @@ Multi-binding support
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The association of a service instance and the appropriate binding shall be specified in the deployment configuration.
 
@@ -653,6 +682,7 @@ Dynamic deployment at runtime
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    Deployment configuration shall be read from an integrity-checked configuration file at runtime.
 
@@ -668,6 +698,7 @@ Tracing
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall provide infrastructure to enable binding-agnostic, zero-copy, read-only tracing of
    communication.
@@ -684,6 +715,7 @@ Security Impact
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support an Access Control Lists in the deployment configuration.
 
@@ -696,6 +728,7 @@ Security Impact
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support an Access Control List per service instance.
 
@@ -708,6 +741,7 @@ Security Impact
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support an Access Control List for the communication partner offering a service
    instance (producer).
@@ -722,6 +756,7 @@ Security Impact
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support an Access Control List for the communication partner consuming a service
    instance.
@@ -739,6 +774,7 @@ Safety Impact
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
+   :valid_from: v1.0.0
 
    The communication framework shall support safe communication up to ASIL-B.
 

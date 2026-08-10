@@ -454,8 +454,8 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
-      - :need:`doc__platform_dfa`
-      - :ndf:`copy('status', need_id='doc__platform_dfa')`
+      - :need:`doc__score_platform_dfa`
+      - :ndf:`copy('status', need_id='doc__score_platform_dfa')`
 
     * - :need:`wp__platform_safety_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`
@@ -478,11 +478,9 @@ Platform Management Plan - Feature Work Product Lists
 
 :need:`doc__com_ipc_safety_wp`
 
-:need:`doc__feo_safety_wp`
-
-:need:`doc__orchestration_safety_wp`
-
 `Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/docs/features/persistency/safety_planning/index.html>`__
+
+`Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/docs/features/lifecycle/safety_planning/index.html>`__
 
 Note: list of features according to :ref:`releases`
 

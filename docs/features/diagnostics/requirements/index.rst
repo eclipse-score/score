@@ -26,6 +26,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -38,6 +39,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1], stkh_req__diagnostics__secure_access[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -50,6 +52,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -62,6 +65,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -74,6 +78,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__secure_access[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -86,6 +91,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__distributed_support[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -98,6 +104,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1], stkh_req__diagnostics__secure_access[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -110,6 +117,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -122,6 +130,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__custom_services[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -134,6 +143,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__custom_services[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -146,6 +156,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -158,6 +169,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -170,6 +182,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -182,6 +195,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1], stkh_req__diagnostics__dtc_read_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -194,6 +208,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -206,6 +221,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1], stkh_req__diagnostics__dtc_read_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -218,6 +234,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__fault_reporting[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -230,6 +247,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__uds_ecus[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -242,6 +260,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__uds_ecus[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -254,6 +273,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__uds_tester_compat[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -266,6 +286,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__uds_tester_compat[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.5.0
@@ -278,6 +299,7 @@ Diagnostic and Fault Management
    :security: YES
    :safety: QM
    :derived_from: stkh_req__diagnostics__via_sovd[version==1], stkh_req__diagnostics__dtc_read_sovd[version==1]
+   :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0

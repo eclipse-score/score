@@ -27,11 +27,11 @@ Please note that the Eclipse S-CORE´s software architecture is continuously ref
 Eclipse S-CORE has a `software architecture community <https://github.com/orgs/eclipse-score/discussions/categories/architecture-community>`_
 **responsible for maintaining and evolving the architecture**.
 
-By creating a **feature request**, structural changes as well as new functionality can be **proposed at any time**.
+Structural changes and new functionality are proposed through a **FEP**.
 All **past feature requests** are documented in the corresponding
 `Feature Requests / Modification <https://github.com/orgs/eclipse-score/projects/4/views/1>`_ GitHub project.
 
-The **process for submitting a feature request** is described in the :ref:`contribution guide <feature_request_guideline>`.
+**Submitting a FEP** is described in the :ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>`.
 Participation in the architecture process is encouraged.
 
 The **software architecture community regularly organizes workshops** where contributors can:
