@@ -142,26 +142,27 @@ See also `module template repository <https://github.com/eclipse-score/module_te
    │   │       │                           [:need:`wp__feature_security_analysis`]
    │   │       └── security_planning/   -> Feature specific security workproducts planning
    │   │                                   [:need:`wp__platform_security_plan`]
-   │   ├── manuals/                     -> Module manual, e.g. integration manual, assumptions of use,
-   │   │   │                               safety manual [:need:`wp__requirements_comp_aou`],
-   │   │   │                               [:need:`wp__requirements_feat_aou`],
-   │   │   │                               [:need:`wp__module_safety_manual`],
-   │   │   │                               security_manual [:need:`wp__module_security_manual`].
-   │   │   │                            -> Additional optional user centric documentation (e.g. configuration guide,
-   │   │   │                               examples user guide, APIs & usage, performance analysis)
-   │   │   ├── config/                  -> Configuration guide (optional)
-   │   │   ├── examples/                -> Examples user guide (optional)
-   │   │   ├── api_description/         -> API detail description (optional)
-   │   │   └── performance/             -> Performance analysis (optional)
-   │   ├── release/                     -> Module release note [:need:`wp__module_sw_release_note`],
-   │   │                                   module release plan [:need:`wp__module_sw_release_plan`],
-   │   ├── safety_mgt/                  -> Module safety plan [:need:`wp__module_safety_plan`],
-   │   │                                   module safety package [:need:`wp__module_safety_package`],
-   │   │                                   formal documents reviews [:need:`wp__fdr_reports`],
-   │   │                                   safety analysis formal reviews [:need:`wp__fdr_reports`],
-   │   │                                   safety tailoring [:need:`wp__safety_tailoring`]
-   │   │                                   safety component classification [:need:`wp__sw_component_class`]
-   │   ├── security_mgt/                -> Module security plan [:need:`wp__module_security_plan`],
+   │   ├── module/                      -> Module documentation
+   │   |   ├── manuals/                 -> Module manual, e.g. integration manual, assumptions of use,
+   │   │   |   │                           safety manual [:need:`wp__requirements_comp_aou`],
+   │   │   |   │                           [:need:`wp__requirements_feat_aou`],
+   │   │   |   │                           [:need:`wp__module_safety_manual`],
+   │   │   |   │                           security_manual [:need:`wp__module_security_manual`].
+   │   │   |   │                        -> Additional optional user centric documentation (e.g. configuration guide,
+   │   │   |   │                           examples user guide, APIs & usage, performance analysis)
+   │   │   |   ├── config/              -> Configuration guide (optional)
+   │   │   |   ├── examples/            -> Examples user guide (optional)
+   │   │   |   ├── api_description/     -> API detail description (optional)
+   │   │   |   └── performance/         -> Performance analysis (optional)
+   │   |   ├── release/                 -> Module release note [:need:`wp__module_sw_release_note`],
+   │   |   │                               module release plan [:need:`wp__module_sw_release_plan`],
+   │   |   ├── safety_mgt/              -> Module safety plan [:need:`wp__module_safety_plan`],
+   │   |   │                               module safety package [:need:`wp__module_safety_package`],
+   │   |   │                               formal documents reviews [:need:`wp__fdr_reports`],
+   │   |   │                               safety analysis formal reviews [:need:`wp__fdr_reports`],
+   │   |   │                               safety tailoring [:need:`wp__safety_tailoring`]
+   │   |   │                               safety component classification [:need:`wp__sw_component_class`]
+   │   |   └── security_mgt/            -> Module security plan [:need:`wp__module_security_plan`],
    │   │                                   module security package [:need:`wp__module_security_package`],
    │   │                                   formal documents reviews [:need:`wp__fdr_reports_security`],
    │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
@@ -211,35 +212,38 @@ For identification of the single feature, the repository name or module name sho
     <module_name>/                       -> Folder containing all artifacts corresponding to one module.
     │                                       As folder optional if the repository only contains a single module.
     ├── docs/                            -> Documentation of the module
-    │   ├── architecture/                -> Feature architecture
-    │   │                                   [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
-    │   ├── safety_analysis/             -> Safety analysis on feature level
-    │   │                                   [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
-    │   ├── safety_planning/             -> Feature specific safety workproducts planning
-    │   │                                   [:need:`wp__platform_safety_plan`]
-    │   ├── security_analysis/           -> Security analysis on feature level
-    │   │                                   [:need:`wp__feature_security_analysis`]
-    │   ├── security_planning/           -> Feature specific security workproducts planning
+    │   ├── features/                    -> Feature folder parts for each feature which should be in module documentation
+    │   |   ├── architecture/            -> Feature architecture
+    │   |   │                               [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
+    │   |   ├── safety_analysis/         -> Safety analysis on feature level
+    │   |   │                               [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
+    │   |   ├── safety_planning/         -> Feature specific safety workproducts planning
+    │   |   │                               [:need:`wp__platform_safety_plan`]
+    │   |   ├── security_analysis/       -> Security analysis on feature level
+    │   |   │                               [:need:`wp__feature_security_analysis`]
+    │   |   └── security_planning/       -> Feature specific security workproducts planning
     │   │                                   [:need:`wp__platform_security_plan`]
-    │   ├── manuals/                     -> Module manual, e.g. integration manual, assumptions of use,
-    │   │   │                               safety manual [:need:`wp__requirements_comp_aou`],
-    │   │   │                               [:need:`wp__requirements_feat_aou`],
-    │   │   │                               [:need:`wp__module_safety_manual`],
-    │   │   │                               security_manual [:need:`wp__module_security_manual`].
-    │   │   │                            -> Additional optional user centric documentation (e.g. configuration guide, examples user guide, APIs & usage, performance analysis)
-    │   │   ├── config/                  -> Configuration guide (optional)
-    │   │   ├── examples/                -> Examples user guide (optional)
-    │   │   ├── api_description/         -> APIs detail description (optional)
-    │   │   └── performance/             -> Performance analysis (optional)
-    │   ├── release/                     -> Module release note [:need:`wp__module_sw_release_note`],
-    │   │                                   module release plan [:need:`wp__module_sw_release_plan`],
-    │   ├── safety_mgt/                  -> Module safety plan [:need:`wp__module_safety_plan`],
-    │   │                                   module safety package [:need:`wp__module_safety_package`],
-    │   │                                   formal documents reviews [:need:`wp__fdr_reports`],
-    │   │                                   safety analysis formal reviews [:need:`wp__fdr_reports`],
-    │   │                                   safety tailoring [:need:`wp__safety_tailoring`]
-    │   │                                   safety component classification [:need:`wp__sw_component_class`]
-    │   ├── security_mgt/                -> Module security plan [:need:`wp__module_security_plan`],
+    │   ├── module/                      -> Module documentation
+    │   |   ├── manuals/                 -> Module manual, e.g. integration manual, assumptions of use,
+    │   │   |   │                           safety manual [:need:`wp__requirements_comp_aou`],
+    │   │   |   │                           [:need:`wp__requirements_feat_aou`],
+    │   │   |   │                           [:need:`wp__module_safety_manual`],
+    │   │   |   │                           security_manual [:need:`wp__module_security_manual`].
+    │   │   |   │                        -> Additional optional user centric documentation (e.g. configuration guide,
+    │   │   |   │                           examples user guide, APIs & usage, performance analysis)
+    │   │   |   ├── config/              -> Configuration guide (optional)
+    │   │   |   ├── examples/            -> Examples user guide (optional)
+    │   │   |   ├── api_description/     -> API detail description (optional)
+    │   │   |   └── performance/         -> Performance analysis (optional)
+    │   |   ├── release/                 -> Module release note [:need:`wp__module_sw_release_note`],
+    │   |   │                               module release plan [:need:`wp__module_sw_release_plan`],
+    │   |   ├── safety_mgt/              -> Module safety plan [:need:`wp__module_safety_plan`],
+    │   |   │                               module safety package [:need:`wp__module_safety_package`],
+    │   |   │                               formal documents reviews [:need:`wp__fdr_reports`],
+    │   |   │                               safety analysis formal reviews [:need:`wp__fdr_reports`],
+    │   |   │                               safety tailoring [:need:`wp__safety_tailoring`]
+    │   |   │                               safety component classification [:need:`wp__sw_component_class`]
+    │   |   └── security_mgt/            -> Module security plan [:need:`wp__module_security_plan`],
     │   │                                   module security package [:need:`wp__module_security_package`],
     │   │                                   formal documents reviews [:need:`wp__fdr_reports_security`],
     │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
