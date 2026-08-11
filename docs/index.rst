@@ -109,43 +109,46 @@ Get started with S-CORE
       ^^^
       Check how you can start being productive immediately
 
-Software architecture
+Platform Architecture
 ---------------------
+
 
 .. grid:: 1 1 3 3
    :class-container: score-grid score-grid-artifacts
 
    .. grid-item-card::
+      :link: architecture/index
+      :link-type: doc
+      :text-align: center
+
+      :octicon:`id-badge;1.5em`
+
+      Platform Architecture
+      ^^^
+      Learn about the S-CORE platform architecture, its building blocks and how they interact with each other.
+
+   .. grid-item-card::
+      :link: features/index
+      :link-type: doc
+      :text-align: center
+
+      :octicon:`package;1.5em`
+
+      Platform Features and Logical Interfaces
+      ^^^
+      Explore the Features and their Logical Interfaces, which are the heart of the S-CORE software.
+
+
+   .. grid-item-card::
 
       :octicon:`checklist;1.5em`
 
-      Requirements
+      Platform Requirements
       ^^^
       Understand the main goals of the S-CORE platform by reading the
       :ref:`Stakeholder requirements <stakeholder_requirements>` and
       :ref:`SW-platform Assumptions <platform_assumptions>`.
 
-
-
-   .. grid-item-card::
-
-      :octicon:`package;1.5em`
-
-      Features & Modules
-      ^^^
-      Explore the :ref:`Features <features>` and :ref:`Modules <modules>`, which are the heart of the S-CORE software.
-
-   .. grid-item-card::
-      :link: https://eclipse-score.github.io/reference_integration/main/s_core_v_1/roadmap/roadmap.html
-      :link-type: url
-      :text-align: center
-
-      :octicon:`milestone;1.5em`
-
-      S-CORE v1.0 Roadmap
-      ^^^^^^^^^^^^^^^^^^^
-      Follow the `S-CORE v1.0 roadmap <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/roadmap/roadmap.html>`_
-      to understand upcoming milestones and planning towards the release of the **version 1.0**.
 
 
 Project structure and processes
@@ -303,6 +306,7 @@ Infrastructure and Tooling
    users_guide/index
    features/index
    requirements/index
+   architecture/index
    modules/index
    contribute/index
 
