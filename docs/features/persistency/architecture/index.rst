@@ -33,7 +33,6 @@ Architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :includes: logic_arc_int__persistency__interface
 
 
 Logical Interfaces
@@ -41,6 +40,7 @@ Logical Interfaces
 
 .. logic_arc_int:: Ikvs
    :id: logic_arc_int__persistency__interface
+   :included_by: feat__persistency
    :security: YES
    :safety: ASIL_B
    :fulfils: feat_req__persistency__async_api[version==1]

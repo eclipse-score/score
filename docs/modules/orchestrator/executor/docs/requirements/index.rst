@@ -62,6 +62,3 @@ Requirements
     - Replace the example content by the real content for your first requirement (according to :need:`gd_guidl__req_engineering`)
     - Set the status to valid and start the review/merge process
     - Add other needed requirements for your feature
-
-.. needextend:: "component_name" in id and is_external == False
-   :+tags: component_name

@@ -58,7 +58,7 @@ Bazel integration + CI/CD integration ready and rolled out in few Rust repositor
 ### ✅ Static code analysis - linting
 
 - Bazel integration + CI/CD integration ready and rolled out in few Rust repositories that ensures code is aligned by same S-CORE wide configuration
-- tool have available report verification with confidence HIGH, meaning no qualification needed. (https://eclipse-score.github.io/score/main/score_tools/> ols_static_analysis_code_quality/clippy.html#doc_tool__clippy)
+- tool have available report verification with confidence HIGH, meaning no qualification needed. (https://eclipse-score.github.io/score/main/score_tools/tools_static_analysis_code_quality/clippy.html#doc_tool__clippy)
 
 
 ### 📈 Code coverage

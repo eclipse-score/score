@@ -109,7 +109,7 @@ required. E.g. **"Add unit test for class XY"** and not "I added unit
 tests", "Adding unit tests" or "Various minor changes".
 
 Additionally, the following specification for the content shall apply for
-commit messages (according to [Eclipse Git Commit Records](https://www.eclipse.org/projects/handbook/#resources-commit)):
+commit messages (according to `Eclipse Git Commit Records <https://www.eclipse.org/projects/handbook/#resources-commit>`_):
 
 Summary
 =======
@@ -233,5 +233,5 @@ Then, push the new branch to the remote repository and create a new pull-request
 This strategy is easier to understand, but has the downside that the discussion in the old pull-request is not automatically transferred to the new pull-request.
 
 The most efficient approach is to do either clean-up together with someone experienced in Git.
-Such a [pairing session](https://en.wikipedia.org/wiki/Pair_programming) can show you how to "think Git".
+Such a `pairing session <https://en.wikipedia.org/wiki/Pair_programming>`_ can show you how to "think Git".
 However, be confident: as long as you have not force-pushed the branch to GitHub, all changes you did are local and can be undone easily.

@@ -34,6 +34,7 @@ Message Passing Component Architecture
 
 .. logic_arc_int:: Message Passing
    :id: logic_arc_int__com__message_passing
+   :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
    :status: valid

@@ -32,7 +32,6 @@ Lifecycle Feature
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :provides: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
 
 
 Interfaces
@@ -42,12 +41,12 @@ Interfaces
 
 .. logic_arc_int:: Lifecycle Interface
    :id: logic_arc_int__lifecycle__lifecycle_if
+   :included_by: feat__lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
    :fulfils: feat_req__lifecycle__switch_run_targets[version==1], feat_req__lifecycle__liveliness_detection[version==1]
-   :includes: logic_arc_int_op__lifecycle__run, logic_arc_int_op__lifecycle__terminate,
 
    .. needarch::
       :scale: 50
@@ -75,6 +74,7 @@ Interfaces
 
 .. logic_arc_int:: Alive API
    :id: logic_arc_int__lifecycle__alive_if
+   :included_by: feat__lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -99,6 +99,7 @@ Interfaces
 
 .. logic_arc_int:: Control Interface
    :id: logic_arc_int__lifecycle__controlif
+   :included_by: feat__lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -123,6 +124,7 @@ Interfaces
 
 .. logic_arc_int:: Deadline Monitor API
    :id: logic_arc_int__lifecycle__deadline_monitor_if
+   :included_by: feat__lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -211,6 +213,7 @@ Interfaces
 
 .. logic_arc_int:: Logical Monitor API
    :id: logic_arc_int__lifecycle__logical_monitor_if
+   :included_by: feat__lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
