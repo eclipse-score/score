@@ -32,10 +32,12 @@ Inter-process Communication
    :titlesonly:
    :hidden:
 
-   docs/**/index
-   docs/roadmap
-   docs/safety_analysis/dfa.rst
-   docs/safety_analysis/fmea.rst
+   architecture/index
+   requirements/index
+   roadmap
+   safety_analysis/dfa
+   safety_analysis/fmea
+   safety_planning/index
 
 Feature flag
 ============

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,20 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Security and Cryptography Architecture
-======================================
+.. _ipc_roadmap:
 
-.. document:: Security & Crypto Architecture
-   :id: doc__security_crypto_architecture
-   :status: draft
-   :version: 1
-   :safety: QM
-   :security: YES
-   :realizes: wp__feature_arch[version==1]
+IPC Roadmap
+===========
 
-.. feat:: Security & Crypto
-   :id: feat__security_crypto
-   :security: YES
-   :safety: QM
-   :status: valid
-   :version: 1
+- Support for versioning -> Milestone Q3/2025
+- Support for methods -> Milestone Q2/2025
+- Support for signals -> Milestone Q1/2026
+- Support for Rust in early POC stage -> Milestone Q4/2025
+- Implicit service discovery -> Milestone Q4/2025

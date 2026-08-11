@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Glossary
-========
+Lifecycle Glossary
+==================
 
 .. glossary::
     Lifecycle Feature
