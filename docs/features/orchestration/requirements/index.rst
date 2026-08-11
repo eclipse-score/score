@@ -455,5 +455,5 @@ General Constraints
 
    The system shall use the approved IPC feature exclusively for all inter-process synchronization.
 
-.. needextend:: is_external == False and "orchestration/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "orchestration/requirements" in docname
    :+tags: orchestration

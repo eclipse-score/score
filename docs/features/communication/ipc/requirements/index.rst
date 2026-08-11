@@ -78,5 +78,5 @@ IPC Requirements
    The IPC binding shall ensure availability of its communication, so that the availability is independent per
    criticality level.
 
-.. needextend:: is_external == False and "__ipc" in id
+.. needextend:: c.this_doc() and is_external == False and "__ipc" in id
    :+tags: ipc

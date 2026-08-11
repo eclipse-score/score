@@ -185,5 +185,5 @@ Logical Interfaces
 
   See static architecture.
 
-.. needextend:: docname is not None and "frameworks/feo/architecture" in docname
+.. needextend:: c.this_doc() and docname is not None and "frameworks/feo/architecture" in docname
    :+tags: frameworks_feo
