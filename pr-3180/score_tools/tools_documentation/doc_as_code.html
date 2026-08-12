@@ -1,0 +1,1365 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Doc-as-Code Verification Report &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'score_tools/tools_documentation/doc_as_code';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tools Requirements" href="../tools_requirements/index.html" />
+    <link rel="prev" title="Documentation Tools Overview" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../score_tools_evaluation_list.html">S-CORE - Complete Tool List for Tool Evaluation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Documentation Tools Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Doc-as-Code Verification Report</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_requirements/index.html">Tools Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_static_analysis_code_quality/index.html">Static Analysis &amp; Code Quality Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_testing_frameworks/index.html">Testing Frameworks Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_build_development/index.html">Build &amp; Development Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_compiler/index.html">Compiler Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_vc_cicd/index.html">Version Control &amp; CI/CD Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools_license_security/index.html">License &amp; Security</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">S-CORE Tools Overview</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Documentation Tools Overview</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Doc-as-Code Verification Report</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="need_container docutils container" id="SNCB-9eb27266">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__doc_as_code">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Doc-as-Code</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">evaluated</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span><span class="needs_spacer">, </span><span class="needs_data">tools_documentation</span></span></span></div>
+<div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">HIGH</span></span></div>
+<div class="line"><span class="needs_tool_version"><span class="needs_label">tool_version: </span><span class="needs_data">v7.0.1</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>2</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">wp__tool_verification_report</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc_tool__doc_as_code" title="doc_tool__doc_as_code">doc_tool__doc_as_code</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Tool Verification Report</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="doc-as-code-verification-report">
+<h1>Doc-as-Code Verification Report<a class="headerlink" href="#doc-as-code-verification-report" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="scope-and-purpose">
+<h3>Scope and purpose<a class="headerlink" href="#scope-and-purpose" title="Link to this heading">#</a></h3>
+<p>The S-CORE Docs-as-Code tool (Bazel module <code class="docutils literal notranslate"><span class="pre">score_docs_as_code</span></code>) builds HTML
+documentation from RST sources — process description, requirements, and
+traceability — and validates content against the S-CORE metamodel.</p>
+</section>
+<section id="inputs-and-outputs">
+<h3>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Inputs:</strong> RST sources, Sphinx configuration (<code class="docutils literal notranslate"><span class="pre">conf.py</span></code>), the S-CORE
+metamodel (<code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>), Bazel build files.</p></li>
+<li><p><strong>Outputs:</strong> HTML documentation (<code class="docutils literal notranslate"><span class="pre">_build/</span></code>), needs/traceability data
+(<code class="docutils literal notranslate"><span class="pre">needs.json</span></code>), test/coverage reports.</p></li>
+</ul>
+</section>
+<section id="available-information">
+<h3>Available information<a class="headerlink" href="#available-information" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Repository: <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">https://github.com/eclipse-score/docs-as-code</a></p></li>
+<li><p>Documentation: <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/">https://eclipse-score.github.io/docs-as-code/</a></p></li>
+<li><p>Bazel module name: <code class="docutils literal notranslate"><span class="pre">score_docs_as_code</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="installation-and-integration">
+<h2>Installation and integration<a class="headerlink" href="#installation-and-integration" title="Link to this heading">#</a></h2>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<p>The tool is consumed as a Bazel module. Declare the dependency in
+<code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;7.0.1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and the S-CORE registry in <code class="docutils literal notranslate"><span class="pre">.bazelrc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">common</span> <span class="o">--</span><span class="n">registry</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">bazel_registry</span><span class="o">/</span><span class="n">main</span><span class="o">/</span>
+<span class="n">common</span> <span class="o">--</span><span class="n">registry</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bcr</span><span class="o">.</span><span class="n">bazel</span><span class="o">.</span><span class="n">build</span>
+</pre></div>
+</div>
+<p>Invoke the <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro from the root <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
+<span class="n">docs</span><span class="p">(</span>
+    <span class="n">project</span> <span class="o">=</span> <span class="s2">&quot;My Project&quot;</span><span class="p">,</span>
+    <span class="n">project_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/eclipse-score/my-project&quot;</span><span class="p">,</span>
+    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>For local development, <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:ide_support</span></code> creates a Python virtual
+environment (<code class="docutils literal notranslate"><span class="pre">.venv_docs</span></code>) with all Sphinx extensions pre-installed for IDE
+support (Esbonio). The macro’s build targets (<code class="docutils literal notranslate"><span class="pre">//:docs</span></code>, <code class="docutils literal notranslate"><span class="pre">//:docs_check</span></code>,
+<code class="docutils literal notranslate"><span class="pre">//:live_preview</span></code>, <code class="docutils literal notranslate"><span class="pre">//:ide_support</span></code>) are documented in the docs-as-code
+user guide.</p>
+<p>Tool sources live in the <code class="docutils literal notranslate"><span class="pre">docs-as-code</span></code> repository under <code class="docutils literal notranslate"><span class="pre">src/extensions/</span></code>
+(Sphinx extensions) and <code class="docutils literal notranslate"><span class="pre">docs.bzl</span></code> (Bazel macros). The default metamodel is
+bundled at
+<code class="docutils literal notranslate"><span class="pre">&#64;score_docs_as_code//src/extensions/score_metamodel:metamodel_yaml</span></code>
+and may be overridden via the <code class="docutils literal notranslate"><span class="pre">metamodel</span></code> parameter.</p>
+</section>
+<section id="integration">
+<h3>Integration<a class="headerlink" href="#integration" title="Link to this heading">#</a></h3>
+<p>The tool is the central documentation hub of the S-CORE Bazel toolchain, used
+by all modules to build, check, and publish documentation.</p>
+<p>Cross-module linking supports two modes:</p>
+<ul class="simple">
+<li><p><strong>External needs import:</strong> reference another module’s <code class="docutils literal notranslate"><span class="pre">:needs_json</span></code> target
+via the <code class="docutils literal notranslate"><span class="pre">external_needs</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">docs()</span></code> to cross-reference need
+IDs across modules (e.g., <code class="docutils literal notranslate"><span class="pre">:need:`gd_req__example_id`</span></code>).</p></li>
+<li><p><strong>Bundle mounting:</strong> mount another module’s <code class="docutils literal notranslate"><span class="pre">:docs_bundle</span></code> target via the
+<code class="docutils literal notranslate"><span class="pre">bundles</span></code> parameter; the mounted sources join the consuming build, with
+placement controlled by <code class="docutils literal notranslate"><span class="pre">mount_at</span></code> (docname prefix) and <code class="docutils literal notranslate"><span class="pre">attach_to</span></code>
+(toctree anchor).</p></li>
+</ul>
+<p>Within a repository, Sphinx combines documentation sources (RST/Markdown),
+needs JSON, source-code links (<code class="docutils literal notranslate"><span class="pre">sourcelinks_json</span></code>) and test metadata through
+the S-CORE extensions (<code class="docutils literal notranslate"><span class="pre">score_metamodel</span></code>, <code class="docutils literal notranslate"><span class="pre">score_metrics</span></code>, <code class="docutils literal notranslate"><span class="pre">score_mounts</span></code>)
+to produce HTML, <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> and <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>.</p>
+<p>CI quality gates are provided by <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:traceability_gate</span></code>, which reads
+<code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> and enforces configurable thresholds (requirements-to-code,
+requirements-to-test, fully-linked, tests-linked).</p>
+</section>
+<section id="environment">
+<h3>Environment<a class="headerlink" href="#environment" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Operating system:</strong> Linux — the S-CORE DevContainer (canonical,
+recommended), WSL2, or native.</p></li>
+<li><p><strong>Build system:</strong> Bazel (<code class="docutils literal notranslate"><span class="pre">rules_python</span></code>, <code class="docutils literal notranslate"><span class="pre">sphinxdocs</span></code>) fetches all
+toolchains and dependencies, including a remote JDK 17 for PlantUML diagrams
+when no local Java is present.</p></li>
+</ul>
+</section>
+</section>
+<section id="safety-evaluation">
+<h2>Safety evaluation<a class="headerlink" href="#safety-evaluation" title="Link to this heading">#</a></h2>
+<p>Use cases were derived from the Documentation Management process
+(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/documentation_concept.html#doc_concept__documentation_process">doc_concept__documentation_process</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>,
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>) and the docs-as-code tool requirements
+and capabilities.</p>
+<p>All affected safety-relevant work products are ASIL-B in S-CORE, so every
+safety-relevant harm chain ends in a systematic fault in the ASIL_B safety case.
+The facts below are shared by use cases and only referenced in each
+Malfunctions cell.</p>
+<dl class="simple" id="basis-ci">
+<dt>Build/CI behavior</dt><dd><p>Builds run with <code class="docutils literal notranslate"><span class="pre">-W</span></code>; any warning trips CI. The
+safety-relevant danger is the <em>silent</em> failure — a missing warning
+or a wrong output published undetected. A loud CI abort is not
+safety-relevant (TI0): no wrong output enters the baseline.</p>
+</dd>
+</dl>
+<dl class="simple" id="basis-backstop">
+<dt>Source of truth &amp; backstop</dt><dd><p>Documents reach <code class="docutils literal notranslate"><span class="pre">valid</span></code> only via source review
+(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>). <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> and module verification
+reports are the machine-readable verification evidence, with no automated
+re-derivation. For silent wrong outputs the gated CI stays green; only
+document review (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>) and manual safety review
+catch the residual.</p>
+</dd>
+</dl>
+<dl class="simple" id="basis-tcl">
+<dt>TCL derivation rule</dt><dd><p>Tool Impact = no (TI0) ⇒ <strong>TCL LOW</strong>. Tool Impact = yes × Tool Error
+Detection = low ⇒ <strong>TCL HIGH</strong> (low because silent failures are not
+auto-detected — only document/manual review).</p>
+</dd>
+</dl>
+<dl class="simple" id="basis-ti0">
+<dt>TI0 derived-view rows (M1, M7)</dt><dd><p>The rendered output (HTML, cross-repo links, PR previews) is a <em>derived
+view</em>; the authoritative safety artifacts are the source-controlled work
+products and machine-readable verification reports
+(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>). Safety classification and
+traceability are owned and enforced by M2–M6 at the source level.
+Rendering/preview defects affect reviewer convenience, not safety evidence.
+With no safety impact (TI0), the detection and further-measure columns are
+not applicable; they are recorded as <code class="docutils literal notranslate"><span class="pre">n/a</span> <span class="pre">(TI0)</span></code>.</p>
+</dd>
+</dl>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">S-CORE Docs-as-Code evaluation</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.7%" />
+<col style="width: 7.4%" />
+<col style="width: 29.6%" />
+<col style="width: 7.4%" />
+<col style="width: 22.2%" />
+<col style="width: 14.8%" />
+<col style="width: 7.4%" />
+<col style="width: 7.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Malfunction identification</p></th>
+<th class="head"><p>Use case description</p></th>
+<th class="head"><p>Malfunctions</p></th>
+<th class="head"><p>Impact on safety?</p></th>
+<th class="head"><p>Impact safety measures available?</p></th>
+<th class="head"><p>Impact safety detection sufficient?</p></th>
+<th class="head"><p>Further additional safety measure required?</p></th>
+<th class="head"><p>TCL (<a class="reference internal" href="#basis-tcl">basis-tcl</a>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>M1</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Documentation generation</strong> — build and publish HTML from</div>
+<div class="line">rst sources.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Incomplete, outdated, or mis-rendered HTML. TI0 derived-view row</div>
+<div class="line">(<a class="reference internal" href="#basis-ti0">basis-ti0</a>).</div>
+</div>
+</td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>n/a (TI0)</p></td>
+<td><p>no</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-odd"><td><p>M2</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Document metamodel &amp; attribute enforcement</strong> — enforce document</div>
+<div class="line">types, mandatory attributes (id, status, security, safety, realizes),</div>
+<div class="line">the status lifecycle, and global need-ID uniqueness.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_uid">gd_req__req_attr_uid</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_check_mandatory">gd_req__req_check_mandatory</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Silent false-negative (<a class="reference internal" href="#basis-ci">basis-ci</a>): a too-permissive</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> regex (e.g. <code class="docutils literal notranslate"><span class="pre">fault_id:</span> <span class="pre">^.*$</span></code>, shipped as a</div>
+<div class="line"><em>mandatory</em> option on <code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code>/<code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code>)</div>
+<div class="line">accepted with no guard, or a check bug skips a case.</div>
+<div class="line">(Duplicate IDs stay loud.)</div>
+<div class="line"><em>Harm chain:</em> ASIL_B element enters baseline misclassified (e.g. QM)</div>
+<div class="line">or with a broken lifecycle/missing link → its verification &amp;</div>
+<div class="line">traceability (M4/M6) weakened.</div>
+<div class="line"><em>No backstop</em> for a permissive regex or check blind spot</div>
+<div class="line">(<a class="reference internal" href="#basis-backstop">basis-backstop</a>).</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-even"><td><p>M3</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Safety classification &amp; safe-linking enforcement</strong> — enforce the</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">safety</span></code> attribute on documents/needs and safe linking of</div>
+<div class="line">safety-relevant elements.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_safety">gd_req__req_attr_safety</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_safety">gd_req__arch_attr_safety</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_check_mandatory">gd_req__req_check_mandatory</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage_safety">gd_req__req_linkage_safety</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Silent false-negative (<a class="reference internal" href="#basis-ci">basis-ci</a>). The tool enforces</div>
+<div class="line"><em>presence and format</em> of <code class="docutils literal notranslate"><span class="pre">safety</span></code> (mandatory on all safety-relevant</div>
+<div class="line">types — requirements, architecture elements, documents, verification</div>
+<div class="line">reports; optional only on <code class="docutils literal notranslate"><span class="pre">tool_req</span></code>/<code class="docutils literal notranslate"><span class="pre">mod</span></code>) and <em>some</em></div>
+<div class="line">safety-linking rules (graph checks on <code class="docutils literal notranslate"><span class="pre">derived_from</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils</span></code>,</div>
+<div class="line">and the safety variant of <code class="docutils literal notranslate"><span class="pre">implements</span></code>). Residual <em>tool</em> gap:</div>
+<div class="line">safety links via relation types the graph checks do not cover</div>
+<div class="line">(<code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code>, <code class="docutils literal notranslate"><span class="pre">covers</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">uses</span></code>,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">consists_of</span></code>).</div>
+<div class="line"><em>Operational context:</em> presence of <code class="docutils literal notranslate"><span class="pre">safety</span></code> is backstopped by M2’s</div>
+<div class="line">mandatory-attribute check (<a class="reference internal" href="#basis-backstop">basis-backstop</a>); the classification</div>
+<div class="line"><em>value</em> and safety-linking completeness across all relation types</div>
+<div class="line">have no automated backstop — only document review</div>
+<div class="line">(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>) and manual safety review.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-odd"><td><p>M4</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Requirements coverage statistics</strong> — count, per requirement type, the</div>
+<div class="line">requirements carrying a <code class="docutils literal notranslate"><span class="pre">source_code_link</span></code> and/or a <code class="docutils literal notranslate"><span class="pre">testlink</span></code></div>
+<div class="line">(URLs to the implementing source / test), compute link-coverage</div>
+<div class="line">percentages, and write <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> consumed by the</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">traceability_gate</span></code> CI quality gate (requirements-to-code,</div>
+<div class="line">requirements-to-test, fully-linked thresholds).</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_impl">gd_req__req_attr_impl</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_testlink">gd_req__req_attr_testlink</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Silent wrong-output (<a class="reference internal" href="#basis-ci">basis-ci</a>): a coverage statistic computed wrong.</div>
+<div class="line">A present <code class="docutils literal notranslate"><span class="pre">source_code_link</span></code>/<code class="docutils literal notranslate"><span class="pre">testlink</span></code> not counted (e.g.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">is_non_empty</span></code> rejects a valid value), or a requirement type dropped</div>
+<div class="line">by the type filter so its links vanish from <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> (and</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">safe_percent</span></code> then reports the empty type as 100% by design).</div>
+<div class="line"><em>Harm chain:</em> ASIL_B requirement — or a whole requirement class —</div>
+<div class="line">reported code/test-linked, or dropped from the gate → CI quality gate</div>
+<div class="line">green → safety case believes implementation/test coverage exists where</div>
+<div class="line">it does not.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-even"><td><p>M5</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Architecture visualization &amp; linkage validation</strong> — generate</div>
+<div class="line">architecture diagrams (PlantUML/Mermaid) and validate architecture</div>
+<div class="line">linkage.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_viewpoints">gd_req__arch_viewpoints</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__impl_diagram_check_id">gd_req__impl_diagram_check_id</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__impl_diagram_linkage_id">gd_req__impl_diagram_linkage_id</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_mandatory">gd_req__arch_attr_mandatory</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Silent wrong-output (<a class="reference internal" href="#basis-ci">basis-ci</a>): diagram misrepresents the</div>
+<div class="line">architecture or linkage validation misses a broken safety link.</div>
+<div class="line"><em>Harm chain:</em> ASIL_B architecture element mis-/un-linked → safety</div>
+<div class="line">architecture misrepresented, broken linkage hidden from review.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-odd"><td><p>M6</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Test linkage &amp; broken-reference detection</strong> — for each <code class="docutils literal notranslate"><span class="pre">testcase</span></code></div>
+<div class="line">need, resolve its <code class="docutils literal notranslate"><span class="pre">partially_verifies</span></code>/<code class="docutils literal notranslate"><span class="pre">fully_verifies</span></code></div>
+<div class="line">references against the needs set, count tests linked to at least one</div>
+<div class="line">requirement (<code class="docutils literal notranslate"><span class="pre">tests-linked</span></code>), and list dangling references</div>
+<div class="line">(<code class="docutils literal notranslate"><span class="pre">broken_references</span></code>) in <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> for the</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">traceability_gate</span></code> (tests-linked threshold).</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_testlink">gd_req__req_attr_testlink</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_checks">gd_req__verification_checks</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Silent wrong-output (<a class="reference internal" href="#basis-ci">basis-ci</a>): a <code class="docutils literal notranslate"><span class="pre">partially_verifies</span></code>/</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">fully_verifies</span></code> ref to an <em>absent</em> need not added to</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">broken_references</span></code> (e.g. an ID-form mismatch in the</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ref</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">all_needs</span></code> check) — a dangling test-to-requirement</div>
+<div class="line">reference silently dropped (and <code class="docutils literal notranslate"><span class="pre">tests-linked</span></code> still counts the</div>
+<div class="line">test, since it keys on ref presence, not resolution).</div>
+<div class="line"><em>Harm chain:</em> ASIL_B requirement’s test coverage missing but the</div>
+<div class="line">broken reference unreported → safety case believes the requirement</div>
+<div class="line">is tested where it is not.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-even"><td><p>M7</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Cross-repository linking &amp; PR preview generation</strong> — link</div>
+<div class="line">documentation across repositories (versioned + latest) and generate</div>
+<div class="line">PR previews.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a> (cross-repository traceability).</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Versioned links resolve to the wrong revision, or PR previews built</div>
+<div class="line">from outdated sources. TI0 derived-view row (<a class="reference internal" href="#basis-ti0">basis-ti0</a>).</div>
+<div class="line">Cross-repository traceability is owned and computed by M4 at the</div>
+<div class="line">source level.</div>
+</div>
+</td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>n/a (TI0)</p></td>
+<td><p>no</p></td>
+<td><p>low</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="security-evaluation">
+<h2>Security evaluation<a class="headerlink" href="#security-evaluation" title="Link to this heading">#</a></h2>
+<p>The threat model reduces to a single class: <strong>source tampering</strong>. The tool has
+no runtime attack surface — it is a build-time Sphinx extension reading
+source-controlled inputs and writing generated output.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">S-CORE Docs-as-Code security evaluation</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 4.0%" />
+<col style="width: 8.0%" />
+<col style="width: 32.0%" />
+<col style="width: 8.0%" />
+<col style="width: 24.0%" />
+<col style="width: 16.0%" />
+<col style="width: 8.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Threat identification</p></th>
+<th class="head"><p>Use case description</p></th>
+<th class="head"><p>Threats</p></th>
+<th class="head"><p>Impact on security?</p></th>
+<th class="head"><p>Impact security measures available?</p></th>
+<th class="head"><p>Impact security detection sufficient?</p></th>
+<th class="head"><p>Further additional security measure required?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>T1</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Source tampering</strong> — applies to all tool use cases: documentation</div>
+<div class="line">generation, metamodel/attribute enforcement, security classification</div>
+<div class="line">&amp; linkage restriction, traceability &amp; coverage, architecture</div>
+<div class="line">visualization &amp; linkage validation, source/test traceability,</div>
+<div class="line">cross-repo linking &amp; PR preview generation.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_security">gd_req__req_attr_security</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_security">gd_req__arch_attr_security</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage">gd_req__req_linkage</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_linkage_security_trace">gd_req__arch_linkage_security_trace</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">An attacker with write access tampers with sources, configuration, or</div>
+<div class="line">extension code to weaken/disable security checks or inject misleading</div>
+<div class="line">content into published output.</div>
+<div class="line">The attack always targets inputs, not the tool — whether the attacker</div>
+<div class="line">edits an RST source, the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> regex, a graph-check rule,</div>
+<div class="line">or Python extension logic, it is one commit.</div>
+<div class="line"><em>Harm chain:</em> misleading content reaches published docs, or</div>
+<div class="line">security-relevant needs enter the baseline without a valid</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">security</span></code> classification or with broken/disallowed links →</div>
+<div class="line">security argument incomplete, traceability/coverage falsely complete</div>
+<div class="line">→ incorrect security decisions.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><div class="line-block">
+<div class="line">Git access control, mandatory PR review with reviewer</div>
+<div class="line-block">
+<div class="line">(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_reviewer">gd_req__doc_reviewer</a>) + approver</div>
+<div class="line">(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_approver">gd_req__doc_approver</a>), <code class="docutils literal notranslate"><span class="pre">status=valid</span></code> gate</div>
+<div class="line">(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_guideline.html#gd_guidl__documentation">gd_guidl__documentation</a>),</div>
+<div class="line">known-provenance tenet (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/trustable/tenets/tenets.html#tenet__trust__tt-provenance">tenet__trust__tt-provenance</a>), plus</div>
+<div class="line">structural metamodel enforcement (<code class="docutils literal notranslate"><span class="pre">security:</span> <span class="pre">^(YES|NO)$</span></code></div>
+<div class="line">mandatory, security graph check) and the metamodel test suite</div>
+</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="result">
+<h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
+<p>The final Tool Confidence Level is TCL <strong>HIGH</strong>,
+the maximum across all usecases.</p>
+<p>S-CORE Docs-as-Code requires qualification
+for use in safety-related software development according to ISO 26262.</p>
+<section id="recommended-improvements-for-future-versions">
+<h4>Recommended improvements for future versions<a class="headerlink" href="#recommended-improvements-for-future-versions" title="Link to this heading">#</a></h4>
+<p>The residual risk in M2–M6 (TCL HIGH) stems from Tool Error Detection being
+<em>low</em>: silent failures are not auto-detected, only caught by document/manual
+review. The following improvements would raise Tool Error Detection and, once
+verified, could lower the TCL:</p>
+<ul class="simple">
+<li><p><strong>Extend safety/security graph checks to all relation types</strong> (M3, M5). The
+metamodel defines five graph checks; the safety/security-relevant ones
+constrain only <code class="docutils literal notranslate"><span class="pre">derived_from</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils</span></code> and the safety variant of
+<code class="docutils literal notranslate"><span class="pre">implements</span></code> (<code class="docutils literal notranslate"><span class="pre">complies</span></code> covers the ASPICE-40 workproduct rule, not
+safety/security). <code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code>, <code class="docutils literal notranslate"><span class="pre">covers</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">uses</span></code>,
+<code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">consists_of</span></code>, etc. remain unchecked. A safety-relevant
+element linked to a non-safety one via <em>any</em> relation should be flagged,
+closing the gap where a wrong classification or disallowed link enters the
+baseline undetected.</p></li>
+<li><p><strong>Add cross-contamination detection</strong> (M3). Flag any need with
+<code class="docutils literal notranslate"><span class="pre">safety:</span> <span class="pre">QM</span></code> linked (via any relation) to one with <code class="docutils literal notranslate"><span class="pre">safety:</span> <span class="pre">ASIL_B</span></code> —
+and analogously for <code class="docutils literal notranslate"><span class="pre">security</span></code>. This does not decide whether a single
+classification is semantically correct (still a review task) but catches the
+common case of an inconsistent classification across a link — the
+safety/security analog of the existing
+<code class="docutils literal notranslate"><span class="pre">check_valid_only_links_to_valid</span></code> status check, which is not yet present.</p></li>
+<li><p><strong>Negative-test fixtures for permissive-metamodel regressions</strong> (M2, M3).
+The file-based framework (<code class="docutils literal notranslate"><span class="pre">test_rules_file_based.py</span></code>) with
+<code class="docutils literal notranslate"><span class="pre">:expect:</span></code>/<code class="docutils literal notranslate"><span class="pre">:expect_not:</span></code> already makes regressions that silence a
+missing-mandatory or disallowed-link check fail CI. The remaining gap is a
+fixture asserting that a deliberately over-permissive regex (e.g.
+<code class="docutils literal notranslate"><span class="pre">status:</span> <span class="pre">^.*$</span></code>) is <em>rejected</em> — coupled to the permissive-regex guard
+below (until that guard exists, there is nothing to assert).</p></li>
+<li><p><strong>Guard against permissive regexes in the metamodel</strong> (M2). A linter
+rejecting <code class="docutils literal notranslate"><span class="pre">^.*$</span></code> or empty-accepting patterns for <em>mandatory</em> attribute
+definitions, so a misconfigured <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> is caught at the
+metamodel level. The guard would catch real defects already in the shipped
+metamodel: <code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code> and <code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code> declare <code class="docutils literal notranslate"><span class="pre">fault_id:</span>
+<span class="pre">^.*$</span></code> as a <em>mandatory</em> option — yet it carries the req-Id
+<code class="docutils literal notranslate"><span class="pre">tool_req__docs_saf_attr_fmea_fault_id</span></code>, i.e. a genuine requirement it is
+meant to enforce, and the <code class="docutils literal notranslate"><span class="pre">^.*$</span></code> pattern accepts even the empty string.
+That it diverges from the sibling <code class="docutils literal notranslate"><span class="pre">plat_saf_dfa.failure_id:</span> <span class="pre">^.+$</span></code> (non-empty)
+for the same concept shows these are not deliberate free-form fields but
+accidental permissive patterns. (<code class="docutils literal notranslate"><span class="pre">^.*$</span></code> is also used legitimately on
+<em>optional</em> options such as <code class="docutils literal notranslate"><span class="pre">author</span></code>/<code class="docutils literal notranslate"><span class="pre">approver</span></code>/<code class="docutils literal notranslate"><span class="pre">reviewer</span></code>/<code class="docutils literal notranslate"><span class="pre">hash</span></code>, so
+the guard must scope to mandatory definitions to avoid noise.)</p></li>
+<li><p><strong>Expected-output tests on ``metrics.json`` for the coverage/linkage
+computation</strong> (M4, M6). M4 and M6 fail via <em>wrong computation</em> —
+<code class="docutils literal notranslate"><span class="pre">score_metrics</span></code> silently miscounts and writes the wrong <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>
+with no warning: a present <code class="docutils literal notranslate"><span class="pre">source_code_link</span></code>/<code class="docutils literal notranslate"><span class="pre">testlink</span></code> not counted, a
+requirement type dropped by the filter so its links vanish, or a dangling
+<code class="docutils literal notranslate"><span class="pre">testcase</span></code> <code class="docutils literal notranslate"><span class="pre">*_verifies</span></code> ref not listed in <code class="docutils literal notranslate"><span class="pre">broken_references</span></code>. The
+existing <code class="docutils literal notranslate"><span class="pre">:expect:</span></code>/<code class="docutils literal notranslate"><span class="pre">:expect_not:</span></code> framework checks build <em>warnings</em>,
+and <code class="docutils literal notranslate"><span class="pre">score_metrics</span></code> emits none on miscounts, so it cannot catch this class
+— the improvement is a new harness that rebuilds <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> on
+representative and deliberately broken RST inputs and diffs it against a
+checked-in expected output, asserting the negative paths (a dropped type
+must not vanish from <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>, a dangling ref must land in
+<code class="docutils literal notranslate"><span class="pre">broken_references</span></code>) and the counting invariants (<code class="docutils literal notranslate"><span class="pre">fully_linked</span></code> ≤
+<code class="docutils literal notranslate"><span class="pre">with_code_link</span></code>/<code class="docutils literal notranslate"><span class="pre">with_test_link</span></code>, per-type totals sum to the overall).
+This raises Tool Error Detection for the wrong-computation class.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="optional-section-for-tool-qualification">
+<h2><strong>Optional Section for Tool Qualification</strong><a class="headerlink" href="#optional-section-for-tool-qualification" title="Link to this heading">#</a></h2>
+<p>Based on method: validation of the software tool</p>
+<section id="requirements-and-testing-aspects">
+<h3>Requirements and testing aspects<a class="headerlink" href="#requirements-and-testing-aspects" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>Tool requirements</dt><dd><p>Defined in the docs-as-code internal documentation:
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirements.html">Tool Requirements</a>.
+Each <code class="docutils literal notranslate"><span class="pre">tool_req</span></code> specifies a mandatory attribute enforcement, linkage
+rule, or metamodel check implemented by the <code class="docutils literal notranslate"><span class="pre">score_metamodel</span></code> Sphinx
+extension. The full capability list is in
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/capabilities.html">Capabilities</a>.</p>
+</dd>
+<dt>Test cases</dt><dd><p>Results and testcase metadata are published in
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/tooling_verification.html">Tooling Verification</a>;
+the extension’s test infrastructure is described in
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/rst_filebased_testing.html">File-Based Testing</a>.</p>
+</dd>
+<dt>Requirements coverage</dt><dd><p>Per-requirement test and code linkage is tracked in
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirement_coverage.html">Requirement Test Coverage</a>,
+using the same <code class="docutils literal notranslate"><span class="pre">score_metrics</span></code> calculations as the CI quality gates
+(<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:traceability_gate</span></code>, <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/metrics.json">the output metrics.json</a>).</p>
+</dd>
+</dl>
+</section>
+<section id="analysis-perspective">
+<h3>Analysis perspective<a class="headerlink" href="#analysis-perspective" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>Architectural design</dt><dd><p>The internal architecture is described via its Sphinx extensions and Bazel
+macros:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/index.html">Extensions overview</a>
+— <code class="docutils literal notranslate"><span class="pre">score_metamodel</span></code>, <code class="docutils literal notranslate"><span class="pre">score_metrics</span></code>, <code class="docutils literal notranslate"><span class="pre">score_source_code_linker</span></code>,
+<code class="docutils literal notranslate"><span class="pre">score_mounts</span></code>, <code class="docutils literal notranslate"><span class="pre">score_cross_module_compatibility</span></code> and other
+extensions.</p></li>
+<li><p><a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/metamodel.html">score_metamodel design</a>
+— metamodel definition, validation checks (local, graph-based,
+prohibited-word), and the check lifecycle.</p></li>
+<li><p><a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/reference/bazel_macros.html">Bazel macros reference</a>
+— the <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro and its generated targets.</p></li>
+<li><p><a class="reference external" href="https://eclipse-score.github.io/docs-as-code/v7.0.1/reference/commands.html">Build commands</a>
+— public and internal Bazel targets.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Documentation Tools Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tools_requirements/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tools Requirements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-purpose">Scope and purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-outputs">Inputs and outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-information">Available information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-integration">Installation and integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration">Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment">Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-evaluation">Safety evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-evaluation">Security evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-improvements-for-future-versions">Recommended improvements for future versions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-section-for-tool-qualification"><strong>Optional Section for Tool Qualification</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-and-testing-aspects">Requirements and testing aspects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-perspective">Analysis perspective</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/score_tools/tools_documentation/doc_as_code.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
