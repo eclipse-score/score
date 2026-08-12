@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Requirements &#8212; S-CORE  documentation</title>
+    <title>Security and Cryptography Requirements &#8212; S-CORE  documentation</title>
   
   
   
@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
@@ -75,7 +75,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Time" href="../../time/index.html" />
-    <link rel="prev" title="Feature Architecture" href="../architecture/index.html" />
+    <link rel="prev" title="Security and Cryptography Architecture" href="../architecture/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -165,20 +165,6 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../index.html">
-    Features
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../architecture/index.html">
     Platform Architecture
@@ -186,9 +172,23 @@
 </li>
 
 
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Modules
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contribute/index.html">
+    Contribute
   </a>
 </li>
 
@@ -200,13 +200,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../contribute/index.html">
-    Contribute
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../quality/qms_report.html">
     Quality
@@ -266,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -388,20 +388,6 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../index.html">
-    Features
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../architecture/index.html">
     Platform Architecture
@@ -409,9 +395,16 @@
 </li>
 
 
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Modules
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
+    Platform Requirements
   </a>
 </li>
 
@@ -482,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -557,7 +557,6 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
@@ -565,11 +564,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../log_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Security &amp; Cryptography</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Feature Architecture</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Security and Cryptography Architecture</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Security and Cryptography Requirements</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
@@ -614,12 +614,12 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Features</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Security &amp; Cryptography</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Requirements</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Security and Cryptography Requirements</span></li>
   </ul>
 </nav>
 </div>
@@ -636,11 +636,11 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="requirements">
-<span id="security-crypto-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
+  <section id="security-and-cryptography-requirements">
+<span id="security-crypto-requirements"></span><h1>Security and Cryptography Requirements<a class="headerlink" href="#security-and-cryptography-requirements" title="Link to this heading">#</a></h1>
 <section id="symmetric-encryption">
 <h2>Symmetric Encryption<a class="headerlink" href="#symmetric-encryption" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-9b7f72d8">
+<div class="need_container docutils container" id="SNCB-21a97de5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_symmetric_encrypt">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -686,7 +686,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-10c7c0ae">
+<div class="need_container docutils container" id="SNCB-9f3c7f10">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_symm_algo_aes_cbc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -732,7 +732,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b451468f">
+<div class="need_container docutils container" id="SNCB-fb870e75">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_sym_algo_aes_gcm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -778,7 +778,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-664f67dd">
+<div class="need_container docutils container" id="SNCB-3d8a50fc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_sym_algo_aes_ccm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -824,7 +824,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6720a8f5">
+<div class="need_container docutils container" id="SNCB-f28d0b84">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_algo_chacha20">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -873,7 +873,7 @@
 </section>
 <section id="asymmetric-encryption">
 <h2>Asymmetric Encryption<a class="headerlink" href="#asymmetric-encryption" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-91250e17">
+<div class="need_container docutils container" id="SNCB-62e826c4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__asym_encryption">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -919,7 +919,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-74dff022">
+<div class="need_container docutils container" id="SNCB-bdb8ed67">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__asym_algo_ecdh">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -968,7 +968,7 @@
 </section>
 <section id="digital-signatures">
 <h2>Digital Signatures<a class="headerlink" href="#digital-signatures" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-36c77b95">
+<div class="need_container docutils container" id="SNCB-77f45cf6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sig_creation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1014,7 +1014,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-97d1f54f">
+<div class="need_container docutils container" id="SNCB-689b69e1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sig_verification">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1060,7 +1060,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8d44ef9e">
+<div class="need_container docutils container" id="SNCB-7c7186f3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sig_algo_ecdsa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1109,7 +1109,7 @@
 </section>
 <section id="message-authentication-code-mac">
 <h2>Message Authentication Code (MAC)<a class="headerlink" href="#message-authentication-code-mac" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-8bd8d540">
+<div class="need_container docutils container" id="SNCB-fc89a465">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__mac">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1159,7 +1159,7 @@ ensure message integrity and authenticity.</p></td>
 </section>
 <section id="hashing">
 <h2>Hashing<a class="headerlink" href="#hashing" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-b0bfe89e">
+<div class="need_container docutils container" id="SNCB-b5b7f59a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hashing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1205,7 +1205,7 @@ ensure message integrity and authenticity.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-edd5919b">
+<div class="need_container docutils container" id="SNCB-1f62fa87">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hashing_algo_sha2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1251,7 +1251,7 @@ ensure message integrity and authenticity.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-afe7b364">
+<div class="need_container docutils container" id="SNCB-6eb113c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hashing_algo_sha3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1300,7 +1300,7 @@ ensure message integrity and authenticity.</p></td>
 </section>
 <section id="key-derivation-functions-kdf">
 <h2>Key Derivation Functions (KDF)<a class="headerlink" href="#key-derivation-functions-kdf" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-3f3c73d1">
+<div class="need_container docutils container" id="SNCB-0587d4b3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__kdf">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1350,7 +1350,7 @@ secret keys from a master key or password.</p></td>
 </section>
 <section id="random-number-generation">
 <h2>Random Number Generation<a class="headerlink" href="#random-number-generation" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-3ab62063">
+<div class="need_container docutils container" id="SNCB-18c6d417">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__rng">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1396,7 +1396,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e347914">
+<div class="need_container docutils container" id="SNCB-6edfce16">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__rng_algo_chacha20rng">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1445,7 +1445,7 @@ secret keys from a master key or password.</p></td>
 </section>
 <section id="certificate-management">
 <h2>Certificate Management<a class="headerlink" href="#certificate-management" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-92a5d0a2">
+<div class="need_container docutils container" id="SNCB-15cb9cd1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__cert_management">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1495,7 +1495,7 @@ secret keys from a master key or password.</p></td>
 </section>
 <section id="key-management">
 <h2>Key Management<a class="headerlink" href="#key-management" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f701e4c3">
+<div class="need_container docutils container" id="SNCB-776aef65">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_generation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1541,7 +1541,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-56252f03">
+<div class="need_container docutils container" id="SNCB-5d9cbdf1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_import">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1587,7 +1587,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b34b548c">
+<div class="need_container docutils container" id="SNCB-018e5a81">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_storage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1633,7 +1633,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bd4abccc">
+<div class="need_container docutils container" id="SNCB-d12e11c4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_deletion">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1679,7 +1679,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a24939ce">
+<div class="need_container docutils container" id="SNCB-a80657bc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__flexible_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1730,7 +1730,7 @@ algorithms based on their unique name.</p></td>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
 <blockquote>
-<div><div class="need_container docutils container" id="SNCB-0baba2c9">
+<div><div class="need_container docutils container" id="SNCB-5e7db6da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__performance_tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1778,7 +1778,7 @@ running all it’s cryptographic operations on different systems.</p></td>
 </div>
 </div>
 </div></blockquote>
-<div class="need_container docutils container" id="SNCB-398a77ad">
+<div class="need_container docutils container" id="SNCB-6c6b762c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__algo_naming">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1825,7 +1825,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b2db22e4">
+<div class="need_container docutils container" id="SNCB-cb3e2439">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__no_key_exposure">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1871,7 +1871,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5c9413e0">
+<div class="need_container docutils container" id="SNCB-1dc80518">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__side_channel_mitigation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1917,7 +1917,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f96fa57c">
+<div class="need_container docutils container" id="SNCB-ae1785a0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__api_lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1967,7 +1967,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-71b0aa81">
+<div class="need_container docutils container" id="SNCB-ecd189c3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__error_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2014,7 +2014,7 @@ and logging.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bbf80517">
+<div class="need_container docutils container" id="SNCB-2fb5e00b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__security_concept">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2061,7 +2061,7 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e4b23506">
+<div class="need_container docutils container" id="SNCB-646b880e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__algo_updates">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2107,7 +2107,7 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-22cc91ce">
+<div class="need_container docutils container" id="SNCB-8419e470">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__reverse_eng_protection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2153,7 +2153,7 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-736a41a4">
+<div class="need_container docutils container" id="SNCB-0b744d13">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__production_keys">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2200,7 +2200,7 @@ brought into the system.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-022c0631">
+<div class="need_container docutils container" id="SNCB-78cd6156">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__pqc_readiness">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2246,7 +2246,7 @@ brought into the system.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d34c2ff1">
+<div class="need_container docutils container" id="SNCB-734d30e7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hw_acceleration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2293,7 +2293,7 @@ operations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ad16bc8c">
+<div class="need_container docutils container" id="SNCB-df36283d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sw_fallback">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2339,7 +2339,7 @@ operations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8da54713">
+<div class="need_container docutils container" id="SNCB-75680a39">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__trusted_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2385,7 +2385,7 @@ operations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ca4bf590">
+<div class="need_container docutils container" id="SNCB-ce7d667b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__os_protection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2433,7 +2433,7 @@ its memory and CPU from applications and the normal operating system.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d9aec543">
+<div class="need_container docutils container" id="SNCB-7f8c9b41">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__access_control">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2480,7 +2480,7 @@ control to cryptographic functions and key material.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6bf33c11">
+<div class="need_container docutils container" id="SNCB-e8ccfa69">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__ids_integration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2527,7 +2527,7 @@ threats to an Intrusion Detection System (IDS).</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4ab319cc">
+<div class="need_container docutils container" id="SNCB-2d9c0c9d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__dos_mitigation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2578,7 +2578,7 @@ load.</p></td>
 </section>
 <section id="secure-communication-protocols">
 <h2>Secure Communication Protocols<a class="headerlink" href="#secure-communication-protocols" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6eeb9cee">
+<div class="need_container docutils container" id="SNCB-0686cfa8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__tls_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2644,7 +2644,7 @@ communication over Ethernet.</p></td>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Feature Architecture</p>
+        <p class="prev-next-title">Security and Cryptography Architecture</p>
       </div>
     </a>
     <a class="right-next"
