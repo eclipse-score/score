@@ -25,6 +25,7 @@ The following shows the folder structure of the platform repository (ordered alp
 .. parsed-literal::
 
     docs/                              -> Global documentation of the platform
+    ├── architecture/                  -> Platform architecture description [:need:`wp__platform_arch`]
     ├── contribute/                    -> Description on how to contribute
     │                                     [:need:`wp__sw_development_plan`],
     │                                     [:need:`wp__training_path`]
@@ -44,7 +45,6 @@ The following shows the folder structure of the platform repository (ordered alp
     │                                     (e.g., onboarding, development guidelines, etc.)
     ├── manuals/                       -> User and integration manual(s) of the platform,
     │                                     may refer in the reference integration repository to the manuals for the modules.
-    ├── modules/                       -> Modules of the SW platform. [:need:`wp__platform_arch`]
     ├── platform_management_plan/      -> Overall Platform Management Plan [:need:`wp__platform_mgmt`]
     │                                     containing: [:need:`wp__project_mgt`], [:need:`wp__platform_safety_plan`],
     │                                     [:need:`wp__platform_security_plan`], [:need:`wp__qms_plan`],
