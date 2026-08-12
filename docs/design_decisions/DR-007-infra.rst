@@ -18,6 +18,7 @@ DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process 
 .. dec_rec:: Move examples to module_template repository
    :id: dec_rec__infra__dependency_docs_as_code
    :status: accepted
+   :version: 1
    :context: Infrastructure
    :decision: Option 3
 

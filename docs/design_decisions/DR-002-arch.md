@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Library Delivery Model for Platform Modules
 :id: dec_rec__arch__library_delivery_model
 :status: accepted
+:version: 1
 :context: Architecture
 :decision: Opt-in per module — static by default, dynamic where justified
 ```

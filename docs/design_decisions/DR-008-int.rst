@@ -18,6 +18,7 @@ DR-008-Int: S-CORE integration scope in reference_integration repository
 .. dec_rec:: Integration scope in reference_integration repository
    :id: dec_rec__int__scope_reference_integration
    :status: accepted
+   :version: 1
    :context: Integration
    :decision: Option 4
 

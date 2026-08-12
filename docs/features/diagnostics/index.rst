@@ -33,6 +33,7 @@ Diagnostic and Fault Management
    :titlesonly:
    :hidden:
 
+   architecture/index
    requirements/index
 
 Feature flag

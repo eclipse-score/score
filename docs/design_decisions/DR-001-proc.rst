@@ -20,6 +20,7 @@ DR-001-Proc: Feature as Independent Delivery Product
 .. dec_rec:: Feature as Independent Delivery Product
    :id: dec_rec__platform__feature_delivery
    :status: accepted
+   :version: 1
    :Context: Feature artifacts are bound to the S-CORE platform repository and cannot be delivered independently of the platform release. The previous idea of moving all artifacts into the SW-Module repository leads to cyclic dependencies.
    :Decision: Feature artifacts are split: feature requirements and platform architecture remain in the S-CORE repository. Feature architecture and component artifacts are moved to the SW-Module repository (feature repository). The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository, not the other way around.
 

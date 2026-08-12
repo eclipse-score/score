@@ -13,8 +13,8 @@
    # *******************************************************************************
 
 
-Feature Safety Planning
-=======================
+Orchestration Safety Planning
+=============================
 
 .. document:: Orchestration Safety WPs
    :id: doc__orchestration_safety_wp

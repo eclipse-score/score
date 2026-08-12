@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Devcontainer Strategy for S-CORE
 :id: dec_rec__infra__devcontainer
 :status: accepted
+:version: 1
 :context: Infrastructure
 :decision: Hybrid Approach with Devcontainer Features
 ```

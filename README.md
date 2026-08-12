@@ -78,7 +78,7 @@ However it's also  possible to run specific tests or set of tests.
 
 To run all tests of a certain language use the command below, here an example for python.
 ```sh
-$ bazel query 'kind(py.*, tests(//...))' | xargs bazel tests
+$ bazel query 'kind(py.*, tests(//...))' | xargs bazel test
 ```
 
 Grouping of tests via tags is also supported:

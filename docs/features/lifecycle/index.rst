@@ -16,25 +16,14 @@
 Lifecycle
 #########
 
-.. note:: Document header
-
 .. document:: Lifecycle
    :id: doc__lifecycle
-   :status: draft
-   :version: 1
+   :status: valid
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :tags: feature_request
    :realizes: wp__feat_request[version==1]
-
-
-.. feat:: Lifecycle
-   :id: feat__lifecycle
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :version: 1
-   :provides: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
 
 Feature Flag
 ============
@@ -114,26 +103,7 @@ Coming from the OCI Specification the operation modes is a superset of the OCI s
 Specification
 =============
 
-.. mod_view_sta:: Feature architecture
-   :id: mod_view_sta__lifecycle__overview
-   :includes: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_module(need(), needs) }}
-      LifecycleApplication --> logic_arc_int__lifecycle__lifecycle_if : implements
-      LifecycleApplication --> logic_arc_int__lifecycle__controlif : use
-      LifecycleApplication --> logic_arc_int__lifecycle__alive_if : use
-      LifecycleApplication --> logic_arc_int__lifecycle__logical_monitor_if : use
-      LifecycleApplication --> logic_arc_int__lifecycle__deadline_monitor_if :use
-      LifecycleApplication --> posix_signals : implements
-      NativeApplication --> posix_signals : implements
-      comp__lifecycle_launch_manager --> posix_signals : use
-
-
-The overall functionality of the feature can be split into 2 subfeatures, which are
+The overall functionality of the feature can be split into "sub" features, which are
 closely coupled to each other:
 
 * **Lifecycle Management**: This subfeature is responsible for the management of
@@ -148,19 +118,7 @@ closely coupled to each other:
   * Deadline Monitoring
   * Logical Programflow Monitoring
 
-* **External Monitoring**: Provides a concept to integrate with a external monitoring facilities.
-
-
-Architecture
-============
-
-The concept is based on 2 major components:
-
-* **Launch Manager**: Responsible for starting and stopping components based on
-  the defined Run States and alive supervision of the started components
-
-* **Health Monitor**: Provides process local monitoring functionalities such as
-  deadline monitoring and logical program flow monitoring
+* **External Monitoring**: Provides a concept to integrate with external monitoring facilities
 
 
 Details
@@ -170,10 +128,7 @@ Details
    :maxdepth: 1
    :glob:
 
-   ./architecture/launch_manager
-   ./architecture/launch_manager_configuration
-   ./architecture/health_monitor
-   ./architecture/external_monitoring
+   ./architecture/index
 
 
 Requirements

@@ -30,6 +30,7 @@ Configuration Management
 .. toctree::
    :hidden:
 
+   architecture/index.rst
    requirements/index.rst
 
 Feature flag
