@@ -17,12 +17,16 @@
    :status: evaluated
    :version: 2
    :tool_version: v7.0.1
-   :tcl: HIGH
+   :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
    :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_documentation
 
+..
+   Hint: S-CORE kind of inverts ISO 26262!
+   TCL1 = HIGH and TCL2/3 = LOW
+   See doc__platform_tool_management_plan
 
 Doc-as-Code Verification Report
 ===============================
@@ -33,12 +37,12 @@ Introduction
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
 The S-CORE Docs-as-Code tool (Bazel module ``score_docs_as_code``) builds HTML
-documentation from RST sources — process description, requirements, and
+documentation from RST/Markdown sources — process description, requirements, and
 traceability — and validates content against the S-CORE metamodel.
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
-* **Inputs:** RST sources, Sphinx configuration (``conf.py``), the S-CORE
+* **Inputs:** RST/Markdown sources, Sphinx configuration (``conf.py``), the S-CORE
   metamodel (``metamodel.yaml``), Bazel build files.
 * **Outputs:** HTML documentation (``_build/``), needs/traceability data
   (``needs.json``), test/coverage reports.
@@ -152,8 +156,8 @@ Source of truth & backstop
 .. _basis-tcl:
 
 TCL derivation rule
-   Tool Impact = no (TI0) ⇒ **TCL LOW**. Tool Impact = yes × Tool Error
-   Detection = low ⇒ **TCL HIGH** (low because silent failures are not
+   Tool Impact = no (TI0) ⇒ **TCL HIGH**. Tool Impact = yes × Tool Error
+   Detection = NO ⇒ **TCL LOW** (low because silent failures are not
    auto-detected — only document/manual review).
 
 .. _basis-ti0:
@@ -167,6 +171,7 @@ TI0 derived-view rows (M1, M7)
    Rendering/preview defects affect reviewer convenience, not safety evidence.
    With no safety impact (TI0), the detection and further-measure columns are
    not applicable; they are recorded as ``n/a (TI0)``.
+
 
 .. list-table:: S-CORE Docs-as-Code evaluation
    :header-rows: 1
@@ -182,7 +187,7 @@ TI0 derived-view rows (M1, M7)
      - TCL (basis-tcl_)
    * - M1
      - | **Documentation generation** — build and publish HTML from
-       | rst sources.
+       | RST/Markdown sources.
        | See :need:`gd_req__doc_types`, :need:`gd_req__doc_attributes_manual`,
        | :need:`gd_req__doc_attr_status`.
      - | Incomplete, outdated, or mis-rendered HTML. TI0 derived-view row
@@ -191,7 +196,7 @@ TI0 derived-view rows (M1, M7)
      - no
      - n/a (TI0)
      - no
-     - low
+     - high
    * - M2
      - | **Document metamodel & attribute enforcement** — enforce document
        | types, mandatory attributes (id, status, security, safety, realizes),
@@ -212,8 +217,8 @@ TI0 derived-view rows (M1, M7)
      - yes
      - yes
      - no
-     - yes
-     - high
+     - yes (qualification)
+     - low
    * - M3
      - | **Safety classification & safe-linking enforcement** — enforce the
        | ``safety`` attribute on documents/needs and safe linking of
@@ -238,8 +243,8 @@ TI0 derived-view rows (M1, M7)
      - yes
      - yes
      - no
-     - yes
-     - high
+     - yes (qualification)
+     - low
    * - M4
      - | **Requirements coverage statistics** — count, per requirement type, the
        | requirements carrying a ``source_code_link`` and/or a ``testlink``
@@ -262,8 +267,8 @@ TI0 derived-view rows (M1, M7)
      - yes
      - yes
      - no
-     - yes
-     - high
+     - yes (qualification)
+     - low
    * - M5
      - | **Architecture visualization & linkage validation** — generate
        | architecture diagrams (PlantUML/Mermaid) and validate architecture
@@ -279,8 +284,8 @@ TI0 derived-view rows (M1, M7)
      - yes
      - yes
      - no
-     - yes
-     - high
+     - yes (qualification)
+     - low
    * - M6
      - | **Test linkage & broken-reference detection** — for each ``testcase``
        | need, resolve its ``partially_verifies``/``fully_verifies``
@@ -303,8 +308,8 @@ TI0 derived-view rows (M1, M7)
      - yes
      - yes
      - no
-     - yes
-     - high
+     - yes (qualification)
+     - low
    * - M7
      - | **Cross-repository linking & PR preview generation** — link
        | documentation across repositories (versioned + latest) and generate
@@ -318,7 +323,7 @@ TI0 derived-view rows (M1, M7)
      - no
      - n/a (TI0)
      - no
-     - low
+     - high
 
 Security evaluation
 -------------------
@@ -352,7 +357,7 @@ source-controlled inputs and writing generated output.
        | extension code to weaken/disable security checks or inject misleading
        | content into published output.
        | The attack always targets inputs, not the tool — whether the attacker
-       | edits an RST source, the ``metamodel.yaml`` regex, a graph-check rule,
+       | edits an RST/Markdown source, the ``metamodel.yaml`` regex, a graph-check rule,
        | or Python extension logic, it is one commit.
        | *Harm chain:* misleading content reaches published docs, or
        | security-relevant needs enter the baseline without a valid
@@ -372,8 +377,8 @@ source-controlled inputs and writing generated output.
 
 Result
 ~~~~~~
-The final Tool Confidence Level is TCL **HIGH**,
-the maximum across all usecases.
+The final Tool Confidence Level is TCL **LOW**,
+the worst case across all use cases.
 
 S-CORE Docs-as-Code requires qualification
 for use in safety-related software development according to ISO 26262.
@@ -381,10 +386,10 @@ for use in safety-related software development according to ISO 26262.
 Recommended improvements for future versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The residual risk in M2–M6 (TCL HIGH) stems from Tool Error Detection being
+The residual risk in M2–M6 (TCL LOW) stems from Tool Error Detection being
 *low*: silent failures are not auto-detected, only caught by document/manual
 review. The following improvements would raise Tool Error Detection and, once
-verified, could lower the TCL:
+verified, could raise the TCL to HIGH:
 
 * **Extend safety/security graph checks to all relation types** (M3, M5). The
   metamodel defines five graph checks; the safety/security-relevant ones
@@ -435,7 +440,7 @@ verified, could lower the TCL:
   existing ``:expect:``/``:expect_not:`` framework checks build *warnings*,
   and ``score_metrics`` emits none on miscounts, so it cannot catch this class
   — the improvement is a new harness that rebuilds ``metrics.json`` on
-  representative and deliberately broken RST inputs and diffs it against a
+  representative and deliberately broken RST/Markdown inputs and diffs it against a
   checked-in expected output, asserting the negative paths (a dropped type
   must not vanish from ``metrics.json``, a dangling ref must land in
   ``broken_references``) and the counting invariants (``fully_linked`` ≤
