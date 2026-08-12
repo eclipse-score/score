@@ -33,8 +33,8 @@ Time
    :titlesonly:
    :hidden:
 
-   docs/**/index
-
+   architecture/index
+   requirements/index
 
 Feature flag
 ============

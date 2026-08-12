@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Architecture
-============
+Lifecycle Architecture
+======================
 
 .. document:: Lifecycle Architecture
    :id: doc__lifecycle_architecture

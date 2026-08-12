@@ -13,17 +13,16 @@
    # *******************************************************************************
 
 
-Orchstration Failure Modes and Effects Analysis
-===============================================
+IPC Failure Modes and Effects Analysis
+======================================
 
-.. document:: Orchestration FMEA
-   :id: doc__orchestration_fmea
+.. document:: IPC FMEA
+   :id: doc__ipc_fmea
    :status: draft
    :version: 1
    :safety: ASIL_B
-   :security: YES
+   :security: NO
    :realizes: wp__feature_fmea[version==1]
-   :tags: orchestration
 
 
 Failure Mode List

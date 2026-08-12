@@ -13,30 +13,27 @@
    # *******************************************************************************
 
 
-Orchstration Failure Modes and Effects Analysis
-===============================================
+IPC Dependent Failure Analysis
+==============================
 
-.. document:: Orchestration FMEA
-   :id: doc__orchestration_fmea
+.. document:: IPC DFA
+   :id: doc__ipc_dfa
    :status: draft
    :version: 1
    :safety: ASIL_B
-   :security: YES
-   :realizes: wp__feature_fmea[version==1]
-   :tags: orchestration
+   :security: NO
+   :realizes: wp__feature_dfa[version==1]
 
-
-Failure Mode List
------------------
+Dependent Failure Initiators
+----------------------------
 
 .. code-block:: rst
 
-
-    .. feat_saf_fmea:: <Title>
+    .. feat_saf_dfa:: <Title>
        :violates: <Feature architecture>
-       :id: feat_saf_fmea__<Feature>__<Element descriptor>
-       :fault_id: <ID from fault model :need:`gd_guidl__fault_models`>
-       :failure_effect: "description of failure effect of the fault model on the element"
+       :id: feat_saf_dfa__<Feature>__<Element descriptor>
+       :failure_id: <ID from DFA failure initiators :need:`gd_guidl__dfa_failure_initiators`>
+       :failure_effect: "description of failure effect of the failure initiator on the element"
        :mitigated_by: <ID from Feature Requirement | ID from AoU Feature Requirement>
        :mitigation_issue: <ID from Issue Tracker>
        :sufficient: <yes|no>
@@ -45,7 +42,7 @@ Failure Mode List
  .. note::   argument is inside the 'content'. Therefore content is mandatory
 
 .. attention::
-    The above directive must be updated according to your feature FMEA.
+    The above directive must be updated according to your feature DFA.
 
     - The above "code-block" directive must be updated
     - Fill in all the needed information in the <brackets>

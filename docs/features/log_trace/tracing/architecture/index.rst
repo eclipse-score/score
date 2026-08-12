@@ -12,39 +12,37 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _feature_architecture_persistency:
+.. _tracing_architecture:
 
-Persistency Architecture
-========================
+Tracing Architecture
+====================
 
-.. document:: Persistency KVS Feature Architecture
-   :id: doc__persistency_architecture
+.. feat:: Tracing
+   :id: feat__tracing
+   :security: YES
+   :safety: QM
    :status: valid
    :version: 1
-   :safety: ASIL_B
-   :security: NO
-   :realizes: wp__feature_arch[version==1]
-   :tags: persistency
 
 
-.. feat:: Persistency
-   :id: feat__persistency
+.. logic_arc_int:: Tracing
+   :id: logic_arc_int__tracing__tracing
+   :included_by: feat__tracing
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
 
+   .. needarch::
+      :scale: 50
+      :align: center
 
-Logical Interfaces
-------------------
+      {{ draw_interface(need(), needs) }}
 
-.. logic_arc_int:: Ikvs
-   :id: logic_arc_int__persistency__interface
-   :included_by: feat__persistency
+.. logic_arc_int_op:: Trace
+   :id: logic_arc_int_op__tracing__trace
    :security: YES
-   :safety: ASIL_B
-   :fulfils: feat_req__persistency__async_api[version==1]
+   :safety:  ASIL_B
    :status: valid
    :version: 1
-
-   .. uml:: _assets/kvs_interface.puml
+   :included_by: logic_arc_int__tracing__tracing

@@ -12,39 +12,20 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _feature_architecture_persistency:
+Time Architecture
+=================
 
-Persistency Architecture
-========================
-
-.. document:: Persistency KVS Feature Architecture
-   :id: doc__persistency_architecture
-   :status: valid
+.. document:: Time Architecture
+   :id: doc__time_architecture
+   :status: draft
    :version: 1
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :realizes: wp__feature_arch[version==1]
-   :tags: persistency
 
-
-.. feat:: Persistency
-   :id: feat__persistency
+.. feat:: Time
+   :id: feat__time
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
-
-
-Logical Interfaces
-------------------
-
-.. logic_arc_int:: Ikvs
-   :id: logic_arc_int__persistency__interface
-   :included_by: feat__persistency
-   :security: YES
-   :safety: ASIL_B
-   :fulfils: feat_req__persistency__async_api[version==1]
-   :status: valid
-   :version: 1
-
-   .. uml:: _assets/kvs_interface.puml

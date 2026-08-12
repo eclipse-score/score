@@ -304,10 +304,9 @@ Infrastructure and Tooling
    :hidden:
 
    users_guide/index
+   architecture/index
    features/index
    requirements/index
-   architecture/index
-   modules/index
    contribute/index
 
    Quality <quality/qms_report.rst>
@@ -324,6 +323,7 @@ Infrastructure and Tooling
 
    introduction/index
    users_guide/index
+   modules/index
 
 .. raw:: html
 
