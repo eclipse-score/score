@@ -15,6 +15,14 @@
 Platform Architecture
 #####################
 
+.. document:: Platform Architecture
+   :id: doc__platform_architecture
+   :status: valid
+   :version: 1
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__platform_arch[version==1]
+
 .. image:: _assets/platform_architecture.drawio.svg
    :width: 1000
    :alt: Architecture overview
