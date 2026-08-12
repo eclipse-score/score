@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
@@ -631,7 +631,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-9eb27266">
+  <div class="need_container docutils container" id="SNCB-1b11d55e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__doc_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -653,7 +653,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span><span class="needs_spacer">, </span><span class="needs_data">tools_documentation</span></span></span></div>
 <div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
-<div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">HIGH</span></span></div>
+<div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">LOW</span></span></div>
 <div class="line"><span class="needs_tool_version"><span class="needs_label">tool_version: </span><span class="needs_data">v7.0.1</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>2</span></div>
 </span></span></div>
@@ -686,13 +686,13 @@
 <section id="scope-and-purpose">
 <h3>Scope and purpose<a class="headerlink" href="#scope-and-purpose" title="Link to this heading">#</a></h3>
 <p>The S-CORE Docs-as-Code tool (Bazel module <code class="docutils literal notranslate"><span class="pre">score_docs_as_code</span></code>) builds HTML
-documentation from RST sources — process description, requirements, and
+documentation from RST/Markdown sources — process description, requirements, and
 traceability — and validates content against the S-CORE metamodel.</p>
 </section>
 <section id="inputs-and-outputs">
 <h3>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Inputs:</strong> RST sources, Sphinx configuration (<code class="docutils literal notranslate"><span class="pre">conf.py</span></code>), the S-CORE
+<li><p><strong>Inputs:</strong> RST/Markdown sources, Sphinx configuration (<code class="docutils literal notranslate"><span class="pre">conf.py</span></code>), the S-CORE
 metamodel (<code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>), Bazel build files.</p></li>
 <li><p><strong>Outputs:</strong> HTML documentation (<code class="docutils literal notranslate"><span class="pre">_build/</span></code>), needs/traceability data
 (<code class="docutils literal notranslate"><span class="pre">needs.json</span></code>), test/coverage reports.</p></li>
@@ -801,8 +801,8 @@ catch the residual.</p>
 </dd>
 </dl>
 <dl class="simple" id="basis-tcl">
-<dt>TCL derivation rule</dt><dd><p>Tool Impact = no (TI0) ⇒ <strong>TCL LOW</strong>. Tool Impact = yes × Tool Error
-Detection = low ⇒ <strong>TCL HIGH</strong> (low because silent failures are not
+<dt>TCL derivation rule</dt><dd><p>Tool Impact = no (TI0) ⇒ <strong>TCL HIGH</strong>. Tool Impact = yes × Tool Error
+Detection = NO ⇒ <strong>TCL LOW</strong> (low because silent failures are not
 auto-detected — only document/manual review).</p>
 </dd>
 </dl>
@@ -844,7 +844,7 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <tr class="row-even"><td><p>M1</p></td>
 <td><div class="line-block">
 <div class="line"><strong>Documentation generation</strong> — build and publish HTML from</div>
-<div class="line">rst sources.</div>
+<div class="line">RST/Markdown sources.</div>
 <div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>,</div>
 <div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>.</div>
 </div>
@@ -858,7 +858,7 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>no</p></td>
 <td><p>n/a (TI0)</p></td>
 <td><p>no</p></td>
-<td><p>low</p></td>
+<td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>M2</p></td>
 <td><div class="line-block">
@@ -886,8 +886,8 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>high</p></td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
 </tr>
 <tr class="row-even"><td><p>M3</p></td>
 <td><div class="line-block">
@@ -919,8 +919,8 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>high</p></td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
 </tr>
 <tr class="row-odd"><td><p>M4</p></td>
 <td><div class="line-block">
@@ -950,8 +950,8 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>high</p></td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
 </tr>
 <tr class="row-even"><td><p>M5</p></td>
 <td><div class="line-block">
@@ -974,8 +974,8 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>high</p></td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
 </tr>
 <tr class="row-odd"><td><p>M6</p></td>
 <td><div class="line-block">
@@ -1005,8 +1005,8 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
-<td><p>yes</p></td>
-<td><p>high</p></td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
 </tr>
 <tr class="row-even"><td><p>M7</p></td>
 <td><div class="line-block">
@@ -1027,7 +1027,7 @@ not applicable; they are recorded as <code class="docutils literal notranslate">
 <td><p>no</p></td>
 <td><p>n/a (TI0)</p></td>
 <td><p>no</p></td>
-<td><p>low</p></td>
+<td><p>high</p></td>
 </tr>
 </tbody>
 </table>
@@ -1079,7 +1079,7 @@ source-controlled inputs and writing generated output.</p>
 <div class="line">extension code to weaken/disable security checks or inject misleading</div>
 <div class="line">content into published output.</div>
 <div class="line">The attack always targets inputs, not the tool — whether the attacker</div>
-<div class="line">edits an RST source, the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> regex, a graph-check rule,</div>
+<div class="line">edits an RST/Markdown source, the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> regex, a graph-check rule,</div>
 <div class="line">or Python extension logic, it is one commit.</div>
 <div class="line"><em>Harm chain:</em> misleading content reaches published docs, or</div>
 <div class="line">security-relevant needs enter the baseline without a valid</div>
@@ -1109,16 +1109,16 @@ source-controlled inputs and writing generated output.</p>
 </div>
 <section id="result">
 <h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
-<p>The final Tool Confidence Level is TCL <strong>HIGH</strong>,
-the maximum across all usecases.</p>
+<p>The final Tool Confidence Level is TCL <strong>LOW</strong>,
+the worst case across all use cases.</p>
 <p>S-CORE Docs-as-Code requires qualification
 for use in safety-related software development according to ISO 26262.</p>
 <section id="recommended-improvements-for-future-versions">
 <h4>Recommended improvements for future versions<a class="headerlink" href="#recommended-improvements-for-future-versions" title="Link to this heading">#</a></h4>
-<p>The residual risk in M2–M6 (TCL HIGH) stems from Tool Error Detection being
+<p>The residual risk in M2–M6 (TCL LOW) stems from Tool Error Detection being
 <em>low</em>: silent failures are not auto-detected, only caught by document/manual
 review. The following improvements would raise Tool Error Detection and, once
-verified, could lower the TCL:</p>
+verified, could raise the TCL to HIGH:</p>
 <ul class="simple">
 <li><p><strong>Extend safety/security graph checks to all relation types</strong> (M3, M5). The
 metamodel defines five graph checks; the safety/security-relevant ones
@@ -1165,7 +1165,7 @@ requirement type dropped by the filter so its links vanish, or a dangling
 existing <code class="docutils literal notranslate"><span class="pre">:expect:</span></code>/<code class="docutils literal notranslate"><span class="pre">:expect_not:</span></code> framework checks build <em>warnings</em>,
 and <code class="docutils literal notranslate"><span class="pre">score_metrics</span></code> emits none on miscounts, so it cannot catch this class
 — the improvement is a new harness that rebuilds <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> on
-representative and deliberately broken RST inputs and diffs it against a
+representative and deliberately broken RST/Markdown inputs and diffs it against a
 checked-in expected output, asserting the negative paths (a dropped type
 must not vanish from <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>, a dangling ref must land in
 <code class="docutils literal notranslate"><span class="pre">broken_references</span></code>) and the counting invariants (<code class="docutils literal notranslate"><span class="pre">fully_linked</span></code> ≤
