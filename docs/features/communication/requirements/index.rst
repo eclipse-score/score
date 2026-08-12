@@ -778,5 +778,5 @@ Safety Impact
 
    The communication framework shall support safe communication up to ASIL-B.
 
-.. needextend:: is_external == False and "__com_" in id
+.. needextend:: c.this_doc() and is_external == False and "__com_" in id
    :+tags: com
