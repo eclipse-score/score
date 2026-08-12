@@ -132,6 +132,15 @@
 		  "additionalProperties": {
 			"$ref": "#/$defs/keyspace"
 		  }
+		},
+		"certspace": {
+		  "type": "object",
+		  "propertyNames": {
+			"$ref": "#/$defs/uint16Key"
+		  },
+		  "additionalProperties": {
+			"$ref": "#/$defs/certspace"
+		  }
 		}
 	  }
 	}
@@ -486,6 +495,102 @@
       "additionalProperties": {
         "$ref": "#/$defs/keyAccessOptions"
       }
+	},
+	"certspaceOperation": {
+	  "type": "string",
+	  "enum": [
+		"add",
+		"remove"
+	  ]
+	},
+	"certspaceAccessOptions": {
+	  "type": "object",
+	  "additionalProperties": false,
+	  "properties": {
+		"operations": {
+		  "type": "array",
+		  "minItems": 1,
+		  "uniqueItems": true,
+		  "items": {
+			"$ref": "#/$defs/certspaceOperation"
+		  }
+		}
+	  }
+	},
+	"certspaceRights": {
+	  "type": "object",
+	  "propertyNames": {
+		"$ref": "#/$defs/subjectKey"
+	  },
+	  "additionalProperties": {
+		"$ref": "#/$defs/certspaceAccessOptions"
+	  }
+	},
+	"cert": {
+	  "type": "object",
+	  "additionalProperties": false,
+	  "required": [
+		"name"
+	  ],
+	  "properties": {
+		"name": {
+		  "type": "string",
+		  "minLength": 1,
+		  "maxLength": 128
+		},
+		"read": {
+		  "$ref": "#/$defs/keyAccessMap"
+		},
+		"use": {
+		  "$ref": "#/$defs/keyAccessMap"
+		},
+		"write": {
+		  "$ref": "#/$defs/keyAccessMap"
+		},
+		"removeable": {
+		  "description": "If false, this certificate cannot be removed, even if certspaceRights grants the remove operation.",
+		  "type": "boolean"
+		}
+	  }
+	},
+	"certspace": {
+	  "type": "object",
+	  "additionalProperties": false,
+	  "required": [
+		"certspaceName",
+		"defaultReadDeny",
+		"defaultWriteDeny",
+		"defaultUseDeny",
+		"certspaceRights"
+	  ],
+	  "properties": {
+		"certspaceName": {
+		  "type": "string",
+		  "minLength": 1,
+		  "maxLength": 128
+		},
+		"defaultReadDeny": {
+		  "type": "boolean"
+		},
+		"defaultWriteDeny": {
+		  "type": "boolean"
+		},
+		"defaultUseDeny": {
+		  "type": "boolean"
+		},
+		"certspaceRights": {
+		  "$ref": "#/$defs/certspaceRights"
+		},
+		"certs": {
+		  "type": "object",
+		  "propertyNames": {
+			"$ref": "#/$defs/uint16Key"
+		  },
+		  "additionalProperties": {
+			"$ref": "#/$defs/cert"
+		  }
+		}
+	  }
 	},    
 	"memoryLimiting": {
 	  "type": "object",
@@ -760,6 +865,41 @@
 					"write": 
 					{
 						"uid=1|policy=someipd_t":{}
+					}
+				}
+			}
+		}
+	},
+	"certspace":
+	{
+		"0":
+		{
+			"certspaceName":"oemcerts",
+			"defaultReadDeny":false,
+			"defaultWriteDeny":true,
+			"defaultUseDeny":false,
+			"certspaceRights": 
+			{
+				"uid=1": {"operations":["add"]}, 
+				"vmid=4|uid=2": {"operations":["add","remove"]}
+			},
+			"certs":
+			{
+				"1": 
+				{
+					"name":"signing_root",
+					"removeable":false,
+					"write":
+					{
+						"uid=1":{}
+					}						
+				},
+				"2":
+				{
+					"name":"signing_authority_1",
+					"write":
+					{
+						"uid=1":{}
 					}
 				}
 			}
