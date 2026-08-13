@@ -28,24 +28,47 @@
    TCL1 = HIGH and TCL2/3 = LOW
    See doc__platform_tool_management_plan
 
-Doc-as-Code Verification Report
-===============================
+Doc-as-Code Tool Verification Report
+====================================
 
 Introduction
 ------------
 
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
+
 The S-CORE Docs-as-Code tool (Bazel module ``score_docs_as_code``) builds HTML
 documentation from RST/Markdown sources — process description, requirements, and
 traceability — and validates content against the S-CORE metamodel.
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
+
 * **Inputs:** RST/Markdown sources, Sphinx configuration (``conf.py``), the S-CORE
-  metamodel (``metamodel.yaml``), Bazel build files.
+  metamodel (``metamodel.yaml``), Bazel build files, source-code links
+  (``sourcelinks_json``) and test results (``testlinks``).
 * **Outputs:** HTML documentation (``_build/``), needs/traceability data
   (``needs.json``), test/coverage reports.
+
+.. mermaid::
+
+   graph LR
+      src@{ shape: docs, label: "RST/Markdown sources (+ assets)" }
+      code@{ shape: docs, label: "C++/Rust/Python sources" }
+      cfg@{ shape: docs, label: "Config (conf.py, metamodel.yaml, Bazel)" }
+      dac@{ shape: subproc, label: "Doc-as-Code" }
+      html@{ shape: docs, label: "HTML docs" }
+      needs@{ shape: doc, label: "needs.json" }
+      metrics@{ shape: docs, label: "metrics.json" }
+      gate@{ shape: subproc, label: "traceability_gate" }
+
+      src --> dac
+      code --> dac
+      cfg --> dac
+      dac --> html
+      dac --> needs
+      dac --> metrics
+      metrics --> gate
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
@@ -141,7 +164,7 @@ Build/CI behavior
    Builds run with ``-W``; any warning trips CI. The
    safety-relevant danger is the *silent* failure — a missing warning
    or a wrong output published undetected. A loud CI abort is not
-   safety-relevant (TI0): no wrong output enters the baseline.
+   safety-relevant (TI1): no wrong output enters the baseline.
 
 .. _basis-backstop:
 
@@ -156,21 +179,21 @@ Source of truth & backstop
 .. _basis-tcl:
 
 TCL derivation rule
-   Tool Impact = no (TI0) ⇒ **TCL HIGH**. Tool Impact = yes × Tool Error
+   Tool Impact = no (TI1) ⇒ **TCL HIGH**. Tool Impact = yes (TI2) × Tool Error
    Detection = NO ⇒ **TCL LOW** (low because silent failures are not
    auto-detected — only document/manual review).
 
-.. _basis-ti0:
+.. _basis-ti1:
 
-TI0 derived-view rows (M1, M7)
+TI1 derived-view rows (M1, M7)
    The rendered output (HTML, cross-repo links, PR previews) is a *derived
    view*; the authoritative safety artifacts are the source-controlled work
    products and machine-readable verification reports
    (:need:`gd_req__verification_reporting`). Safety classification and
    traceability are owned and enforced by M2–M6 at the source level.
    Rendering/preview defects affect reviewer convenience, not safety evidence.
-   With no safety impact (TI0), the detection and further-measure columns are
-   not applicable; they are recorded as ``n/a (TI0)``.
+   With no safety impact (TI1), the detection and further-measure columns are
+   not applicable; they are recorded as ``n/a (TI1)``.
 
 
 .. list-table:: S-CORE Docs-as-Code evaluation
@@ -190,11 +213,11 @@ TI0 derived-view rows (M1, M7)
        | RST/Markdown sources.
        | See :need:`gd_req__doc_types`, :need:`gd_req__doc_attributes_manual`,
        | :need:`gd_req__doc_attr_status`.
-     - | Incomplete, outdated, or mis-rendered HTML. TI0 derived-view row
-       | (basis-ti0_).
+     - | Incomplete, outdated, or mis-rendered HTML. TI1 derived-view row
+       | (basis-ti1_).
      - no
      - no
-     - n/a (TI0)
+     - n/a (TI1)
      - no
      - high
    * - M2
@@ -316,12 +339,12 @@ TI0 derived-view rows (M1, M7)
        | PR previews.
        | See :need:`gd_req__req_traceability` (cross-repository traceability).
      - | Versioned links resolve to the wrong revision, or PR previews built
-       | from outdated sources. TI0 derived-view row (basis-ti0_).
+       | from outdated sources. TI1 derived-view row (basis-ti1_).
        | Cross-repository traceability is owned and computed by M4 at the
        | source level.
      - no
      - no
-     - n/a (TI0)
+     - n/a (TI1)
      - no
      - high
 
@@ -365,13 +388,14 @@ source-controlled inputs and writing generated output.
        | security argument incomplete, traceability/coverage falsely complete
        | → incorrect security decisions.
      - yes
-     - | Git access control, mandatory PR review with reviewer
-       |   (:need:`gd_req__doc_reviewer`) + approver
-       |   (:need:`gd_req__doc_approver`), ``status=valid`` gate
-       |   (:need:`gd_req__doc_attr_status`, :need:`gd_guidl__documentation`),
-       |   known-provenance tenet (:need:`tenet__trust__tt-provenance`), plus
-       |   structural metamodel enforcement (``security: ^(YES|NO)$``
-       |   mandatory, security graph check) and the metamodel test suite
+     - | yes:
+       | Every change (documentation sources,
+       | ``metamodel.yaml``, graph-check rules and extension code)
+       | is made via a reviewed pull request accepted by a
+       | committer (:need:`rl__contributor`, :need:`rl__committer`,
+       | :need:`doc_concept__wp_inspections`).
+       | Also, structural metamodel enforcement (``security: ^(YES|NO)$``
+       | mandatory, security graph check) and the metamodel test suite.
      - yes
      - no
 
@@ -459,13 +483,12 @@ Tool requirements
    `Tool Requirements <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirements.html>`_.
    Each ``tool_req`` specifies a mandatory attribute enforcement, linkage
    rule, or metamodel check implemented by the ``score_metamodel`` Sphinx
-   extension. The full capability list is in
-   `Capabilities <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/capabilities.html>`_.
+   extension.
 
 Test cases
    Results and testcase metadata are published in
-   `Tooling Verification <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/tooling_verification.html>`_;
-   the extension's test infrastructure is described in
+   `Tooling Verification <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/tooling_verification.html>`_.
+   There is additional description about
    `File-Based Testing <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/rst_filebased_testing.html>`_.
 
 Requirements coverage
