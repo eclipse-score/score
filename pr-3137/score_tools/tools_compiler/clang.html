@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
@@ -619,7 +619,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-958403e4">
+  <div class="need_container docutils container" id="SNCB-ffde27f8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__clang">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -682,6 +682,9 @@ evidence generation and reporting.
 For traceability in S-CORE naming, this report explicitly refers to
 <code class="docutils literal notranslate"><span class="pre">llvm_cov</span></code> (llvm-cov) and <code class="docutils literal notranslate"><span class="pre">llvm_cov_profdata</span></code> (combined llvm-profdata/
 llvm-cov workflow).</p>
+<p>This report covers the Linux host verification workflow only. It does not
+cover production-target compilation with clang, Rust compiler qualification,
+or QNX-specific coverage flows.</p>
 </section>
 <section id="inputs-and-outputs">
 <h3>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading">#</a></h3>
@@ -727,6 +730,17 @@ instrumentation and related verification workflows.</p>
 <li><p>Merge raw profiles with llvm-profdata.</p></li>
 <li><p>Generate coverage reports with llvm-cov.</p></li>
 </ol>
+<p>The qualification boundary is explicitly limited to this workflow:</p>
+<ul class="simple">
+<li><p>clang adds instrumentation during host builds through LLVM source-based
+coverage options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> merges <code class="docutils literal notranslate"><span class="pre">*.profraw</span></code> execution data into <code class="docutils literal notranslate"><span class="pre">*.profdata</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> converts the instrumented binaries and merged profile data into
+developer-facing coverage reports.</p></li>
+</ul>
+<p>The resulting coverage report is a development artifact used by human
+reviewers in verification activities. Instrumented binaries are executed only
+during test runs and are not deployed as production software artifacts.</p>
 </section>
 <section id="environment">
 <h3>Environment<a class="headerlink" href="#environment" title="Link to this heading">#</a></h3>
@@ -852,6 +866,9 @@ S-CORE project.</p>
 workflow, the following measures are applied or recommended for the S-CORE
 verification environment:</p>
 <ul class="simple">
+<li><p>Treat the coverage workflow as a separate verification path from production
+builds so that instrumentation-related effects stay confined to host test
+execution.</p></li>
 <li><p>Provide a small validation suite with dedicated C++ source files whose
 expected structural coverage is known in advance.</p></li>
 <li><p>Cover representative language constructs such as straight-line code,
@@ -863,9 +880,17 @@ branch coverage and deliberately uncovered code.</p></li>
 <li><p>Execute the validation suite in CI with LLVM instrumentation enabled and
 compare the produced <code class="docutils literal notranslate"><span class="pre">*.profraw</span></code>/<code class="docutils literal notranslate"><span class="pre">*.profdata</span></code> data and final
 <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> report against expected results.</p></li>
+<li><p>Include at least one intentionally uncovered file or line in the validation
+suite so that false-positive reporting is easier to detect during review and
+CI execution.</p></li>
+<li><p>Re-run the coverage workflow from a clean build in CI so that profile merge
+failures, missing reports and threshold regressions are visible as build
+failures rather than silent degradations.</p></li>
 <li><p>Use a secondary plausibility cross-check that compares the expected coverage
 baseline (for example number of source files and rough line-count totals in the project)
 against the files and aggregates reported by <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p></li>
+<li><p>Compare known-covered and known-uncovered lines in the generated report as a
+targeted spot check when the LLVM version or reporting flow changes.</p></li>
 <li><p>Re-run the validation suite whenever the LLVM/clang toolchain version changes
 or the coverage workflow is modified.</p></li>
 <li><p>Keep the validation sources and expected results version-controlled so that
@@ -875,6 +900,11 @@ tool behavior is reproducible and regressions become reviewable.</p></li>
 the primary confidence measure. The file/line-count comparison is a secondary
 sanity check that can reveal missing files, empty profiles or implausible report
 totals, but it does not by itself prove correct branch/region attribution.</p>
+<p>For the LLVM coverage workflow, the relevant error-detection mechanisms are
+independent review of selected report lines, CI re-execution from scratch,
+threshold-based gating and validation cases with known expected outcomes.
+These measures are intended to detect both optimistic and pessimistic coverage
+misreporting before the results are used in a safety argument.</p>
 </section>
 <section id="result">
 <h2>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h2>
@@ -883,6 +913,14 @@ confidence level HIGH for this use case.
 The associated llvm-profdata/llvm-cov coverage tooling is covered by this
 verification context.
 This includes <code class="docutils literal notranslate"><span class="pre">llvm_cov</span></code> and <code class="docutils literal notranslate"><span class="pre">llvm_cov_profdata</span></code>.</p>
+<p>Within this scope, <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> and <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> are treated as
+development tools whose output is a verification report for human assessment.
+Incorrectly low coverage remains a conservative failure mode. Incorrectly high
+coverage is the relevant safety concern, and the confidence measures above are
+the basis for keeping this workflow in the project-internal high-confidence
+category for Linux host verification use. On that basis, this report does not
+identify an additional formal qualification action for the current Linux host
+coverage-reporting scope.</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
