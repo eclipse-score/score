@@ -915,7 +915,7 @@ Time
    :id: stkh_req__time__absolute_time_api
    :reqtype: Functional
    :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
    :status: valid
    :version: 1
@@ -923,22 +923,6 @@ Time
 
    The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
    Access shall be free from interferences for the consuming components.
-
-.. stkh_req:: Reliable Qualification of Time Information
-   :id: stkh_req__time__qualified_time_information
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :rationale: Depending on the user needs and their SW platform configuration, it can be guaranteed that applications can rely on the quality rating of the time reference of a certain time base, even in case of interferences induced into or by QM-rated software components involved in the synchronization process.
-   :status: valid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The architecture and common implementation parts of the time synchronization framework shall support to ensure, that the provided qualification information of a synchronized time base always reflects the actual quality of the provided time (stamp) information.
-
-   Note:
-   * This does not apply to willful interferences by malicious software components or components in control by malicious actors, which are out of scope of this requirement.
-   * The end-to-end quality of the time information provided by the time base API requires components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting end-to-end protection extensions of gPTP).
 
 .. stkh_req:: Local High Resolution Clock API
    :id: stkh_req__time__high_res_clock_api

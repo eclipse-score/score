@@ -70,7 +70,7 @@ Time Synchronization
    :id: feat_req__time__vehicle_time_acc_qual_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
@@ -84,24 +84,6 @@ Time Synchronization
    * if it is synchronized to an external time source or not,
    * are there any instabilities, like time jumps to the past or to the future
    * does the time increase in a monotonic manner.
-
-.. feat_req:: Reliability of Vehicle Time base accuracy qualifier
-   :id: feat_req__time__veh_time_reliable_accur_qual
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :derived_from: stkh_req__time__qualified_time_information
-   :satisfied_by: feat__time[version==1]
-   :status: valid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The architecture and implementation parts of the time feature shall support to ensure,
-   that the provided accuracy qualifier always reflects the actual quality of the local time base.
-
-   Note:
-   * This does not apply to willful interferences by malicious software components or components in control by malicious actors, which are out of scope of this requirement.
-   * The end-to-end quality of the time information provided by the time base API requires components and protocols outside of the scope of this SW-platform to be qualified accordingly (e.g. the respective time master) or at least support this requirement (e.g. time-aware bridges/switches supporting end-to-end protection extensions of gPTP).
 
 .. feat_req:: Vehicle Time base time point qualifier
    :id: feat_req__time__vehicle_time_time_pt_qual
@@ -122,7 +104,7 @@ Time Synchronization
    :id: feat_req__time__vehicle_time_ctrl_flow
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
@@ -176,7 +158,7 @@ Time Synchronization to absolute external sources
    :id: feat_req__time__abs_base_api
    :reqtype: Functional
    :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :derived_from: stkh_req__time__absolute_time_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
