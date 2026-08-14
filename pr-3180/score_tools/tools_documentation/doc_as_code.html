@@ -1067,7 +1067,7 @@ window.runMermaid = runMermaid;</script>
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-a6b7dc28">
+  <div class="need_container docutils container" id="SNCB-a0517080">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__doc_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1420,8 +1420,15 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 </div>
 </td>
 <td><p>yes</p></td>
-<td><p>yes: PR review.</p></td>
-<td><p>no</p></td>
+<td><p>yes: PR review. Graph checks for linkage validation.</p></td>
+<td><div class="line-block">
+<div class="line">no:</div>
+<div class="line">Linkage validation graph checks do not cover all relation types</div>
+<div class="line">(<code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code>, <code class="docutils literal notranslate"><span class="pre">covers</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">uses</span></code>,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">consists_of</span></code>), so a broken safety link via those</div>
+<div class="line">relations is missed silently.</div>
+</div>
+</td>
 <td><p>yes (qualification)</p></td>
 <td><p>low</p></td>
 </tr>
