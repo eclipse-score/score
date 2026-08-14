@@ -60,6 +60,19 @@ Lifecycle Glossary
     Component
       A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.
 
+    Ready State
+      A state when the component is ready to provide services to other components.
+
+    Dependency (between components)
+      A configuration parameter indicating that **Component A** can only start
+      after **Component B** has reached its :term:`Ready State`. In this case,
+      **Component A** depends on **Component B**.
+
+    Dependency (between run targets)
+      A configuration parameter indicating that **Run Target A** includes all
+      components from **Run Target B**. In this case, **Run Target A** depends
+      on **Run Target B**.
+
     Lifecycle Component
       Node of the dependency tree.
 
