@@ -25,7 +25,8 @@
 
 ..
    Hint: S-CORE kind of inverts ISO 26262!
-   TCL1 = HIGH and TCL2/3 = LOW
+   TCL1 = HIGH confidence here
+   TCL2/3 = LOW confidence here
    See doc__platform_tool_management_plan
 
 Doc-as-Code Tool Verification Report
@@ -56,6 +57,7 @@ Inputs and outputs
       src@{ shape: docs, label: "RST/Markdown sources (+ assets)" }
       code@{ shape: docs, label: "C++/Rust/Python sources" }
       cfg@{ shape: docs, label: "Config (conf.py, metamodel.yaml, Bazel)" }
+      tests@{ shape: docs, label: "Test results" }
       dac@{ shape: subproc, label: "Doc-as-Code" }
       html@{ shape: docs, label: "HTML docs" }
       needs@{ shape: doc, label: "needs.json" }
@@ -65,6 +67,7 @@ Inputs and outputs
       src --> dac
       code --> dac
       cfg --> dac
+      tests --> dac
       dac --> html
       dac --> needs
       dac --> metrics
@@ -148,13 +151,10 @@ Environment
 Safety evaluation
 -----------------
 
-Use cases were derived from the Documentation Management process
-(:need:`doc_concept__documentation_process`, :need:`gd_req__doc_types`,
-:need:`gd_req__doc_attributes_manual`) and the docs-as-code tool requirements
-and capabilities.
+Use cases were derived from the process requirements
+and the docs-as-code
+`Tool Requirements <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirements.html>`_.
 
-All affected safety-relevant work products are ASIL-B in S-CORE, so every
-safety-relevant harm chain ends in a systematic fault in the ASIL_B safety case.
 The facts below are shared by use cases and only referenced in each
 Malfunctions cell.
 
@@ -166,34 +166,22 @@ Build/CI behavior
    or a wrong output published undetected. A loud CI abort is not
    safety-relevant (TI1): no wrong output enters the baseline.
 
-.. _basis-backstop:
 
-Source of truth & backstop
-   Documents reach ``valid`` only via source review
-   (:need:`gd_req__doc_attr_status`). ``needs.json`` and module verification
-   reports are the machine-readable verification evidence, with no automated
-   re-derivation. For silent wrong outputs the gated CI stays green; only
-   document review (:need:`gd_req__doc_attr_status`) and manual safety review
-   catch the residual.
-
-.. _basis-tcl:
-
-TCL derivation rule
-   Tool Impact = no (TI1) ⇒ **TCL HIGH**. Tool Impact = yes (TI2) × Tool Error
-   Detection = NO ⇒ **TCL LOW** (low because silent failures are not
-   auto-detected — only document/manual review).
+PR Review & Metrics
+   Repository contents are the source of truth
+   and every change is reviewed by a committer
+   (:need:`rl__contributor`, :need:`rl__committer`, :need:`doc_concept__wp_inspections`).
+   Docs-as-code computes ``metrics.json``, a machine-readable traceability report for a backstop,
+   and the same metrics are shown in the documentation.
+   Still, for silent wrong outputs the gated CI stays green.
 
 .. _basis-ti1:
 
-TI1 derived-view rows (M1, M7)
+Derived-view (M1, M7)
    The rendered output (HTML, cross-repo links, PR previews) is a *derived
-   view*; the authoritative safety artifacts are the source-controlled work
-   products and machine-readable verification reports
-   (:need:`gd_req__verification_reporting`). Safety classification and
-   traceability are owned and enforced by M2–M6 at the source level.
+   view*; the authoritative safety artifacts are the source-controlled work products.
+   Traceability is enforced by M2–M6 at the source level.
    Rendering/preview defects affect reviewer convenience, not safety evidence.
-   With no safety impact (TI1), the detection and further-measure columns are
-   not applicable; they are recorded as ``n/a (TI1)``.
 
 
 .. list-table:: S-CORE Docs-as-Code evaluation
@@ -207,15 +195,14 @@ TI1 derived-view rows (M1, M7)
      - Impact safety measures available?
      - Impact safety detection sufficient?
      - Further additional safety measure required?
-     - TCL (basis-tcl_)
+     - Confidence (automatic calculation)
    * - M1
      - | **Documentation generation** — build and publish HTML from
        | RST/Markdown sources.
        | See :need:`gd_req__doc_types`, :need:`gd_req__doc_attributes_manual`,
        | :need:`gd_req__doc_attr_status`.
-     - | Incomplete, outdated, or mis-rendered HTML. TI1 derived-view row
-       | (basis-ti1_).
-     - no
+     - | Incomplete, outdated, or mis-rendered HTML.
+     - no: Derived-view (basis-ti1_)
      - no
      - n/a (TI1)
      - no
@@ -228,18 +215,17 @@ TI1 derived-view rows (M1, M7)
        | :need:`gd_req__doc_attr_status`, :need:`gd_req__req_attr_uid`,
        | :need:`gd_req__req_check_mandatory`.
      - | Silent false-negative (basis-ci_): a too-permissive
-       | ``metamodel.yaml`` regex (e.g. ``fault_id: ^.*$``, shipped as a
-       | *mandatory* option on ``feat_saf_fmea``/``comp_saf_fmea``)
+       | ``metamodel.yaml`` regex
        | accepted with no guard, or a check bug skips a case.
-       | (Duplicate IDs stay loud.)
-       | *Harm chain:* ASIL_B element enters baseline misclassified (e.g. QM)
-       | or with a broken lifecycle/missing link → its verification &
-       | traceability (M4/M6) weakened.
-       | *No backstop* for a permissive regex or check blind spot
-       | (basis-backstop_).
      - yes
-     - yes
-     - no
+     - | yes: PR review.
+       | The metamodel test suite (file-based framework
+       | ``test_rules_file_based.py`` with ``:expect:``/``:expect_not:``)
+       | provides regression coverage.
+     - | no:
+       | No check against a permissive regex or check blind spot
+       | (e.g. ``fault_id: ^.*$``, shipped as a
+       | *mandatory* option on ``feat_saf_fmea``/``comp_saf_fmea``).
      - yes (qualification)
      - low
    * - M3
@@ -249,29 +235,22 @@ TI1 derived-view rows (M1, M7)
        | See :need:`gd_req__req_attr_safety`, :need:`gd_req__arch_attr_safety`,
        | :need:`gd_req__req_check_mandatory`,
        | :need:`gd_req__req_linkage_safety`.
-     - | Silent false-negative (basis-ci_). The tool enforces
-       | *presence and format* of ``safety`` (mandatory on all safety-relevant
-       | types — requirements, architecture elements, documents, verification
-       | reports; optional only on ``tool_req``/``mod``) and *some*
-       | safety-linking rules (graph checks on ``derived_from``, ``fulfils``,
-       | and the safety variant of ``implements``). Residual *tool* gap:
-       | safety links via relation types the graph checks do not cover
+     - | Silent false-negative (basis-ci_).
+     - yes
+     - | yes: PR review.
+       | Presence of ``safety`` is ensured by M2's mandatory-attribute
+       | check, and graph checks on ``derived_from``, ``fulfils`` and the
+       | safety variant of ``implements``.
+     - | no:
+       | Safety links via relation types the graph checks do not cover
        | (``satisfied_by``, ``covers``, ``includes``, ``uses``,
        | ``belongs_to``, ``consists_of``).
-       | *Operational context:* presence of ``safety`` is backstopped by M2's
-       | mandatory-attribute check (basis-backstop_); the classification
-       | *value* and safety-linking completeness across all relation types
-       | have no automated backstop — only document review
-       | (:need:`gd_req__doc_attr_status`) and manual safety review.
-     - yes
-     - yes
-     - no
      - yes (qualification)
      - low
    * - M4
      - | **Requirements coverage statistics** — count, per requirement type, the
-       | requirements carrying a ``source_code_link`` and/or a ``testlink``
-       | (URLs to the implementing source / test), compute link-coverage
+       | requirements carrying a ``testlink``
+       | (URLs to the implementing test), compute link-coverage
        | percentages, and write ``metrics.json`` consumed by the
        | ``traceability_gate`` CI quality gate (requirements-to-code,
        | requirements-to-test, fully-linked thresholds).
@@ -279,34 +258,35 @@ TI1 derived-view rows (M1, M7)
        | :need:`gd_req__req_attr_testlink`,
        | :need:`gd_req__verification_reporting`.
      - | Silent wrong-output (basis-ci_): a coverage statistic computed wrong.
-       | A present ``source_code_link``/``testlink`` not counted (e.g.
+       | A present ``testlink`` not counted (e.g.
        | ``is_non_empty`` rejects a valid value), or a requirement type dropped
        | by the type filter so its links vanish from ``metrics.json`` (and
        | ``safe_percent`` then reports the empty type as 100% by design).
-       | *Harm chain:* ASIL_B requirement — or a whole requirement class —
-       | reported code/test-linked, or dropped from the gate → CI quality gate
-       | green → safety case believes implementation/test coverage exists where
-       | it does not.
      - yes
-     - yes
-     - no
+     - | yes: PR review.
+       | ``metrics.json`` data is published in the documentation for human review,
+       | and a traceability gate enforces configurable thresholds
+       | (requirements-to-code, requirements-to-test, fully-linked).
+     - | no:
+       | The traceability gate is not mandatory.
      - yes (qualification)
      - low
    * - M5
      - | **Architecture visualization & linkage validation** — generate
-       | architecture diagrams (PlantUML/Mermaid) and validate architecture
-       | linkage.
+       | architecture diagrams (PlantUML/Mermaid) and validate architecture linkage.
        | See :need:`gd_req__arch_viewpoints`,
        | :need:`gd_req__impl_diagram_check_id`,
        | :need:`gd_req__impl_diagram_linkage_id`,
        | :need:`gd_req__arch_attr_mandatory`.
      - | Silent wrong-output (basis-ci_): diagram misrepresents the
        | architecture or linkage validation misses a broken safety link.
-       | *Harm chain:* ASIL_B architecture element mis-/un-linked → safety
-       | architecture misrepresented, broken linkage hidden from review.
      - yes
-     - yes
-     - no
+     - yes: PR review. Graph checks for linkage validation.
+     - | no:
+       | Linkage validation graph checks do not cover all relation types
+       | (``satisfied_by``, ``covers``, ``includes``, ``uses``,
+       | ``belongs_to``, ``consists_of``), so a broken safety link via those
+       | relations is missed silently.
      - yes (qualification)
      - low
    * - M6
@@ -319,18 +299,16 @@ TI1 derived-view rows (M1, M7)
        | See :need:`gd_req__req_attr_testlink`,
        | :need:`gd_req__verification_checks`,
        | :need:`gd_req__verification_reporting`.
-     - | Silent wrong-output (basis-ci_): a ``partially_verifies``/
-       | ``fully_verifies`` ref to an *absent* need not added to
-       | ``broken_references`` (e.g. an ID-form mismatch in the
-       | ``ref not in all_needs`` check) — a dangling test-to-requirement
-       | reference silently dropped (and ``tests-linked`` still counts the
-       | test, since it keys on ref presence, not resolution).
-       | *Harm chain:* ASIL_B requirement's test coverage missing but the
-       | broken reference unreported → safety case believes the requirement
+     - | Silent wrong-output (basis-ci_)
+       | Safety case believes the requirement
        | is tested where it is not.
      - yes
-     - yes
-     - no
+     - | yes: PR review.
+       | Traceability gate can enforce the tests-linked threshold.
+       | Broken references can be listed in metrics for review.
+     - | no:
+       | Test linking to non-existing requirement counts as linked.
+       | The traceability gate is not mandatory.
      - yes (qualification)
      - low
    * - M7
@@ -339,10 +317,10 @@ TI1 derived-view rows (M1, M7)
        | PR previews.
        | See :need:`gd_req__req_traceability` (cross-repository traceability).
      - | Versioned links resolve to the wrong revision, or PR previews built
-       | from outdated sources. TI1 derived-view row (basis-ti1_).
+       | from outdated sources.
        | Cross-repository traceability is owned and computed by M4 at the
        | source level.
-     - no
+     - no: Derived-view (basis-ti1_)
      - no
      - n/a (TI1)
      - no
@@ -369,7 +347,7 @@ source-controlled inputs and writing generated output.
      - | **Source tampering** — applies to all tool use cases: documentation
        | generation, metamodel/attribute enforcement, security classification
        | & linkage restriction, traceability & coverage, architecture
-       | visualization & linkage validation, source/test traceability,
+       | visualization & linkage validation, test traceability,
        | cross-repo linking & PR preview generation.
        | See :need:`gd_req__doc_types`, :need:`gd_req__req_attr_security`,
        | :need:`gd_req__arch_attr_security`, :need:`gd_req__req_linkage`,
@@ -379,21 +357,8 @@ source-controlled inputs and writing generated output.
      - | An attacker with write access tampers with sources, configuration, or
        | extension code to weaken/disable security checks or inject misleading
        | content into published output.
-       | The attack always targets inputs, not the tool — whether the attacker
-       | edits an RST/Markdown source, the ``metamodel.yaml`` regex, a graph-check rule,
-       | or Python extension logic, it is one commit.
-       | *Harm chain:* misleading content reaches published docs, or
-       | security-relevant needs enter the baseline without a valid
-       | ``security`` classification or with broken/disallowed links →
-       | security argument incomplete, traceability/coverage falsely complete
-       | → incorrect security decisions.
      - yes
-     - | yes:
-       | Every change (documentation sources,
-       | ``metamodel.yaml``, graph-check rules and extension code)
-       | is made via a reviewed pull request accepted by a
-       | committer (:need:`rl__contributor`, :need:`rl__committer`,
-       | :need:`doc_concept__wp_inspections`).
+     - | yes: PR review.
        | Also, structural metamodel enforcement (``security: ^(YES|NO)$``
        | mandatory, security graph check) and the metamodel test suite.
      - yes
@@ -458,7 +423,7 @@ verified, could raise the TCL to HIGH:
 * **Expected-output tests on ``metrics.json`` for the coverage/linkage
   computation** (M4, M6). M4 and M6 fail via *wrong computation* —
   ``score_metrics`` silently miscounts and writes the wrong ``metrics.json``
-  with no warning: a present ``source_code_link``/``testlink`` not counted, a
+  with no warning: a present ``testlink`` not counted, a
   requirement type dropped by the filter so its links vanish, or a dangling
   ``testcase`` ``*_verifies`` ref not listed in ``broken_references``. The
   existing ``:expect:``/``:expect_not:`` framework checks build *warnings*,
@@ -505,7 +470,7 @@ Architectural design
    macros:
 
    * `Extensions overview <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/index.html>`_
-     — ``score_metamodel``, ``score_metrics``, ``score_source_code_linker``,
+     — ``score_metamodel``, ``score_metrics``,
      ``score_mounts``, ``score_cross_module_compatibility`` and other
      extensions.
    * `score_metamodel design <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/metamodel.html>`_
