@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
@@ -671,6 +671,16 @@ and are supervised by the software platform. If the health management system
 detects abnormal situation it can change the <a class="reference internal" href="#term-Run-State"><span class="xref std std-term">Run State</span></a>.</p>
 </dd>
 <dt id="term-Component">Component<a class="headerlink" href="#term-Component" title="Link to this term">#</a></dt><dd><p>A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.</p>
+</dd>
+<dt id="term-Ready-State">Ready State<a class="headerlink" href="#term-Ready-State" title="Link to this term">#</a></dt><dd><p>A state when the component is ready to provide services to other components.</p>
+</dd>
+<dt id="term-Dependency-between-components">Dependency (between components)<a class="headerlink" href="#term-Dependency-between-components" title="Link to this term">#</a></dt><dd><p>A configuration parameter indicating that <strong>Component A</strong> can only start
+after <strong>Component B</strong> has reached its <a class="reference internal" href="#term-Ready-State"><span class="xref std std-term">Ready State</span></a>. In this case,
+<strong>Component A</strong> depends on <strong>Component B</strong>.</p>
+</dd>
+<dt id="term-Dependency-between-run-targets">Dependency (between run targets)<a class="headerlink" href="#term-Dependency-between-run-targets" title="Link to this term">#</a></dt><dd><p>A configuration parameter indicating that <strong>Run Target A</strong> includes all
+components from <strong>Run Target B</strong>. In this case, <strong>Run Target A</strong> depends
+on <strong>Run Target B</strong>.</p>
 </dd>
 <dt id="term-Lifecycle-Component">Lifecycle Component<a class="headerlink" href="#term-Lifecycle-Component" title="Link to this term">#</a></dt><dd><p>Node of the dependency tree.</p>
 </dd>
