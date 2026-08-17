@@ -17,6 +17,14 @@
 Logging Architecture
 ====================
 
+.. document:: Logging Architecture
+   :id: doc__logging_architecture
+   :status: valid
+   :version: 1
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__feature_arch[version==1]
+
 .. feat:: Logging
    :id: feat__logging
    :security: YES
@@ -25,6 +33,8 @@ Logging Architecture
    :version: 1
    :uses: logic_arc_int__baselibs__json[version==1], logic_arc_int__baselibs__filesystem[version==1]
 
+Interfaces
+----------
 
 .. logic_arc_int:: Logging
    :id: logic_arc_int__log_cpp__logging
