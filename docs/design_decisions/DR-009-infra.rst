@@ -10,7 +10,7 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-009-Infra: AI Agent Context Packaging Tooling Selection
+DR-011-Infra: AI Agent Context Packaging Tooling Selection
 ==========================================================
 
 - **Date:** 2026-07-31
