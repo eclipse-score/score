@@ -1067,7 +1067,7 @@ window.runMermaid = runMermaid;</script>
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-a0517080">
+  <div class="need_container docutils container" id="SNCB-7142d6f2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__doc_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1132,12 +1132,13 @@ traceability — and validates content against the S-CORE metamodel.</p>
 metamodel (<code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>), Bazel build files, source-code links
 (<code class="docutils literal notranslate"><span class="pre">sourcelinks_json</span></code>) and test results (<code class="docutils literal notranslate"><span class="pre">testlinks</span></code>).</p></li>
 <li><p><strong>Outputs:</strong> HTML documentation (<code class="docutils literal notranslate"><span class="pre">_build/</span></code>), needs/traceability data
-(<code class="docutils literal notranslate"><span class="pre">needs.json</span></code>), test/coverage reports.</p></li>
+(<code class="docutils literal notranslate"><span class="pre">needs.json</span></code>), coverage/linkage statistics (<code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>).</p></li>
 </ul>
 <pre  class="mermaid">
         graph LR
    src&#64;{ shape: docs, label: &quot;RST/Markdown sources (+ assets)&quot; }
    code&#64;{ shape: docs, label: &quot;C++/Rust/Python sources&quot; }
+   srclinks&#64;{ shape: doc, label: &quot;sourcelinks&quot; }
    cfg&#64;{ shape: docs, label: &quot;Config (conf.py, metamodel.yaml, Bazel)&quot; }
    tests&#64;{ shape: docs, label: &quot;Test results&quot; }
    dac&#64;{ shape: subproc, label: &quot;Doc-as-Code&quot; }
@@ -1147,7 +1148,7 @@ metamodel (<code class="docutils literal notranslate"><span class="pre">metamode
    gate&#64;{ shape: subproc, label: &quot;traceability_gate&quot; }
 
    src --&gt; dac
-   code --&gt; dac
+   code --&gt; srclinks --&gt; dac
    cfg --&gt; dac
    tests --&gt; dac
    dac --&gt; html
@@ -1241,26 +1242,26 @@ Malfunctions cell.</p>
 <dl class="simple" id="basis-ci">
 <dt>Build/CI behavior</dt><dd><p>Builds run with <code class="docutils literal notranslate"><span class="pre">-W</span></code>; any warning trips CI. The
 safety-relevant danger is the <em>silent</em> failure — a missing warning
-or a wrong output published undetected. A loud CI abort is not
-safety-relevant (TI1): no wrong output enters the baseline.</p>
+or a wrong output published undetected.
+A loud CI abort is safe: no wrong output enters the baseline.</p>
 </dd>
-<dt>PR Review &amp; Metrics</dt><dd><p>Repository contents are the source of truth
+</dl>
+<dl class="simple" id="pr-review">
+<dt>PR Review</dt><dd><p>Repository contents are the source of truth
 and every change is reviewed by a committer
 (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/general_concepts/score_review_concept.html#doc_concept__wp_inspections">doc_concept__wp_inspections</a>).
-Docs-as-code computes <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>, a machine-readable traceability report for a backstop,
-and the same metrics are shown in the documentation.
 Still, for silent wrong outputs the gated CI stays green.</p>
 </dd>
 </dl>
 <dl class="simple" id="basis-ti1">
-<dt>Derived-view (M1, M7)</dt><dd><p>The rendered output (HTML, cross-repo links, PR previews) is a <em>derived
-view</em>; the authoritative safety artifacts are the source-controlled work products.
-Traceability is enforced by M2–M6 at the source level.
+<dt>Derived-view</dt><dd><p>The rendered output (HTML, architecture diagrams, cross-repo links, PR
+previews) is a derived view; the authoritative safety artifacts are the source-controlled work products.
+Traceability is enforced at the source level.
 Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 </dd>
 </dl>
-<div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 29 </span><span class="caption-text">S-CORE Docs-as-Code evaluation</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id10">
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">S-CORE Docs-as-Code evaluation</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 3.7%" />
 <col style="width: 7.4%" />
@@ -1285,51 +1286,43 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <tbody>
 <tr class="row-even"><td><p>M1</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Documentation generation</strong> — build and publish HTML from</div>
-<div class="line">RST/Markdown sources.</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>.</div>
+<div class="line"><strong>Document metamodel enforcement</strong> — enforce document types, mandatory attributes (id, status, security, safety, realizes), etc.</div>
+<div class="line">See, for example, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_uid">gd_req__req_attr_uid</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_safety">gd_req__req_attr_safety</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_safety">gd_req__arch_attr_safety</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_check_mandatory">gd_req__req_check_mandatory</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Incomplete, outdated, or mis-rendered HTML.</div>
-</div>
-</td>
-<td><p>no: Derived-view (<a class="reference internal" href="#basis-ti1">basis-ti1</a>)</p></td>
-<td><p>no</p></td>
-<td><p>n/a (TI1)</p></td>
-<td><p>no</p></td>
-<td><p>high</p></td>
-</tr>
-<tr class="row-odd"><td><p>M2</p></td>
-<td><div class="line-block">
-<div class="line"><strong>Document metamodel &amp; attribute enforcement</strong> — enforce document</div>
-<div class="line">types, mandatory attributes (id, status, security, safety, realizes),</div>
-<div class="line">the status lifecycle, and global need-ID uniqueness.</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_uid">gd_req__req_attr_uid</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_check_mandatory">gd_req__req_check_mandatory</a>.</div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">Silent false-negative (<a class="reference internal" href="#basis-ci">basis-ci</a>): a too-permissive</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> regex</div>
-<div class="line">accepted with no guard, or a check bug skips a case.</div>
+<div class="line"><a class="reference internal" href="#basis-ci">Silent false-negative</a>, too-permissive</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> regex accepted with no guard, or a check bug skips a case.</div>
 </div>
 </td>
 <td><p>yes</p></td>
+<td><p>yes: <a class="reference internal" href="#pr-review">PR review</a></p></td>
 <td><div class="line-block">
-<div class="line">yes: PR review.</div>
-<div class="line">The metamodel test suite (file-based framework</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">test_rules_file_based.py</span></code> with <code class="docutils literal notranslate"><span class="pre">:expect:</span></code>/<code class="docutils literal notranslate"><span class="pre">:expect_not:</span></code>)</div>
-<div class="line">provides regression coverage.</div>
+<div class="line">no: Qualify metamodel enforcement.</div>
+<div class="line"><br /></div>
+<div class="line">No check against a permissive regex or check blind spot</div>
+<div class="line">(e.g. <code class="docutils literal notranslate"><span class="pre">fault_id:</span> <span class="pre">^.*$</span></code>, shipped as a <em>mandatory</em> option on <code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code>/<code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code>).</div>
+</div>
+</td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-odd"><td><p>M2</p></td>
+<td><div class="line-block">
+<div class="line"><strong>Safety-critical linking enforcement</strong>.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage_safety">gd_req__req_linkage_safety</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">no:</div>
-<div class="line">No check against a permissive regex or check blind spot</div>
-<div class="line">(e.g. <code class="docutils literal notranslate"><span class="pre">fault_id:</span> <span class="pre">^.*$</span></code>, shipped as a</div>
-<div class="line"><em>mandatory</em> option on <code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code>/<code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code>).</div>
+<div class="line"><a class="reference internal" href="#basis-ci">Silent false-negative</a>: Allow links which cannot be safe derivations.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>yes: <a class="reference internal" href="#pr-review">PR review</a></p></td>
+<td><div class="line-block">
+<div class="line">no: Qualify graph checks.</div>
+<div class="line"><br /></div>
+<div class="line">The clearest gap is <code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code> (and arguably <code class="docutils literal notranslate"><span class="pre">covers</span></code>), which carry the same “target at least as safe” obligation as the checked <code class="docutils literal notranslate"><span class="pre">fulfils</span></code>/<code class="docutils literal notranslate"><span class="pre">implements</span></code> yet are unconstrained.</div>
 </div>
 </td>
 <td><p>yes (qualification)</p></td>
@@ -1337,152 +1330,81 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 </tr>
 <tr class="row-even"><td><p>M3</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Safety classification &amp; safe-linking enforcement</strong> — enforce the</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">safety</span></code> attribute on documents/needs and safe linking of</div>
-<div class="line">safety-relevant elements.</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_safety">gd_req__req_attr_safety</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_safety">gd_req__arch_attr_safety</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_check_mandatory">gd_req__req_check_mandatory</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage_safety">gd_req__req_linkage_safety</a>.</div>
+<div class="line"><strong>Requirements coverage statistics</strong> — count, per requirement type, the requirements carrying a <code class="docutils literal notranslate"><span class="pre">testlink</span></code>, compute link-coverage percentages.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Silent false-negative (<a class="reference internal" href="#basis-ci">basis-ci</a>).</div>
+<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: a coverage statistic computed wrong.</div>
 </div>
 </td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line">yes: PR review.</div>
-<div class="line">Presence of <code class="docutils literal notranslate"><span class="pre">safety</span></code> is ensured by M2’s mandatory-attribute</div>
-<div class="line">check, and graph checks on <code class="docutils literal notranslate"><span class="pre">derived_from</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils</span></code> and the</div>
-<div class="line">safety variant of <code class="docutils literal notranslate"><span class="pre">implements</span></code>.</div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">no:</div>
-<div class="line">Safety links via relation types the graph checks do not cover</div>
-<div class="line">(<code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code>, <code class="docutils literal notranslate"><span class="pre">covers</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">uses</span></code>,</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">consists_of</span></code>).</div>
-</div>
-</td>
+<td><p>no</p></td>
+<td><p>no: Qualify coverage statistics.</p></td>
 <td><p>yes (qualification)</p></td>
 <td><p>low</p></td>
 </tr>
 <tr class="row-odd"><td><p>M4</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Requirements coverage statistics</strong> — count, per requirement type, the</div>
-<div class="line">requirements carrying a <code class="docutils literal notranslate"><span class="pre">testlink</span></code></div>
-<div class="line">(URLs to the implementing test), compute link-coverage</div>
-<div class="line">percentages, and write <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> consumed by the</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">traceability_gate</span></code> CI quality gate (requirements-to-code,</div>
-<div class="line">requirements-to-test, fully-linked thresholds).</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_impl">gd_req__req_attr_impl</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_testlink">gd_req__req_attr_testlink</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
+<div class="line"><strong>Architecture visualization</strong> — generate architecture diagrams (PlantUML/Mermaid).</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_viewpoints">gd_req__arch_viewpoints</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Silent wrong-output (<a class="reference internal" href="#basis-ci">basis-ci</a>): a coverage statistic computed wrong.</div>
-<div class="line">A present <code class="docutils literal notranslate"><span class="pre">testlink</span></code> not counted (e.g.</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">is_non_empty</span></code> rejects a valid value), or a requirement type dropped</div>
-<div class="line">by the type filter so its links vanish from <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> (and</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">safe_percent</span></code> then reports the empty type as 100% by design).</div>
+<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: a diagram misrepresents the architecture.</div>
 </div>
 </td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line">yes: PR review.</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> data is published in the documentation for human review,</div>
-<div class="line">and a traceability gate enforces configurable thresholds</div>
-<div class="line">(requirements-to-code, requirements-to-test, fully-linked).</div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">no:</div>
-<div class="line">The traceability gate is not mandatory.</div>
-</div>
-</td>
+<td><p>no</p></td>
+<td><p>no: Qualify diagram generation.</p></td>
 <td><p>yes (qualification)</p></td>
 <td><p>low</p></td>
 </tr>
 <tr class="row-even"><td><p>M5</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Architecture visualization &amp; linkage validation</strong> — generate</div>
-<div class="line">architecture diagrams (PlantUML/Mermaid) and validate architecture linkage.</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_viewpoints">gd_req__arch_viewpoints</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__impl_diagram_check_id">gd_req__impl_diagram_check_id</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__impl_diagram_linkage_id">gd_req__impl_diagram_linkage_id</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_mandatory">gd_req__arch_attr_mandatory</a>.</div>
+<div class="line"><strong>Test linkage</strong> — for each <code class="docutils literal notranslate"><span class="pre">testcase</span></code> need, resolve its <code class="docutils literal notranslate"><span class="pre">partially_verifies</span></code>/<code class="docutils literal notranslate"><span class="pre">fully_verifies</span></code> references against the needs set.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_testlink">gd_req__req_attr_testlink</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Silent wrong-output (<a class="reference internal" href="#basis-ci">basis-ci</a>): diagram misrepresents the</div>
-<div class="line">architecture or linkage validation misses a broken safety link.</div>
+<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>:</div>
+<div class="line">Safety case believes the requirement is tested where it is not.</div>
 </div>
 </td>
 <td><p>yes</p></td>
-<td><p>yes: PR review. Graph checks for linkage validation.</p></td>
-<td><div class="line-block">
-<div class="line">no:</div>
-<div class="line">Linkage validation graph checks do not cover all relation types</div>
-<div class="line">(<code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code>, <code class="docutils literal notranslate"><span class="pre">covers</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">uses</span></code>,</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">consists_of</span></code>), so a broken safety link via those</div>
-<div class="line">relations is missed silently.</div>
-</div>
-</td>
+<td><p>no</p></td>
+<td><p>no: Qualify linkage statistics</p></td>
 <td><p>yes (qualification)</p></td>
 <td><p>low</p></td>
 </tr>
 <tr class="row-odd"><td><p>M6</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Test linkage &amp; broken-reference detection</strong> — for each <code class="docutils literal notranslate"><span class="pre">testcase</span></code></div>
-<div class="line">need, resolve its <code class="docutils literal notranslate"><span class="pre">partially_verifies</span></code>/<code class="docutils literal notranslate"><span class="pre">fully_verifies</span></code></div>
-<div class="line">references against the needs set, count tests linked to at least one</div>
-<div class="line">requirement (<code class="docutils literal notranslate"><span class="pre">tests-linked</span></code>), and list dangling references</div>
-<div class="line">(<code class="docutils literal notranslate"><span class="pre">broken_references</span></code>) in <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> for the</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">traceability_gate</span></code> (tests-linked threshold).</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_testlink">gd_req__req_attr_testlink</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_checks">gd_req__verification_checks</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
+<div class="line"><strong>Test reference check</strong>.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_testlink">gd_req__req_attr_testlink</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Silent wrong-output (<a class="reference internal" href="#basis-ci">basis-ci</a>)</div>
-<div class="line">Safety case believes the requirement</div>
-<div class="line">is tested where it is not.</div>
+<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>:</div>
+<div class="line">Test references an outdated/missing requirement.</div>
 </div>
 </td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line">yes: PR review.</div>
-<div class="line">Traceability gate can enforce the tests-linked threshold.</div>
-<div class="line">Broken references can be listed in metrics for review.</div>
-</div>
-</td>
-<td><div class="line-block">
-<div class="line">no:</div>
-<div class="line">Test linking to non-existing requirement counts as linked.</div>
-<div class="line">The traceability gate is not mandatory.</div>
-</div>
-</td>
+<td><p>yes: <a class="reference internal" href="#pr-review">PR review</a></p></td>
+<td><p>no: Qualify test reference check</p></td>
 <td><p>yes (qualification)</p></td>
 <td><p>low</p></td>
 </tr>
 <tr class="row-even"><td><p>M7</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Cross-repository linking &amp; PR preview generation</strong> — link</div>
-<div class="line">documentation across repositories (versioned + latest) and generate</div>
-<div class="line">PR previews.</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a> (cross-repository traceability).</div>
+<div class="line"><strong>Documentation generation</strong> — apart from the aspects <strong>not covered by previous malfunctions</strong>.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Versioned links resolve to the wrong revision, or PR previews built</div>
-<div class="line">from outdated sources.</div>
-<div class="line">Cross-repository traceability is owned and computed by M4 at the</div>
-<div class="line">source level.</div>
+<div class="line">Incomplete, outdated, or mis-rendered HTML.</div>
 </div>
 </td>
-<td><p>no: Derived-view (<a class="reference internal" href="#basis-ti1">basis-ti1</a>)</p></td>
+<td><p>no: <a class="reference internal" href="#basis-ti1">Derived-view</a></p></td>
 <td><p>no</p></td>
 <td><p>n/a (TI1)</p></td>
 <td><p>no</p></td>
@@ -1497,8 +1419,8 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <p>The threat model reduces to a single class: <strong>source tampering</strong>. The tool has
 no runtime attack surface — it is a build-time Sphinx extension reading
 source-controlled inputs and writing generated output.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 30 </span><span class="caption-text">S-CORE Docs-as-Code security evaluation</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id11">
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">S-CORE Docs-as-Code security evaluation</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 4.0%" />
 <col style="width: 8.0%" />
@@ -1521,16 +1443,9 @@ source-controlled inputs and writing generated output.</p>
 <tbody>
 <tr class="row-even"><td><p>T1</p></td>
 <td><div class="line-block">
-<div class="line"><strong>Source tampering</strong> — applies to all tool use cases: documentation</div>
-<div class="line">generation, metamodel/attribute enforcement, security classification</div>
-<div class="line">&amp; linkage restriction, traceability &amp; coverage, architecture</div>
-<div class="line">visualization &amp; linkage validation, test traceability,</div>
-<div class="line">cross-repo linking &amp; PR preview generation.</div>
-<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_types">gd_req__doc_types</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_security">gd_req__req_attr_security</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_security">gd_req__arch_attr_security</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage">gd_req__req_linkage</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_linkage_security_trace">gd_req__arch_linkage_security_trace</a>,</div>
-<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
+<div class="line"><strong>Source tampering</strong> — applies to all tool use cases.</div>
+<div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_security">gd_req__req_attr_security</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_attr_security">gd_req__arch_attr_security</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage">gd_req__req_linkage</a>,</div>
+<div class="line"><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_traceability">gd_req__req_traceability</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_linkage_security_trace">gd_req__arch_linkage_security_trace</a>.</div>
 </div>
 </td>
 <td><div class="line-block">
@@ -1540,85 +1455,20 @@ source-controlled inputs and writing generated output.</p>
 </div>
 </td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line">yes: PR review.</div>
-<div class="line">Also, structural metamodel enforcement (<code class="docutils literal notranslate"><span class="pre">security:</span> <span class="pre">^(YES|NO)$</span></code></div>
-<div class="line">mandatory, security graph check) and the metamodel test suite.</div>
-</div>
-</td>
+<td><p>yes: <a class="reference internal" href="#pr-review">PR review</a>.</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 <section id="result">
-<h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
-<p>The final Tool Confidence Level is TCL <strong>LOW</strong>,
+<h2>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h2>
+<p>The final Tool Confidence Level is <strong>LOW</strong>,
 the worst case across all use cases.</p>
 <p>S-CORE Docs-as-Code requires qualification
 for use in safety-related software development according to ISO 26262.</p>
-<section id="recommended-improvements-for-future-versions">
-<h4>Recommended improvements for future versions<a class="headerlink" href="#recommended-improvements-for-future-versions" title="Link to this heading">#</a></h4>
-<p>The residual risk in M2–M6 (TCL LOW) stems from Tool Error Detection being
-<em>low</em>: silent failures are not auto-detected, only caught by document/manual
-review. The following improvements would raise Tool Error Detection and, once
-verified, could raise the TCL to HIGH:</p>
-<ul class="simple">
-<li><p><strong>Extend safety/security graph checks to all relation types</strong> (M3, M5). The
-metamodel defines five graph checks; the safety/security-relevant ones
-constrain only <code class="docutils literal notranslate"><span class="pre">derived_from</span></code>, <code class="docutils literal notranslate"><span class="pre">fulfils</span></code> and the safety variant of
-<code class="docutils literal notranslate"><span class="pre">implements</span></code> (<code class="docutils literal notranslate"><span class="pre">complies</span></code> covers the ASPICE-40 workproduct rule, not
-safety/security). <code class="docutils literal notranslate"><span class="pre">satisfied_by</span></code>, <code class="docutils literal notranslate"><span class="pre">covers</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span></code>, <code class="docutils literal notranslate"><span class="pre">uses</span></code>,
-<code class="docutils literal notranslate"><span class="pre">belongs_to</span></code>, <code class="docutils literal notranslate"><span class="pre">consists_of</span></code>, etc. remain unchecked. A safety-relevant
-element linked to a non-safety one via <em>any</em> relation should be flagged,
-closing the gap where a wrong classification or disallowed link enters the
-baseline undetected.</p></li>
-<li><p><strong>Add cross-contamination detection</strong> (M3). Flag any need with
-<code class="docutils literal notranslate"><span class="pre">safety:</span> <span class="pre">QM</span></code> linked (via any relation) to one with <code class="docutils literal notranslate"><span class="pre">safety:</span> <span class="pre">ASIL_B</span></code> —
-and analogously for <code class="docutils literal notranslate"><span class="pre">security</span></code>. This does not decide whether a single
-classification is semantically correct (still a review task) but catches the
-common case of an inconsistent classification across a link — the
-safety/security analog of the existing
-<code class="docutils literal notranslate"><span class="pre">check_valid_only_links_to_valid</span></code> status check, which is not yet present.</p></li>
-<li><p><strong>Negative-test fixtures for permissive-metamodel regressions</strong> (M2, M3).
-The file-based framework (<code class="docutils literal notranslate"><span class="pre">test_rules_file_based.py</span></code>) with
-<code class="docutils literal notranslate"><span class="pre">:expect:</span></code>/<code class="docutils literal notranslate"><span class="pre">:expect_not:</span></code> already makes regressions that silence a
-missing-mandatory or disallowed-link check fail CI. The remaining gap is a
-fixture asserting that a deliberately over-permissive regex (e.g.
-<code class="docutils literal notranslate"><span class="pre">status:</span> <span class="pre">^.*$</span></code>) is <em>rejected</em> — coupled to the permissive-regex guard
-below (until that guard exists, there is nothing to assert).</p></li>
-<li><p><strong>Guard against permissive regexes in the metamodel</strong> (M2). A linter
-rejecting <code class="docutils literal notranslate"><span class="pre">^.*$</span></code> or empty-accepting patterns for <em>mandatory</em> attribute
-definitions, so a misconfigured <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> is caught at the
-metamodel level. The guard would catch real defects already in the shipped
-metamodel: <code class="docutils literal notranslate"><span class="pre">feat_saf_fmea</span></code> and <code class="docutils literal notranslate"><span class="pre">comp_saf_fmea</span></code> declare <code class="docutils literal notranslate"><span class="pre">fault_id:</span>
-<span class="pre">^.*$</span></code> as a <em>mandatory</em> option — yet it carries the req-Id
-<code class="docutils literal notranslate"><span class="pre">tool_req__docs_saf_attr_fmea_fault_id</span></code>, i.e. a genuine requirement it is
-meant to enforce, and the <code class="docutils literal notranslate"><span class="pre">^.*$</span></code> pattern accepts even the empty string.
-That it diverges from the sibling <code class="docutils literal notranslate"><span class="pre">plat_saf_dfa.failure_id:</span> <span class="pre">^.+$</span></code> (non-empty)
-for the same concept shows these are not deliberate free-form fields but
-accidental permissive patterns. (<code class="docutils literal notranslate"><span class="pre">^.*$</span></code> is also used legitimately on
-<em>optional</em> options such as <code class="docutils literal notranslate"><span class="pre">author</span></code>/<code class="docutils literal notranslate"><span class="pre">approver</span></code>/<code class="docutils literal notranslate"><span class="pre">reviewer</span></code>/<code class="docutils literal notranslate"><span class="pre">hash</span></code>, so
-the guard must scope to mandatory definitions to avoid noise.)</p></li>
-<li><p><strong>Expected-output tests on ``metrics.json`` for the coverage/linkage
-computation</strong> (M4, M6). M4 and M6 fail via <em>wrong computation</em> —
-<code class="docutils literal notranslate"><span class="pre">score_metrics</span></code> silently miscounts and writes the wrong <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>
-with no warning: a present <code class="docutils literal notranslate"><span class="pre">testlink</span></code> not counted, a
-requirement type dropped by the filter so its links vanish, or a dangling
-<code class="docutils literal notranslate"><span class="pre">testcase</span></code> <code class="docutils literal notranslate"><span class="pre">*_verifies</span></code> ref not listed in <code class="docutils literal notranslate"><span class="pre">broken_references</span></code>. The
-existing <code class="docutils literal notranslate"><span class="pre">:expect:</span></code>/<code class="docutils literal notranslate"><span class="pre">:expect_not:</span></code> framework checks build <em>warnings</em>,
-and <code class="docutils literal notranslate"><span class="pre">score_metrics</span></code> emits none on miscounts, so it cannot catch this class
-— the improvement is a new harness that rebuilds <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code> on
-representative and deliberately broken RST/Markdown inputs and diffs it against a
-checked-in expected output, asserting the negative paths (a dropped type
-must not vanish from <code class="docutils literal notranslate"><span class="pre">metrics.json</span></code>, a dangling ref must land in
-<code class="docutils literal notranslate"><span class="pre">broken_references</span></code>) and the counting invariants (<code class="docutils literal notranslate"><span class="pre">fully_linked</span></code> ≤
-<code class="docutils literal notranslate"><span class="pre">with_code_link</span></code>/<code class="docutils literal notranslate"><span class="pre">with_test_link</span></code>, per-type totals sum to the overall).
-This raises Tool Error Detection for the wrong-computation class.</p></li>
-</ul>
-</section>
-</section>
 </section>
 <section id="optional-section-for-tool-qualification">
 <h2><strong>Optional Section for Tool Qualification</strong><a class="headerlink" href="#optional-section-for-tool-qualification" title="Link to this heading">#</a></h2>
@@ -1728,13 +1578,8 @@ prohibited-word), and the check lifecycle.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-evaluation">Safety evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-evaluation">Security evaluation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-improvements-for-future-versions">Recommended improvements for future versions</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-evaluation">Security evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-section-for-tool-qualification"><strong>Optional Section for Tool Qualification</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-and-testing-aspects">Requirements and testing aspects</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-perspective">Analysis perspective</a></li>
