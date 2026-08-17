@@ -123,6 +123,24 @@ Feature documentation
 In the following sections all documents of the features, that are
 planned for release v1.0, are listed.
 
+.. _documents_docs_features_ai_platform:
+
+docs/features/ai_platform
+#########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/ai_platform/" in need["docname"]:
+          results.append(need)
+
+
 .. _documents_docs_features_baselibs:
 
 docs/features/baselibs
@@ -138,6 +156,23 @@ docs/features/baselibs
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "features/baselibs/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_code_generation:
+
+docs/features/code_generation
+#############################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/code_generation/" in need["docname"]:
           results.append(need)
 
 .. _documents_docs_features_communication:
@@ -174,6 +209,23 @@ docs/features/configuration
        if need["docname"] is not None and "features/configuration/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_features_daal:
+
+docs/features/daal
+##################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/daal/" in need["docname"]:
+          results.append(need)
+
 .. _documents_docs_features_diagnostics:
 
 docs/features/diagnostics
@@ -189,6 +241,40 @@ docs/features/diagnostics
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "features/diagnostics/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_feo:
+
+docs/features/feo
+#################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/feo/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_gen_ai:
+
+docs/features/gen_ai
+####################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/gen_ai/" in need["docname"]:
           results.append(need)
 
 .. _documents_docs_features_lifecycle:
@@ -227,9 +313,27 @@ docs/features/logging
        if need["docname"] is not None and "features/logging/" in need["docname"]:
           results.append(need)
 
-.. _documents_docs_features_nm:
 
-docs/features/nm
+.. _documents_docs_features_orchestration:
+
+docs/features/orchestration
+###########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/orchestration/" in need["docname"]:
+          results.append(need)
+
+.. _documents_docs_features_os:
+
+docs/features/os
 ################
 
 .. needtable::
@@ -241,8 +345,9 @@ docs/features/nm
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/nm/" in need["docname"]:
+       if need["docname"] is not None and "features/os/" in need["docname"]:
           results.append(need)
+
 
 .. _documents_docs_features_persistency:
 
@@ -261,10 +366,10 @@ docs/features/persistency
        if need["docname"] is not None and "features/persistency/" in need["docname"]:
           results.append(need)
 
-.. _documents_docs_features_someip:
+.. _documents_docs_features_security_crypto:
 
-docs/features/someip
-####################
+docs/features/security_crypto
+#############################
 
 .. needtable::
    :style: table
@@ -275,7 +380,7 @@ docs/features/someip
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/someip/" in need["docname"]:
+       if need["docname"] is not None and "features/security_crypto/" in need["docname"]:
           results.append(need)
 
 .. _documents_docs_features_time:
@@ -295,6 +400,22 @@ docs/features/time
        if need["docname"] is not None and "features/time/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_features_tracing:
+
+docs/features/tracing
+#####################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/tracing/" in need["docname"]:
+          results.append(need)
 
 docs/glossary
 #############
