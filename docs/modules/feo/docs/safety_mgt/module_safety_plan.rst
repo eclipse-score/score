@@ -15,9 +15,10 @@
 .. document:: FEO Module Safety Plan
    :id: doc__feo_safety_plan
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__module_safety_plan
+   :realizes: wp__module_safety_plan[version==1]
    :tags: module_feo
 
 
@@ -251,7 +252,7 @@ Module Documents Status
 For all the work product documents the status can be seen by following the "Link to WP".
 A summary of the status is also documented in the project's documentation management plan.
 
-See :ref:`documents_docs_modules_feo_docs`
+See :ref:`documents_docs_modules`
 
 Component Documents Status
 --------------------------
@@ -259,7 +260,7 @@ Component Documents Status
 For all the work product documents the status can be seen by following the "Link to WP".
 A summary of the status is also documented in the project's documentation management plan.
 
-See :ref:`documents_docs_modules_feo_components`
+See :ref:`documents_docs_modules`
 
 Component Requirements Status
 -----------------------------

@@ -13,15 +13,16 @@
    # *******************************************************************************
 
 
-DFA (Dependent Failure Analysis)
-================================
+Orchestration Dependent Failure Analysis
+========================================
 
 .. document:: Orchestration DFA
    :id: doc__orchestration_dfa
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feature_dfa
+   :realizes: wp__feature_dfa[version==1]
    :tags: orchestration
 
 

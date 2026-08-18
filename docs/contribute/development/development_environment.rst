@@ -15,8 +15,9 @@
 .. document:: Development Environment
    :id: doc__develop_environment
    :status: valid
+   :version: 1
    :safety: ASIL_B
-   :realizes: wp__sw_development_plan
+   :realizes: wp__sw_development_plan[version==1]
    :security: YES
 
 .. _setting_up_dev_env:

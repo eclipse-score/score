@@ -18,9 +18,10 @@ Component Architecture
 .. document:: Executor Architecture
    :id: doc__executor_architecture
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__component_arch
+   :realizes: wp__component_arch[version==1]
    :tags: orchestration, executor
 
 
@@ -66,8 +67,9 @@ The components are designed to cover the expectations from the feature architect
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
-   :belongs_to: feat__orchestration
+   :version: 1
+   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1]
+   :belongs_to: feat__orchestration[version==1]
 
    .. needarch::
       :scale: 50
@@ -97,7 +99,7 @@ Interfaces
       :id: real_arc_int__<component>__<Title>
       :security: <YES|NO>
       :safety: <QM|ASIL_B>
-      :fulfils: <link to component requirement id>
+      :fulfils: <link to component requirement id>[version==1]
       :language: cpp
 
 Lower Level Components

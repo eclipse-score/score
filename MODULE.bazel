@@ -18,7 +18,7 @@ module(name = "score_platform")
 # Python version
 #
 ###############################################################################
-bazel_dep(name = "rules_python", version = "1.8.3")
+bazel_dep(name = "rules_python", version = "1.8.5")
 
 PYTHON_VERSION = "3.12"
 
@@ -28,7 +28,6 @@ python.toolchain(
     is_default = True,
     python_version = PYTHON_VERSION,
 )
-use_repo(python)
 
 # Additional Python rules provided by aspect, e.g. an improved version of
 # `py_binary`. But more importantly, it provides `py_venv`.
@@ -40,14 +39,6 @@ bazel_dep(name = "aspect_rules_py", version = "1.6.6", dev_dependency = True)
 #
 ###############################################################################
 bazel_dep(name = "rules_pkg", version = "1.1.0")
-
-###############################################################################
-#
-# Buildifier dependency
-# Provides formatting and linting of Bazel files.
-#
-###############################################################################
-bazel_dep(name = "buildifier_prebuilt", version = "8.2.0.2")
 
 ###############################################################################
 #
@@ -69,17 +60,8 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 #
 ###############################################################################
 bazel_dep(name = "score_tooling", version = "1.1.2")
-bazel_dep(name = "score_docs_as_code", version = "4.1.0")
-bazel_dep(name = "score_process", version = "1.5.4")
+bazel_dep(name = "score_docs_as_code", version = "7.1.0")
+bazel_dep(name = "score_process", version = "2.0.3")
 
-# Due to bazels resolution strategy, the following dependency graph is created:
-# score_docs_as_code@4.0.3 (selected)
-# score_process@1.5.4 (selected)
-#  → score_docs_as_code@4.0.1 (discovered, not selected)
-#    → score_process@1.5.3 (discovered, not selected)
-#      → score_tooling@1.2.0   ← this requirement sticks, although neither
-#                                the old docs-as-code nor the old process module is selected.
-single_version_override(
-    module_name = "score_tooling",
-    version = "1.1.2",
-)
+# Provide the tools from the devcontainer to Bazel
+bazel_dep(name = "score_devcontainer", version = "1.10.0", dev_dependency = True)

@@ -15,10 +15,11 @@
 .. document:: FEO Safety Analysis Inspection Checklist
    :id: doc__safety_analysis_inspection_component_feo
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
-   :realizes: wp__training_path
+   :realizes: wp__training_path[version==1]
 
 FEO Component Safety Analysis Checklist
 =======================================

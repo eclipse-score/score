@@ -15,11 +15,12 @@
 .. doc_tool:: github
    :id: doc_tool__github
    :status: draft
-   :version: cloud
+   :version: 1
+   :tool_version: cloud
    :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_vc_cicd
 
 GitHub Verification Report

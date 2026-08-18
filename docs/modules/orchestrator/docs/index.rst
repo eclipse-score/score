@@ -29,11 +29,13 @@ Module Documents Orchestrator
    :id: mod__orchestrator
    :includes: comp__orchestrator, comp__orch_executor
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
 
 .. mod_view_sta:: Orchestrator
    :id: mod_view_sta__orch__orchestrator
+   :version: 1
    :includes: comp__orchestrator, comp__orch_executor
 
    .. needarch::

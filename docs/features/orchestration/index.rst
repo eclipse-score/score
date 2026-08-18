@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -15,23 +15,24 @@
 
 .. _orch_feature:
 
-Orchestration (v0.5 beta)
-##########################
+Orchestration
+#############
 
 .. document:: Orchestration
    :id: doc__orchestration
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
    :tags: feature_request, change_management, orchestration
 
 
 .. toctree::
    :hidden:
 
-   requirements/index.rst
    architecture/index.rst
+   requirements/index.rst
    safety_planning/index.rst
    safety_analysis/fmea.rst
    safety_analysis/dfa.rst

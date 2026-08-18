@@ -18,9 +18,10 @@ Detailed Design
 .. document:: Orchestrator Detailed Design
    :id: doc__orchestrator_detailed_design
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__sw_implementation
+   :realizes: wp__sw_implementation[version==1]
    :tags: orchestrator
 
 
@@ -50,8 +51,8 @@ Static Diagrams for Unit Interactions
       :security: <YES|NO>
       :safety: <QM|ASIL_B>
       :status: <valid|invalid>
-      :implements: <link to component requirement id>
-      :satisfies: <link to component architecture id>
+      :implements: <link to component requirement id>[version==1]
+      :satisfies: <link to component architecture id>[version==1]
 
         .. image:: <link to drawio image> or .. uml:: <link to plantuml>
 
@@ -64,7 +65,7 @@ Dynamic Diagrams for Unit Interactions
       :security: <YES|NO>
       :safety: <QM|ASIL_B>
       :status: <valid|invalid>
-      :implements: <link to component requirement id>
-      :satisfies: <link to component architecture id>
+      :implements: <link to component requirement id>[version==1]
+      :satisfies: <link to component architecture id>[version==1]
 
         .. image:: <link to drawio image> or .. uml:: <link to plantuml>

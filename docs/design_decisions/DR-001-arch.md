@@ -10,7 +10,7 @@ https://www.apache.org/licenses/LICENSE-2.0
 
 SPDX-License-Identifier: Apache-2.0
 -->
-
+(DR-001-Arch)=
 # DR-001-Arch: Rust Readiness for Safety-Critical Components
 
 * **Date:** 2026-03-06
@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Rust Readiness for Safety-Critical Components
 :id: dec_rec__arch__rust_safety_critical
 :status: accepted
+:version: 1
 :context: Architecture
 :decision: Rust is ready for use in ASIL-B safety-critical components
 ```
@@ -57,7 +58,7 @@ Bazel integration + CI/CD integration ready and rolled out in few Rust repositor
 ### ✅ Static code analysis - linting
 
 - Bazel integration + CI/CD integration ready and rolled out in few Rust repositories that ensures code is aligned by same S-CORE wide configuration
-- tool have available report verification with confidence HIGH, meaning no qualification needed. (https://eclipse-score.github.io/score/main/score_tools/> ols_static_analysis_code_quality/clippy.html#doc_tool__clippy)
+- tool have available report verification with confidence HIGH, meaning no qualification needed. (https://eclipse-score.github.io/score/main/score_tools/tools_static_analysis_code_quality/clippy.html#doc_tool__clippy)
 
 
 ### 📈 Code coverage

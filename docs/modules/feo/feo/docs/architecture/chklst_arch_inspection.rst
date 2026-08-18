@@ -15,10 +15,11 @@
 .. document:: FEO Component Architecture Inspection Checklist
    :id: doc__arch_inspection_component_feo
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
-   :realizes: wp__sw_arch_verification
+   :realizes: wp__sw_arch_verification[version==1]
 
 FEO Component Architecture Inspection Checklist
 ===============================================

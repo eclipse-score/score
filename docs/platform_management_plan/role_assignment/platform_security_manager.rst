@@ -18,9 +18,10 @@ Platform Security Manager Election
 .. document:: Platform Security Manager
    :id: doc__platform_security_manager
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_security_plan
+   :realizes: wp__platform_security_plan[version==1]
 
 Elected Committer(s)
 ====================

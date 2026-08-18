@@ -15,10 +15,11 @@
 .. document:: FEO Feature FMEA
    :id: doc__frameworks_feo_fmea
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
-   :realizes: wp__feature_fmea
+   :realizes: wp__feature_fmea[version==1]
 
 FEO Feature FMEA
 ================

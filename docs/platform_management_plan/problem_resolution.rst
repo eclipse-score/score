@@ -15,10 +15,11 @@
 .. document:: Problem Resolution Plan
    :id: doc__platform_problem_resolution_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: wp__prm_plan
+   :realizes: wp__prm_plan[version==1]
 
 Problem Resolution / Problem Resolution Plan
 --------------------------------------------

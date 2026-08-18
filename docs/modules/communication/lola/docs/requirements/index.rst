@@ -18,9 +18,10 @@ Requirements
 .. document:: LoLa Requirements
    :id: doc__lola_requirements
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
 
 
 LoLa component requirements
@@ -31,5 +32,5 @@ see `LoLa trlc <https://github.com/eclipse-score/communication/blob/main/score/m
 LoLa component Assumptions of Use
 =================================
 
-.. needextend:: "lola" in id
+.. needextend:: c.this_doc() and is_external == False and "lola" in id
    :+tags: lola

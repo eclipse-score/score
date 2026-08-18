@@ -15,9 +15,10 @@
 .. document:: Tool Evaluation List
    :id: doc__tool_evaluation_list
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management
 
 

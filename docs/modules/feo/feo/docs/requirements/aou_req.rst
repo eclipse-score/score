@@ -15,9 +15,10 @@
 .. document:: FEO Component Assumptions of Use Requirements
    :id: doc__component_feo_aou_reqs
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__requirements_comp_aou
+   :realizes: wp__requirements_comp_aou[version==1]
    :tags: component_feo
 
 FEO Component Assumption of Use Requirements
@@ -30,8 +31,9 @@ FEO Component Assumption of Use Requirements
    :security: NO
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    Anything shall be done.
 
-.. needextend:: docname is not None and "feo/docs/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "feo/docs/requirements" in docname
    :+tags: component_feo

@@ -17,7 +17,8 @@
    :security: YES
    :safety: QM
    :status: valid
-   :belongs_to: feat__os
+   :version: 1
+   :belongs_to: feat__os[version==1]
 
 EB corbos Linux for Safety Applications (EBcLfSA)
 #################################################

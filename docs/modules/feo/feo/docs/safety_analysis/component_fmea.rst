@@ -15,9 +15,10 @@
 .. document:: FEO FMEA
    :id: doc__component_feo_fmea
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__sw_component_fmea
+   :realizes: wp__sw_component_fmea[version==1]
    :tags: component_feo
 
 

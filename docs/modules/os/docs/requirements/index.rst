@@ -20,9 +20,10 @@ Requirements
 .. document:: Operating System Requirements
    :id: doc__os_requirements
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
 
 Generally the OS (as an external SW element) is expected by the S-CORE project to fulfill the following requirements,
 defined in the SW-platform assumptions (and partly even in the Stakeholder requirements).

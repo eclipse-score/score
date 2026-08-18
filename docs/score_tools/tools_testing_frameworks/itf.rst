@@ -15,11 +15,12 @@
 .. doc_tool:: ITF
    :id: doc_tool__itf
    :status: draft
-   :version: 0.1.0
+   :version: 1
+   :tool_version: 0.1.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_testing_frameworks
 
 ITF (Integration Testing Framework) Verification Report

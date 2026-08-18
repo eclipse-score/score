@@ -15,10 +15,11 @@
 .. document:: Tool Management Plan
    :id: doc__platform_tool_management_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: wp__tlm_plan
+   :realizes: wp__tlm_plan[version==1]
 
 
 Tool Management/ Tool Management Plan

@@ -12,10 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Glossary
-========
+Lifecycle Glossary
+==================
 
 .. glossary::
+    Lifecycle Feature
+      Feature providing support for starting and stopping processes.
 
     Launch Manager
       Component to start and stop processes on a POSIX like operating system.
@@ -58,6 +60,19 @@ Glossary
     Component
       A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.
 
+    Ready State
+      A state when the component is ready to provide services to other components.
+
+    Dependency (between components)
+      A configuration parameter indicating that **Component A** can only start
+      after **Component B** has reached its :term:`Ready State`. In this case,
+      **Component A** depends on **Component B**.
+
+    Dependency (between run targets)
+      A configuration parameter indicating that **Run Target A** includes all
+      components from **Run Target B**. In this case, **Run Target A** depends
+      on **Run Target B**.
+
     Lifecycle Component
       Node of the dependency tree.
 
@@ -90,7 +105,7 @@ Glossary
 
     Ready Condition
       A configurable condition that must be satisfied before a component is considered ready and operational. Ready conditions can include file system checks, network availability, or custom application-specific signals.
-      
+
       Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.
 
     Liveliness

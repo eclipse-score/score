@@ -15,10 +15,11 @@
 .. document:: FEO Feature DFA
    :id: doc__frameworks_feo_dfa
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
-   :realizes: wp__feature_dfa
+   :realizes: wp__feature_dfa[version==1]
 
 FEO Feature DFA
 ===============

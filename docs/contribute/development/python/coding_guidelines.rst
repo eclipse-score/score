@@ -18,9 +18,10 @@ Writing Python Code
 .. document:: Coding Guidelines Python
   :id: doc__python_coding_guidelines
   :status: valid
+  :version: 1
   :safety: QM
   :security: NO
-  :realizes: wp__sw_development_plan
+  :realizes: wp__sw_development_plan[version==1]
 
 Coding Guidelines
 =================

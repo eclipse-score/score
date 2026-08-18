@@ -15,11 +15,12 @@
 .. doc_tool:: Bazel
    :id: doc_tool__bazel
    :status: draft
-   :version: 8.3.0
+   :version: 1
+   :tool_version: 8.3.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
-   :realizes: wp__tool_verification_report
+   :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_build_development
 
 

@@ -20,9 +20,10 @@ Message Passing Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__com__message_passing
-   :uses: logic_arc_int__os__message_passing
-   :belongs_to: feat__baselibs
+   :version: 1
+   :implements: logic_arc_int__com__message_passing[version==1]
+   :uses: logic_arc_int__os__message_passing[version==1]
+   :belongs_to: feat__baselibs[version==1]
 
    .. needarch::
       :scale: 50
@@ -33,13 +34,16 @@ Message Passing Component Architecture
 
 .. logic_arc_int:: Message Passing
    :id: logic_arc_int__com__message_passing
+   :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
 .. logic_arc_int_op:: Send Message
    :id: logic_arc_int_op__com__mp_register
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__com__message_passing

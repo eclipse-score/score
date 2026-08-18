@@ -20,10 +20,11 @@ AI Platform
 .. document:: AI-Platform
    :id: doc__ai_platform
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 .. toctree::
    :maxdepth: 1

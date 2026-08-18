@@ -20,10 +20,11 @@ Gen AI
 .. document:: Gen-AI
    :id: doc__gen_ai
    :status: draft
+   :version: 1
    :safety: QM
    :security: NO
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 .. toctree::
    :maxdepth: 1

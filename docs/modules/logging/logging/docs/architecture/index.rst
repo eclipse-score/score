@@ -19,8 +19,9 @@ Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__logging__logging
-   :belongs_to: feat__logging
+   :version: 1
+   :implements: logic_arc_int__logging__logging[version==1]
+   :belongs_to: feat__logging[version==1]
 
    .. needarch::
       :scale: 50
@@ -33,6 +34,7 @@ Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
 
    .. needarch::
       :scale: 50
@@ -45,4 +47,5 @@ Component Architecture
    :security: YES
    :safety: QM
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__logging__logging

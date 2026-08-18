@@ -18,9 +18,10 @@ Rust API design guidelines
 .. document:: Rust API design guidelines
    :id: doc__rust_api_design
    :status: draft
+   :version: 1
    :safety: QM
    :security: NO
-   :realizes: wp__training_path
+   :realizes: wp__training_path[version==1]
 
 Preface
 =======

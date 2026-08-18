@@ -20,8 +20,9 @@ Mock Binding Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging
-   :belongs_to: feat__com_communication
+   :version: 1
+   :uses: logic_arc_int__logging__logging[version==1]
+   :belongs_to: feat__com_communication[version==1]
 
    .. needarch::
       :scale: 50

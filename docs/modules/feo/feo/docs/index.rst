@@ -15,9 +15,10 @@
 .. document:: FEO Component
    :id: doc__feo
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__cmpt_request
+   :realizes: wp__cmpt_request[version==1]
    :tags: component_feo
 
 FEO Component

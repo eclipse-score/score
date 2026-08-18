@@ -15,9 +15,10 @@
 .. document:: Project Management Plan
    :id: doc__project_mgt_plan
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__project_mgt
+   :realizes: wp__project_mgt[version==1]
    :tags: platform_management
 
 .. _pmp_pm_plan:
@@ -74,6 +75,8 @@ Org Chart and Main Platform Management Plan Responsibilities
 Steering Committees
 ^^^^^^^^^^^^^^^^^^^
 Steering of the project is done with the help of *Lead Circles*.
+The combined :term:`Project Lead Circle (PLC/TLC)` coordinates strategic
+project and technical decisions.
 
 .. _PLCTLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _PLCTLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
@@ -103,7 +106,7 @@ Steering of the project is done with the help of *Lead Circles*.
      - **-----------**
      - **-----------------------**
    * - - Decisions about strategical topics
-       - Review and approval of contributions, e.g. Feature Requests, which add or modify features
+       - Triage of incoming Feature Requests, routing platform-level and cross-Feature-Team requests to the FEP Track
        - Project Management
        - High-level project control and coordination between multiple software modules.
        - Deciding of adding / removing Repositories
@@ -123,7 +126,7 @@ Communities
 ^^^^^^^^^^^
 *Communities* are installed to work on cross functional topics, such as program level architectural decisions,
 commonly used development & testing infrastructure, processes or final integration & release.
-Each *Community* has a *Community Lead* to organize the community`s work.
+Each *Community* has a :term:`Community Lead` to organize the community`s work.
 
 .. _ARCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _ARCLD: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
@@ -513,7 +516,6 @@ Each *Feature Team* has one *Lead* to organize the Team`s work.
      - `ORCSLC`_
      - `ORCBKL`_
      - | https://github.com/eclipse-score/orchestrator
-
    * - .. _pmp_pm_per:
 
        **PER**
@@ -675,8 +677,9 @@ Architectural Issues
 
 A *Feature Request* represents an independent work package used to describe and
 track a high-level request for the project. *Feature Request* work packages can be linked to
-other work packages, but they must not be treated as parent work packages. *Feature Request* covers new Features as well as significant modifications of existing Features.
-They are in the responsibility of the :ref:`Architecture Community <pmp_pm_arc>`, shall aligned with :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+other work packages, including as a parent to child Task issues used for implementation tracking once a FEP is accepted. *Feature Request* covers new Features as well as significant modifications of existing Features.
+
+Feature Requests are governed by the FEP Track (see the :ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>`): the :ref:`Architecture Community <pmp_pm_arc>` owns the review via a Shepherd and Final Comment Period. The :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` triages incoming requests and is notified once a FEP enters its Final Comment Period, for roadmap awareness. Feature Requests are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
 `About Features <https://eclipse-score.github.io/score/main/features/index.html>`_
 

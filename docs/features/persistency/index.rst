@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,28 +12,24 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Persistency (v0.5 beta)
-########################
+.. _features_persistency:
+
+Persistency
+###########
 
 .. document:: Persistency
    :id: doc__persistency
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
    :tags: feature_request, persistency
 
 .. toctree::
    architecture/index.rst
-   architecture/chklst_arc_inspection.rst
    requirements/index.rst
    requirements/chklst_req_inspection.rst
-   safety_analysis/fmea.rst
-   safety_analysis/dfa.rst
-   safety_analysis/safety_analysis_fdr.rst
-   safety_planning/index.rst
-   security_planning/index.rst
-   security_analysis/stride.rst
 
 
 Feature flag
@@ -135,7 +131,7 @@ development process. Key elements of it are listed in the process descriptions
 of safety management and safety analysis. In the safety analysis we will
 analyze the impact of the feature.
 
-:need:`doc__persistency_fmea`
+.. :need:`doc__persistency_fmea`
 
 We use an iterative development process and apply results from the next steps
 back to the feature request.

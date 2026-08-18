@@ -19,9 +19,10 @@ DFA (Dependent Failure Analysis)
 .. document:: Executor DFA
    :id: doc__executor_dfa
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__sw_component_dfa
+   :realizes: wp__sw_component_dfa[version==1]
    :tags: executor
 
 

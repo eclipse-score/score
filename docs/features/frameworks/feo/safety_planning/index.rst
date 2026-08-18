@@ -19,9 +19,10 @@ Feature Safety Work Products List
 .. document:: FEO Safety Work Products
    :id: doc__feo_safety_wp
    :status: valid
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__platform_safety_plan
+   :realizes: wp__platform_safety_plan[version==1]
    :tags: framework_feo
 
 

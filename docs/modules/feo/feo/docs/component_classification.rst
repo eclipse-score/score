@@ -16,9 +16,10 @@
 .. document:: FEO Component Classification
    :id: doc__feo_comp_class
    :status: draft
+   :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__sw_component_class
+   :realizes: wp__sw_component_class[version==1]
    :tags: component_feo
 
 Component Classification

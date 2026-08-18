@@ -18,9 +18,10 @@ OS Name
 .. document:: [OS Name]
    :id: doc__os_onboarding
    :status: draft
+   :version: 1
    :safety: QM
    :security: YES
-   :realizes: wp__feature_arch
+   :realizes: wp__feature_arch[version==1]
    :tags: template
 
 The following component needs to be defined at the top of the page (modify accordingly):
@@ -32,7 +33,8 @@ The following component needs to be defined at the top of the page (modify accor
      :security: [YES|NO]
      :safety: [QM|ASIL_B]
      :status: valid
-     :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
+     :version: 1
+     :implements: aou_req__platform__integration_assistance[version==1], aou_req__platform__os_integration_manual[version==1], aou_req__platform__bug_interface[version==1]
 
 Short overview of the operating system and why it is relevant for S-CORE.
 Keep this to 3-6 lines. Mention what the OS is and the intended usage context.

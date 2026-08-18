@@ -23,8 +23,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__app_architectures__support_time
+   :derived_from: stkh_req__app_architectures__support_time[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    The daal framework shall provide Trigger to support a time-based architecture.
 
@@ -33,8 +36,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__overall_goals__reuse_of_app_soft,stkh_req__execution_model__processes,stkh_req__execution_model__low_power
+   :derived_from: stkh_req__overall_goals__reuse_of_app_soft[version==1], stkh_req__execution_model__processes[version==1], stkh_req__execution_model__low_power[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    Lifecycle of executables should use one generic API
 
@@ -43,8 +49,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__operating_system
+   :derived_from: stkh_req__functional_req__operating_system[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    It should be possible to use the framework with all specified os like qnx and linux
 
@@ -55,8 +64,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__app_architectures__support_data
+   :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    The communication layer should use the IPC Framework
 
@@ -65,8 +77,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__dev_experience__logging_support
+   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    Core Logging API should be used
 
@@ -75,8 +90,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    Singe Shot and Cyclic execution should be possible
 
@@ -85,8 +103,11 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__execution_model__processes
+   :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v2.0.0
 
    Error and Health Management should be availability
 

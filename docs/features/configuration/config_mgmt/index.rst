@@ -20,15 +20,17 @@ Configuration Management
 .. document:: Configuration Management
    :id: doc__config_mgmt
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: contribution_request, feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 
 .. toctree::
    :hidden:
 
+   architecture/index.rst
    requirements/index.rst
 
 Feature flag

@@ -16,10 +16,11 @@
 .. document:: FEO Component Requirements Inspection Checklist
    :id: doc__req_inspection_component_feo
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
    :tags: component_feo
-   :realizes: wp__requirements_inspect
+   :realizes: wp__requirements_inspect[version==1]
 
 
 FEO Component Requirement Inspection Checklist

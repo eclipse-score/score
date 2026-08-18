@@ -20,9 +20,10 @@ How to Contribute?
 .. document:: Contribution Guideline
    :id: doc__contr_guideline
    :status: valid
+   :version: 1
    :safety: QM
    :security: NO
-   :realizes: wp__training_path
+   :realizes: wp__training_path[version==1]
 
 How we Work
 ===========
@@ -34,6 +35,8 @@ Feature Requests: Our Shared Roadmap
 
 Feature requests are at the heart of our evolution. They describe the intended functionality of the S-CORE platform and serve as a collaborative starting point where maintainers and contributors align on new ideas. These requests not only define the motivation and requirements but also shape the technical roadmap for future developments. We invite you to check out all current feature requests on our
 `Feature Request Board <https://github.com/orgs/eclipse-score/projects/4>`_.
+
+New Feature and major Feature Modification requests go through a :need:`Feature Enhancement Proposal (FEP) <doc__feature_request_guideline>`, where an Architecture Community Shepherd guides the proposal to a Final Comment Period before it's decided. Component-level and single-Feature-Team changes are handled directly by the responsible team, as described in the :need:`doc__platform_change_management_plan`.
 
 From Vision to Reality: Calling for Contributions
 -------------------------------------------------
@@ -91,9 +94,10 @@ What is a Pull Request (PR)?
 .. document:: Pull Request Guideline
    :id: doc__pull_request_guideline
    :status: valid
+   :version: 1
    :safety: QM
    :security: NO
-   :realizes: wp__training_path
+   :realizes: wp__training_path[version==1]
 
 A Pull Request (**PR**) is the **ONLY** way to contribute **CODE** to the *S-CORE* project.
 
@@ -162,9 +166,10 @@ What is a GitHub Issue?
 .. document:: Issue Guideline
    :id: doc__issue_guideline
    :status: valid
+   :version: 1
    :safety: QM
    :security: NO
-   :realizes: wp__training_path
+   :realizes: wp__training_path[version==1]
 
 A *GitHub Issue* is the way to report bugs or propose improvements without knowing the solution and to request features (incl. scope changes).
 

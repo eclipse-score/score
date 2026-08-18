@@ -18,10 +18,11 @@ Persistency Requirements Inspection Checklist
 .. document:: Persistency Requirements Inspection Checklist
   :id: doc__feature_persistency_requirements_chklst
   :status: valid
+  :version: 1
   :safety: ASIL_B
   :security: NO
   :tags: persistency
-  :realizes: wp__requirements_inspect
+  :realizes: wp__requirements_inspect[version==1]
 
 **Purpose**
 

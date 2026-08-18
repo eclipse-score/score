@@ -18,9 +18,10 @@ Requirements
 .. document:: Orchestrator Requirements
    :id: doc__orchestrator_requirements
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__requirements_comp
+   :realizes: wp__requirements_comp[version==1]
    :tags: orchestrator
 
 
@@ -32,7 +33,7 @@ Requirements
 ..    :reqtype: Process
 ..    :security: YES
 ..    :safety: ASIL_B
-..    :satisfies: feat_req__feature_name__some_title
+..    :derived_from: feat_req__feature_name__some_title
 ..    :status: invalid
 
 ..    The Component shall do xyz to another component to bring it to this condition at this time
@@ -61,6 +62,3 @@ Requirements
     - Replace the example content by the real content for your first requirement (according to :need:`gd_guidl__req_engineering`)
     - Set the status to valid and start the review/merge process
     - Add other needed requirements for your feature
-
-.. needextend:: "component_name" in id
-   :+tags: component_name

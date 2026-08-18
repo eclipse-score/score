@@ -18,9 +18,10 @@ Module Safety Plan
 .. document:: Communication Safety Plan
    :id: doc__communication_safety_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__module_safety_plan
+   :realizes: wp__module_safety_plan[version==1]
 
 
 
@@ -205,7 +206,7 @@ Module Documents Status
 For all the work product documents the status can be seen by following the "Link to WP".
 A summary of the status is also documented in the project's documentation management plan.
 
-See :ref:`documents_docs_modules_communication_docs`
+See :ref:`documents_docs_modules`
 
 Component Documents Status
 --------------------------
@@ -213,7 +214,7 @@ Component Documents Status
 For all the work product documents the status can be seen by following the "Link to WP".
 A summary of the status is also documented in the project's documentation management plan.
 
-See :ref:`documents_docs_modules_communication_components`
+See :ref:`documents_docs_modules`
 
 Component Requirements Status
 -----------------------------

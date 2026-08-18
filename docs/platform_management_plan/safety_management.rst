@@ -15,9 +15,10 @@
 .. document:: Platform Safety Plan
    :id: doc__score_platform_safety_plan
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__platform_safety_plan, wp__safety_tailoring
+   :realizes: wp__platform_safety_plan[version==1], wp__safety_tailoring[version==1]
    :tags: platform_management
 
 
@@ -376,13 +377,13 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__platform_sw_release_note`
       - :ndf:`copy('status', need_id='wf__rel_platform_rel_note')`
-      - :need:`doc__score_v05_alpha_release_note`
-      - :ndf:`copy('status', need_id='doc__score_v05_alpha_release_note')`
+      - `Release Note <https://eclipse-score.github.io/reference_integration/main>`_
+      - see reference integration
 
     * - :need:`wp__verification_platform_ver_report`
       - :ndf:`copy('status', need_id='wf__verification_platform_ver_report')`
-      - :need:`doc__score_platform_verification_report`
-      - :ndf:`copy('status', need_id='doc__score_platform_verification_report')`
+      - `Verification Report <https://eclipse-score.github.io/reference_integration/main>`_
+      - see reference integration
 
     * - :need:`wp__requirements_stkh`
       - :ndf:`copy('status', need_id='wf__req_stkh_req')`
@@ -453,8 +454,8 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
-      - :need:`doc__platform_dfa`
-      - :ndf:`copy('status', need_id='doc__platform_dfa')`
+      - :need:`doc__score_platform_dfa`
+      - :ndf:`copy('status', need_id='doc__score_platform_dfa')`
 
     * - :need:`wp__platform_safety_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`
@@ -473,15 +474,13 @@ Link to project planning: `Platform safety work product issue for V1.0 <https://
 Platform Management Plan - Feature Work Product Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:need:`doc__baselibs_safety_wp`
+`Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/baselibs/feature/safety_planning/index.html>`__
 
 :need:`doc__com_ipc_safety_wp`
 
-:need:`doc__feo_safety_wp`
+`Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/docs/features/persistency/safety_planning/index.html>`__
 
-:need:`doc__orchestration_safety_wp`
-
-:need:`doc__persistency_safety_wp`
+`Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/docs/features/lifecycle/safety_planning/index.html>`__
 
 Note: list of features according to :ref:`releases`
 

@@ -18,9 +18,10 @@ Module Codeowners Skill Check
 .. document:: Communication Codeowners
    :id: doc__communication_codeowners
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__module_safety_plan
+   :realizes: wp__module_safety_plan[version==1]
 
 Assigned Committer(s)
 =====================

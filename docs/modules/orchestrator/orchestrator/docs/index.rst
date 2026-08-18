@@ -19,9 +19,10 @@ Orchestrator
 .. document:: Orchestrator
    :id: doc__orchestrator_component
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__cmpt_request
+   :realizes: wp__cmpt_request[version==1]
    :tags: orchestrator
 
 

@@ -4,10 +4,11 @@ Configuration Model
 .. document:: Configuration Model
    :id: doc__configuration_model
    :status: draft
+   :version: 1
    :safety: QM
    :security: NO
    :tags: feature_request
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 Feature flag
 ============

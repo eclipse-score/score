@@ -14,15 +14,16 @@
 
 .. _feature_persistency_requirements:
 
-Requirements
-############
+Persistency Requirements
+########################
 
 .. document:: Persistency Requirements
    :id: doc__feature_persistency_requirements
    :status: valid
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__requirements_feat[version==1]
    :tags: persistency
 
 .. feat_req:: C++ and Rust language support
@@ -30,8 +31,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__prog_languages
+   :derived_from: stkh_req__dev_experience__prog_languages[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall provide native API support for both C++ and Rust programming languages.
 
@@ -40,8 +44,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__functional_req__operating_system
+   :derived_from: stkh_req__functional_req__operating_system[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall be operating system agnostic.
 
@@ -50,8 +57,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__overall_goals__variant_management
+   :derived_from: stkh_req__overall_goals__variant_management[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall ensure compatibility across different SW versions.
 
@@ -60,8 +70,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall not allocate dynamic memory during runtime. All required dynamic memory shall be allocated during initialization.
 
@@ -75,8 +88,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__functional_req__data_persistency
+   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support multiple independent storages per application.
 
@@ -85,8 +101,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall prevent access to a single KVS instance from multiple OS processes.
 
@@ -98,8 +117,11 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__security_features
+   :derived_from: stkh_req__dependability__security_features[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall ensure that only authorized applications can access individual data stores.
 
@@ -112,8 +134,11 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__file_based
+   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
    :tags: config
 
    The Persistency shall support configuration via a configuration file.
@@ -143,8 +168,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support UTF-8 encoded strings as valid key types.
 
@@ -153,8 +181,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
    :tags: persistency
 
    The Persistency shall support storing both primitive and non-primitive (composite) datatypes as values.
@@ -164,8 +195,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support predefined default values for keys.
 
@@ -174,8 +208,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__file_based
+   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support import of default values using an external file.
 
@@ -188,8 +225,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support retrieval of the default value associated with a key.
 
@@ -198,8 +238,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support reset of individual key or all keys to their default values.
    This is only applicable for existing keys that have a predefined default value.
@@ -209,8 +252,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__data_persistency
+   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support storing of key-value pairs to persistent storage.
 
@@ -219,8 +265,11 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall ensure that write operations are reset resistant to prevent data corruption in case of expected or unexpected interruption.
 
@@ -233,8 +282,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall recover to a consistent state after reset.
 
@@ -246,8 +298,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support atomic write operation for entire storage to ensure data consistency.
 
@@ -261,8 +316,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__app_architectures__support_data
+   :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall minimize the write amplification during data storage operations to enhance performance and prolong the lifespan of the underlying storage medium.
 
@@ -275,8 +333,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__data_persistency
+   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support loading of key-value pairs from persistent storage.
 
@@ -285,8 +346,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support caching mechanisms to improve access times for frequently accessed key-value pairs.
 
@@ -295,8 +359,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__availability
+   :derived_from: stkh_req__dependability__availability[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support direct access to key-value pairs without the necessity to load the entire storage to RAM in advance.
 
@@ -308,8 +375,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall detect and report data integrity issues.
 
@@ -318,8 +388,11 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__functional_req__data_persistency
+   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support confidential storage of key-value pairs using encryption mechanisms.
 
@@ -331,8 +404,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support multiple storage backends.
    More than one storage backend of the same type shall be optionally supported for the sake of redundancy.
@@ -347,8 +423,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__availability, stkh_req__app_architectures__support_request
+   :derived_from: stkh_req__dependability__availability[version==1], stkh_req__app_architectures__support_request[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall provide an asynchronous API for time consuming operations like loading and storing of data.
 
@@ -357,8 +436,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__app_architectures__support_data
+   :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall provide a mechanism to signal the completion of an asynchronous operations to the application.
 
@@ -367,8 +449,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support explicit creation of snapshots. Snapshots are identified by unique IDs.
    Snapshots shall also include the version of the data layout. See :need:`feat_req__persistency__versioning`.
@@ -382,8 +467,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support explicit restoration of snapshots.
 
@@ -392,8 +480,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support explicit removal of snapshots.
 
@@ -402,8 +493,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__intra_process
+   :derived_from: stkh_req__communication__intra_process[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support concurrent access to key-value pairs from multiple threads within the same process.
 
@@ -412,8 +506,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support versioning for different data representation of KVS.
 
@@ -426,8 +523,11 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__overall_goals__variant_management
+   :derived_from: stkh_req__overall_goals__variant_management[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
 
@@ -436,8 +536,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__execution_model__short_app_cycles
+   :derived_from: stkh_req__execution_model__short_app_cycles[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall ensure that random read access for key-value pair is completed with constant or logarithmic time complexity relative to the number of stored key-value pairs.
 
@@ -446,8 +549,11 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall provide tooling support for:
 
@@ -459,8 +565,11 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__safety_features_11
+   :derived_from: stkh_req__dependability__safety_features_11[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support the development mode.
    The development mode shall allow unrestricted data access and bypass security policies.
@@ -470,37 +579,14 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__safety_features_11
+   :derived_from: stkh_req__dependability__safety_features_11[version==1]
+   :satisfied_by: feat__persistency[version==1]
    :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
    The Persistency shall support the production mode.
    The production mode should enforce the most restrictive data access controls feasible.
 
-.. needextend:: docname is not None and "persistency/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "persistency/requirements" in docname
    :+tags: persistency
-
-
-.. _feature_persistency_requirements_aou:
-
-AoU Requirements
-################
-
-.. aou_req:: Persistency Error handling
-   :id: aou_req__persistency__error_handling
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-   :tags: environment
-
-   The application shall handle if the feature persistency is not available.
-
-.. aou_req:: Application execution
-   :id: aou_req__persistency__appl_exec
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-   :tags: environment
-
-   The execution of persistency shall not be blocked by the application.

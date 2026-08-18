@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -14,16 +14,17 @@
 
 .. _com_feature:
 
-Communication (v0.5 beta)
-##########################
+Communication
+#############
 
 .. document:: Communication
    :id: doc__com
    :status: valid
+   :version: 1
    :tags: feature_request
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__feat_request
+   :realizes: wp__feat_request[version==1]
 
 .. toctree::
    :maxdepth: 1
@@ -31,7 +32,8 @@ Communication (v0.5 beta)
    :titlesonly:
    :hidden:
 
-   docs/**/index
+   architecture/index
+   requirements/index
    ipc/index
    some_ip_gateway/index
 

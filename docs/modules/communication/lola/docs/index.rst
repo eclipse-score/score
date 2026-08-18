@@ -21,9 +21,10 @@ LoLa
 .. document:: LoLa
    :id: doc__lola
    :status: draft
+   :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__cmpt_request
+   :realizes: wp__cmpt_request[version==1]
 
 
 As the component implements the complete feature :need:`doc__com_ipc`, there is currently nothing to add here.

@@ -20,8 +20,9 @@ libc Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mman, logic_arc_int__os__unistd
-   :belongs_to: feat__os
+   :version: 1
+   :implements: logic_arc_int__os__fcntl[version==1], logic_arc_int__os__stat[version==1], logic_arc_int__os__mman[version==1], logic_arc_int__os__unistd[version==1]
+   :belongs_to: feat__os[version==1]
 
    .. needarch::
       :scale: 50
@@ -31,9 +32,11 @@ libc Component Architecture
 
 .. logic_arc_int:: fcntl
    :id: logic_arc_int__os__fcntl
+   :included_by: feat__os
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
 
    File Control
 
@@ -48,6 +51,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__fcntl
 
 .. logic_arc_int_op:: POSIX fallocate
@@ -55,6 +59,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__fcntl
 
 .. logic_arc_int_op:: Flock
@@ -62,13 +67,16 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__fcntl
 
 .. logic_arc_int:: mman
    :id: logic_arc_int__os__mman
+   :included_by: feat__os
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
 
    Memory Mapping
 
@@ -83,6 +91,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__mman
 
 .. logic_arc_int_op:: SHM Unlink
@@ -90,13 +99,16 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__mman
 
 .. logic_arc_int:: stat
    :id: logic_arc_int__os__stat
+   :included_by: feat__os
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    .. needarch::
       :scale: 50
@@ -109,6 +121,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__stat
 
 .. logic_arc_int_op:: mkdir
@@ -116,6 +129,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__stat
 
 .. logic_arc_int_op:: chmod
@@ -123,6 +137,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__stat
 
 .. logic_arc_int_op:: fchmod
@@ -130,6 +145,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__stat
 
 .. logic_arc_int_op:: umask
@@ -137,6 +153,7 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__stat
 
 .. logic_arc_int_op:: fcomask
@@ -144,13 +161,16 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__stat
 
 .. logic_arc_int:: unistd
    :id: logic_arc_int__os__unistd
+   :included_by: feat__os
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :version: 1
 
    .. needarch::
       :scale: 50
@@ -163,4 +183,5 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :version: 1
    :included_by: logic_arc_int__os__unistd
