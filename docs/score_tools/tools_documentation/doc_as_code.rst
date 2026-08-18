@@ -58,7 +58,6 @@ Inputs and outputs
       html@{ shape: docs, label: "HTML docs" }
       needs@{ shape: doc, label: "needs.json" }
       metrics@{ shape: docs, label: "metrics.json" }
-      gate@{ shape: subproc, label: "traceability_gate" }
 
       src --> dac
       code --> srclinks --> dac
@@ -67,7 +66,6 @@ Inputs and outputs
       dac --> html
       dac --> needs
       dac --> metrics
-      metrics --> gate
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
@@ -132,9 +130,6 @@ needs JSON, source-code links (``sourcelinks_json``) and test metadata through
 the S-CORE extensions (``score_metamodel``, ``score_metrics``, ``score_mounts``)
 to produce HTML, ``needs.json`` and ``metrics.json``.
 
-CI quality gates are provided by ``bazel run //:traceability_gate``, which reads
-``metrics.json`` and enforces configurable thresholds (requirements-to-code,
-requirements-to-test, fully-linked, tests-linked).
 
 Environment
 ~~~~~~~~~~~
@@ -167,7 +162,7 @@ Build/CI behavior
 PR Review
    Repository contents are the source of truth
    and every change is reviewed by a committer
-   (:need:`rl__contributor`, :need:`rl__committer`, :need:`doc_concept__wp_inspections`).
+   (:need:`rl__committer`, :need:`doc_concept__wp_inspections`).
    Still, for silent wrong outputs the gated CI stays green.
 
 .. _basis-ti1:
@@ -225,7 +220,7 @@ Derived-view
      - yes (qualification)
      - low
    * - M4
-     - | **Architecture visualization** — generate architecture diagrams (PlantUML/Mermaid).
+     - | **Architecture visualization** — generate architecture diagrams.
        | See :need:`gd_req__arch_viewpoints`.
      - | `Silent wrong-output <basis-ci_>`_: a diagram misrepresents the architecture.
      - yes
@@ -254,6 +249,15 @@ Derived-view
      - yes (qualification)
      - low
    * - M7
+     - | **Listing assumptions of use** — safety manuals use ``needtable`` to communicate safety-critical assumptions of use to users.
+       | See :need:`gd_guidl__saf_man`, :need:`wp__platform_safety_manual`.
+     - | `Silent wrong-output <basis-ci_>`_: ``aou_req`` items might be missing or wrong.
+     - yes
+     - yes: `PR review <pr_review_>`_
+     - no: Qualify ``needtable``
+     - yes: qualification
+     - low
+   * - M8
      - | **Documentation generation** — apart from the aspects **not covered by previous malfunctions**.
        | See :need:`gd_req__doc_attributes_manual`, :need:`gd_req__doc_attr_status`.
      - | Incomplete, outdated, or mis-rendered HTML.
@@ -323,9 +327,8 @@ Test cases
 
 Requirements coverage
    Per-requirement test and code linkage is tracked in
-   `Requirement Test Coverage <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirement_coverage.html>`_,
-   using the same ``score_metrics`` calculations as the CI quality gates
-   (``bazel run //:traceability_gate``, `the output metrics.json <https://eclipse-score.github.io/docs-as-code/v7.0.1/metrics.json>`__).
+   `Requirement Test Coverage <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirement_coverage.html>`_
+   and also published as `metrics.json <https://eclipse-score.github.io/docs-as-code/v7.0.1/metrics.json>`__.
 
 Analysis perspective
 ~~~~~~~~~~~~~~~~~~~~
