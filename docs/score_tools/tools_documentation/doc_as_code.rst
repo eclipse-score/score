@@ -23,11 +23,6 @@
    :realizes: wp__tool_verification_report[version==1]
    :tags: tool_management, tools_documentation
 
-..
-   Hint: S-CORE kind of inverts ISO 26262!
-   TCL1 = HIGH confidence here
-   TCL2/3 = LOW confidence here
-   See doc__platform_tool_management_plan
 
 Doc-as-Code Tool Verification Report
 ====================================
@@ -184,7 +179,7 @@ Derived-view
    Rendering/preview defects affect reviewer convenience, not safety evidence.
 
 
-.. list-table:: S-CORE Docs-as-Code evaluation
+.. list-table:: S-CORE Docs-as-Code safety evaluation
    :header-rows: 1
    :widths: 1 2 8 2 6 4 2 2
 
