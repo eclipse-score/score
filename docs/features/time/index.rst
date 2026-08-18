@@ -15,7 +15,7 @@
 .. _time_feature:
 
 Time
-#############
+####
 
 .. document:: Time
    :id: doc__time
@@ -34,7 +34,7 @@ Time
    :hidden:
 
    docs/**/index
-
+   docs/requirements/aou_reqs
 
 Feature flag
 ============
