@@ -170,6 +170,7 @@ PR Review
 Derived-view
    The rendered output (HTML, architecture diagrams, cross-repo links, PR
    previews) is a derived view; the authoritative safety artifacts are the source-controlled work products.
+   There is one exception, the architecture views (covered below in M4).
    Traceability is enforced at the source level.
    Rendering/preview defects affect reviewer convenience, not safety evidence.
 
@@ -224,10 +225,10 @@ Derived-view
        | See :need:`gd_req__arch_viewpoints`.
      - | `Silent wrong-output <basis-ci_>`_: a diagram misrepresents the architecture.
      - yes
+     - yes: `PR review <pr_review_>`_ includes architecture inspection
+     - yes
      - no
-     - no: Qualify diagram generation.
-     - yes (qualification)
-     - low
+     - high
    * - M5
      - | **Test linkage** — for each ``testcase`` need, resolve its ``partially_verifies``/``fully_verifies`` references against the needs set.
        | See :need:`gd_req__req_attr_testlink`, :need:`gd_req__verification_reporting`.
@@ -263,7 +264,7 @@ Derived-view
      - | Incomplete, outdated, or mis-rendered HTML.
      - no: `Derived-view <basis-ti1_>`_
      - no
-     - n/a (TI1)
+     - yes
      - no
      - high
 
