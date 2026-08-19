@@ -251,6 +251,20 @@ public root, but allow private headers to sit next to their `.cc` in `src/` (or 
 component root). The invariant that must always hold is: **everything a consumer is
 allowed to `#include` lives under `include/<component>/`, and nothing else does.**
 
+**Accepted alternative — flat layout with an `impl/` subpackage.** Because the
+dominant pattern in `communication` and `baselibs` today is a flat layout that draws
+the public/private boundary with an `impl/` subpackage plus Bazel `visibility` (see
+*Prior Art & Existing S-CORE Practice*), that pattern is **explicitly accepted** as an
+equivalent alternative to Option B/C. It satisfies the same invariant by a different
+mechanism: public headers live at the component root, everything non-public lives
+under `<component>/impl/**` whose `visibility` is restricted to the component's own
+subpackages. Components choosing this variant **must** keep implementation headers out
+of any `hdrs` reachable by external consumers and restrict `impl/` visibility
+accordingly. This avoids a large-scale migration of existing components while still
+guaranteeing an enforced, discoverable API boundary. The trade-off versus Option B is
+that the public surface is discoverable via package/visibility rules rather than a
+single directory, and packaging for non-Bazel consumers is less trivial.
+
 ### Rationale
 
 1. **The public contract becomes a first-class, visible artifact.** A reviewer or
@@ -413,17 +427,80 @@ The following reflects the state of the `eclipse-score` GitHub organization on t
 current `main` before relying on it. As of that date there is **no unified
 convention** — the following patterns coexist:
 
-| Pattern | Example repo | `BUILD` snippet |
-|---------|--------------|-----------------|
-| `include/` + `strip_include_prefix` (≈ Option B) | `baselibs` (futurecpp), `logging` (datarouter) | `strip_include_prefix = "include"` |
+| Pattern | Example repo | Mechanism |
+|---------|--------------|-----------|
+| **Flat, headers next to sources; public/private via an `impl/` subpackage + Bazel `visibility`** (dominant) | `communication` (`score/mw/com`), most of `baselibs` (`os`, `json`, `mw/log`, `concurrency`, `filesystem`) | plain `hdrs`/`srcs`, repo-root include paths (`#include "score/mw/com/types.h"`); implementation headers under `.../impl/` with restricted visibility |
+| `include/` directory, exposed via `includes` | `baselibs` (`language/futurecpp`) | headers under `include/score/*.hpp`, `includes = ["include"]` → `#include <score/utility.hpp>` |
+| `include/` directory, exposed via `strip_include_prefix` (+ `include_prefix`) | `baselibs` (`static_reflection_with_serialization`) | `strip_include_prefix = "include"`, `include_prefix = "static_reflection_with_serialization"` |
+| Flat + `strip_include_prefix = "."` | `baselibs` (`utils/base64`) | prefix reset so header is included as `#include "base64.h"` |
 | Flat on disk + synthesized logical path via `include_prefix` | `lifecycle`, `inc_daal` | `include_prefix = "score/mw/lifecycle"`, `strip_include_prefix = "/score/launch_manager/src"` |
-| Flat, headers next to sources | `baselibs` (base64) | `strip_include_prefix = "."` |
 
-Notably, the `lifecycle` pattern keeps a flat on-disk layout but *synthesizes* a clean
-logical `score/mw/...` include path via `include_prefix` — real S-CORE evidence that a
-purely flat layout tends to have a prefix re-added for external consumption. The
-absence of a unified convention across these repositories is a primary motivation for
-this design decision.
+Two observations worth calling out:
+
+- The **dominant** real-world pattern in both `communication` and `baselibs` is *not*
+  a dedicated top-level `include/` (Option B). It is a **flat layout** where the
+  public/private boundary is drawn by an `impl/` subpackage plus Bazel `visibility`
+  (e.g. `communication` keeps its public API in `score/mw/com/*.h` and hides
+  everything under `score/mw/com/impl/**`, whose visibility is restricted to
+  `//score/mw/com:__subpackages__`). This is closer to **Option A** at repo scale and
+  shows the recommendation of this DR is not yet the prevailing practice.
+- Where a clean external include path *is* wanted, S-CORE reaches for different Bazel
+  levers — `includes` (futurecpp), `strip_include_prefix`/`include_prefix`
+  (static_reflection, lifecycle) — rather than a single agreed mechanism. The
+  `lifecycle` pattern even keeps a flat on-disk layout but *synthesizes* a logical
+  `score/mw/...` path via `include_prefix`.
+
+The absence of a unified convention — and the divergence in both directory layout and
+Bazel mechanism — across these repositories is a primary motivation for this design
+decision.
+
+---
+
+## Header Name Collisions Across Modules
+
+A common worry is what happens when several modules expose an identically named
+header — for example `error.h`. The important point is that collisions are decided by
+the **include-path string**, not the file name. Two `error.h` files coexist without
+issue as long as their include paths differ:
+
+```cpp
+#include "score/filesystem/error.h"         // baselibs
+#include "score/concurrency/future/error.h" // baselibs
+```
+
+Both exist side by side in `baselibs` today with no conflict, because the package
+prefix makes them unique. A problem only arises when the path is shortened to the bare
+file name and two dependencies provide it:
+
+```cpp
+#include "error.h"   // provided by module A AND module B → ambiguous
+```
+
+If a target depends on both libraries, `-I`/`-isystem` ordering decides which file
+wins — the wrong header may be included, silently violating the One Definition Rule.
+The **Bazel module name does not protect against this**: `@module_a` / `@module_b` do
+not appear in the C++ include path by default; the path is determined solely by the
+package location and by `strip_include_prefix` / `include_prefix` / `includes`.
+
+Consequences per option:
+
+- **Option A (flat, repo-root includes):** collision-safe *as long as* headers are
+  included by their full repo-root path. The danger is resetting the prefix
+  (`strip_include_prefix = "."` as in `utils/base64`, or `includes = ["."]`), which
+  collapses the path to `#include "error.h"` and re-introduces the ambiguity globally.
+- **Option B (`include/<component>/`):** collision-safe, but the protection comes from
+  the **component-name nesting**, not from the `include/` directory itself. A flat
+  `include/error.h` (without the `<component>` subdirectory) still collides.
+- **Option C (Hybrid):** same as B — public headers stay unique via
+  `include/<component>/`.
+- **Flat + `impl/` + visibility:** same as A — the repo-root path is preserved, and
+  the restricted `impl/` visibility additionally shrinks the set of externally
+  reachable headers.
+
+**Rule:** Uniqueness must be guaranteed by the include-path **prefix** (the project or
+component name) — via the repo package path under Option A, or via the
+`include/<component>/` nesting under Options B/C. A bare `include/` without a
+component-named subdirectory does **not** solve the problem.
 
 ---
 
