@@ -68,7 +68,7 @@ The components are designed to cover the expectations from the feature architect
    :safety:  ASIL_B
    :status: valid
    :version: 1
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__tracing__tracing[version==1]
    :belongs_to: feat__orchestration[version==1]
 
    .. needarch::

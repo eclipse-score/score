@@ -22,7 +22,7 @@ Frontend Component Architecture
    :status: valid
    :version: 1
    :implements: logic_arc_int__communication__user[version==1]
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__tracing__tracing[version==1]
    :belongs_to: feat__com_communication[version==1]
 
 .. comp_arc_sta:: mw::com Frontend Architecture
@@ -31,7 +31,7 @@ Frontend Component Architecture
    :safety:  ASIL_B
    :status: valid
    :version: 1
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__tracing__tracing[version==1]
    :belongs_to: comp__com_frontend[version==1]
    :fulfils: comp_req__communication__logging[version==1]
 

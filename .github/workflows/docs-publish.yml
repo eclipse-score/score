@@ -11,5 +11,24 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-# Use Dockerfile to get dependabot version bumps after new image is released
-FROM ghcr.io/eclipse-score/devcontainer:v1.10.0
+name: Publish Documentation
+
+on:
+  workflow_run:
+    workflows: ["Documentation"]
+    types: [completed]
+
+jobs:
+  docs-publish:
+    if: github.event.workflow_run.conclusion == 'success'
+    uses: eclipse-score/cicd-workflows/.github/workflows/docs-publish.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67 # v0.0.3
+    permissions:
+      actions: read
+      contents: write
+      id-token: write
+      pages: write
+      pull-requests: write
+    concurrency:
+      group: docs-publish
+      cancel-in-progress: false
+      queue: max
