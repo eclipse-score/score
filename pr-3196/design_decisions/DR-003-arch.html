@@ -658,7 +658,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-08-19</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-cceab23e">
+<div class="need_container docutils container" id="SNCB-f487e1dd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__public_header_layout">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -983,6 +983,19 @@ trivial, <strong>Option C (Hybrid)</strong> is an accepted variation: keep the <
 public root, but allow private headers to sit next to their <code class="docutils literal notranslate"><span class="pre">.cc</span></code> in <code class="docutils literal notranslate"><span class="pre">src/</span></code> (or the
 component root). The invariant that must always hold is: <strong>everything a consumer is
 allowed to <code class="docutils literal notranslate"><span class="pre">#include</span></code> lives under <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>, and nothing else does.</strong></p>
+<p><strong>Accepted alternative — flat layout with an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage.</strong> Because the
+dominant pattern in <code class="docutils literal notranslate"><span class="pre">communication</span></code> and <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> today is a flat layout that draws
+the public/private boundary with an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage plus Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code> (see
+<em>Prior Art &amp; Existing S-CORE Practice</em>), that pattern is <strong>explicitly accepted</strong> as an
+equivalent alternative to Option B/C. It satisfies the same invariant by a different
+mechanism: public headers live at the component root, everything non-public lives
+under <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;/impl/**</span></code> whose <code class="docutils literal notranslate"><span class="pre">visibility</span></code> is restricted to the component’s own
+subpackages. Components choosing this variant <strong>must</strong> keep implementation headers out
+of any <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> reachable by external consumers and restrict <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility
+accordingly. This avoids a large-scale migration of existing components while still
+guaranteeing an enforced, discoverable API boundary. The trade-off versus Option B is
+that the public surface is discoverable via package/visibility rules rather than a
+single directory, and packaging for non-Bazel consumers is less trivial.</p>
 <section id="rationale">
 <h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
@@ -1155,31 +1168,94 @@ convention</strong> — the following patterns coexist:</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Pattern</p></th>
 <th class="head"><p>Example repo</p></th>
-<th class="head"><p><code class="docutils literal notranslate"><span class="pre">BUILD</span></code> snippet</p></th>
+<th class="head"><p>Mechanism</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> (≈ Option B)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (futurecpp), <code class="docutils literal notranslate"><span class="pre">logging</span></code> (datarouter)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code></p></td>
+<tr class="row-even"><td><p><strong>Flat, headers next to sources; public/private via an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage + Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code></strong> (dominant)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">communication</span></code> (<code class="docutils literal notranslate"><span class="pre">score/mw/com</span></code>), most of <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (<code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">mw/log</span></code>, <code class="docutils literal notranslate"><span class="pre">concurrency</span></code>, <code class="docutils literal notranslate"><span class="pre">filesystem</span></code>)</p></td>
+<td><p>plain <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code>, repo-root include paths (<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/com/types.h&quot;</span></code>); implementation headers under <code class="docutils literal notranslate"><span class="pre">.../impl/</span></code> with restricted visibility</p></td>
 </tr>
-<tr class="row-odd"><td><p>Flat on disk + synthesized logical path via <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">include/</span></code> directory, exposed via <code class="docutils literal notranslate"><span class="pre">includes</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (<code class="docutils literal notranslate"><span class="pre">language/futurecpp</span></code>)</p></td>
+<td><p>headers under <code class="docutils literal notranslate"><span class="pre">include/score/*.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">includes</span> <span class="pre">=</span> <span class="pre">[&quot;include&quot;]</span></code> → <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;score/utility.hpp&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">include/</span></code> directory, exposed via <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> (+ <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (<code class="docutils literal notranslate"><span class="pre">static_reflection_with_serialization</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;static_reflection_with_serialization&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Flat + <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;.&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (<code class="docutils literal notranslate"><span class="pre">utils/base64</span></code>)</p></td>
+<td><p>prefix reset so header is included as <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;base64.h&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Flat on disk + synthesized logical path via <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">lifecycle</span></code>, <code class="docutils literal notranslate"><span class="pre">inc_daal</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;score/mw/lifecycle&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;/score/launch_manager/src&quot;</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Flat, headers next to sources</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (base64)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;.&quot;</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Notably, the <code class="docutils literal notranslate"><span class="pre">lifecycle</span></code> pattern keeps a flat on-disk layout but <em>synthesizes</em> a clean
-logical <code class="docutils literal notranslate"><span class="pre">score/mw/...</span></code> include path via <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code> — real S-CORE evidence that a
-purely flat layout tends to have a prefix re-added for external consumption. The
-absence of a unified convention across these repositories is a primary motivation for
-this design decision.</p>
+<p>Two observations worth calling out:</p>
+<ul class="simple">
+<li><p>The <strong>dominant</strong> real-world pattern in both <code class="docutils literal notranslate"><span class="pre">communication</span></code> and <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> is <em>not</em>
+a dedicated top-level <code class="docutils literal notranslate"><span class="pre">include/</span></code> (Option B). It is a <strong>flat layout</strong> where the
+public/private boundary is drawn by an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage plus Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code>
+(e.g. <code class="docutils literal notranslate"><span class="pre">communication</span></code> keeps its public API in <code class="docutils literal notranslate"><span class="pre">score/mw/com/*.h</span></code> and hides
+everything under <code class="docutils literal notranslate"><span class="pre">score/mw/com/impl/**</span></code>, whose visibility is restricted to
+<code class="docutils literal notranslate"><span class="pre">//score/mw/com:__subpackages__</span></code>). This is closer to <strong>Option A</strong> at repo scale and
+shows the recommendation of this DR is not yet the prevailing practice.</p></li>
+<li><p>Where a clean external include path <em>is</em> wanted, S-CORE reaches for different Bazel
+levers — <code class="docutils literal notranslate"><span class="pre">includes</span></code> (futurecpp), <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>/<code class="docutils literal notranslate"><span class="pre">include_prefix</span></code>
+(static_reflection, lifecycle) — rather than a single agreed mechanism. The
+<code class="docutils literal notranslate"><span class="pre">lifecycle</span></code> pattern even keeps a flat on-disk layout but <em>synthesizes</em> a logical
+<code class="docutils literal notranslate"><span class="pre">score/mw/...</span></code> path via <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code>.</p></li>
+</ul>
+<p>The absence of a unified convention — and the divergence in both directory layout and
+Bazel mechanism — across these repositories is a primary motivation for this design
+decision.</p>
 </section>
+</section>
+<hr class="docutils" />
+<section id="header-name-collisions-across-modules">
+<h2>Header Name Collisions Across Modules<a class="headerlink" href="#header-name-collisions-across-modules" title="Link to this heading">#</a></h2>
+<p>A common worry is what happens when several modules expose an identically named
+header — for example <code class="docutils literal notranslate"><span class="pre">error.h</span></code>. The important point is that collisions are decided by
+the <strong>include-path string</strong>, not the file name. Two <code class="docutils literal notranslate"><span class="pre">error.h</span></code> files coexist without
+issue as long as their include paths differ:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;score/filesystem/error.h&quot;</span><span class="c1">         // baselibs</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;score/concurrency/future/error.h&quot;</span><span class="c1"> // baselibs</span>
+</pre></div>
+</div>
+<p>Both exist side by side in <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> today with no conflict, because the package
+prefix makes them unique. A problem only arises when the path is shortened to the bare
+file name and two dependencies provide it:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;error.h&quot;</span><span class="c1">   // provided by module A AND module B → ambiguous</span>
+</pre></div>
+</div>
+<p>If a target depends on both libraries, <code class="docutils literal notranslate"><span class="pre">-I</span></code>/<code class="docutils literal notranslate"><span class="pre">-isystem</span></code> ordering decides which file
+wins — the wrong header may be included, silently violating the One Definition Rule.
+The <strong>Bazel module name does not protect against this</strong>: <code class="docutils literal notranslate"><span class="pre">&#64;module_a</span></code> / <code class="docutils literal notranslate"><span class="pre">&#64;module_b</span></code> do
+not appear in the C++ include path by default; the path is determined solely by the
+package location and by <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> / <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code> / <code class="docutils literal notranslate"><span class="pre">includes</span></code>.</p>
+<p>Consequences per option:</p>
+<ul class="simple">
+<li><p><strong>Option A (flat, repo-root includes):</strong> collision-safe <em>as long as</em> headers are
+included by their full repo-root path. The danger is resetting the prefix
+(<code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;.&quot;</span></code> as in <code class="docutils literal notranslate"><span class="pre">utils/base64</span></code>, or <code class="docutils literal notranslate"><span class="pre">includes</span> <span class="pre">=</span> <span class="pre">[&quot;.&quot;]</span></code>), which
+collapses the path to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;error.h&quot;</span></code> and re-introduces the ambiguity globally.</p></li>
+<li><p><strong>Option B (<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>):</strong> collision-safe, but the protection comes from
+the <strong>component-name nesting</strong>, not from the <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory itself. A flat
+<code class="docutils literal notranslate"><span class="pre">include/error.h</span></code> (without the <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;</span></code> subdirectory) still collides.</p></li>
+<li><p><strong>Option C (Hybrid):</strong> same as B — public headers stay unique via
+<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>.</p></li>
+<li><p><strong>Flat + <code class="docutils literal notranslate"><span class="pre">impl/</span></code> + visibility:</strong> same as A — the repo-root path is preserved, and
+the restricted <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility additionally shrinks the set of externally
+reachable headers.</p></li>
+</ul>
+<p><strong>Rule:</strong> Uniqueness must be guaranteed by the include-path <strong>prefix</strong> (the project or
+component name) — via the repo package path under Option A, or via the
+<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> nesting under Options B/C. A bare <code class="docutils literal notranslate"><span class="pre">include/</span></code> without a
+component-named subdirectory does <strong>not</strong> solve the problem.</p>
 </section>
 <hr class="docutils" />
 <section id="consequences">
@@ -1308,6 +1384,7 @@ or public headers being included via non-canonical paths.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-practice-inside-s-core">Existing practice inside S-CORE</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#header-name-collisions-across-modules">Header Name Collisions Across Modules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive">Positive</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-costs">Negative / Costs</a></li>
