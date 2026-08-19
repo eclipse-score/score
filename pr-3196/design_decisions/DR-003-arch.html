@@ -1,0 +1,1383 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-003-Arch: Public Header Location and Directory Structure for C++ Components &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-003-arch';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DR-001-Infra: Integration Strategy for External Development Tools" href="DR-001-infra.html" />
+    <link rel="prev" title="DR-002-Arch: Detailed Assessments" href="DR-002-arch/detailed_assessments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-strat.html">DR-002-Strat: Eclipse Project Structure for S-Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-strat.html">DR-003-Strat: Module Maturity Classification (Release / Experimental / Preview)</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch.html">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-003-Arch: Public Header Location and Directory Structure for C++ Components</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra-extension.html">DR-001-B-Infra-Extension: S-CORE Build Execution Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-proc.html">DR-002-Proc: Feature &amp; Enhancement Proposal (FEP) Process</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-003-Arch: Public Header Location and Directory Structure for C++ Components</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!--
+Copyright (c) 2026 Contributors to the Eclipse Foundation
+
+See the NOTICE file(s) distributed with this work for additional
+information regarding copyright ownership.
+
+This program and the accompanying materials are made available under the
+terms of the Apache License Version 2.0 which is available at
+https://www.apache.org/licenses/LICENSE-2.0
+
+SPDX-License-Identifier: Apache-2.0
+-->
+<section id="dr-003-arch-public-header-location-and-directory-structure-for-c-components">
+<span id="dr-003-arch"></span><h1>DR-003-Arch: Public Header Location and Directory Structure for C++ Components<a class="headerlink" href="#dr-003-arch-public-header-location-and-directory-structure-for-c-components" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2026-08-19</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-cceab23e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__public_header_layout">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Public Header Location and Directory Structure for C++ Components</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Architecture</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Separate include/ directory for public API headers, private headers next to sources</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__arch__public_header_layout" title="dec_rec__arch__public_header_layout">dec_rec__arch__public_header_layout</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<section id="context-problem">
+<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>As we modularize our C++ components with Bazel, we need a standardized directory
+layout that defines where public (API) and private (implementation) headers live.
+This decision directly impacts API encapsulation, developer workflow, packaging for
+non-Bazel consumers, and integration with Bazel’s strict header visibility model
+(<code class="docutils literal notranslate"><span class="pre">hdrs</span></code> vs. <code class="docutils literal notranslate"><span class="pre">srcs</span></code>).</p>
+<p>Bazel is authoritative here: a <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> distinguishes between headers that form
+the compilable public surface of a target (<code class="docutils literal notranslate"><span class="pre">hdrs</span></code>) and headers that are purely
+internal to the compilation of that target (<code class="docutils literal notranslate"><span class="pre">srcs</span></code>). A downstream target may only
+<code class="docutils literal notranslate"><span class="pre">#include</span></code> headers that appear in the <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> of a library it directly depends on.
+The physical directory layout does not by itself enforce this boundary — the <code class="docutils literal notranslate"><span class="pre">BUILD</span></code>
+file does. The question is therefore how to structure directories so that the
+physical layout <em>reinforces</em> the logical API boundary that Bazel enforces, rather
+than working against it.</p>
+<section id="current-state-in-s-core">
+<h3>Current state in S-CORE<a class="headerlink" href="#current-state-in-s-core" title="Link to this heading">#</a></h3>
+<p>Within S-CORE there is mostly <strong>no separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory</strong> in use today.
+Components rely completely on Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> attribute to designate public headers,
+with headers and sources living together in a flat directory. This works for Bazel,
+but it makes the public contract of a component invisible at the file-system level:
+a developer has to open <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code> to learn which headers are public, and
+extracting a clean public SDK for non-Bazel consumers requires filtering.</p>
+</section>
+<section id="goals">
+<h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Make the public API surface of a component obvious without reading <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>.</p></li>
+<li><p>Map cleanly onto Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> split with minimal boilerplate.</p></li>
+<li><p>Produce clean, collision-free <code class="docutils literal notranslate"><span class="pre">#include</span></code> paths for consumers.</p></li>
+<li><p>Enable simple, folder-level packaging of the public API for non-Bazel consumers.</p></li>
+<li><p>Keep the developer’s day-to-day workflow (edit <code class="docutils literal notranslate"><span class="pre">.h</span></code> next to <code class="docutils literal notranslate"><span class="pre">.cc</span></code>) reasonable.</p></li>
+</ul>
+</section>
+<section id="external-references">
+<h3>External references<a class="headerlink" href="#external-references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://github.com/vector-of-bool/pitchfork">The Pitchfork Layout (PFL)</a></strong> —
+in particular the <em>separated header placement</em> convention, where public headers
+live under <a class="reference external" href="https://joholl.github.io/pitchfork-website/#tld.include"><code class="docutils literal notranslate"><span class="pre">include/</span></code></a>
+and private headers/sources live under <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p></li>
+<li><p><strong><a class="reference external" href="https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html">The Canonical Project Structure (P1204R0)</a></strong> —
+WG21 paper describing a canonical layout with public headers under a
+project-named subdirectory.</p></li>
+</ul>
+<p>Both references converge on placing public headers under a dedicated,
+project-named include root.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="options-considered">
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="option-a-flat-directory-structure-headers-and-sources-mixed">
+<h3>Option A: Flat Directory Structure (headers and sources mixed)<a class="headerlink" href="#option-a-flat-directory-structure-headers-and-sources-mixed" title="Link to this heading">#</a></h3>
+<p>All public headers, private headers, and source files live together in the same
+directory (e.g. <code class="docutils literal notranslate"><span class="pre">libs/my_lib/</span></code>). Public vs. private is expressed <em>only</em> through the
+Bazel <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> split. This is the current de-facto S-CORE convention.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>libs/my_lib/
+├── BUILD.bazel
+├── my_lib.h          # public  -&gt; hdrs
+├── my_lib.cc         # source  -&gt; srcs
+├── internal_helper.h # private -&gt; srcs
+└── internal_helper.cc
+</pre></div>
+</div>
+<section id="advantages">
+<h4>Advantages<a class="headerlink" href="#advantages" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Zero Bazel path overhead:</strong> No <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> / <code class="docutils literal notranslate"><span class="pre">includes</span></code> juggling. The
+header’s on-disk path <em>is</em> its include path, so there is one obvious way to write
+an <code class="docutils literal notranslate"><span class="pre">#include</span></code> and no divergence between what the file tree shows and what the
+compiler sees.</p></li>
+<li><p><strong>Easier local navigation:</strong> Declarations sit next to their implementations; no
+jumping between distant folders in the IDE. Refactoring that splits or renames a
+unit touches a single directory, and “go to file” / fuzzy-open lands on the pair
+immediately.</p></li>
+<li><p><strong>Less nesting:</strong> Avoids redundant paths like <code class="docutils literal notranslate"><span class="pre">.../my_lib/include/my_lib/</span></code>, which
+keeps both the file tree and relative <code class="docutils literal notranslate"><span class="pre">#include</span></code> statements short.</p></li>
+<li><p><strong>Lowest friction for small or leaf components:</strong> For a component with one or two
+public headers, a private helper, and its sources, the flat layout has the best
+effort-to-value ratio — the <code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code> split adds structure that such a
+component does not need. This matches how most of S-CORE is organized today.</p></li>
+<li><p><strong>Single source of truth for the API boundary:</strong> The public surface is defined in
+exactly one place — the <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> list in <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>. There is no second, implicit
+contract encoded in the directory layout that could drift out of sync with the
+build file (e.g. a header physically under <code class="docutils literal notranslate"><span class="pre">include/</span></code> but not actually in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>,
+or vice versa).</p></li>
+<li><p><strong>Bazel already enforces the boundary:</strong> A consumer can only <code class="docutils literal notranslate"><span class="pre">#include</span></code> headers a
+dependency lists in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>; reaching for a private header in <code class="docutils literal notranslate"><span class="pre">srcs</span></code> fails the
+build regardless of where the file physically sits. The encapsulation guarantee
+therefore does not depend on the directory structure at all — the flat layout
+loses no <em>enforcement</em>, only <em>visibility</em>.</p></li>
+<li><p><strong>Cheapest migrations and moves:</strong> Moving a component, extracting a sub-library, or
+promoting a private header to public is a <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code> edit only — no files move
+on disk, so diffs stay small and reviews stay focused on the API change itself.</p></li>
+<li><p><strong>Fewer glob edge cases:</strong> With everything in one directory, <code class="docutils literal notranslate"><span class="pre">glob</span></code> patterns are
+simple and there is no risk of a misplaced file silently falling outside an
+<code class="docutils literal notranslate"><span class="pre">include/**</span></code> or <code class="docutils literal notranslate"><span class="pre">src/**</span></code> pattern.</p></li>
+</ul>
+</section>
+<section id="disadvantages">
+<h4>Disadvantages<a class="headerlink" href="#disadvantages" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>Public API not visible from the file tree:</strong> Developers must read <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>
+to learn which headers are public.</p></li>
+<li><p><strong>Accidental API exposure:</strong> A private header may be listed in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> by mistake,
+or a consumer may reach for an internal header.</p></li>
+<li><p><strong>Poor scalability:</strong> As the library grows the folder becomes cluttered.</p></li>
+<li><p><strong>Packaging difficulty:</strong> Extracting only public headers for external (non-Bazel)
+delivery requires filtering scripts rather than a folder copy.</p></li>
+<li><p><strong>Weaker as a published module:</strong> Without a prefix to strip, a consumer sees the
+producer’s repo-relative path, which leaks the internal layout and is not
+namespaced by component:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// consuming @my_lib as a module, flat layout</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libs/my_lib/my_lib.h&quot;</span>
+</pre></div>
+</div>
+<p>Getting the clean <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> requires adding <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code>
+(or naming the flat dir <code class="docutils literal notranslate"><span class="pre">my_lib/</span></code>), i.e. reintroducing the Bazel path machinery
+Option A set out to avoid.</p>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="option-b-separate-include-directory-industry-standard">
+<h3>Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> Directory (industry standard)<a class="headerlink" href="#option-b-separate-include-directory-industry-standard" title="Link to this heading">#</a></h3>
+<p>Public headers are placed in a dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory, nested under the
+component name (<code class="docutils literal notranslate"><span class="pre">include/my_lib/*.h</span></code>) to prevent include-path collisions. Private
+headers and sources live under <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>libs/my_lib/
+├── BUILD.bazel
+├── include/
+│   └── my_lib/
+│       └── my_lib.h       # public -&gt; hdrs
+└── src/
+    ├── my_lib.cc          # source  -&gt; srcs
+    ├── internal_helper.h  # private -&gt; srcs
+    └── internal_helper.cc
+</pre></div>
+</div>
+<section id="id1">
+<h4>Advantages<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>High encapsulation:</strong> The public contract is physically isolated. It is
+immediately clear to a consumer what may be used.</p></li>
+<li><p><strong>Clean BUILD files:</strong> <code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;include/**/*.h&quot;])</span></code> and
+<code class="docutils literal notranslate"><span class="pre">srcs</span> <span class="pre">=</span> <span class="pre">glob([&quot;src/**&quot;])</span></code> without risk of accidentally exposing private files.</p></li>
+<li><p><strong>Standardized packaging:</strong> Exporting the public API is a single folder copy.</p></li>
+<li><p><strong>Clear architectural intent:</strong> Naturally enforces good API-design discipline and
+aligns with the Pitchfork Layout and the Canonical Project Structure.</p></li>
+<li><p><strong>Collision-free includes:</strong> The <code class="docutils literal notranslate"><span class="pre">my_lib/</span></code> nesting guarantees globally unique
+include paths, e.g. <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code>.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>Disadvantages<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Bazel path handling:</strong> Requires <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code> so consumers
+can write <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> rather than <code class="docutils literal notranslate"><span class="pre">include/my_lib/my_lib.h</span></code>.</p></li>
+<li><p><strong>Folder redundancy:</strong> The <code class="docutils literal notranslate"><span class="pre">include/my_lib/</span></code> nesting feels redundant to some.</p></li>
+<li><p><strong>Navigation overhead:</strong> Minor cost from switching between <code class="docutils literal notranslate"><span class="pre">include/</span></code> and <code class="docutils literal notranslate"><span class="pre">src/</span></code>
+during active development.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="option-c-hybrid-directory-structure">
+<h3>Option C: Hybrid Directory Structure<a class="headerlink" href="#option-c-hybrid-directory-structure" title="Link to this heading">#</a></h3>
+<p>Only strictly public API headers are placed in <code class="docutils literal notranslate"><span class="pre">include/my_lib/*.h</span></code>. All private
+headers (<code class="docutils literal notranslate"><span class="pre">*.h</span></code>) and implementation sources (<code class="docutils literal notranslate"><span class="pre">*.cc</span></code>) sit directly in the main
+directory (or a local <code class="docutils literal notranslate"><span class="pre">src/</span></code> next to it).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>libs/my_lib/
+├── BUILD.bazel
+├── include/
+│   └── my_lib/
+│       └── my_lib.h       # public -&gt; hdrs
+├── my_lib.cc              # source  -&gt; srcs
+├── internal_helper.h      # private -&gt; srcs
+└── internal_helper.cc
+</pre></div>
+</div>
+<section id="id3">
+<h4>Advantages<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Reduced navigation overhead:</strong> Developers open <code class="docutils literal notranslate"><span class="pre">include/</span></code> only when changing the
+public contract; internal headers stay next to their <code class="docutils literal notranslate"><span class="pre">.cc</span></code>.</p></li>
+<li><p><strong>Clear Bazel separation:</strong> <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> matches <code class="docutils literal notranslate"><span class="pre">include/**</span></code>, <code class="docutils literal notranslate"><span class="pre">srcs</span></code> matches the rest.</p></li>
+<li><p><strong>Clean API packaging:</strong> Copying <code class="docutils literal notranslate"><span class="pre">include/</span></code> still yields a pristine public SDK
+with no leakage of private helpers.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h4>Disadvantages<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Inconsistent private-header location:</strong> Some headers live in <code class="docutils literal notranslate"><span class="pre">include/</span></code>, some in
+the root — developers may be unsure where to look.</p></li>
+<li><p><strong>Strict include conventions required:</strong> Private headers use relative paths
+(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;internal_helper.h&quot;</span></code>) while public headers use the nested path
+(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code>), which must be applied consistently.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="evaluation-criteria">
+<h2>Evaluation Criteria<a class="headerlink" href="#evaluation-criteria" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Criterion</p></th>
+<th class="head text-center"><p>A: Flat</p></th>
+<th class="head text-center"><p>B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code></p></th>
+<th class="head text-center"><p>C: Hybrid</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Public API visible in file tree</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>API encapsulation / leak safety</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Clean <code class="docutils literal notranslate"><span class="pre">#include</span></code> paths (no collisions)</p></td>
+<td class="text-center"><p>+/-</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bazel <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> clarity</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Non-Bazel packaging (folder copy)</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bazel boilerplate (low is better)</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>+/-</p></td>
+</tr>
+<tr class="row-even"><td><p>Local navigation (edit .h next .cc)</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scalability of large components</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Consistency / low cognitive load</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alignment with PFL / P1204</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="decision-proposal">
+<h2>Decision Proposal<a class="headerlink" href="#decision-proposal" title="Link to this heading">#</a></h2>
+<p><strong>Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> Directory</strong> — public API headers live under
+<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>, private headers and sources live under <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p>
+<p>For components that are small, header-heavy, or where the public/private split is
+trivial, <strong>Option C (Hybrid)</strong> is an accepted variation: keep the <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>
+public root, but allow private headers to sit next to their <code class="docutils literal notranslate"><span class="pre">.cc</span></code> in <code class="docutils literal notranslate"><span class="pre">src/</span></code> (or the
+component root). The invariant that must always hold is: <strong>everything a consumer is
+allowed to <code class="docutils literal notranslate"><span class="pre">#include</span></code> lives under <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>, and nothing else does.</strong></p>
+<section id="rationale">
+<h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>The public contract becomes a first-class, visible artifact.</strong> A reviewer or
+consumer can see the entire API surface by looking at <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>
+without opening <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>. This is the single biggest weakness of the current
+flat approach.</p></li>
+<li><p><strong>It maps directly onto Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> model.</strong> The directory boundary and
+the Bazel visibility boundary coincide, so the file layout reinforces the
+guarantee Bazel already enforces, instead of leaving it implicit.</p></li>
+<li><p><strong>Collision-free include paths.</strong> Nesting under the component name
+(<code class="docutils literal notranslate"><span class="pre">include/my_lib/</span></code>) guarantees that <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/foo.h&quot;</span></code> is globally unique
+across the whole build graph, which matters at S-CORE scale with many modules.</p></li>
+<li><p><strong>Trivial packaging for non-Bazel consumers.</strong> Delivering the public SDK is a
+folder-level copy of <code class="docutils literal notranslate"><span class="pre">include/</span></code>, not a filtering script over a mixed directory.</p></li>
+<li><p><strong>Ecosystem alignment.</strong> The layout matches the Pitchfork Layout (separated
+header placement) and the WG21 Canonical Project Structure, lowering the barrier
+for external contributors and tooling.</p></li>
+</ol>
+<p>The main cost — a small amount of Bazel boilerplate (<code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>) and the
+<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> nesting — is one-time, mechanical, and easily templated.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bazel-usage">
+<h2>Bazel Usage<a class="headerlink" href="#bazel-usage" title="Link to this heading">#</a></h2>
+<section id="defining-a-component">
+<h3>Defining a component<a class="headerlink" href="#defining-a-component" title="Link to this heading">#</a></h3>
+<p>Public headers go into <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> and are exposed through <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> so that
+the on-disk <code class="docutils literal notranslate"><span class="pre">include/</span></code> prefix is removed from the include path consumers see:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># libs/my_lib/BUILD.bazel</span>
+<span class="n">cc_library</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_lib&quot;</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="n">glob</span><span class="p">([</span>
+        <span class="s2">&quot;src/**/*.cc&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;src/**/*.h&quot;</span><span class="p">,</span>      <span class="c1"># private headers are NOT part of the public API</span>
+    <span class="p">]),</span>
+    <span class="n">hdrs</span> <span class="o">=</span> <span class="n">glob</span><span class="p">([</span><span class="s2">&quot;include/**/*.h&quot;</span><span class="p">]),</span>
+    <span class="n">strip_include_prefix</span> <span class="o">=</span> <span class="s2">&quot;include&quot;</span><span class="p">,</span>
+    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code>, a header at
+<code class="docutils literal notranslate"><span class="pre">libs/my_lib/include/my_lib/my_lib.h</span></code> is included by consumers as:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_lib/my_lib.h&quot;</span>
+</pre></div>
+</div>
+<p>Within the component’s own sources, private headers are included with a path
+relative to <code class="docutils literal notranslate"><span class="pre">src/</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;internal_helper.h&quot;</span></code>, and never leak through
+<code class="docutils literal notranslate"><span class="pre">hdrs</span></code>.</p>
+<blockquote>
+<div><p><strong>Note on alternatives:</strong> <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code> can <em>add</em> a prefix, and <code class="docutils literal notranslate"><span class="pre">includes</span></code>
+adds a directory to the compiler search path (with the well-known
+<code class="docutils literal notranslate"><span class="pre">-I</span></code>/<code class="docutils literal notranslate"><span class="pre">-isystem</span></code> caveats). <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> is preferred because it is
+hermetic, does not pollute the include path of downstream targets, and yields the
+clean <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;/&lt;header&gt;.h</span></code> form. Avoid <code class="docutils literal notranslate"><span class="pre">includes</span></code> for public APIs unless a
+third-party layout forces it.</p>
+</div></blockquote>
+</section>
+<section id="consuming-the-component-within-the-repository">
+<h3>Consuming the component within the repository<a class="headerlink" href="#consuming-the-component-within-the-repository" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cc_library</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;app.cc&quot;</span><span class="p">],</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//libs/my_lib&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// app.cc</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_lib/my_lib.h&quot;</span><span class="c1">   // only headers under include/my_lib/ are reachable</span>
+</pre></div>
+</div>
+<p>Bazel will reject an <code class="docutils literal notranslate"><span class="pre">#include</span></code> of a private header from <code class="docutils literal notranslate"><span class="pre">src/</span></code>, because it is not in
+the <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> of <code class="docutils literal notranslate"><span class="pre">//libs/my_lib</span></code>. The directory layout and the build system thus enforce
+the same boundary.</p>
+</section>
+<section id="consuming-the-component-as-a-bazel-module-bzlmod">
+<h3>Consuming the component as a Bazel module (bzlmod)<a class="headerlink" href="#consuming-the-component-as-a-bazel-module-bzlmod" title="Link to this heading">#</a></h3>
+<p>When a component is published as a Bazel module, the <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> layout
+carries over unchanged. A downstream repository adds the dependency in its
+<code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODULE.bazel (downstream)</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_lib&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and consumes it exactly as an in-repo target:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cc_library</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;downstream&quot;</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;downstream.cc&quot;</span><span class="p">],</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;@my_lib//:my_lib&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_lib/my_lib.h&quot;</span>
+</pre></div>
+</div>
+<p>Because the public include root is stable and prefix-stripped, the include paths a
+consumer writes are identical whether the component is consumed in-repo, via a
+<code class="docutils literal notranslate"><span class="pre">local_path_override</span></code>, or as a released module from a registry. This decouples the
+consumer’s source from the producer’s on-disk layout and is the key property that
+makes the module boundary clean.</p>
+</section>
+<section id="consumer-view-across-the-three-layouts">
+<h3>Consumer view across the three layouts<a class="headerlink" href="#consumer-view-across-the-three-layouts" title="Link to this heading">#</a></h3>
+<p>How consuming <code class="docutils literal notranslate"><span class="pre">&#64;my_lib</span></code> as a module looks from the outside, for each option:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Producer <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code> (public headers)</p></th>
+<th class="head"><p>Consumer <code class="docutils literal notranslate"><span class="pre">#include</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>A: Flat</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;*.h&quot;])</span></code> — no prefix handling</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;libs/my_lib/my_lib.h&quot;</span></code> — leaks repo layout, not namespaced</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>A: Flat + prefix</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">[...]</span></code>, <code class="docutils literal notranslate"><span class="pre">include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;my_lib&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> — clean, but re-adds the boilerplate A avoided</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code></strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;include/**/*.h&quot;])</span></code>, <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> — clean and stable</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>C: Hybrid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;include/**/*.h&quot;])</span></code>, <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> — clean and stable</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In all cases the <code class="docutils literal notranslate"><span class="pre">deps</span></code> and <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> entry are identical
+(<code class="docutils literal notranslate"><span class="pre">deps</span> <span class="pre">=</span> <span class="pre">[&quot;&#64;my_lib//:my_lib&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_dep(name</span> <span class="pre">=</span> <span class="pre">&quot;my_lib&quot;,</span> <span class="pre">version</span> <span class="pre">=</span> <span class="pre">&quot;1.0.0&quot;)</span></code>);
+only the resulting <code class="docutils literal notranslate"><span class="pre">#include</span></code> path differs. Options B and C give the same clean,
+layout-independent path out of the box; Option A only matches it by reintroducing a
+prefix.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="prior-art-existing-s-core-practice">
+<h2>Prior Art &amp; Existing S-CORE Practice<a class="headerlink" href="#prior-art-existing-s-core-practice" title="Link to this heading">#</a></h2>
+<p>There is <strong>no single mandated industry layout</strong> for public C++ headers with Bazel;
+two established schools of thought exist, and S-CORE currently mixes both.</p>
+<section id="external-guidance">
+<h3>External guidance<a class="headerlink" href="#external-guidance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bazel-native / Google style (no <code class="docutils literal notranslate"><span class="pre">include/</span></code>):</strong> The
+<a class="reference external" href="https://google.github.io/styleguide/cppguide.html#Header_Files">Google C++ Style Guide</a>
+requires headers to be included by their <strong>repo-root-relative path</strong>
+(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/foo/bar.h&quot;</span></code>), with no dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory. The
+<a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">Bazel <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> reference</a>
+encodes the same public/private model via <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code>. This is essentially
+<strong>Option A</strong>, but with repo-root paths rather than bare filenames.</p></li>
+<li><p><strong>General open-source convention (dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code>):</strong> The
+<a class="reference external" href="https://github.com/vector-of-bool/pitchfork">Pitchfork Layout (PFL)</a> and the
+<a class="reference external" href="https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html">WG21 Canonical Project Structure (P1204R0)</a>
+both place public headers under a project-named <code class="docutils literal notranslate"><span class="pre">include/&lt;lib&gt;/</span></code> root — matching
+<strong>Options B/C</strong>.</p></li>
+</ul>
+</section>
+<section id="existing-practice-inside-s-core">
+<h3>Existing practice inside S-CORE<a class="headerlink" href="#existing-practice-inside-s-core" title="Link to this heading">#</a></h3>
+<p>The following reflects the state of the <code class="docutils literal notranslate"><span class="pre">eclipse-score</span></code> GitHub organization on the
+<strong><code class="docutils literal notranslate"><span class="pre">main</span></code> branch as of 2026-08-19</strong>. It is a snapshot and may change; re-check the
+current <code class="docutils literal notranslate"><span class="pre">main</span></code> before relying on it. As of that date there is <strong>no unified
+convention</strong> — the following patterns coexist:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pattern</p></th>
+<th class="head"><p>Example repo</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">BUILD</span></code> snippet</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> (≈ Option B)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (futurecpp), <code class="docutils literal notranslate"><span class="pre">logging</span></code> (datarouter)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Flat on disk + synthesized logical path via <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lifecycle</span></code>, <code class="docutils literal notranslate"><span class="pre">inc_daal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;score/mw/lifecycle&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;/score/launch_manager/src&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Flat, headers next to sources</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">baselibs</span></code> (base64)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;.&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notably, the <code class="docutils literal notranslate"><span class="pre">lifecycle</span></code> pattern keeps a flat on-disk layout but <em>synthesizes</em> a clean
+logical <code class="docutils literal notranslate"><span class="pre">score/mw/...</span></code> include path via <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code> — real S-CORE evidence that a
+purely flat layout tends to have a prefix re-added for external consumption. The
+absence of a unified convention across these repositories is a primary motivation for
+this design decision.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<section id="positive">
+<h3>Positive<a class="headerlink" href="#positive" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The public API of every C++ component is visible, isolated, and self-documenting.</p></li>
+<li><p>Bazel <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> boundaries align with the physical layout, reducing accidental
+API leakage.</p></li>
+<li><p>Consumers get stable, collision-free include paths regardless of how the dependency
+is resolved (in-repo, override, or registry module).</p></li>
+<li><p>Public SDK packaging for non-Bazel consumers is a folder copy.</p></li>
+<li><p>The layout is consistent with widely used community conventions (PFL, P1204).</p></li>
+</ul>
+</section>
+<section id="negative-costs">
+<h3>Negative / Costs<a class="headerlink" href="#negative-costs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A modest, one-time increase in Bazel boilerplate (<code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>) and the
+<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> nesting.</p></li>
+<li><p>Minor day-to-day navigation overhead from the <code class="docutils literal notranslate"><span class="pre">include/</span></code> ↔ <code class="docutils literal notranslate"><span class="pre">src/</span></code> split.</p></li>
+<li><p>Existing flat components must be migrated to gain the benefits (can be incremental).</p></li>
+</ul>
+</section>
+<section id="follow-up-actions">
+<h3>Follow-Up Actions<a class="headerlink" href="#follow-up-actions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Provide a component template / scaffolding (directory skeleton + <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>) that
+encodes the <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code> layout and <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>.</p></li>
+<li><p>Document the convention in the S-CORE contribution guidelines and C++ coding
+guidelines, including the private-vs-public include-path rules.</p></li>
+<li><p>Define a migration path for existing flat components (opportunistic, per module).</p></li>
+<li><p>Consider a lightweight CI/lint check that flags private headers appearing in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>
+or public headers being included via non-canonical paths.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-002-arch/detailed_assessments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-002-Arch: Detailed Assessments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DR-001-infra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DR-001-Infra: Integration Strategy for External Development Tools</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-state-in-s-core">Current state in S-CORE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-references">External references</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-flat-directory-structure-headers-and-sources-mixed">Option A: Flat Directory Structure (headers and sources mixed)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-separate-include-directory-industry-standard">Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> Directory (industry standard)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-c-hybrid-directory-structure">Option C: Hybrid Directory Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Advantages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Disadvantages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-proposal">Decision Proposal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-usage">Bazel Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-component">Defining a component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consuming-the-component-within-the-repository">Consuming the component within the repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consuming-the-component-as-a-bazel-module-bzlmod">Consuming the component as a Bazel module (bzlmod)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-view-across-the-three-layouts">Consumer view across the three layouts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art-existing-s-core-practice">Prior Art &amp; Existing S-CORE Practice</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-guidance">External guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-practice-inside-s-core">Existing practice inside S-CORE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive">Positive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-costs">Negative / Costs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-up-actions">Follow-Up Actions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/design_decisions/DR-003-arch.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
