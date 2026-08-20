@@ -30,9 +30,10 @@ Base Libraries
 .. toctree::
    :hidden:
 
-   docs/requirements/index.rst
-   docs/requirements/chklst_req_inspection.rst
-   docs/architecture/index.rst
+   architecture/index.rst
+   requirements/index.rst
+   requirements/chklst_req_inspection.rst
+
 
 Feature flag
 ============

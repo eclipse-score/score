@@ -33,8 +33,9 @@ Time
    :titlesonly:
    :hidden:
 
-   docs/**/index
-   docs/requirements/aou_reqs
+   architecture/index
+   requirements/index
+   requirements/aou_req
 
 Feature flag
 ============

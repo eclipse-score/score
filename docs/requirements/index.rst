@@ -14,8 +14,8 @@
 
 .. _requirements:
 
-Requirements
-============
+Platform Requirements
+=====================
 
 Requirements are the formal descriptions of the requested capabilities or characteristics that the software platform or its components must fulfill. For further information see the `requirement concept <https://eclipse-score.github.io/process_description/main/process_areas/requirements_engineering/requirements_concept.html>`_ in the process description.
 

@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture
-====================
+Security and Cryptography Architecture
+======================================
 
 .. document:: Security & Crypto Architecture
    :id: doc__security_crypto_architecture

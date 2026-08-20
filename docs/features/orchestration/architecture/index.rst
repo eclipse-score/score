@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture
-====================
+Orchestration Architecture
+==========================
 
 .. document:: Orchestration Architecture
    :id: doc__orchestration_architecture

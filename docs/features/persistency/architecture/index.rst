@@ -14,8 +14,8 @@
 
 .. _feature_architecture_persistency:
 
-Architecture
-============
+Persistency Architecture
+========================
 
 .. document:: Persistency KVS Feature Architecture
    :id: doc__persistency_architecture
