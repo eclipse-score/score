@@ -121,8 +121,9 @@ Module Folder Structure
 -----------------------
 
 The modules and components shall follow the folder structure which was presented. However if there are good reasons the structure can be adapted.
+This is confirmed by :need:`dec_rec__platform__module_folder_structure`.
 
-See also `module template repository <https://github.com/eclipse-score/module_template>`_ for more details on the folder structure of a module.
+For more details on the folder structure of a module see `module template repository <https://github.com/eclipse-score/module_template>`_ .
 
 .. parsed-literal::
 
@@ -171,6 +172,10 @@ See also `module template repository <https://github.com/eclipse-score/module_te
    └── score/                           -> Folder containing all artifacts corresponding to the components of the module.
        ├── <component_name>/            -> Components of the module.
        │   │                               Folder containing all artifacts corresponding to one component.
+       │   |                            -> Source files of the component consisting of
+       │   |                               Include and source Files [:need:`wp__sw_implementation`]
+       │   |                               Unit tests [:need:`wp__verification_sw_unit_test`]
+       │   ├── <lower_level_comp>/      -> lower level component following <component_name> folder structure
        │   ├── docs/                    -> Documentation of the component
        │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
        │   │   │                           [:need:`wp__component_arch`].
@@ -185,10 +190,6 @@ See also `module template repository <https://github.com/eclipse-score/module_te
        │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
        │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
        │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
-       │   ├── src/                     -> Source files of the component consisting of
-       │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
-       │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-       │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
        │   └── tests/                   -> Component-level tests (e.g., integration tests)
        │                                   [:need:`wp__verification_comp_int_test`]
        └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
@@ -204,7 +205,8 @@ Module Folder Structure (Single-Feature Variant)
 
 The following variant keeps the same structure but removes the additional
 feature-name nesting under ``docs/features/``. In this case, the ``features/``
-subfolder is optional and omitted. This variant is intended for modules that only implement a single feature, to avoid unnecessary nesting.
+subfolder is still advised for similar documentation structure.
+This variant is intended for modules that only implement a single feature, to avoid unnecessary nesting.
 For identification of the single feature, the repository name or module name should be replicate the feature name.
 
 .. parsed-literal::
@@ -252,6 +254,10 @@ For identification of the single feature, the repository name or module name sho
     └── score/                           -> Folder containing all artifacts corresponding to the components of the module.
         ├── <component_name>/            -> Components of the module.
         │   │                               Folder containing all artifacts corresponding to one component.
+        │   |                            -> Source files of the component consisting of
+        │   |                               Include and source Files [:need:`wp__sw_implementation`]
+        │   |                               Unit tests [:need:`wp__verification_sw_unit_test`]
+        │   ├── <lower_level_comp>/      -> lower level component following <component_name> folder structure
         │   ├── docs/                    -> Documentation of the component
         │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
         │   │   │                           [:need:`wp__component_arch`].
@@ -266,10 +272,6 @@ For identification of the single feature, the repository name or module name sho
         │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
         │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
         │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
-        │   ├── src/                     -> Source files of the component consisting of
-        │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
-        │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-        │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
         │   └── tests/                   -> Component-level tests (e.g., integration tests)
         │                                   [:need:`wp__verification_comp_int_test`]
         └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
