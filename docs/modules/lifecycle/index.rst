@@ -18,6 +18,7 @@ Lifecycle
 
 .. mod_view_sta:: Lifecycle
    :id: mod_view_sta__lifecycle__modules
+   :version: 1
    :includes: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
 
    .. needarch::
@@ -35,7 +36,7 @@ Lifecycle
    :safety: ASIL_B
    :tags: lifecycle
    :derived_from: feat_req__lifecycle__launch_support[version==1]
-   :belongs_to: comp__lifecycle_launch_manager[version==1]
+   :satisfied_by: comp__lifecycle_launch_manager[version==1]
 
    Dummy requirement
 
@@ -45,7 +46,7 @@ Lifecycle
    :version: 1
    :safety: ASIL_B
    :implements: logic_arc_int__lifecycle__controlif[version==1], logic_arc_int__lifecycle__alive_if[version==1]
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__baselibs__json[version==1], logic_arc_int__os__unistd[version==1], logic_arc_int__lifecycle__lifecycle_if[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__baselibs__json[version==1], logic_arc_int__os__unistd[version==1], logic_arc_int__lifecycle__lifecycle_if[version==1]
    :security: NO
    :belongs_to: feat__lifecycle[version==1]
 
