@@ -43,6 +43,7 @@ Platform Management Plan
    software_verification
    documentation_management
    software_development
+   glossary
 
 .. toctree::
    :titlesonly:
@@ -52,4 +53,3 @@ Platform Management Plan
    role_assignment/platform_safety_manager
    role_assignment/platform_security_manager
    role_assignment/platform_quality_manager
- 

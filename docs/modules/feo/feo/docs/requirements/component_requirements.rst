@@ -428,8 +428,5 @@ Error Handling for S-CORE v0.5
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
     in arbitrary sequence and terminate itself.
 
-.. needextend:: is_external == False and "feo/docs/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "feo/docs/requirements" in docname
    :+tags: component_feo
-
-.. needextend:: is_external == False and "feo/docs/requirements" in docname and type == "comp_req"
-   :+belongs_to: comp__feo_main

@@ -32,6 +32,7 @@ libcpp Component Architecture
 
 .. logic_arc_int:: Library headers (C++17)
    :id: logic_arc_int__os__libcpp
+   :included_by: feat__os
    :security: YES
    :safety: ASIL_B
    :status: valid

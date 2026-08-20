@@ -15,6 +15,7 @@
 .. doc_tool:: clang-tidy
    :id: doc_tool__clang_tidy
    :status: evaluated
+   :version: 1
    :tool_version: 19.1.1
    :tcl: LOW
    :safety_affected: YES

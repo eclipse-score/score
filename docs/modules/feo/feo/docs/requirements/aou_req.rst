@@ -31,8 +31,9 @@ FEO Component Assumption of Use Requirements
    :security: NO
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    Anything shall be done.
 
-.. needextend:: is_external == False and "feo/docs/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "feo/docs/requirements" in docname
    :+tags: component_feo

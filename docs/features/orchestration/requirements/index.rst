@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Requirements
-############
+Orchestration Requirements
+##########################
 
 .. document:: Orchestration Requirements
    :id: doc__orchestration_requirements
@@ -80,7 +80,9 @@ Special Tasks and Preemption
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    The Executor shall support preemptive scheduling of special safety-critical tasks, guaranteeing their execution.
@@ -91,7 +93,9 @@ Special Tasks and Preemption
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    Safety-critical tasks shall be prioritized separately from standard cooperative tasks.
@@ -318,7 +322,9 @@ Special Safety Task Integration
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    Critical timing or safety paths within Programs shall be executed via preemptive special tasks provided by the Executor.
@@ -429,7 +435,9 @@ General Constraints
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    Preemptive scheduling shall only be activated explicitly for tasks with safety or critical timing constraints.
@@ -440,10 +448,12 @@ General Constraints
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1], stkh_req__dependability__security_features[version==1], stkh_req__communication__inter_process[version==1]
+   :satisfied_by: feat__orchestration[version==1]
    :status: invalid
+   :version: 1
    :valid_from: v2.0.0
 
    The system shall use the approved IPC feature exclusively for all inter-process synchronization.
 
-.. needextend:: is_external == False and "orchestration/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "orchestration/requirements" in docname
    :+tags: orchestration

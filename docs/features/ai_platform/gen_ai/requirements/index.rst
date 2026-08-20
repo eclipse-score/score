@@ -23,6 +23,7 @@ Requirements
    :security: NO
    :safety: QM
    :derived_from: stkh_req__gen_ai__enablement[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -35,6 +36,7 @@ Requirements
    :security: YES
    :safety: QM
    :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -47,6 +49,7 @@ Requirements
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__gen_ai__safety_filter[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -59,6 +62,7 @@ Requirements
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__gen_ai__vehicle_com[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0

@@ -28,6 +28,7 @@ Deterministic App Abstraction Layer
    :maxdepth: 2
    :caption: Contents
 
+   architecture/index.rst
    requirements/index.rst
 
 Feature flag
