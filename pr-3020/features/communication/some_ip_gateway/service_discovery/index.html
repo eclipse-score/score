@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -164,23 +165,23 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../../index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -373,23 +388,23 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../../index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -528,12 +557,11 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../code_generation/index.html">Code Generation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Communication (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../docs/architecture/index.html">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../docs/requirements/index.html">Requirements</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../architecture/index.html">Communication Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../requirements/index.html">Communication Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ipc/index.html">Inter-process Communication</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">SOME/IP-Gateway</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../architecture/index.html">SOME/IP Gateway Architecture</a></li>
@@ -547,8 +575,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../log_and_trace/index.html">Log and Trace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../time/index.html">Time</a></li>
 </ul>
@@ -592,10 +621,10 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Features</a></li>
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Communication (v0.5 beta)</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Communication</a></li>
     
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">SOME/IP-Gateway</a></li>
@@ -644,10 +673,10 @@ Thus it is likely read from one or multiple files.</p>
 This is done by sending an SOME/IP-SD messages containing an OfferService entry to the network.
 As long as the service is locally available the service offering is periodically (according to the configuration) renewed by sending a SOME/IP-SD messages containing an OfferService entry to the network.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-f1521c5f801a35d6681580cf5e575e885adbf830.svg" type="image/svg+xml" style="width:504px;height:398px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-d455b76a5a73e61eaf488fd022b712f6001400d8.svg" type="image/svg+xml" style="width:504px;height:398px;background:#FFFFFF;"></object></p>
 <p>Once the service ceased to exist locally, the SOME/IP communication stack sends a SOME/IP-SD message containing a StopOfferService entry to the network.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-49d57a786541faacedb990008c2dc18296c3ab43.svg" type="image/svg+xml" style="width:505px;height:269px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-1841de68b594395b3880862555ecb0ee855c7a55.svg" type="image/svg+xml" style="width:505px;height:269px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">mw::com::&lt;Proxy&gt;::StartFindService()</span></code> function can tell us that a service is offered or stopped. But using it is awkward / complicated.</p>
@@ -667,7 +696,7 @@ Here, initial reception is the first reception after a previous service loss or 
 <li><p>after a link-down/link-up event</p></li>
 </ul>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-16c2503e9dc218d8170a147698812505d618a7ff.svg" type="image/svg+xml" style="width:461px;height:356px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-9d63ecc141e35913ff6e27d29336699332d3ccd5.svg" type="image/svg+xml" style="width:461px;height:356px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The SOME/IP communication stack can create the service before receiving an OfferService,
@@ -677,7 +706,7 @@ Thus the decision is to create the service only after having received an OfferSe
 </div>
 <p>Upon reception of SOME/IP-SD message containing an StopOfferService entry, the SOME/IP communication stack stops the service offered via IPC as well.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-69b7df11691d6959d738cd08f6b1e31c38c3d2d6.svg" type="image/svg+xml" style="width:611px;height:311px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-398be58298ed4a28cff6385e70f6a670362aa3e4.svg" type="image/svg+xml" style="width:611px;height:311px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the service times out we may internally stop the service, but keep it alive until another timeout is reached.
@@ -692,10 +721,10 @@ If both questions are answered positively, the SOME/IP communication stack respo
 <p>This will <strong>not</strong> trigger creation of the service internally by any means.
 Only lookup of running services is done.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-e0e9087ab186bb029439556c5c22523ce3f71e1d.svg" type="image/svg+xml" style="width:352px;height:300px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-a6a0831ec2be147a79dd2f2fdf6b877e19654cb6.svg" type="image/svg+xml" style="width:352px;height:300px;background:#FFFFFF;"></object></p>
 <p>If a service is configured to be needed and no OfferService has been received yet, the SOME/IP communication stack shall send a SOME/IP-SD message containing a FindService entry.</p>
 <p class="plantuml">
-<object data="../../../../_images/plantuml-e58db1a3bceaf25e68eed74963022f65a32ace1d.svg" type="image/svg+xml" style="width:284px;height:273px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-d0808a5b2efa4826cbc37d6913505603b0800252.svg" type="image/svg+xml" style="width:284px;height:273px;background:#FFFFFF;"></object></p>
 </section>
 </section>
 
@@ -757,7 +786,7 @@ Only lookup of running services is done.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/some_ip_gateway/service_discovery/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/features/communication/some_ip_gateway/service_discovery/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

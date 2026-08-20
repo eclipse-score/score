@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -528,6 +557,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DR-002-strat.html">DR-002-Strat: Eclipse Project Structure for S-Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DR-003-strat.html">DR-003-Strat: Module Maturity Classification (Release / Experimental / Preview)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
@@ -545,9 +576,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DR-002-proc.html">DR-002-Proc: Feature &amp; Enhancement Proposal (FEP) Process</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
@@ -628,7 +661,7 @@ SPDX-License-Identifier: Apache-2.0
 -->
 <section id="dr-002-arch-considerations">
 <h1>DR-002-Arch: Considerations<a class="headerlink" href="#dr-002-arch-considerations" title="Link to this heading">#</a></h1>
-<p>This page provides detailed considerations for the <a class="reference internal" href="../DR-002-arch.html"><span class="std std-doc">Library Delivery Model</span></a> design decision.</p>
+<p>This page provides detailed considerations for the :ref:<code class="docutils literal notranslate"><span class="pre">Library</span> <span class="pre">Delivery</span> <span class="pre">Model</span> <span class="pre">&lt;DR-002-Arch&gt;</span></code> design decision</p>
 <section id="architectural-note-internal-composition-of-shared-libraries">
 <h2>Architectural Note: Internal Composition of Shared Libraries<a class="headerlink" href="#architectural-note-internal-composition-of-shared-libraries" title="Link to this heading">#</a></h2>
 <p>When a module (feature) is delivered as a shared library, this does <strong>not</strong> imply that every internal component of that module is itself a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code>. The standard and recommended pattern is:</p>
@@ -719,7 +752,8 @@ SPDX-License-Identifier: Apache-2.0
 </section>
 <section id="cross-language-interoperability-c-rust">
 <h2>Cross-Language Interoperability (C++ ↔ Rust)<a class="headerlink" href="#cross-language-interoperability-c-rust" title="Link to this heading">#</a></h2>
-<p>S-CORE uses both C++ and Rust (see <a class="reference internal" href="../DR-001-arch.html"><span class="std std-doc">DR-001-Arch</span></a>). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):</p>
+<p>:ref:<code class="docutils literal notranslate"><span class="pre">Library</span> <span class="pre">Delivery</span> <span class="pre">Model</span> <span class="pre">&lt;DR-002-Arch&gt;</span></code>).
+S-CORE uses both C++ and Rust (see :ref:<code class="docutils literal notranslate"><span class="pre">&lt;DR-001-arch&gt;</span></code>). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):</p>
 <section id="the-common-denominator-c-abi">
 <h3>The Common Denominator: C ABI<a class="headerlink" href="#the-common-denominator-c-abi" title="Link to this heading">#</a></h3>
 <p>Neither C++ nor Rust has a stable, cross-language ABI of its own. Cross-language calls require an intermediate <strong>C ABI</strong> (<code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> in both languages). This applies equally to static and dynamic linking:</p>
@@ -1590,7 +1624,7 @@ Deployed: score_serialization.so v2.1
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-002-arch/considerations.md">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/design_decisions/DR-002-arch/considerations.md">
       <i class="fa-solid fa-pencil"></i>
       
       

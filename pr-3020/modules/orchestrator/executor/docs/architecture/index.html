@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -529,8 +558,6 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../communication/index.html">Communication Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Orchestrator</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents Orchestrator</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Executor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -616,7 +643,7 @@
                   
   <section id="component-architecture">
 <h1>Component Architecture<a class="headerlink" href="#component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-12169ef5">
+<div class="need_container docutils container" id="SNCB-3a55629d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__executor_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -692,7 +719,7 @@
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>The components are designed to cover the expectations from the feature architecture
 (i.e. if already exists a definition it should be taken over and enriched).</p>
-<div class="need_container docutils container" id="SNCB-2fa1bdaf">
+<div class="need_container docutils container" id="SNCB-077af274">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__orch_executor">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -714,7 +741,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/orchestration/architecture/index.html#feat__orchestration" title="comp__orch_executor">feat__orchestration</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp__orch_executor">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../../features/analysis-infra/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__orch_executor">logic_arc_int__tracing__tracing</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../../features/log_and_trace/logging/architecture/index.html#logic_arc_int__log_cpp__logging" title="comp__orch_executor">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../../../../../features/log_and_trace/tracing/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__orch_executor">logic_arc_int__tracing__tracing</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__orchestrator" title="comp__orch_executor">mod__orchestrator</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__orch__orchestrator" title="comp__orch_executor">mod_view_sta__orch__orchestrator</a></span></span></div>
 </span></div>
 </div>
@@ -722,7 +749,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/orchestrator/executor/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-3b0be19091bb54befa526f7d0f055278d446b85f.svg" type="image/svg+xml" style="width:115px;height:59px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-a4e15e3e8b065885078b37185ac59b820edd6347.svg" type="image/svg+xml" style="width:115px;height:59px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -823,7 +850,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/orchestrator/executor/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/modules/orchestrator/executor/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

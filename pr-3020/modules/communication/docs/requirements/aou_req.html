@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -545,8 +574,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
@@ -618,7 +645,7 @@
                   
   <section id="assumptions-of-use">
 <h1>Assumptions of Use<a class="headerlink" href="#assumptions-of-use" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-dae635d1">
+<div class="need_container docutils container" id="SNCB-34383b7b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__communication_aou">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -662,7 +689,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ce5937d3">
+<div class="need_container docutils container" id="SNCB-afb23d42">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -707,7 +734,7 @@ in order that LoLa can perform all necessary allocations (e.g. push-back on a Ve
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-825fabc4">
+<div class="need_container docutils container" id="SNCB-f295906f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -752,7 +779,7 @@ event for each service instance.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-04a5f8bf">
+<div class="need_container docutils container" id="SNCB-140c3643">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -800,7 +827,7 @@ configured for each event for each service instance.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ec9098b4">
+<div class="need_container docutils container" id="SNCB-2a6dfa11">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -848,7 +875,7 @@ Without a proper configured level, this cannot be ensured.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e3bed2e5">
+<div class="need_container docutils container" id="SNCB-f0bf646d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -892,7 +919,7 @@ Without a proper configured level, this cannot be ensured.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e250c877">
+<div class="need_container docutils container" id="SNCB-712ac173">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__6">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -937,7 +964,7 @@ are directly invoked or types from within are directly used.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-83d43237">
+<div class="need_container docutils container" id="SNCB-c9a19482">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__7">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -981,7 +1008,7 @@ are directly invoked or types from within are directly used.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eb786922">
+<div class="need_container docutils container" id="SNCB-089907c4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__8">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1026,7 +1053,7 @@ If this is not possible, a check for message overflow and necessary actions need
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dd282cd3">
+<div class="need_container docutils container" id="SNCB-9a824473">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__9">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1070,7 +1097,7 @@ If this is not possible, a check for message overflow and necessary actions need
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dc002f1e">
+<div class="need_container docutils container" id="SNCB-e004658c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__10">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1115,7 +1142,7 @@ stored on a safety certified filesystem (according to the highest supported safe
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c02d6d5d">
+<div class="need_container docutils container" id="SNCB-51599e86">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__11">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1159,7 +1186,7 @@ stored on a safety certified filesystem (according to the highest supported safe
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8e57717a">
+<div class="need_container docutils container" id="SNCB-053f1941">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__12">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1203,7 +1230,7 @@ stored on a safety certified filesystem (according to the highest supported safe
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cc0a86c8">
+<div class="need_container docutils container" id="SNCB-5341a231">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__13">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1248,7 +1275,7 @@ of a producer will not lead to a violation of a safety goal.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7107a6fc">
+<div class="need_container docutils container" id="SNCB-bacc7dcc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__14">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1293,7 +1320,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e85fc0d3">
+<div class="need_container docutils container" id="SNCB-84ddce4c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__15">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1337,7 +1364,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-211cbc8f">
+<div class="need_container docutils container" id="SNCB-b3f501d5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__16">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1381,7 +1408,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9b09e91c">
+<div class="need_container docutils container" id="SNCB-91a91751">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__17">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1429,7 +1456,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cc007f9b">
+<div class="need_container docutils container" id="SNCB-f826a7d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__18">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1473,7 +1500,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-227d62f0">
+<div class="need_container docutils container" id="SNCB-41ac52fa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__19">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1518,7 +1545,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ebc1a64d">
+<div class="need_container docutils container" id="SNCB-2419cc6a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__20">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1562,7 +1589,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7601f79c">
+<div class="need_container docutils container" id="SNCB-4bad7259">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__21">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1606,7 +1633,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b0165835">
+<div class="need_container docutils container" id="SNCB-a73ca91a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__22">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1650,7 +1677,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6d7b27cb">
+<div class="need_container docutils container" id="SNCB-501e617d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__23">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1695,7 +1722,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4356b1c3">
+<div class="need_container docutils container" id="SNCB-07e5818a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__24">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1739,7 +1766,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dcaa075e">
+<div class="need_container docutils container" id="SNCB-dcd69276">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__25">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1783,7 +1810,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-447f0335">
+<div class="need_container docutils container" id="SNCB-720695d8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__26">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1827,7 +1854,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-071294c7">
+<div class="need_container docutils container" id="SNCB-ef4d3b0b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__27">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1872,7 +1899,7 @@ shall be manually reviewed for its correctness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6cdcaebb">
+<div class="need_container docutils container" id="SNCB-e5e3ecc6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__28">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1916,7 +1943,7 @@ shall be manually reviewed for its correctness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-25b9902f">
+<div class="need_container docutils container" id="SNCB-5a2aeee6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__29">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1960,7 +1987,7 @@ shall be manually reviewed for its correctness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-110e5e5d">
+<div class="need_container docutils container" id="SNCB-643b1971">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__30">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2008,7 +2035,7 @@ affected by these actions.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b6108215">
+<div class="need_container docutils container" id="SNCB-70a87f13">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__31">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2054,7 +2081,7 @@ code containing mw::com proxies and skeletons, which communicate.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7d2b38af">
+<div class="need_container docutils container" id="SNCB-23e4312d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__32">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2101,7 +2128,7 @@ by GetSampleSize() will happen.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b04a50e2">
+<div class="need_container docutils container" id="SNCB-e5b8cf84">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__34">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2191,7 +2218,7 @@ are the same in all configurations.</p></td>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/communication/docs/requirements/aou_req.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/modules/communication/docs/requirements/aou_req.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

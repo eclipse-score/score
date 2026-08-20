@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -528,6 +557,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-strat.html">DR-002-Strat: Eclipse Project Structure for S-Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-strat.html">DR-003-Strat: Module Maturity Classification (Release / Experimental / Preview)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
@@ -545,9 +576,11 @@
 <li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-proc.html">DR-002-Proc: Feature &amp; Enhancement Proposal (FEP) Process</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
@@ -624,11 +657,11 @@ https://www.apache.org/licenses/LICENSE-2.0
 SPDX-License-Identifier: Apache-2.0
 -->
 <section id="dr-002-arch-library-delivery-model-static-vs-dynamic">
-<h1>DR-002-Arch: Library Delivery Model (Static vs. Dynamic)<a class="headerlink" href="#dr-002-arch-library-delivery-model-static-vs-dynamic" title="Link to this heading">#</a></h1>
+<span id="dr-002-arch"></span><h1>DR-002-Arch: Library Delivery Model (Static vs. Dynamic)<a class="headerlink" href="#dr-002-arch-library-delivery-model-static-vs-dynamic" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-15</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-6ad99dc1">
+<div class="need_container docutils container" id="SNCB-863001ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__library_delivery_model">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -636,7 +669,7 @@ SPDX-License-Identifier: Apache-2.0
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -648,8 +681,8 @@ SPDX-License-Identifier: Apache-2.0
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Architecture</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Proposal: Opt-in per module — static by default, dynamic where justified</span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>0</span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Opt-in per module — static by default, dynamic where justified</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -899,7 +932,7 @@ SPDX-License-Identifier: Apache-2.0
 </tbody>
 </table>
 </div>
-<p>For detailed update granularity and performance assessments, see <a class="reference internal" href="DR-002-arch/detailed_assessments.html"><span class="std std-doc">Detailed Assessments</span></a>.</p>
+<p>For detailed update granularity and performance assessments, see :ref:<code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">Assessments</span> <span class="pre">&lt;DR-002-Arch-detailed-assessments&gt;</span></code>).</p>
 </section>
 <section id="decision-proposal">
 <h2>Decision Proposal<a class="headerlink" href="#decision-proposal" title="Link to this heading">#</a></h2>
@@ -1152,7 +1185,7 @@ SPDX-License-Identifier: Apache-2.0
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-002-arch.md">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/design_decisions/DR-002-arch.md">
       <i class="fa-solid fa-pencil"></i>
       
       

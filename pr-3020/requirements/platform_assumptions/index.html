@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -73,7 +74,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Modules" href="../../modules/index.html" />
+    <link rel="next" title="Contribute" href="../../contribute/index.html" />
     <link rel="prev" title="Stakeholder Requirements" href="../stakeholder/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -570,7 +599,7 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Requirements</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Platform Requirements</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SW-platform Assumptions</span></li>
   </ul>
@@ -591,7 +620,7 @@
                   
   <section id="sw-platform-assumptions">
 <span id="platform-assumptions"></span><h1>SW-platform Assumptions<a class="headerlink" href="#sw-platform-assumptions" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-41c7a260">
+<div class="need_container docutils container" id="SNCB-9fe79089">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_assumptions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -646,7 +675,7 @@ For “organizations” two roles are used in the AoU text:</p>
 </ul>
 <p>To fulfill these assumptions is the responsibility of the mentioned roles.</p>
 <p>Note that the “supplier” AoUs were created with an OS supplier in mind but are really general AoUs for any external SW element S-CORE uses.</p>
-<div class="need_container docutils container" id="SNCB-26fa8864">
+<div class="need_container docutils container" id="SNCB-5063dfd7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__posix_operating_system">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -699,7 +728,7 @@ For “organizations” two roles are used in the AoU text:</p>
 It also contains expectations towards an supplier which can be used as criteria for supplier selection
 by the system integrator. Building and running of external SW element is enabled, but no pro-active support from S-CORE
 is provided for e.g. build or test problems. No guarantees that S-CORE builds or runs with the external SW element.</p>
-<div class="need_container docutils container" id="SNCB-0491ea8c">
+<div class="need_container docutils container" id="SNCB-465376c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__integration_assistance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -742,7 +771,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9117f520">
+<div class="need_container docutils container" id="SNCB-ed1c9ae0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_integration_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -761,8 +790,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -786,7 +814,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2512ed1d">
+<div class="need_container docutils container" id="SNCB-1f29b588">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__bug_interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +866,7 @@ as this level is not expected sufficient for a product release, only for incubat
 <h3>Functional Level<a class="headerlink" href="#functional-level" title="Link to this heading">#</a></h3>
 <p>This is the middle level of integration, the higher level will build on this.
 It is the level where the S-CORE SW-platform will functionally “work” with the external SW element.</p>
-<div class="need_container docutils container" id="SNCB-c9d154d6">
+<div class="need_container docutils container" id="SNCB-cba3fc88">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__bazel_tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -882,7 +910,7 @@ and support the run and test of the S-CORE SW-platform.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dc5d4b06">
+<div class="need_container docutils container" id="SNCB-5afbba9d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__bug_fixing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -927,7 +955,7 @@ and support the run and test of the S-CORE SW-platform.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ae6bfc3c">
+<div class="need_container docutils container" id="SNCB-27f67642">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__testing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -975,7 +1003,7 @@ or provide equivalent argumentation.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-789a5ace">
+<div class="need_container docutils container" id="SNCB-70b1ce16">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__bug_report">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1023,7 +1051,7 @@ or provide equivalent argumentation.</p>
 <section id="certifiable-level">
 <h3>Certifiable Level<a class="headerlink" href="#certifiable-level" title="Link to this heading">#</a></h3>
 <p>This is the highest level of integration. This is the level where the S-CORE SW-platform will be certifiable with an external SW element.</p>
-<div class="need_container docutils container" id="SNCB-0a046ecd">
+<div class="need_container docutils container" id="SNCB-db8d3f84">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__levels">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1069,7 +1097,7 @@ or provide equivalent argumentation.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4893bfbe">
+<div class="need_container docutils container" id="SNCB-8bc295ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__safety_aou">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1114,7 +1142,7 @@ or provide equivalent argumentation.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b36271ab">
+<div class="need_container docutils container" id="SNCB-7b9afbe6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__safety_functions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1157,7 +1185,7 @@ or provide equivalent argumentation.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0f9cc6c2">
+<div class="need_container docutils container" id="SNCB-07ca36c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__safety_anomaly">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1202,7 +1230,7 @@ or provide equivalent argumentation.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1f10e3e7">
+<div class="need_container docutils container" id="SNCB-2a3d4f52">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__safety_matching">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1251,7 +1279,7 @@ This includes to make sure that the safety functions S-CORE SW-platform requires
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f2e6548f">
+<div class="need_container docutils container" id="SNCB-f2bc65fc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__safety_integration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1299,7 +1327,7 @@ This includes to make sure that the safety functions S-CORE SW-platform requires
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f21c5771">
+<div class="need_container docutils container" id="SNCB-9375ecdc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__test_completion">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1346,7 +1374,7 @@ as described in the tailoring section of <a class="reference internal" href="../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-602e9fe5">
+<div class="need_container docutils container" id="SNCB-44e7bb2f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__integration_safety_anomaly">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1398,7 +1426,7 @@ The relevant safety critical bugs or safety anomalies are published by S-CORE as
 <section id="assumptions-on-applications">
 <h2>Assumptions on Applications<a class="headerlink" href="#assumptions-on-applications" title="Link to this heading">#</a></h2>
 <p>In this section assumptions are described which need to be fulfilled by the applications running on top of the SW-platform.</p>
-<div class="need_container docutils container" id="SNCB-dcc5b225">
+<div class="need_container docutils container" id="SNCB-9b6f1e78">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__no_exceptions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1445,7 +1473,7 @@ This is supported by the library safecpp/aborts_upon_exception supplied by S-COR
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3d5961de">
+<div class="need_container docutils container" id="SNCB-76f69d94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__no_heap_alloc_after_init">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1493,7 +1521,7 @@ Any deviation from this expectation should be justified in the safety concept of
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a2a67eb1">
+<div class="need_container docutils container" id="SNCB-3d1e83a9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__error_reaction">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1540,7 +1568,7 @@ So the SW-platform reports the errors to the user application and does not stop 
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e297e0b3">
+<div class="need_container docutils container" id="SNCB-80f48cf1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__success_expected">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1587,7 +1615,7 @@ and perform an appropriate error reaction if the return does not indicate a “s
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-275d83c8">
+<div class="need_container docutils container" id="SNCB-5bc13802">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__no_mixed_asil">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1631,7 +1659,7 @@ and perform an appropriate error reaction if the return does not indicate a “s
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-224dac62">
+<div class="need_container docutils container" id="SNCB-f807938c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__flow_monitoring">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1683,7 +1711,7 @@ Or that in case of non/late execution of the application the safety integrity of
 <section id="assumptions-on-safety-system">
 <h2>Assumptions on Safety System<a class="headerlink" href="#assumptions-on-safety-system" title="Link to this heading">#</a></h2>
 <p>In this section assumptions are described which need to be fulfilled by the system or system integrator.</p>
-<div class="need_container docutils container" id="SNCB-1f507d3a">
+<div class="need_container docutils container" id="SNCB-6a4a8c86">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__hardware_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1738,7 +1766,7 @@ Or that in case of non/late execution of the application the safety integrity of
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f11a47fc">
+<div class="need_container docutils container" id="SNCB-a2eb2d2e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__external_health_management">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1784,7 +1812,7 @@ Or that in case of non/late execution of the application the safety integrity of
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-431b529d">
+<div class="need_container docutils container" id="SNCB-dc4b8318">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__process_isolation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1829,7 +1857,7 @@ This shall cover memory isolation. Timing isolation may be covered.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-752b546b">
+<div class="need_container docutils container" id="SNCB-dbf0aa91">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_functions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1848,7 +1876,7 @@ This shall cover memory isolation. Timing isolation may be covered.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">operating_system</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
@@ -1889,6 +1917,57 @@ This shall cover memory isolation. Timing isolation may be covered.</p></td>
 </table>
 </div>
 </div>
+<div class="need_container docutils container" id="SNCB-f1f184a4">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__veh_time_e2e_integrity">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Vehicle time end-to-end integrity</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>If the system using the SW-platform has the safety goal to achive end-to-end integrity of the vehicle time
+information, the involved external components (like the grand master clock, any intermediate master clock,
+and time-aware bridges/switches) must support respective measures for the integrity protection.</p>
+<dl class="simple">
+<dt>Note: If this assumption is violated, the data integrity level of the vehicle time information will fall</dt><dd><p>back to QM and must be marked accordingly in the respective project documentation.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__veh_time_e2e_integrity" title="aou_req__platform__veh_time_e2e_integrity">aou_req__platform__veh_time_e2e_integrity</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Assumption of Use Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 
@@ -1912,11 +1991,11 @@ This shall cover memory isolation. Timing isolation may be covered.</p></td>
       </div>
     </a>
     <a class="right-next"
-       href="../../modules/index.html"
+       href="../../contribute/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modules</p>
+        <p class="prev-next-title">Contribute</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1955,7 +2034,7 @@ This shall cover memory isolation. Timing isolation may be covered.</p></td>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/requirements/platform_assumptions/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/requirements/platform_assumptions/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

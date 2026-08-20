@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -541,8 +570,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
@@ -614,7 +641,7 @@
                   
   <section id="frontend-component-architecture">
 <h1>Frontend Component Architecture<a class="headerlink" href="#frontend-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-ae4e73c4">
+<div class="need_container docutils container" id="SNCB-b703cb81">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__com_frontend">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -633,14 +660,13 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#feat__com_communication" title="comp__com_frontend">feat__com_communication</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#feat__com_communication" title="comp__com_frontend">feat__com_communication</a></span></span></div>
 <div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__com__frontend" title="comp__com_frontend">comp_arc_sta__com__frontend</a></span></span></div>
 <div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="#comp_req__communication__logging" title="comp__com_frontend">comp_req__communication__logging</a></span></span></div>
-<div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="comp__com_frontend">logic_arc_int__communication__user</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp__com_frontend">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../../features/analysis-infra/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__com_frontend">logic_arc_int__tracing__tracing</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="comp__com_frontend">logic_arc_int__communication__user</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../../features/log_and_trace/logging/architecture/index.html#logic_arc_int__log_cpp__logging" title="comp__com_frontend">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../../../../../features/log_and_trace/tracing/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__com_frontend">logic_arc_int__tracing__tracing</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__com_communication" title="comp__com_frontend">mod__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -663,7 +689,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e086349f">
+<div class="need_container docutils container" id="SNCB-07c49c46">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__com__frontend">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -682,19 +708,18 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__com_frontend" title="comp_arc_sta__com__frontend">comp__com_frontend</a></span></span></div>
 <div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="#comp_req__communication__logging" title="comp_arc_sta__com__frontend">comp_req__communication__logging</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__com__frontend">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../../features/analysis-infra/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp_arc_sta__com__frontend">logic_arc_int__tracing__tracing</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../../features/log_and_trace/logging/architecture/index.html#logic_arc_int__log_cpp__logging" title="comp_arc_sta__com__frontend">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../../../../../features/log_and_trace/tracing/architecture/index.html#logic_arc_int__tracing__tracing" title="comp_arc_sta__com__frontend">logic_arc_int__tracing__tracing</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/communication/frontent/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-1fe34fd458fd4c507f6d4eef8891c2d767ae119f.svg" type="image/svg+xml" style="width:259px;height:306px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-6190dcae1da589e8208c279b0b2ea5fdeeae0b92.svg" type="image/svg+xml" style="width:259px;height:306px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -711,7 +736,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ee424273">
+<div class="need_container docutils container" id="SNCB-cee71c5e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__initialize">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -730,10 +755,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__initialize">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__initialize">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -755,7 +779,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-26389672">
+<div class="need_container docutils container" id="SNCB-258e558d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__offer_service">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -774,10 +798,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__offer_service">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__offer_service">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -799,7 +822,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f3fbfe38">
+<div class="need_container docutils container" id="SNCB-e14d013a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__update">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -818,10 +841,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__update">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__update">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -843,7 +865,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-161f725a">
+<div class="need_container docutils container" id="SNCB-d96f435f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__send">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -862,10 +884,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__send">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__send">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -887,7 +908,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c8b19450">
+<div class="need_container docutils container" id="SNCB-90245b3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__startfindserv">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -906,10 +927,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__startfindserv">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__startfindserv">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -931,7 +951,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-088ee95d">
+<div class="need_container docutils container" id="SNCB-022c1651">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__createproxy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -950,10 +970,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__createproxy">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__createproxy">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -975,7 +994,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cedc4d84">
+<div class="need_container docutils container" id="SNCB-0d505db4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__subscribe">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -994,10 +1013,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__subscribe">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__subscribe">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1019,7 +1037,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9c89ca38">
+<div class="need_container docutils container" id="SNCB-686108cd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__getnewsamples">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1038,10 +1056,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__getnewsamples">logic_arc_int__communication__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../../../../features/communication/architecture/index.html#logic_arc_int__communication__user" title="logic_arc_int_op__com__getnewsamples">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1065,7 +1082,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-aea6f34c">
+<div class="need_container docutils container" id="SNCB-0df571e7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__communication__logging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1084,11 +1101,10 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
-<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../../features/communication/docs/requirements/index.html#feat_req__com__event_type" title="comp_req__communication__logging">feat_req__com__event_type</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../../features/communication/requirements/index.html#feat_req__com__event_type" title="comp_req__communication__logging">feat_req__com__event_type</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="#comp__com_frontend" title="comp_req__communication__logging">comp__com_frontend</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="#comp_arc_sta__com__frontend" title="comp_req__communication__logging">comp_arc_sta__com__frontend</a></span></span></div>
 </span></div>
@@ -1170,7 +1186,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/communication/frontent/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/modules/communication/frontent/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

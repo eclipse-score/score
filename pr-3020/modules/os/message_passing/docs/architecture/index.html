@@ -38,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -165,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -199,6 +200,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../score_releases/index.html">
     Releases
@@ -251,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -374,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../../index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -397,6 +412,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -453,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../../index.html">
+    Modules
   </a>
 </li>
 
@@ -529,8 +558,6 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../communication/index.html">Communication Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">OS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
@@ -612,7 +639,7 @@
                   
   <section id="message-passing-component-architecture">
 <h1>Message Passing Component Architecture<a class="headerlink" href="#message-passing-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0c542ccd">
+<div class="need_container docutils container" id="SNCB-702ebc22">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__os_message_passing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -631,8 +658,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../docs/index.html#feat__os" title="comp__os_message_passing">feat__os</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__os__message_passing" title="comp__os_message_passing">logic_arc_int__os__message_passing</a></span></span></div>
@@ -643,7 +669,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/os/message_passing/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-50c859e7bd3e76048edd6d54916470a76c1d9283.svg" type="image/svg+xml" style="width:212px;height:225px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-d54e6de82d92f2771ac681b6e462cb85bfde7db7.svg" type="image/svg+xml" style="width:212px;height:225px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -660,7 +686,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9f964559">
+<div class="need_container docutils container" id="SNCB-1a72de1a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__message_passing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -679,8 +705,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__os_message_passing" title="logic_arc_int__os__message_passing">comp__os_message_passing</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../communication/message_passing/docs/architecture/index.html#comp__com_message_passing" title="logic_arc_int__os__message_passing">comp__com_message_passing</a></span></span></div>
@@ -691,7 +716,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/os/message_passing/docs/architecture/index-1">
-<object data="../../../../../_images/plantuml-9cf547ca5012186373953a04e77da053bc9ad70d.svg" type="image/svg+xml" style="width:201px;height:117px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-ef4e0d52c0cfe5496178922559cb9dba4688e6b5.svg" type="image/svg+xml" style="width:201px;height:117px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -708,7 +733,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b6d4934c">
+<div class="need_container docutils container" id="SNCB-ce759cf0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__reply">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -727,8 +752,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__message_passing" title="logic_arc_int_op__os__reply">logic_arc_int__os__message_passing</a></span></span></div>
 </span></div>
@@ -752,7 +776,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-118525cb">
+<div class="need_container docutils container" id="SNCB-04f59d16">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__notify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -771,8 +795,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__message_passing" title="logic_arc_int_op__os__notify">logic_arc_int__os__message_passing</a></span></span></div>
 </span></div>
@@ -796,7 +819,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-da13ea64">
+<div class="need_container docutils container" id="SNCB-c7e202eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__requestdisconnect">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -815,8 +838,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__message_passing" title="logic_arc_int_op__os__requestdisconnect">logic_arc_int__os__message_passing</a></span></span></div>
 </span></div>
@@ -885,7 +907,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/os/message_passing/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/modules/os/message_passing/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
