@@ -1067,7 +1067,7 @@ window.runMermaid = runMermaid;</script>
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-7c0ddb44">
+  <div class="need_container docutils container" id="SNCB-b79fe1b9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__doc_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1249,15 +1249,14 @@ Still, for silent wrong outputs the gated CI stays green.</p>
 </dd>
 </dl>
 <dl class="simple" id="basis-ti1">
-<dt>Derived-view</dt><dd><p>The rendered output (HTML, architecture diagrams, cross-repo links, PR
-previews) is a derived view; the authoritative safety artifacts are the source-controlled work products.
-There is one exception, the architecture views (covered below in M4).
-Traceability is enforced at the source level.
+<dt>Derived-view</dt><dd><p>The rendered HTML output is a derived view;
+the authoritative safety artifacts are mostly the source-controlled work products.
+There are two exceptions, the architecture views (see M4) and backlinks (see M8).
 Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 </dd>
 </dl>
-<div class="pst-scrollable-table-container"><table class="table" id="id13">
-<caption><span class="caption-number">Table 30 </span><span class="caption-text">S-CORE Docs-as-Code safety evaluation</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id14">
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">S-CORE Docs-as-Code safety evaluation</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 3.7%" />
 <col style="width: 7.4%" />
@@ -1309,10 +1308,7 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage_safety">gd_req__req_linkage_safety</a>.</div>
 </div>
 </td>
-<td><div class="line-block">
-<div class="line"><a class="reference internal" href="#basis-ci">Silent false-negative</a>: Allow links which cannot be safe derivations.</div>
-</div>
-</td>
+<td><p><a class="reference internal" href="#basis-ci">Silent false-negative</a>: Allow links which cannot be safe derivations.</p></td>
 <td><p>yes</p></td>
 <td><p>yes: <a class="reference internal" href="#pr-review">PR review</a></p></td>
 <td><div class="line-block">
@@ -1330,10 +1326,7 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_reporting">gd_req__verification_reporting</a>.</div>
 </div>
 </td>
-<td><div class="line-block">
-<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: a coverage statistic computed wrong.</div>
-</div>
-</td>
+<td><p><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: a coverage statistic computed wrong.</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
 <td><p>no: Qualify coverage statistics.</p></td>
@@ -1346,10 +1339,7 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_viewpoints">gd_req__arch_viewpoints</a>.</div>
 </div>
 </td>
-<td><div class="line-block">
-<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: a diagram misrepresents the architecture.</div>
-</div>
-</td>
+<td><p><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: a diagram misrepresents the architecture.</p></td>
 <td><p>yes</p></td>
 <td><p>yes: <a class="reference internal" href="#pr-review">PR review</a> includes architecture inspection</p></td>
 <td><p>yes</p></td>
@@ -1396,10 +1386,7 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_man">gd_guidl__saf_man</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_manual">wp__platform_safety_manual</a>.</div>
 </div>
 </td>
-<td><div class="line-block">
-<div class="line"><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: <code class="docutils literal notranslate"><span class="pre">aou_req</span></code> items might be missing or wrong.</div>
-</div>
-</td>
+<td><p><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: <code class="docutils literal notranslate"><span class="pre">aou_req</span></code> items might be missing or wrong.</p></td>
 <td><p>yes</p></td>
 <td><p>yes: <a class="reference internal" href="#pr-review">PR review</a></p></td>
 <td><p>no: Qualify <code class="docutils literal notranslate"><span class="pre">needtable</span></code></p></td>
@@ -1408,14 +1395,23 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 </tr>
 <tr class="row-odd"><td><p>M8</p></td>
 <td><div class="line-block">
+<div class="line"><strong>Backlinks</strong> — for bi-directional traceability, generate correct backlinks for links between Needs items.</div>
+</div>
+</td>
+<td><p><a class="reference internal" href="#basis-ci">Silent wrong-output</a>: Generated backlinks are wrong or missing.</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no: Qualify backlinks in HTML</p></td>
+<td><p>yes (qualification)</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-even"><td><p>M9</p></td>
+<td><div class="line-block">
 <div class="line"><strong>Documentation generation</strong> — apart from the aspects <strong>not covered by previous malfunctions</strong>.</div>
 <div class="line">See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attributes_manual">gd_req__doc_attributes_manual</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_process_reqs.html#gd_req__doc_attr_status">gd_req__doc_attr_status</a>.</div>
 </div>
 </td>
-<td><div class="line-block">
-<div class="line">Incomplete, outdated, or mis-rendered HTML.</div>
-</div>
-</td>
+<td><p>Incomplete, outdated, or mis-rendered HTML.</p></td>
 <td><p>no: <a class="reference internal" href="#basis-ti1">Derived-view</a></p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
@@ -1431,8 +1427,8 @@ Rendering/preview defects affect reviewer convenience, not safety evidence.</p>
 <p>The threat model reduces to a single class: <strong>source tampering</strong>. The tool has
 no runtime attack surface — it is a build-time Sphinx extension reading
 source-controlled inputs and writing generated output.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id14">
-<caption><span class="caption-number">Table 31 </span><span class="caption-text">S-CORE Docs-as-Code security evaluation</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id15">
+<caption><span class="caption-number">Table 31 </span><span class="caption-text">S-CORE Docs-as-Code security evaluation</span><a class="headerlink" href="#id15" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 4.0%" />
 <col style="width: 8.0%" />
