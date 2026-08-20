@@ -128,6 +128,8 @@ See also `module template repository <https://github.com/eclipse-score/module_te
 
    <module_name>/                       -> Folder containing all artifacts corresponding to one module.
    │                                       As folder optional if the repository only contains a single module.
+   ├── .github/                         -> GitHub configuration
+   │   └── workflows/                   -> CI/CD pipelines
    ├── docs/                            -> Documentation of the module
    │   ├── features/                    -> All features of the module.
    │   │   └── <feature_name>/          -> Features including sub-folders and feature/component (change) request
@@ -135,11 +137,11 @@ See also `module template repository <https://github.com/eclipse-score/module_te
    │   │       ├── architecture/        -> Feature architecture
    │   │       │                           [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
    │   │       ├── safety_analysis/     -> Safety analysis on feature level
-   │   │       │                           [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
+   │   │       │                           [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`], [:need:`wp__requirements_feat_aou`]
    │   │       ├── safety_planning/     -> Feature specific safety workproducts planning
    │   │       │                           [:need:`wp__platform_safety_plan`]
    │   │       ├── security_analysis/   -> Security analysis on feature level
-   │   │       │                           [:need:`wp__feature_security_analysis`]
+   │   │       │                           [:need:`wp__feature_security_analysis`], [:need:`wp__requirements_feat_aou`]
    │   │       └── security_planning/   -> Feature specific security workproducts planning
    │   │                                   [:need:`wp__platform_security_plan`]
    │   ├── module/                      -> Module documentation
@@ -168,31 +170,38 @@ See also `module template repository <https://github.com/eclipse-score/module_te
    │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
    │   └── verification_report/         -> Module verification report
    │                                       module verifications [:need:`wp__verification_module_ver_report`],
-   └── score/                           -> Folder containing all artifacts corresponding to the components of the module.
-       ├── <component_name>/            -> Components of the module.
-       │   │                               Folder containing all artifacts corresponding to one component.
-       │   ├── docs/                    -> Documentation of the component
-       │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
-       │   │   │                           [:need:`wp__component_arch`].
-       │   │   ├── detailed_design/     -> Detailed Design [:need:`wp__sw_implementation`] and
-       │   │   │                           Detail design + code inspection [:need:`wp__sw_implementation_inspection`],
-       │   │   ├── manuals/             -> User documentation of a single component
-       │   │   │                           (e.g., user manual of a library, optional)
-       │   │   │                           (could contain optional subfolders for configuration guide,
-       │   │   │                           examples user guide, APIs & usage, performance analysis, see module manual folder)
-       │   │   ├── requirements/        -> Component requirements [:need:`wp__requirements_comp`],
-       │   │   │                           requirements inspection [:need:`wp__requirements_inspect`]
-       │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
-       │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
-       │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
-       │   ├── src/                     -> Source files of the component consisting of
-       │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
-       │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-       │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
-       │   └── tests/                   -> Component-level tests (e.g., integration tests)
-       │                                   [:need:`wp__verification_comp_int_test`]
-       └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
-                                           [:need:`wp__verification_feat_int_test`]
+   ├── examples/                        -> Usage examples for the module / features
+   ├── score/                           -> Folder containing all artifacts corresponding to the components of the module.
+   │   ├── <component_name>/            -> Components of the module.
+   │   │   │                               Folder containing all artifacts corresponding to one component.
+   │   │   ├── docs/                    -> Documentation of the component
+   │   │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
+   │   │   │   │                           [:need:`wp__component_arch`], [:need:`wp__sw_arch_verification`].
+   │   │   │   ├── detailed_design/     -> Detailed Design [:need:`wp__sw_implementation`] and
+   │   │   │   │                           Detail design + code inspection [:need:`wp__sw_implementation_inspection`],
+   │   │   │   ├── manuals/             -> User documentation of a single component
+   │   │   │   │                           (e.g., user manual of a library, optional)
+   │   │   │   │                           (could contain optional subfolders for configuration guide,
+   │   │   │   │                           examples user guide, APIs & usage, performance analysis, see module manual folder)
+   │   │   │   ├── requirements/        -> Component requirements [:need:`wp__requirements_comp`],
+   │   │   │   │                           requirements inspection [:need:`wp__requirements_inspect`]
+   │   │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
+   │   │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`], [:need:`wp__requirements_comp_aou`]
+   │   │   │   │                           component classification [:need:`wp__sw_component_class`] for pre-existing software
+   │   │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
+   │   │   │                               [:need:`wp__sw_component_security_analysis`], [:need:`wp__requirements_comp_aou`]
+   │   │   ├── src/                     -> Source files of the component consisting of
+   │   │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
+   │   │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
+   │   │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
+   │   │   └── tests/                   -> Component-level tests (e.g., integration tests)
+   │   │                                   [:need:`wp__verification_comp_int_test`]
+   │   └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
+   │                                       [:need:`wp__verification_feat_int_test`]
+   ├── MODULE.bazel                     -> Bazel module definition
+   ├── BUILD                            -> Root build rules
+   ├── project_config.bzl               -> Project metadata used by Bazel macros
+   └── README.md                        -> Entry point of the repository
 
 .. note::
 
@@ -211,16 +220,18 @@ For identification of the single feature, the repository name or module name sho
 
     <module_name>/                       -> Folder containing all artifacts corresponding to one module.
     │                                       As folder optional if the repository only contains a single module.
+    ├── .github/                         -> GitHub configuration
+    │   └── workflows/                   -> CI/CD pipelines
     ├── docs/                            -> Documentation of the module
     │   ├── features/                    -> Feature folder parts for each feature which should be in module documentation
     │   |   ├── architecture/            -> Feature architecture
     │   |   │                               [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
     │   |   ├── safety_analysis/         -> Safety analysis on feature level
-    │   |   │                               [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
+    │   |   │                               [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`], [:need:`wp__requirements_feat_aou`]
     │   |   ├── safety_planning/         -> Feature specific safety workproducts planning
     │   |   │                               [:need:`wp__platform_safety_plan`]
     │   |   ├── security_analysis/       -> Security analysis on feature level
-    │   |   │                               [:need:`wp__feature_security_analysis`]
+    │   |   │                               [:need:`wp__feature_security_analysis`], [:need:`wp__requirements_feat_aou`]
     │   |   └── security_planning/       -> Feature specific security workproducts planning
     │   │                                   [:need:`wp__platform_security_plan`]
     │   ├── module/                      -> Module documentation
@@ -249,28 +260,35 @@ For identification of the single feature, the repository name or module name sho
     │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
     │   └── verification_report/         -> Module verification report
     │                                       module verifications [:need:`wp__verification_module_ver_report`],
-    └── score/                           -> Folder containing all artifacts corresponding to the components of the module.
-        ├── <component_name>/            -> Components of the module.
-        │   │                               Folder containing all artifacts corresponding to one component.
-        │   ├── docs/                    -> Documentation of the component
-        │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
-        │   │   │                           [:need:`wp__component_arch`].
-        │   │   ├── detailed_design/     -> Detailed Design [:need:`wp__sw_implementation`] and
-        │   │   │                           Detail design + code inspection [:need:`wp__sw_implementation_inspection`],
-        │   │   ├── manuals/             -> User documentation of a single component
-        │   │   │                           (e.g., user manual of a library, optional)
-        │   │   │                           (could contain optional subfolders for configuration guide,
-        │   │   │                           examples user guide, APIs & usage, performance analysis, see module manual folder)
-        │   │   ├── requirements/        -> Component requirements [:need:`wp__requirements_comp`],
-        │   │   │                           requirements inspection [:need:`wp__requirements_inspect`]
-        │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
-        │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
-        │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
-        │   ├── src/                     -> Source files of the component consisting of
-        │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
-        │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-        │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
-        │   └── tests/                   -> Component-level tests (e.g., integration tests)
-        │                                   [:need:`wp__verification_comp_int_test`]
-        └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
-                                            [:need:`wp__verification_feat_int_test`]
+    ├── examples/                        -> Usage examples for the module / features
+    ├── score/                           -> Folder containing all artifacts corresponding to the components of the module.
+    │   ├── <component_name>/            -> Components of the module.
+    │   │   │                               Folder containing all artifacts corresponding to one component.
+    │   │   ├── docs/                    -> Documentation of the component
+    │   │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
+    │   │   │   │                           [:need:`wp__component_arch`], [:need:`wp__sw_arch_verification`].
+    │   │   │   ├── detailed_design/     -> Detailed Design [:need:`wp__sw_implementation`] and
+    │   │   │   │                           Detail design + code inspection [:need:`wp__sw_implementation_inspection`],
+    │   │   │   ├── manuals/             -> User documentation of a single component
+    │   │   │   │                           (e.g., user manual of a library, optional)
+    │   │   │   │                           (could contain optional subfolders for configuration guide,
+    │   │   │   │                           examples user guide, APIs & usage, performance analysis, see module manual folder)
+    │   │   │   ├── requirements/        -> Component requirements [:need:`wp__requirements_comp`],
+    │   │   │   │                           requirements inspection [:need:`wp__requirements_inspect`]
+    │   │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
+    │   │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`], [:need:`wp__requirements_comp_aou`]
+    │   │   │   │                           component classification [:need:`wp__sw_component_class`] for pre-existing software
+    │   │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
+    │   │   │                               [:need:`wp__sw_component_security_analysis`], [:need:`wp__requirements_comp_aou`]
+    │   │   ├── src/                     -> Source files of the component consisting of
+    │   │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
+    │   │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
+    │   │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
+    │   │   └── tests/                   -> Component-level tests (e.g., integration tests)
+    │   │                                   [:need:`wp__verification_comp_int_test`]
+    │   └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
+    │                                       [:need:`wp__verification_feat_int_test`]
+    ├── MODULE.bazel                     -> Bazel module definition
+    ├── BUILD                            -> Root build rules
+    ├── project_config.bzl               -> Project metadata used by Bazel macros
+    └── README.md                        -> Entry point of the repository
