@@ -170,7 +170,6 @@ See also `module template repository <https://github.com/eclipse-score/module_te
    │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
    │   └── verification_report/         -> Module verification report
    │                                       module verifications [:need:`wp__verification_module_ver_report`],
-   ├── examples/                        -> Usage examples for the module / features
    ├── score/                           -> Folder containing all artifacts corresponding to the components of the module.
    │   ├── <component_name>/            -> Components of the module.
    │   │   │                               Folder containing all artifacts corresponding to one component.
@@ -260,7 +259,6 @@ For identification of the single feature, the repository name or module name sho
     │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
     │   └── verification_report/         -> Module verification report
     │                                       module verifications [:need:`wp__verification_module_ver_report`],
-    ├── examples/                        -> Usage examples for the module / features
     ├── score/                           -> Folder containing all artifacts corresponding to the components of the module.
     │   ├── <component_name>/            -> Components of the module.
     │   │   │                               Folder containing all artifacts corresponding to one component.
