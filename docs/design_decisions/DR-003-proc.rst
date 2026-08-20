@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-DR-002-Proc: Module Folder Structure
+DR-003-Proc: Module Folder Structure
 ====================================
 
 In each DR file, include the following sections:
