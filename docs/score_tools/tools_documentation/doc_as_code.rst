@@ -168,10 +168,9 @@ PR Review
 .. _basis-ti1:
 
 Derived-view
-   The rendered output (HTML, architecture diagrams, cross-repo links, PR
-   previews) is a derived view; the authoritative safety artifacts are the source-controlled work products.
-   There is one exception, the architecture views (covered below in M4).
-   Traceability is enforced at the source level.
+   The rendered HTML output is a derived view;
+   the authoritative safety artifacts are mostly the source-controlled work products.
+   There are two exceptions, the architecture views (see M4) and backlinks (see M8).
    Rendering/preview defects affect reviewer convenience, not safety evidence.
 
 
@@ -203,7 +202,7 @@ Derived-view
    * - M2
      - | **Safety-critical linking enforcement**.
        | See :need:`gd_req__req_linkage_safety`.
-     - | `Silent false-negative <basis-ci_>`_: Allow links which cannot be safe derivations.
+     - `Silent false-negative <basis-ci_>`_: Allow links which cannot be safe derivations.
      - yes
      - yes: `PR review <pr_review_>`_
      - | no: Qualify graph checks.
@@ -214,7 +213,7 @@ Derived-view
    * - M3
      - | **Requirements coverage statistics** — count, per requirement type, the requirements carrying a ``testlink``, compute link-coverage percentages.
        | See :need:`gd_req__verification_reporting`.
-     - | `Silent wrong-output <basis-ci_>`_: a coverage statistic computed wrong.
+     - `Silent wrong-output <basis-ci_>`_: a coverage statistic computed wrong.
      - yes
      - no
      - no: Qualify coverage statistics.
@@ -223,7 +222,7 @@ Derived-view
    * - M4
      - | **Architecture visualization** — generate architecture diagrams.
        | See :need:`gd_req__arch_viewpoints`.
-     - | `Silent wrong-output <basis-ci_>`_: a diagram misrepresents the architecture.
+     - `Silent wrong-output <basis-ci_>`_: a diagram misrepresents the architecture.
      - yes
      - yes: `PR review <pr_review_>`_ includes architecture inspection
      - yes
@@ -252,16 +251,25 @@ Derived-view
    * - M7
      - | **Listing assumptions of use** — safety manuals use ``needtable`` to communicate safety-critical assumptions of use to users.
        | See :need:`gd_guidl__saf_man`, :need:`wp__platform_safety_manual`.
-     - | `Silent wrong-output <basis-ci_>`_: ``aou_req`` items might be missing or wrong.
+     - `Silent wrong-output <basis-ci_>`_: ``aou_req`` items might be missing or wrong.
      - yes
      - yes: `PR review <pr_review_>`_
      - no: Qualify ``needtable``
      - yes: qualification
      - low
    * - M8
+     - | **Backlinks** — for bi-directional traceability, generate correct backlinks for links between Needs items.
+       | See :need:`doc_concept__general_traceability`.
+     - `Silent wrong-output <basis-ci_>`_: Generated backlinks are wrong or missing.
+     - no
+     - no
+     - no: Qualify backlinks in HTML
+     - yes (qualification)
+     - low
+   * - M9
      - | **Documentation generation** — apart from the aspects **not covered by previous malfunctions**.
        | See :need:`gd_req__doc_attributes_manual`, :need:`gd_req__doc_attr_status`.
-     - | Incomplete, outdated, or mis-rendered HTML.
+     - Incomplete, outdated, or mis-rendered HTML.
      - no: `Derived-view <basis-ti1_>`_
      - no
      - yes
