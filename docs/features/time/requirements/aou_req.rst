@@ -1,6 +1,6 @@
-
+..
    # *******************************************************************************
-   # Copyright (c) 2026 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -31,7 +31,7 @@ Time Feature Assumption of Use Requirements
    :status: valid
    :version: 1
 
-   If the system using the S-CORE Time feature has the safety goal to achive end-to-end integrity of
+   If the system using the S-CORE Time feature has the safety goal to achieve end-to-end integrity of
    the vehicle time information, the involved external components (like grand master clock, any
    intermediate master clock, and time-aware bridges/switches) must support respective measures for
    the integrity protection.

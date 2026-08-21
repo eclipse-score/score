@@ -887,7 +887,7 @@ Time
    The SW-platform shall provide access to the synchronized vehicle time.
    Access shall be free from interferences for the consuming components.
 
-Note (providing tracebility as long as safety analysis is not available):
+Note (providing traceability as long as safety analysis is not available):
    :need:`stkh_req__time__vehicle_time_api` requires backing by :need:`aou_req__platform__veh_time_e2e_integrity`
    to guarantee end-to-end data integrity.
 
@@ -943,7 +943,7 @@ Note (providing tracebility as long as safety analysis is not available):
 
    Note: to which clock the high resolution clock is mapped, depends on the system design.
 
-Note (allowing tracebility as long as safety analysis is not available):
+Note (allowing traceability as long as safety analysis is not available):
    :need:`stkh_req__time__high_res_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
    to guarantee FFI and clock data integrity on OS and HW level.
 
@@ -962,7 +962,7 @@ Note (allowing tracebility as long as safety analysis is not available):
 
    Note: to which clock the monotonic clock is mapped, depends on the system design.
 
-Note (allowing tracebility as long as safety analysis is not available):
+Note (allowing traceability as long as safety analysis is not available):
    :need:`stkh_req__time__monotonic_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
    to guarantee FFI and clock data integrity on OS and HW level.
 
