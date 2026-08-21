@@ -66,6 +66,10 @@ Time Synchronization
    The **score::time feature** shall provide an API to access the synchronized vehicle time.
    Usage of this API shall be free from interferences for the consuming components.
 
+Note (providing tracebility as long as safety analysis is not available):
+   :need:`feat_req__time__vehicle_time_time_api` requires backing by :need:`aou_req__feature__veh_time_e2e_integrity`
+   to guarantee end-to-end data integrity.
+
 .. feat_req:: Vehicle Time base accuracy qualifier
    :id: feat_req__time__vehicle_time_acc_qual_api
    :reqtype: Functional
