@@ -61,14 +61,14 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
   * - REQ_01_01
     - Is the requirement formulation template used?
     - see :need:`gd_temp__req_formulation`, this includes the use of "shall".
-    - Yes
-    -
+    - No
+    - feat_req__persistency__prod_mode second sentence is not using "shall".
     -
   * - REQ_02_01
     - Is the requirement description *comprehensible* ?
     - If you think the requirement is hard to understand, comment here.
     - Yes
-    - No remarks
+    - All requirements are easy to understand.
     - https://github.com/eclipse-score/score/issues/960
   * - REQ_02_02
     - Is the requirement description *unambiguous* ?
@@ -81,7 +81,7 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
     - A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The sentence template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.
     -
     -
-    - 
+    -
   * - REQ_02_04
     - Is the requirement description *feasible* ?
     - Expectation is that at the time of the inspection the requirement has already some implementation. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement is not mature enough at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
@@ -97,8 +97,8 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
   * - REQ_03_01
     - Is the *linkage to the parent requirement* correct?
     - Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.
-    -
-    -
+    - Yes
+    - No remarks
     -
   * - REQ_04_01
     - Is the requirement *internally and externally consistent*?
@@ -115,9 +115,9 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
   * - REQ_06_01
     - Does the Requirement consider *external interfaces*?
     - The SW platform's external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the data consumed and set on these interfaces. Are output values completely defined?
-    - Yes
-    - No remarks
-    - https://github.com/eclipse-score/score/issues/960
+    - NO
+    - security settings to security feature and redundancy settings to filesystem to be defined .
+    -
   * - REQ_07_01
     - Is the *safety* attribute set correctly?
     - Derived requirements are checked automatically, see :need:`gd_req__req_linkage_safety`. But for the top level requirements (and also all AoU) this needs to be checked manually for correctness.
@@ -133,8 +133,8 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
   * - REQ_08_01
     - Is the requirement *verifiable*?
     - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
-    -
-    -
+    - NO
+    - :need:`feat_req__persistency__support_datatype_value` - Enumerate the data types or provide link to c++ and rust types.
     -
   * - REQ_08_02
     - Is the requirement verifiable by design or code review in case it is not feasibly testable?
