@@ -38,10 +38,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
@@ -313,10 +313,10 @@ const runMermaid = async (rerun) => {
     all_mermaids = document.querySelectorAll(".mermaid");
     const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
 
-    if ("False" === "True") {
+    if ("True" === "True") {
         const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
         if(mermaids_to_add_zoom > 0) {
-            var svgs = d3.selectAll("");
+            var svgs = d3.selectAll(".mermaid svg");
             if(all_mermaids.length !== mermaids_processed.length) {
                 setTimeout(() => runMermaid(false), 200);
                 return;
@@ -428,7 +428,7 @@ const runMermaid = async (rerun) => {
                 svg.style.maxWidth = '100%';
                 svg.style.sdisplay = 'block';
 
-                if ("False" === "True") {
+                if ("True" === "True") {
                     setTimeout(() => {
                         const g = svg.querySelector('g');
                         if (g) {
@@ -602,22 +602,22 @@ window.runMermaid = runMermaid;</script>
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -695,6 +695,13 @@ window.runMermaid = runMermaid;</script>
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -818,22 +825,22 @@ window.runMermaid = runMermaid;</script>
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -904,6 +911,13 @@ window.runMermaid = runMermaid;</script>
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -979,6 +993,8 @@ window.runMermaid = runMermaid;</script>
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-strat.html">DR-002-Strat: Eclipse Project Structure for S-Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-strat.html">DR-003-Strat: Module Maturity Classification (Release / Experimental / Preview)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
@@ -1065,7 +1081,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-06-29</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-259b8cd0">
+<div class="need_container docutils container" id="SNCB-d542fbbc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1086,7 +1102,7 @@ window.runMermaid = runMermaid;</script>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
 <div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option M because of slight IDE usability edge over Option B</span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>0</span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1422,7 +1438,7 @@ the modules’ <code class="docutils literal notranslate"><span class="pre">conf
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-008-infra.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/design_decisions/DR-008-infra.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

@@ -36,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=2e2696d1" />
@@ -311,10 +311,10 @@ const runMermaid = async (rerun) => {
     all_mermaids = document.querySelectorAll(".mermaid");
     const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
 
-    if ("False" === "True") {
+    if ("True" === "True") {
         const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
         if(mermaids_to_add_zoom > 0) {
-            var svgs = d3.selectAll("");
+            var svgs = d3.selectAll(".mermaid svg");
             if(all_mermaids.length !== mermaids_processed.length) {
                 setTimeout(() => runMermaid(false), 200);
                 return;
@@ -426,7 +426,7 @@ const runMermaid = async (rerun) => {
                 svg.style.maxWidth = '100%';
                 svg.style.sdisplay = 'block';
 
-                if ("False" === "True") {
+                if ("True" === "True") {
                     setTimeout(() => {
                         const g = svg.querySelector('g');
                         if (g) {
@@ -598,22 +598,22 @@ window.runMermaid = runMermaid;</script>
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -691,6 +691,13 @@ window.runMermaid = runMermaid;</script>
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -812,22 +819,22 @@ window.runMermaid = runMermaid;</script>
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -898,6 +905,13 @@ window.runMermaid = runMermaid;</script>
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="modules/index.html">
+    Modules
   </a>
 </li>
 

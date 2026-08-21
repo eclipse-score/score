@@ -38,10 +38,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
@@ -166,22 +166,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -259,6 +259,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -382,22 +389,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -468,6 +475,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../users_guide/index.html">
     User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
   </a>
 </li>
 
@@ -556,6 +570,7 @@
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_development.html">Software Development Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -623,7 +638,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-2e365af2">
+  <div class="need_container docutils container" id="SNCB-9581d524">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__config_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -689,7 +704,7 @@ and other project relevant artifacts can be reached and maintained.</p>
 <li><p>how to backup and recover (including long term storage)</p></li>
 <li><p>how to report the configuration status</p></li>
 </ul>
-<p>note: for definition of “configuration items” check <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/configuration_concept.html#doc_concept__configuration_process">doc_concept__configuration_process</a></p>
+<p>note: for definition of <a class="reference internal" href="glossary.html#term-Configuration-Item"><span class="xref std std-term">Configuration Item</span></a> check <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/configuration_concept.html#doc_concept__configuration_process">doc_concept__configuration_process</a></p>
 </section>
 <section id="approach">
 <h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
@@ -745,14 +760,14 @@ See also <a class="reference internal" href="change_management.html#doc__platfor
 <ul class="simple">
 <li><p>local branches - created from “remote” branches, in these the development of the contributors takes place, no restriction on naming.</p></li>
 <li><p>main branch - a “remote” branch (named “main”) which contains all the latest file versions checked by CI, reviewed, accepted and merged.</p></li>
-<li><p>release branch - a “remote” branch derived from main branch which is used to prepare a release,
+<li><p><a class="reference internal" href="glossary.html#term-Release-Branch"><span class="xref std std-term">Release Branch</span></a> - a “remote” branch derived from main branch which is used to prepare a release,
 no functional code changes are allowed, only bug fixes and verification based improvements.
 Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_concept.html#doc_concept__rel_process">doc_concept__rel_process</a>.</p></li>
 </ul>
 <p>The “remote” branch is not “local” to the developer but resides on the “remote” GitHub server.</p>
 <p>In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline (per repository) for these
 (and not multiple ones for each of the work products types which are maintained in separate tools).
-Baselines are created by using the GitHub “tag” function. The tag name shall correspond to
+Baseline tags are created by using the GitHub “tag” function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also <a class="reference internal" href="release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>.</p>
 <p>As described in “Identification and Properties” above, there are several repositories.
@@ -869,7 +884,7 @@ The respective tools used in the project are:</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/config_management.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/platform_management_plan/config_management.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
