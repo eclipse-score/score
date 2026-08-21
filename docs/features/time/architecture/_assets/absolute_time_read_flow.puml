@@ -1,0 +1,51 @@
+@startuml
+
+hide footbox
+
+autonumber "<font color=red><b>[00]"
+
+title Absolute Time read (feature view)
+
+legend top left
+| <#LightCoral>  | external time source |
+| <#LightBlue>   | score platform stack |
+| <#LightGreen>  | score::time feature  |
+| <#LightSalmon> | application          |
+endlegend
+
+!pragma teoz true
+box "ECU" #f0f5f5
+  box "Application process" #e6ffe6
+    participant "Application"                   as app    #LightSalmon
+    participant "Absolute Clock\n(client side)" as ac     #LightGreen
+  end box
+  box "score::time provider process" #e6ffe6
+    participant "Absolute time\nreceiver"       as recv   #LightGreen
+  end box
+  participant "score::someip" as someip #LightBlue
+end box
+participant "External time master" as master #LightCoral
+
+== Initialization ==
+app -> ac : init()
+ac --> app : ready
+
+== Absolute time provisioning (background) ==
+loop periodically
+  master -> master : capture absolute time;\nattach Delay Tag;\nderive accuracy & security
+  master -> someip : absolute time, Delay Tag,\naccuracy & security
+  someip -->> recv : deliver the four values
+  recv -> recv : convert Delay Tag to a local monotonic tag;\nderive Absolute Time status
+  note left
+    Side effect: absolute time is
+    also applied to OS CLOCK_REALTIME
+  end note
+  recv -->> ac : publish latest snapshot
+end
+
+== Reading the time ==
+app -> ac : now()
+ac -> ac : compensate on the local monotonic base\n(elapsed since the local tag)
+ac --> app : Snapshot\n(absolute TimePoint + \nAbsolute Time status)
+
+@enduml

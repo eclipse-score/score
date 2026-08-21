@@ -1,0 +1,46 @@
+@startuml
+
+hide footbox
+
+autonumber "<font color=red><b>[00]"
+
+title Local Time read (feature view)
+
+legend top left
+| <#LightGreen>  | score::time feature  |
+| <#LightSalmon> | application          |
+| <#LightGrey>   | OS / local time base |
+endlegend
+
+!pragma teoz true
+box "ECU" #f0f5f5
+  box "Application process" #e6ffe6
+    participant "Application"                as app #LightSalmon
+    participant "Local Clock\n(client side)" as lc  #LightGreen
+  end box
+  participant "OS" as os #LightGrey
+end box
+
+== Steady Clock ==
+app -> lc : now()
+lc -> os : CLOCK_MONOTONIC\n(std::chrono::steady_clock)
+os --> lc : TimePoint
+lc --> app : Snapshot (TimePoint)
+
+== System Clock ==
+app -> lc : now()
+lc -> os : CLOCK_REALTIME\n(std::chrono::system_clock)
+os --> lc : TimePoint
+note left
+  Kept aligned to Absolute Time
+  by score::time
+end note
+lc --> app : Snapshot (TimePoint)
+
+== High-Resolution Clock ==
+app -> lc : now()
+lc -> os : ClockCycles
+os --> lc : TimePoint
+lc --> app : Snapshot (TimePoint)
+
+@enduml

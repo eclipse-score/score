@@ -37,17 +37,14 @@ Time
    requirements/index
    requirements/aou_req
 
-Feature flag
-============
-
-To activate this feature, use the following feature flag:
-
-``experimental_time``
-
-
 Abstract
 ========
 
+The :term:`score::time` feature provides applications with a uniform, type-safe API for reading
+time from three independent time bases: :term:`Vehicle Time` (network-synchronized),
+local time (OS clocks) and :term:`Absolute Time` (external UTC source). The feature owns
+the synchronization of the synchronized time bases and supports test-time substitution of all
+clock interfaces.
 
 Motivation
 ==========
@@ -74,7 +71,7 @@ In-Vehicle Time Synchronization
 
 Within the vehicle, synchronization ensures that all ECUs reference a consistent internal time. In modern architectures, this is achieved by designating a statically defined Time Grand Master, typically a zonal controller equipped with a fast-booting microcontroller and responsible for early vehicle functions such as key detection. This controller synchronizes with the external time source and propagates time over the in-vehicle network.
 
-The synchronization protocols relevant here are primarily Ethernet-based. The focus lies on gPTP (IEEE 802.1AS) and the corresponding specifications in AUTOSAR Adaptive to ensure compatibility with existing ECUs. Syntonization, the alignment of clock frequency, is as essential as synchronization and must be supported to maintain long-term timing consistency.
+The synchronization protocols relevant here are primarily Ethernet-based. The focus lies on gPTP (IEEE 802.1AS) and the corresponding specifications in AUTOSAR Adaptive to ensure compatibility with existing ECUs. :term:`Syntonization`, the alignment of clock frequency, is as essential as synchronization and must be supported to maintain long-term timing consistency.
 
 Bridging between different network domains (e.g., Ethernet to CAN) is outside the scope of this feature. In the system context, the High-Performance Computer (HPC) is assumed to be a slave in the time distribution topology and connects via Ethernet to the grandmaster. Time synchronization within CAN segments, typically handled by zonal controllers, is not covered by this feature.
 
@@ -97,7 +94,11 @@ Access to TimePoints should be as performant as technically feasible due to thei
 
 For cryptographic scenarios the feature also targets secure or authentic clocks. In such cases, a tamper-resistant time source is needed to ensure that time cannot be rolled back to re-enable expired certificates or bypass security controls. Authentic clocks might be signed or verified using hardware security modules.
 
-To integrate cleanly with modern programming languages, the time access API should align with idiomatic constructs (e.g., ``std::chrono`` in C++, ``time`` in Rust), while making clear that the source of time is provided by the S-CORE platform. A dedicated namespace such as ``score::chrono`` may wrap native types to make the time source explicit.
+Within :term:`score::time`, secure or authentic clocks correspond to the :term:`Absolute Clock`,
+which carries a :term:`security qualifier` indicating whether the received time may be treated as
+trustworthy. Hardware security module integration is out of scope for the feature.
+
+To integrate cleanly with modern programming languages, the time access API aligns with idiomatic constructs (e.g., ``std::chrono`` in C++, ``time`` in Rust), while making clear that the source of time is provided by the S-CORE platform. The :term:`score::time` namespace wraps native types to make the time source explicit.
 
 Consistent Logical Time Within Cause-Effect Cycles
 --------------------------------------------------
@@ -112,6 +113,9 @@ Sharing a consistent logical timestamp ensures deterministic computations. For i
 
 Logical time must be explicitly provided to the tasks within these cause-effect chains, but its availability in background processes or non-time-sensitive tasks is not required.
 
+Consistent logical time for cause-effect chains is out of scope for :term:`score::time`; it is a
+scheduling and middleware concern, not a clock domain provided by this feature.
+
 
 .. Rationale
 .. ==========
@@ -120,88 +124,48 @@ Logical time must be explicitly provided to the tasks within these cause-effect 
 Specification
 =============
 
-.. note::
-   From S-CORE workshop regarding Clocks, Accuracy, and Reading Current Time:
+The core time model concepts — :term:`Clock`, :term:`TimePoint`, :term:`TimeSpan` and their
+operations and properties — are formally defined in the :doc:`Terms and Definitions <glossary>`.
 
-   The basic concept of Time is represented by two initial and one derived element:
+Architectural design
+--------------------
 
-   *Clocks* are the sources of time. A clock produced a sequence on *Timepoints*, each representing a specific point in time.
-   Timepoints have an Order, i.e. the relations "equal" and "less than" are defined. Because of this, TimePoints can be substracted, creating a *TimeSpan*.
+.. toctree::
+   :maxdepth: 1
+   :glob:
 
-   The following operations are valid between TimePoints and TimeSpans:
-
-   * Substraction: TimeSpan := TimePoint - TimePoint; TimeSpan := [TimeSpan - TimeSpan] | Negative TimeSpans shall not be allowed, the substraction saturates to zero.
-   * Addition: TimePoint := TimePoint + TimeSpan; TimeSpan := TimeSpan + TimeSpan
-   * Multiplication: TimeSpan := Factor * TimeSpan
-   * Equality: bool := TimePoint == TimePoint; bool := TimeSpan == TimeSpan
-   * Comparison: bool := TimePoint < TimePoint; bool := TimeSpan < TimeSpan (this includes with equality the less-than-or-equal relation)
-
-   The clock is characterized by main attributes:
-
-   * Frequency: The frequency with which the clock updates the TimePoints it issues.
-   * Resolution: The accuracy of an individual timepoint. While an ideal clock would have a resolution that is the reciproke of the frequency in reality this may not be the case.
-   * Monotony: A clock can be monotonous (TP[n+1] >= TP[n] is always maintained), strictly monotonous or not monotonous
-   * Steady: A steady clock will update in fixed intervals, i.e. each increment is exactly 1/Frequency. For example system clock is neither monotonous nor steady because of summer/winter time and leap seconds.
-   * Epoch: The TimePoint the clock started ticking. The semantic of the epoch is a documentation property of the clock. Example: Unix system clock has an Epoch value of 0 on 01.01.1970, 00:00:00 UTC.
-
-In-Vehicle Time Synchronization
--------------------------------
-
-Definitions:
-
-**Time client**
-An actor that runs on the system and is responsible for
-
-* synchronizing the local clock with an external *time host* using the PTP protocol (IEEE 802.1AS).
-* providing the synchronization meta information to the clients, including score::time feature. Where meta information includes, but not limited to synchronization status (synchronized, not synchronized, unstable), time difference to the external time source, last synchronization time, current time point of the local clock and so on.
-
-**Synchronization process metadata**
-Data which is provided by the **time client** and includes the current synchronized time, synchronization status, rate correction, and so on, which are the output or intermediate artifacts of the synchronization process.
-
-The diagram bellow illustrates the data flow and interactions between the Time client, score::time middleware, and client applications within an ECU during PTP-based time synchronization.
-
-.. uml:: _assets/data_flow.puml
-   :caption: Data flow between time client, score::time, and clients
-
-Where
-
-* The **time client** (gPTP stack) communicates with an external time host to maintain accurate time synchronization using the PTP protocol.
-* The **Time base provider** periodically reads the synchronized time from the Time client, validates it, and writes the results (including status flags and timestamps) into some shared resource towards **score::time** middleware. Different IPC mechanisms can be used for to provide actual synchronized time and its metadata to **Time base provider**, like:
-
-  * shared memory, then the **time client** writes the synchronized time and its metadata into the shared memory, which is then read by the **Time base provider** middleware.
-  * **Time base provider** polls for current EMAC value with ``devctl`` calls.
-  * other IPC methods.
-
-* The **score::time** middleware accesses this shared resource to obtain the latest synchronized time and its metadata, adjusting the time as needed based on the local clock by requests from client applications.
-* This architecture ensures efficient, low-overhead distribution of synchronized time and its status to multiple applications within the ECU, supporting both real-time and diagnostic use cases.
+   ./architecture/index
 
 
-.. Backwards Compatibility
-.. =======================
+Requirements
+============
 
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   ./requirements/*
 
 Security Impact
 ===============
 
+:term:`Absolute Time` carries a :term:`security qualifier` indicating whether the received time
+may be treated as trustworthy. :term:`Vehicle Time` and local time bases have no security
+relevance. Applications consuming Absolute Time shall check the security qualifier before using
+the :term:`TimePoint` in security-sensitive operations.
 
 Safety Impact
 =============
 
+:term:`Vehicle Time` is the only time base with a safety-relevant qualifier. Its
+:term:`Snapshot` carries a :term:`Time point qualifier` indicating whether the
+:term:`TimePoint` may be treated as ASIL-B data or only as QM data. All other time bases
+(local time bases, :term:`Absolute Time`) are QM.
 
-.. License Impact
-.. ==============
+Terms and Definitions
+=====================
 
+.. toctree::
+   :maxdepth: 1
 
-How to Teach This
-==================
-
-.. Rejected Ideas
-.. ==============
-
-
-.. Open Issues
-.. ===========
-
-
-Glossary
-========
+   glossary

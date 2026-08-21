@@ -1,0 +1,57 @@
+@startuml
+
+hide footbox
+
+autonumber "<font color=red><b>[00]"
+
+title Vehicle Time notification (feature view)
+
+legend top left
+| <#LightCoral>  | external time source |
+| <#LightGreen>  | score::time feature  |
+| <#LightSalmon> | application          |
+endlegend
+
+!pragma teoz true
+box "ECU" #f0f5f5
+  box "Application process" #e6ffe6
+    participant "Application"                  as app #LightSalmon
+    participant "Vehicle Clock\n(client side)" as vc  #LightGreen
+  end box
+  box "score::time provider process" #e6ffe6
+    participant "Time slave\n(synchronization)" as slave #LightGreen
+  end box
+end box
+participant "Grand Master" as host #LightCoral
+
+== Subscribe ==
+app -> vc : subscribe(handler, event kind)
+note right
+  Event kinds:
+  - Vehicle Time status change
+  - sync / follow-up frame (sync-fup)
+  - pdelay frame
+  sync-fup and pdelay are independent sequences
+end note
+vc --> app : subscribed
+
+== Event (background) ==
+loop on each subscribed event
+  host <--> slave : synchronize to network time (PTP)
+  slave -> slave : validate, derive Vehicle Time status
+  slave -->> vc : notify event
+  vc -->> app : invoke handler(event)
+end
+
+note over app, slave
+  The PTP payload data (sync-fup / pdelay) is available only via
+  subscription. The Vehicle Time status can also be read from now();
+  subscription additionally delivers it on change.
+  Main use case: diagnostics.
+end note
+
+== Unsubscribe ==
+app -> vc : unsubscribe()
+vc --> app : unsubscribed
+
+@enduml
