@@ -20,7 +20,7 @@ SPDX-License-Identifier: Apache-2.0
 :status: proposed
 :version: 1
 :context: Architecture
-:decision: Separate include/ directory for public API headers, private headers next to sources
+:decision: Bazel-native flat layout — headers next to sources with full project-prefixed include paths; non-public headers isolated in an impl/ subpackage with restricted Bazel visibility
 ```
 
 ---
@@ -45,250 +45,273 @@ than working against it.
 ### Current state in S-CORE
 
 Within S-CORE there is mostly **no separate `include/` directory** in use today.
-Components rely completely on Bazel's `hdrs` attribute to designate public headers,
-with headers and sources living together in a flat directory. This works for Bazel,
-but it makes the public contract of a component invisible at the file-system level:
-a developer has to open `BUILD.bazel` to learn which headers are public, and
-extracting a clean public SDK for non-Bazel consumers requires filtering.
+Components rely on Bazel's `hdrs` attribute to designate public headers, with headers
+and sources living together in a flat directory, and the dominant pattern in
+`communication` and `baselibs` draws the public/private boundary with an `impl/`
+subpackage plus Bazel `visibility`. The main gap is not the layout itself but the lack
+of a *single, documented* convention (include-path style, private-header placement,
+target granularity), which this decision fills.
 
 ### Goals
 
 - Make the public API surface of a component obvious without reading `BUILD.bazel`.
 - Map cleanly onto Bazel's `hdrs`/`srcs` split with minimal boilerplate.
 - Produce clean, collision-free `#include` paths for consumers.
-- Enable simple, folder-level packaging of the public API for non-Bazel consumers.
+- Keep the public API consumable by non-Bazel tools and build systems without source rewrites.
 - Keep the developer's day-to-day workflow (edit `.h` next to `.cc`) reasonable.
 
 ### External references
 
-- **[The Pitchfork Layout (PFL)](https://github.com/vector-of-bool/pitchfork)** —
-  in particular the *separated header placement* convention, where public headers
-  live under [`include/`](https://joholl.github.io/pitchfork-website/#tld.include)
-  and private headers/sources live under `src/`.
 - **[The Canonical Project Structure (P1204R0)](https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html)** —
-  WG21 paper describing a canonical layout with public headers under a
-  project-named subdirectory.
+  WG21 paper (Boris Kolpackov, 2018) proposing a canonical layout for new C++
+  projects. It places headers and sources **next to each other** under a
+  project-named subdirectory (`<name>/<name>/…`), uses project-prefixed include
+  paths (`#include <name/foo.hpp>`), and keeps implementation-detail/private headers
+  in a `details/`/`private/` subdirectory. Its *Source Directory* section explicitly
+  argues **against** the separate `include/` + `src/` split.
+- **[The Pitchfork Layout (PFL)](https://github.com/vector-of-bool/pitchfork)** —
+  a community convention whose *separated* variant places public headers under
+  `include/` and private headers/sources under `src/`. It is an unfinished,
+  experimental effort: the repository has **no releases** and no commits since
+  ~2018, so it is a historical reference point rather than a maintained standard.
+- **[Bazel C++ use cases](https://bazel.build/tutorials/cpp-use-cases)** — the Bazel
+  documentation presents the `include/` layout only as a *legacy adoption* case and
+  steers new projects toward repo-root-relative include paths.
 
-Both references converge on placing public headers under a dedicated,
-project-named include root.
+These references do **not** converge: the Canonical Project Structure and Bazel
+deliberately keep headers next to sources, whereas the (dormant) Pitchfork Layout
+separates them. This DR follows the former.
 
 ---
 
 ## Options Considered
 
-### Option A: Flat Directory Structure (headers and sources mixed)
+### Option A: Bazel-native flat layout (headers next to sources) — recommended
 
-All public headers, private headers, and source files live together in the same
-directory (e.g. `libs/my_lib/`). Public vs. private is expressed *only* through the
-Bazel `hdrs`/`srcs` split. This is the current de-facto S-CORE convention.
+Headers and sources live **next to each other** in the component's package, and the
+public/private boundary is drawn by Bazel: public headers go in `hdrs`, everything
+non-public is isolated in an `impl/` subpackage whose `visibility` is restricted to
+the component. Headers are included by their **full, project-prefixed repo-root path**
+(`#include "score/mw/my_component/my_component.h"`), which keeps include paths globally
+unique. This matches the WG21 Canonical Project Structure and the Bazel recommendation
+for new projects, and it is the dominant pattern already used by `communication` and
+`baselibs`.
 
 ```
-libs/my_lib/
+score/mw/my_component/
 ├── BUILD.bazel
-├── my_lib.h          # public  -> hdrs
-├── my_lib.cc         # source  -> srcs
-├── internal_helper.h # private -> srcs
-└── internal_helper.cc
-```
-
-#### Advantages
-
-- **Zero Bazel path overhead:** No `strip_include_prefix` / `includes` juggling. The
-  header's on-disk path *is* its include path, so there is one obvious way to write
-  an `#include` and no divergence between what the file tree shows and what the
-  compiler sees.
-- **Easier local navigation:** Declarations sit next to their implementations; no
-  jumping between distant folders in the IDE. Refactoring that splits or renames a
-  unit touches a single directory, and "go to file" / fuzzy-open lands on the pair
-  immediately.
-- **Less nesting:** Avoids redundant paths like `.../my_lib/include/my_lib/`, which
-  keeps both the file tree and relative `#include` statements short.
-- **Lowest friction for small or leaf components:** For a component with one or two
-  public headers, a private helper, and its sources, the flat layout has the best
-  effort-to-value ratio — the `include/` + `src/` split adds structure that such a
-  component does not need. This matches how most of S-CORE is organized today.
-- **Single source of truth for the API boundary:** The public surface is defined in
-  exactly one place — the `hdrs` list in `BUILD.bazel`. There is no second, implicit
-  contract encoded in the directory layout that could drift out of sync with the
-  build file (e.g. a header physically under `include/` but not actually in `hdrs`,
-  or vice versa).
-- **Bazel already enforces the boundary:** A consumer can only `#include` headers a
-  dependency lists in `hdrs`; reaching for a private header in `srcs` fails the
-  build regardless of where the file physically sits. The encapsulation guarantee
-  therefore does not depend on the directory structure at all — the flat layout
-  loses no *enforcement*, only *visibility*.
-- **Cheapest migrations and moves:** Moving a component, extracting a sub-library, or
-  promoting a private header to public is a `BUILD.bazel` edit only — no files move
-  on disk, so diffs stay small and reviews stay focused on the API change itself.
-- **Fewer glob edge cases:** With everything in one directory, `glob` patterns are
-  simple and there is no risk of a misplaced file silently falling outside an
-  `include/**` or `src/**` pattern.
-
-#### Disadvantages
-
-- **Public API not visible from the file tree:** Developers must read `BUILD.bazel`
-  to learn which headers are public.
-- **Accidental API exposure:** A private header may be listed in `hdrs` by mistake,
-  or a consumer may reach for an internal header.
-- **Poor scalability:** As the library grows the folder becomes cluttered.
-- **Packaging difficulty:** Extracting only public headers for external (non-Bazel)
-  delivery requires filtering scripts rather than a folder copy.
-- **Weaker as a published module:** Without a prefix to strip, a consumer sees the
-  producer's repo-relative path, which leaks the internal layout and is not
-  namespaced by component:
-
-  ```cpp
-  // consuming @my_lib as a module, flat layout
-  #include "libs/my_lib/my_lib.h"
-  ```
-
-  Getting the clean `#include "my_lib/my_lib.h"` requires adding `include_prefix`
-  (or naming the flat dir `my_lib/`), i.e. reintroducing the Bazel path machinery
-  Option A set out to avoid.
-
----
-
-### Option B: Separate `include/` Directory (industry standard)
-
-Public headers are placed in a dedicated `include/` directory, nested under the
-component name (`include/my_lib/*.h`) to prevent include-path collisions. Private
-headers and sources live under `src/`.
-
-```
-libs/my_lib/
-├── BUILD.bazel
-├── include/
-│   └── my_lib/
-│       └── my_lib.h       # public -> hdrs
-└── src/
-    ├── my_lib.cc          # source  -> srcs
-    ├── internal_helper.h  # private -> srcs
+├── my_component.h            # public  -> hdrs
+├── my_component.cc           # source  -> srcs
+└── impl/                     # non-public: restricted visibility
+    ├── BUILD.bazel
+    ├── internal_helper.h     # implementation detail
     └── internal_helper.cc
 ```
 
 #### Advantages
 
-- **High encapsulation:** The public contract is physically isolated. It is
-  immediately clear to a consumer what may be used.
-- **Clean BUILD files:** `hdrs = glob(["include/**/*.h"])` and
-  `srcs = glob(["src/**"])` without risk of accidentally exposing private files.
-- **Standardized packaging:** Exporting the public API is a single folder copy.
-- **Clear architectural intent:** Naturally enforces good API-design discipline and
-  aligns with the Pitchfork Layout and the Canonical Project Structure.
-- **Collision-free includes:** The `my_lib/` nesting guarantees globally unique
-  include paths, e.g. `#include "my_lib/my_lib.h"`.
+- **Encapsulation enforced by Bazel, not by hope:** `impl/` visibility is restricted
+  to the component's own subpackages, so no external target can depend on internal
+  headers — even the ones a public, templated header must `#include`. The boundary
+  holds for template/inline APIs, which the `include/`-vs-`src/` split cannot (see
+  Option B).
+- **Headers and sources stay together:** Declarations sit next to their
+  implementations. Editing, grep'ing, "go to file", and code browsing (e.g. on GitHub)
+  all land on the pair immediately, and the source tree makes *likely affected code*
+  visible by vicinity — a maintainability property, not just a navigation convenience.
+- **No `strip_include_prefix` machinery:** The header's on-disk path *is* its include
+  path. Non-Bazel tools and other build systems see the file exactly where the
+  `#include` says it is, so packaging and IDE indexing work without source rewrites.
+- **Collision-free include paths:** The repo-root project prefix
+  (`score/mw/my_component/…`) makes every include path globally unique, exactly like
+  an `include/<component>/` nesting would — the uniqueness comes from the prefix, not
+  from a dedicated `include/` directory.
+- **Cheap moves and API changes:** Promoting a private header to public, or extracting
+  a sub-library, is a `BUILD.bazel`/visibility edit plus at most a move into or out of
+  `impl/`; consumer include paths stay stable.
+- **Small, cache-friendly targets:** The layout naturally encourages one focused
+  `cc_library` per package rather than a single repo-wide `glob`, preserving Bazel's
+  incremental-build and caching benefits.
 
 #### Disadvantages
 
-- **Bazel path handling:** Requires `strip_include_prefix = "include"` so consumers
-  can write `#include "my_lib/my_lib.h"` rather than `include/my_lib/my_lib.h`.
-- **Folder redundancy:** The `include/my_lib/` nesting feels redundant to some.
-- **Navigation overhead:** Minor cost from switching between `include/` and `src/`
-  during active development.
+- **Public surface is discoverable via package/visibility rules, not a single
+  directory:** A reviewer identifies the API from what is *not* under `impl/` (and from
+  `hdrs`) rather than from one folder. The `impl/` convention makes this clear in
+  practice, but it is less immediately obvious than a dedicated `include/` tree.
+- **Discipline required on include paths:** Contributors must consistently use the
+  full project-prefixed path; a reset prefix (`strip_include_prefix = "."`) would
+  collapse paths to bare filenames and reintroduce collision risk (see *Header Name
+  Collisions Across Modules*).
 
 ---
 
-### Option C: Hybrid Directory Structure
+### Option B: Separate `include/` directory (Pitchfork-style split)
 
-Only strictly public API headers are placed in `include/my_lib/*.h`. All private
-headers (`*.h`) and implementation sources (`*.cc`) sit directly in the main
-directory (or a local `src/` next to it).
+Public headers are placed in a dedicated `include/` directory, nested under the
+component name (`include/my_component/*.h`); private headers and sources live under
+`src/`. Consumers reach public headers via `strip_include_prefix = "include"`.
 
 ```
-libs/my_lib/
+score/mw/my_component/
 ├── BUILD.bazel
 ├── include/
-│   └── my_lib/
-│       └── my_lib.h       # public -> hdrs
-├── my_lib.cc              # source  -> srcs
-├── internal_helper.h      # private -> srcs
-└── internal_helper.cc
+│   └── my_component/
+│       └── my_component.h     # public -> hdrs
+└── src/
+    ├── my_component.cc        # source  -> srcs
+    ├── internal_helper.h      # private -> srcs
+    └── internal_helper.cc
 ```
 
 #### Advantages
 
-- **Reduced navigation overhead:** Developers open `include/` only when changing the
-  public contract; internal headers stay next to their `.cc`.
-- **Clear Bazel separation:** `hdrs` matches `include/**`, `srcs` matches the rest.
-- **Clean API packaging:** Copying `include/` still yields a pristine public SDK
-  with no leakage of private helpers.
+- **Public API is greppable in one place:** For a component with a *purely* runtime
+  (non-templated) API, the `include/` tree lists the public contract without reading
+  `BUILD.bazel`.
+- **Folder-copy packaging *when* the split holds:** If no public header includes a
+  private one, exporting the public API is a copy of `include/`.
 
 #### Disadvantages
 
-- **Inconsistent private-header location:** Some headers live in `include/`, some in
-  the root — developers may be unsure where to look.
-- **Strict include conventions required:** Private headers use relative paths
-  (`#include "internal_helper.h"`) while public headers use the nested path
-  (`#include "my_lib/my_lib.h"`), which must be applied consistently.
+- **The encapsulation benefit is a false promise for template/inline APIs.** Public
+  headers routinely `#include` implementation-detail headers (templates, inline
+  functions). Those details must then also live under `include/` (e.g. in a `details/`
+  subdir), so the split degrades into "all headers in `include/`" and negates its own
+  main advantage. This is the central argument of P1204R0 §4 against the split, and it
+  directly affects S-CORE's templated APIs.
+- **`strip_include_prefix` makes non-Bazel packaging *harder*, not easier.** The
+  include path the source uses (`my_component/my_component.h`) no longer matches the
+  header's on-disk location (`include/my_component/my_component.h`). Any tool that is
+  not Bazel-aware — other build systems, IDEs, static analyzers, downstream packagers
+  — sees mismatched paths and needs source-level rewrites to compile.
+- **Cumbersome navigation and maintenance:** Every edit hops between `include/` and
+  `src/`; grep and code browsing are split across two trees; the vicinity signal for
+  "likely affected code" is lost.
+- **Extra nesting and boilerplate:** `include/my_component/` plus `strip_include_prefix`
+  on every target, and source generators rarely support writing headers and sources to
+  different directories.
+- **Poor fit for Bazel and for modules:** Bazel documents this layout only as a
+  *legacy adoption* case; keeping template-referenced private headers out of the public
+  package fights Bazel's "no referencing files in other packages" rule and pushes
+  toward large, cache-unfriendly targets.
+- **No collision advantage over Option A:** Uniqueness comes from the component-name
+  prefix, which Option A already provides via the repo-root path.
+- **Conflicts with the module folder structure decision:** Reintroducing `src/` (and an
+  `include/` tree) contradicts `dec_rec__platform__module_folder_structure`
+  (DR-003-proc, Alternative C), which removes the component-level `src/` folder (see
+  *Relationship to DR-003-proc*).
+
+---
+
+### Option C: Hybrid (public headers in `include/`, private next to sources)
+
+A hybrid that keeps `include/my_component/` for strictly public headers while leaving
+private headers next to their `.cc`.
+
+```
+score/mw/my_component/
+├── BUILD.bazel
+├── include/
+│   └── my_component/
+│       └── my_component.h     # public -> hdrs
+├── my_component.cc            # source  -> srcs
+├── internal_helper.h          # private -> srcs
+└── internal_helper.cc
+```
+
+This option is **not recommended.** It inherits Option B's `strip_include_prefix`
+tooling problems while adding an inconsistent private-header location, and — like
+Option B — it cannot cleanly separate public from private for template/inline APIs,
+where an implementation-detail header included by a public header would have to move
+into `include/`. In practice it collapses toward either Option A or "all headers in
+`include/`", so it is listed only for completeness.
 
 ---
 
 ## Evaluation Criteria
 
-| Criterion                         | A: Flat | B: Separate `include/` | C: Hybrid |
-|-----------------------------------|:-------:|:----------------------:|:---------:|
-| Public API visible in file tree   |   --    |          ++            |    +      |
-| API encapsulation / leak safety   |    -    |          ++            |    +      |
-| Clean `#include` paths (no collisions) |  +/-  |          ++            |    +      |
-| Bazel `hdrs`/`srcs` clarity        |    -    |          ++            |    +      |
-| Non-Bazel packaging (folder copy)  |   --    |          ++            |    +      |
-| Bazel boilerplate (low is better)  |   ++    |           -            |   +/-     |
-| Local navigation (edit .h next .cc)|   ++    |           -            |    +      |
-| Scalability of large components    |    -    |          ++            |    +      |
-| Consistency / low cognitive load   |    +    |          ++            |    -      |
-| Alignment with PFL / P1204         |    -    |          ++            |    +      |
+| Criterion                                       | A: Bazel-native flat | B: Separate `include/` | C: Hybrid |
+|-------------------------------------------------|:--------------------:|:----------------------:|:---------:|
+| Encapsulation enforced (incl. template APIs)    |         ++           |           -            |    -      |
+| Public API greppable without `BUILD.bazel`      |          +           |          ++            |    +      |
+| Collision-free `#include` paths                 |         ++           |          ++            |    ++     |
+| Works with non-Bazel tools / packaging          |         ++           |           --           |    -      |
+| Headers next to sources (maintainability)       |         ++           |           --           |    +      |
+| Bazel-idiomatic / small cache-friendly targets  |         ++           |           -            |   +/-     |
+| Low Bazel boilerplate                           |         ++           |           -            |    -      |
+| Fit for modularized / template-heavy code       |         ++           |           --           |    -      |
+| Alignment with Canonical Structure & Bazel      |         ++           |           --           |    -      |
+
+Legend: `++` strong fit, `+` partial, `+/-` neutral, `-` weak, `--` poor.
 
 ---
 
 ## Decision Proposal
 
-**Option B: Separate `include/` Directory** — public API headers live under
-`include/<component>/`, private headers and sources live under `src/`.
+**Option A: Bazel-native flat layout.** Public and private headers live next to their
+sources in the component package; the public/private boundary is enforced by Bazel by
+isolating non-public headers in an `impl/` subpackage with restricted `visibility`; and
+all headers are included by their full, project-prefixed repo-root path
+(`#include "score/mw/my_component/my_component.h"`). Targets are kept small and focused
+rather than repo-wide globs.
 
-For components that are small, header-heavy, or where the public/private split is
-trivial, **Option C (Hybrid)** is an accepted variation: keep the `include/<component>/`
-public root, but allow private headers to sit next to their `.cc` in `src/` (or the
-component root). The invariant that must always hold is: **everything a consumer is
-allowed to `#include` lives under `include/<component>/`, and nothing else does.**
+This matches the WG21 Canonical Project Structure, the Bazel recommendation for new
+projects, and the pattern already dominant in `communication` and `baselibs`, so it
+requires **no large-scale migration** of existing code.
 
-**Accepted alternative — flat layout with an `impl/` subpackage.** Because the
-dominant pattern in `communication` and `baselibs` today is a flat layout that draws
-the public/private boundary with an `impl/` subpackage plus Bazel `visibility` (see
-*Prior Art & Existing S-CORE Practice*), that pattern is **explicitly accepted** as an
-equivalent alternative to Option B/C. It satisfies the same invariant by a different
-mechanism: public headers live at the component root, everything non-public lives
-under `<component>/impl/**` whose `visibility` is restricted to the component's own
-subpackages. Components choosing this variant **must** keep implementation headers out
-of any `hdrs` reachable by external consumers and restrict `impl/` visibility
-accordingly. This avoids a large-scale migration of existing components while still
-guaranteeing an enforced, discoverable API boundary. The trade-off versus Option B is
-that the public surface is discoverable via package/visibility rules rather than a
-single directory, and packaging for non-Bazel consumers is less trivial.
+The separate `include/` split (Option B) and the hybrid (Option C) are **rejected**:
+their headline benefit — physical public/private separation — does not survive
+template/inline APIs (a public header that includes an implementation-detail header
+forces that header back into the public tree), and `strip_include_prefix` decouples the
+include path from the on-disk location, which breaks non-Bazel tooling and makes
+packaging harder rather than easier.
 
 ### Rationale
 
-1. **The public contract becomes a first-class, visible artifact.** A reviewer or
-   consumer can see the entire API surface by looking at `include/<component>/`
-   without opening `BUILD.bazel`. This is the single biggest weakness of the current
-   flat approach.
+1. **Encapsulation actually holds.** Restricting `impl/` visibility guarantees that no
+   external target can depend on an internal header, including the
+   implementation-detail headers that public *template* headers must `#include`. The
+   `include/`/`src/` split cannot promise this, because those details end up in the
+   public tree anyway (P1204R0 §4).
 
-2. **It maps directly onto Bazel's `hdrs`/`srcs` model.** The directory boundary and
-   the Bazel visibility boundary coincide, so the file layout reinforces the
-   guarantee Bazel already enforces, instead of leaving it implicit.
+2. **The include path matches the file on disk.** Without `strip_include_prefix`, the
+   path a source writes is exactly where the header lives, so non-Bazel build systems,
+   IDEs, analyzers, and packagers work without source rewrites.
 
-3. **Collision-free include paths.** Nesting under the component name
-   (`include/my_lib/`) guarantees that `#include "my_lib/foo.h"` is globally unique
-   across the whole build graph, which matters at S-CORE scale with many modules.
+3. **Collision-free by prefix.** The repo-root project prefix
+   (`score/mw/my_component/…`) makes include paths globally unique — the same guarantee
+   `include/<component>/` would give, without the extra directory. Collision safety is
+   orthogonal to the directory split and achievable in every option.
 
-4. **Trivial packaging for non-Bazel consumers.** Delivering the public SDK is a
-   folder-level copy of `include/`, not a filtering script over a mixed directory.
+4. **Maintainability by vicinity.** Headers next to sources keep declaration and
+   definition together and make likely-affected code visible in the tree; grep and
+   GitHub browsing are not split across `include/` and `src/`.
 
-5. **Ecosystem alignment.** The layout matches the Pitchfork Layout (separated
-   header placement) and the WG21 Canonical Project Structure, lowering the barrier
-   for external contributors and tooling.
+5. **Idiomatic and cheap.** It is what Bazel and the Canonical Project Structure
+   recommend, it keeps targets small and cache-friendly, and it needs no migration of
+   the existing `communication`/`baselibs` code.
 
-The main cost — a small amount of Bazel boilerplate (`strip_include_prefix`) and the
-`include/<component>/` nesting — is one-time, mechanical, and easily templated.
+The main cost — a public surface that is discovered via the `impl/` convention and
+Bazel visibility rather than a single `include/` folder — is mitigated by consistently
+applying the `impl/` pattern and by keeping `hdrs` lists explicit and small.
+
+### Relationship to DR-003-proc (Module Folder Structure)
+
+This decision must stay consistent with the process decision on the module folder
+structure, `dec_rec__platform__module_folder_structure` (proposed in
+[PR #3194](https://github.com/eclipse-score/score/pull/3194)). That DR selects
+**Alternative C**, which **removes the component-level `src/` folder** and places the
+component's include and source files (plus unit tests) directly under
+`score/<component_name>/`, with optional `<lower_level_comp>/` nesting.
+
+- **Option A aligns with it.** Headers and sources sit directly in the component
+  package (no `src/`, no top-level `include/`), and the finer-grained `impl/`
+  subpackage is a permitted sub-structure choice under Alternative C's opt-out clause.
+- **Options B and C conflict with it.** Both reintroduce a `src/` folder and add an
+  `include/` tree — exactly the `src/` split that DR-003-proc removed. Adopting Option
+  B/C would require overriding the process decision per module. This conflict was
+  raised in the review of this DR and is a further reason to prefer Option A.
 
 ---
 
@@ -296,40 +319,48 @@ The main cost — a small amount of Bazel boilerplate (`strip_include_prefix`) a
 
 ### Defining a component
 
-Public headers go into `hdrs` and are exposed through `strip_include_prefix` so that
-the on-disk `include/` prefix is removed from the include path consumers see:
+Public headers go into `hdrs`; implementation lives under an `impl/` subpackage whose
+visibility is restricted to the component. No `strip_include_prefix` is needed, and
+targets stay small (one focused `cc_library` per package rather than a repo-wide
+glob).
 
 ```python
-# libs/my_lib/BUILD.bazel
+# score/mw/my_component/BUILD.bazel
 cc_library(
-    name = "my_lib",
-    srcs = glob([
-        "src/**/*.cc",
-        "src/**/*.h",      # private headers are NOT part of the public API
-    ]),
-    hdrs = glob(["include/**/*.h"]),
-    strip_include_prefix = "include",
+    name = "my_component",
+    srcs = ["my_component.cc"],
+    hdrs = ["my_component.h"],
+    deps = ["//score/mw/my_component/impl:internal_helper"],
     visibility = ["//visibility:public"],
 )
 ```
 
-With `strip_include_prefix = "include"`, a header at
-`libs/my_lib/include/my_lib/my_lib.h` is included by consumers as:
-
-```cpp
-#include "my_lib/my_lib.h"
+```python
+# score/mw/my_component/impl/BUILD.bazel
+cc_library(
+    name = "internal_helper",
+    srcs = ["internal_helper.cc"],
+    hdrs = ["internal_helper.h"],
+    # only the component itself may depend on implementation details
+    visibility = ["//score/mw/my_component:__subpackages__"],
+)
 ```
 
-Within the component's own sources, private headers are included with a path
-relative to `src/`, e.g. `#include "internal_helper.h"`, and never leak through
-`hdrs`.
+A header at `score/mw/my_component/my_component.h` is included by its full repo-root
+path:
 
-> **Note on alternatives:** `include_prefix` can *add* a prefix, and `includes`
-> adds a directory to the compiler search path (with the well-known
-> `-I`/`-isystem` caveats). `strip_include_prefix` is preferred because it is
-> hermetic, does not pollute the include path of downstream targets, and yields the
-> clean `<component>/<header>.h` form. Avoid `includes` for public APIs unless a
-> third-party layout forces it.
+```cpp
+#include "score/mw/my_component/my_component.h"
+```
+
+Implementation-detail headers use the same full-path scheme
+(`#include "score/mw/my_component/impl/internal_helper.h"`) and are unreachable from
+outside the component because of the restricted `impl/` visibility — even when a
+public, templated header includes them.
+
+> **Note on `strip_include_prefix` / `include_prefix` / `includes`:** avoid these for
+> public APIs. They decouple the include path from the on-disk location, which breaks
+> non-Bazel tooling and packaging. Use them only when a third-party layout forces it.
 
 ### Consuming the component within the repository
 
@@ -337,66 +368,58 @@ relative to `src/`, e.g. `#include "internal_helper.h"`, and never leak through
 cc_library(
     name = "app",
     srcs = ["app.cc"],
-    deps = ["//libs/my_lib"],
+    deps = ["//score/mw/my_component"],
 )
 ```
 
 ```cpp
 // app.cc
-#include "my_lib/my_lib.h"   // only headers under include/my_lib/ are reachable
+#include "score/mw/my_component/my_component.h"   // impl/ headers are not reachable
 ```
 
-Bazel will reject an `#include` of a private header from `src/`, because it is not in
-the `hdrs` of `//libs/my_lib`. The directory layout and the build system thus enforce
-the same boundary.
+Bazel rejects an `#include` of an `impl/` header from an external target, because that
+target is outside the `impl/` package's visibility. The package layout and the build
+system enforce the same boundary.
 
 ### Consuming the component as a Bazel module (bzlmod)
 
-When a component is published as a Bazel module, the `include/<component>/` layout
-carries over unchanged. A downstream repository adds the dependency in its
-`MODULE.bazel`:
+The full repo-root include path is stable whether the component is consumed in-repo,
+via `local_path_override`, or as a released module:
 
 ```python
 # MODULE.bazel (downstream)
-bazel_dep(name = "my_lib", version = "1.0.0")
+bazel_dep(name = "score_my_component", version = "1.0.0")
 ```
-
-and consumes it exactly as an in-repo target:
 
 ```python
 cc_library(
     name = "downstream",
     srcs = ["downstream.cc"],
-    deps = ["@my_lib//:my_lib"],
+    deps = ["@score_my_component//score/mw/my_component"],
 )
 ```
 
 ```cpp
-#include "my_lib/my_lib.h"
+#include "score/mw/my_component/my_component.h"
 ```
 
-Because the public include root is stable and prefix-stripped, the include paths a
-consumer writes are identical whether the component is consumed in-repo, via a
-`local_path_override`, or as a released module from a registry. This decouples the
-consumer's source from the producer's on-disk layout and is the key property that
-makes the module boundary clean.
+Because the include path is the repo-root path — with no prefix stripping — the
+consumer's source is identical across in-repo, override, and registry consumption, and
+it also matches what non-Bazel tools expect.
 
-### Consumer view across the three layouts
+### Consumer view across the layouts
 
-How consuming `@my_lib` as a module looks from the outside, for each option:
+How consuming a component as a module looks from the outside:
 
-| Option | Producer `BUILD.bazel` (public headers) | Consumer `#include` |
-|--------|------------------------------------------|---------------------|
-| **A: Flat** | `hdrs = glob(["*.h"])` — no prefix handling | `#include "libs/my_lib/my_lib.h"` — leaks repo layout, not namespaced |
-| **A: Flat + prefix** | `hdrs = [...]`, `include_prefix = "my_lib"` | `#include "my_lib/my_lib.h"` — clean, but re-adds the boilerplate A avoided |
-| **B: Separate `include/`** | `hdrs = glob(["include/**/*.h"])`, `strip_include_prefix = "include"` | `#include "my_lib/my_lib.h"` — clean and stable |
-| **C: Hybrid** | `hdrs = glob(["include/**/*.h"])`, `strip_include_prefix = "include"` | `#include "my_lib/my_lib.h"` — clean and stable |
+| Option | Producer `BUILD.bazel` (public headers) | Consumer `#include` | Works with non-Bazel tools |
+|--------|------------------------------------------|---------------------|:--------------------------:|
+| **A: Bazel-native flat** | `hdrs = ["my_component.h"]` — no prefix handling; `impl/` visibility-restricted | `#include "score/mw/my_component/my_component.h"` — full repo-root path, namespaced by package | yes — path matches file on disk |
+| **B: Separate `include/`** | `hdrs = glob(["include/**/*.h"])`, `strip_include_prefix = "include"` | `#include "my_component/my_component.h"` | no — path ≠ on-disk location |
+| **C: Hybrid** | as B | `#include "my_component/my_component.h"` | no — as B |
 
-In all cases the `deps` and `MODULE.bazel` entry are identical
-(`deps = ["@my_lib//:my_lib"]`, `bazel_dep(name = "my_lib", version = "1.0.0")`);
-only the resulting `#include` path differs. Options B and C give the same clean,
-layout-independent path out of the box; Option A only matches it by reintroducing a
-prefix.
+The Option A include path is already unique and namespaced by its package location, so
+it needs no prefix machinery, and it is the one path that also matches what non-Bazel
+tools and other build systems see on disk.
 
 ---
 
@@ -412,13 +435,21 @@ two established schools of thought exist, and S-CORE currently mixes both.
   requires headers to be included by their **repo-root-relative path**
   (`#include "score/mw/foo/bar.h"`), with no dedicated `include/` directory. The
   [Bazel `cc_library` reference](https://bazel.build/reference/be/c-cpp#cc_library)
-  encodes the same public/private model via `hdrs`/`srcs`. This is essentially
-  **Option A**, but with repo-root paths rather than bare filenames.
-- **General open-source convention (dedicated `include/`):** The
-  [Pitchfork Layout (PFL)](https://github.com/vector-of-bool/pitchfork) and the
-  [WG21 Canonical Project Structure (P1204R0)](https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html)
-  both place public headers under a project-named `include/<lib>/` root — matching
-  **Options B/C**.
+  encodes the public/private model via `hdrs`/`srcs`, and the
+  [Bazel C++ use cases](https://bazel.build/tutorials/cpp-use-cases) doc treats the
+  `include/` split only as a *legacy adoption* case. This is **Option A**.
+- **WG21 Canonical Project Structure (P1204R0):** The
+  [P1204R0 paper](https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html)
+  keeps headers and sources **together** under a project-named directory and its
+  *Source Directory* section explicitly argues **against** the `include/` + `src/`
+  split (it "offers little benefit … has a number of real drawbacks, and does not fit
+  modularized projects well"). This also aligns with **Option A**.
+- **Pitchfork Layout (PFL):** The
+  [Pitchfork Layout](https://github.com/vector-of-bool/pitchfork) is the main
+  reference for the separated `include/` + `src/` variant (**Options B/C**). It is an
+  unfinished, experimental convention with no releases and no activity since ~2018, so
+  there is **no single mandated "industry standard"** here — real-world C++ projects
+  use both styles.
 
 ### Existing practice inside S-CORE
 
@@ -442,8 +473,8 @@ Two observations worth calling out:
   public/private boundary is drawn by an `impl/` subpackage plus Bazel `visibility`
   (e.g. `communication` keeps its public API in `score/mw/com/*.h` and hides
   everything under `score/mw/com/impl/**`, whose visibility is restricted to
-  `//score/mw/com:__subpackages__`). This is closer to **Option A** at repo scale and
-  shows the recommendation of this DR is not yet the prevailing practice.
+  `//score/mw/com:__subpackages__`). This is **Option A**, and it is exactly the
+  layout this DR recommends.
 - Where a clean external include path *is* wanted, S-CORE reaches for different Bazel
   levers — `includes` (futurecpp), `strip_include_prefix`/`include_prefix`
   (static_reflection, lifecycle) — rather than a single agreed mechanism. The
@@ -508,27 +539,32 @@ component-named subdirectory does **not** solve the problem.
 
 ### Positive
 
-- The public API of every C++ component is visible, isolated, and self-documenting.
-- Bazel `hdrs`/`srcs` boundaries align with the physical layout, reducing accidental
-  API leakage.
-- Consumers get stable, collision-free include paths regardless of how the dependency
-  is resolved (in-repo, override, or registry module).
-- Public SDK packaging for non-Bazel consumers is a folder copy.
-- The layout is consistent with widely used community conventions (PFL, P1204).
+- Encapsulation is enforced by Bazel `visibility` (via the `impl/` subpackage) and
+  holds even for template/inline public APIs.
+- Include paths match on-disk locations, so non-Bazel tools, IDEs, analyzers, and
+  packagers work without source rewrites.
+- Consumers get stable, collision-free, project-prefixed include paths regardless of
+  how the dependency is resolved (in-repo, override, or registry module).
+- Headers stay next to sources, preserving maintainability and the "likely affected
+  code" vicinity signal.
+- No migration is required for the existing `communication`/`baselibs` code, which
+  already follows this layout; and the decision aligns with the Canonical Project
+  Structure and Bazel guidance.
 
 ### Negative / Costs
 
-- A modest, one-time increase in Bazel boilerplate (`strip_include_prefix`) and the
-  `include/<component>/` nesting.
-- Minor day-to-day navigation overhead from the `include/` ↔ `src/` split.
-- Existing flat components must be migrated to gain the benefits (can be incremental).
+- The public surface is discovered via the `impl/` convention and Bazel visibility
+  rather than a single `include/` folder, so the convention must be applied
+  consistently.
+- Contributors must consistently use full project-prefixed include paths and must not
+  reset the prefix (e.g. `strip_include_prefix = "."`).
 
 ### Follow-Up Actions
 
 - Provide a component template / scaffolding (directory skeleton + `BUILD.bazel`) that
-  encodes the `include/<component>/` + `src/` layout and `strip_include_prefix`.
+  encodes the flat layout with an `impl/` subpackage and restricted `visibility`.
 - Document the convention in the S-CORE contribution guidelines and C++ coding
-  guidelines, including the private-vs-public include-path rules.
-- Define a migration path for existing flat components (opportunistic, per module).
-- Consider a lightweight CI/lint check that flags private headers appearing in `hdrs`
-  or public headers being included via non-canonical paths.
+  guidelines, including the full-path include rule and the `impl/` visibility pattern.
+- Consider a lightweight CI/lint check that flags implementation-detail headers
+  reachable from external targets, or public headers included via non-canonical
+  (non-repo-root) paths.
