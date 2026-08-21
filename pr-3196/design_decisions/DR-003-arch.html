@@ -658,7 +658,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-08-19</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-f487e1dd">
+<div class="need_container docutils container" id="SNCB-f6a57db2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__public_header_layout">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -678,7 +678,7 @@ SPDX-License-Identifier: Apache-2.0
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Architecture</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Separate include/ directory for public API headers, private headers next to sources</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Bazel-native flat layout — headers next to sources with full project-prefixed include paths; non-public headers isolated in an impl/ subpackage with restricted Bazel visibility</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -721,11 +721,12 @@ than working against it.</p>
 <section id="current-state-in-s-core">
 <h3>Current state in S-CORE<a class="headerlink" href="#current-state-in-s-core" title="Link to this heading">#</a></h3>
 <p>Within S-CORE there is mostly <strong>no separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory</strong> in use today.
-Components rely completely on Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> attribute to designate public headers,
-with headers and sources living together in a flat directory. This works for Bazel,
-but it makes the public contract of a component invisible at the file-system level:
-a developer has to open <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code> to learn which headers are public, and
-extracting a clean public SDK for non-Bazel consumers requires filtering.</p>
+Components rely on Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> attribute to designate public headers, with headers
+and sources living together in a flat directory, and the dominant pattern in
+<code class="docutils literal notranslate"><span class="pre">communication</span></code> and <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> draws the public/private boundary with an <code class="docutils literal notranslate"><span class="pre">impl/</span></code>
+subpackage plus Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code>. The main gap is not the layout itself but the lack
+of a <em>single, documented</em> convention (include-path style, private-header placement,
+target granularity), which this decision fills.</p>
 </section>
 <section id="goals">
 <h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
@@ -733,178 +734,179 @@ extracting a clean public SDK for non-Bazel consumers requires filtering.</p>
 <li><p>Make the public API surface of a component obvious without reading <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>.</p></li>
 <li><p>Map cleanly onto Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> split with minimal boilerplate.</p></li>
 <li><p>Produce clean, collision-free <code class="docutils literal notranslate"><span class="pre">#include</span></code> paths for consumers.</p></li>
-<li><p>Enable simple, folder-level packaging of the public API for non-Bazel consumers.</p></li>
+<li><p>Keep the public API consumable by non-Bazel tools and build systems without source rewrites.</p></li>
 <li><p>Keep the developer’s day-to-day workflow (edit <code class="docutils literal notranslate"><span class="pre">.h</span></code> next to <code class="docutils literal notranslate"><span class="pre">.cc</span></code>) reasonable.</p></li>
 </ul>
 </section>
 <section id="external-references">
 <h3>External references<a class="headerlink" href="#external-references" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong><a class="reference external" href="https://github.com/vector-of-bool/pitchfork">The Pitchfork Layout (PFL)</a></strong> —
-in particular the <em>separated header placement</em> convention, where public headers
-live under <a class="reference external" href="https://joholl.github.io/pitchfork-website/#tld.include"><code class="docutils literal notranslate"><span class="pre">include/</span></code></a>
-and private headers/sources live under <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p></li>
 <li><p><strong><a class="reference external" href="https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html">The Canonical Project Structure (P1204R0)</a></strong> —
-WG21 paper describing a canonical layout with public headers under a
-project-named subdirectory.</p></li>
+WG21 paper (Boris Kolpackov, 2018) proposing a canonical layout for new C++
+projects. It places headers and sources <strong>next to each other</strong> under a
+project-named subdirectory (<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;/&lt;name&gt;/…</span></code>), uses project-prefixed include
+paths (<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;name/foo.hpp&gt;</span></code>), and keeps implementation-detail/private headers
+in a <code class="docutils literal notranslate"><span class="pre">details/</span></code>/<code class="docutils literal notranslate"><span class="pre">private/</span></code> subdirectory. Its <em>Source Directory</em> section explicitly
+argues <strong>against</strong> the separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code> split.</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/vector-of-bool/pitchfork">The Pitchfork Layout (PFL)</a></strong> —
+a community convention whose <em>separated</em> variant places public headers under
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> and private headers/sources under <code class="docutils literal notranslate"><span class="pre">src/</span></code>. It is an unfinished,
+experimental effort: the repository has <strong>no releases</strong> and no commits since
+~2018, so it is a historical reference point rather than a maintained standard.</p></li>
+<li><p><strong><a class="reference external" href="https://bazel.build/tutorials/cpp-use-cases">Bazel C++ use cases</a></strong> — the Bazel
+documentation presents the <code class="docutils literal notranslate"><span class="pre">include/</span></code> layout only as a <em>legacy adoption</em> case and
+steers new projects toward repo-root-relative include paths.</p></li>
 </ul>
-<p>Both references converge on placing public headers under a dedicated,
-project-named include root.</p>
+<p>These references do <strong>not</strong> converge: the Canonical Project Structure and Bazel
+deliberately keep headers next to sources, whereas the (dormant) Pitchfork Layout
+separates them. This DR follows the former.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="options-considered">
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
-<section id="option-a-flat-directory-structure-headers-and-sources-mixed">
-<h3>Option A: Flat Directory Structure (headers and sources mixed)<a class="headerlink" href="#option-a-flat-directory-structure-headers-and-sources-mixed" title="Link to this heading">#</a></h3>
-<p>All public headers, private headers, and source files live together in the same
-directory (e.g. <code class="docutils literal notranslate"><span class="pre">libs/my_lib/</span></code>). Public vs. private is expressed <em>only</em> through the
-Bazel <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> split. This is the current de-facto S-CORE convention.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>libs/my_lib/
+<section id="option-a-bazel-native-flat-layout-headers-next-to-sources-recommended">
+<h3>Option A: Bazel-native flat layout (headers next to sources) — recommended<a class="headerlink" href="#option-a-bazel-native-flat-layout-headers-next-to-sources-recommended" title="Link to this heading">#</a></h3>
+<p>Headers and sources live <strong>next to each other</strong> in the component’s package, and the
+public/private boundary is drawn by Bazel: public headers go in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>, everything
+non-public is isolated in an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage whose <code class="docutils literal notranslate"><span class="pre">visibility</span></code> is restricted to
+the component. Headers are included by their <strong>full, project-prefixed repo-root path</strong>
+(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/my_component/my_component.h&quot;</span></code>), which keeps include paths globally
+unique. This matches the WG21 Canonical Project Structure and the Bazel recommendation
+for new projects, and it is the dominant pattern already used by <code class="docutils literal notranslate"><span class="pre">communication</span></code> and
+<code class="docutils literal notranslate"><span class="pre">baselibs</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>score/mw/my_component/
 ├── BUILD.bazel
-├── my_lib.h          # public  -&gt; hdrs
-├── my_lib.cc         # source  -&gt; srcs
-├── internal_helper.h # private -&gt; srcs
-└── internal_helper.cc
+├── my_component.h            # public  -&gt; hdrs
+├── my_component.cc           # source  -&gt; srcs
+└── impl/                     # non-public: restricted visibility
+    ├── BUILD.bazel
+    ├── internal_helper.h     # implementation detail
+    └── internal_helper.cc
 </pre></div>
 </div>
 <section id="advantages">
 <h4>Advantages<a class="headerlink" href="#advantages" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Zero Bazel path overhead:</strong> No <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> / <code class="docutils literal notranslate"><span class="pre">includes</span></code> juggling. The
-header’s on-disk path <em>is</em> its include path, so there is one obvious way to write
-an <code class="docutils literal notranslate"><span class="pre">#include</span></code> and no divergence between what the file tree shows and what the
-compiler sees.</p></li>
-<li><p><strong>Easier local navigation:</strong> Declarations sit next to their implementations; no
-jumping between distant folders in the IDE. Refactoring that splits or renames a
-unit touches a single directory, and “go to file” / fuzzy-open lands on the pair
-immediately.</p></li>
-<li><p><strong>Less nesting:</strong> Avoids redundant paths like <code class="docutils literal notranslate"><span class="pre">.../my_lib/include/my_lib/</span></code>, which
-keeps both the file tree and relative <code class="docutils literal notranslate"><span class="pre">#include</span></code> statements short.</p></li>
-<li><p><strong>Lowest friction for small or leaf components:</strong> For a component with one or two
-public headers, a private helper, and its sources, the flat layout has the best
-effort-to-value ratio — the <code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code> split adds structure that such a
-component does not need. This matches how most of S-CORE is organized today.</p></li>
-<li><p><strong>Single source of truth for the API boundary:</strong> The public surface is defined in
-exactly one place — the <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> list in <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>. There is no second, implicit
-contract encoded in the directory layout that could drift out of sync with the
-build file (e.g. a header physically under <code class="docutils literal notranslate"><span class="pre">include/</span></code> but not actually in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>,
-or vice versa).</p></li>
-<li><p><strong>Bazel already enforces the boundary:</strong> A consumer can only <code class="docutils literal notranslate"><span class="pre">#include</span></code> headers a
-dependency lists in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>; reaching for a private header in <code class="docutils literal notranslate"><span class="pre">srcs</span></code> fails the
-build regardless of where the file physically sits. The encapsulation guarantee
-therefore does not depend on the directory structure at all — the flat layout
-loses no <em>enforcement</em>, only <em>visibility</em>.</p></li>
-<li><p><strong>Cheapest migrations and moves:</strong> Moving a component, extracting a sub-library, or
-promoting a private header to public is a <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code> edit only — no files move
-on disk, so diffs stay small and reviews stay focused on the API change itself.</p></li>
-<li><p><strong>Fewer glob edge cases:</strong> With everything in one directory, <code class="docutils literal notranslate"><span class="pre">glob</span></code> patterns are
-simple and there is no risk of a misplaced file silently falling outside an
-<code class="docutils literal notranslate"><span class="pre">include/**</span></code> or <code class="docutils literal notranslate"><span class="pre">src/**</span></code> pattern.</p></li>
+<li><p><strong>Encapsulation enforced by Bazel, not by hope:</strong> <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility is restricted
+to the component’s own subpackages, so no external target can depend on internal
+headers — even the ones a public, templated header must <code class="docutils literal notranslate"><span class="pre">#include</span></code>. The boundary
+holds for template/inline APIs, which the <code class="docutils literal notranslate"><span class="pre">include/</span></code>-vs-<code class="docutils literal notranslate"><span class="pre">src/</span></code> split cannot (see
+Option B).</p></li>
+<li><p><strong>Headers and sources stay together:</strong> Declarations sit next to their
+implementations. Editing, grep’ing, “go to file”, and code browsing (e.g. on GitHub)
+all land on the pair immediately, and the source tree makes <em>likely affected code</em>
+visible by vicinity — a maintainability property, not just a navigation convenience.</p></li>
+<li><p><strong>No <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> machinery:</strong> The header’s on-disk path <em>is</em> its include
+path. Non-Bazel tools and other build systems see the file exactly where the
+<code class="docutils literal notranslate"><span class="pre">#include</span></code> says it is, so packaging and IDE indexing work without source rewrites.</p></li>
+<li><p><strong>Collision-free include paths:</strong> The repo-root project prefix
+(<code class="docutils literal notranslate"><span class="pre">score/mw/my_component/…</span></code>) makes every include path globally unique, exactly like
+an <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> nesting would — the uniqueness comes from the prefix, not
+from a dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory.</p></li>
+<li><p><strong>Cheap moves and API changes:</strong> Promoting a private header to public, or extracting
+a sub-library, is a <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>/visibility edit plus at most a move into or out of
+<code class="docutils literal notranslate"><span class="pre">impl/</span></code>; consumer include paths stay stable.</p></li>
+<li><p><strong>Small, cache-friendly targets:</strong> The layout naturally encourages one focused
+<code class="docutils literal notranslate"><span class="pre">cc_library</span></code> per package rather than a single repo-wide <code class="docutils literal notranslate"><span class="pre">glob</span></code>, preserving Bazel’s
+incremental-build and caching benefits.</p></li>
 </ul>
 </section>
 <section id="disadvantages">
 <h4>Disadvantages<a class="headerlink" href="#disadvantages" title="Link to this heading">#</a></h4>
-<ul>
-<li><p><strong>Public API not visible from the file tree:</strong> Developers must read <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>
-to learn which headers are public.</p></li>
-<li><p><strong>Accidental API exposure:</strong> A private header may be listed in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> by mistake,
-or a consumer may reach for an internal header.</p></li>
-<li><p><strong>Poor scalability:</strong> As the library grows the folder becomes cluttered.</p></li>
-<li><p><strong>Packaging difficulty:</strong> Extracting only public headers for external (non-Bazel)
-delivery requires filtering scripts rather than a folder copy.</p></li>
-<li><p><strong>Weaker as a published module:</strong> Without a prefix to strip, a consumer sees the
-producer’s repo-relative path, which leaks the internal layout and is not
-namespaced by component:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// consuming @my_lib as a module, flat layout</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libs/my_lib/my_lib.h&quot;</span>
-</pre></div>
-</div>
-<p>Getting the clean <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> requires adding <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code>
-(or naming the flat dir <code class="docutils literal notranslate"><span class="pre">my_lib/</span></code>), i.e. reintroducing the Bazel path machinery
-Option A set out to avoid.</p>
-</li>
+<ul class="simple">
+<li><p><strong>Public surface is discoverable via package/visibility rules, not a single
+directory:</strong> A reviewer identifies the API from what is <em>not</em> under <code class="docutils literal notranslate"><span class="pre">impl/</span></code> (and from
+<code class="docutils literal notranslate"><span class="pre">hdrs</span></code>) rather than from one folder. The <code class="docutils literal notranslate"><span class="pre">impl/</span></code> convention makes this clear in
+practice, but it is less immediately obvious than a dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code> tree.</p></li>
+<li><p><strong>Discipline required on include paths:</strong> Contributors must consistently use the
+full project-prefixed path; a reset prefix (<code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;.&quot;</span></code>) would
+collapse paths to bare filenames and reintroduce collision risk (see <em>Header Name
+Collisions Across Modules</em>).</p></li>
 </ul>
 </section>
 </section>
 <hr class="docutils" />
-<section id="option-b-separate-include-directory-industry-standard">
-<h3>Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> Directory (industry standard)<a class="headerlink" href="#option-b-separate-include-directory-industry-standard" title="Link to this heading">#</a></h3>
+<section id="option-b-separate-include-directory-pitchfork-style-split">
+<h3>Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory (Pitchfork-style split)<a class="headerlink" href="#option-b-separate-include-directory-pitchfork-style-split" title="Link to this heading">#</a></h3>
 <p>Public headers are placed in a dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory, nested under the
-component name (<code class="docutils literal notranslate"><span class="pre">include/my_lib/*.h</span></code>) to prevent include-path collisions. Private
-headers and sources live under <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>libs/my_lib/
+component name (<code class="docutils literal notranslate"><span class="pre">include/my_component/*.h</span></code>); private headers and sources live under
+<code class="docutils literal notranslate"><span class="pre">src/</span></code>. Consumers reach public headers via <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>score/mw/my_component/
 ├── BUILD.bazel
 ├── include/
-│   └── my_lib/
-│       └── my_lib.h       # public -&gt; hdrs
+│   └── my_component/
+│       └── my_component.h     # public -&gt; hdrs
 └── src/
-    ├── my_lib.cc          # source  -&gt; srcs
-    ├── internal_helper.h  # private -&gt; srcs
+    ├── my_component.cc        # source  -&gt; srcs
+    ├── internal_helper.h      # private -&gt; srcs
     └── internal_helper.cc
 </pre></div>
 </div>
 <section id="id1">
 <h4>Advantages<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>High encapsulation:</strong> The public contract is physically isolated. It is
-immediately clear to a consumer what may be used.</p></li>
-<li><p><strong>Clean BUILD files:</strong> <code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;include/**/*.h&quot;])</span></code> and
-<code class="docutils literal notranslate"><span class="pre">srcs</span> <span class="pre">=</span> <span class="pre">glob([&quot;src/**&quot;])</span></code> without risk of accidentally exposing private files.</p></li>
-<li><p><strong>Standardized packaging:</strong> Exporting the public API is a single folder copy.</p></li>
-<li><p><strong>Clear architectural intent:</strong> Naturally enforces good API-design discipline and
-aligns with the Pitchfork Layout and the Canonical Project Structure.</p></li>
-<li><p><strong>Collision-free includes:</strong> The <code class="docutils literal notranslate"><span class="pre">my_lib/</span></code> nesting guarantees globally unique
-include paths, e.g. <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code>.</p></li>
+<li><p><strong>Public API is greppable in one place:</strong> For a component with a <em>purely</em> runtime
+(non-templated) API, the <code class="docutils literal notranslate"><span class="pre">include/</span></code> tree lists the public contract without reading
+<code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>.</p></li>
+<li><p><strong>Folder-copy packaging <em>when</em> the split holds:</strong> If no public header includes a
+private one, exporting the public API is a copy of <code class="docutils literal notranslate"><span class="pre">include/</span></code>.</p></li>
 </ul>
 </section>
 <section id="id2">
 <h4>Disadvantages<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Bazel path handling:</strong> Requires <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code> so consumers
-can write <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> rather than <code class="docutils literal notranslate"><span class="pre">include/my_lib/my_lib.h</span></code>.</p></li>
-<li><p><strong>Folder redundancy:</strong> The <code class="docutils literal notranslate"><span class="pre">include/my_lib/</span></code> nesting feels redundant to some.</p></li>
-<li><p><strong>Navigation overhead:</strong> Minor cost from switching between <code class="docutils literal notranslate"><span class="pre">include/</span></code> and <code class="docutils literal notranslate"><span class="pre">src/</span></code>
-during active development.</p></li>
+<li><p><strong>The encapsulation benefit is a false promise for template/inline APIs.</strong> Public
+headers routinely <code class="docutils literal notranslate"><span class="pre">#include</span></code> implementation-detail headers (templates, inline
+functions). Those details must then also live under <code class="docutils literal notranslate"><span class="pre">include/</span></code> (e.g. in a <code class="docutils literal notranslate"><span class="pre">details/</span></code>
+subdir), so the split degrades into “all headers in <code class="docutils literal notranslate"><span class="pre">include/</span></code>” and negates its own
+main advantage. This is the central argument of P1204R0 §4 against the split, and it
+directly affects S-CORE’s templated APIs.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> makes non-Bazel packaging <em>harder</em>, not easier.</strong> The
+include path the source uses (<code class="docutils literal notranslate"><span class="pre">my_component/my_component.h</span></code>) no longer matches the
+header’s on-disk location (<code class="docutils literal notranslate"><span class="pre">include/my_component/my_component.h</span></code>). Any tool that is
+not Bazel-aware — other build systems, IDEs, static analyzers, downstream packagers
+— sees mismatched paths and needs source-level rewrites to compile.</p></li>
+<li><p><strong>Cumbersome navigation and maintenance:</strong> Every edit hops between <code class="docutils literal notranslate"><span class="pre">include/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">src/</span></code>; grep and code browsing are split across two trees; the vicinity signal for
+“likely affected code” is lost.</p></li>
+<li><p><strong>Extra nesting and boilerplate:</strong> <code class="docutils literal notranslate"><span class="pre">include/my_component/</span></code> plus <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>
+on every target, and source generators rarely support writing headers and sources to
+different directories.</p></li>
+<li><p><strong>Poor fit for Bazel and for modules:</strong> Bazel documents this layout only as a
+<em>legacy adoption</em> case; keeping template-referenced private headers out of the public
+package fights Bazel’s “no referencing files in other packages” rule and pushes
+toward large, cache-unfriendly targets.</p></li>
+<li><p><strong>No collision advantage over Option A:</strong> Uniqueness comes from the component-name
+prefix, which Option A already provides via the repo-root path.</p></li>
+<li><p><strong>Conflicts with the module folder structure decision:</strong> Reintroducing <code class="docutils literal notranslate"><span class="pre">src/</span></code> (and an
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> tree) contradicts <code class="docutils literal notranslate"><span class="pre">dec_rec__platform__module_folder_structure</span></code>
+(DR-003-proc, Alternative C), which removes the component-level <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder (see
+<em>Relationship to DR-003-proc</em>).</p></li>
 </ul>
 </section>
 </section>
 <hr class="docutils" />
-<section id="option-c-hybrid-directory-structure">
-<h3>Option C: Hybrid Directory Structure<a class="headerlink" href="#option-c-hybrid-directory-structure" title="Link to this heading">#</a></h3>
-<p>Only strictly public API headers are placed in <code class="docutils literal notranslate"><span class="pre">include/my_lib/*.h</span></code>. All private
-headers (<code class="docutils literal notranslate"><span class="pre">*.h</span></code>) and implementation sources (<code class="docutils literal notranslate"><span class="pre">*.cc</span></code>) sit directly in the main
-directory (or a local <code class="docutils literal notranslate"><span class="pre">src/</span></code> next to it).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>libs/my_lib/
+<section id="option-c-hybrid-public-headers-in-include-private-next-to-sources">
+<h3>Option C: Hybrid (public headers in <code class="docutils literal notranslate"><span class="pre">include/</span></code>, private next to sources)<a class="headerlink" href="#option-c-hybrid-public-headers-in-include-private-next-to-sources" title="Link to this heading">#</a></h3>
+<p>A hybrid that keeps <code class="docutils literal notranslate"><span class="pre">include/my_component/</span></code> for strictly public headers while leaving
+private headers next to their <code class="docutils literal notranslate"><span class="pre">.cc</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>score/mw/my_component/
 ├── BUILD.bazel
 ├── include/
-│   └── my_lib/
-│       └── my_lib.h       # public -&gt; hdrs
-├── my_lib.cc              # source  -&gt; srcs
-├── internal_helper.h      # private -&gt; srcs
+│   └── my_component/
+│       └── my_component.h     # public -&gt; hdrs
+├── my_component.cc            # source  -&gt; srcs
+├── internal_helper.h          # private -&gt; srcs
 └── internal_helper.cc
 </pre></div>
 </div>
-<section id="id3">
-<h4>Advantages<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Reduced navigation overhead:</strong> Developers open <code class="docutils literal notranslate"><span class="pre">include/</span></code> only when changing the
-public contract; internal headers stay next to their <code class="docutils literal notranslate"><span class="pre">.cc</span></code>.</p></li>
-<li><p><strong>Clear Bazel separation:</strong> <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> matches <code class="docutils literal notranslate"><span class="pre">include/**</span></code>, <code class="docutils literal notranslate"><span class="pre">srcs</span></code> matches the rest.</p></li>
-<li><p><strong>Clean API packaging:</strong> Copying <code class="docutils literal notranslate"><span class="pre">include/</span></code> still yields a pristine public SDK
-with no leakage of private helpers.</p></li>
-</ul>
-</section>
-<section id="id4">
-<h4>Disadvantages<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Inconsistent private-header location:</strong> Some headers live in <code class="docutils literal notranslate"><span class="pre">include/</span></code>, some in
-the root — developers may be unsure where to look.</p></li>
-<li><p><strong>Strict include conventions required:</strong> Private headers use relative paths
-(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;internal_helper.h&quot;</span></code>) while public headers use the nested path
-(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code>), which must be applied consistently.</p></li>
-</ul>
-</section>
+<p>This option is <strong>not recommended.</strong> It inherits Option B’s <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>
+tooling problems while adding an inconsistent private-header location, and — like
+Option B — it cannot cleanly separate public from private for template/inline APIs,
+where an implementation-detail header included by a public header would have to move
+into <code class="docutils literal notranslate"><span class="pre">include/</span></code>. In practice it collapses toward either Option A or “all headers in
+<code class="docutils literal notranslate"><span class="pre">include/</span></code>”, so it is listed only for completeness.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -913,110 +915,123 @@ the root — developers may be unsure where to look.</p></li>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Criterion</p></th>
-<th class="head text-center"><p>A: Flat</p></th>
+<th class="head text-center"><p>A: Bazel-native flat</p></th>
 <th class="head text-center"><p>B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code></p></th>
 <th class="head text-center"><p>C: Hybrid</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Public API visible in file tree</p></td>
+<tr class="row-even"><td><p>Encapsulation enforced (incl. template APIs)</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>Public API greppable without <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code></p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-even"><td><p>Collision-free <code class="docutils literal notranslate"><span class="pre">#include</span></code> paths</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>++</p></td>
+</tr>
+<tr class="row-odd"><td><p>Works with non-Bazel tools / packaging</p></td>
+<td class="text-center"><p>++</p></td>
 <td class="text-center"><p>–</p></td>
-<td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
-</tr>
-<tr class="row-odd"><td><p>API encapsulation / leak safety</p></td>
 <td class="text-center"><p>-</p></td>
-<td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
 </tr>
-<tr class="row-even"><td><p>Clean <code class="docutils literal notranslate"><span class="pre">#include</span></code> paths (no collisions)</p></td>
-<td class="text-center"><p>+/-</p></td>
+<tr class="row-even"><td><p>Headers next to sources (maintainability)</p></td>
 <td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
-</tr>
-<tr class="row-odd"><td><p>Bazel <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> clarity</p></td>
-<td class="text-center"><p>-</p></td>
-<td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
-</tr>
-<tr class="row-even"><td><p>Non-Bazel packaging (folder copy)</p></td>
 <td class="text-center"><p>–</p></td>
-<td class="text-center"><p>++</p></td>
 <td class="text-center"><p>+</p></td>
 </tr>
-<tr class="row-odd"><td><p>Bazel boilerplate (low is better)</p></td>
+<tr class="row-odd"><td><p>Bazel-idiomatic / small cache-friendly targets</p></td>
 <td class="text-center"><p>++</p></td>
 <td class="text-center"><p>-</p></td>
 <td class="text-center"><p>+/-</p></td>
 </tr>
-<tr class="row-even"><td><p>Local navigation (edit .h next .cc)</p></td>
+<tr class="row-even"><td><p>Low Bazel boilerplate</p></td>
 <td class="text-center"><p>++</p></td>
 <td class="text-center"><p>-</p></td>
-<td class="text-center"><p>+</p></td>
-</tr>
-<tr class="row-odd"><td><p>Scalability of large components</p></td>
-<td class="text-center"><p>-</p></td>
-<td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
-</tr>
-<tr class="row-even"><td><p>Consistency / low cognitive load</p></td>
-<td class="text-center"><p>+</p></td>
-<td class="text-center"><p>++</p></td>
 <td class="text-center"><p>-</p></td>
 </tr>
-<tr class="row-odd"><td><p>Alignment with PFL / P1204</p></td>
-<td class="text-center"><p>-</p></td>
+<tr class="row-odd"><td><p>Fit for modularized / template-heavy code</p></td>
 <td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>Alignment with Canonical Structure &amp; Bazel</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>–</p></td>
+<td class="text-center"><p>-</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Legend: <code class="docutils literal notranslate"><span class="pre">++</span></code> strong fit, <code class="docutils literal notranslate"><span class="pre">+</span></code> partial, <code class="docutils literal notranslate"><span class="pre">+/-</span></code> neutral, <code class="docutils literal notranslate"><span class="pre">-</span></code> weak, <code class="docutils literal notranslate"><span class="pre">--</span></code> poor.</p>
 </section>
 <hr class="docutils" />
 <section id="decision-proposal">
 <h2>Decision Proposal<a class="headerlink" href="#decision-proposal" title="Link to this heading">#</a></h2>
-<p><strong>Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> Directory</strong> — public API headers live under
-<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>, private headers and sources live under <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p>
-<p>For components that are small, header-heavy, or where the public/private split is
-trivial, <strong>Option C (Hybrid)</strong> is an accepted variation: keep the <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>
-public root, but allow private headers to sit next to their <code class="docutils literal notranslate"><span class="pre">.cc</span></code> in <code class="docutils literal notranslate"><span class="pre">src/</span></code> (or the
-component root). The invariant that must always hold is: <strong>everything a consumer is
-allowed to <code class="docutils literal notranslate"><span class="pre">#include</span></code> lives under <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>, and nothing else does.</strong></p>
-<p><strong>Accepted alternative — flat layout with an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage.</strong> Because the
-dominant pattern in <code class="docutils literal notranslate"><span class="pre">communication</span></code> and <code class="docutils literal notranslate"><span class="pre">baselibs</span></code> today is a flat layout that draws
-the public/private boundary with an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage plus Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code> (see
-<em>Prior Art &amp; Existing S-CORE Practice</em>), that pattern is <strong>explicitly accepted</strong> as an
-equivalent alternative to Option B/C. It satisfies the same invariant by a different
-mechanism: public headers live at the component root, everything non-public lives
-under <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;/impl/**</span></code> whose <code class="docutils literal notranslate"><span class="pre">visibility</span></code> is restricted to the component’s own
-subpackages. Components choosing this variant <strong>must</strong> keep implementation headers out
-of any <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> reachable by external consumers and restrict <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility
-accordingly. This avoids a large-scale migration of existing components while still
-guaranteeing an enforced, discoverable API boundary. The trade-off versus Option B is
-that the public surface is discoverable via package/visibility rules rather than a
-single directory, and packaging for non-Bazel consumers is less trivial.</p>
+<p><strong>Option A: Bazel-native flat layout.</strong> Public and private headers live next to their
+sources in the component package; the public/private boundary is enforced by Bazel by
+isolating non-public headers in an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage with restricted <code class="docutils literal notranslate"><span class="pre">visibility</span></code>; and
+all headers are included by their full, project-prefixed repo-root path
+(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/my_component/my_component.h&quot;</span></code>). Targets are kept small and focused
+rather than repo-wide globs.</p>
+<p>This matches the WG21 Canonical Project Structure, the Bazel recommendation for new
+projects, and the pattern already dominant in <code class="docutils literal notranslate"><span class="pre">communication</span></code> and <code class="docutils literal notranslate"><span class="pre">baselibs</span></code>, so it
+requires <strong>no large-scale migration</strong> of existing code.</p>
+<p>The separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> split (Option B) and the hybrid (Option C) are <strong>rejected</strong>:
+their headline benefit — physical public/private separation — does not survive
+template/inline APIs (a public header that includes an implementation-detail header
+forces that header back into the public tree), and <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> decouples the
+include path from the on-disk location, which breaks non-Bazel tooling and makes
+packaging harder rather than easier.</p>
 <section id="rationale">
 <h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p><strong>The public contract becomes a first-class, visible artifact.</strong> A reviewer or
-consumer can see the entire API surface by looking at <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code>
-without opening <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>. This is the single biggest weakness of the current
-flat approach.</p></li>
-<li><p><strong>It maps directly onto Bazel’s <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> model.</strong> The directory boundary and
-the Bazel visibility boundary coincide, so the file layout reinforces the
-guarantee Bazel already enforces, instead of leaving it implicit.</p></li>
-<li><p><strong>Collision-free include paths.</strong> Nesting under the component name
-(<code class="docutils literal notranslate"><span class="pre">include/my_lib/</span></code>) guarantees that <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/foo.h&quot;</span></code> is globally unique
-across the whole build graph, which matters at S-CORE scale with many modules.</p></li>
-<li><p><strong>Trivial packaging for non-Bazel consumers.</strong> Delivering the public SDK is a
-folder-level copy of <code class="docutils literal notranslate"><span class="pre">include/</span></code>, not a filtering script over a mixed directory.</p></li>
-<li><p><strong>Ecosystem alignment.</strong> The layout matches the Pitchfork Layout (separated
-header placement) and the WG21 Canonical Project Structure, lowering the barrier
-for external contributors and tooling.</p></li>
+<li><p><strong>Encapsulation actually holds.</strong> Restricting <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility guarantees that no
+external target can depend on an internal header, including the
+implementation-detail headers that public <em>template</em> headers must <code class="docutils literal notranslate"><span class="pre">#include</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">include/</span></code>/<code class="docutils literal notranslate"><span class="pre">src/</span></code> split cannot promise this, because those details end up in the
+public tree anyway (P1204R0 §4).</p></li>
+<li><p><strong>The include path matches the file on disk.</strong> Without <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>, the
+path a source writes is exactly where the header lives, so non-Bazel build systems,
+IDEs, analyzers, and packagers work without source rewrites.</p></li>
+<li><p><strong>Collision-free by prefix.</strong> The repo-root project prefix
+(<code class="docutils literal notranslate"><span class="pre">score/mw/my_component/…</span></code>) makes include paths globally unique — the same guarantee
+<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> would give, without the extra directory. Collision safety is
+orthogonal to the directory split and achievable in every option.</p></li>
+<li><p><strong>Maintainability by vicinity.</strong> Headers next to sources keep declaration and
+definition together and make likely-affected code visible in the tree; grep and
+GitHub browsing are not split across <code class="docutils literal notranslate"><span class="pre">include/</span></code> and <code class="docutils literal notranslate"><span class="pre">src/</span></code>.</p></li>
+<li><p><strong>Idiomatic and cheap.</strong> It is what Bazel and the Canonical Project Structure
+recommend, it keeps targets small and cache-friendly, and it needs no migration of
+the existing <code class="docutils literal notranslate"><span class="pre">communication</span></code>/<code class="docutils literal notranslate"><span class="pre">baselibs</span></code> code.</p></li>
 </ol>
-<p>The main cost — a small amount of Bazel boilerplate (<code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>) and the
-<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> nesting — is one-time, mechanical, and easily templated.</p>
+<p>The main cost — a public surface that is discovered via the <code class="docutils literal notranslate"><span class="pre">impl/</span></code> convention and
+Bazel visibility rather than a single <code class="docutils literal notranslate"><span class="pre">include/</span></code> folder — is mitigated by consistently
+applying the <code class="docutils literal notranslate"><span class="pre">impl/</span></code> pattern and by keeping <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> lists explicit and small.</p>
+</section>
+<section id="relationship-to-dr-003-proc-module-folder-structure">
+<h3>Relationship to DR-003-proc (Module Folder Structure)<a class="headerlink" href="#relationship-to-dr-003-proc-module-folder-structure" title="Link to this heading">#</a></h3>
+<p>This decision must stay consistent with the process decision on the module folder
+structure, <code class="docutils literal notranslate"><span class="pre">dec_rec__platform__module_folder_structure</span></code> (proposed in
+<a class="reference external" href="https://github.com/eclipse-score/score/pull/3194">PR #3194</a>). That DR selects
+<strong>Alternative C</strong>, which <strong>removes the component-level <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder</strong> and places the
+component’s include and source files (plus unit tests) directly under
+<code class="docutils literal notranslate"><span class="pre">score/&lt;component_name&gt;/</span></code>, with optional <code class="docutils literal notranslate"><span class="pre">&lt;lower_level_comp&gt;/</span></code> nesting.</p>
+<ul class="simple">
+<li><p><strong>Option A aligns with it.</strong> Headers and sources sit directly in the component
+package (no <code class="docutils literal notranslate"><span class="pre">src/</span></code>, no top-level <code class="docutils literal notranslate"><span class="pre">include/</span></code>), and the finer-grained <code class="docutils literal notranslate"><span class="pre">impl/</span></code>
+subpackage is a permitted sub-structure choice under Alternative C’s opt-out clause.</p></li>
+<li><p><strong>Options B and C conflict with it.</strong> Both reintroduce a <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder and add an
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> tree — exactly the <code class="docutils literal notranslate"><span class="pre">src/</span></code> split that DR-003-proc removed. Adopting Option
+B/C would require overriding the process decision per module. This conflict was
+raised in the review of this DR and is a further reason to prefer Option A.</p></li>
+</ul>
 </section>
 </section>
 <hr class="docutils" />
@@ -1024,36 +1039,43 @@ for external contributors and tooling.</p></li>
 <h2>Bazel Usage<a class="headerlink" href="#bazel-usage" title="Link to this heading">#</a></h2>
 <section id="defining-a-component">
 <h3>Defining a component<a class="headerlink" href="#defining-a-component" title="Link to this heading">#</a></h3>
-<p>Public headers go into <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> and are exposed through <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> so that
-the on-disk <code class="docutils literal notranslate"><span class="pre">include/</span></code> prefix is removed from the include path consumers see:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># libs/my_lib/BUILD.bazel</span>
+<p>Public headers go into <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>; implementation lives under an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage whose
+visibility is restricted to the component. No <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> is needed, and
+targets stay small (one focused <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> per package rather than a repo-wide
+glob).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># score/mw/my_component/BUILD.bazel</span>
 <span class="n">cc_library</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_lib&quot;</span><span class="p">,</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="n">glob</span><span class="p">([</span>
-        <span class="s2">&quot;src/**/*.cc&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;src/**/*.h&quot;</span><span class="p">,</span>      <span class="c1"># private headers are NOT part of the public API</span>
-    <span class="p">]),</span>
-    <span class="n">hdrs</span> <span class="o">=</span> <span class="n">glob</span><span class="p">([</span><span class="s2">&quot;include/**/*.h&quot;</span><span class="p">]),</span>
-    <span class="n">strip_include_prefix</span> <span class="o">=</span> <span class="s2">&quot;include&quot;</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_component&quot;</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;my_component.cc&quot;</span><span class="p">],</span>
+    <span class="n">hdrs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;my_component.h&quot;</span><span class="p">],</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//score/mw/my_component/impl:internal_helper&quot;</span><span class="p">],</span>
     <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>With <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code>, a header at
-<code class="docutils literal notranslate"><span class="pre">libs/my_lib/include/my_lib/my_lib.h</span></code> is included by consumers as:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_lib/my_lib.h&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># score/mw/my_component/impl/BUILD.bazel</span>
+<span class="n">cc_library</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;internal_helper&quot;</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;internal_helper.cc&quot;</span><span class="p">],</span>
+    <span class="n">hdrs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;internal_helper.h&quot;</span><span class="p">],</span>
+    <span class="c1"># only the component itself may depend on implementation details</span>
+    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//score/mw/my_component:__subpackages__&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-<p>Within the component’s own sources, private headers are included with a path
-relative to <code class="docutils literal notranslate"><span class="pre">src/</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;internal_helper.h&quot;</span></code>, and never leak through
-<code class="docutils literal notranslate"><span class="pre">hdrs</span></code>.</p>
+<p>A header at <code class="docutils literal notranslate"><span class="pre">score/mw/my_component/my_component.h</span></code> is included by its full repo-root
+path:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;score/mw/my_component/my_component.h&quot;</span>
+</pre></div>
+</div>
+<p>Implementation-detail headers use the same full-path scheme
+(<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/my_component/impl/internal_helper.h&quot;</span></code>) and are unreachable from
+outside the component because of the restricted <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility — even when a
+public, templated header includes them.</p>
 <blockquote>
-<div><p><strong>Note on alternatives:</strong> <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code> can <em>add</em> a prefix, and <code class="docutils literal notranslate"><span class="pre">includes</span></code>
-adds a directory to the compiler search path (with the well-known
-<code class="docutils literal notranslate"><span class="pre">-I</span></code>/<code class="docutils literal notranslate"><span class="pre">-isystem</span></code> caveats). <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> is preferred because it is
-hermetic, does not pollute the include path of downstream targets, and yields the
-clean <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;/&lt;header&gt;.h</span></code> form. Avoid <code class="docutils literal notranslate"><span class="pre">includes</span></code> for public APIs unless a
-third-party layout forces it.</p>
+<div><p><strong>Note on <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code> / <code class="docutils literal notranslate"><span class="pre">include_prefix</span></code> / <code class="docutils literal notranslate"><span class="pre">includes</span></code>:</strong> avoid these for
+public APIs. They decouple the include path from the on-disk location, which breaks
+non-Bazel tooling and packaging. Use them only when a third-party layout forces it.</p>
 </div></blockquote>
 </section>
 <section id="consuming-the-component-within-the-repository">
@@ -1061,79 +1083,73 @@ third-party layout forces it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cc_library</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
     <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;app.cc&quot;</span><span class="p">],</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//libs/my_lib&quot;</span><span class="p">],</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//score/mw/my_component&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// app.cc</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_lib/my_lib.h&quot;</span><span class="c1">   // only headers under include/my_lib/ are reachable</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;score/mw/my_component/my_component.h&quot;</span><span class="c1">   // impl/ headers are not reachable</span>
 </pre></div>
 </div>
-<p>Bazel will reject an <code class="docutils literal notranslate"><span class="pre">#include</span></code> of a private header from <code class="docutils literal notranslate"><span class="pre">src/</span></code>, because it is not in
-the <code class="docutils literal notranslate"><span class="pre">hdrs</span></code> of <code class="docutils literal notranslate"><span class="pre">//libs/my_lib</span></code>. The directory layout and the build system thus enforce
-the same boundary.</p>
+<p>Bazel rejects an <code class="docutils literal notranslate"><span class="pre">#include</span></code> of an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> header from an external target, because that
+target is outside the <code class="docutils literal notranslate"><span class="pre">impl/</span></code> package’s visibility. The package layout and the build
+system enforce the same boundary.</p>
 </section>
 <section id="consuming-the-component-as-a-bazel-module-bzlmod">
 <h3>Consuming the component as a Bazel module (bzlmod)<a class="headerlink" href="#consuming-the-component-as-a-bazel-module-bzlmod" title="Link to this heading">#</a></h3>
-<p>When a component is published as a Bazel module, the <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> layout
-carries over unchanged. A downstream repository adds the dependency in its
-<code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>:</p>
+<p>The full repo-root include path is stable whether the component is consumed in-repo,
+via <code class="docutils literal notranslate"><span class="pre">local_path_override</span></code>, or as a released module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODULE.bazel (downstream)</span>
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_lib&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_my_component&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and consumes it exactly as an in-repo target:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cc_library</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;downstream&quot;</span><span class="p">,</span>
     <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;downstream.cc&quot;</span><span class="p">],</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;@my_lib//:my_lib&quot;</span><span class="p">],</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;@score_my_component//score/mw/my_component&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;my_lib/my_lib.h&quot;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;score/mw/my_component/my_component.h&quot;</span>
 </pre></div>
 </div>
-<p>Because the public include root is stable and prefix-stripped, the include paths a
-consumer writes are identical whether the component is consumed in-repo, via a
-<code class="docutils literal notranslate"><span class="pre">local_path_override</span></code>, or as a released module from a registry. This decouples the
-consumer’s source from the producer’s on-disk layout and is the key property that
-makes the module boundary clean.</p>
+<p>Because the include path is the repo-root path — with no prefix stripping — the
+consumer’s source is identical across in-repo, override, and registry consumption, and
+it also matches what non-Bazel tools expect.</p>
 </section>
-<section id="consumer-view-across-the-three-layouts">
-<h3>Consumer view across the three layouts<a class="headerlink" href="#consumer-view-across-the-three-layouts" title="Link to this heading">#</a></h3>
-<p>How consuming <code class="docutils literal notranslate"><span class="pre">&#64;my_lib</span></code> as a module looks from the outside, for each option:</p>
+<section id="consumer-view-across-the-layouts">
+<h3>Consumer view across the layouts<a class="headerlink" href="#consumer-view-across-the-layouts" title="Link to this heading">#</a></h3>
+<p>How consuming a component as a module looks from the outside:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Option</p></th>
 <th class="head"><p>Producer <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code> (public headers)</p></th>
 <th class="head"><p>Consumer <code class="docutils literal notranslate"><span class="pre">#include</span></code></p></th>
+<th class="head text-center"><p>Works with non-Bazel tools</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>A: Flat</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;*.h&quot;])</span></code> — no prefix handling</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;libs/my_lib/my_lib.h&quot;</span></code> — leaks repo layout, not namespaced</p></td>
+<tr class="row-even"><td><p><strong>A: Bazel-native flat</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">[&quot;my_component.h&quot;]</span></code> — no prefix handling; <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility-restricted</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/my_component/my_component.h&quot;</span></code> — full repo-root path, namespaced by package</p></td>
+<td class="text-center"><p>yes — path matches file on disk</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>A: Flat + prefix</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">[...]</span></code>, <code class="docutils literal notranslate"><span class="pre">include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;my_lib&quot;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> — clean, but re-adds the boilerplate A avoided</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code></strong></p></td>
+<tr class="row-odd"><td><p><strong>B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code></strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;include/**/*.h&quot;])</span></code>, <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> — clean and stable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_component/my_component.h&quot;</span></code></p></td>
+<td class="text-center"><p>no — path ≠ on-disk location</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>C: Hybrid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hdrs</span> <span class="pre">=</span> <span class="pre">glob([&quot;include/**/*.h&quot;])</span></code>, <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;include&quot;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_lib/my_lib.h&quot;</span></code> — clean and stable</p></td>
+<tr class="row-even"><td><p><strong>C: Hybrid</strong></p></td>
+<td><p>as B</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;my_component/my_component.h&quot;</span></code></p></td>
+<td class="text-center"><p>no — as B</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>In all cases the <code class="docutils literal notranslate"><span class="pre">deps</span></code> and <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> entry are identical
-(<code class="docutils literal notranslate"><span class="pre">deps</span> <span class="pre">=</span> <span class="pre">[&quot;&#64;my_lib//:my_lib&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_dep(name</span> <span class="pre">=</span> <span class="pre">&quot;my_lib&quot;,</span> <span class="pre">version</span> <span class="pre">=</span> <span class="pre">&quot;1.0.0&quot;)</span></code>);
-only the resulting <code class="docutils literal notranslate"><span class="pre">#include</span></code> path differs. Options B and C give the same clean,
-layout-independent path out of the box; Option A only matches it by reintroducing a
-prefix.</p>
+<p>The Option A include path is already unique and namespaced by its package location, so
+it needs no prefix machinery, and it is the one path that also matches what non-Bazel
+tools and other build systems see on disk.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -1149,13 +1165,21 @@ two established schools of thought exist, and S-CORE currently mixes both.</p>
 requires headers to be included by their <strong>repo-root-relative path</strong>
 (<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;score/mw/foo/bar.h&quot;</span></code>), with no dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory. The
 <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">Bazel <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> reference</a>
-encodes the same public/private model via <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code>. This is essentially
-<strong>Option A</strong>, but with repo-root paths rather than bare filenames.</p></li>
-<li><p><strong>General open-source convention (dedicated <code class="docutils literal notranslate"><span class="pre">include/</span></code>):</strong> The
-<a class="reference external" href="https://github.com/vector-of-bool/pitchfork">Pitchfork Layout (PFL)</a> and the
-<a class="reference external" href="https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html">WG21 Canonical Project Structure (P1204R0)</a>
-both place public headers under a project-named <code class="docutils literal notranslate"><span class="pre">include/&lt;lib&gt;/</span></code> root — matching
-<strong>Options B/C</strong>.</p></li>
+encodes the public/private model via <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code>, and the
+<a class="reference external" href="https://bazel.build/tutorials/cpp-use-cases">Bazel C++ use cases</a> doc treats the
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> split only as a <em>legacy adoption</em> case. This is <strong>Option A</strong>.</p></li>
+<li><p><strong>WG21 Canonical Project Structure (P1204R0):</strong> The
+<a class="reference external" href="https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html">P1204R0 paper</a>
+keeps headers and sources <strong>together</strong> under a project-named directory and its
+<em>Source Directory</em> section explicitly argues <strong>against</strong> the <code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code>
+split (it “offers little benefit … has a number of real drawbacks, and does not fit
+modularized projects well”). This also aligns with <strong>Option A</strong>.</p></li>
+<li><p><strong>Pitchfork Layout (PFL):</strong> The
+<a class="reference external" href="https://github.com/vector-of-bool/pitchfork">Pitchfork Layout</a> is the main
+reference for the separated <code class="docutils literal notranslate"><span class="pre">include/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code> variant (<strong>Options B/C</strong>). It is an
+unfinished, experimental convention with no releases and no activity since ~2018, so
+there is <strong>no single mandated “industry standard”</strong> here — real-world C++ projects
+use both styles.</p></li>
 </ul>
 </section>
 <section id="existing-practice-inside-s-core">
@@ -1202,8 +1226,8 @@ a dedicated top-level <code class="docutils literal notranslate"><span class="pr
 public/private boundary is drawn by an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage plus Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code>
 (e.g. <code class="docutils literal notranslate"><span class="pre">communication</span></code> keeps its public API in <code class="docutils literal notranslate"><span class="pre">score/mw/com/*.h</span></code> and hides
 everything under <code class="docutils literal notranslate"><span class="pre">score/mw/com/impl/**</span></code>, whose visibility is restricted to
-<code class="docutils literal notranslate"><span class="pre">//score/mw/com:__subpackages__</span></code>). This is closer to <strong>Option A</strong> at repo scale and
-shows the recommendation of this DR is not yet the prevailing practice.</p></li>
+<code class="docutils literal notranslate"><span class="pre">//score/mw/com:__subpackages__</span></code>). This is <strong>Option A</strong>, and it is exactly the
+layout this DR recommends.</p></li>
 <li><p>Where a clean external include path <em>is</em> wanted, S-CORE reaches for different Bazel
 levers — <code class="docutils literal notranslate"><span class="pre">includes</span></code> (futurecpp), <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>/<code class="docutils literal notranslate"><span class="pre">include_prefix</span></code>
 (static_reflection, lifecycle) — rather than a single agreed mechanism. The
@@ -1263,34 +1287,39 @@ component-named subdirectory does <strong>not</strong> solve the problem.</p>
 <section id="positive">
 <h3>Positive<a class="headerlink" href="#positive" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>The public API of every C++ component is visible, isolated, and self-documenting.</p></li>
-<li><p>Bazel <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>/<code class="docutils literal notranslate"><span class="pre">srcs</span></code> boundaries align with the physical layout, reducing accidental
-API leakage.</p></li>
-<li><p>Consumers get stable, collision-free include paths regardless of how the dependency
-is resolved (in-repo, override, or registry module).</p></li>
-<li><p>Public SDK packaging for non-Bazel consumers is a folder copy.</p></li>
-<li><p>The layout is consistent with widely used community conventions (PFL, P1204).</p></li>
+<li><p>Encapsulation is enforced by Bazel <code class="docutils literal notranslate"><span class="pre">visibility</span></code> (via the <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage) and
+holds even for template/inline public APIs.</p></li>
+<li><p>Include paths match on-disk locations, so non-Bazel tools, IDEs, analyzers, and
+packagers work without source rewrites.</p></li>
+<li><p>Consumers get stable, collision-free, project-prefixed include paths regardless of
+how the dependency is resolved (in-repo, override, or registry module).</p></li>
+<li><p>Headers stay next to sources, preserving maintainability and the “likely affected
+code” vicinity signal.</p></li>
+<li><p>No migration is required for the existing <code class="docutils literal notranslate"><span class="pre">communication</span></code>/<code class="docutils literal notranslate"><span class="pre">baselibs</span></code> code, which
+already follows this layout; and the decision aligns with the Canonical Project
+Structure and Bazel guidance.</p></li>
 </ul>
 </section>
 <section id="negative-costs">
 <h3>Negative / Costs<a class="headerlink" href="#negative-costs" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>A modest, one-time increase in Bazel boilerplate (<code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>) and the
-<code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> nesting.</p></li>
-<li><p>Minor day-to-day navigation overhead from the <code class="docutils literal notranslate"><span class="pre">include/</span></code> ↔ <code class="docutils literal notranslate"><span class="pre">src/</span></code> split.</p></li>
-<li><p>Existing flat components must be migrated to gain the benefits (can be incremental).</p></li>
+<li><p>The public surface is discovered via the <code class="docutils literal notranslate"><span class="pre">impl/</span></code> convention and Bazel visibility
+rather than a single <code class="docutils literal notranslate"><span class="pre">include/</span></code> folder, so the convention must be applied
+consistently.</p></li>
+<li><p>Contributors must consistently use full project-prefixed include paths and must not
+reset the prefix (e.g. <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span> <span class="pre">=</span> <span class="pre">&quot;.&quot;</span></code>).</p></li>
 </ul>
 </section>
 <section id="follow-up-actions">
 <h3>Follow-Up Actions<a class="headerlink" href="#follow-up-actions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Provide a component template / scaffolding (directory skeleton + <code class="docutils literal notranslate"><span class="pre">BUILD.bazel</span></code>) that
-encodes the <code class="docutils literal notranslate"><span class="pre">include/&lt;component&gt;/</span></code> + <code class="docutils literal notranslate"><span class="pre">src/</span></code> layout and <code class="docutils literal notranslate"><span class="pre">strip_include_prefix</span></code>.</p></li>
+encodes the flat layout with an <code class="docutils literal notranslate"><span class="pre">impl/</span></code> subpackage and restricted <code class="docutils literal notranslate"><span class="pre">visibility</span></code>.</p></li>
 <li><p>Document the convention in the S-CORE contribution guidelines and C++ coding
-guidelines, including the private-vs-public include-path rules.</p></li>
-<li><p>Define a migration path for existing flat components (opportunistic, per module).</p></li>
-<li><p>Consider a lightweight CI/lint check that flags private headers appearing in <code class="docutils literal notranslate"><span class="pre">hdrs</span></code>
-or public headers being included via non-canonical paths.</p></li>
+guidelines, including the full-path include rule and the <code class="docutils literal notranslate"><span class="pre">impl/</span></code> visibility pattern.</p></li>
+<li><p>Consider a lightweight CI/lint check that flags implementation-detail headers
+reachable from external targets, or public headers included via non-canonical
+(non-repo-root) paths.</p></li>
 </ul>
 </section>
 </section>
@@ -1350,33 +1379,30 @@ or public headers being included via non-canonical paths.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-flat-directory-structure-headers-and-sources-mixed">Option A: Flat Directory Structure (headers and sources mixed)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-bazel-native-flat-layout-headers-next-to-sources-recommended">Option A: Bazel-native flat layout (headers next to sources) — recommended</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-separate-include-directory-industry-standard">Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> Directory (industry standard)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-separate-include-directory-pitchfork-style-split">Option B: Separate <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory (Pitchfork-style split)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Advantages</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Disadvantages</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-c-hybrid-directory-structure">Option C: Hybrid Directory Structure</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Advantages</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Disadvantages</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-c-hybrid-public-headers-in-include-private-next-to-sources">Option C: Hybrid (public headers in <code class="docutils literal notranslate"><span class="pre">include/</span></code>, private next to sources)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation Criteria</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-proposal">Decision Proposal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-dr-003-proc-module-folder-structure">Relationship to DR-003-proc (Module Folder Structure)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-usage">Bazel Usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-component">Defining a component</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consuming-the-component-within-the-repository">Consuming the component within the repository</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consuming-the-component-as-a-bazel-module-bzlmod">Consuming the component as a Bazel module (bzlmod)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-view-across-the-three-layouts">Consumer view across the three layouts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-view-across-the-layouts">Consumer view across the layouts</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art-existing-s-core-practice">Prior Art &amp; Existing S-CORE Practice</a><ul class="nav section-nav flex-column">
