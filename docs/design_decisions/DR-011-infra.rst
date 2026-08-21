@@ -19,7 +19,7 @@ DR-011-Infra: AI Agent Context Packaging Tooling Selection
 .. dec_rec:: AI Agent Context Packaging Tooling Selection
    :id: dec_rec__infra__ai_packaging_tooling
    :status: proposed
-   :version: 1
+   :version: 01
    :context: Infrastructure
    :decision: APM is the primary AI agent context packaging tool; Lola is the fallback; OKIT is not recommended
 
