@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Time Glossary &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/time/glossary';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Platform Requirements" href="../../requirements/index.html" />
+    <link rel="prev" title="Time Requirements" href="requirements/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../log_and_trace/index.html">Log and Trace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Time</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Time Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Time Requirements</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Time Glossary</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Time</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Time Glossary</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="time-glossary">
+<h1>Time Glossary<a class="headerlink" href="#time-glossary" title="Link to this heading">#</a></h1>
+<section id="time-feature">
+<h2>Time Feature<a class="headerlink" href="#time-feature" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-score-time">score::time<a class="headerlink" href="#term-score-time" title="Link to this term">#</a></dt><dd><p>The Time feature. It provides applications with access to several time bases — local,
+vehicle and absolute — through a uniform <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface, and owns the
+synchronization of the synchronized time bases.</p>
+</dd>
+</dl>
+</section>
+<section id="core-time-model">
+<h2>Core Time Model<a class="headerlink" href="#core-time-model" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-Clock">Clock<a class="headerlink" href="#term-Clock" title="Link to this term">#</a></dt><dd><p>A source of time. A clock produces a monotonically progressing sequence of
+<a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> values for a given <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a>. All clocks are read
+through a uniform interface, independent of the underlying time base.</p>
+</dd>
+<dt id="term-Clock-domain">Clock domain<a class="headerlink" href="#term-Clock-domain" title="Link to this term">#</a></dt><dd><p>The kind of time a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> represents (e.g. <a class="reference internal" href="#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a> or the
+<a class="reference internal" href="#term-Local-Clock"><span class="xref std std-term">Local Clock</span></a> variants). The domain is selected explicitly by the application;
+each domain has its own <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> type and status concept, so time values of
+different domains are incompatible and cannot be mixed unintentionally.</p>
+</dd>
+<dt id="term-TimePoint">TimePoint<a class="headerlink" href="#term-TimePoint" title="Link to this term">#</a></dt><dd><p>A specific point in time issued by a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a>. TimePoints of one
+<a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> are ordered (the relations <em>equal</em> and <em>less than</em> are defined),
+so two TimePoints of the same domain can be subtracted to yield a <a class="reference internal" href="#term-TimeSpan"><span class="xref std std-term">TimeSpan</span></a>.</p>
+</dd>
+<dt id="term-TimeSpan">TimeSpan<a class="headerlink" href="#term-TimeSpan" title="Link to this term">#</a></dt><dd><p>A duration, i.e. the difference between two <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> values of the same
+<a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a>. Supported operations include <code class="docutils literal notranslate"><span class="pre">TimePoint</span> <span class="pre">-</span> <span class="pre">TimePoint</span></code>,
+<code class="docutils literal notranslate"><span class="pre">TimePoint</span> <span class="pre">+</span> <span class="pre">TimeSpan</span></code>, <code class="docutils literal notranslate"><span class="pre">TimeSpan</span> <span class="pre">+</span> <span class="pre">TimeSpan</span></code>, scaling by a factor, equality and
+comparison. Subtraction saturates to zero (negative TimeSpans are not produced).</p>
+</dd>
+<dt id="term-Snapshot">Snapshot<a class="headerlink" href="#term-Snapshot" title="Link to this term">#</a></dt><dd><p>The value returned when reading a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a>. It bundles a <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> with
+the domain-specific status concept (e.g. <a class="reference internal" href="#term-Vehicle-Time-status"><span class="xref std std-term">Vehicle Time status</span></a>, or no status for
+the local clocks), allowing a caller to read the time and judge its quality in a single
+call.</p>
+</dd>
+<dt id="term-Epoch">Epoch<a class="headerlink" href="#term-Epoch" title="Link to this term">#</a></dt><dd><p>The reference TimePoint at which a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> starts counting. The semantics of the
+epoch are a documented property of the clock (e.g. the Unix system clock epoch is
+<code class="docutils literal notranslate"><span class="pre">1970-01-01</span> <span class="pre">00:00:00</span> <span class="pre">UTC</span></code>).</p>
+</dd>
+<dt id="term-Resolution">Resolution<a class="headerlink" href="#term-Resolution" title="Link to this term">#</a></dt><dd><p>The smallest time difference an individual <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> can represent. For an
+ideal clock the resolution equals the reciprocal of the <a class="reference internal" href="#term-Frequency"><span class="xref std std-term">frequency</span></a>, but in
+practice it may be coarser.</p>
+</dd>
+<dt id="term-Frequency">Frequency<a class="headerlink" href="#term-Frequency" title="Link to this term">#</a></dt><dd><p>The rate at which a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> updates the <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> values it issues.</p>
+</dd>
+<dt id="term-Monotonic">Monotonic<a class="headerlink" href="#term-Monotonic" title="Link to this term">#</a></dt><dd><p>Property of a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> whose successive TimePoints never decrease
+(<code class="docutils literal notranslate"><span class="pre">TP[n+1]</span> <span class="pre">&gt;=</span> <span class="pre">TP[n]</span></code>). A <em>strictly monotonic</em> clock never repeats a value. The
+<a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a> is not monotonic (it may jump backward).</p>
+</dd>
+<dt id="term-Steady">Steady<a class="headerlink" href="#term-Steady" title="Link to this term">#</a></dt><dd><p>Property of a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> whose TimePoints advance in fixed increments of exactly
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">frequency</span></code>, without jumps or rate adjustments.</p>
+</dd>
+<dt id="term-Delay-Tag">Delay Tag<a class="headerlink" href="#term-Delay-Tag" title="Link to this term">#</a></dt><dd><p>A timestamp of an event — a datagram, frame, message, or any produced value — expressed in
+the <a class="reference internal" href="#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a> base. Comparing a Delay Tag against a later <a class="reference internal" href="#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a>
+yields the time elapsed since the event, for example to compensate a transmission delay.</p>
+</dd>
+</dl>
+</section>
+<section id="clocks-and-clock-domains">
+<h2>Clocks and Clock Domains<a class="headerlink" href="#clocks-and-clock-domains" title="Link to this heading">#</a></h2>
+<p>Naming convention: a <strong>“… Time”</strong> term names a <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> — a <em>time base</em>, i.e. the
+kind of time and its properties (epoch, monotony, status concept, synchronization source). A
+<strong>“… Clock”</strong> term names the <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that <em>provides</em> that time base to
+applications (the <code class="docutils literal notranslate"><span class="pre">now</span></code> operation, plus initialization, availability and subscription where the
+time base requires it). The local time bases keep their conventional names
+(<a class="reference internal" href="#term-Steady-Clock"><span class="xref std std-term">Steady Clock</span></a>, <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a>, <a class="reference internal" href="#term-High-Resolution-Clock"><span class="xref std std-term">High-Resolution Clock</span></a>) even though they are
+all provided by the single <a class="reference internal" href="#term-Local-Clock"><span class="xref std std-term">Local Clock</span></a> interface.</p>
+<dl class="simple glossary">
+<dt id="term-Vehicle-Time">Vehicle Time<a class="headerlink" href="#term-Vehicle-Time" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> (time base) representing the vehicle-wide synchronized time,
+driven by the external <a class="reference internal" href="#term-Grand-Master"><span class="xref std std-term">Grand Master</span></a> via the <a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a>.
+Reading it yields a <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carrying a <a class="reference internal" href="#term-Vehicle-Time-status"><span class="xref std std-term">Vehicle Time status</span></a>. It is exposed
+to applications through the <a class="reference internal" href="#term-Vehicle-Clock"><span class="xref std std-term">Vehicle Clock</span></a>.</p>
+</dd>
+<dt id="term-Vehicle-Clock">Vehicle Clock<a class="headerlink" href="#term-Vehicle-Clock" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that provides <a class="reference internal" href="#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a>. Because that time base
+depends on external synchronization, the interface additionally offers initialization,
+availability checks and subscription to synchronization events, on top of reading the time.</p>
+</dd>
+<dt id="term-Local-Clock">Local Clock<a class="headerlink" href="#term-Local-Clock" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that provides the local, non-synchronized time bases —
+<a class="reference internal" href="#term-Steady-Clock"><span class="xref std std-term">Steady Clock</span></a>, <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a> and <a class="reference internal" href="#term-High-Resolution-Clock"><span class="xref std std-term">High-Resolution Clock</span></a>. They need no
+initialization and are always available.</p>
+</dd>
+<dt id="term-Steady-Clock">Steady Clock<a class="headerlink" href="#term-Steady-Clock" title="Link to this term">#</a></dt><dd><p>A monotonic, non-adjustable local time base. It never goes backward, which makes it the
+standard choice for measuring elapsed time and computing timeouts.</p>
+</dd>
+<dt id="term-System-Clock">System Clock<a class="headerlink" href="#term-System-Clock" title="Link to this term">#</a></dt><dd><p>A wall-clock (UTC-based) local time base — the OS <code class="docutils literal notranslate"><span class="pre">CLOCK_REALTIME</span></code>, also reachable through
+standard POSIX (<code class="docutils literal notranslate"><span class="pre">clock_gettime</span></code>) and C++ (<code class="docutils literal notranslate"><span class="pre">std::chrono::system_clock</span></code>) APIs. It may jump
+or be adjusted, so it is used for calendar timestamps, not for measuring elapsed time. Its
+value is kept aligned to <a class="reference internal" href="#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> by <a class="reference internal" href="#term-score-time"><span class="xref std std-term">score::time</span></a>; consumers reading it
+thus obtain the absolute time, but as QM data without the <a class="reference internal" href="#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> and
+<a class="reference internal" href="#term-Security-qualifier"><span class="xref std std-term">security qualifier</span></a>.</p>
+</dd>
+<dt id="term-High-Resolution-Clock">High-Resolution Clock<a class="headerlink" href="#term-High-Resolution-Clock" title="Link to this term">#</a></dt><dd><p>A monotonic, nanosecond-resolution local time base optimized for low-overhead timing.
+Used for tight timing loops and deadline checks.</p>
+</dd>
+<dt id="term-Absolute-Time">Absolute Time<a class="headerlink" href="#term-Absolute-Time" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> (time base) representing an external absolute time source
+(e.g. UTC from GPS). Reading it yields a <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carrying an
+<a class="reference internal" href="#term-Absolute-Time-status"><span class="xref std std-term">Absolute Time status</span></a>. It is exposed to applications through the
+<a class="reference internal" href="#term-Absolute-Clock"><span class="xref std std-term">Absolute Clock</span></a>. Its transmission delay is compensated using a <a class="reference internal" href="#term-Delay-Tag"><span class="xref std std-term">Delay Tag</span></a>.</p>
+</dd>
+<dt id="term-Absolute-Clock">Absolute Clock<a class="headerlink" href="#term-Absolute-Clock" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that provides <a class="reference internal" href="#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a>.</p>
+</dd>
+</dl>
+</section>
+<section id="time-quality-and-status">
+<h2>Time Quality and Status<a class="headerlink" href="#time-quality-and-status" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-Vehicle-Time-status">Vehicle Time status<a class="headerlink" href="#term-Vehicle-Time-status" title="Link to this term">#</a></dt><dd><p>The status concept attached to a <a class="reference internal" href="#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a> <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a>. It indicates
+the reliability of the time value — for example whether it is synchronized, whether a
+timeout occurred, and whether the time leaped to the future or the past — together with
+a rate-deviation measurement. It also carries the <a class="reference internal" href="#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> and the
+<a class="reference internal" href="#term-Time-point-qualifier"><span class="xref std std-term">Time point qualifier</span></a>, letting a caller decide both whether the time value is
+reliable and whether it may be treated as ASIL-B data.</p>
+</dd>
+<dt id="term-Accuracy-qualifier">Accuracy qualifier<a class="headerlink" href="#term-Accuracy-qualifier" title="Link to this term">#</a></dt><dd><p>An indication of how accurate a <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> is, i.e. how close it is to the
+corresponding point in the reference time base. The accuracy qualifier is a property of
+the <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> and is reflected in the <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> returned by the <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface.</p>
+</dd>
+<dt id="term-Security-qualifier">Security qualifier<a class="headerlink" href="#term-Security-qualifier" title="Link to this term">#</a></dt><dd><p>An indication of the security level of a <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a>, i.e. whether it may be
+treated as trustworthy data or not.</p>
+</dd>
+<dt id="term-Time-point-qualifier">Time point qualifier<a class="headerlink" href="#term-Time-point-qualifier" title="Link to this term">#</a></dt><dd><p>An indication of the integrity level of a <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a>, i.e. whether it may be
+treated as ASIL-B data or only as QM data.</p>
+</dd>
+<dt id="term-Absolute-Time-status">Absolute Time status<a class="headerlink" href="#term-Absolute-Time-status" title="Link to this term">#</a></dt><dd><p>The status concept attached to an <a class="reference internal" href="#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a>. It indicates the <a class="reference internal" href="#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> and
+the <a class="reference internal" href="#term-Security-qualifier"><span class="xref std std-term">security qualifier</span></a> of the time value, letting a caller decide whether the value is reliable enough for its use case.</p>
+</dd>
+</dl>
+</section>
+<section id="synchronization-infrastructure">
+<h2>Synchronization Infrastructure<a class="headerlink" href="#synchronization-infrastructure" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-PTP-protocol">PTP protocol<a class="headerlink" href="#term-PTP-protocol" title="Link to this term">#</a></dt><dd><p>Precision Time Protocol - a protocol (IEEE 802.1AS) used to synchronize clocks in a
+network.</p>
+</dd>
+<dt id="term-gPTP">gPTP<a class="headerlink" href="#term-gPTP" title="Link to this term">#</a></dt><dd><p>Generalized Precision Time Protocol, the IEEE 802.1AS profile of the
+<a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a> used for in-vehicle Ethernet time synchronization.</p>
+</dd>
+<dt id="term-Syntonization">Syntonization<a class="headerlink" href="#term-Syntonization" title="Link to this term">#</a></dt><dd><p>Alignment of clock <em>frequency</em> (rate) between nodes, as opposed to synchronization
+which aligns the absolute <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a>. Both are required for long-term timing
+consistency.</p>
+</dd>
+<dt id="term-Synchronization-process-metadata">Synchronization process metadata<a class="headerlink" href="#term-Synchronization-process-metadata" title="Link to this term">#</a></dt><dd><p>Data produced by the <a class="reference internal" href="#term-Time-slave"><span class="xref std std-term">Time slave</span></a> that includes the current vehicle time,
+synchronization status, rate correction and similar values, which are the output or
+intermediate artifacts of the synchronization process.</p>
+</dd>
+<dt id="term-Grand-Master">Grand Master<a class="headerlink" href="#term-Grand-Master" title="Link to this term">#</a></dt><dd><p>The external, network-wide time source (the PTP Grand Master) that the system
+synchronizes to using the <a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a>.</p>
+</dd>
+<dt id="term-Time-slave">Time slave<a class="headerlink" href="#term-Time-slave" title="Link to this term">#</a></dt><dd><p>The synchronization actor <strong>within the</strong> <a class="reference internal" href="#term-score-time"><span class="xref std std-term">score::time</span></a> <strong>feature</strong>, responsible for
+synchronizing the local clock with the external <a class="reference internal" href="#term-Grand-Master"><span class="xref std std-term">Grand Master</span></a> using the
+<a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a>, and for producing the synchronized time together with its
+<a class="reference internal" href="#term-Synchronization-process-metadata"><span class="xref std std-term">Synchronization process metadata</span></a> (synchronization status, time difference to the
+external source, last synchronization time and the corresponding local <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a>).</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="requirements/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Time Requirements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../requirements/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Platform Requirements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-feature">Time Feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-time-model">Core Time Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clocks-and-clock-domains">Clocks and Clock Domains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-quality-and-status">Time Quality and Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronization-infrastructure">Synchronization Infrastructure</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/features/time/glossary.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
