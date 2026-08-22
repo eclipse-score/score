@@ -59,7 +59,6 @@
 	"defaultEffect",
 	"generatedBy",
 	"generatedAt",
-	"services"
   ],
   "properties": {
 	"policyVersion": {
@@ -72,6 +71,7 @@
 	  "maxLength": 128
 	},
 	"defaultEffect": {
+	  "description": "If an entry cannot be found this means it is either allowed or denied by default which can be set by this option. More finegrained deny/allow default operations overrule the generic one here (e.g. crypto/certs).",
 	  "type": "string",
 	  "enum": [
 		"deny",
@@ -101,46 +101,49 @@
 	},
 	"crypto": {
 	  "type": "object",
-	  "additionalProperties": false,
-	  "required": [
-		"keyspaces"
-	  ],
+	  "additionalProperties": false,	 
 	  "properties": {
 		"profiles": {
+		  "description": "Profiles can be defined as references if multiple applications need the same rights, they can be just assigned a profile.",
 		  "type": "object",
 		  "propertyNames": {
-			"$ref": "#/$defs/uint16Key"
+			"type": "string",
+			"minLength": 1,
+			"maxLength": 128
 		  },
 		  "additionalProperties": {
 			"$ref": "#/$defs/cryptoProfile"
 		  }
 		},
 		"operationalRights": {
+		  "description": "Operational rights are general rights who are independant of a specific key or certificate stored in the cryptostorage.",
 		  "type": "object",
 		  "propertyNames": {
-			"$ref": "#/$defs/subjectKey"
+			"description": "The default right defines the behavior if an identifier (uid, vmid|uid or otherid is not defined at all but wants to execute a functionality or access a certificate or key. This means in the highest securitysetting default right is empty, or only allows non key related operations like hashing only by default.)",
+			"anyOf": [
+			  {
+				"const": "default"
+			  },
+			  {
+				"$ref": "#/$defs/subjectKey"
+			  }
+			]
 		  },
 		  "additionalProperties": {
 			"$ref": "#/$defs/operationalRight"
 		  }
 		},
-		"keyspaces": {
-		  "type": "object",
-		  "propertyNames": {
-			"$ref": "#/$defs/uint16Key"
-		  },
+		"keys": {
+		  "type": "object",	  
 		  "additionalProperties": {
-			"$ref": "#/$defs/keyspace"
+			"$ref": "#/$defs/key"
 		  }
 		},
-		"certspace": {
-		  "type": "object",
-		  "propertyNames": {
-			"$ref": "#/$defs/uint16Key"
-		  },
-		  "additionalProperties": {
-			"$ref": "#/$defs/certspace"
-		  }
+		"truststore": {
+		  "$ref": "#/$defs/truststore"
+		},
+		"certs": { 
+		  "$ref": "#/$defs/certs"
 		}
 	  }
 	}
@@ -376,52 +379,22 @@
 		}
 	  ]
 	},
-	"keyspace": {
-	  "type": "object",
-	  "additionalProperties": false,
-	  "required": [
-		"keyspaceName",
-		"keys"
-	  ],
-	  "properties": {
-		"keyspaceName": {
-		  "type": "string",
-		  "minLength": 1,
-		  "maxLength": 128
-		},
-		"keys": {
-		  "type": "object",
-		  "propertyNames": {
-			"$ref": "#/$defs/uint16Key"
-		  },
-		  "additionalProperties": {
-			"$ref": "#/$defs/key"
-		  }
-		}
-	  }
-	},
 	"key": {
 	  "type": "object",
 	  "additionalProperties": false,
 	  "required": [
-		"name",
 		"read",
 		"use",
-		"write"
+		"modify"
 	  ],
 	  "properties": {
-		"name": {
-		  "type": "string",
-		  "minLength": 1,
-		  "maxLength": 128
-		},
 		"read": {
 		  "$ref": "#/$defs/keyAccessMap"
 		},
 		"use": {
 		  "$ref": "#/$defs/keyAccessMap"
 		},
-		"write": {
+		"modify": {
 		  "$ref": "#/$defs/keyAccessMap"
 		}
 	  }
@@ -454,6 +427,7 @@
       ]
     },
     "cryptoOperation": {
+	  "description" : "Right now this enum is listed in the ACL, in the future this will reference to the schema of the crypto configuration (not ACL) so that if functionality is added/removed it only needs to be changed on one place",
       "type": "string",
       "enum": [
         "hash",
@@ -496,103 +470,68 @@
         "$ref": "#/$defs/keyAccessOptions"
       }
 	},
-	"certspaceOperation": {
-	  "type": "string",
-	  "enum": [
-		"add",
-		"remove"
-	  ]
-	},
-	"certspaceAccessOptions": {
-	  "type": "object",
-	  "additionalProperties": false,
-	  "properties": {
-		"operations": {
-		  "type": "array",
-		  "minItems": 1,
-		  "uniqueItems": true,
-		  "items": {
-			"$ref": "#/$defs/certspaceOperation"
-		  }
-		}
-	  }
-	},
-	"certspaceRights": {
-	  "type": "object",
-	  "propertyNames": {
+	"subjectList": {
+	  "type": "array",
+	  "uniqueItems": true,
+	  "items": {
 		"$ref": "#/$defs/subjectKey"
-	  },
-	  "additionalProperties": {
-		"$ref": "#/$defs/certspaceAccessOptions"
 	  }
 	},
-	"cert": {
+	"truststoreEntry": {
+	  "description" : "This will only define who can modify the content of a truststore, which certificates belong to the truststore is defined in the crypto config.",
 	  "type": "object",
 	  "additionalProperties": false,
 	  "required": [
-		"name"
+		"modify"
 	  ],
 	  "properties": {
-		"name": {
-		  "type": "string",
-		  "minLength": 1,
-		  "maxLength": 128
+		"modify": {  
+		  "$ref": "#/$defs/subjectList"
+		}
+	  }
+	},
+	"truststore": {
+	  "type": "object",
+	  "additionalProperties": {
+		"$ref": "#/$defs/truststoreEntry"
+	  }
+	},
+	"cert": {
+	  "description": "The usual usecase is that certifcates are public, so it is expected that only modify is used - if at all. However if a certificate might have e.g. privacy related data, it also allows to restrict the read or use access.",
+	  "type": "object",
+	  "additionalProperties": false,
+	  "required": [],
+	  "properties": {
+		"modify": {				
+		  "$ref": "#/$defs/subjectList"	 
 		},
 		"read": {
 		  "$ref": "#/$defs/keyAccessMap"
 		},
 		"use": {
 		  "$ref": "#/$defs/keyAccessMap"
-		},
-		"write": {
-		  "$ref": "#/$defs/keyAccessMap"
-		},
-		"removeable": {
-		  "description": "If false, this certificate cannot be removed, even if certspaceRights grants the remove operation.",
-		  "type": "boolean"
 		}
 	  }
 	},
-	"certspace": {
+	"certs": {
 	  "type": "object",
-	  "additionalProperties": false,
-	  "required": [
-		"certspaceName",
-		"defaultReadDeny",
-		"defaultWriteDeny",
-		"defaultUseDeny",
-		"certspaceRights"
-	  ],
 	  "properties": {
-		"certspaceName": {
-		  "type": "string",
-		  "minLength": 1,
-		  "maxLength": 128
-		},
 		"defaultReadDeny": {
 		  "type": "boolean"
 		},
 		"defaultWriteDeny": {
 		  "type": "boolean"
-		},
-		"defaultUseDeny": {
-		  "type": "boolean"
-		},
-		"certspaceRights": {
-		  "$ref": "#/$defs/certspaceRights"
-		},
-		"certs": {
-		  "type": "object",
-		  "propertyNames": {
-			"$ref": "#/$defs/uint16Key"
-		  },
-		  "additionalProperties": {
-			"$ref": "#/$defs/cert"
-		  }
 		}
-	  }
+	  },
+	  "patternProperties": {
+		"^(?!defaultReadDeny$|defaultWriteDeny$).+$": {	 
+		  "$ref": "#/$defs/cert"
+		}
+	  },
+	  "additionalProperties": false
 	},    
 	"memoryLimiting": {
+	  "description": "To enhance resistance to DoS, it is possible to restrict the access to memory for applications. With that it means the total memory an application can use to store keys or certificates. This can be either defined in slots and/or in bytes.",
 	  "type": "object",
 	  "additionalProperties": false,
 	  "minProperties": 1,
@@ -608,8 +547,10 @@
 	  }
 	},
 	"jobLimiting": {
+	  "description": "Job limiting enhances resistances to DoS; it is possible to restrict the executions a application is allowed to do.",
 	  "oneOf": [
 		{
+		  "description": "Parallel means that an application is allowed to execute a maximum of X Jobs in parallel.",
 		  "type": "object",
 		  "additionalProperties": false,
 		  "required": ["parallel"],
@@ -621,6 +562,7 @@
 		  }
 		},
 		{
+		  "description": "Interval limits the execution X jobs per interval. An interval can be an cycle (not further defined, to be customized in an application project), or in seconds.",
 		  "type": "object",
 		  "additionalProperties": false,
 		  "required": ["interval", "intervaltype"],
@@ -641,7 +583,7 @@
 	  "type": "object",
 	  "additionalProperties": false,
 	  "properties": {
-		"nonKeyspaceDependent": {
+		"operations": {
 		  "description": "Operations not using a key from a configured keyspace, including operations where the caller supplies the key with the request.",
 		  "type": "array",
 		  "minItems": 1,
@@ -658,7 +600,7 @@
 		}
 	  }
 	},
-	"cryptoRights": {
+	"providerSpecific": {
 	  "type": "object",
 	  "minProperties": 1,
 	  "propertyNames": {
@@ -670,41 +612,55 @@
 		"$ref": "#/$defs/cryptoProviderRights"
 	  }
 	},
+	"cryptoRights": {
+	  "type": "object",
+	  "additionalProperties": false,
+	  "required": [
+		"providerspecific"
+	  ],
+	  "properties": {
+		"providerspecific": {
+		  "$ref": "#/$defs/providerSpecific"
+		}
+	  }
+	},
 	"cryptoProfile": {
 	  "type": "object",
 	  "additionalProperties": false,
 	  "required": [
-		"profileName",
 		"rights"
 	  ],
-	  "properties": {
-		"profileName": {
-		  "type": "string",
-		  "minLength": 1,
-		  "maxLength": 48
-		},
+	  "properties": {		
 		"rights": {
 		  "$ref": "#/$defs/cryptoRights"
 		}
 	  }
 	},
-	"profileReference": {
+	"operationalRight": {
 	  "type": "object",
 	  "additionalProperties": false,
-	  "required": ["profileId"],
 	  "properties": {
+		"cryptoDaemonSharedMemMaxSizeDefault": {
+		  "$ref": "#/$defs/memoryLimiting"
+		},
+		"cryptoDaemonSharedMemMaxSize": {
+		  "$ref": "#/$defs/memoryLimiting"
+		},
 		"profileId": {
-		  "$ref": "#/$defs/uint16Key"
+		  "type": "string",
+		  "minLength": 1,
+		  "maxLength": 128
+		},
+		"providerspecific": {
+		  "$ref": "#/$defs/providerSpecific"
 		}
-	  }
-	},
-	"operationalRight": {
+	  },
 	  "oneOf": [
 		{
-		  "$ref": "#/$defs/cryptoRights"
+		  "required": ["profileId"]
 		},
 		{
-		  "$ref": "#/$defs/profileReference"
+		  "required": ["providerspecific"]
 		}
 	  ]
 	}
@@ -784,125 +740,133 @@
   {
 	"profiles":
 	{
-		"1":
+		"encrypt_and_sign_software":
 		{
-			"profileName":"encrypt_and_sign_software",
 			"rights":
 			{
-				"Software":
+				"providerspecific":
 				{
-					"nonKeyspaceDependent": ["hash","keygen","keyimport"],
-					"memoryLimiting": {"slots":4,"bytes":896},
-					"jobLimiting": {"parallel":3}				
+					"Software":
+					{
+						"operations": ["hash","keygen","keyimport"],
+						"memoryLimiting": {"slots":4,"bytes":896},
+						"jobLimiting": {"parallel":3}				
+					}
+				}
+			}
+		},
+		"hash":
+		{
+			"rights":
+			{
+				"providerspecific":
+				{
+					"Software":
+					{
+						"operations":["hash"],
+						"memoryLimiting": {"slots":0},
+						"jobLimiting":{"parallel":1}
+					}
 				}
 			}
 		}
 	},
 	"operationalRights": 
 	{
+		"default":
+		{
+			"cryptoDaemonSharedMemMaxSizeDefault":{"bytes":20000},
+			"profileId": "hash"
+		},		
 		"uid=1": 
 		{
-			"Software":
+			"cryptoDaemonSharedMemMaxSize":{"bytes":10000},
+			"providerspecific":
 			{
-				"nonKeyspaceDependent": ["hash","keygen","keyimport"],
-				"memoryLimiting": {"bytes":8178},
-				"jobLimiting": {"parallel":3}				
-			},
-			"PKCS11_HW":
-			{
-				"nonKeyspaceDependent": ["hash"],
-				"memoryLimiting": {"slots":4,"bytes":896},
-				"jobLimiting": {"parallel":1}	
+				"Software":
+				{
+					"operations": ["hash","keygen","keyimport"],
+					"memoryLimiting": {"bytes":8178},
+					"jobLimiting": {"parallel":3}				
+				},
+				"PKCS11_HW":
+				{
+					"operations": ["hash"],
+					"memoryLimiting": {"slots":4,"bytes":896},
+					"jobLimiting": {"parallel":1}	
+				}
 			}
 		},
 		"vmid=3|uid=1": 
 		{
-			"profileId":"1"
+			"profileId":"encrypt_and_sign_software"
 		},
 		"otherid=someipd": 
 		{
-			"PKCS11_HW":
+			"providerspecific":
 			{
-				"nonKeyspaceDependent": ["hash"],
-				"memoryLimiting": {"slots":4},
-				"jobLimiting": {"parallel":1}	
-			}
-		}
-	},
-	"keyspaces":
-	{
-		"0":
-		{
-			"keyspaceName": "tls_auth",
-			"keys": 
-			{
-				"1":
-				{	
-					"name": "tls_auth_priv",
-					"read": {},
-					"use":
-					{
-						"otherid=special_handling_1|uid=1": {},
-						"vmid=4|uid=2": {"operations": ["sign"]}
-					},
-					"write":
-					{
-						"uid=1|policy=someipd_t": {}
-					}
-				},
-				"2":
-				{ 
-					"name": "tls_auth_pub",
-					"read": 
-					{
-						"uid=-1":{}
-					},
-					"use": 
-					{
-						"uid=1": {},
-						"vmid=4|uid=2": {}
-					},
-					"write": 
-					{
-						"uid=1|policy=someipd_t":{}
-					}
+				"PKCS11_HW":
+				{
+					"operations": ["hash"],
+					"memoryLimiting": {"slots":4},
+					"jobLimiting": {"parallel":1}	
 				}
 			}
 		}
 	},
-	"certspace":
+
+	"keys":
 	{
-		"0":
+		"hw_keyslot1":	
 		{
-			"certspaceName":"oemcerts",
-			"defaultReadDeny":false,
-			"defaultWriteDeny":true,
-			"defaultUseDeny":false,
-			"certspaceRights": 
+			"read": {},
+			"use":
 			{
-				"uid=1": {"operations":["add"]}, 
-				"vmid=4|uid=2": {"operations":["add","remove"]}
+				"otherid=special_handling_1|uid=1": {},
+				"vmid=4|uid=2": {"operations": ["sign"]}
 			},
-			"certs":
+			"modify":
 			{
-				"1": 
-				{
-					"name":"signing_root",
-					"removeable":false,
-					"write":
-					{
-						"uid=1":{}
-					}						
-				},
-				"2":
-				{
-					"name":"signing_authority_1",
-					"write":
-					{
-						"uid=1":{}
-					}
-				}
+				"uid=1|policy=someipd_t": {}
 			}
+		},
+		"sw_keyslot1":
+		{
+			"read": 
+			{
+				"uid=-1":{}
+			},
+			"use": 
+			{
+				"uid=1": {},
+				"vmid=4|uid=2": {}
+			},
+			"modify": 
+			{
+				"uid=1|policy=someipd_t":{}
+			}
+		}
+	},
+	"truststore":
+	{
+		"trusted_signees":
+		{
+			"modify": ["vmid=4|uid=2"]
+		}
+
+	},
+
+	"certs":
+	{
+		"defaultReadDeny":false,
+		"defaultWriteDeny":true,
+		"signing_root": 
+		{
+			"modify":[]					
+		},
+		"signing_authority_1":
+		{
+			"modify":["uid=1"]
 		}
 	}
 }
