@@ -12,6 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. document:: Tools Requirements
+   :id: doc__tools_requirements
+   :status: valid
+   :version: 1
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_proc_tool[version==1]
+
 
 Tools Requirements
 ==================
