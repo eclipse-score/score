@@ -14,10 +14,10 @@
 
 .. _tools_vc_cicd:
 
-Version Control & CI/CD Tools Overview
-======================================
+Version Control & CI/CD Tools
+=============================
 
-.. needtable:: Compiler Tools List
+.. needtable:: Verification & CI/CD Tools List
    :tags: tool_management, tools_vc_cicd
    :filter: "tool_management" in tags and "tools_vc_cicd" in tags and type == "doc_tool" and is_external == False
    :style: table
