@@ -93,8 +93,8 @@ Requirements
 
 The Feature requirements are described in the :doc:`requirements index <../requirements/index>`.
 
-Static Architecture
--------------------
+Feature Overview
+----------------
 
 .. feat:: Time
    :id: feat__time
@@ -103,23 +103,8 @@ Static Architecture
    :status: valid
    :version: 1
 
-The feature-wide static view shows the Time feature and the logical interfaces it exposes —
-one per time base. Each interface is detailed in its time-base section below.
-
-.. feat_arc_sta:: Time Static Architecture
-   :id: feat_arc_sta__time__static_view
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :version: 1
-   :includes: logic_arc_int__time__vehicle_clock, logic_arc_int__time__local_clock, logic_arc_int__time__absolute_clock
-   :fulfils: feat_req__time__mocking_apis[version==1], feat_req__time__vehicle_time_sync[version==1], feat_req__time__abs_sync[version==1]
-   :belongs_to: feat__time[version==1]
-
-   .. uml:: _assets/static_arch.puml
-      :scale: 50
-      :align: center
-
+The runtime (static and dynamic) architecture is defined in the ``inc_time`` module
+(`Time Feature Architecture <https://eclipse-score.github.io/time>`_).
 
 Time Bases
 ----------
@@ -182,55 +167,6 @@ Logical Interface
 
    Removes a previously registered synchronization-event callback.
 
-Dynamic Architecture
-^^^^^^^^^^^^^^^^^^^^
-
-The :term:`Vehicle Clock` exposes two runtime interaction modes: a **pull** model — reading the
-latest accumulated snapshot on demand — and an **event notification** model — subscribing to
-receive notifications when new data arrives.
-
-.. rubric:: Reading the time
-
-Applications read the current vehicle time through the :term:`Vehicle Clock` (``now``). In the
-background the time is continuously synchronized to the external network time
-(:term:`PTP protocol`), validated, and accumulated as a snapshot. The read uses the latest
-accumulated snapshot and interpolates it on the current local monotonic clock — a fast local
-operation that does not cross the process boundary.
-
-.. feat_arc_dyn:: Vehicle Time Read
-   :id: feat_arc_dyn__time__vehicle
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-   :version: 1
-   :fulfils: feat_req__time__vehicle_time_ctrl_flow[version==1]
-   :belongs_to: feat__time[version==1]
-
-   .. uml:: _assets/vehicle_time_read_flow.puml
-      :scale: 50
-      :align: center
-
-.. rubric:: Receiving notifications
-
-Applications can subscribe to :term:`Vehicle Clock` events. Subscription is the only way to obtain
-the PTP payload data (the sync/follow-up and pdelay sequences, which are independent); the
-:term:`Vehicle Time status` can also be read from ``now``, and subscription additionally delivers
-it as it changes. The primary use case is diagnostics — reacting to a status change or a PTP data
-update in a diagnostic manner.
-
-.. feat_arc_dyn:: Vehicle Time Notification
-   :id: feat_arc_dyn__time__vehicle_subscription
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-   :version: 1
-   :fulfils: feat_req__time__vehicle_time_sync_log[version==1]
-   :belongs_to: feat__time[version==1]
-
-   .. uml:: _assets/vehicle_time_notification.puml
-      :scale: 50
-      :align: center
-
 Local Time
 **********
 
@@ -282,19 +218,6 @@ Logical Interface
 
    Returns the current :term:`Snapshot` (a :term:`TimePoint`) of the selected local clock domain.
 
-Dynamic Architecture
-^^^^^^^^^^^^^^^^^^^^
-
-.. rubric:: Reading the time
-
-All three local clock domains share the same ``now`` interface and resolve directly to an OS
-clock read — no initialization or background synchronization is required. The domain is selected
-at construction time and is always available.
-
-.. uml:: _assets/local_time_read_flow.puml
-   :scale: 50
-   :align: center
-
 Absolute Time
 *************
 
@@ -329,31 +252,3 @@ Logical Interface
    :included_by: logic_arc_int__time__absolute_clock
 
    Returns the current :term:`Snapshot` (:term:`TimePoint` with :term:`Absolute Time status`).
-
-Dynamic Architecture
-^^^^^^^^^^^^^^^^^^^^
-
-.. rubric:: Reading the time
-
-Absolute time is delivered from an external time master through the ``score::someip`` stack. Each
-sample carries a :term:`Delay Tag` so the transmission delay can be compensated. The
-:term:`score::time` feature converts the :term:`Delay Tag` to a local monotonic tag before
-publishing, so the :term:`Absolute Clock` compensates the delay on the local monotonic base —
-preserving precision without making clients depend on the :term:`Vehicle Clock`.
-
-.. uml:: _assets/absolute_time_read_flow.puml
-   :scale: 50
-   :align: center
-
-Mocking Support
----------------
-
-The :term:`score::time` feature provides a mockable interface for each clock domain —
-:term:`Vehicle Clock`, :term:`Local Clock` and :term:`Absolute Clock`. Application developers
-can substitute any clock interface with a controlled implementation during testing, enabling
-deterministic unit, component and integration tests of time-dependent code without requiring
-a real time source (:need:`feat_req__time__mocking_apis`).
-
-.. uml:: _assets/clock_testability.puml
-   :scale: 50
-   :align: center
