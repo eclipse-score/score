@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/ipc/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -74,8 +74,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Architecture" href="docs/architecture/index.html" />
-    <link rel="prev" title="Requirements" href="../docs/requirements/index.html" />
+    <link rel="next" title="IPC Architecture" href="architecture/index.html" />
+    <link rel="prev" title="Communication Requirements" href="../requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -96,7 +96,9 @@
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -165,23 +167,23 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -262,6 +264,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../modules/index.html">
+    Modules
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -286,11 +295,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -303,8 +319,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -381,23 +396,23 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -471,6 +486,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Modules
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -483,11 +505,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -500,8 +529,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -530,7 +558,8 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
   </svg>
   <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
@@ -543,19 +572,18 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../docs/architecture/index.html">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../docs/requirements/index.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Communication Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Communication Requirements</a></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Inter-process Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="docs/architecture/index.html">Architecture</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/requirements/index.html">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/safety_planning/index.html">Feature Safety Work Products List</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/roadmap.html">Roadmap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="docs/safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/index.html">IPC Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">IPC Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roadmap.html">IPC Roadmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html">IPC Dependent Failure Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/fmea.html">IPC Failure Modes and Effects Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html">IPC Safety Work Products List</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../some_ip_gateway/index.html">SOME/IP-Gateway</a></li>
@@ -565,6 +593,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../log_and_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -610,7 +639,7 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Features</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Communication</a></li>
@@ -634,7 +663,7 @@
                   
   <section id="inter-process-communication">
 <span id="communication-ipc"></span><h1>Inter-process Communication<a class="headerlink" href="#inter-process-communication" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c9219e5a">
+<div class="need_container docutils container" id="SNCB-0f8bcb8f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__com_ipc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -653,7 +682,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">contribution_request</span><span class="needs_spacer">, </span><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">com</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">contribution_request</span><span class="needs_spacer">, </span><span class="needs_data">feature_request</span></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
@@ -708,26 +737,26 @@ processes.</p>
 <li><p>Shared Memory: Shall be used for the heavy lifting of data exchange</p></li>
 <li><p>Message Passing: Shall be used as notification mechanism</p></li>
 </ol>
-<p>A more detailed description is provided in the architecture chapter <a class="reference internal" href="docs/architecture/index.html#ipc-architecture"><span class="std std-ref">Architecture</span></a></p>
+<p>A more detailed description is provided in the architecture chapter <a class="reference internal" href="architecture/index.html#ipc-architecture"><span class="std std-ref">IPC Architecture</span></a></p>
 </section>
 <section id="specification">
 <span id="ipc-specification"></span><h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
 <p>For IPC also the specification of communication applies: <a class="reference internal" href="../index.html#com-specification"><span class="std std-ref">Specification</span></a></p>
 <section id="architecture">
 <h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
-<p>The architecure of communication is diplayed <a class="reference internal" href="docs/architecture/index.html#ipc-architecture"><span class="std std-ref">here</span></a></p>
+<p>The architecure of communication is diplayed <a class="reference internal" href="architecture/index.html#ipc-architecture"><span class="std std-ref">here</span></a></p>
 </section>
 <section id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
-<p>The requirements for communication are listed <a class="reference internal" href="docs/requirements/index.html#ipc-requirements"><span class="std std-ref">here</span></a></p>
+<p>The requirements for communication are listed <a class="reference internal" href="requirements/index.html#ipc-requirements"><span class="std std-ref">here</span></a></p>
 </section>
 <section id="security-impact">
 <span id="ipc-security"></span><h3>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h3>
 <p>In addition to the security impact of <a class="reference internal" href="../index.html#com-security-impact"><span class="std std-ref">commnication</span></a> the IPC binding achieves the security goals:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="docs/requirements/index.html#feat_req__ipc__confidentiality" title="feat_req__ipc__confidentiality"><em class="xref need">confidentiality (feat_req__ipc__confidentiality)</em></a></p></li>
-<li><p><a class="reference internal" href="docs/requirements/index.html#feat_req__ipc__integrity" title="feat_req__ipc__integrity"><em class="xref need">integrity (feat_req__ipc__integrity)</em></a></p></li>
-<li><p><a class="reference internal" href="docs/requirements/index.html#feat_req__ipc__availability" title="feat_req__ipc__availability"><em class="xref need">availability (feat_req__ipc__availability)</em></a> (per criticality-level)</p></li>
+<li><p><a class="reference internal" href="requirements/index.html#feat_req__ipc__confidentiality" title="feat_req__ipc__confidentiality"><em class="xref need">confidentiality (feat_req__ipc__confidentiality)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#feat_req__ipc__integrity" title="feat_req__ipc__integrity"><em class="xref need">integrity (feat_req__ipc__integrity)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#feat_req__ipc__availability" title="feat_req__ipc__availability"><em class="xref need">availability (feat_req__ipc__availability)</em></a> (per criticality-level)</p></li>
 </ul>
 </section>
 </section>
@@ -744,20 +773,20 @@ processes.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../docs/requirements/index.html"
+       href="../requirements/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Communication Requirements</p>
       </div>
     </a>
     <a class="right-next"
-       href="docs/architecture/index.html"
+       href="architecture/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Architecture</p>
+        <p class="prev-next-title">IPC Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -821,8 +850,8 @@ processes.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -846,7 +875,7 @@ processes.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
 </p></div>
       
     </div>
