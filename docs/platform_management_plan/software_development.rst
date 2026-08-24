@@ -209,3 +209,13 @@ The qualified `Ferrocene <https://github.com/ferrocene>`__ compiler is planned t
 
 The main build environment of the project is based on `Bazel <https://bazel.build>`__. It it used to build software
 components, documentation, and automated tests.
+
+Software Development Plan Elements
+----------------------------------
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: docname
+   :filter: "wp__sw_development_plan" in realizes
