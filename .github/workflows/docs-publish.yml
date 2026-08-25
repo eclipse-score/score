@@ -12,12 +12,10 @@
 # *******************************************************************************
 
 name: Publish Documentation
-
 on:
   workflow_run:
-    workflows: ["Documentation"]
+    workflows: ["Documentation CI"]
     types: [completed]
-
 jobs:
   docs-publish:
     if: github.event.workflow_run.conclusion == 'success'
