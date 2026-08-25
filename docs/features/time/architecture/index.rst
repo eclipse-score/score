@@ -103,15 +103,13 @@ Feature Overview
    :status: valid
    :version: 1
 
-The runtime (static and dynamic) architecture is defined in the ``inc_time`` module
+The runtime (static and dynamic) architecture is defined in the ``time`` module
 (`Time Feature Architecture <https://eclipse-score.github.io/time>`_).
 
 Time Bases
 ----------
 
-Each time base is presented with the logical interface it exposes and, where it involves
-runtime synchronization behavior, its dynamic view. The local, non-synchronized clocks
-resolve to a direct time read from the OS.
+Each time base is presented with the logical interface it exposes.
 
 Vehicle Time
 ************
@@ -129,7 +127,7 @@ Logical Interface
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__time__vehicle_time_time_api[version==1], feat_req__time__vehicle_time_acc_qual_api[version==1], feat_req__time__vehicle_time_time_pt_qual[version==1], feat_req__time__vehicle_time_sync_log[version==1]
+   :fulfils: feat_req__time__vehicle_time_time_api[version==1], feat_req__time__vehicle_time_acc_qual_api[version==1], feat_req__time__vehicle_time_time_pt_qual[version==1], feat_req__time__vehicle_time_ctrl_flow[version==1], feat_req__time__vehicle_time_sync_log[version==1]
 
    .. needarch::
       :scale: 50

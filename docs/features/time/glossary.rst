@@ -182,18 +182,6 @@ Synchronization Infrastructure
       which aligns the absolute :term:`TimePoint`. Both are required for long-term timing
       consistency.
 
-    Synchronization process metadata
-      Data produced by the :term:`Time slave` that includes the current vehicle time,
-      synchronization status, rate correction and similar values, which are the output or
-      intermediate artifacts of the synchronization process.
-
     Grand Master
       The external, network-wide time source (the PTP Grand Master) that the system
       synchronizes to using the :term:`PTP protocol`.
-
-    Time slave
-      The synchronization actor **within the** :term:`score::time` **feature**, responsible for
-      synchronizing the local clock with the external :term:`Grand Master` using the
-      :term:`PTP protocol`, and for producing the synchronized time together with its
-      :term:`Synchronization process metadata` (synchronization status, time difference to the
-      external source, last synchronization time and the corresponding local :term:`TimePoint`).
