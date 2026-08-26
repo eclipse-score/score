@@ -5,6 +5,7 @@
    :status: proposed
    :context: Common Access Control format for all components
    :decision: open
+   :version: 1
 ```
 
    Context
