@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/architecture/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -96,7 +96,9 @@
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -293,11 +295,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -310,8 +319,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -497,11 +505,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -514,8 +529,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -544,7 +558,8 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
   </svg>
   <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
@@ -652,7 +667,7 @@
 <span id="com-static-architecture"></span><h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>As discussed in <a class="reference internal" href="../index.html#com-rationale"><span class="std std-ref">Rationale</span></a>, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).</p>
 <p>This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.</p>
-<div class="need_container docutils container" id="SNCB-6bd31358">
+<div class="need_container docutils container" id="SNCB-1e52491e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__com_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -673,8 +688,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#feat_arc_sta__com__communication" title="feat__com_communication">feat_arc_sta__com__communication</a>, <a class="reference internal" href="../ipc/architecture/index.html#feat_arc_dyn__communication__ipc" title="feat__com_communication">feat_arc_dyn__communication__ipc</a>, <a class="reference internal" href="../../../modules/communication/mock_binding/docs/architecture/index.html#comp__com_mock_binding" title="feat__com_communication">comp__com_mock_binding</a>, <a class="reference internal" href="../../../modules/communication/configuration/docs/architecture/index.html#comp__com_configuration" title="feat__com_communication">comp__com_configuration</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#comp__com_frontend" title="feat__com_communication">comp__com_frontend</a>, <a class="reference internal" href="../../../modules/communication/ipc_binding/docs/architecture/index.html#comp__com_ipc_binding" title="feat__com_communication">comp__com_ipc_binding</a></span></span></div>
-<div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__time_based_arch" title="feat__com_communication">feat_req__com__time_based_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_driven_arch" title="feat__com_communication">feat_req__com__data_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__request_driven_arch" title="feat__com_communication">feat_req__com__request_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat__com_communication">feat_req__com__interfaces</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__event_type" title="feat__com_communication">feat_req__com__event_type</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__method" title="feat__com_communication">feat_req__com__method</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__signal" title="feat__com_communication">feat_req__com__signal</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_consumer" title="feat__com_communication">feat_req__com__producer_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance" title="feat__com_communication">feat_req__com__service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_names" title="feat__com_communication">feat_req__com__service_instance_names</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__versioning" title="feat__com_communication">feat_req__com__versioning</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_location_transparency" title="feat__com_communication">feat_req__com__service_location_transparency</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__stateless_communication" title="feat__com_communication">feat_req__com__stateless_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_granularity" title="feat__com_communication">feat_req__com__service_instance_granularity</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_discovery" title="feat__com_communication">feat_req__com__service_discovery</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__safe_communication" title="feat__com_communication">feat_req__com__safe_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_corruption" title="feat__com_communication">feat_req__com__data_corruption</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_reordering" title="feat__com_communication">feat_req__com__data_reordering</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_repetition" title="feat__com_communication">feat_req__com__data_repetition</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_loss" title="feat__com_communication">feat_req__com__data_loss</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__zero_copy" title="feat__com_communication">feat_req__com__zero_copy</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_lang" title="feat__com_communication">feat_req__com__multi_lang</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_idioms" title="feat__com_communication">feat_req__com__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_infra" title="feat__com_communication">feat_req__com__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_mock_api" title="feat__com_communication">feat_req__com__testability_mock_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_fake_binding" title="feat__com_communication">feat_req__com__testability_fake_binding</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_support" title="feat__com_communication">feat_req__com__multi_binding_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__binding_agnostic_api" title="feat__com_communication">feat_req__com__binding_agnostic_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_depl" title="feat__com_communication">feat_req__com__multi_binding_depl</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__one_way_sharing" title="feat__com_communication">feat_req__com__one_way_sharing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__readonly_vm" title="feat__com_communication">feat_req__com__readonly_vm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__consistent_data" title="feat__com_communication">feat_req__com__consistent_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_access" title="feat__com_communication">feat_req__com__lock_free_access</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_timestamps" title="feat__com_communication">feat_req__com__producer_timestamps</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__streamed_data" title="feat__com_communication">feat_req__com__streamed_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__configurable_queues" title="feat__com_communication">feat_req__com__configurable_queues</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_queue" title="feat__com_communication">feat_req__com__lock_free_queue</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__bi_directional_comm" title="feat__com_communication">feat_req__com__bi_directional_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__async_support" title="feat__com_communication">feat_req__com__async_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__shared_memory" title="feat__com_communication">feat_req__com__shared_memory</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_notifications" title="feat__com_communication">feat_req__com__data_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__config_notifications" title="feat__com_communication">feat_req__com__config_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__depl_config_runtime" title="feat__com_communication">feat_req__com__depl_config_runtime</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__tracing" title="feat__com_communication">feat_req__com__tracing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_placement" title="feat__com_communication">feat_req__com__acl_placement</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_per_service_instance" title="feat__com_communication">feat_req__com__acl_per_service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_producer" title="feat__com_communication">feat_req__com__acl_for_producer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_consumer" title="feat__com_communication">feat_req__com__acl_for_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__asil" title="feat__com_communication">feat_req__com__asil</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__stack_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__stack_plugin_ifc</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__e2e_plugin_ifc</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_specs" title="feat__com_communication">feat_req__some_ip_gateway__e2e_specs</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_sd_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_sd_protocol</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__zero_copy" title="feat__com_communication">feat_req__ipc__zero_copy</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__confidentiality" title="feat__com_communication">feat_req__ipc__confidentiality</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__integrity" title="feat__com_communication">feat_req__ipc__integrity</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__availability" title="feat__com_communication">feat_req__ipc__availability</a></span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../../../modules/communication/configuration/docs/architecture/index.html#comp__com_configuration" title="feat__com_communication">comp__com_configuration</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#comp__com_frontend" title="feat__com_communication">comp__com_frontend</a>, <a class="reference internal" href="../../../modules/communication/ipc_binding/docs/architecture/index.html#comp__com_ipc_binding" title="feat__com_communication">comp__com_ipc_binding</a>, <a class="reference internal" href="../../../modules/communication/mock_binding/docs/architecture/index.html#comp__com_mock_binding" title="feat__com_communication">comp__com_mock_binding</a>, <a class="reference internal" href="../ipc/architecture/index.html#feat_arc_dyn__communication__ipc" title="feat__com_communication">feat_arc_dyn__communication__ipc</a>, <a class="reference internal" href="#feat_arc_sta__com__communication" title="feat__com_communication">feat_arc_sta__com__communication</a></span></span></div>
+<div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_consumer" title="feat__com_communication">feat_req__com__acl_for_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_producer" title="feat__com_communication">feat_req__com__acl_for_producer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_per_service_instance" title="feat__com_communication">feat_req__com__acl_per_service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_placement" title="feat__com_communication">feat_req__com__acl_placement</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__asil" title="feat__com_communication">feat_req__com__asil</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__async_support" title="feat__com_communication">feat_req__com__async_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__bi_directional_comm" title="feat__com_communication">feat_req__com__bi_directional_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__binding_agnostic_api" title="feat__com_communication">feat_req__com__binding_agnostic_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__config_notifications" title="feat__com_communication">feat_req__com__config_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__configurable_queues" title="feat__com_communication">feat_req__com__configurable_queues</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__consistent_data" title="feat__com_communication">feat_req__com__consistent_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_corruption" title="feat__com_communication">feat_req__com__data_corruption</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_driven_arch" title="feat__com_communication">feat_req__com__data_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_loss" title="feat__com_communication">feat_req__com__data_loss</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_notifications" title="feat__com_communication">feat_req__com__data_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_reordering" title="feat__com_communication">feat_req__com__data_reordering</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_repetition" title="feat__com_communication">feat_req__com__data_repetition</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__depl_config_runtime" title="feat__com_communication">feat_req__com__depl_config_runtime</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__event_type" title="feat__com_communication">feat_req__com__event_type</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat__com_communication">feat_req__com__interfaces</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_idioms" title="feat__com_communication">feat_req__com__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_infra" title="feat__com_communication">feat_req__com__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_access" title="feat__com_communication">feat_req__com__lock_free_access</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_queue" title="feat__com_communication">feat_req__com__lock_free_queue</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__method" title="feat__com_communication">feat_req__com__method</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_depl" title="feat__com_communication">feat_req__com__multi_binding_depl</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_support" title="feat__com_communication">feat_req__com__multi_binding_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_lang" title="feat__com_communication">feat_req__com__multi_lang</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__one_way_sharing" title="feat__com_communication">feat_req__com__one_way_sharing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_consumer" title="feat__com_communication">feat_req__com__producer_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_timestamps" title="feat__com_communication">feat_req__com__producer_timestamps</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__readonly_vm" title="feat__com_communication">feat_req__com__readonly_vm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__request_driven_arch" title="feat__com_communication">feat_req__com__request_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__safe_communication" title="feat__com_communication">feat_req__com__safe_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_discovery" title="feat__com_communication">feat_req__com__service_discovery</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance" title="feat__com_communication">feat_req__com__service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_granularity" title="feat__com_communication">feat_req__com__service_instance_granularity</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_names" title="feat__com_communication">feat_req__com__service_instance_names</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_location_transparency" title="feat__com_communication">feat_req__com__service_location_transparency</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__shared_memory" title="feat__com_communication">feat_req__com__shared_memory</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__signal" title="feat__com_communication">feat_req__com__signal</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__stateless_communication" title="feat__com_communication">feat_req__com__stateless_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__streamed_data" title="feat__com_communication">feat_req__com__streamed_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_fake_binding" title="feat__com_communication">feat_req__com__testability_fake_binding</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_mock_api" title="feat__com_communication">feat_req__com__testability_mock_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__time_based_arch" title="feat__com_communication">feat_req__com__time_based_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__tracing" title="feat__com_communication">feat_req__com__tracing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__versioning" title="feat__com_communication">feat_req__com__versioning</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__zero_copy" title="feat__com_communication">feat_req__com__zero_copy</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__availability" title="feat__com_communication">feat_req__ipc__availability</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__confidentiality" title="feat__com_communication">feat_req__ipc__confidentiality</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__integrity" title="feat__com_communication">feat_req__ipc__integrity</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__zero_copy" title="feat__com_communication">feat_req__ipc__zero_copy</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__e2e_plugin_ifc</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_specs" title="feat__com_communication">feat_req__some_ip_gateway__e2e_specs</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_sd_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_sd_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__stack_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__stack_plugin_ifc</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="feat__com_communication">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
@@ -697,7 +712,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1b6290e3">
+<div class="need_container docutils container" id="SNCB-e0432161">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__com__communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -727,7 +742,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/architecture/index-0">
-<object data="../../../_images/plantuml-3a808ae5ef0d777ae73c517c8e863d55afb07a44.svg" type="image/svg+xml" style="width:1065px;height:926px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-423b5c805f27202bd5e60bdba266bcc0eb174b3c.svg" type="image/svg+xml" style="width:1056px;height:926px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -778,7 +793,7 @@ This is the case when:</p>
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-2023da79">
+<div class="need_container docutils container" id="SNCB-a6971723">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__communication__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -804,14 +819,14 @@ This is the case when:</p>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orchestrator" title="logic_arc_int__communication__user">comp__orchestrator</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__communication__user">comp_arc_sta__orch__orchestrator</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__com__communication" title="logic_arc_int__communication__user">feat_arc_sta__com__communication</a></span></span></div>
 <div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#feat__com_communication" title="logic_arc_int__communication__user">feat__com_communication</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__initialize" title="logic_arc_int__communication__user">logic_arc_int_op__com__initialize</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__offer_service" title="logic_arc_int__communication__user">logic_arc_int_op__com__offer_service</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__update" title="logic_arc_int__communication__user">logic_arc_int_op__com__update</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__send" title="logic_arc_int__communication__user">logic_arc_int_op__com__send</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__startfindserv" title="logic_arc_int__communication__user">logic_arc_int_op__com__startfindserv</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__createproxy" title="logic_arc_int__communication__user">logic_arc_int_op__com__createproxy</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__subscribe" title="logic_arc_int__communication__user">logic_arc_int_op__com__subscribe</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__getnewsamples" title="logic_arc_int__communication__user">logic_arc_int_op__com__getnewsamples</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__createproxy" title="logic_arc_int__communication__user">logic_arc_int_op__com__createproxy</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__getnewsamples" title="logic_arc_int__communication__user">logic_arc_int_op__com__getnewsamples</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__initialize" title="logic_arc_int__communication__user">logic_arc_int_op__com__initialize</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__offer_service" title="logic_arc_int__communication__user">logic_arc_int_op__com__offer_service</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__send" title="logic_arc_int__communication__user">logic_arc_int_op__com__send</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__startfindserv" title="logic_arc_int__communication__user">logic_arc_int_op__com__startfindserv</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__subscribe" title="logic_arc_int__communication__user">logic_arc_int_op__com__subscribe</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__update" title="logic_arc_int__communication__user">logic_arc_int_op__com__update</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/architecture/index-1">
-<object data="../../../_images/plantuml-e5bce3dc122bc5b0d45e54a8290efccc040da206.svg" type="image/svg+xml" style="width:266px;height:199px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-38c67f4cffdb90b9e34355c510b5d88aa3e3db47.svg" type="image/svg+xml" style="width:266px;height:199px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -904,7 +919,7 @@ Bindings reside beneath the frontend layer and accept the forwarded requests</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/features/communication/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -929,8 +944,8 @@ Bindings reside beneath the frontend layer and accept the forwarded requests</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -954,7 +969,7 @@ Bindings reside beneath the frontend layer and accept the forwarded requests</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
 </p></div>
       
     </div>
