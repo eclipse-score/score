@@ -482,11 +482,16 @@
 	  "type": "object",
 	  "additionalProperties": false,
 	  "required": [
-		"modify"
+		"modify",
+		"confirmTrusted"
 	  ],
 	  "properties": {
 		"modify": {  
 		  "$ref": "#/$defs/subjectList"
+		},
+		"confirmTrusted": {
+			"description": "If put to True, then even though an application A might have rights to modify/update a certificate in a certificate slot, the owner of the truststore must accept it, otherwhise it will be marked invalid for the truststore. If put to False, if application A has rights to modify/uipdate a certificate, then its by default trusted by the other parties as well.",
+			"type": "boolean"
 		}
 	  }
 	},
@@ -851,6 +856,7 @@
 	{
 		"trusted_signees":
 		{
+			"confirmTrusted":False,
 			"modify": ["vmid=4|uid=2"]
 		}
 
