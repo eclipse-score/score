@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Requirements &#8212; S-CORE  documentation</title>
+    <title>Security and Cryptography Requirements &#8212; S-CORE  documentation</title>
   
   
   
@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
@@ -38,19 +38,19 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/security_crypto/requirements/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -75,7 +75,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Time" href="../../time/index.html" />
-    <link rel="prev" title="Security &amp; Cryptography" href="../index.html" />
+    <link rel="prev" title="Security and Cryptography Architecture" href="../architecture/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -96,7 +96,9 @@
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -165,23 +167,23 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -200,6 +202,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
@@ -255,6 +264,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../modules/index.html">
+    Modules
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -279,11 +295,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -296,8 +319,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -374,23 +396,23 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
-    Features
+    Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../requirements/index.html">
-    Requirements
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Modules
+    Platform Requirements
   </a>
 </li>
 
@@ -398,6 +420,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../contribute/index.html">
     Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../quality/qms_report.html">
+    Quality
   </a>
 </li>
 
@@ -457,6 +486,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Modules
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -469,11 +505,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -486,8 +529,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -516,7 +558,8 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
   </svg>
   <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
@@ -529,18 +572,19 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../log_and_trace/index.html">Log and Trace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Security &amp; Cryptography</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Security and Cryptography Architecture</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Security and Cryptography Requirements</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
@@ -585,12 +629,12 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Features</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Security &amp; Cryptography</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Requirements</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Security and Cryptography Requirements</span></li>
   </ul>
 </nav>
 </div>
@@ -607,11 +651,11 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="requirements">
-<span id="security-crypto-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
+  <section id="security-and-cryptography-requirements">
+<span id="security-crypto-requirements"></span><h1>Security and Cryptography Requirements<a class="headerlink" href="#security-and-cryptography-requirements" title="Link to this heading">#</a></h1>
 <section id="symmetric-encryption">
 <h2>Symmetric Encryption<a class="headerlink" href="#symmetric-encryption" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-9579e0d7">
+<div class="need_container docutils container" id="SNCB-390806b7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_symmetric_encrypt">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -631,9 +675,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sym_symmetric_encrypt">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sym_symmetric_encrypt">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -655,7 +701,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-66d40480">
+<div class="need_container docutils container" id="SNCB-b3a8ad08">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_symm_algo_aes_cbc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -675,9 +721,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sym_symm_algo_aes_cbc">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sym_symm_algo_aes_cbc">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -699,7 +747,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4fa1685c">
+<div class="need_container docutils container" id="SNCB-d57b8051">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_sym_algo_aes_gcm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -719,9 +767,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sym_sym_algo_aes_gcm">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sym_sym_algo_aes_gcm">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -743,7 +793,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-301c0ed4">
+<div class="need_container docutils container" id="SNCB-ff58e5ff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_sym_algo_aes_ccm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -763,9 +813,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sym_sym_algo_aes_ccm">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sym_sym_algo_aes_ccm">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -787,7 +839,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2f9808a0">
+<div class="need_container docutils container" id="SNCB-db534594">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sym_algo_chacha20">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -807,9 +859,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sym_algo_chacha20">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sym_algo_chacha20">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -834,7 +888,7 @@
 </section>
 <section id="asymmetric-encryption">
 <h2>Asymmetric Encryption<a class="headerlink" href="#asymmetric-encryption" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-92ee5913">
+<div class="need_container docutils container" id="SNCB-40236917">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__asym_encryption">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -854,9 +908,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__asym_encryption">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__asym_encryption">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -878,7 +934,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-572ed553">
+<div class="need_container docutils container" id="SNCB-51bc5a9e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__asym_algo_ecdh">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -898,9 +954,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__asym_algo_ecdh">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__asym_algo_ecdh">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -925,7 +983,7 @@
 </section>
 <section id="digital-signatures">
 <h2>Digital Signatures<a class="headerlink" href="#digital-signatures" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f12b8282">
+<div class="need_container docutils container" id="SNCB-c8787bc5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sig_creation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -945,9 +1003,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sig_creation">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sig_creation">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -969,7 +1029,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-412d4bfa">
+<div class="need_container docutils container" id="SNCB-538aee1c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sig_verification">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -989,9 +1049,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sig_verification">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sig_verification">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1013,7 +1075,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9ed51e65">
+<div class="need_container docutils container" id="SNCB-f6a18696">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sig_algo_ecdsa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1033,9 +1095,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sig_algo_ecdsa">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sig_algo_ecdsa">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1060,7 +1124,7 @@
 </section>
 <section id="message-authentication-code-mac">
 <h2>Message Authentication Code (MAC)<a class="headerlink" href="#message-authentication-code-mac" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-bf515814">
+<div class="need_container docutils container" id="SNCB-6c0868c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__mac">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1080,9 +1144,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__mac">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__mac">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1108,7 +1174,7 @@ ensure message integrity and authenticity.</p></td>
 </section>
 <section id="hashing">
 <h2>Hashing<a class="headerlink" href="#hashing" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-cb04a03c">
+<div class="need_container docutils container" id="SNCB-d1f2a631">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hashing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1128,9 +1194,11 @@ ensure message integrity and authenticity.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__hashing">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__hashing">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1152,7 +1220,7 @@ ensure message integrity and authenticity.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d98a3006">
+<div class="need_container docutils container" id="SNCB-8e9af9c8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hashing_algo_sha2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1172,9 +1240,11 @@ ensure message integrity and authenticity.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__hashing_algo_sha2">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__hashing_algo_sha2">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1196,7 +1266,7 @@ ensure message integrity and authenticity.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1424a7be">
+<div class="need_container docutils container" id="SNCB-6d0aec5d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hashing_algo_sha3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1216,9 +1286,11 @@ ensure message integrity and authenticity.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__hashing_algo_sha3">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__hashing_algo_sha3">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1243,7 +1315,7 @@ ensure message integrity and authenticity.</p></td>
 </section>
 <section id="key-derivation-functions-kdf">
 <h2>Key Derivation Functions (KDF)<a class="headerlink" href="#key-derivation-functions-kdf" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-7366abd9">
+<div class="need_container docutils container" id="SNCB-f002fb73">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__kdf">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1263,9 +1335,11 @@ ensure message integrity and authenticity.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__kdf">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__kdf">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1291,7 +1365,7 @@ secret keys from a master key or password.</p></td>
 </section>
 <section id="random-number-generation">
 <h2>Random Number Generation<a class="headerlink" href="#random-number-generation" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-7ccdae1f">
+<div class="need_container docutils container" id="SNCB-0234a454">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__rng">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1311,9 +1385,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__rng">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__rng">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1335,7 +1411,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9f7b94e3">
+<div class="need_container docutils container" id="SNCB-f3a3d60a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__rng_algo_chacha20rng">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1355,9 +1431,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__rng_algo_chacha20rng">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__rng_algo_chacha20rng">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1382,7 +1460,7 @@ secret keys from a master key or password.</p></td>
 </section>
 <section id="certificate-management">
 <h2>Certificate Management<a class="headerlink" href="#certificate-management" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-d8171cdf">
+<div class="need_container docutils container" id="SNCB-827c70cd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__cert_management">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1402,9 +1480,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__cert_management">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__cert_management">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1430,7 +1510,7 @@ secret keys from a master key or password.</p></td>
 </section>
 <section id="key-management">
 <h2>Key Management<a class="headerlink" href="#key-management" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-97e7d597">
+<div class="need_container docutils container" id="SNCB-60c53a2b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_generation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1450,9 +1530,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__key_generation">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__key_generation">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1474,7 +1556,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-40c2c0ff">
+<div class="need_container docutils container" id="SNCB-bc4d0ca4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_import">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1494,9 +1576,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__key_import">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__key_import">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1518,7 +1602,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5823a7a4">
+<div class="need_container docutils container" id="SNCB-e1a4ebd4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_storage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1538,9 +1622,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__key_storage">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__key_storage">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1562,7 +1648,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7c3f4d6d">
+<div class="need_container docutils container" id="SNCB-124e8e1b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__key_deletion">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1582,9 +1668,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__key_deletion">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__key_deletion">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1606,7 +1694,7 @@ secret keys from a master key or password.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7867bf35">
+<div class="need_container docutils container" id="SNCB-662a7228">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__flexible_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1626,9 +1714,11 @@ secret keys from a master key or password.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__flexible_api">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__flexible_api">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1655,7 +1745,7 @@ algorithms based on their unique name.</p></td>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
 <blockquote>
-<div><div class="need_container docutils container" id="SNCB-786554c5">
+<div><div class="need_container docutils container" id="SNCB-2c898198">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__performance_tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1675,9 +1765,11 @@ algorithms based on their unique name.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__performance_tooling">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__performance_tooling">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1701,7 +1793,7 @@ running all it’s cryptographic operations on different systems.</p></td>
 </div>
 </div>
 </div></blockquote>
-<div class="need_container docutils container" id="SNCB-1a4ce2d6">
+<div class="need_container docutils container" id="SNCB-e9ca9132">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__algo_naming">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1721,9 +1813,11 @@ running all it’s cryptographic operations on different systems.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__algo_naming">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__algo_naming">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1746,7 +1840,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d3529a0c">
+<div class="need_container docutils container" id="SNCB-4930548e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__no_key_exposure">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1766,9 +1860,11 @@ algorithms.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__no_key_exposure">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__no_key_exposure">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1790,7 +1886,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7635f246">
+<div class="need_container docutils container" id="SNCB-390c88f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__side_channel_mitigation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1810,9 +1906,11 @@ algorithms.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__side_channel_mitigation">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__side_channel_mitigation">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1834,7 +1932,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9eba16c4">
+<div class="need_container docutils container" id="SNCB-ba69d3e1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__api_lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1854,9 +1952,11 @@ algorithms.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__api_lifecycle">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__api_lifecycle">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1882,7 +1982,7 @@ algorithms.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e149d88a">
+<div class="need_container docutils container" id="SNCB-f6a5ade0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__error_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1902,9 +2002,11 @@ algorithms.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__error_handling">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__error_handling">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1927,7 +2029,7 @@ and logging.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a94d4d5b">
+<div class="need_container docutils container" id="SNCB-da66ae01">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__security_concept">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1947,9 +2049,11 @@ and logging.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__security_concept">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__security_concept">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1972,7 +2076,7 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4223cec3">
+<div class="need_container docutils container" id="SNCB-b7a53b9d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__algo_updates">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1992,9 +2096,11 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__algo_updates">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__algo_updates">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2016,7 +2122,7 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bdc2d460">
+<div class="need_container docutils container" id="SNCB-1728745b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__reverse_eng_protection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2036,9 +2142,11 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__reverse_eng_protection">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__reverse_eng_protection">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2060,7 +2168,7 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-55214dd2">
+<div class="need_container docutils container" id="SNCB-067dbd11">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__production_keys">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2080,9 +2188,11 @@ plausible attacks, critical failures, and countermeasures.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__production_keys">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__production_keys">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2105,7 +2215,7 @@ brought into the system.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3261c475">
+<div class="need_container docutils container" id="SNCB-c976d16d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__pqc_readiness">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2125,9 +2235,11 @@ brought into the system.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__pqc_readiness">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__pqc_readiness">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2149,7 +2261,7 @@ brought into the system.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7e6c93cf">
+<div class="need_container docutils container" id="SNCB-6b80eae7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__hw_acceleration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2169,9 +2281,11 @@ brought into the system.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__hw_acceleration">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__hw_acceleration">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2194,7 +2308,7 @@ operations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c2c26198">
+<div class="need_container docutils container" id="SNCB-4decd257">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__sw_fallback">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2214,9 +2328,11 @@ operations.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__sw_fallback">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__sw_fallback">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2238,7 +2354,7 @@ operations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a61a0c05">
+<div class="need_container docutils container" id="SNCB-f27be958">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__trusted_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2258,9 +2374,11 @@ operations.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__trusted_time">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__trusted_time">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2282,7 +2400,7 @@ operations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b0a34f20">
+<div class="need_container docutils container" id="SNCB-76ee414b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__os_protection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2301,11 +2419,12 @@ operations.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
-<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__os_protection">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__os_protection">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2328,7 +2447,7 @@ its memory and CPU from applications and the normal operating system.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6e011d33">
+<div class="need_container docutils container" id="SNCB-279b2afe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__access_control">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2348,9 +2467,11 @@ its memory and CPU from applications and the normal operating system.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__access_control">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__access_control">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2373,7 +2494,7 @@ control to cryptographic functions and key material.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-84f6c68f">
+<div class="need_container docutils container" id="SNCB-7e8eb17f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__ids_integration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2393,9 +2514,11 @@ control to cryptographic functions and key material.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__ids_integration">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__ids_integration">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2418,7 +2541,7 @@ threats to an Intrusion Detection System (IDS).</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ced60d07">
+<div class="need_container docutils container" id="SNCB-b11ffbdd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__dos_mitigation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2438,9 +2561,11 @@ threats to an Intrusion Detection System (IDS).</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__dos_mitigation">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__dos_mitigation">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2467,7 +2592,7 @@ load.</p></td>
 </section>
 <section id="secure-communication-protocols">
 <h2>Secure Communication Protocols<a class="headerlink" href="#secure-communication-protocols" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-ec7fda1b">
+<div class="need_container docutils container" id="SNCB-bbf708c8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__sec_crypt__tls_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2487,9 +2612,11 @@ load.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__sec_crypt__tls_support">stkh_req__dependability__security_features</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__security_crypto" title="feat_req__sec_crypt__tls_support">feat__security_crypto</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2526,12 +2653,12 @@ communication over Ethernet.</p></td>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../architecture/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Security &amp; Cryptography</p>
+        <p class="prev-next-title">Security and Cryptography Architecture</p>
       </div>
     </a>
     <a class="right-next"
@@ -2605,8 +2732,8 @@ communication over Ethernet.</p></td>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2630,7 +2757,7 @@ communication over Ethernet.</p></td>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
 </p></div>
       
     </div>
