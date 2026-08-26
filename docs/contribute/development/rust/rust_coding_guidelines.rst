@@ -12,8 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Writing Rust Code incl. Coding Guidelines
-#########################################
+.. _rust_coding_guidelines:
+
+Rust Coding Guidelines
+######################
 
 .. document:: Coding Guidelines Rust
    :id: doc__rust_coding_guidelines

@@ -12,7 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
 .. _cpp_misra_rules:
 
 C++ MISRA Rules
