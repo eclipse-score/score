@@ -58,7 +58,7 @@
 	"policyId",
 	"defaultEffect",
 	"generatedBy",
-	"generatedAt",
+	"generatedAt"
   ],
   "properties": {
 	"policyVersion": {
@@ -856,7 +856,7 @@
 	{
 		"trusted_signees":
 		{
-			"confirmTrusted":False,
+			"confirmTrusted":false,
 			"modify": ["vmid=4|uid=2"]
 		}
 
