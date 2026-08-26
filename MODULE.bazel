@@ -60,6 +60,18 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 #
 ###############################################################################
 bazel_dep(name = "score_tooling", version = "1.1.2")
+
+# Playground experiment: point score_tooling at a local checkout (with a
+# small patch adding a `package` override param to component_requirements/
+# feature_requirements/assumed_system_requirements, see ../tooling git log)
+# instead of the registry version, to fix a TRLC package name collision
+# between two requirement targets both converted from same-named "index.rst"
+# sources.
+local_path_override(
+    module_name = "score_tooling",
+    path = "../tooling",
+)
+
 bazel_dep(name = "score_docs_as_code", version = "8.0.1")
 bazel_dep(name = "score_process_description", version = "2.1.2")
 

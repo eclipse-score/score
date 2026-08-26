@@ -66,4 +66,14 @@ docs(
         "@score_process_description//:needs_json",
     ],
     source_dir = "docs",
+    bundles = [
+        {
+            "bundle": "//docs/features/baselibs/requirements:docs",
+            "mount_at": "features/baselibs/requirements",
+        },
+        {
+            "bundle": "//docs/requirements/stakeholder:docs",
+            "mount_at": "requirements/stakeholder",
+        },
+    ],
 )

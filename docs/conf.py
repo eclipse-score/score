@@ -43,3 +43,12 @@ html_theme_options = {
         "**": ["page-toc", "edit-this-page", "sourcelink"],
     },
 }
+
+# docs/features/baselibs/requirements has its own BUILD file (needed for the
+# feature_requirements()/TRLC export consumed by baselibs), so the root
+# docs() glob no longer picks it up and it must be re-attached via a
+# docs_bundle mount (see //BUILD). Because that bundle's mount_at path
+# already lives inside this project's own "docs" tree, sphinx-mounts also
+# finds it there directly and skips its own (redundant) mount, only warning
+# about the harmless duplicate.
+suppress_warnings = ["mounts.docname_conflict"]
