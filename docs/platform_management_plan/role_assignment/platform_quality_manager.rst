@@ -32,8 +32,6 @@ For the platform quality management a pool of quality managers is elected due to
 
 `Volker Häussler <https://github.com/PandaDo>`_
 
-`Philipp Ahmann <https://github.com/pahmann>`_
-
 
 Election Reasoning
 ==================
@@ -95,33 +93,6 @@ S-CORE Commits:
 - committer in `process_description repository <https://github.com/eclipse-score/process_description>`_
 - committer in `score repository <https://github.com/eclipse-score/score>`_
 
-Evidences Philipp Ahmann
-------------------------
-
-`LinkedIn Profile <https://www.linkedin.com/in/philipp-ahmann/details/experience/>`_
-
-Quality Management Experiences:
-
-- CMMI L3 Hardware Process Engineer - 2008 to 2010
-- Requirements Manager - 2009 to ~2020
-- Verification Team Lead - 2012 to 2016
-- Automotive OSS Proecess Lead - 2025 to present
-
-Education and Skills:
-
-- Dipl.-Ing. (FH) Electrical Engineering - certificate
-- MSc Electrical Engineering - certificate
-- Requirements manager, ISO 9001 reference project leader, CMMI appraisal process participant - letter of confirmation from employers
-- Various quality related presentation at international conferences 
-  (e.g. TÜV safe.tech, DKE Tagung Funktionale Sicherheit, exida Automotive Symposium, Open Source Summit Safety Critical Track, Hood REConf) - https://www.linkedin.com/in/philipp-ahmann/details/publications/
-- Technical Steering Committee Chair for the Linux Foundation ELISA project.
-
-S-CORE Commits:
-
-- committer in `process_description repository <https://github.com/eclipse-score/process_description>`_
-- committer in `score repository <https://github.com/eclipse-score/score>`_
-
-
 Election
 ========
 
@@ -129,12 +100,11 @@ For the election the following Committers already elected as quality managers ar
 
 Elected quality managers:
 
-- `Markus Schu <https://github.com/masc2023>`_
-- `Volker Häussler <https://github.com/PandaDo>`_
+- `<https://github.com/masc2023>`_
 
 For the election further Committers with similar skills are asked for approval:
 
-- `<https://github.com/RolandJentschETAS>`_
+- `<https://github.com/pahmann>`_
 
 The election is performed by approving the pull request of this document.
 The nominee is elected if more than half of the above committers in the list approved and nobody "request changes".
