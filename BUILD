@@ -63,7 +63,7 @@ setup_starpls(
 
 docs(
     data = [
-        "@score_process//:needs_json",
+        "@score_process_description//:needs_json",
     ],
     source_dir = "docs",
 )
