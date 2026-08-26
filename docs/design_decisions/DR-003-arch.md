@@ -141,8 +141,7 @@ score/mw/my_component/
   practice, but it is less immediately obvious than a dedicated `include/` tree.
 - **Discipline required on include paths:** Contributors must consistently use the
   full project-prefixed path; a reset prefix (`strip_include_prefix = "."`) would
-  collapse paths to bare filenames and reintroduce collision risk (see *Header Name
-  Collisions Across Modules*).
+  collapse paths to bare filenames and bypass the project-scoped include convention.
 
 ---
 
@@ -487,53 +486,6 @@ decision.
 
 ---
 
-## Header Name Collisions Across Modules
-
-A common worry is what happens when several modules expose an identically named
-header — for example `error.h`. The important point is that collisions are decided by
-the **include-path string**, not the file name. Two `error.h` files coexist without
-issue as long as their include paths differ:
-
-```cpp
-#include "score/filesystem/error.h"         // baselibs
-#include "score/concurrency/future/error.h" // baselibs
-```
-
-Both exist side by side in `baselibs` today with no conflict, because the package
-prefix makes them unique. A problem only arises when the path is shortened to the bare
-file name and two dependencies provide it:
-
-```cpp
-#include "error.h"   // provided by module A AND module B → ambiguous
-```
-
-If a target depends on both libraries, `-I`/`-isystem` ordering decides which file
-wins — the wrong header may be included, silently violating the One Definition Rule.
-The **Bazel module name does not protect against this**: `@module_a` / `@module_b` do
-not appear in the C++ include path by default; the path is determined solely by the
-package location and by `strip_include_prefix` / `include_prefix` / `includes`.
-
-Consequences per option:
-
-- **Option A (flat, repo-root includes):** collision-safe *as long as* headers are
-  included by their full repo-root path. The danger is resetting the prefix
-  (`strip_include_prefix = "."` as in `utils/base64`, or `includes = ["."]`), which
-  collapses the path to `#include "error.h"` and re-introduces the ambiguity globally.
-- **Option B (`include/<component>/`):** collision-safe, but the protection comes from
-  the **component-name nesting**, not from the `include/` directory itself. A flat
-  `include/error.h` (without the `<component>` subdirectory) still collides.
-- **Option C (Hybrid):** same as B — public headers stay unique via
-  `include/<component>/`.
-- **Flat + `impl/` + visibility:** same as A — the repo-root path is preserved, and
-  the restricted `impl/` visibility additionally shrinks the set of externally
-  reachable headers.
-
-**Rule:** Uniqueness must be guaranteed by the include-path **prefix** (the project or
-component name) — via the repo package path under Option A, or via the
-`include/<component>/` nesting under Options B/C. A bare `include/` without a
-component-named subdirectory does **not** solve the problem.
-
----
 
 ## Consequences
 
