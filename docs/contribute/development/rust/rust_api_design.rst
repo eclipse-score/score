@@ -12,16 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Rust API design guidelines
+.. _rust_api_design_guidelines:
+
+Rust API Design Guidelines
 ##########################
 
-.. document:: Rust API design guidelines
+.. document:: Rust API Design Guidelines
    :id: doc__rust_api_design
    :status: draft
    :version: 1
    :safety: QM
    :security: NO
-   :realizes: wp__training_path[version==1]
+   :realizes: wp__sw_development_plan[version==1]
 
 Preface
 =======

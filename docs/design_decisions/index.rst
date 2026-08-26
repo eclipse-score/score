@@ -12,8 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Decision Records
-================
+.. _platform_design_decisions:
+
+Platform Design Decisions
+=========================
 
 Strategy
 ~~~~~~~~

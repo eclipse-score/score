@@ -11,7 +11,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _sw_development:
+.. _sw_development_plan:
 
 Software Development Plan
 -------------------------
@@ -101,7 +101,7 @@ The design guideline is defined in :need:`doc_concept__imp_concept` and :need:`g
 API guidelines
 ^^^^^^^^^^^^^^
 
-To provide the user with a consistent approach on the use of APIs, there are guidelines documented in :need:`doc__api_guidelines`
+To provide the user with a consistent approach on the use of APIs, there are guidelines documented in :need:`doc__api_guide`
 and :need:`doc__rust_api_design`, this defines for example the error handling concept or rules to improve user experience.
 
 Coding guidelines
@@ -119,7 +119,7 @@ The configuration of the software is done by the code. Which means that there ar
 SW development tools
 ^^^^^^^^^^^^^^^^^^^^
 
-This list will evolve into the complete "Tool List" :ref:`tools` for the S-CORE project used for
+This list will evolve into the complete "Tool List" :ref:`platform_tools` for the S-CORE project used for
 tool evaluation and qualification. In the moment the :need:`doc__verification_plan`
 contains additional tools used in verification.
 Tools for code analysis (static/dynamic) as discussed in :need:`doc__cpp_code_analysis` are documented here.
@@ -128,7 +128,7 @@ Tools for code analysis (static/dynamic) as discussed in :need:`doc__cpp_code_an
 
 is used for hosting, versioning and contribution of the software. Within
 pull requests it's possible to contribute. For contribution a separate process description is
-:need:`doc__contr_guideline` available. In the discussion section the information regarding meeting
+:need:`doc__contribution_guide` available. In the discussion section the information regarding meeting
 minutes and Working Sections were stored. Within issues can bugfixes, improvements, blank issues
 set up. It's also possible to report there Security vulnerabilities. GitHub Actions is used
 as a support for continuous integration.
@@ -209,3 +209,16 @@ The qualified `Ferrocene <https://github.com/ferrocene>`__ compiler is planned t
 
 The main build environment of the project is based on `Bazel <https://bazel.build>`__. It it used to build software
 components, documentation, and automated tests.
+
+
+Software Development Plan Elements
+----------------------------------
+
+Here you find the summary of the relevant documents for the SW Development Plan
+
+.. needtable:: Software Development Plan Elements
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: docname
+   :filter: "wp__sw_development_plan" in realizes

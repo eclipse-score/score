@@ -15,56 +15,19 @@
 .. _users_guide:
 
 User's Guide
-============
+############
 
-This guide helps you get started with Eclipse S-CORE as a user or module contributor.
-It walks you through the project structure, shows you how to build a simple application
-on top of S-CORE, and points you to further resources for deeper involvement.
 
-.. toctree::
-   :hidden:
+.. document:: User`s Guide
+   :id: doc__users_guide
+   :status: valid
+   :version: 1
+   :safety: QM
+   :security: NO
+   :realizes: wp__training_path[version==1]
 
-   project_basics/index.rst
-   building_simple_application/index.rst
-   whats_next/index.rst
-   useful_links.rst
 
-.. grid:: 2
-   :gutter: 3
-   :class-container: score-grid
+This guide helps you get started with Eclipse S-CORE as a user.
+It shows you how to build a simple application on top of S-CORE.
 
-   .. grid-item-card::
-      :link: project_basics/index
-      :link-type: doc
-
-      Project Basics
-      ^^^^^^^^^^^^^^
-      Learn about the S-CORE module structure, repositories, and key concepts.
-
-   .. grid-item-card::
-      :link: building_simple_application/index
-      :link-type: doc
-
-      Building a Simple Application
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      Step-by-step guide to building and integrating your first application with S-CORE.
-
-.. grid:: 2
-   :gutter: 3
-   :class-container: score-grid
-
-   .. grid-item-card::
-      :link: whats_next/index
-      :link-type: doc
-
-      What's Next?
-      ^^^^^^^^^^^^
-      Ideas and pointers for your next steps after the initial setup.
-
-   .. grid-item-card::
-      :link: useful_links
-      :link-type: doc
-
-      Useful Links
-      ^^^^^^^^^^^^
-      A curated collection of important references, tools, and documentation.
+TBD

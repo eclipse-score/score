@@ -171,4 +171,4 @@ development, as the respective methods are not used:
 Tool List
 ^^^^^^^^^
 
-The S-CORE tools overview can be found here: :ref:`tools`
+The S-CORE tools overview can be found here: :ref:`platform_tools`

@@ -114,7 +114,7 @@ Module-side activities required for an S-CORE release integration:
 
 * Automated quality checks (static analysis, unit tests, CITs) using the tooling and versions
   agreed centrally and tracked in the S-CORE tools evaluation list — see
-  `score_tools_evaluation_list <https://eclipse-score.github.io/score/main/score_tools/score_tools_evaluation_list.html>`_
+  `tools_evaluation_list <https://eclipse-score.github.io/score/main/platform_tools/tools_evaluation_list.html>`_
   (single source of truth for tool versions, classification, and qualification reports).
 * Manual quality checks per the S-CORE quality workflow, including
   `process conformance checks <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workflow.html#wf__exe_featprocess_conformance_checks>`_,

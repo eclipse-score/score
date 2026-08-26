@@ -17,7 +17,7 @@
 Stakeholder Requirements
 ========================
 
-.. document:: SW-platform stakeholder requirements
+.. document:: Stakeholder requirements
    :id: doc__stakeholder_requirements
    :status: draft
    :version: 1

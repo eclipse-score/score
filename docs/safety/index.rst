@@ -12,15 +12,35 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-..
+.. _platform_safety:
 
-Safety documentation
-====================
+Platform Safety Documents
+=========================
 
-Safety specific documentation for Platform is listed here
+.. document:: Platform Safety Documents
+   :id: doc__safety_documents_platform
+   :status: draft
+   :version: 1
+   :safety: ASIL_B
+   :security: NO
+   :realizes: wp__safety_tailoring[version==1]
+   :tags:
+
+.. needtable:: Platform Safety Documents
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: docname
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "safety/" in need["docname"] and need["docname"] != "safety/index":
+          results.append(need)
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    fdr_reports_safety_analyses_DFA
    fdr_reports_safety_package

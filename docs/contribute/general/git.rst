@@ -12,22 +12,20 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _git_guidelines:
+
+Git Guidelines
+##############
+
 .. document:: Git Guidelines
-   :id: doc__git_coding_guidelines
+   :id: doc__git_guidelines
    :status: valid
    :version: 1
    :safety: ASIL_B
    :security: NO
    :realizes: wp__sw_development_plan[version==1]
 
-.. _git_guidelines:
-
-################
- Git Guidelines
-################
-
-***********
- Motivation
+Motivation
 ***********
 
 The commit history and especially the commit messages are part of a
@@ -38,9 +36,8 @@ bugs). Git supports powerful tools to find out which commit introduced a
 bug (e.g., git bisect, git blame). Their level of usefulness depends on
 the quality of the commits and their respective commit messages.
 
-******************
- Git Configuration
-******************
+Git Configuration
+*****************
 
 Authors name and e-mail address are part of the commit (and thus be part of the commit history).
 They must match the name and e-mail used for Eclipse registration. They can be specified via the
@@ -52,9 +49,8 @@ They must match the name and e-mail used for Eclipse registration. They can be s
    email = <your-email-address> (e.g. max.mustermann@something.com)
    name = Max Mustermann
 
-***************
- Merging PRs
-***************
+Merging PRs
+***********
 
 When merging a PR via the GitHub user interface:
 
@@ -84,9 +80,8 @@ Use ``Rebase & Merge`` or ``Merge Commit`` in case:
    Keep in mind that upon merge the commit history of your branch will
    be preserved in the main branch of the repo as well.
 
-**********************
- Commit Message Format
-**********************
+Commit Message Format
+*********************
 
 In S-CORE it is checked if git commit messages are written according
 to guidelines. However, it cannot enforce the meaningfulness of the
@@ -181,9 +176,9 @@ Example
 
     Also-by: Some Bodyelse <somebodyelse@nowhere.com>
 
-********************
- Tips and Tricks
-********************
+
+Tips and Tricks
+***************
 
 Deal with Long-Living Feature Branches
 ======================================

@@ -12,11 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _platform_quality_report:
 
-Quality Report
-==============
+Platform Quality Report
+=======================
 
-.. document:: Quality Report
+
+.. document:: Platform Quality Report
    :id: doc__score_qms_report
    :status: draft
    :version: 1
@@ -24,6 +26,8 @@ Quality Report
    :security: YES
    :realizes: wp__qms_report[version==1]
    :tags:
+
+
 
 
 This document implements :need:`wp__qms_report` and based on the :need:`wp__qms_plan`. It summarizes
@@ -314,24 +318,24 @@ Quality Management Generic work products
       - -
 
     * - :need:`wp__platform_dfa`
-      - :need:`doc__score_platform_dfa`
-      - :ndf:`copy('status', need_id='doc__score_platform_dfa')`
+      - :need:`doc__platform_dfa`
+      - :ndf:`copy('status', need_id='doc__platform_dfa')`
 
     * - :need:`wp__platform_handbook`
       - :need:`doc__platform_handbook`
       - :ndf:`copy('status', need_id='doc__platform_handbook')`
 
     * - :need:`wp__fdr_reports`
-      - :need:`doc__score_platform_safety_analysis_fdr`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_analysis_fdr')`
+      - :need:`doc__platform_safety_analysis_fdr`
+      - :ndf:`copy('status', need_id='doc__platform_safety_analysis_fdr')`
 
     * - :need:`wp__platform_safety_manual`
-      - :need:`doc__score_platform_safety_manual`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_manual')`
+      - :need:`doc__platform_safety_manual`
+      - :ndf:`copy('status', need_id='doc__platform_safety_manual')`
 
     * - :need:`wp__platform_safety_plan`
-      - :need:`doc__score_platform_safety_plan`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_plan')`
+      - :need:`doc__platform_safety_plan`
+      - :ndf:`copy('status', need_id='doc__platform_safety_plan')`
 
     * - :need:`wp__platform_security_manual`
       - -
@@ -346,8 +350,8 @@ Quality Management Generic work products
       - -
 
     * - :need:`wp__fdr_reports`
-      - :need:`doc__score_platform_safety_plan_fdr`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_plan_fdr')`
+      - :need:`doc__platform_safety_plan_fdr`
+      - :ndf:`copy('status', need_id='doc__platform_safety_plan_fdr')`
 
     * - :need:`wp__platform_sw_release_note`
       - -

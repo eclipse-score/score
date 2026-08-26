@@ -13,11 +13,11 @@
    # *******************************************************************************
 
 
-Safety Plan Formal Review Report
-================================
+Safety Plan Formal Review Report Platform
+=========================================
 
-.. document:: S-CORE Platform Safety Plan Formal Review
-   :id: doc__score_platform_safety_plan_fdr
+.. document:: Safety Plan Formal Review Platform
+   :id: doc__safety_plan_fdr_platform
    :status: draft
    :version: 1
    :safety: ASIL_B

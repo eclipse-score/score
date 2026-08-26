@@ -101,11 +101,11 @@ automated software build at any time.
 
 The following types of integrations are applicable:
 
-#. **New software elements** get integrated according to the :need:`doc__contr_guideline`
+#. **New software elements** get integrated according to the :need:`doc__contribution_guide`
 #. **Fixes of defects** get integrated based on their prioritization described by the
    :doc:`problem_resolution`.
 #. **Changes** get integrated based on the :need:`wf__change_create_cr` and will follow
-   the :need:`doc__pull_request_guideline` as any other artifact.
+   the :need:`doc__pull_request_guide` as any other artifact.
 
 The test methods and techniques shall be selected based on the characteristics and specified behavior
 of the software element under test. This shall ensure proper testing from unit level to platform integration level.
@@ -141,7 +141,7 @@ There are the following different levels of integration and verification defined
 
 
   **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11, where compliant testing with full coverage is tailored out for the embedded software.
-  The specific tailoring is described in the :need:`doc__score_platform_safety_plan`.
+  The specific tailoring is described in the :need:`doc__platform_safety_plan`.
   The full Platform Integration Testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
   These tests serve as an optional base for the integrator and will also be part of the
   :need:`wp__verification_platform_ver_report`, but more on an informative character. The full scope
