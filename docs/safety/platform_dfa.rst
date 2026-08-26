@@ -13,11 +13,11 @@
    # *******************************************************************************
 
 
-Platform DFA (Dependent Failure Analysis)
+DFA (Dependent Failure Analysis) Platform
 =========================================
 
 .. document:: Platform DFA
-   :id: doc__score_platform_dfa
+   :id: doc__dfa_platform
    :status: draft
    :version: 1
    :safety: ASIL_B

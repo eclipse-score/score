@@ -56,7 +56,7 @@ Change Request Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Contributions in general to the **S-CORE** project are described here
-(compare :need:`doc__contr_guideline`).
+(compare :need:`doc__contribution_guide`).
 
 A Change Request is a specific contribution, and it is the **ONLY** way to contribute new
 features/components or to modify the scope of existing features/components in the **S-CORE**
@@ -65,10 +65,10 @@ project.
 Change Request Infrastructure and Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:need:`GitHub Issues (ISSUE) <doc__issue_guideline>` are used for managing Change Requests.
+:need:`GitHub Issues (ISSUE) <doc__issue_guide>` are used for managing Change Requests.
 The tool is used to create, analyze, implement and monitor Change Requests within **S-CORE**.
 
-:need:`GitHub Pull Requests (PR) <doc__pull_request_guideline>` are used for the documentation and
+:need:`GitHub Pull Requests (PR) <doc__pull_request_guide>` are used for the documentation and
 implementation of Change Requests. The tool is used to document, implement and verify Change
 Requests within **S-CORE**.
 

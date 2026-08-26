@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,22 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _users_guide:
 
-User's Guide
-############
+.. _version_control_introduction:
 
+Version Control Introduction
+============================
 
-.. document:: User`s Guide
-   :id: doc__users_guide
+.. document:: Version Control Introduction
+   :id: doc__version_control_introduction
    :status: valid
    :version: 1
    :safety: QM
    :security: NO
    :realizes: wp__training_path[version==1]
 
-
-This guide helps you get started with Eclipse S-CORE as a user.
-It shows you how to build a simple application on top of S-CORE.
-
-TBD
+GitHub is used as general Version Control Tool. (see https://docs.github.com/)

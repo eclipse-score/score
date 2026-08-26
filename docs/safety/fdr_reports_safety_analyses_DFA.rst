@@ -13,11 +13,11 @@
    # *******************************************************************************
 
 
-Safety Analysis Formal Review Report
-====================================
+Safety Analysis Formal Review Report Platform
+=============================================
 
-.. document:: Safety Analysis Formal Review Report
-   :id: doc__score_platform_safety_analysis_fdr
+.. document:: Safety Analysis Formal Review Report Platform
+   :id: doc__safety_analysis_fdr_platform
    :status: draft
    :version: 1
    :safety: ASIL_B
@@ -56,7 +56,7 @@ Please note that it is mandatory to fill in the "passed" column with "yes" or "n
         -
       * - REQ_01_02
         - Are the templates for Safety Analysis used?
-        - See :need:`doc__score_platform_dfa`
+        - See :need:`doc__platform_dfa`
         - Templates are used to generate the Safety Analysis.
         - <yes|no>
         -

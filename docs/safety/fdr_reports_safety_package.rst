@@ -13,11 +13,11 @@
    # *******************************************************************************
 
 
-Safety Package Formal Review Report
-===================================
+Safety Package Formal Review Report Platform
+============================================
 
-.. document:: Platform Safety Package Formal Review
-   :id: doc__score_platform_safety_package_fdr
+.. document:: Safety Package Formal Review
+   :id: doc__safety_package_fdr_platform
    :status: draft
    :version: 1
    :safety: ASIL_B

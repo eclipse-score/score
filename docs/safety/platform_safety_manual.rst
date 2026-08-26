@@ -13,11 +13,11 @@
    # *******************************************************************************
 
 
-Platform Safety Manual
+Safety Manual Platform
 ======================
 
-.. document:: Platform Safety Manual
-   :id: doc__score_platform_safety_manual
+.. document:: Safety Manual Platform
+   :id: doc__safety_manual_platform
    :status: draft
    :version: 1
    :safety: ASIL_B

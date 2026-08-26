@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _tools:
+.. _platform_tools:
 
-S-CORE Tools Overview
-=====================
+Platform Tools
+==============
 
 .. .. needtable:: Tools List
 ..    :tags: tool_management
@@ -26,15 +26,14 @@ S-CORE Tools Overview
 ..    :colwidths: 30,30,30,30,30,30,30
 
 .. toctree::
-   :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
 
-   score_tools_evaluation_list
-   tools_documentation/index
    tools_requirements/index
-   tools_static_analysis_code_quality/index
-   tools_testing_frameworks/index
-   tools_build_development/index
+   tools_evaluation_list
    tools_compiler/index
+   tools_static_analysis_code_quality/index
+   tools_build_development/index
+   tools_testing_frameworks/index
    tools_vc_cicd/index
+   tools_documentation/index
    tools_license_security/index
