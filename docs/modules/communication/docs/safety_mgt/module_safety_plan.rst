@@ -54,7 +54,7 @@ Functional Safety Management Roles
 Tailoring
 =========
 
-Additional to the tailoring in the SW platform project as defined in the :need:`doc__platform_safety_plan` we define here the additional tailoring on module level.
+Additional to the tailoring in the SW platform project as defined in the :need:`doc__safety_plan_platform` we define here the additional tailoring on module level.
 
 - Excluded for this module are additionally the following work products (and their related requirements):
 

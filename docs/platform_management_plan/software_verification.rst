@@ -141,7 +141,7 @@ There are the following different levels of integration and verification defined
 
 
   **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11, where compliant testing with full coverage is tailored out for the embedded software.
-  The specific tailoring is described in the :need:`doc__platform_safety_plan`.
+  The specific tailoring is described in the :need:`doc__safety_plan_platform`.
   The full Platform Integration Testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
   These tests serve as an optional base for the integrator and will also be part of the
   :need:`wp__verification_platform_ver_report`, but more on an informative character. The full scope

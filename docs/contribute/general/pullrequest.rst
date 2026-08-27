@@ -31,7 +31,7 @@ The figure below shows a simplified workflow for a PR.
 
 * The contributor (:need:`Contributor <rl__contributor>`) starts by creating a PR:  `Creating a Pull Request (Github Docs) <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request>`_.
 * Required reviewers will be automatically assigned based on the contributed content (via CODEOWNERS).
-* If the content fullfils the review and acceptance criteria, a committer (:need:`Committer <rl__committer>`) will approve the *PR* and thus it can be merged.
+* If the content fulfills the review and acceptance criteria, a committer (:need:`Committer <rl__committer>`) will approve the *PR* and thus it can be merged.
 
 .. figure:: _assets/pull_request_simple.drawio.svg
   :width: 600
@@ -68,7 +68,7 @@ Create a PR
 
 The contributor (:need:`Contributor <rl__contributor>`) creates a PR.
 
-Reviewers ill be automatically assigned (:need:`Committer <rl__committer>`) based on the contributed content (ruleset as defined by the committers). In addition several checks for the contributed content (ToDo: Link to the description of the checks) will be started.
+Reviewers will be automatically assigned (:need:`Committer <rl__committer>`) based on the contributed content (ruleset as defined by the committers). In addition several checks for the contributed content (ToDo: Link to the description of the checks) will be started.
 
 Review and merge a PR
 ^^^^^^^^^^^^^^^^^^^^^

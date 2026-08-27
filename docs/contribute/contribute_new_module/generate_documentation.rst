@@ -15,7 +15,7 @@
 
 .. _generate_documentation:
 
-Gnereate Documentation
+Generate Documentation
 ======================
 
 .. document:: Generate Documentation Guide

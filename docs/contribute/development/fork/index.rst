@@ -33,14 +33,13 @@ Forking Guide
 
 This guide helps companies (tool vendors, integrators, OEMs, suppliers) decide how to structure forks of S-CORE repositories to:
 
-- Contribute efficiently upstream
-- Integrate internal compliance & security workflows
-- Keep proprietary or distribution-specific assets separate
-- Avoid accidental leakage of secrets or internal IP
-- Automate promotion of reviewed code to the public community
+* Contribute efficiently upstream
+* Integrate internal compliance & security workflows
+* Keep proprietary or distribution-specific assets separate
+* Avoid accidental leakage of secrets or internal IP
+* Automate promotion of reviewed code to the public community dadad
 
-.. :note::
-
+.. note::
    S-CORE spans 50+ repositories. You don't need a one-size-fits-all approach — pick the minimal model per repository and evolve as needs grow.
 
 1.1 Audience
@@ -101,14 +100,14 @@ All S-CORE targeting contributions happen directly on the public fork.
 
 Recommendations
 
-1. Short-lived feature branches (e.g., ``topic`` or ```<username>/<topic>``)
+1. Short-lived feature branches (e.g., ``topic`` or ``<username>/<topic>``)
 2. Open an individual PR for each change upstream
 3. Delete merged branches
 
 Notes
 
 - Your fork's ``main`` may either track upstream or remain unused.
-- Use pre-commit checks o detect internal-only patterns before pushing.
+- Use pre-commit checks to detect internal-only patterns before pushing.
 
 Use when
 
@@ -196,7 +195,7 @@ First and foremost see `GitHub's guide to working with forks <https://docs.githu
 
 Note that in enterprise environments forks will usually be created by forking into an company organization (e.g. ``my_company/score``) rather than a personal account. And those will be created by infrastructure administrators rather than individual developers.
 
-You can create such a fork e.g. via the GitHub CLI, `gh repo fork eclipse-score/score <(https://cli.github.com/manual/gh_repo_fork)>`_, or via an infrastructure-as-code process.
+You can create such a fork e.g. via the GitHub CLI, `gh repo fork eclipse-score/score <https://cli.github.com/manual/gh_repo_fork>`_, or via an infrastructure-as-code process.
 
 The default remote names will be:
 
@@ -341,20 +340,20 @@ Example CI steps to generate a GitHub App token, configure git, and run Copybara
      id: generate_token
      uses: tibdex/github-app-token@v2
      with:
-     app_id: ${{ secrets.GH_APP_ID }}
-     private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+       app_id: ${{ secrets.GH_APP_ID }}
+       private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
    - name: Configure Git
      run: |
-     git config --global user.name  "Qorix Bot"
-     git config --global user.email "bot@qorix.dev"
-     echo "https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com" > ~/.git-credentials
+       git config --global user.name  "Qorix Bot"
+       git config --global user.email "bot@qorix.dev"
+       echo "https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com" > ~/.git-credentials
 
    - name: Run Copybara
      run: |
-     sed -i "s/{{BRANCH}}/${{ github.event.inputs.branch_name }}/g" copy.bara.sky
-     curl -LO https://github.com/qorix-group/copybara/releases/download/v20250508/copybara_deploy.jar
-     java -jar copybara_deploy.jar migrate copy.bara.sky publish_branch
+       sed -i "s/{{BRANCH}}/${{ github.event.inputs.branch_name }}/g" copy.bara.sky
+       curl -LO https://github.com/qorix-group/copybara/releases/download/v20250508/copybara_deploy.jar
+       java -jar copybara_deploy.jar migrate copy.bara.sky publish_branch
 
 
 Local Usage

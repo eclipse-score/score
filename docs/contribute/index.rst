@@ -81,10 +81,10 @@ Additionally, :ref:`steering committees <pmp_pm_steering_committees>`, the Techn
 
 For further details on our project structure and planning, please refer to the :need:`Project Management Plan <doc__project_mgt_plan>`.
 
-How to Set Up your Environement
+How to Set Up your Environment
 ===============================
 
-Find the necessary information for setting up your :ref:`Development Environement <setup_dev_environment>` ready.
+Find the necessary information for setting up your :ref:`Development Environment <setup_dev_environment>` ready.
 
 How to become a Contributor
 ===========================

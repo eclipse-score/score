@@ -105,7 +105,7 @@ Getting Started
 
       :octicon:`rocket;1.5em`
 
-      User`s Guidline
+      User's Guide
       ^^^
       Check how you can start building Applications on top of S-CORE.
 
