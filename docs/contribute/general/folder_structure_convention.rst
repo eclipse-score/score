@@ -78,7 +78,7 @@ The following shows the folder structure of the platform repository <https://git
     │                                     [:need:`wp__platform_safety_package`], [:need:`wp__fdr_reports`],
     │                                     [:need:`wp__audit_report`]
     ├── score_tools/                   -> Tool list and [:need:`wp__tool_verification_report`]
-    │   └── tools_requirementes/       -> Tool requirements [:need:`wp__requirements_proc_tool`]
+    │   └── tools_requirements/        -> Tool requirements [:need:`wp__requirements_proc_tool`]
     ├── security/                      -> Security documentation on platform level:
     │                                     [:need:`wp__platform_security_manual`], [:need:`wp__platform_security_package`],
     │                                     [:need:`wp__sw_platform_sbom`], [:need:`wp__platform_security_analysis`],
