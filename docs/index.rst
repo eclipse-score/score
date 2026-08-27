@@ -203,7 +203,7 @@ Reference Integration
 
       :octicon:`iterations;1.5em`
 
-      Refernce Integration Process
+      Reference Integration Process
       ^^^
       Follow the `Integration Process <https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html>`_
       to understand how Platform Modules are integrated together.
