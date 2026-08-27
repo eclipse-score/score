@@ -641,7 +641,7 @@
                   
   <section id="forking-guide">
 <span id="id1"></span><h1>Forking Guide<a class="headerlink" href="#forking-guide" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-2f44efe0">
+<div class="need_container docutils container" id="SNCB-58c44cac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__forking_guide">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -692,8 +692,12 @@
 <li><p>Integrate internal compliance &amp; security workflows</p></li>
 <li><p>Keep proprietary or distribution-specific assets separate</p></li>
 <li><p>Avoid accidental leakage of secrets or internal IP</p></li>
-<li><p>Automate promotion of reviewed code to the public community</p></li>
+<li><p>Automate promotion of reviewed code to the public community dadad</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>S-CORE spans 50+ repositories. You don’t need a one-size-fits-all approach — pick the minimal model per repository and evolve as needs grow.</p>
+</div>
 <section id="audience">
 <h3>1.1 Audience<a class="headerlink" href="#audience" title="Link to this heading">#</a></h3>
 <p>Engineering organizations managing both internal and external code flows; platform/DevEx teams formalizing contribution and publication pipelines; compliance and security stakeholders.</p>
@@ -743,14 +747,14 @@
 <p>All S-CORE targeting contributions happen directly on the public fork.</p>
 <p>Recommendations</p>
 <ol class="arabic simple">
-<li><p>Short-lived feature branches (e.g., <code class="docutils literal notranslate"><span class="pre">topic</span></code> or <code class="docutils literal notranslate"><span class="pre">`&lt;username&gt;/&lt;topic&gt;</span></code>)</p></li>
+<li><p>Short-lived feature branches (e.g., <code class="docutils literal notranslate"><span class="pre">topic</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;/&lt;topic&gt;</span></code>)</p></li>
 <li><p>Open an individual PR for each change upstream</p></li>
 <li><p>Delete merged branches</p></li>
 </ol>
 <p>Notes</p>
 <ul class="simple">
 <li><p>Your fork’s <code class="docutils literal notranslate"><span class="pre">main</span></code> may either track upstream or remain unused.</p></li>
-<li><p>Use pre-commit checks o detect internal-only patterns before pushing.</p></li>
+<li><p>Use pre-commit checks to detect internal-only patterns before pushing.</p></li>
 </ul>
 <p>Use when</p>
 <ul class="simple">
@@ -827,7 +831,7 @@
 <h2>3. How To work with forks<a class="headerlink" href="#how-to-work-with-forks" title="Link to this heading">#</a></h2>
 <p>First and foremost see <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">GitHub’s guide to working with forks</a></p>
 <p>Note that in enterprise environments forks will usually be created by forking into an company organization (e.g. <code class="docutils literal notranslate"><span class="pre">my_company/score</span></code>) rather than a personal account. And those will be created by infrastructure administrators rather than individual developers.</p>
-<p>You can create such a fork e.g. via the GitHub CLI, <a class="reference external" href="(https://cli.github.com/manual/gh_repo_fork)">gh repo fork eclipse-score/score</a>, or via an infrastructure-as-code process.</p>
+<p>You can create such a fork e.g. via the GitHub CLI, <a class="reference external" href="https://cli.github.com/manual/gh_repo_fork">gh repo fork eclipse-score/score</a>, or via an infrastructure-as-code process.</p>
 <p>The default remote names will be:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">origin</span></code>: your fork (e.g. <code class="docutils literal notranslate"><span class="pre">my_company/score</span></code>)</p></li>
@@ -945,20 +949,20 @@ Supports <code class="docutils literal notranslate"><span class="pre">core.repla
   id: generate_token
   uses: tibdex/github-app-token@v2
   with:
-  app_id: ${{ secrets.GH_APP_ID }}
-  private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+    app_id: ${{ secrets.GH_APP_ID }}
+    private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
 - name: Configure Git
   run: |
-  git config --global user.name  &quot;Qorix Bot&quot;
-  git config --global user.email &quot;bot@qorix.dev&quot;
-  echo &quot;https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com&quot; &gt; ~/.git-credentials
+    git config --global user.name  &quot;Qorix Bot&quot;
+    git config --global user.email &quot;bot@qorix.dev&quot;
+    echo &quot;https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com&quot; &gt; ~/.git-credentials
 
 - name: Run Copybara
   run: |
-  sed -i &quot;s/{{BRANCH}}/${{ github.event.inputs.branch_name }}/g&quot; copy.bara.sky
-  curl -LO https://github.com/qorix-group/copybara/releases/download/v20250508/copybara_deploy.jar
-  java -jar copybara_deploy.jar migrate copy.bara.sky publish_branch
+    sed -i &quot;s/{{BRANCH}}/${{ github.event.inputs.branch_name }}/g&quot; copy.bara.sky
+    curl -LO https://github.com/qorix-group/copybara/releases/download/v20250508/copybara_deploy.jar
+    java -jar copybara_deploy.jar migrate copy.bara.sky publish_branch
 </pre></div>
 </div>
 </section>
