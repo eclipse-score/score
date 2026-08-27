@@ -666,7 +666,7 @@ synchronization of the synchronized time bases.</p>
 <section id="core-time-model">
 <h2>Core Time Model<a class="headerlink" href="#core-time-model" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Clock">Clock<a class="headerlink" href="#term-Clock" title="Link to this term">#</a></dt><dd><p>A source of time. A clock produces a monotonically progressing sequence of
+<dt id="term-Clock">Clock<a class="headerlink" href="#term-Clock" title="Link to this term">#</a></dt><dd><p>A source of time. A clock produces a progressing sequence of
 <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> values for a given <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a>. All clocks are read
 through a uniform interface, independent of the underlying time base.</p>
 </dd>
@@ -719,11 +719,11 @@ kind of time and its properties (epoch, monotony, status concept, synchronizatio
 <strong>“… Clock”</strong> term names the <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that <em>provides</em> that time base to
 applications (the <code class="docutils literal notranslate"><span class="pre">now</span></code> operation, plus initialization, availability and subscription where the
 time base requires it). The local time bases keep their conventional names
-(<a class="reference internal" href="#term-Steady-Clock"><span class="xref std std-term">Steady Clock</span></a>, <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a>, <a class="reference internal" href="#term-High-Resolution-Clock"><span class="xref std std-term">High-Resolution Clock</span></a>) even though they are
+(<a class="reference internal" href="#term-Steady-Clock"><span class="xref std std-term">Steady Clock</span></a>, <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a>, <a class="reference internal" href="#term-High-Resolution-Steady-Clock"><span class="xref std std-term">High-Resolution Steady Clock</span></a>) even though they are
 all provided by the single <a class="reference internal" href="#term-Local-Clock"><span class="xref std std-term">Local Clock</span></a> interface.</p>
 <dl class="simple glossary">
 <dt id="term-Vehicle-Time">Vehicle Time<a class="headerlink" href="#term-Vehicle-Time" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> (time base) representing the vehicle-wide synchronized time,
-driven by the external <a class="reference internal" href="#term-Grand-Master"><span class="xref std std-term">Grand Master</span></a> via the <a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a>.
+driven by the external <a class="reference internal" href="#term-Grand-Master"><span class="xref std std-term">Grand Master</span></a> via the <a class="reference internal" href="#term-gPTP"><span class="xref std std-term">gPTP</span></a>.
 Reading it yields a <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carrying a <a class="reference internal" href="#term-Vehicle-Time-status"><span class="xref std std-term">Vehicle Time status</span></a>. It is exposed
 to applications through the <a class="reference internal" href="#term-Vehicle-Clock"><span class="xref std std-term">Vehicle Clock</span></a>.</p>
 </dd>
@@ -732,7 +732,7 @@ depends on external synchronization, the interface additionally offers initializ
 availability checks and subscription to synchronization events, on top of reading the time.</p>
 </dd>
 <dt id="term-Local-Clock">Local Clock<a class="headerlink" href="#term-Local-Clock" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that provides the local, non-synchronized time bases —
-<a class="reference internal" href="#term-Steady-Clock"><span class="xref std std-term">Steady Clock</span></a>, <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a> and <a class="reference internal" href="#term-High-Resolution-Clock"><span class="xref std std-term">High-Resolution Clock</span></a>. They need no
+<a class="reference internal" href="#term-Steady-Clock"><span class="xref std std-term">Steady Clock</span></a>, <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a> and <a class="reference internal" href="#term-High-Resolution-Steady-Clock"><span class="xref std std-term">High-Resolution Steady Clock</span></a>. They need no
 initialization and are always available.</p>
 </dd>
 <dt id="term-Steady-Clock">Steady Clock<a class="headerlink" href="#term-Steady-Clock" title="Link to this term">#</a></dt><dd><p>A monotonic, non-adjustable local time base. It never goes backward, which makes it the
@@ -745,7 +745,7 @@ value is kept aligned to <a class="reference internal" href="#term-Absolute-Time
 thus obtain the absolute time, but as QM data without the <a class="reference internal" href="#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> and
 <a class="reference internal" href="#term-Security-qualifier"><span class="xref std std-term">security qualifier</span></a>.</p>
 </dd>
-<dt id="term-High-Resolution-Clock">High-Resolution Clock<a class="headerlink" href="#term-High-Resolution-Clock" title="Link to this term">#</a></dt><dd><p>A monotonic, nanosecond-resolution local time base optimized for low-overhead timing.
+<dt id="term-High-Resolution-Steady-Clock">High-Resolution Steady Clock<a class="headerlink" href="#term-High-Resolution-Steady-Clock" title="Link to this term">#</a></dt><dd><p>A monotonic, nanosecond-resolution local time base optimized for low-overhead timing.
 Used for tight timing loops and deadline checks.</p>
 </dd>
 <dt id="term-Absolute-Time">Absolute Time<a class="headerlink" href="#term-Absolute-Time" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> (time base) representing an external absolute time source
@@ -785,18 +785,18 @@ the <a class="reference internal" href="#term-Security-qualifier"><span class="x
 <section id="synchronization-infrastructure">
 <h2>Synchronization Infrastructure<a class="headerlink" href="#synchronization-infrastructure" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-PTP-protocol">PTP protocol<a class="headerlink" href="#term-PTP-protocol" title="Link to this term">#</a></dt><dd><p>Precision Time Protocol - a protocol (IEEE 802.1AS) used to synchronize clocks in a
+<dt id="term-PTP">PTP<a class="headerlink" href="#term-PTP" title="Link to this term">#</a></dt><dd><p>Precision Time Protocol - a protocol (IEEE 1588) used to synchronize clocks in a
 network.</p>
 </dd>
 <dt id="term-gPTP">gPTP<a class="headerlink" href="#term-gPTP" title="Link to this term">#</a></dt><dd><p>Generalized Precision Time Protocol, the IEEE 802.1AS profile of the
-<a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a> used for in-vehicle Ethernet time synchronization.</p>
+<a class="reference internal" href="#term-PTP"><span class="xref std std-term">PTP</span></a> used for in-vehicle Ethernet time synchronization.</p>
 </dd>
 <dt id="term-Syntonization">Syntonization<a class="headerlink" href="#term-Syntonization" title="Link to this term">#</a></dt><dd><p>Alignment of clock <em>frequency</em> (rate) between nodes, as opposed to synchronization
 which aligns the absolute <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a>. Both are required for long-term timing
 consistency.</p>
 </dd>
 <dt id="term-Grand-Master">Grand Master<a class="headerlink" href="#term-Grand-Master" title="Link to this term">#</a></dt><dd><p>The external, network-wide time source (the PTP Grand Master) that the system
-synchronizes to using the <a class="reference internal" href="#term-PTP-protocol"><span class="xref std std-term">PTP protocol</span></a>.</p>
+synchronizes to using the <a class="reference internal" href="#term-gPTP"><span class="xref std std-term">gPTP</span></a>.</p>
 </dd>
 </dl>
 </section>
