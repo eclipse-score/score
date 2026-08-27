@@ -151,19 +151,7 @@ Baselibs Requirements
 
    The base libraries shall provide a library of containers that can serve as the basis for ABI-compatible container data structures.
 
-.. feat_req:: Bit Manipulation Library
-   :id: feat_req__baselibs__bitmanipulation
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
-   :satisfied_by: feat__baselibs[version==1]
-   :status: valid
-   :version: 2
-   :valid_from: v1.0.0
-   :tags: inspected
-
-   The base libraries shall provide bit manipulation utilities for low-level operations on integral types.
+.. include:: bitmanipulation.rst
 
 .. feat_req:: Filesystem Library
    :id: feat_req__baselibs__filesystem_library

@@ -52,3 +52,17 @@ html_theme_options = {
 # finds it there directly and skips its own (redundant) mount, only warning
 # about the harmless duplicate.
 suppress_warnings = ["mounts.docname_conflict"]
+
+# bitmanipulation.rst holds the feat_req__baselibs__bitmanipulation directive
+# extracted out of features/baselibs/requirements/index.rst, which
+# `.. include::`s it back in (so its lone requirement remains part of the
+# rendered baselibs feature requirements page and the index.rst toctree,
+# while also being available to Bazel as its own standalone RST source for a
+# narrower TRLC/feature_requirements() target - see that directory's BUILD
+# file). Sphinx must not additionally treat it as its own standalone
+# document, or the `feat_req` need defined inside it registers twice
+# (needs.duplicate_id) and the file is flagged as an orphan
+# (toc.not_included).
+exclude_patterns = [
+    "features/baselibs/requirements/bitmanipulation.rst",
+]
