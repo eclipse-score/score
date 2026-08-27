@@ -34,7 +34,7 @@ mixing of incompatible :term:`TimePoint` types.
 The architecture distinguishes three time bases (:term:`clock domain` s), each exposed through its
 own clock interface:
 
-* **Vehicle Time** — the network-synchronized (:term:`PTP protocol`) vehicle-wide time base,
+* **Vehicle Time** — the network-synchronized (:term:`gPTP`) vehicle-wide time base,
    carrying a :term:`Vehicle Time status` qualifier. It is exposed through the
    :term:`Vehicle Clock`, which — because the time base depends on external synchronization — also
    offers initialization, availability checks and event subscription in addition to reading the time.
@@ -179,7 +179,7 @@ are:
 
    * - Domain
      - Semantics
-   * - :term:`High-Resolution Clock`
+   * - :term:`High-Resolution Steady Clock`
      - Monotonic, nanosecond-resolution, lowest-overhead clock. Fulfils the high-precision clock API.
    * - :term:`Steady Clock`
      - Monotonic, never adjusted. Preferred for elapsed-time and timeouts. Fulfils the monotonic clock API.

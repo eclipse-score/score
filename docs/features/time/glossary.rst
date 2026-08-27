@@ -29,7 +29,7 @@ Core Time Model
 
 .. glossary::
     Clock
-      A source of time. A clock produces a monotonically progressing sequence of
+      A source of time. A clock produces a progressing sequence of
       :term:`TimePoint` values for a given :term:`clock domain`. All clocks are read
       through a uniform interface, independent of the underlying time base.
 
@@ -91,13 +91,13 @@ kind of time and its properties (epoch, monotony, status concept, synchronizatio
 **"… Clock"** term names the :term:`Clock` interface that *provides* that time base to
 applications (the ``now`` operation, plus initialization, availability and subscription where the
 time base requires it). The local time bases keep their conventional names
-(:term:`Steady Clock`, :term:`System Clock`, :term:`High-Resolution Clock`) even though they are
+(:term:`Steady Clock`, :term:`System Clock`, :term:`High-Resolution Steady Clock`) even though they are
 all provided by the single :term:`Local Clock` interface.
 
 .. glossary::
     Vehicle Time
       The :term:`clock domain` (time base) representing the vehicle-wide synchronized time,
-      driven by the external :term:`Grand Master` via the :term:`PTP protocol`.
+      driven by the external :term:`Grand Master` via the :term:`gPTP`.
       Reading it yields a :term:`Snapshot` carrying a :term:`Vehicle Time status`. It is exposed
       to applications through the :term:`Vehicle Clock`.
 
@@ -108,7 +108,7 @@ all provided by the single :term:`Local Clock` interface.
 
     Local Clock
       The :term:`Clock` interface that provides the local, non-synchronized time bases —
-      :term:`Steady Clock`, :term:`System Clock` and :term:`High-Resolution Clock`. They need no
+      :term:`Steady Clock`, :term:`System Clock` and :term:`High-Resolution Steady Clock`. They need no
       initialization and are always available.
 
     Steady Clock
@@ -123,7 +123,7 @@ all provided by the single :term:`Local Clock` interface.
       thus obtain the absolute time, but as QM data without the :term:`accuracy qualifier` and
       :term:`security qualifier`.
 
-    High-Resolution Clock
+    High-Resolution Steady Clock
       A monotonic, nanosecond-resolution local time base optimized for low-overhead timing.
       Used for tight timing loops and deadline checks.
 
@@ -169,13 +169,13 @@ Synchronization Infrastructure
 ------------------------------
 
 .. glossary::
-    PTP protocol
-      Precision Time Protocol - a protocol (IEEE 802.1AS) used to synchronize clocks in a
+    PTP
+      Precision Time Protocol - a protocol (IEEE 1588) used to synchronize clocks in a
       network.
 
     gPTP
       Generalized Precision Time Protocol, the IEEE 802.1AS profile of the
-      :term:`PTP protocol` used for in-vehicle Ethernet time synchronization.
+      :term:`PTP` used for in-vehicle Ethernet time synchronization.
 
     Syntonization
       Alignment of clock *frequency* (rate) between nodes, as opposed to synchronization
@@ -184,4 +184,4 @@ Synchronization Infrastructure
 
     Grand Master
       The external, network-wide time source (the PTP Grand Master) that the system
-      synchronizes to using the :term:`PTP protocol`.
+      synchronizes to using the :term:`gPTP`.
