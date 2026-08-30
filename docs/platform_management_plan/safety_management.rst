@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Platform Safety Plan
-   :id: doc__score_platform_safety_plan
+.. document:: Safety Plan Platform
+   :id: doc__safety_plan_platform
    :status: draft
    :version: 1
    :safety: ASIL_B
@@ -22,7 +22,7 @@
    :tags: platform_management
 
 
-.. _score_platform_safety_plan:
+.. _safety_plan_platform:
 
 Safety management / Platform Safety Plan
 ----------------------------------------
@@ -407,8 +407,8 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__tool_verification_report`
       - :ndf:`copy('status', need_id='wf__tool_create_tool_verification_report')`
-      - :need:`doc__tool_evaluation_list`
-      - :ndf:`copy('status', need_id='doc__tool_evaluation_list')`
+      - :need:`doc__tools_evaluation_list`
+      - :ndf:`copy('status', need_id='doc__tools_evaluation_list')`
 
 
 Functional Safety Specific SW Platform Work Products
@@ -434,18 +434,18 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__fdr_reports` (platform Safety Plan)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
-      - :need:`doc__score_platform_safety_plan_fdr`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_plan_fdr')`
+      - :need:`doc__safety_plan_fdr_platform`
+      - :ndf:`copy('status', need_id='doc__safety_plan_fdr_platform')`
 
     * - :need:`wp__fdr_reports` (platform Safety Package)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
-      - :need:`doc__score_platform_safety_package_fdr`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_package_fdr')`
+      - :need:`doc__safety_package_fdr_platform`
+      - :ndf:`copy('status', need_id='doc__safety_package_fdr_platform')`
 
     * - :need:`wp__fdr_reports` (feature's Safety Analyses & DFA)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
-      - :need:`doc__score_platform_safety_analysis_fdr`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_analysis_fdr')`
+      - :need:`doc__safety_analysis_fdr_platform`
+      - :ndf:`copy('status', need_id='doc__safety_analysis_fdr_platform')`
 
     * - :need:`wp__audit_report`
       - performed by external experts
@@ -454,17 +454,17 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
-      - :need:`doc__score_platform_dfa`
-      - :ndf:`copy('status', need_id='doc__score_platform_dfa')`
+      - :need:`doc__dfa_platform`
+      - :ndf:`copy('status', need_id='doc__dfa_platform')`
 
     * - :need:`wp__platform_safety_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`
-      - :need:`doc__score_platform_safety_manual`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_manual')`
+      - :need:`doc__safety_manual_platform`
+      - :ndf:`copy('status', need_id='doc__safety_manual_platform')`
 
     * - :need:`wp__safety_tailoring` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
-      - :need:`wp__tailoring_work_products` & :need:`doc__score_platform_safety_plan`
+      - :need:`wp__tailoring_work_products` & :need:`doc__safety_plan_platform`
       - :ndf:`copy('status', need_id='wp__tailoring_work_products')`
 
 Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
@@ -482,7 +482,7 @@ Platform Management Plan - Feature Work Product Lists
 
 `Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/docs/features/lifecycle/safety_planning/index.html>`__
 
-Note: list of features according to :ref:`releases`
+Note: list of features according to :ref:`platform_releases`
 
 
 Platform Management Plan - Documents Status Chart

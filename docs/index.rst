@@ -12,6 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Platform Handbook
+=================
+
 .. document:: Handbook
    :id: doc__platform_handbook
    :status: valid
@@ -24,9 +27,6 @@
 .. raw:: html
 
    <div style="visibility: hidden;height:0px;">
-
-S-CORE Platform Documentation
-=============================
 
 .. raw:: html
 
@@ -45,8 +45,8 @@ S-CORE Platform Documentation
       </div>
    </div>
 
-Introduction
-------------
+What it is about
+----------------
 
 .. grid:: 1
    :class-container: score-grid score-grid-intro
@@ -67,53 +67,53 @@ Introduction
       Responsibility for ASPICE, ISO 21434 (cybersecurity), and ISO 26262 (functional safety) compliance of the final system always remains with the series project.
 
 
-Get started with S-CORE
------------------------
+Getting Started
+---------------
 
 .. grid:: 3
    :gutter: 3
    :class-container: score-grid score-grid-getstarted
 
    .. grid-item-card::
-      :link: users_guide/project_basics/index
+      :link: introduction/index
       :link-type: doc
       :text-align: center
 
       :octicon:`book;1.5em`
 
-      Overview
+      Introduction
       ^^^
-      Explore the S-CORE platform structure, technology stack and software
-      architecture. Understand the core concepts before you start building.
+      Explore the Platform Structure, Technology, Architecture Meta Model.
+      Understand the Core Concepts before you start.
 
    .. grid-item-card::
-      :link: users_guide/building_simple_application/index
+      :link: contribute/index
       :link-type: doc
       :text-align: center
 
       :octicon:`code-square;1.5em`
 
-      Contribute own module
+      Contribution Guideline
       ^^^
       Follow a step-by-step guide to build and integrate your first S-CORE
       module — from source code to CI/CD and doc
 
    .. grid-item-card::
-      :link: users_guide/whats_next/index
+      :link: users_guide/index
       :link-type: doc
       :text-align: center
 
       :octicon:`rocket;1.5em`
 
-      What's next?
+      User's Guide
       ^^^
-      Check how you can start being productive immediately
+      Check how you can start building Applications on top of S-CORE.
 
 Platform Architecture
 ---------------------
 
 
-.. grid:: 1 1 3 3
+.. grid:: 1 1 4 4
    :class-container: score-grid score-grid-artifacts
 
    .. grid-item-card::
@@ -147,11 +147,18 @@ Platform Architecture
       ^^^
       Understand the main goals of the S-CORE platform by reading the
       :ref:`Stakeholder requirements <stakeholder_requirements>` and
-      :ref:`SW-platform Assumptions <platform_assumptions>`.
+      :ref:`Platform Assumptions <platform_assumptions>`.
+
+   .. grid-item-card::
+
+      :octicon:`graph;1.5em`
+
+      Platform Status
+      ^^^
+      Inform yourself about the status of the Platform ..... [tbd]
 
 
-
-Project structure and processes
+Project Structure and Processes
 -------------------------------
 
 .. grid:: 1 1 3 3
@@ -159,13 +166,23 @@ Project structure and processes
 
    .. grid-item-card::
 
+      :octicon:`organization;1.5em`
+
+      Platform Management
+      ^^^^^^^^^^^^^^^^^^^
+      Read about our project and organization structure in the
+      `Project Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
+      And learn how we deal with :ref:`Safety Plan Platform<safety_plan_platform>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
+
+   .. grid-item-card::
+
       :octicon:`workflow;1.5em`
 
       Process
       ^^^
-      Check the `main idea <https://eclipse-score.github.io/process_description/main/introduction/index.html>`_
-      and `concepts <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
-      to understand the reasons behind our software development process.
+      Check the `Main Ideas <https://eclipse-score.github.io/process_description/main/introduction/index.html>`_
+      and `Concepts <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
+      of the Process to understand the reasons behind our software development process.
 
    .. grid-item-card::
 
@@ -173,18 +190,8 @@ Project structure and processes
 
       Process Areas
       ^^^
-      Check the detailed `documentation of every process area <https://eclipse-score.github.io/process_description/main/process_areas/index.html>`_,
-      which contains requirements, guidances, workflows and a list of work products for every process area in S-CORE.
-
-   .. grid-item-card::
-
-      :octicon:`organization;1.5em`
-
-      Platform Management Plan (PMP)
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      Read about our project and organization structure in the
-      `Project Handbook <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
-      And learn how we deal with :ref:`Platform Safety Plan <score_platform_safety_plan>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
+      Check the detailed `Documentation of every Process Area <https://eclipse-score.github.io/process_description/main/process_areas/index.html>`_,
+      which contains requirements, guidances, workflows and a list of work products for every process.
 
 Reference Integration
 ---------------------
@@ -194,12 +201,12 @@ Reference Integration
 
    .. grid-item-card::
 
-      :octicon:`git-merge;1.5em`
+      :octicon:`iterations;1.5em`
 
-      Integration Baseline
+      Reference Integration Process
       ^^^
-      Discover how all platform modules are continuously built and tested together
-      to form the authoritative `S-CORE integration baseline <https://github.com/eclipse-score/reference_integration>`_.
+      Follow the `Integration Process <https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html>`_
+      to understand how Platform Modules are integrated together.
 
    .. grid-item-card::
       :link: https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html
@@ -207,22 +214,21 @@ Reference Integration
 
       :octicon:`package-dependents;1.5em`
 
-      Releases Overview
+      Reference Releases
       ^^^
       Browse the `release notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_
       and see the current state of the platform.
 
    .. grid-item-card::
 
-      :octicon:`iterations;1.5em`
+      :octicon:`pivot-column;1.5em`
 
-      Integration Process
+      Integration Status
       ^^^
-      Follow the `integration process <https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html>`_
-      to understand how platform modules are integrated together.
       Consult the `cross-repo metrics report <https://eclipse-score.github.io/.github/>`_
       and the `integration status <https://eclipse-score.github.io/reference_integration/main/status_dashboard.html>`_
       for details.
+
 
 Infrastructure and Tooling
 --------------------------
@@ -234,25 +240,13 @@ Infrastructure and Tooling
       :link: https://eclipse-score.github.io/infrastructure/dev/index.html
       :link-type: url
 
-      :octicon:`tools;1.5em`
+      :octicon:`gear;1.5em`
 
-      Documentation
+      Infrastructure Landscape
       ^^^
       Get to know the S-CORE tool stack, testing and CI infrastructure.
       Read the
       `infra & tooling docs <https://eclipse-score.github.io/infrastructure/dev/index.html>`_.
-
-   .. grid-item-card::
-      :link: https://eclipse-score.github.io/infrastructure/dev/explanation/index.html
-      :link-type: url
-
-      :octicon:`mark-github;1.5em`
-
-      Status
-      ^^^
-      Get insights into the current state of the S-CORE tooling and infrastructure.
-      Check the status `overview <https://eclipse-score.github.io/infrastructure/dev/explanation/index.html>`_
-      to see how the build and CI components are set up and maintained.
 
    .. grid-item-card::
 
@@ -263,6 +257,19 @@ Infrastructure and Tooling
       S-CORE provides hermetic Bazel toolchains for building its modules.
       Explore the `C++ toolchains <https://github.com/eclipse-score/bazel_cpp_toolchains>`_
       and the `Rust toolchains <https://github.com/eclipse-score/toolchains_rust>`_ used across the platform.
+
+   .. grid-item-card::
+      :link: https://eclipse-score.github.io/infrastructure/dev/explanation/index.html
+      :link-type: url
+
+      :octicon:`graph;1.5em`
+
+      Infrastructure Status
+      ^^^
+      Get insights into the current state of the S-CORE tooling and infrastructure.
+      Check the status `overview <https://eclipse-score.github.io/infrastructure/dev/explanation/index.html>`_
+      to see how the build and CI components are set up and maintained.
+
 
 .. raw:: html
 
@@ -303,27 +310,25 @@ Infrastructure and Tooling
    :maxdepth: 1
    :hidden:
 
-   users_guide/index
+   introduction/index
+   contribute/index
    architecture/index
    features/index
-   requirements/index
-   contribute/index
-
-   Quality <quality/qms_report.rst>
-   Releases <score_releases/index.rst>
-   Tools <score_tools/index.rst>
-   PMP <platform_management_plan/index.rst>
-   Safety <safety/index>
-   Eclipse <https://projects.eclipse.org/projects/automotive.score>
-   design_decisions/index
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   introduction/index
    users_guide/index
+   requirements/index
+
+   score_releases/index
+   quality/qms_report
+
+   score_tools/index
+   platform_management_plan/index
+   safety/index
+   design_decisions/index
    modules/index
+
+   Eclipse <https://projects.eclipse.org/projects/automotive.score>
+
+
 
 .. raw:: html
 

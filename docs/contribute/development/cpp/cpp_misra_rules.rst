@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,22 +12,23 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _users_guide:
+.. _cpp_misra_rules:
 
-User's Guide
-############
+C++ MISRA Rules
+###############
 
-
-.. document:: User`s Guide
-   :id: doc__users_guide
-   :status: valid
+.. document:: C++ MISRA Rules
+   :id: doc__cpp_misra_rules
+   :status: draft
    :version: 1
-   :safety: QM
-   :security: NO
-   :realizes: wp__training_path[version==1]
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__sw_development_plan[version==1]
 
-
-This guide helps you get started with Eclipse S-CORE as a user.
-It shows you how to build a simple application on top of S-CORE.
-
-TBD
+..
+    .. csv-table:: MISRA C++:2023 Rule Mapping
+    :name: misra_2023_rule_mapping
+    :file: _assets/misra_2023.csv
+    :widths: 5, 5, 30, 30, 30
+    :header-rows: 1
+    :delim: ;

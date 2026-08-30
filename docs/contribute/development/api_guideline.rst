@@ -12,11 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _api_guide:
+
 Designing API
 #############
 
-.. document:: API Guidelines
-   :id: doc__api_guidelines
+.. document:: API Guide
+   :id: doc__api_guide
    :status: draft
    :version: 1
    :safety: QM
