@@ -45,34 +45,19 @@ docs_bundle(
 # asr_req_stakeholder (ref_package must match its package name above:
 # "StakeholderRequirements").
 #
-# srcs lists both index.rst and bitmanipulation.rst: the latter's content is
-# `.. include::`-d back into index.rst (so the rendered docs/toctree are
-# unaffected), but rst_to_trlc.py parses raw RST text and doesn't resolve
-# Sphinx includes, so the bitmanipulation feat_req has to be listed
-# explicitly here as well to still be picked up by this target (in addition
-# to feat_req_bitmanipulation below, which converts it in isolation for
-# consumers that only want that one feature requirement).
+# This is the single feature-requirements target for all of baselibs (no
+# more narrower per-feature split like the former feat_req_bitmanipulation):
+# downstream dependable_element()/component_requirements() targets that only
+# care about one feature (e.g. baselibs' bitmanipulation) pull in all 14
+# baselibs feature requirements as their "Feature Requirements" lobster pool.
+# Accepted trade-off: their traceability report's Feature Requirements
+# coverage will be well below 100% (only their own feature is ever
+# referenced by a Component Requirement; the other 13 are unrelated), but
+# that's a reporting-precision concern only - maturity=development treats it
+# as a warning, not a build/test failure.
 feature_requirements(
     name = "feat_req_baselibs",
-    srcs = [
-        "index.rst",
-        "bitmanipulation.rst",
-    ],
-    deps = ["//docs/requirements/stakeholder:asr_req_stakeholder"],
-    ref_package = "StakeholderRequirements",
-)
-
-# Bitmanipulation's feat_req in isolation (same source file as above, just
-# converted on its own), so downstream consumers (baselibs'
-# dependable_element_bitmanipulation) can depend on only the one feature
-# requirement relevant to them instead of pulling in all 14 baselibs feature
-# requirements via feat_req_baselibs. Package defaults to "Bitmanipulation"
-# (derived from the "bitmanipulation.rst" stem), distinct from
-# feat_req_baselibs's "Index"/"Bitmanipulation" package pair above - no
-# collision since each .rst source gets its own auto-derived package name.
-feature_requirements(
-    name = "feat_req_bitmanipulation",
-    srcs = ["bitmanipulation.rst"],
+    srcs = ["index.rst"],
     deps = ["//docs/requirements/stakeholder:asr_req_stakeholder"],
     ref_package = "StakeholderRequirements",
 )
