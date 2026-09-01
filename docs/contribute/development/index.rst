@@ -21,6 +21,7 @@ Development
    development_environment
    traceability_tooling
    api_guideline
+   breaking_changes
    cpp/index
    rust/index
    python/index
