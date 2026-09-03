@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/requirements/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -96,7 +96,9 @@
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -293,11 +295,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -310,8 +319,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -497,11 +505,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -514,8 +529,7 @@
           
           
           
-          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -544,7 +558,8 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
   </svg>
   <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
@@ -640,7 +655,7 @@
                   
   <section id="communication-requirements">
 <span id="com-requirements"></span><h1>Communication Requirements<a class="headerlink" href="#communication-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-2464b718">
+<div class="need_container docutils container" id="SNCB-e6cd9e97">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__communication_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -683,7 +698,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d588f06f">
+<div class="need_container docutils container" id="SNCB-b7587648">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__time_based_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -707,7 +722,7 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__time_based_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__time_based_arch">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__time_based_arch">stkh_req__communication__safe</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__time_based_arch">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__time_based_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__time_based_arch">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__time_based_arch">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -730,7 +745,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4772ccf3">
+<div class="need_container docutils container" id="SNCB-49a8d871">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_driven_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -754,7 +769,7 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_driven_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__data_driven_arch">stkh_req__app_architectures__support_data</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__data_driven_arch">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_driven_arch">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__data_driven_arch">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -777,7 +792,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-50d1aa5c">
+<div class="need_container docutils container" id="SNCB-5be4399e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__request_driven_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -801,7 +816,7 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__request_driven_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__request_driven_arch">stkh_req__app_architectures__support_request</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__request_driven_arch">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__request_driven_arch">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__request_driven_arch">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -824,7 +839,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6d3ea566">
+<div class="need_container docutils container" id="SNCB-4025198f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__interfaces">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -848,7 +863,7 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__interfaces">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__interfaces">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__interfaces">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__interfaces">stkh_req__communication__safe</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__interfaces">stkh_req__app_architectures__support_request</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__interfaces">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__interfaces">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__interfaces">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__interfaces">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__interfaces">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__interfaces">feat__com_communication</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__com__communication" title="feat_req__com__interfaces">feat_arc_sta__com__communication</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__communication__user" title="feat_req__com__interfaces">logic_arc_int__communication__user</a>, <a class="reference internal" href="../../lifecycle/architecture/index.html#logic_arc_int__lifecycle__alive_if" title="feat_req__com__interfaces">logic_arc_int__lifecycle__alive_if</a>, <a class="reference internal" href="../../lifecycle/architecture/index.html#logic_arc_int__lifecycle__controlif" title="feat_req__com__interfaces">logic_arc_int__lifecycle__controlif</a>, <a class="reference internal" href="../../lifecycle/architecture/index.html#logic_arc_int__lifecycle__deadline_monitor_if" title="feat_req__com__interfaces">logic_arc_int__lifecycle__deadline_monitor_if</a>, <a class="reference internal" href="../../lifecycle/architecture/index.html#logic_arc_int__lifecycle__logical_monitor_if" title="feat_req__com__interfaces">logic_arc_int__lifecycle__logical_monitor_if</a>, <a class="reference internal" href="../../orchestration/architecture/index.html#logic_arc_int__orchestration__user" title="feat_req__com__interfaces">logic_arc_int__orchestration__user</a></span></span></div>
 </span></div>
@@ -878,7 +893,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-682ecc29">
+<div class="need_container docutils container" id="SNCB-e46b3c84">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__event_type">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -902,7 +917,7 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__event_type">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__event_type">stkh_req__app_architectures__support_time</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__event_type">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__event_type">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">derives: <span class="derived_from"><span><a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#comp_req__communication__logging" title="feat_req__com__event_type">comp_req__communication__logging</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__event_type">feat__com_communication</a></span></span></div>
 </span></div>
@@ -933,7 +948,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c0d4b2dd">
+<div class="need_container docutils container" id="SNCB-84988edc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__method">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -957,7 +972,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__method">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__method">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__method">stkh_req__communication__safe</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__method">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__method">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__method">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__method">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -991,7 +1006,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1d07bfc7">
+<div class="need_container docutils container" id="SNCB-10cfe88d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__signal">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1015,7 +1030,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__signal">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__signal">stkh_req__app_architectures__support_request</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__signal">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__signal">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__signal">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -1052,7 +1067,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aaafbc0f">
+<div class="need_container docutils container" id="SNCB-f5c69942">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__producer_consumer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1076,7 +1091,7 @@ The service instance offering the trigger can:</p>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__producer_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__producer_consumer">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__producer_consumer">stkh_req__communication__safe</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__producer_consumer">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__producer_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__producer_consumer">stkh_req__communication__safe</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__producer_consumer">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -1099,7 +1114,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cf048090">
+<div class="need_container docutils container" id="SNCB-8c7a61c8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1151,7 +1166,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6c6cb0a1">
+<div class="need_container docutils container" id="SNCB-b5927b1c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance_names">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1205,7 +1220,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6affaf4a">
+<div class="need_container docutils container" id="SNCB-cd31ca38">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__versioning">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1261,7 +1276,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-94e6a8c2">
+<div class="need_container docutils container" id="SNCB-db64de87">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_location_transparency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1313,7 +1328,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5dff4187">
+<div class="need_container docutils container" id="SNCB-0d1fe354">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__stateless_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1368,7 +1383,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3ecedf6b">
+<div class="need_container docutils container" id="SNCB-e0326686">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance_granularity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1420,7 +1435,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7da61908">
+<div class="need_container docutils container" id="SNCB-5459820d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_discovery">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1474,7 +1489,7 @@ discovery.</p>
 </div>
 <section id="mixed-criticality-safety-systems">
 <h2>Mixed-Criticality safety systems<a class="headerlink" href="#mixed-criticality-safety-systems" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-be7638d0">
+<div class="need_container docutils container" id="SNCB-2ebf07c8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__safe_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1522,7 +1537,7 @@ criticality levels.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4648f24c">
+<div class="need_container docutils container" id="SNCB-528c3d13">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_corruption">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1569,7 +1584,7 @@ criticality levels.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3497c468">
+<div class="need_container docutils container" id="SNCB-8fafbe1e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_reordering">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1617,7 +1632,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bbc2780b">
+<div class="need_container docutils container" id="SNCB-dcd7d0ce">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_repetition">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1665,7 +1680,7 @@ higher criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-67188d38">
+<div class="need_container docutils container" id="SNCB-10e6c3ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_loss">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1716,7 +1731,7 @@ criticality.</p></td>
 </section>
 <section id="performance">
 <h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f980ba3e">
+<div class="need_container docutils container" id="SNCB-aa39d7c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__zero_copy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1740,7 +1755,7 @@ criticality.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__zero_copy">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_request</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__zero_copy">stkh_req__communication__inter_process</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__zero_copy">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -1770,7 +1785,7 @@ criticality.</p></td>
 </div>
 <section id="user-friendly-api-for-information-exchange">
 <h3>User friendly API for information exchange<a class="headerlink" href="#user-friendly-api-for-information-exchange" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-4d6f2f55">
+<div class="need_container docutils container" id="SNCB-a893ea84">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_lang">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1817,7 +1832,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-882bbc35">
+<div class="need_container docutils container" id="SNCB-0ff47afd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lang_idioms">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1864,7 +1879,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fd872623">
+<div class="need_container docutils container" id="SNCB-2352c169">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lang_infra">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1921,7 +1936,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="full-testability-for-the-user-facing-api">
 <h2>Full testability for the user facing API<a class="headerlink" href="#full-testability-for-the-user-facing-api" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-de15f9db">
+<div class="need_container docutils container" id="SNCB-b231019d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__testability_mock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1968,7 +1983,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b27b0af8">
+<div class="need_container docutils container" id="SNCB-3ddbe710">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__testability_fake_binding">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2018,7 +2033,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="multi-binding-support">
 <h2>Multi-binding support<a class="headerlink" href="#multi-binding-support" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-d711ccb0">
+<div class="need_container docutils container" id="SNCB-e28f18d8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_binding_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2070,7 +2085,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0bfcc2e5">
+<div class="need_container docutils container" id="SNCB-75c5d75c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__binding_agnostic_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2122,7 +2137,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f6027773">
+<div class="need_container docutils container" id="SNCB-a6cbb696">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_binding_depl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2172,7 +2187,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="cross-vm-extensions">
 <h2>Cross-VM Extensions<a class="headerlink" href="#cross-vm-extensions" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-49942e6d">
+<div class="need_container docutils container" id="SNCB-bd82ffc8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__one_way_sharing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2219,7 +2234,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7a2f29b8">
+<div class="need_container docutils container" id="SNCB-28fa9deb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__readonly_vm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2266,7 +2281,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1d7bca61">
+<div class="need_container docutils container" id="SNCB-c3c0fb50">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__consistent_data">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2313,7 +2328,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2d205b4f">
+<div class="need_container docutils container" id="SNCB-f31a3cc9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lock_free_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2360,7 +2375,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-27cbfa35">
+<div class="need_container docutils container" id="SNCB-e9756e14">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__producer_timestamps">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2407,7 +2422,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a6f71920">
+<div class="need_container docutils container" id="SNCB-0f9c3ddb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__streamed_data">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2454,7 +2469,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a57df9c6">
+<div class="need_container docutils container" id="SNCB-b4d555a6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__configurable_queues">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2501,7 +2516,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aa22aac3">
+<div class="need_container docutils container" id="SNCB-705ee02f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lock_free_queue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2548,7 +2563,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bccff7e7">
+<div class="need_container docutils container" id="SNCB-73227d14">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__bi_directional_comm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2595,7 +2610,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b3150697">
+<div class="need_container docutils container" id="SNCB-f3a1acd6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__async_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2642,7 +2657,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d690bda5">
+<div class="need_container docutils container" id="SNCB-202f25e4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__shared_memory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2689,7 +2704,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f214c918">
+<div class="need_container docutils container" id="SNCB-320f0b05">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_notifications">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2736,7 +2751,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8e3d421e">
+<div class="need_container docutils container" id="SNCB-5ddbf1eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__config_notifications">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2786,7 +2801,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="dynamic-deployment-at-runtime">
 <h2>Dynamic deployment at runtime<a class="headerlink" href="#dynamic-deployment-at-runtime" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-c1e03b52">
+<div class="need_container docutils container" id="SNCB-48625ec0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__depl_config_runtime">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2836,7 +2851,7 @@ whenever possible and meaningful.</p>
 </div>
 <section id="tracing">
 <h3>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-7b99d3a7">
+<div class="need_container docutils container" id="SNCB-1ee0d4ad">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__tracing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2860,7 +2875,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__tracing_of_comm" title="feat_req__com__tracing">stkh_req__dev_experience__tracing_of_comm</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__tracing">stkh_req__communication__safe</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__tracing">stkh_req__communication__safe</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__tracing_of_comm" title="feat_req__com__tracing">stkh_req__dev_experience__tracing_of_comm</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__com_communication" title="feat_req__com__tracing">feat__com_communication</a></span></span></div>
 </span></div>
 </div>
@@ -2887,7 +2902,7 @@ communication.</p></td>
 </section>
 <section id="security-impact">
 <h3>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-85fa1670">
+<div class="need_container docutils container" id="SNCB-3cd46a70">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_placement">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2934,7 +2949,7 @@ communication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5cc6f675">
+<div class="need_container docutils container" id="SNCB-2a465a11">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_per_service_instance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2981,7 +2996,7 @@ communication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ac7428bd">
+<div class="need_container docutils container" id="SNCB-5aed1fef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_for_producer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3030,7 +3045,7 @@ An entry in the ACL corresponds to an allowed consumer.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-00c6d2f6">
+<div class="need_container docutils container" id="SNCB-0c0a84b2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_for_consumer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3082,7 +3097,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
 </section>
 <section id="safety-impact">
 <h3>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-53a2a6e9">
+<div class="need_container docutils container" id="SNCB-a1b20352">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__asil">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3201,7 +3216,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main//home/runner/work/score/score/docs/features/communication/requirements/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/requirements/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -3226,8 +3241,8 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -3251,7 +3266,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
 </p></div>
       
     </div>
