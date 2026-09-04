@@ -29,7 +29,7 @@ Time Synchronization
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall synchronize the local clock with an external **Time Master** using the gPTP protocol (IEEE 802.1AS).
+   The **score::time feature** shall synchronize the local clock with an external **Grand Master** using the gPTP protocol (IEEE 802.1AS).
 
 .. feat_req:: Vehicle Time synchronization precision
    :id: feat_req__time__vehicle_time_sync_prec
@@ -42,8 +42,8 @@ Time Synchronization
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall synchronize the local time, see feat_req__time__vehicle_time__sync, base with **Time Master** within a defined
-   precision, based on the system setup.
+   The **score::time feature** shall synchronize the local time base with the **Grand Master** within a defined
+   precision, based on the system setup (see :need:`feat_req__time__vehicle_time_sync`).
 
    Note:
 
@@ -120,9 +120,9 @@ Note (providing tracebility as long as safety analysis is not available):
 
    For APIs see:
 
-   * feat_req__time__vehicle_time__time_api
-   * feat_req__time__vehicle_time__acc_qual_api
-   * feat_req__time__vehicle_time__time_pt_qual
+   * :need:`feat_req__time__vehicle_time_time_api`
+   * :need:`feat_req__time__vehicle_time_acc_qual_api`
+   * :need:`feat_req__time__vehicle_time_time_pt_qual`
 
    *Use case:* frequent access to the current synchronized time and its metadata by multiple clients within one ECU.
 
