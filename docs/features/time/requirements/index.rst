@@ -56,7 +56,7 @@ Time Synchronization
    :id: feat_req__time__vehicle_time_time_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
@@ -64,12 +64,17 @@ Time Synchronization
    :valid_from: v1.0.0
 
    The **score::time feature** shall provide an API to access the synchronized vehicle time.
+   Usage of this API shall be free from interferences for the consuming components.
+
+Note (providing tracebility as long as safety analysis is not available):
+   :need:`feat_req__time__vehicle_time_time_api` requires backing by :need:`aou_req__feature__veh_time_e2e_integrity`
+   to guarantee end-to-end data integrity.
 
 .. feat_req:: Vehicle Time base accuracy qualifier
    :id: feat_req__time__vehicle_time_acc_qual_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
@@ -101,9 +106,9 @@ Time Synchronization
 
 .. feat_req:: Vehicle Time control flow
    :id: feat_req__time__vehicle_time_ctrl_flow
-   :reqtype: Functional
+   :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__vehicle_time_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
@@ -165,6 +170,7 @@ Time Synchronization to absolute external sources
    :valid_from: v1.0.0
 
    The **score::time feature** shall provide an API to read the absolute time base, synchronized to external time sources.
+   Usage of this API shall be free from interferences for the consuming components.
 
 .. feat_req:: Absolute Time base accuracy qualifier
    :id: feat_req__time__abs_acc_qual
@@ -231,20 +237,21 @@ Time Synchronization to absolute external sources
 Local Clock
 ^^^^^^^^^^^^^^^^^^^^
 
-.. feat_req:: High precision clock API
-   :id: feat_req__time__high_prec_clock_api
+.. feat_req:: High resolution clock API
+   :id: feat_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
-   :derived_from: stkh_req__time__high_precision_clock_api[version==1]
+   :safety: ASIL_B
+   :derived_from: stkh_req__time__high_res_clock_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read the high precision clock in nanoseconds precision.
+   The **score::time feature** shall provide an API to read the high resolution clock in nanoseconds resolution.
+   Usage of this API shall be free from interferences for the consuming components.
 
-   Note: to which clock the high precision clock is mapped, depends on the system design.
+   Note: to which clock the high resolution clock is mapped, depends on the system design.
 
    *Use case:* such clocks might be used for time-critical applications, such as audio/video streaming, event logging, and diagnostics.
 
@@ -252,7 +259,7 @@ Local Clock
    :id: feat_req__time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :derived_from: stkh_req__time__monotonic_clock_api[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
@@ -260,6 +267,7 @@ Local Clock
    :valid_from: v1.0.0
 
    The **score::time feature** shall provide an API to read monotonic, not adjustable clock value.
+   Usage of this API shall be free from interferences for the consuming components.
 
 Testability
 ^^^^^^^^^^^^
