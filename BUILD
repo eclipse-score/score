@@ -62,6 +62,60 @@ setup_starpls(
 )
 
 docs(
+    bundles = [
+        {
+            "bundle": "//docs/features/ai_platform:docs",
+            "mount_at": "features/ai_platform",
+        },
+        {
+            "bundle": "//docs/features/baselibs:docs",
+            "mount_at": "features/baselibs",
+        },
+        {
+            "bundle": "//docs/features/code_generation:docs",
+            "mount_at": "features/code_generation",
+        },
+        {
+            "bundle": "//docs/features/communication:docs",
+            "mount_at": "features/communication",
+        },
+        {
+            "bundle": "//docs/features/configuration:docs",
+            "mount_at": "features/configuration",
+        },
+        {
+            "bundle": "//docs/features/diagnostics:docs",
+            "mount_at": "features/diagnostics",
+        },
+        {
+            "bundle": "//docs/features/frameworks:docs",
+            "mount_at": "features/frameworks",
+        },
+        {
+            "bundle": "//docs/features/lifecycle:docs",
+            "mount_at": "features/lifecycle",
+        },
+        {
+            "bundle": "//docs/features/log_and_trace:docs",
+            "mount_at": "features/log_and_trace",
+        },
+        {
+            "bundle": "//docs/features/orchestration:docs",
+            "mount_at": "features/orchestration",
+        },
+        {
+            "bundle": "//docs/features/persistency:docs",
+            "mount_at": "features/persistency",
+        },
+        {
+            "bundle": "//docs/features/security_crypto:docs",
+            "mount_at": "features/security_crypto",
+        },
+        {
+            "bundle": "//docs/features/time:docs",
+            "mount_at": "features/time",
+        },
+    ],
     data = [
         "@score_process_description//:needs_json",
     ],
