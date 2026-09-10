@@ -67,3 +67,10 @@ docs(
     ],
     source_dir = "docs",
 )
+
+# Exposed (without a nested BUILD file, to avoid excluding it from //:docs'
+# root-level glob) for cross-repo consumption by score_logging for trlc import.
+exports_files(
+    ["docs/features/log_and_trace/logging/requirements/index.rst"],
+    visibility = ["//visibility:public"],
+)
