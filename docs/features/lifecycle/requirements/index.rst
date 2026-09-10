@@ -112,7 +112,7 @@ Process Management
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall be able to control already running :term:`Processes <Process>`.
 
@@ -125,7 +125,7 @@ Process Management
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
     :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
 
     The :term:`Lifecycle Feature` shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
@@ -231,7 +231,7 @@ Control Interface
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall provide support for commands to query component
     states.
@@ -246,7 +246,7 @@ Control Interface
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall be able to report status on components via the
     :term:`Control Interface`.
@@ -309,7 +309,7 @@ Monitoring, Notification and Recovery
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall support switching to a different :term:`Run target` as
     recovery action in case a single process terminated abnormally or lost its
@@ -324,7 +324,7 @@ Monitoring, Notification and Recovery
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall support a smart :term:`Watchdog`, configurable
     per process.
@@ -459,7 +459,7 @@ Configuration file
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall support modular configuration files to
     configure process attributes, including configurations coming from
@@ -474,7 +474,7 @@ Configuration file
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall provide support for extending already running
     session with additional new configuration file.
