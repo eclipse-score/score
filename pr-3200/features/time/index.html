@@ -652,7 +652,7 @@
                   
   <section id="time">
 <span id="time-feature"></span><h1>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-e394692e">
+<div class="need_container docutils container" id="SNCB-b2e67c10">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -700,7 +700,7 @@
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>The <a class="reference internal" href="glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature provides applications with a uniform, type-safe API for reading
 time from three independent time bases: <a class="reference internal" href="glossary.html#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a> (network-synchronized),
-local time (OS clocks) and <a class="reference internal" href="glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> (external UTC source). The feature owns
+local time (OS clocks) and <a class="reference internal" href="glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> (external <a class="reference internal" href="glossary.html#term-UTC"><span class="xref std std-term">UTC</span></a> source). The feature owns
 the synchronization of the synchronized time bases and supports test-time substitution of all
 clock interfaces.</p>
 </section>
@@ -785,10 +785,27 @@ the <a class="reference internal" href="glossary.html#term-TimePoint"><span clas
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="glossary.html#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a> is the only time base with a safety-relevant qualifier. Its
-<a class="reference internal" href="glossary.html#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carries a <a class="reference internal" href="glossary.html#term-Time-point-qualifier"><span class="xref std std-term">Time point qualifier</span></a> indicating whether the
-<a class="reference internal" href="glossary.html#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> may be treated as ASIL-B data or only as QM data. All other time bases
-(local time bases, <a class="reference internal" href="glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a>) are QM.</p>
+<p>The Time feature separates the ASIL of the <em>clock interface</em> (a safety element that must not
+interfere with the ASIL_B components calling it) from the <em>integrity of the time value</em> it
+delivers:</p>
+<ul class="simple">
+<li><p><strong>Clock interfaces — ASIL_B.</strong> The <a class="reference internal" href="glossary.html#term-Vehicle-Clock"><span class="xref std std-term">Vehicle Clock</span></a>, <a class="reference internal" href="glossary.html#term-Local-Clock"><span class="xref std std-term">Local Clock</span></a> and
+<a class="reference internal" href="glossary.html#term-Absolute-Clock"><span class="xref std std-term">Absolute Clock</span></a> are developed as ASIL_B elements: access is free from interference for
+the consuming components. For the Local Clock and Absolute Clock this relies on the platform/OS
+assumptions of use (see <a class="reference internal" href="../../requirements/platform_assumptions/index.html#aou_req__platform__os_safety_functions" title="aou_req__platform__os_safety_functions"><em class="xref need">OS safety functions (aou_req__platform__os_safety_functions)</em></a>).</p></li>
+<li><p><strong>Time-value integrity — per domain.</strong></p>
+<ul>
+<li><p><a class="reference internal" href="glossary.html#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a> — <strong>ASIL_B</strong>. Its <a class="reference internal" href="glossary.html#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carries a <a class="reference internal" href="glossary.html#term-Time-point-qualifier"><span class="xref std std-term">Time point qualifier</span></a>
+distinguishing ASIL-B data from QM data; the ASIL-B value integrity is achieved only if
+<a class="reference internal" href="requirements/aou_req.html#aou_req__feature__veh_time_e2e_integrity" title="aou_req__feature__veh_time_e2e_integrity"><em class="xref need">Vehicle time end-to-end int... (aou_req__feature__veh_time_e2e_integrity)</em></a> is fulfilled.</p></li>
+<li><p><a class="reference internal" href="glossary.html#term-Local-Clock"><span class="xref std std-term">Local Clock</span></a> bases (steady, monotonic, high-resolution) — <strong>ASIL_B</strong>. They expose no
+runtime qualifier; the ASIL-B value integrity is achieved only if
+<a class="reference internal" href="../../requirements/platform_assumptions/index.html#aou_req__platform__os_safety_functions" title="aou_req__platform__os_safety_functions"><em class="xref need">OS safety functions (aou_req__platform__os_safety_functions)</em></a> is fulfilled.</p></li>
+<li><p><a class="reference internal" href="glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> — <strong>QM</strong> value. It is externally sourced and cannot be raised above QM;
+its <a class="reference internal" href="glossary.html#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> and <a class="reference internal" href="glossary.html#term-Security-qualifier"><span class="xref std std-term">security qualifier</span></a> are QM runtime signals.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="terms-and-definitions">
 <h2>Terms and Definitions<a class="headerlink" href="#terms-and-definitions" title="Link to this heading">#</a></h2>

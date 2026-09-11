@@ -655,7 +655,7 @@
                   
   <section id="time-architecture">
 <h1>Time Architecture<a class="headerlink" href="#time-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-18fc5765">
+<div class="need_container docutils container" id="SNCB-648cabfe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__time_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -701,10 +701,10 @@
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>The Time feature (<a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a>) provides applications with a uniform way to read
-time from several distinct <a class="reference internal" href="../glossary.html#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> s. The domain is selected explicitly by the
+time from several distinct <a class="reference internal" href="../glossary.html#term-Clock-domain"><span class="xref std std-term">clock domains</span></a>. The domain is selected explicitly by the
 application, which keeps the interface consistent across domains while preventing accidental
 mixing of incompatible <a class="reference internal" href="../glossary.html#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> types.</p>
-<p>The architecture distinguishes three time bases (<a class="reference internal" href="../glossary.html#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> s), each exposed through its
+<p>The architecture distinguishes three time bases (<a class="reference internal" href="../glossary.html#term-Clock-domain"><span class="xref std std-term">clock domains</span></a>), each exposed through its
 own clock interface:</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -721,7 +721,7 @@ available.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>Absolute Time</strong> — an external absolute time base (e.g. UTC from GPS), carrying an</dt><dd><p><a class="reference internal" href="../glossary.html#term-Absolute-Time-status"><span class="xref std std-term">Absolute Time status</span></a> qualifier that reflects both accuracy and security. It is exposed
+<dt><strong>Absolute Time</strong> — an external absolute time base (e.g. <a class="reference internal" href="../glossary.html#term-UTC"><span class="xref std std-term">UTC</span></a> from GPS), carrying an</dt><dd><p><a class="reference internal" href="../glossary.html#term-Absolute-Time-status"><span class="xref std std-term">Absolute Time status</span></a> qualifier that reflects both accuracy and security. It is exposed
 through the <a class="reference internal" href="../glossary.html#term-Absolute-Clock"><span class="xref std std-term">Absolute Clock</span></a>.</p>
 </dd>
 </dl>
@@ -771,7 +771,7 @@ elements.</p>
 </section>
 <section id="feature-overview">
 <h2>Feature Overview<a class="headerlink" href="#feature-overview" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-fa6b54c0">
+<div class="need_container docutils container" id="SNCB-bc2c6695">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -815,8 +815,12 @@ elements.</p>
 </table>
 </div>
 </div>
-<p>The runtime (static and dynamic) architecture is defined in the <code class="docutils literal notranslate"><span class="pre">time</span></code> module
-(<a class="reference external" href="https://eclipse-score.github.io/time">Time Feature Architecture</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document defines the feature-level logical (static) architecture. The feature’s dynamic
+architecture and the component-level detailed architecture are described in the <code class="docutils literal notranslate"><span class="pre">time</span></code> module
+(see the <a class="reference external" href="https://github.com/eclipse-score/time">time module repository</a>).</p>
+</div>
 </section>
 <section id="time-bases">
 <h2>Time Bases<a class="headerlink" href="#time-bases" title="Link to this heading">#</a></h2>
@@ -827,7 +831,7 @@ elements.</p>
 synchronization, it additionally offers subscription to synchronization events, on top of reading the time.</p>
 <section id="logical-interface">
 <h4>Logical Interface<a class="headerlink" href="#logical-interface" title="Link to this heading">#</a></h4>
-<div class="need_container docutils container" id="SNCB-e5652372">
+<div class="need_container docutils container" id="SNCB-02c76d31">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__time__vehicle_clock">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -874,7 +878,7 @@ synchronization, it additionally offers subscription to synchronization events, 
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9a48d83b">
+<div class="need_container docutils container" id="SNCB-61972fa9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__time__vehicle_now">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -917,7 +921,7 @@ synchronization, it additionally offers subscription to synchronization events, 
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bdbd13ab">
+<div class="need_container docutils container" id="SNCB-39e36924">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__time__vehicle_subscribe">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -960,7 +964,7 @@ synchronization, it additionally offers subscription to synchronization events, 
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2d91829a">
+<div class="need_container docutils container" id="SNCB-1a131c5d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__time__vehicle_unsubscribe">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1039,7 +1043,7 @@ system-clock consumers obtain the absolute time as QM data.</p></td>
 </div>
 <section id="id1">
 <h4>Logical Interface<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<div class="need_container docutils container" id="SNCB-b822a266">
+<div class="need_container docutils container" id="SNCB-b495a54f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__time__local_clock">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1086,7 +1090,7 @@ system-clock consumers obtain the absolute time as QM data.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-80f355b1">
+<div class="need_container docutils container" id="SNCB-f55e2702">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__time__local_now">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1138,7 +1142,7 @@ system-clock consumers obtain the absolute time as QM data.</p></td>
 <a class="reference internal" href="../glossary.html#term-Security-qualifier"><span class="xref std std-term">security qualifier</span></a>.</p>
 <section id="id2">
 <h4>Logical Interface<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
-<div class="need_container docutils container" id="SNCB-fdfe93eb">
+<div class="need_container docutils container" id="SNCB-4894a184">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__time__absolute_clock">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1185,7 +1189,7 @@ system-clock consumers obtain the absolute time as QM data.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-105aeab4">
+<div class="need_container docutils container" id="SNCB-76c74da1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__time__absolute_now">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

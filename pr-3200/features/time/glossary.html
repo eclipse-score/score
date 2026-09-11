@@ -692,7 +692,7 @@ call.</p>
 </dd>
 <dt id="term-Epoch">Epoch<a class="headerlink" href="#term-Epoch" title="Link to this term">#</a></dt><dd><p>The reference TimePoint at which a <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> starts counting. The semantics of the
 epoch are a documented property of the clock (e.g. the Unix system clock epoch is
-<code class="docutils literal notranslate"><span class="pre">1970-01-01</span> <span class="pre">00:00:00</span> <span class="pre">UTC</span></code>).</p>
+<code class="docutils literal notranslate"><span class="pre">1970-01-01</span> <span class="pre">00:00:00</span></code> <a class="reference internal" href="#term-UTC"><span class="xref std std-term">UTC</span></a>).</p>
 </dd>
 <dt id="term-Resolution">Resolution<a class="headerlink" href="#term-Resolution" title="Link to this term">#</a></dt><dd><p>The smallest time difference an individual <a class="reference internal" href="#term-TimePoint"><span class="xref std std-term">TimePoint</span></a> can represent. For an
 ideal clock the resolution equals the reciprocal of the <a class="reference internal" href="#term-Frequency"><span class="xref std std-term">frequency</span></a>, but in
@@ -739,7 +739,7 @@ initialization and are always available.</p>
 <dt id="term-Steady-Clock">Steady Clock<a class="headerlink" href="#term-Steady-Clock" title="Link to this term">#</a></dt><dd><p>A monotonic, non-adjustable local time base. It never goes backward, which makes it the
 standard choice for measuring elapsed time and computing timeouts.</p>
 </dd>
-<dt id="term-System-Clock">System Clock<a class="headerlink" href="#term-System-Clock" title="Link to this term">#</a></dt><dd><p>A wall-clock (UTC-based) local time base — the OS <code class="docutils literal notranslate"><span class="pre">CLOCK_REALTIME</span></code>, also reachable through
+<dt id="term-System-Clock">System Clock<a class="headerlink" href="#term-System-Clock" title="Link to this term">#</a></dt><dd><p>A wall-clock (<a class="reference internal" href="#term-UTC"><span class="xref std std-term">UTC</span></a>-based) local time base — the OS <code class="docutils literal notranslate"><span class="pre">CLOCK_REALTIME</span></code>, also reachable through
 standard POSIX (<code class="docutils literal notranslate"><span class="pre">clock_gettime</span></code>) and C++ (<code class="docutils literal notranslate"><span class="pre">std::chrono::system_clock</span></code>) APIs. It may jump
 or be adjusted, so it is used for calendar timestamps, not for measuring elapsed time. Its
 value is kept aligned to <a class="reference internal" href="#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> by <a class="reference internal" href="#term-score-time"><span class="xref std std-term">score::time</span></a>; consumers reading it
@@ -750,11 +750,15 @@ thus obtain the absolute time, but as QM data without the <a class="reference in
 Used for tight timing loops and deadline checks.</p>
 </dd>
 <dt id="term-Absolute-Time">Absolute Time<a class="headerlink" href="#term-Absolute-Time" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock-domain"><span class="xref std std-term">clock domain</span></a> (time base) representing an external absolute time source
-(e.g. UTC from GPS). Reading it yields a <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carrying an
+(e.g. <a class="reference internal" href="#term-UTC"><span class="xref std std-term">UTC</span></a> from GPS). Reading it yields a <a class="reference internal" href="#term-Snapshot"><span class="xref std std-term">Snapshot</span></a> carrying an
 <a class="reference internal" href="#term-Absolute-Time-status"><span class="xref std std-term">Absolute Time status</span></a>. It is exposed to applications through the
-<a class="reference internal" href="#term-Absolute-Clock"><span class="xref std std-term">Absolute Clock</span></a>. Its transmission delay is compensated using a <a class="reference internal" href="#term-Delay-Tag"><span class="xref std std-term">Delay Tag</span></a>.</p>
+<a class="reference internal" href="#term-Absolute-Clock"><span class="xref std std-term">Absolute Clock</span></a>. Its transmission delay — the path delay from the absolute-time
+master to the client — is compensated using a <a class="reference internal" href="#term-Delay-Tag"><span class="xref std std-term">Delay Tag</span></a>.</p>
 </dd>
 <dt id="term-Absolute-Clock">Absolute Clock<a class="headerlink" href="#term-Absolute-Clock" title="Link to this term">#</a></dt><dd><p>The <a class="reference internal" href="#term-Clock"><span class="xref std std-term">Clock</span></a> interface that provides <a class="reference internal" href="#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a>.</p>
+</dd>
+<dt id="term-UTC">UTC<a class="headerlink" href="#term-UTC" title="Link to this term">#</a></dt><dd><p>Coordinated Universal Time — the primary global civil time standard. It is the reference
+time scale for <a class="reference internal" href="#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> and for the <a class="reference internal" href="#term-System-Clock"><span class="xref std std-term">System Clock</span></a> wall-clock time.</p>
 </dd>
 </dl>
 </section>

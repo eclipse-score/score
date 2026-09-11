@@ -657,7 +657,7 @@
 <h1>Time Requirements<a class="headerlink" href="#time-requirements" title="Link to this heading">#</a></h1>
 <section id="time-synchronization">
 <h2>Time Synchronization<a class="headerlink" href="#time-synchronization" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f689fae0">
+<div class="need_container docutils container" id="SNCB-05357fe4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -687,7 +687,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall synchronize the local clock with an external <strong>Grand Master</strong> using the gPTP protocol (IEEE 802.1AS).</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall synchronize the local clock with an external <a class="reference internal" href="../glossary.html#term-Grand-Master"><span class="xref std std-term">Grand Master</span></a> using the <a class="reference internal" href="../glossary.html#term-gPTP"><span class="xref std std-term">gPTP</span></a> protocol (IEEE 802.1AS).</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__time__vehicle_time_sync" title="feat_req__time__vehicle_time_sync">feat_req__time__vehicle_time_sync</a></span></span></div>
@@ -703,7 +703,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7a19d7cf">
+<div class="need_container docutils container" id="SNCB-8db0672c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_sync_prec">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -733,7 +733,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall synchronize the local time base with the <strong>Grand Master</strong> within a defined
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall synchronize the local time base with the <a class="reference internal" href="../glossary.html#term-Grand-Master"><span class="xref std std-term">Grand Master</span></a> within a defined
 precision, based on the system setup (see <a class="reference internal" href="#feat_req__time__vehicle_time_sync" title="feat_req__time__vehicle_time_sync"><em class="xref need">Vehicle Time synchronization (feat_req__time__vehicle_time_sync)</em></a>).</p>
 <p>Note:</p>
 <ul class="simple">
@@ -761,7 +761,7 @@ precision, based on the system setup (see <a class="reference internal" href="#f
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eba19d2f">
+<div class="need_container docutils container" id="SNCB-b795784e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_time_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -792,7 +792,7 @@ precision, based on the system setup (see <a class="reference internal" href="#f
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to access the synchronized vehicle time.
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to access the synchronized <a class="reference internal" href="../glossary.html#term-Vehicle-Time"><span class="xref std std-term">Vehicle Time</span></a>.
 Usage of this API shall be free from interferences for the consuming components.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -810,11 +810,11 @@ Usage of this API shall be free from interferences for the consuming components.
 </div>
 </div>
 <dl class="simple">
-<dt>Note (providing tracebility as long as safety analysis is not available):</dt><dd><p><a class="reference internal" href="#feat_req__time__vehicle_time_time_api" title="feat_req__time__vehicle_time_time_api"><em class="xref need">Vehicle Time base API (feat_req__time__vehicle_time_time_api)</em></a> requires backing by <a class="reference internal" href="aou_req.html#aou_req__feature__veh_time_e2e_integrity" title="aou_req__feature__veh_time_e2e_integrity"><em class="xref need">Vehicle time end-to-end int... (aou_req__feature__veh_time_e2e_integrity)</em></a>
+<dt>Note (providing traceability as long as safety analysis is not available):</dt><dd><p><a class="reference internal" href="#feat_req__time__vehicle_time_time_api" title="feat_req__time__vehicle_time_time_api"><em class="xref need">Vehicle Time base API (feat_req__time__vehicle_time_time_api)</em></a> requires backing by <a class="reference internal" href="aou_req.html#aou_req__feature__veh_time_e2e_integrity" title="aou_req__feature__veh_time_e2e_integrity"><em class="xref need">Vehicle time end-to-end int... (aou_req__feature__veh_time_e2e_integrity)</em></a>
 to guarantee end-to-end data integrity.</p>
 </dd>
 </dl>
-<div class="need_container docutils container" id="SNCB-61f1f792">
+<div class="need_container docutils container" id="SNCB-7d8fd8fd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_acc_qual_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -845,7 +845,7 @@ to guarantee end-to-end data integrity.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read the accuracy qualifier of the local synchronized time base.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read the <a class="reference internal" href="../glossary.html#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> of the local synchronized time base.</p>
 <p>Note: qualifier shall reflect the accuracy of the local time base, e.g.</p>
 <ul class="simple">
 <li><p>if it is synchronized to an external time source or not,</p></li>
@@ -868,7 +868,7 @@ to guarantee end-to-end data integrity.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2aa07bf9">
+<div class="need_container docutils container" id="SNCB-fa3de70d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_time_pt_qual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -899,7 +899,7 @@ to guarantee end-to-end data integrity.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read the time point qualifier of the local synchronized time base.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read the <a class="reference internal" href="../glossary.html#term-Time-point-qualifier"><span class="xref std std-term">time point qualifier</span></a> of the local synchronized time base.</p>
 <p>Note: qualifier shall reflect if the time point could be treated as ASIL-B data or QM data</p>
 </td>
 </tr>
@@ -917,7 +917,7 @@ to guarantee end-to-end data integrity.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-96c41346">
+<div class="need_container docutils container" id="SNCB-0c9321eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_ctrl_flow">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -948,7 +948,7 @@ to guarantee end-to-end data integrity.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an access its data via specified APIs in a fast and very efficient manner,
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an access its data via specified APIs in a fast and very efficient manner,
 avoiding, if possible, kernel calls, resource manager involvement and so on.</p>
 <p>For APIs see:</p>
 <ul class="simple">
@@ -973,7 +973,7 @@ avoiding, if possible, kernel calls, resource manager involvement and so on.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6ab0a2ae">
+<div class="need_container docutils container" id="SNCB-17d86b4a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time_sync_log">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1004,7 +1004,7 @@ avoiding, if possible, kernel calls, resource manager involvement and so on.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide a mechanism to log the internal state of the synchronization process,
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide a mechanism to log the internal state of the synchronization process,
 to be able to debug and diagnose the synchronization process.</p>
 <p><em>Use case:</em> Debugging and diagnostics of the time synchronization process.</p>
 </td>
@@ -1026,7 +1026,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </section>
 <section id="time-synchronization-to-absolute-external-sources">
 <h2>Time Synchronization to absolute external sources<a class="headerlink" href="#time-synchronization-to-absolute-external-sources" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e50b5496">
+<div class="need_container docutils container" id="SNCB-07643f4e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__abs_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1056,7 +1056,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall support synchronization with external time sources, such as UTC time from GPS.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall support synchronization with external time sources, such as <a class="reference internal" href="../glossary.html#term-UTC"><span class="xref std std-term">UTC</span></a> time from GPS.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__time__abs_sync" title="feat_req__time__abs_sync">feat_req__time__abs_sync</a></span></span></div>
@@ -1072,7 +1072,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b5b9ae7b">
+<div class="need_container docutils container" id="SNCB-56155370">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__abs_base_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1103,7 +1103,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read the absolute time base, synchronized to external time sources.
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read the <a class="reference internal" href="../glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> base, synchronized to external time sources.
 Usage of this API shall be free from interferences for the consuming components.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -1120,7 +1120,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-296c8cc4">
+<div class="need_container docutils container" id="SNCB-75352325">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__abs_acc_qual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1151,7 +1151,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read accuracy qualifier of the absolute time base, synchronized to external time sources.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read <a class="reference internal" href="../glossary.html#term-Accuracy-qualifier"><span class="xref std std-term">accuracy qualifier</span></a> of the <a class="reference internal" href="../glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> base, synchronized to external time sources.</p>
 <p>Note: the inaccuracy could be indicated in the following manner</p>
 <ul class="simple">
 <li><p>Inaccuracy higher than 24h</p></li>
@@ -1183,7 +1183,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-77b241af">
+<div class="need_container docutils container" id="SNCB-ac50b4a5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__abs_sec_qual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1214,7 +1214,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read security qualifier of the absolute time base, synchronized to external time sources.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read <a class="reference internal" href="../glossary.html#term-Security-qualifier"><span class="xref std std-term">security qualifier</span></a> of the <a class="reference internal" href="../glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> base, synchronized to external time sources.</p>
 <p>Note: the security level might be indicated in the following steps</p>
 <ul class="simple">
 <li><p>No time available</p></li>
@@ -1238,7 +1238,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a2f8c22d">
+<div class="need_container docutils container" id="SNCB-aff5e556">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__abs_sync_log">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1269,7 +1269,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide a mechanism to log the internal state of the absolute time synchronization process,
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide a mechanism to log the internal state of the <a class="reference internal" href="../glossary.html#term-Absolute-Time"><span class="xref std std-term">Absolute Time</span></a> synchronization process,
 to be able to debug and diagnose the synchronization process.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -1289,7 +1289,7 @@ to be able to debug and diagnose the synchronization process.</p></td>
 </section>
 <section id="local-clock">
 <h2>Local Clock<a class="headerlink" href="#local-clock" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4374aa32">
+<div class="need_container docutils container" id="SNCB-ce3212fb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__high_res_clock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1320,7 +1320,7 @@ to be able to debug and diagnose the synchronization process.</p></td>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read the high resolution clock in nanoseconds resolution.
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read the <a class="reference internal" href="../glossary.html#term-High-Resolution-Steady-Clock"><span class="xref std std-term">High-Resolution Steady Clock</span></a> in nanoseconds resolution.
 Usage of this API shall be free from interferences for the consuming components.</p>
 <p>Note: to which clock the high resolution clock is mapped, depends on the system design.</p>
 <p><em>Use case:</em> such clocks might be used for time-critical applications, such as audio/video streaming, event logging, and diagnostics.</p>
@@ -1340,7 +1340,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c47b408f">
+<div class="need_container docutils container" id="SNCB-fd34e8ce">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__monotonic_clock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1371,7 +1371,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an API to read monotonic, not adjustable clock value.
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide an API to read <a class="reference internal" href="../glossary.html#term-Monotonic"><span class="xref std std-term">monotonic</span></a>, not adjustable clock value.
 Usage of this API shall be free from interferences for the consuming components.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -1391,7 +1391,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </section>
 <section id="testability">
 <h2>Testability<a class="headerlink" href="#testability" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-b3870537">
+<div class="need_container docutils container" id="SNCB-97915ee8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__mocking_apis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1421,7 +1421,7 @@ Usage of this API shall be free from interferences for the consuming components.
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide support for mocking its public interfaces, enabling unit,
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> feature shall provide support for mocking its public interfaces, enabling unit,
 component and integration testing of applications.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
