@@ -29,7 +29,7 @@ Time Synchronization
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall synchronize the local clock with an external **Time Master** using the gPTP protocol (IEEE 802.1AS).
+   The :term:`score::time` feature shall synchronize the local clock with an external :term:`Grand Master` using the :term:`gPTP` protocol (IEEE 802.1AS).
 
 .. feat_req:: Vehicle Time synchronization precision
    :id: feat_req__time__vehicle_time_sync_prec
@@ -42,8 +42,8 @@ Time Synchronization
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall synchronize the local time, see feat_req__time__vehicle_time__sync, base with **Time Master** within a defined
-   precision, based on the system setup.
+   The :term:`score::time` feature shall synchronize the local time base with the :term:`Grand Master` within a defined
+   precision, based on the system setup (see :need:`feat_req__time__vehicle_time_sync`).
 
    Note:
 
@@ -63,10 +63,10 @@ Time Synchronization
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to access the synchronized vehicle time.
+   The :term:`score::time` feature shall provide an API to access the synchronized :term:`Vehicle Time`.
    Usage of this API shall be free from interferences for the consuming components.
 
-Note (providing tracebility as long as safety analysis is not available):
+Note (providing traceability as long as safety analysis is not available):
    :need:`feat_req__time__vehicle_time_time_api` requires backing by :need:`aou_req__feature__veh_time_e2e_integrity`
    to guarantee end-to-end data integrity.
 
@@ -81,7 +81,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read the accuracy qualifier of the local synchronized time base.
+   The :term:`score::time` feature shall provide an API to read the :term:`accuracy qualifier` of the local synchronized time base.
 
    Note: qualifier shall reflect the accuracy of the local time base, e.g.
 
@@ -100,7 +100,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read the time point qualifier of the local synchronized time base.
+   The :term:`score::time` feature shall provide an API to read the :term:`time point qualifier` of the local synchronized time base.
 
    Note: qualifier shall reflect if the time point could be treated as ASIL-B data or QM data
 
@@ -115,14 +115,14 @@ Note (providing tracebility as long as safety analysis is not available):
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an access its data via specified APIs in a fast and very efficient manner,
+   The :term:`score::time` feature shall provide an access its data via specified APIs in a fast and very efficient manner,
    avoiding, if possible, kernel calls, resource manager involvement and so on.
 
    For APIs see:
 
-   * feat_req__time__vehicle_time__time_api
-   * feat_req__time__vehicle_time__acc_qual_api
-   * feat_req__time__vehicle_time__time_pt_qual
+   * :need:`feat_req__time__vehicle_time_time_api`
+   * :need:`feat_req__time__vehicle_time_acc_qual_api`
+   * :need:`feat_req__time__vehicle_time_time_pt_qual`
 
    *Use case:* frequent access to the current synchronized time and its metadata by multiple clients within one ECU.
 
@@ -137,7 +137,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide a mechanism to log the internal state of the synchronization process,
+   The :term:`score::time` feature shall provide a mechanism to log the internal state of the synchronization process,
    to be able to debug and diagnose the synchronization process.
 
    *Use case:* Debugging and diagnostics of the time synchronization process.
@@ -156,7 +156,7 @@ Time Synchronization to absolute external sources
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall support synchronization with external time sources, such as UTC time from GPS.
+   The :term:`score::time` feature shall support synchronization with external time sources, such as :term:`UTC` time from GPS.
 
 .. feat_req:: Absolute Time base API
    :id: feat_req__time__abs_base_api
@@ -169,7 +169,7 @@ Time Synchronization to absolute external sources
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read the absolute time base, synchronized to external time sources.
+   The :term:`score::time` feature shall provide an API to read the :term:`Absolute Time` base, synchronized to external time sources.
    Usage of this API shall be free from interferences for the consuming components.
 
 .. feat_req:: Absolute Time base accuracy qualifier
@@ -183,7 +183,7 @@ Time Synchronization to absolute external sources
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read accuracy qualifier of the absolute time base, synchronized to external time sources.
+   The :term:`score::time` feature shall provide an API to read :term:`accuracy qualifier` of the :term:`Absolute Time` base, synchronized to external time sources.
 
    Note: the inaccuracy could be indicated in the following manner
 
@@ -211,7 +211,7 @@ Time Synchronization to absolute external sources
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read security qualifier of the absolute time base, synchronized to external time sources.
+   The :term:`score::time` feature shall provide an API to read :term:`security qualifier` of the :term:`Absolute Time` base, synchronized to external time sources.
 
    Note: the security level might be indicated in the following steps
 
@@ -231,7 +231,7 @@ Time Synchronization to absolute external sources
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide a mechanism to log the internal state of the absolute time synchronization process,
+   The :term:`score::time` feature shall provide a mechanism to log the internal state of the :term:`Absolute Time` synchronization process,
    to be able to debug and diagnose the synchronization process.
 
 Local Clock
@@ -248,7 +248,7 @@ Local Clock
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read the high resolution clock in nanoseconds resolution.
+   The :term:`score::time` feature shall provide an API to read the :term:`High-Resolution Steady Clock` in nanoseconds resolution.
    Usage of this API shall be free from interferences for the consuming components.
 
    Note: to which clock the high resolution clock is mapped, depends on the system design.
@@ -266,7 +266,7 @@ Local Clock
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide an API to read monotonic, not adjustable clock value.
+   The :term:`score::time` feature shall provide an API to read :term:`monotonic`, not adjustable clock value.
    Usage of this API shall be free from interferences for the consuming components.
 
 Testability
@@ -283,5 +283,5 @@ Testability
    :version: 1
    :valid_from: v1.0.0
 
-   The **score::time feature** shall provide support for mocking its public interfaces, enabling unit,
+   The :term:`score::time` feature shall provide support for mocking its public interfaces, enabling unit,
    component and integration testing of applications.
