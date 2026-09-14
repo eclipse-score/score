@@ -502,6 +502,6 @@ Configuration file
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
-    :valid_from: v1.0.0
+    :valid_from: v2.0.0
 
     The :term:`Lifecycle Feature` shall have the means to generate the specified dependencies in a format that can be visualized.
