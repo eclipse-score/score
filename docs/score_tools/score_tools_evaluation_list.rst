@@ -186,6 +186,14 @@ release, as part of the Tool Verification Report.
      - :need:`rl__infrastructure_tooling_community`
      - N/A
      - YES
+   * - 2a-6
+     - Clang + llvm-cov + llvm-profdata
+     - Code coverage tool from LLVM, used with Clang compiler
+     - 19.x (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - :need:`doc_tool__clang`
+     - YES
 
 
 2b Rust
@@ -226,6 +234,14 @@ release, as part of the Tool Verification Report.
      - NO
      - :need:`rl__infrastructure_tooling_community`
      - N/A
+     - YES
+   * - 2b-4
+     - llvm-cov + llvm-profdata
+     - LLVM source-based code coverage toolchain, usable in dedicated Rust/LLVM host workflows
+     - 19.x (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - :need:`doc_tool__clang`
      - YES
 
 
@@ -547,6 +563,14 @@ release, as part of the Tool Verification Report.
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__qcc`
      - N/A
+   * - 5a-3
+     - Clang
+     - Host C++ compiler used for LLVM source-based coverage instrumentation and reporting workflows
+     - 19.x (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - :need:`doc_tool__clang`
+     - YES
 
 
 5b Rust Compiler

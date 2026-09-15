@@ -167,7 +167,7 @@ _Provided via devcontainer_
 - `buildifier`, `bazel-compile-commands`
 - `curl`, `qemu-system-aarch64`, `sshpass` (??)
 - `protoc`
-- `gcovr`
+- `llvm-cov`, `llvm-profdata`
 
 **Not Natively Cacheable in Bazel**
 _Provided via devcontainer_
