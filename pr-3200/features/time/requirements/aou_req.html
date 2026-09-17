@@ -32,17 +32,17 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=415257cb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=82a1844f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=8048e6ee" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
@@ -653,7 +653,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-c485c350">
+  <div class="need_container docutils container" id="SNCB-18c42250">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feature_time_aou_reqs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -698,11 +698,11 @@
 </div>
 <section id="time-feature-assumption-of-use-requirements">
 <h1>Time Feature Assumption of Use Requirements<a class="headerlink" href="#time-feature-assumption-of-use-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d3407802">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feature__veh_time_e2e_integrity">
+<div class="need_container docutils container" id="SNCB-f8b353d2">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feature_time__veh_time_integrity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Vehicle time end-to-end integrity</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Vehicle time value integrity</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -725,18 +725,70 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>If the system using the S-CORE Time feature has the safety goal to achieve end-to-end integrity of
-the vehicle time information, the involved external components (like grand master clock, any
-intermediate master clock, and time-aware bridges/switches) must support respective measures for
-the integrity protection.</p>
-<dl class="simple">
-<dt>Note: If this assumption is violated, the data integrity level of the vehicle time information will fall</dt><dd><p>back to QM and must be marked accordingly in the respective project documentation.</p>
-</dd>
-</dl>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The integrity of the vehicle time <em>value</em> is not guaranteed by <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> alone. If the
+system using <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> has the safety goal to treat the vehicle time as ASIL-B data, the
+system integrator shall establish end-to-end integrity by suitable measures, e.g.:</p>
+<ul class="simple">
+<li><p>integrity protection along the time-distribution chain (grand master, intermediate masters,
+time-aware bridges/switches), and/or</p></li>
+<li><p>a receiver-side qualification/monitoring mechanism that evaluates the qualifiers provided by
+<a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> (see <a class="reference internal" href="index.html#feat_req__time__vehicle_time_time_pt_qual" title="feat_req__time__vehicle_time_time_pt_qual"><em class="xref need">Vehicle Time base time poin... (feat_req__time__vehicle_time_time_pt_qual)</em></a>,
+<a class="reference internal" href="index.html#feat_req__time__vehicle_time_acc_qual_api" title="feat_req__time__vehicle_time_acc_qual_api"><em class="xref need">Vehicle Time base accuracy ... (feat_req__time__vehicle_time_acc_qual_api)</em></a>) and reacts per the project safety concept.</p></li>
+</ul>
+<p>Note 1: <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> provides the qualifier/detection hooks; the concrete integrity
+mechanism, its redundancy, the safety reaction and the end-to-end safety argument are
+project-specific and outside the scope of the <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> SEooC.</p>
+<p>Note 2: If this assumption is not fulfilled, the vehicle time value integrity falls back to QM
+and must be marked accordingly in the project documentation.</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__feature__veh_time_e2e_integrity" title="aou_req__feature__veh_time_e2e_integrity">aou_req__feature__veh_time_e2e_integrity</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__feature_time__veh_time_integrity" title="aou_req__feature_time__veh_time_integrity">aou_req__feature_time__veh_time_integrity</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Assumption of Use Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-07f861ed">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feature_time__veh_time_qual_reflect">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Vehicle time integrity result reflected in qualifier</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Where the integrity check for the vehicle time is realized as a <a class="reference internal" href="../glossary.html#term-score-time"><span class="xref std std-term">score::time</span></a> extension, the
+system integrator shall ensure its result is reflected in the <a class="reference internal" href="../glossary.html#term-Time-point-qualifier"><span class="xref std std-term">time point qualifier</span></a>
+(see <a class="reference internal" href="index.html#feat_req__time__vehicle_time_time_pt_qual" title="feat_req__time__vehicle_time_time_pt_qual"><em class="xref need">Vehicle Time base time poin... (feat_req__time__vehicle_time_time_pt_qual)</em></a>).</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__feature_time__veh_time_qual_reflect" title="aou_req__feature_time__veh_time_qual_reflect">aou_req__feature_time__veh_time_qual_reflect</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
