@@ -111,44 +111,7 @@ safety separation, and DDS implementation independence.
 
 ### Logical architecture
 
-<div align="center">
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
- <title id="title">DDS communication deployment options</title>
- <desc id="desc">A DDS binding beneath mw::com and a DDS Gateway connecting two S-CORE systems and a native DDS application.</desc>
- <defs>
-  <linearGradient id="h" x1="0" x2="1"><stop offset="0" stop-color="#173b66"/><stop offset="1" stop-color="#2875a8"/></linearGradient>
-  <linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf6ff"/><stop offset="1" stop-color="#d1e9fd"/></linearGradient>
-  <linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff7e6"/><stop offset="1" stop-color="#ffe3b1"/></linearGradient>
-  <linearGradient id="n" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8f5ec"/><stop offset="1" stop-color="#c8e9d1"/></linearGradient>
-  <filter id="s"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#18324a" flood-opacity=".18"/></filter>
-  <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#28689b"/></marker>
-  <style>.t{font:700 27px Arial;fill:#fff}.st{font:14px Arial;fill:#d9ebf7}.pt{font:700 19px Arial;fill:#17324d}.bt{font:700 16px Arial;fill:#17324d}.x{font:13px Arial;fill:#314b62}.bd{font:700 11px Arial;fill:#946000}</style>
- </defs>
- <rect width="1280" height="720" rx="16" fill="#f5f8fb"/><rect width="1280" height="84" rx="16" fill="url(#h)"/><rect y="64" width="1280" height="20" fill="url(#h)"/>
- <text x="40" y="39" class="t">DDS Communication for mw::com</text><text x="40" y="64" class="st">DDS binding and DDS Gateway deployment options</text>
- <rect x="25" y="105" width="350" height="580" rx="15" fill="#fbfdff" stroke="#91a9bc" stroke-width="2"/><text x="200" y="140" text-anchor="middle" class="pt">Option A — DDS Binding</text>
- <rect x="65" y="175" width="270" height="75" rx="11" fill="#fff" stroke="#8ca8bf" stroke-width="2" filter="url(#s)"/><text x="200" y="206" text-anchor="middle" class="bt">S-CORE Application</text><text x="200" y="231" text-anchor="middle" class="x">mw::com Skeleton / Proxy</text>
- <rect x="65" y="300" width="270" height="80" rx="11" fill="url(#b)" stroke="#2876b2" stroke-width="2" filter="url(#s)"/><text x="200" y="331" text-anchor="middle" class="bt">mw::com Front End</text><text x="200" y="357" text-anchor="middle" class="x">Events · Fields · Methods</text>
- <rect x="65" y="430" width="270" height="100" rx="11" fill="url(#b)" stroke="#2876b2" stroke-width="2" filter="url(#s)"/><text x="200" y="463" text-anchor="middle" class="bt">DDS Binding</text><text x="200" y="491" text-anchor="middle" class="x">Mapping · XCDR · E2E · Availability</text><text x="200" y="514" text-anchor="middle" class="x">Safety-related responsibility</text>
- <rect x="65" y="590" width="270" height="70" rx="11" fill="url(#d)" stroke="#d49320" stroke-width="2" filter="url(#s)"/><text x="200" y="619" text-anchor="middle" class="bt">DDS Daemon / DDS Stack</text><text x="200" y="645" text-anchor="middle" class="x">DDS entities · QoS · Discovery</text>
- <path d="M185 250V295 M215 300V255 M185 380V425 M215 430V385 M185 530V585 M215 590V535" stroke="#28689b" stroke-width="3" fill="none" marker-end="url(#a)"/>
- <line x1="45" y1="557" x2="355" y2="557" stroke="#d49320" stroke-width="2" stroke-dasharray="7 6"/><text x="200" y="551" text-anchor="middle" class="bd">PROCESS / SAFETY BOUNDARY</text>
- <rect x="405" y="105" width="850" height="580" rx="15" fill="#fbfdff" stroke="#91a9bc" stroke-width="2"/><text x="830" y="140" text-anchor="middle" class="pt">Option B — DDS Gateway</text>
- <rect x="430" y="175" width="215" height="70" rx="11" fill="#fff" stroke="#8ca8bf" stroke-width="2" filter="url(#s)"/><text x="537" y="204" text-anchor="middle" class="bt">S-CORE App A</text><text x="537" y="229" text-anchor="middle" class="x">mw::com / LoLa</text>
- <rect x="430" y="300" width="215" height="90" rx="11" fill="url(#b)" stroke="#2876b2" stroke-width="2" filter="url(#s)"/><text x="537" y="332" text-anchor="middle" class="bt">Gateway Daemon A</text><text x="537" y="360" text-anchor="middle" class="x">Mapping · XCDR · E2E</text><text x="537" y="381" text-anchor="middle" class="x">Availability</text>
- <rect x="430" y="470" width="215" height="80" rx="11" fill="url(#d)" stroke="#d49320" stroke-width="2" filter="url(#s)"/><text x="537" y="500" text-anchor="middle" class="bt">DDS Daemon A</text><text x="537" y="527" text-anchor="middle" class="x">Entities · QoS · Discovery</text>
- <rect x="1015" y="175" width="215" height="70" rx="11" fill="#fff" stroke="#8ca8bf" stroke-width="2" filter="url(#s)"/><text x="1122" y="204" text-anchor="middle" class="bt">S-CORE App B</text><text x="1122" y="229" text-anchor="middle" class="x">mw::com / LoLa</text>
- <rect x="1015" y="300" width="215" height="90" rx="11" fill="url(#b)" stroke="#2876b2" stroke-width="2" filter="url(#s)"/><text x="1122" y="332" text-anchor="middle" class="bt">Gateway Daemon B</text><text x="1122" y="360" text-anchor="middle" class="x">Mapping · XCDR · E2E</text><text x="1122" y="381" text-anchor="middle" class="x">Availability</text>
- <rect x="1015" y="470" width="215" height="80" rx="11" fill="url(#d)" stroke="#d49320" stroke-width="2" filter="url(#s)"/><text x="1122" y="500" text-anchor="middle" class="bt">DDS Daemon B</text><text x="1122" y="527" text-anchor="middle" class="x">Entities · QoS · Discovery</text>
- <rect x="740" y="450" width="180" height="110" rx="55" fill="url(#n)" stroke="#39965a" stroke-width="2" filter="url(#s)"/><text x="830" y="490" text-anchor="middle" class="bt">DDS Domain</text><text x="830" y="518" text-anchor="middle" class="x">Topics · QoS</text><text x="830" y="542" text-anchor="middle" class="x">DDS / RTPS</text>
- <rect x="720" y="175" width="220" height="70" rx="11" fill="#fff" stroke="#39965a" stroke-width="2" filter="url(#s)"/><text x="830" y="204" text-anchor="middle" class="bt">Native DDS Application</text><text x="830" y="229" text-anchor="middle" class="x">DataReaders / DataWriters</text>
- <path d="M522 245V295 M552 300V250 M522 390V465 M552 470V395 M1107 245V295 M1137 300V250 M1107 390V465 M1137 470V395" stroke="#28689b" stroke-width="3" fill="none" marker-end="url(#a)"/>
- <path d="M645 493H735 M740 530H650 M920 493H1010 M1015 530H925 M815 245V445 M845 450V250" stroke="#28689b" stroke-width="3" fill="none" marker-end="url(#a)"/>
- <line x1="415" y1="427" x2="660" y2="427" stroke="#d49320" stroke-width="2" stroke-dasharray="7 6"/><text x="537" y="421" text-anchor="middle" class="bd">PROCESS / SAFETY BOUNDARY</text>
- <line x1="1000" y1="427" x2="1240" y2="427" stroke="#d49320" stroke-width="2" stroke-dasharray="7 6"/><text x="1122" y="421" text-anchor="middle" class="bd">PROCESS / SAFETY BOUNDARY</text>
- <rect x="590" y="610" width="480" height="48" rx="10" fill="#e9eef3" stroke="#90a4b5" stroke-width="2"/><text x="830" y="631" text-anchor="middle" class="bt">Deployment Configuration</text><text x="830" y="650" text-anchor="middle" class="x">Routes · Types · Domains · QoS · E2E · Availability · Limits</text>
-</svg>
-</div>
+![DDS communication architecture](/docs/design_decisions/_assets/dds_communication_architecture.svg)
 
 For gateway-to-gateway communication, the complete path is:
 
