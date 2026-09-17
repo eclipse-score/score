@@ -651,7 +651,7 @@
                   
   <section id="ai-platform">
 <span id="ai-platform-feature"></span><h1>AI Platform<a class="headerlink" href="#ai-platform" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-edfba6ba">
+<div class="need_container docutils container" id="SNCB-e5c33ff2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -929,6 +929,9 @@ The adapter-based architecture allows better testability and reuse across QNX an
 Such a layer would duplicate the vendor-provided runtimes (e.g. TensorRT, QNN) and their accelerator-specific
 optimizations without adding portability beyond what the backend abstraction already provides,
 while creating a dependency on hardware details that change per SoC generation.</p>
+<p>A platform-owned compiler and IR stack (e.g. OpenXLA, MLIR, IREE) as the accelerator abstraction was rejected for the same
+reason: it would shift the long-term maintenance and safety qualification of a compiler toolchain onto the platform project,
+for a portability gain that the vendor runtimes already provide behind the backend abstraction.</p>
 </section>
 <section id="open-issues">
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
@@ -939,6 +942,8 @@ while creating a dependency on hardware details that change per SoC generation.<
 <li><p>Decide on inference engine for QNX (e.g. ONNX, LiteRT, ExecuTorch)</p></li>
 <li><p>Extent of the AI safety layer beyond action validation: action permissions, output validation and audit logging</p></li>
 <li><p>Simulation environment for developing and validating AI-based agents before vehicle deployment</p></li>
+<li><p>Resource arbitration between QM AI workloads and safety-relevant workloads on a shared accelerator, including admission control and freedom from interference</p></li>
+<li><p>Gateway for agent-initiated vehicle actions with a policy evaluation against live vehicle state, beyond the existing action validation</p></li>
 </ul>
 </section>
 <section id="footnotes">
