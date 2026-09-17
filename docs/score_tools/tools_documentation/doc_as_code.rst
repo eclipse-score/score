@@ -265,7 +265,7 @@ Derived-view
      - | **Backlinks** — for bi-directional traceability, generate correct backlinks for links between Needs items.
        | See :need:`doc_concept__general_traceability`.
      - `Silent wrong-output <basis-ci_>`_: Generated backlinks are wrong or missing.
-     - no
+     - yes
      - no
      - no: Qualify backlinks in HTML
      - yes (qualification)
@@ -373,7 +373,7 @@ to the docs-as-code tool requirements (``tool_req``) that implement the correspo
      - :need:`tool_req__docs_req_link_covers_aou`, :need:`tool_req__docs_arch_link_fulfils_aou`
    * - M8
      -
-     - :need:`tool_req__docs_req_link_satisfies_allowed` (no dedicated tool req for backlinks; rendered by sphinx-needs)
+     - :need:`tool_req__docs_req_link_satisfies_allowed`
 
 
 Analysis perspective
