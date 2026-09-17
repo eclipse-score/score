@@ -15,8 +15,8 @@
 .. doc_tool:: Doc-as-Code
    :id: doc_tool__doc_as_code
    :status: evaluated
-   :version: 2
-   :tool_version: v7.0.1
+   :version: 3
+   :tool_version: v8.1.2
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
@@ -70,7 +70,7 @@ Inputs and outputs
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
 * Repository: https://github.com/eclipse-score/docs-as-code
-* Documentation: https://eclipse-score.github.io/docs-as-code/
+* Documentation: https://eclipse-score.github.io/docs-as-code/v8.1.2/
 * Bazel module name: ``score_docs_as_code``
 
 Installation and integration
@@ -82,7 +82,7 @@ Installation
 The tool is consumed as a Bazel module. Declare the dependency in
 ``MODULE.bazel``::
 
-    bazel_dep(name = "score_docs_as_code", version = "7.0.1")
+    bazel_dep(name = "score_docs_as_code", version = "8.1.2")
 
 and the S-CORE registry in ``.bazelrc``::
 
@@ -101,14 +101,20 @@ Invoke the ``docs()`` macro from the root ``BUILD`` file::
 For local development, ``bazel run //:ide_support`` creates a Python virtual
 environment (``.venv_docs``) with all Sphinx extensions pre-installed for IDE
 support (Esbonio). The macro's build targets (``//:docs``, ``//:docs_check``,
-``//:live_preview``, ``//:ide_support``) are documented in the docs-as-code
-user guide.
+``//:docs_link_check``, ``//:traceability_gate``, ``//:live_preview``, ``//:ide_support``)
+are documented in the `Build commands reference
+<https://eclipse-score.github.io/docs-as-code/v8.1.2/reference/commands.html>`_.
 
 Tool sources live in the ``docs-as-code`` repository under ``src/extensions/``
 (Sphinx extensions) and ``docs.bzl`` (Bazel macros). The default metamodel is
-bundled at
-``@score_docs_as_code//src/extensions/score_metamodel:metamodel_yaml``
-and may be overridden via the ``metamodel`` parameter.
+bundled at ``@score_docs_as_code//src/extensions/score_metamodel:metamodel_yaml``
+and may be overridden via the ``metamodel`` parameter. See the
+`Bazel macros reference
+<https://eclipse-score.github.io/docs-as-code/v8.1.2/reference/bazel_macros.html>`_
+for macro parameters and the
+`score_metamodel design
+<https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/extensions/metamodel.html>`_
+for metamodel definition and validation checks.
 
 Integration
 ~~~~~~~~~~~
@@ -117,13 +123,14 @@ by all modules to build, check, and publish documentation.
 
 Cross-module linking supports two modes:
 
-- **External needs import:** reference another module's ``:needs_json`` target
+- **External needs import:** reference another module's ``:needs_json_file`` target
   via the ``external_needs`` parameter of ``docs()`` to cross-reference need
   IDs across modules (e.g., ``:need:`gd_req__example_id```).
 - **Bundle mounting:** mount another module's ``:docs_bundle`` target via the
   ``bundles`` parameter; the mounted sources join the consuming build, with
   placement controlled by ``mount_at`` (docname prefix) and ``attach_to``
-  (toctree anchor).
+  (toctree anchor). See `How to mount external sources
+  <https://eclipse-score.github.io/docs-as-code/v8.1.2/how-to/bundles/index.html>`_.
 
 Within a repository, Sphinx combines documentation sources (RST/Markdown),
 needs JSON, source-code links (``sourcelinks_json``) and test metadata through
@@ -144,7 +151,7 @@ Safety evaluation
 
 Use cases were derived from the process requirements
 and the docs-as-code
-`Tool Requirements <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirements.html>`_.
+`Tool Requirements <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/requirements/requirements.html>`_.
 
 The facts below are shared by use cases and only referenced in each
 Malfunctions cell.
@@ -194,9 +201,6 @@ Derived-view
      - yes
      - yes: `PR review <pr_review_>`_
      - | no: Qualify metamodel enforcement.
-       |
-       | No check against a permissive regex or check blind spot
-       | (e.g. ``fault_id: ^.*$``, shipped as a *mandatory* option on ``feat_saf_fmea``/``comp_saf_fmea``).
      - yes (qualification)
      - low
    * - M2
@@ -323,21 +327,21 @@ Requirements and testing aspects
 
 Tool requirements
    Defined in the docs-as-code internal documentation:
-   `Tool Requirements <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirements.html>`_.
+   `Tool Requirements <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/requirements/requirements.html>`_.
    Each ``tool_req`` specifies a mandatory attribute enforcement, linkage
    rule, or metamodel check implemented by the ``score_metamodel`` Sphinx
    extension.
 
 Test cases
    Results and testcase metadata are published in
-   `Tooling Verification <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/tooling_verification.html>`_.
+   `Tooling Verification <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/requirements/tooling_verification.html>`_.
    There is additional description about
-   `File-Based Testing <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/rst_filebased_testing.html>`_.
+   `File-Based Testing <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/extensions/rst_filebased_testing.html>`_.
 
 Requirements coverage
    Per-requirement test and code linkage is tracked in
-   `Requirement Test Coverage <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/requirements/requirement_coverage.html>`_
-   and also published as `metrics.json <https://eclipse-score.github.io/docs-as-code/v7.0.1/metrics.json>`__.
+   `Requirement Test Coverage <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/requirements/requirement_coverage.html>`_
+   and also published as `metrics.json <https://eclipse-score.github.io/docs-as-code/v8.1.2/metrics.json>`__.
 
 Analysis perspective
 ~~~~~~~~~~~~~~~~~~~~
@@ -346,14 +350,14 @@ Architectural design
    The internal architecture is described via its Sphinx extensions and Bazel
    macros:
 
-   * `Extensions overview <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/index.html>`_
+   * `Extensions overview <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/extensions/index.html>`_
      — ``score_metamodel``, ``score_metrics``,
      ``score_mounts``, ``score_cross_module_compatibility`` and other
      extensions.
-   * `score_metamodel design <https://eclipse-score.github.io/docs-as-code/v7.0.1/internals/extensions/metamodel.html>`_
+   * `score_metamodel design <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/extensions/metamodel.html>`_
      — metamodel definition, validation checks (local, graph-based,
      prohibited-word), and the check lifecycle.
-   * `Bazel macros reference <https://eclipse-score.github.io/docs-as-code/v7.0.1/reference/bazel_macros.html>`_
+   * `Bazel macros reference <https://eclipse-score.github.io/docs-as-code/v8.1.2/reference/bazel_macros.html>`_
      — the ``docs()`` macro and its generated targets.
-   * `Build commands <https://eclipse-score.github.io/docs-as-code/v7.0.1/reference/commands.html>`_
+   * `Build commands <https://eclipse-score.github.io/docs-as-code/v8.1.2/reference/commands.html>`_
      — public and internal Bazel targets.
