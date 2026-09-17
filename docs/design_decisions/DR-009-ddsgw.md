@@ -256,42 +256,139 @@ shall follow the Breaking Change FEP process.
 
 ## Alternatives Considered
 
-### Direct DDS API use by applications
+### Use DDS APIs directly in applications
 
-This loses the common `mw::com` front end and exposes application code to DDS
-types, configuration, and vendor APIs.
+Applications could use DDS APIs directly, including their type, discovery,
+QoS, and lifecycle interfaces.
 
-### Only a DDS binding
+However, this would introduce DDS-specific dependencies into application code
+and require each project to define its own integration with `mw::com` services.
 
-A binding is efficient for applications deployed directly with DDS, but it does
-not provide a deployment component for bridging existing LoLa services.
+This alternative is not selected because the proposal preserves `mw::com`
+as the common application-facing interface. Native DDS applications remain
+supported as communication peers.
 
-### Only a DDS Gateway
+### Integrate the QM DDS stack into safety-related processes
 
-A gateway preserves existing deployments, but applications intended to use DDS
-directly through `mw::com` would take an unnecessary LoLa-to-gateway path.
+This simplifies deployment and avoids IPC between safety-related processing
+and the DDS stack.
 
-### One process containing safety logic and the DDS stack
+However, it places the QM DDS stack in the same address space as safety-related
+processing, increasing the scope of fault-containment and interference concerns.
 
-This removes IPC but places the QM DDS stack in the same fault-containment unit
-as safety-related processing.
+This alternative is not selected as the reference safety architecture.
+The selected approach separates the DDS stack from safety-related communication
+processing through a defined process and interface boundary.
 
-### IDL-generated code for every type
+### Require DDS-generated type support and serialization
 
-This requires regeneration and rebuilding for deployment-specific types.
-Runtime type descriptions preserve deployment flexibility.
+The integration could use IDL-generated DDS interfaces and their associated
+DDS-provided serialization and deserialization support.
+
+This provides compile-time interfaces and reuses the DDS implementation's
+type support. However, it introduces dependencies on deployment-specific
+generated artifacts and vendor-specific serialization support.
+
+Where generated artifacts participate in safety-related processing, their
+verification and the required confidence in the generation tools must be
+addressed. Depending on tool usage and output-verification measures, this may
+require tool qualification or additional verification evidence.
+
+Delegating application-data transformation to the QM DDS daemon would also
+place that responsibility outside the intended safety-related boundary.
+
+This alternative is not selected as the required integration model.
+The selected approach keeps application-data transformation in the Gateway
+or DDS binding and passes serialized payloads to the DDS integration.
+
+IDL and generated type-description artifacts remain permitted as configuration
+inputs, provided their correctness is established.
+
+### Rely entirely on DDS discovery for service availability
+
+DDS discovery could be used directly as the source of availability exposed
+to `mw::com` applications.
+
+However, discovering compatible communication endpoints does not necessarily
+mean that the corresponding application service is ready or offered.
+DDS discovery and `mw::com` service availability therefore cannot always
+be treated as equivalent.
+
+This alternative is not selected as the complete availability model.
+The integration must preserve `mw::com` service availability while also
+supporting native DDS applications. The detailed mapping shall be defined
+in the downstream architecture.
+
 
 ## Rationale
 
-DDS brings standardized data-centric distribution, discovery, rich QoS,
-support for varied data-rate and payload characteristics, and a multi-vendor
-ecosystem. The feature makes these capabilities available without abandoning
-the `mw::com` application interface.
+The selected approach integrates DDS through the common `mw::com` interface
+while preserving service behavior, deployment flexibility, and the required
+safety boundary.
 
-Providing both options avoids forcing one deployment pattern:
+### Preserve the application interface
 
-- The DDS binding provides DDS communication directly beneath `mw::com`.
-- The DDS Gateway connects existing `mw::com`/LoLa deployments with DDS.
+Applications continue to use `mw::com` Skeletons and Proxies.
+DDS-specific types, Topics, Domains, QoS, and discovery configuration remain
+within the communication integration and deployment configuration.
+
+This avoids repeating DDS integration logic in applications and limits
+their dependency on a particular DDS implementation.
+
+### Preserve service semantics
+
+The integration provides a common mapping for `mw::com` events, fields,
+methods, and service-instance availability.
+
+This is necessary because DDS communication entities do not directly represent
+all `mw::com` service semantics. A shared contract prevents projects from
+introducing incompatible behavior across the DDS boundary.
+
+Availability handling must account for both cooperating S-CORE integrations
+and native DDS peers without requiring every native DDS application to
+implement an S-CORE-specific service-state protocol.
+
+### Separate safety-related processing from the QM DDS stack
+
+The architecture allows the DDS stack to remain QM while safety-related
+transformation, E2E processing, and availability control remain above the
+DDS integration boundary.
+
+Process separation supports fault containment, independent supervision,
+and recovery. The downstream safety analysis must additionally address
+IPC behavior, resource interference, and failure propagation.
+
+### Keep application-data transformation under S-CORE control
+
+The Gateway or DDS binding transforms between native `mw::com` data and
+the configured DDS representation. The DDS integration handles the resulting
+serialized application payloads.
+
+This keeps transformation behavior and its verification within the
+safety-related communication component, without requiring deployment-specific
+DDS-generated executable type support.
+
+The serializer, deserializer, type descriptions, and any tools generating those
+descriptions still require the applicable validation, verification, and
+tool-confidence measures.
+
+### Enable configurable and reusable integration
+
+Deployment-provided type descriptions and route configuration allow the
+integration to support different service interfaces without embedding their
+DDS details in application code.
+
+Containing vendor-specific APIs within the DDS integration permits another
+suitable DDS stack to be used while preserving the application-facing contract.
+
+### Reuse DDS middleware functionality
+
+Discovery, endpoint matching, reliability, history, liveliness, and transport
+remain responsibilities of the DDS stack.
+
+S-CORE provides the service adaptation, data transformation, E2E processing,
+and availability mapping required by `mw::com`. This avoids duplicating DDS
+middleware functionality while establishing consistent integration behavior.
 
 ## Consequences
 
