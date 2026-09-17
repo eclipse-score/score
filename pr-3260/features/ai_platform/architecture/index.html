@@ -654,7 +654,7 @@
                   
   <section id="feature-architecture">
 <h1>Feature Architecture<a class="headerlink" href="#feature-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a7d436ba">
+<div class="need_container docutils container" id="SNCB-5eac109a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -697,7 +697,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-be516ddb">
+<div class="need_container docutils container" id="SNCB-1ae61bc8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -719,6 +719,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__agent_execution" title="feat__ai_platform">feat_req__ai_platform__agent_execution</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__embedded_efficiency" title="feat__ai_platform">feat_req__ai_platform__embedded_efficiency</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__model_lifecycle" title="feat__ai_platform">feat_req__ai_platform__model_lifecycle</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__model_verification" title="feat__ai_platform">feat_req__ai_platform__model_verification</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__observability" title="feat__ai_platform">feat_req__ai_platform__observability</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__qnx_linux_support" title="feat__ai_platform">feat_req__ai_platform__qnx_linux_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__safety_backends" title="feat__ai_platform">feat_req__ai_platform__safety_backends</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__static_backend" title="feat__ai_platform">feat_req__ai_platform__static_backend</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__workloads_execution" title="feat__ai_platform">feat_req__ai_platform__workloads_execution</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="feat__ai_platform">logic_arc_int__ai_platform__inference_if</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -740,6 +741,372 @@
 </table>
 </div>
 </div>
+<section id="interfaces">
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
+<p><strong>Inference</strong></p>
+<p>The inference interface is the application-facing entry point of the AI Platform.
+It is intentionally narrow: it exposes the common denominator of the supported backends and omits vendor-specific
+options, accelerator selection and memory placement, which remain platform-internal.</p>
+<div class="need_container docutils container" id="SNCB-2f28d80b">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__ai_platform__inference_if">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Inference Interface</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__safety_backends" title="logic_arc_int__ai_platform__inference_if">feat_req__ai_platform__safety_backends</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__static_backend" title="logic_arc_int__ai_platform__inference_if">feat_req__ai_platform__static_backend</a>, <a class="reference internal" href="../requirements/index.html#feat_req__ai_platform__workloads_execution" title="logic_arc_int__ai_platform__inference_if">feat_req__ai_platform__workloads_execution</a></span></span></div>
+<div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#feat__ai_platform" title="logic_arc_int__ai_platform__inference_if">feat__ai_platform</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__ai_platform__cancel" title="logic_arc_int__ai_platform__inference_if">logic_arc_int_op__ai_platform__cancel</a>, <a class="reference internal" href="#logic_arc_int_op__ai_platform__describe" title="logic_arc_int__ai_platform__inference_if">logic_arc_int_op__ai_platform__describe</a>, <a class="reference internal" href="#logic_arc_int_op__ai_platform__invoke" title="logic_arc_int__ai_platform__inference_if">logic_arc_int_op__ai_platform__invoke</a>, <a class="reference internal" href="#logic_arc_int_op__ai_platform__invoke_async" title="logic_arc_int__ai_platform__inference_if">logic_arc_int_op__ai_platform__invoke_async</a>, <a class="reference internal" href="#logic_arc_int_op__ai_platform__load" title="logic_arc_int__ai_platform__inference_if">logic_arc_int_op__ai_platform__load</a>, <a class="reference internal" href="#logic_arc_int_op__ai_platform__unload" title="logic_arc_int__ai_platform__inference_if">logic_arc_int_op__ai_platform__unload</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/ai_platform/architecture/index-0">
+<object data="../../../_images/plantuml-e4dfe2c965260e5799d1e9f4294a4b80681befa9.svg" type="image/svg+xml" style="width:186px;height:166px;background:#FFFFFF;"></object></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int__ai_platform__inference_if">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface &amp; Feature Interface View</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-b6f3b19f">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__load">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">load</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int_op__ai_platform__load">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Resolves a model by identity and version constraint and returns a model handle.
+Input and output descriptors are fixed once the model is loaded.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__ai_platform__load" title="logic_arc_int_op__ai_platform__load">logic_arc_int_op__ai_platform__load</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-c751f447">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__describe">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">describe</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int_op__ai_platform__describe">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Returns the input and output descriptors of a loaded model, consisting of name, data type, shape and layout.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__ai_platform__describe" title="logic_arc_int_op__ai_platform__describe">logic_arc_int_op__ai_platform__describe</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-8db6ea19">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__invoke">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">invoke</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int_op__ai_platform__invoke">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Executes a loaded model synchronously within a given deadline.
+Exceeding the deadline is reported as an error instead of blocking the caller indefinitely.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__ai_platform__invoke" title="logic_arc_int_op__ai_platform__invoke">logic_arc_int_op__ai_platform__invoke</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-d4cde01c">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__invoke_async">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">invoke_async</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int_op__ai_platform__invoke_async">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Starts an execution and returns a handle that allows waiting for completion.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__ai_platform__invoke_async" title="logic_arc_int_op__ai_platform__invoke_async">logic_arc_int_op__ai_platform__invoke_async</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-b203aa95">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__cancel">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">cancel</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int_op__ai_platform__cancel">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Requests termination of a pending asynchronous execution and releases its resources.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__ai_platform__cancel" title="logic_arc_int_op__ai_platform__cancel">logic_arc_int_op__ai_platform__cancel</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-235819d8">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__unload">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">unload</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__ai_platform__inference_if" title="logic_arc_int_op__ai_platform__unload">logic_arc_int__ai_platform__inference_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Releases a model handle and the resources associated with it.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__ai_platform__unload" title="logic_arc_int_op__ai_platform__unload">logic_arc_int_op__ai_platform__unload</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="interface-sketch">
+<h2>Interface Sketch<a class="headerlink" href="#interface-sketch" title="Link to this heading">#</a></h2>
+<p>The following sketch illustrates the interface from an application perspective.
+It is illustrative and does not fix the final signatures.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">score</span><span class="o">::</span><span class="nn">ai</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">// Describes one input or output of a model. Shapes are fixed after Load.</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TensorDesc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="n">DataType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">             </span><span class="c1">// e.g. Float32, Float16, Int8, UInt8</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shape</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Layout</span><span class="w"> </span><span class="n">layout</span><span class="p">;</span><span class="w">             </span><span class="c1">// e.g. NCHW, NHWC, Linear</span>
+<span class="p">};</span>
+
+<span class="c1">// Opaque handle to a platform-managed buffer. Allows zero-copy for data that</span>
+<span class="c1">// already resides in accelerator memory (e.g. camera output).</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Buffer</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">TensorDesc</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Inputs</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">TensorDesc</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Outputs</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">Result</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Invoke</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">outputs</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">Deadline</span><span class="w"> </span><span class="n">deadline</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Execution</span><span class="o">&gt;</span><span class="w"> </span><span class="n">InvokeAsync</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">outputs</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">Deadline</span><span class="w"> </span><span class="n">deadline</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Resolves a model by identity and version constraint; the platform selects the</span>
+<span class="c1">// backend and the accelerator.</span>
+<span class="n">Result</span><span class="o">&lt;</span><span class="n">Model</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Load</span><span class="p">(</span><span class="n">ModelId</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">VersionConstraint</span><span class="w"> </span><span class="n">constraint</span><span class="p">);</span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace score::ai</span>
+</pre></div>
+</div>
+<p>Properties implied by this interface:</p>
+<ul class="simple">
+<li><p><strong>Identity instead of paths</strong>: applications reference a model by identity and version constraint, so model artifacts
+can be updated, signed and rolled back without changing the application.</p></li>
+<li><p><strong>Fixed shapes after load</strong>: descriptors are known after loading, which allows buffer allocation and timing analysis
+before the first execution.</p></li>
+<li><p><strong>Explicit deadlines</strong>: every execution carries a deadline, so a missed deadline is a defined, reportable error.</p></li>
+<li><p><strong>Buffer handles instead of pointers</strong>: data may stay in accelerator memory, which keeps zero-copy paths possible
+without exposing the memory model to the application.</p></li>
+<li><p><strong>No backend in the signature</strong>: the selected runtime (e.g. ONNX Runtime, TensorRT, QNN) is a deployment decision and
+does not appear in application code.</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -780,6 +1147,19 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-sketch">Interface Sketch</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

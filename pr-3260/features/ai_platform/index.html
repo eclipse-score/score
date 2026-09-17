@@ -651,7 +651,7 @@
                   
   <section id="ai-platform">
 <span id="ai-platform-feature"></span><h1>AI Platform<a class="headerlink" href="#ai-platform" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-e5c33ff2">
+<div class="need_container docutils container" id="SNCB-65212322">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -783,7 +783,8 @@ reuse existing platform components instead of AI-specific parallel mechanisms.</
 This layer will expose a unified interface to the upper layers of the stack while delegating execution to optimized
 vendor runtimes underneath — such as TensorRT for NVIDIA, or QNN for Qualcomm-based systems.
 For non-safety use cases, a standardized backend like ONNX Runtime <a class="footnote-reference brackets" href="#s1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> should be supported to ensure portability and developer accessibility.
-However, ONNX Runtime currently lacks QNX support - which will further be investigated.</p>
+However, ONNX Runtime currently lacks QNX support - which will further be investigated.
+The application-facing form of this interface is specified in <a class="reference internal" href="architecture/index.html"><span class="doc">Feature Architecture</span></a>.</p>
 <section id="concept">
 <h4>Concept<a class="headerlink" href="#concept" title="Link to this heading">#</a></h4>
 <p>The diagram below illustrates the architecture of the AIP Abstraction Layer - here called ModelAPI.
@@ -848,6 +849,23 @@ Therefore, the exact scope and feasibilty of this component and its respective g
 <li><p>Recording: Data between AI/ML nodes with GPU memory object should be recordable in the same manner as regular IPC communication</p></li>
 </ul>
 <p>This unified approach avoids fragmentation and ensures that AI models are treated as first-class citizens within the system.</p>
+</section>
+<section id="proposed-phasing">
+<h3>Proposed Phasing<a class="headerlink" href="#proposed-phasing" title="Link to this heading">#</a></h3>
+<p>The capabilities described above are not intended to be built at once. The following order reflects which parts unblock
+the others and which parts depend on decisions that are still open:</p>
+<ol class="arabic simple">
+<li><p><strong>Inference as a platform service</strong>: the application-facing inference interface, executed through the backend
+abstraction and integrated with the platform lifecycle. Every later capability attaches to this interface.</p></li>
+<li><p><strong>Model artifact lifecycle</strong>: models as versioned, signed artifacts with rollback, reusing the existing persistency
+and update mechanisms. This can be developed and tested without accelerator hardware.</p></li>
+<li><p><strong>AI workload observability</strong>: execution metrics such as latency, memory consumption and error rates, reported
+through the existing logging and tracing mechanisms. It provides the measurements the next step depends on.</p></li>
+<li><p><strong>Resource budgets and arbitration</strong> between QM AI workloads and safety-relevant workloads on a shared accelerator.
+This requires measured timing behaviour on target hardware and is therefore sequenced after the previous steps.</p></li>
+<li><p><strong>Agent execution and action gateway</strong>: lifecycle of agents and policy evaluation for agent-initiated vehicle
+actions, building on the structured vehicle interface of the GenAI feature.</p></li>
+</ol>
 </section>
 <section id="genai">
 <h3>GenAI<a class="headerlink" href="#genai" title="Link to this heading">#</a></h3>
@@ -1024,6 +1042,7 @@ for a portability gain that the vendor runtimes already provide behind the backe
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pipelining-and-gpu-communication-abstraction">Data Pipelining and GPU Communication Abstraction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-integration-feo-communication-and-fault-management">S-CORE Integration: FEO, Communication, and Fault Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-phasing">Proposed Phasing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genai">GenAI</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 </ul>
