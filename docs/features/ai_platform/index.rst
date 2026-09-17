@@ -121,6 +121,22 @@ In addition to the QNX scope, GenAI related components like **MCP Server** a **C
    :alt: AI Platform Architecture Overview Linux
 
 
+Architecture Principles and Scope Boundary
+__________________________________________
+
+The following principles define where the platform standardizes and, equally important, where it does not.
+
+- **Standardization above the vendor runtimes**: The platform standardizes model execution on top of vendor inference
+  runtimes such as TensorRT, QNN or ONNX Runtime. It does not define a hardware abstraction layer for accelerators
+  (NPU, GPU) — that layer remains the responsibility of the hardware vendors.
+- **Inference as a platform service**: Applications consume a platform-provided inference interface and remain
+  independent of the selected vendor runtime and of the underlying accelerator.
+- **Minimal and auditable abstraction**: The abstraction exposes the common denominator of the supported backends only,
+  so that it can be analyzed and certified independently of the wrapped runtimes.
+- **Reuse of existing platform mechanisms**: Scheduling, communication, error handling and recording of AI workloads
+  reuse existing platform components instead of AI-specific parallel mechanisms.
+
+
 Inference Backend Integration and Abstraction Layer
 ___________________________________________________
 
@@ -131,6 +147,7 @@ This layer will expose a unified interface to the upper layers of the stack whil
 vendor runtimes underneath — such as TensorRT for NVIDIA, or QNN for Qualcomm-based systems.
 For non-safety use cases, a standardized backend like ONNX Runtime [#s1]_ should be supported to ensure portability and developer accessibility.
 However, ONNX Runtime currently lacks QNX support - which will further be investigated.
+The application-facing form of this interface is specified in :doc:`architecture/index`.
 
 
 Concept
@@ -286,6 +303,24 @@ This includes:
 This unified approach avoids fragmentation and ensures that AI models are treated as first-class citizens within the system.
 
 
+Proposed Phasing
+________________
+
+The capabilities described above are not intended to be built at once. The following order reflects which parts unblock
+the others and which parts depend on decisions that are still open:
+
+1. **Inference as a platform service**: the application-facing inference interface, executed through the backend
+   abstraction and integrated with the platform lifecycle. Every later capability attaches to this interface.
+2. **Model artifact lifecycle**: models as versioned, signed artifacts with rollback, reusing the existing persistency
+   and update mechanisms. This can be developed and tested without accelerator hardware.
+3. **AI workload observability**: execution metrics such as latency, memory consumption and error rates, reported
+   through the existing logging and tracing mechanisms. It provides the measurements the next step depends on.
+4. **Resource budgets and arbitration** between QM AI workloads and safety-relevant workloads on a shared accelerator.
+   This requires measured timing behaviour on target hardware and is therefore sequenced after the previous steps.
+5. **Agent execution and action gateway**: lifecycle of agents and policy evaluation for agent-initiated vehicle
+   actions, building on the structured vehicle interface of the GenAI feature.
+
+
 GenAI
 _____
 
@@ -364,6 +399,15 @@ Static backend selection at build time enables better certification and minimize
 Direct integration of inference logic into applications without a common abstraction layer was rejected to avoid code duplication, maintain modularity and enable cross-platform backend support.
 The adapter-based architecture allows better testability and reuse across QNX and Linux as well has HW platforms.
 
+Defining a platform-owned hardware abstraction layer for AI accelerators was rejected.
+Such a layer would duplicate the vendor-provided runtimes (e.g. TensorRT, QNN) and their accelerator-specific
+optimizations without adding portability beyond what the backend abstraction already provides,
+while creating a dependency on hardware details that change per SoC generation.
+
+A platform-owned compiler and IR stack (e.g. OpenXLA, MLIR, IREE) as the accelerator abstraction was rejected for the same
+reason: it would shift the long-term maintenance and safety qualification of a compiler toolchain onto the platform project,
+for a portability gain that the vendor runtimes already provide behind the backend abstraction.
+
 
 Open Issues
 ===========
@@ -372,6 +416,10 @@ Open Issues
 - ONNX support on QNX
 - S-CORE recording may not capture GPU-to-GPU data flows
 - Decide on inference engine for QNX (e.g. ONNX, LiteRT, ExecuTorch)
+- Extent of the AI safety layer beyond action validation: action permissions, output validation and audit logging
+- Simulation environment for developing and validating AI-based agents before vehicle deployment
+- Resource arbitration between QM AI workloads and safety-relevant workloads on a shared accelerator, including admission control and freedom from interference
+- Gateway for agent-initiated vehicle actions with a policy evaluation against live vehicle state, beyond the existing action validation
 
 
 Footnotes
