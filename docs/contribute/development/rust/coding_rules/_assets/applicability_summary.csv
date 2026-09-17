@@ -1,0 +1,180 @@
+Source ID,MISRust class,Source level,Proposed Rust rules,Assessment
+0.0.1,C3,Required,:ref:`SCR-RUST-002 <scr-rust-002>`,"Reassess C3: unreachable_code is a partial diagnostic, not a general proof of unreachable-statement absence."
+0.0.2,C6,Advisory,:ref:`SCR-RUST-003 <scr-rust-003>`,Draft interpretation; applicability and enforcement require review.
+0.1.1,C6,Advisory,:ref:`SCR-RUST-003 <scr-rust-003>`,Draft interpretation; applicability and enforcement require review.
+0.1.2,C6,Required,:ref:`SCR-RUST-004 <scr-rust-004>`,Draft interpretation; applicability and enforcement require review.
+0.2.1,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,Reassess C3: warning activation and suppressions matter; no unconditional hard-error guarantee.
+0.2.2,C3,Required,:ref:`SCR-RUST-002 <scr-rust-002>`,Reassess C3: unused parameters can compile; underscore patterns and suppression need a policy.
+0.2.3,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,Reassess C3: unused-type diagnostics depend on visibility and configuration.
+0.2.4,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,Reassess C3: unused-function diagnostics depend on visibility and configuration.
+0.3.1,C6,Advisory,:ref:`SCR-RUST-005 <scr-rust-005>`,Draft interpretation; applicability and enforcement require review.
+0.3.2,C6,Required,:ref:`SCR-RUST-006 <scr-rust-006>`,Draft interpretation; applicability and enforcement require review.
+4.1.1,C5,Required,:ref:`SCR-RUST-001 <scr-rust-001>`,Draft interpretation; applicability and enforcement require review.
+4.1.2,C6,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,Draft interpretation; applicability and enforcement require review.
+4.1.3,C4,Required,:ref:`SCR-RUST-007 <scr-rust-007>`,Draft interpretation; applicability and enforcement require review.
+4.6.1,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,Draft interpretation; applicability and enforcement require review.
+5.0.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+5.7.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.7.2,C6,Advisory,:ref:`SCR-RUST-009 <scr-rust-009>`,Draft interpretation; applicability and enforcement require review.
+5.7.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.10.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.2,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.4,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.5,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.6,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.7,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.0.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.0.2,C6,Advisory,:ref:`SCR-RUST-010 <scr-rust-010>`,Native fixed-size arrays already carry their extent; focus additional review on raw/foreign boundaries.
+6.0.3,C5,Advisory,:ref:`SCR-RUST-011 <scr-rust-011>`,Draft interpretation; applicability and enforcement require review.
+6.0.4,C6,Required,:ref:`SCR-RUST-012 <scr-rust-012>`,Draft interpretation; applicability and enforcement require review.
+6.2.1,C4,Required,:ref:`SCR-RUST-013 <scr-rust-013>`,Check symbol attributes across editions; edition 2021 and 2024 differ in unsafe-attribute syntax.
+6.2.2,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.2.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.2.4,C4,Required,:ref:`SCR-RUST-013 <scr-rust-013>`,Draft interpretation; applicability and enforcement require review.
+6.4.1,C6,Required,:ref:`SCR-RUST-014 <scr-rust-014>`,Adaptation permits clear same-name transformations; this differs from a blanket shadowing prohibition.
+6.4.2,C5,Required,:ref:`SCR-RUST-014 <scr-rust-014>`,Draft interpretation; applicability and enforcement require review.
+6.4.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.5.1,C5,Advisory,:ref:`SCR-RUST-013 <scr-rust-013>`,Draft interpretation; applicability and enforcement require review.
+6.5.2,C4,Advisory,:ref:`SCR-RUST-013 <scr-rust-013>`,Draft interpretation; applicability and enforcement require review.
+6.7.1,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,Broaden beyond unsafe: safe interior-mutability/global synchronization still needs design review.
+6.7.2,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,Broaden beyond unsafe: Send is not a mutual-exclusion mechanism; globals can use safe interior mutability.
+6.8.1,C4,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,Draft interpretation; applicability and enforcement require review.
+6.8.2,C3,Mandatory,:ref:`SCR-RUST-015 <scr-rust-015>`,Reassess C3: raw dangling pointers can escape compiler reference-lifetime checks.
+6.8.3,C3,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,Compiler reference guarantees do not extend to every raw-pointer storage pattern.
+6.8.4,C4,Advisory,:ref:`SCR-RUST-015 <scr-rust-015>`,Draft interpretation; applicability and enforcement require review.
+6.9.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.9.2,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+7.0.1,C6,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,Draft interpretation; applicability and enforcement require review.
+7.0.2,C4,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,Draft interpretation; applicability and enforcement require review.
+7.0.3,C4,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,Safe char/numeric casts exist; representation meaning and Unicode validity are separate obligations.
+7.0.4,C3,Required,:ref:`SCR-RUST-026 <scr-rust-026>`,Restore check obligation from C3: dynamic shift counts can be invalid and operand types need not match.
+7.0.5,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+7.0.6,C6,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,Draft interpretation; applicability and enforcement require review.
+7.11.1,C4,Required,:ref:`SCR-RUST-017 <scr-rust-017>`,Raw/null pointer creation is possible in safe Rust; dereference has separate unsafe preconditions.
+7.11.2,C3,Required,:ref:`SCR-RUST-010 <scr-rust-010>`,"Native slices preserve extent, but FFI pointer/length pairing needs separate validation."
+7.11.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.0.1,C6,Advisory,:ref:`SCR-RUST-018 <scr-rust-018>`,Draft interpretation; applicability and enforcement require review.
+8.1.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.1.2,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.2.1,C4,Required,:ref:`SCR-RUST-019 <scr-rust-019>`,Draft interpretation; applicability and enforcement require review.
+8.2.2,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.2.3,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,Raw-pointer mutability casts can be safe syntax; validity of subsequent access still needs review.
+8.2.4,C4,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,Safe function-pointer casts exist; do not infer ABI correctness from absence of unsafe syntax.
+8.2.5,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,transmute is not generally a safer alternative to a cast; review all representation invariants.
+8.2.6,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,Pointer casts/reconstruction may occur outside unsafe blocks; scan all code.
+8.2.7,C4,Advisory,:ref:`SCR-RUST-020 <scr-rust-020>`,Correction: pointer-to-integer casts do not require an unsafe block.
+8.2.8,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,Address width and provenance obligations apply even when the cast is safe syntax.
+8.2.9,C4,Required,:ref:`SCR-RUST-019 <scr-rust-019>`,"Source classification/comment tension: comment says native behavior is type-safe; use checked-recovery policy, not a TypeId ban."
+8.2.10,C6,Required,:ref:`SCR-RUST-022 <scr-rust-022>`,Draft interpretation; applicability and enforcement require review.
+8.2.11,C4,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,Draft interpretation; applicability and enforcement require review.
+8.3.1,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.3.2,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.7.1,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,Pointer APIs differ: some wrapping operations permit intermediate out-of-bounds values.
+8.7.2,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,Draft interpretation; applicability and enforcement require review.
+8.9.1,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,Correction: raw-pointer relational comparisons can be safe expressions; project ordering restrictions still apply.
+8.14.1,C6,Advisory,:ref:`SCR-RUST-024 <scr-rust-024>`,Draft interpretation; applicability and enforcement require review.
+8.18.1,C4,Mandatory,:ref:`SCR-RUST-025 <scr-rust-025>`,Use the Rust API contract: ptr::copy permits overlap; copy_nonoverlapping does not.
+8.18.2,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.19.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+8.20.1,C6,Advisory,:ref:`SCR-RUST-026 <scr-rust-026>`,Draft interpretation; applicability and enforcement require review.
+9.2.1,C3,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,Reassess C3: safe Rust can discard guards immediately; check intended guard lifetime.
+9.3.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+9.4.1,C6,Required,:ref:`SCR-RUST-027 <scr-rust-027>`,Draft interpretation; applicability and enforcement require review.
+9.4.2,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+9.5.1,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+9.5.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.3,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.4,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+9.6.5,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.0.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+10.1.1,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.1.2,C4,Required,:ref:`SCR-RUST-028 <scr-rust-028>`,Draft interpretation; applicability and enforcement require review.
+10.2.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.2.2,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.2.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.3.1,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.4.1,C4,Required,:ref:`SCR-RUST-029 <scr-rust-029>`,Draft interpretation; applicability and enforcement require review.
+11.3.1,C3,Advisory,candidate language or diagnostic coverage,Do not adopt the artifact claim that arrays never implement Copy: Copy arrays exist when their elements are Copy. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+11.3.2,C4,Advisory,:ref:`SCR-RUST-030 <scr-rust-030>`,Draft interpretation; applicability and enforcement require review.
+11.6.1,C4,Advisory,:ref:`SCR-RUST-031 <scr-rust-031>`,Draft interpretation; applicability and enforcement require review.
+11.6.2,C4,Mandatory,:ref:`SCR-RUST-031 <scr-rust-031>`,Draft interpretation; applicability and enforcement require review.
+11.6.3,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+12.2.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+12.2.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+12.2.3,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+12.3.1,C5,Required,:ref:`SCR-RUST-032 <scr-rust-032>`,Draft interpretation; applicability and enforcement require review.
+13.1.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.1.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.3.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.3.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.3.3,C6,Required,:ref:`SCR-RUST-033 <scr-rust-033>`,Rust accepts underscore parameter patterns; names and unused-role policy need explicit interpretation.
+13.3.4,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+14.1.1,C6,Advisory,:ref:`SCR-RUST-034 <scr-rust-034>`,Adapt structural public/private restriction into invariant protection; record as project interpretation.
+15.0.1,C5,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,"Pin is a type, not a trait; review Unpin/structural pinning only where used."
+15.0.2,C3,Advisory,:ref:`SCR-RUST-035 <scr-rust-035>`,Draft interpretation; applicability and enforcement require review.
+15.1.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+15.1.2,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+15.1.3,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+15.1.4,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+15.1.5,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+15.8.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+16.5.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+16.5.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+16.6.1,C3,Advisory,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+17.8.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.1.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.1.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.3.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.3.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.3.3,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.4.1,C2,Required,:ref:`SCR-RUST-036 <scr-rust-036>`,Restore related obligation from C2: Drop can panic and a second panic during unwinding can abort.
+18.5.1,C5,Advisory,:ref:`SCR-RUST-004 <scr-rust-004>`,Result error propagation and panic/unwinding are distinct; both need explicit policies.
+18.5.2,C6,Advisory,:ref:`SCR-RUST-036 <scr-rust-036>`,Draft interpretation; applicability and enforcement require review.
+19.0.1,C5,Required,:ref:`SCR-RUST-037 <scr-rust-037>`,Draft interpretation; applicability and enforcement require review.
+19.0.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.0.3,C6,Advisory,:ref:`SCR-RUST-011 <scr-rust-011>`,Draft interpretation; applicability and enforcement require review.
+19.0.4,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.1.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.1.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.1.3,C4,Required,:ref:`SCR-RUST-037 <scr-rust-037>`,unexpected_cfgs needs declared expected names/values and active flags; apply in safe code too.
+19.2.1,C3,Required,candidate language or diagnostic coverage,Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+19.2.2,C5,Required,:ref:`SCR-RUST-011 <scr-rust-011>`,Rust also supports include! and generated source; use is not its only inclusion mechanism.
+19.2.3,C4,Required,:ref:`SCR-RUST-011 <scr-rust-011>`,Native syntax is largely compiler-checked; assess generated/path-based inclusion separately.
+19.3.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.3.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.3.3,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.3.4,C4,Required,:ref:`SCR-RUST-038 <scr-rust-038>`,Macro expression matching does not ensure single evaluation or absence of hidden effects.
+19.3.5,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.6.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.1,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.2,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.3,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.4,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.6.1,C6,Advisory,:ref:`SCR-RUST-039 <scr-rust-039>`,Controlled allocation is a proposed project adaptation; do not silently impose a blanket allocation ban.
+21.6.2,C5,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,Drop is not guaranteed to run; mem::forget and leaks are safe operations.
+21.6.3,C4,Required,:ref:`SCR-RUST-039 <scr-rust-039>`,Draft interpretation; applicability and enforcement require review.
+21.6.4,C2,Required,:ref:`SCR-RUST-039 <scr-rust-039>`,"Reassess C2: Rust has custom/global allocator mechanisms, requiring separate lifecycle analysis."
+21.6.5,C4,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,Comment describes a largely compiler-covered native case; retain lifecycle review only for manual/foreign owners.
+21.10.1,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.10.2,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.10.3,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+22.3.1,C5,Required,:ref:`SCR-RUST-040 <scr-rust-040>`,A constant argument to ordinary assert! does not by itself force compile-time evaluation.
+22.4.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+23.11.1,C2,Advisory,:ref:`SCR-RUST-020 <scr-rust-020>`,"Reassess C2: raw pointers can be constructed in safe Rust; audit boundaries by operations, not unsafe keywords."
+24.5.1,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+24.5.2,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+25.5.1,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+25.5.2,C1,Mandatory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+25.5.3,C1,Mandatory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+26.3.1,C2,Advisory,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+28.3.1,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+28.6.1,C4,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,"Comment describes a C++-specific move issue; native moves are compiler-checked, custom owners still need review."
+28.6.2,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+28.6.3,C2,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+28.6.4,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+30.0.1,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+30.0.2,C1,Required,candidate not directly applicable to native rust,"Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."

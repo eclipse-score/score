@@ -1,0 +1,79 @@
+{
+  "draft_date": "2026-09-17",
+  "status": "Proposed S-CORE policy, not approved or enforced",
+  "primary_paper": {
+    "title": "MISRust: Mapping MISRA-C++ Coding Guidelines to the Rust Programming Language",
+    "authors": [
+      "Marius Molz",
+      "Niels Schneider",
+      "Sven Lechner",
+      "Stefan Kowalewski",
+      "Alexandru Kampmann"
+    ],
+    "affiliation": "RWTH Aachen University, Embedded Software Laboratory",
+    "url": "https://arxiv.org/abs/2605.23490v2",
+    "html_url": "https://arxiv.org/html/2605.23490v2",
+    "arxiv_version": "2605.23490v2",
+    "date": "2026-08-27",
+    "analysis_configuration": "rustc 1.92.0 (ded5c06cf 2025-12-08), edition 2024",
+    "scope_exclusion": "Full cross-language FFI analysis",
+    "pages": {
+      "methodology": "4-6",
+      "counts": "7-8",
+      "unsafe_scope": "9",
+      "adaptations": "9-11",
+      "limitations": "12-13"
+    }
+  },
+  "reference_documents": [
+    {
+      "document": "MISRA C:2025 Addendum 6 - Applicability of MISRA C:2025 to the Rust Programming Language",
+      "role": "Supporting cross-check for foreign-interface boundaries",
+      "redistributed": false,
+      "sha256": "4b908586d8ba3d4a8fa39523aec041df7200401046e17f29512ba1683881599e"
+    },
+    {
+      "document": "MISRA C++:2023 - Guidelines for the use of C++17 in critical systems",
+      "role": "Licensed reference used to check guideline identifiers, categories and intents; no guideline text is reproduced",
+      "redistributed": false,
+      "sha256": "4bc3e47b2c5e10d306b777fd2add509ed32e5e50b4baa6c73143ab64ba68489d"
+    },
+    {
+      "document": "MISRust paper, arXiv:2605.23490v2 (PDF)",
+      "role": "Primary analysis input, CC-BY-4.0",
+      "redistributed": false,
+      "sha256": "34cacd5e45da7a2a4cd26fb1194cf767910b03f489e2e389b1c35dcb0f09c2c8"
+    }
+  ],
+  "misrust_artifact": {
+    "repository": "https://github.com/embedded-software-laboratory/MISRust",
+    "commit": "9aafed8ea5d222625d4be7982b4f9e8ca2e29bec",
+    "dataset_url": "https://github.com/embedded-software-laboratory/MISRust/blob/9aafed8ea5d222625d4be7982b4f9e8ca2e29bec/misra_cpp_rust_comparison_rules.csv",
+    "dataset_sha256": "f140c3d4ce51575c5bc67c70c8e616ef1bec70e030479a3b9ed5c4a20b874e69",
+    "license": "CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/) for the paper and research artifacts; underlying MISRA material retains its own rights",
+    "attribution": "Classification facts derived from the MISRust research artifacts by the paper authors. Rust obligations, grouping, enforcement assessments and corrections are new draft interpretations.",
+    "dataset_encoding": "179 lines, no header; split each line at first two semicolons. Artifact uses disjoint C4 (36) and C6 (22); paper C4 total includes C6 (58).",
+    "modifications": "Classifications are reproduced unchanged. Rule grouping, Rust rule text, proposed levels, dispositions, assessment notes and corrections are S-CORE additions."
+  },
+  "not_claimed": [
+    "Official MISRA Rust standard",
+    "MISRA compliance",
+    "S-CORE approval",
+    "Full checker implementation or validation",
+    "Full MISRA C:2025 mapping",
+    "Full consortium-guideline mapping"
+  ],
+  "technical_references": {
+    "rust_operators": "https://doc.rust-lang.org/reference/expressions/operator-expr.html",
+    "raw_pointers": "https://doc.rust-lang.org/std/ptr/index.html",
+    "undefined_behavior": "https://doc.rust-lang.org/reference/behavior-considered-undefined.html",
+    "forget": "https://doc.rust-lang.org/std/mem/fn.forget.html",
+    "raw_copy": "https://doc.rust-lang.org/std/ptr/fn.copy.html",
+    "drop": "https://doc.rust-lang.org/std/ops/trait.Drop.html",
+    "allocators": "https://doc.rust-lang.org/std/alloc/index.html",
+    "pinning": "https://doc.rust-lang.org/std/pin/index.html",
+    "clippy": "https://rust-lang.github.io/rust-clippy/master/index.html",
+    "codeql_rust": "https://codeql.github.com/docs/codeql-language-guides/codeql-library-for-rust/",
+    "consortium": "https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines"
+  }
+}
