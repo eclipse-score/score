@@ -343,6 +343,39 @@ Requirements coverage
    `Requirement Test Coverage <https://eclipse-score.github.io/docs-as-code/v8.1.2/internals/requirements/requirement_coverage.html>`_
    and also published as `metrics.json <https://eclipse-score.github.io/docs-as-code/v8.1.2/metrics.json>`__.
 
+The table below maps each malfunction of the safety and security evaluation which needs to be qualified
+to the docs-as-code tool requirements (``tool_req``) that implement the corresponding checks.
+
+.. list-table:: Test coverage for necessary qualification
+   :header-rows: 1
+   :widths: 1 4 4
+
+   * - Malfunction
+     - Tool requirements (with testlinks)
+     - Tool requirements (without testlinks)
+   * - M1
+     - :need:`tool_req__docs_common_attr_id_scheme`, :need:`tool_req__docs_common_attr_security`, :need:`tool_req__docs_common_attr_status`
+     - :need:`tool_req__docs_doc_types`, :need:`tool_req__docs_doc_generic_mandatory`, :need:`tool_req__docs_common_attr_id`, :need:`tool_req__docs_common_attr_safety`
+   * - M2
+     - :need:`tool_req__docs_common_attr_safety_link_check`, :need:`tool_req__docs_req_arch_link_safety_to_arch`
+     -
+   * - M3
+     - :need:`tool_req__docs_test_linkage_metrics`
+     - :need:`tool_req__docs_verification_report_need`
+   * - M5
+     - :need:`tool_req__docs_test_link_testcase`, :need:`tool_req__docs_test_linkage_metrics`
+     - :need:`tool_req__docs_verification_report_need`
+   * - M6
+     - :need:`tool_req__docs_test_link_testcase`
+     -
+   * - M7
+     - :need:`tool_req__docs_req_types`
+     - :need:`tool_req__docs_req_link_covers_aou`, :need:`tool_req__docs_arch_link_fulfils_aou`
+   * - M8
+     -
+     - :need:`tool_req__docs_req_link_satisfies_allowed` (no dedicated tool req for backlinks; rendered by sphinx-needs)
+
+
 Analysis perspective
 ~~~~~~~~~~~~~~~~~~~~
 
