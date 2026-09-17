@@ -143,7 +143,7 @@ reference_integration activities required for an S-CORE release:
 
 .. _option3_infographic:
 
-.. figure:: _assets/DR-008-int-option3_infographic.svg
+.. figure:: ../_assets/DR-008-int-option3_infographic.svg
   :align: center
   :width: 75%
 

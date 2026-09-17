@@ -119,7 +119,7 @@ S-CORE repository — never in the opposite direction.
 
 .. _fig-breakdown:
 
-.. figure:: _assets/DR-001-proc-breakdown.drawio.svg
+.. figure:: ../_assets/DR-001-proc-breakdown.drawio.svg
    :align: center
    :width: 75%
 
@@ -132,7 +132,7 @@ A complete overview of all artifacts and their assignment to the repositories is
 
 .. _fig-new-meta-model:
 
-.. figure:: _assets/DR-001-proc-new_score_building_blocks_meta_model.drawio.svg
+.. figure:: ../_assets/DR-001-proc-new_score_building_blocks_meta_model.drawio.svg
    :align: center
    :width: 75%
 
@@ -142,7 +142,7 @@ A complete overview of all artifacts and their assignment to the repositories is
 
 .. _fig-current-meta-model:
 
-.. figure:: _assets/DR-001-proc-current_score_building_blocks_meta_model.drawio.svg
+.. figure:: ../_assets/DR-001-proc-current_score_building_blocks_meta_model.drawio.svg
    :align: center
    :width: 75%
 
@@ -196,7 +196,7 @@ components by multiple features.
 The dependency direction runs exclusively from the ``logging`` SW-Module repository
 to the ``score`` repository — never the other way around.
 
-.. figure:: _assets/DR-001-proc-PoC_logging.drawio.svg
+.. figure:: ../_assets/DR-001-proc-PoC_logging.drawio.svg
    :align: center
    :width: 75%
 
