@@ -110,9 +110,9 @@ Process Management
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall be able to control already running :term:`Processes <Process>`.
 
@@ -123,9 +123,9 @@ Process Management
     :security: NO
     :safety: ASIL_B
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
     :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
 
     The :term:`Lifecycle Feature` shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
@@ -229,9 +229,9 @@ Control Interface
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall provide support for commands to query component
     states.
@@ -244,9 +244,9 @@ Control Interface
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall be able to report status on components via the
     :term:`Control Interface`.
@@ -307,9 +307,9 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall support switching to a different :term:`Run target` as
     recovery action in case a single process terminated abnormally or lost its
@@ -322,9 +322,9 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall support a smart :term:`Watchdog`, configurable
     per process.
@@ -354,7 +354,7 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v2.0.0
 
@@ -457,9 +457,9 @@ Configuration file
     :safety: ASIL_B
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall support modular configuration files to
     configure process attributes, including configurations coming from
@@ -472,9 +472,9 @@ Configuration file
     :safety: ASIL_B
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall provide support for extending already running
     session with additional new configuration file.
@@ -500,8 +500,8 @@ Configuration file
     :safety: QM
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
-    :valid_from: v2.0.0
+    :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall have the means to generate the specified dependencies in a format that can be visualized.
