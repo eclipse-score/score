@@ -159,7 +159,7 @@ delivers:
 
   * :term:`Vehicle Time` — **ASIL_B**. Its :term:`Snapshot` carries a :term:`Time point qualifier`
     distinguishing ASIL-B data from QM data; the ASIL-B value integrity is achieved only if
-    :need:`aou_req__feature__veh_time_e2e_integrity` is fulfilled.
+    :need:`aou_req__feature_time__veh_time_integrity` is fulfilled.
   * :term:`Local Clock` bases (steady, monotonic, high-resolution) — **ASIL_B**. They expose no
     runtime qualifier; the ASIL-B value integrity is achieved only if
     :need:`aou_req__platform__os_safety_functions` is fulfilled.

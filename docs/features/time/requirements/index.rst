@@ -57,25 +57,23 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
    The :term:`score::time` feature shall provide an API to access the synchronized :term:`Vehicle Time`.
-   Usage of this API shall be free from interferences for the consuming components.
 
-Note (providing traceability as long as safety analysis is not available):
-   :need:`feat_req__time__vehicle_time_time_api` requires backing by :need:`aou_req__feature__veh_time_e2e_integrity`
-   to guarantee end-to-end data integrity.
+   Note: the ASIL-B level applies to the interface/module; the delivered value integrity is reflected by the
+   :term:`time point qualifier` (see :need:`feat_req__time__vehicle_time_time_pt_qual`).
 
 .. feat_req:: Vehicle Time base accuracy qualifier
    :id: feat_req__time__vehicle_time_acc_qual_api
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -94,7 +92,7 @@ Note (providing traceability as long as safety analysis is not available):
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -102,14 +100,18 @@ Note (providing traceability as long as safety analysis is not available):
 
    The :term:`score::time` feature shall provide an API to read the :term:`time point qualifier` of the local synchronized time base.
 
-   Note: qualifier shall reflect if the time point could be treated as ASIL-B data or QM data
+   Note: the qualifier tells the consumer whether the time point may currently be treated as ASIL-B data or
+   only as QM data. This verdict comes from the integrity check established for the vehicle time
+   (see :need:`aou_req__feature_time__veh_time_integrity`); if no such check exists, the qualifier is QM.
+   If that integrity check is integrated into :term:`score::time` as an extension, the extension delivers its
+   verdict through this qualifier (see :need:`aou_req__feature_time__veh_time_qual_reflect`).
 
 .. feat_req:: Vehicle Time control flow
    :id: feat_req__time__vehicle_time_ctrl_flow
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__vehicle_time_api[version==1]
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -142,6 +144,22 @@ Note (providing traceability as long as safety analysis is not available):
 
    *Use case:* Debugging and diagnostics of the time synchronization process.
 
+.. feat_req:: HW clock synchronization to Vehicle Time
+   :id: feat_req__time__hw_clock_sync
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :derived_from: stkh_req__time__vehicle_time_sync[version==1]
+   :satisfied_by: feat__time[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The :term:`score::time` feature shall synchronize the local HW clock (e.g. NIC PHC) to :term:`Vehicle Time`,
+   enabling hardware timestamping of ingress and egress network frames.
+
+   Note: the ownership of the HW clock discipline (score::time vs. the network/gPTP stack) is a system design choice.
+
 
 Time Synchronization to absolute external sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,22 +180,23 @@ Time Synchronization to absolute external sources
    :id: feat_req__time__abs_base_api
    :reqtype: Functional
    :security: YES
-   :safety: QM
-   :derived_from: stkh_req__time__absolute_time_api[version==1]
+   :safety: ASIL_B
+   :derived_from: stkh_req__time__absolute_time_sync[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
    The :term:`score::time` feature shall provide an API to read the :term:`Absolute Time` base, synchronized to external time sources.
-   Usage of this API shall be free from interferences for the consuming components.
+
+   Note: the ASIL-B level applies to the interface/module; the delivered absolute time value integrity remains QM.
 
 .. feat_req:: Absolute Time base accuracy qualifier
    :id: feat_req__time__abs_acc_qual
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__time__absolute_time_api[version==1]
+   :derived_from: stkh_req__time__absolute_time_sync[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -205,7 +224,7 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__time__absolute_time_api[version==1]
+   :derived_from: stkh_req__time__absolute_time_sync[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -242,14 +261,13 @@ Local Clock
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__high_res_clock_api[version==1]
+   :derived_from: stkh_req__time__high_res_clock_api[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
    The :term:`score::time` feature shall provide an API to read the :term:`High-Resolution Steady Clock` in nanoseconds resolution.
-   Usage of this API shall be free from interferences for the consuming components.
 
    Note: to which clock the high resolution clock is mapped, depends on the system design.
 
@@ -260,14 +278,13 @@ Local Clock
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__time__monotonic_clock_api[version==1]
+   :derived_from: stkh_req__time__monotonic_clock_api[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
    The :term:`score::time` feature shall provide an API to read :term:`monotonic`, not adjustable clock value.
-   Usage of this API shall be free from interferences for the consuming components.
 
 Testability
 ^^^^^^^^^^^^
