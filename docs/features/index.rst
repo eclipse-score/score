@@ -28,11 +28,10 @@ For further explanation see the `Building blocks concept <https://eclipse-score.
 
 The following features are defined:
 
+.. note: toctree will be filled by bazel build system, do not edit manually
+
 .. toctree::
    :maxdepth: 1
-   :glob:
-
-   */index
 
 Feature List
 ------------
