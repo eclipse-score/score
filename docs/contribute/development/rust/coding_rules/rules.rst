@@ -41,10 +41,10 @@ does not establish compliance.
 SCR-RUST-001: Define the supported Rust language and build configuration
 ========================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 4.1.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 4.1.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** All production crates and their build
-inputs.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** All production crates and
+their build inputs.
 
 Each component shall record its compiler/toolchain revision, Rust edition, target, dependency
 resolution, enabled features, panic strategy, and overflow-check settings. Production builds shall
@@ -62,10 +62,11 @@ Bazel inputs; a host-only build does not cover QNX or a different feature set.
 SCR-RUST-002: Enforce selected diagnostics and control suppressions
 ===================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 4.1.2, 0.0.1, 0.2.1, 0.2.2, 0.2.3,
-0.2.4.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 0.0.1 (safe), 0.2.1
+(safe), 0.2.2 (safe), 0.2.3 (safe), 0.2.4 (safe), 4.1.2 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** All first-party production crates.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** All first-party
+production crates.
 
 The adopted lint profile shall make selected unused-code, unused-value, unreachable-code and
 deprecated-API diagnostics blocking. Any suppression shall identify a scoped rationale and
@@ -84,9 +85,10 @@ warning-free build with complete coverage of the mapped rules.
 SCR-RUST-003: Avoid invariant decisions and ineffective writes
 ==============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 0.0.2, 0.1.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 0.0.2 (safe), 0.1.1
+(safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production control flow.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production control flow.
 
 Conditions shall express a meaningful runtime decision unless explicitly designated as a constant
 configuration choice or intentional loop. A value shall not be written only to be overwritten before
@@ -103,9 +105,11 @@ value across calls. Record intentional loop and configuration exceptions.
 SCR-RUST-004: Handle results and preserve error information
 ===========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 0.1.2, 18.5.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 0.1.2 (safe), 18.5.1
+(safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production APIs and their callers.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production APIs and their
+callers.
 
 Callers shall use returned values whose contracts require action. Errors shall be propagated,
 converted with necessary context, or handled according to an explicit recovery policy. Silently
@@ -124,10 +128,10 @@ side-effect APIs.
 SCR-RUST-005: Define floating-point range and precision contracts
 =================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 0.3.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 0.3.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Floating-point calculations, conversions
-and persistence.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Floating-point
+calculations, conversions and persistence.
 
 Each safety-relevant floating-point use shall specify acceptable range, precision, rounding,
 comparison tolerance, and handling of NaN, infinity and signed zero. Serialization shall preserve
@@ -145,10 +149,10 @@ contract.
 SCR-RUST-006: Validate preconditions at trust boundaries
 ========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 0.3.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 0.3.2 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Public APIs, external data, stored data
-and unsafe wrappers.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Public APIs, external
+data, stored data and unsafe wrappers.
 
 A function shall be called only when its documented preconditions hold. Encode invariants in
 validated types where possible; otherwise validate untrusted values before use and return a defined
@@ -165,10 +169,10 @@ success branch match the precondition. Arbitrary application contracts require r
 SCR-RUST-007: Isolate unsafe operations and establish their contracts
 =====================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 4.1.3.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 4.1.3 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Unsafe code, unsafe traits/attributes,
-safe wrappers and their dependencies.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Unsafe code, unsafe
+traits/attributes, safe wrappers and their dependencies.
 
 Undefined behavior is prohibited. Unsafe operations shall be confined to identified modules and
 justified by operation-specific invariants covering validity, lifetime, aliasing, alignment and
@@ -187,10 +191,11 @@ is a separate property.
 SCR-RUST-008: Control shared state and memory ordering
 ======================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 4.6.1, 6.7.1, 6.7.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 6.7.1 (safe), 6.7.2
+(safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** All shared state, including Mutex, atomics
-and unsafe implementations.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** All shared state,
+including Mutex, atomics and unsafe implementations.
 
 Shared mutable state shall have a documented owner, initialization protocol and synchronization
 design. Uncontrolled static mut is prohibited. Each use of shared globals, atomics, and unsafe
@@ -209,9 +214,11 @@ paper's unsafe-only grouping.
 SCR-RUST-009: Remove disabled code from comments
 ================================================
 
-**Proposed level:** Advisory. **Source IDs (MISRA C++:2023):** 5.7.2.
+**Proposed level:** Advisory. **Source IDs (MISRA C++:2023, SCRC verdict):** 5.7.1 (safe), 5.7.2
+(safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production source comments.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production source
+comments.
 
 Obsolete implementations should be removed and recovered through version control when needed.
 Comments should explain intent and constraints. Documentation examples and explanatory pseudocode
@@ -227,9 +234,10 @@ documentation.
 SCR-RUST-010: Make array and buffer extents explicit at interfaces
 ==================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 6.0.2, 7.11.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** No direct mapping.
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Rust APIs and foreign buffer boundaries.
+**Origin:** S-CORE supplement (raw buffer extents at foreign interfaces). **Scope:** Rust APIs and
+foreign buffer boundaries.
 
 Use arrays or slices that carry the required extent in native Rust interfaces. Raw buffer interfaces
 shall document pointer, length, ownership and validity together, with validation before constructing
@@ -246,9 +254,11 @@ and bounds-checked access can still panic.
 SCR-RUST-011: Keep imports and module interfaces explicit
 =========================================================
 
-**Proposed level:** Advisory. **Source IDs (MISRA C++:2023):** 6.0.3, 19.0.3, 19.2.2, 19.2.3.
+**Proposed level:** Advisory. **Source IDs (MISRA C++:2023, SCRC verdict):** 6.0.3 (unsafe), 19.0.3
+(safe), 19.2.1 (safe), 19.2.3 (beyond SCRC).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Crate/module layout and source inclusion.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Crate/module layout and
+source inclusion.
 
 Imports and re-exports should make dependencies and ownership of names clear. Keep ordinary imports
 together; document exceptions for narrow local scope. Glob imports should be limited to explicitly
@@ -265,9 +275,10 @@ C++ include is incomplete. Valid syntax alone does not establish clarity or prov
 SCR-RUST-012: Reserve entry-point naming
 ========================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 6.0.4.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 6.0.4 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** First-party production functions.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** First-party production
+functions.
 
 Reserve main for actual executable entry points. Other production functions shall use names
 expressing their role. Generated wrappers and embedded entry-point conventions require an explicit
@@ -283,10 +294,11 @@ entry points.
 SCR-RUST-013: Control exported symbols and foreign declarations
 ===============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 6.2.1, 6.2.4, 6.5.1, 6.5.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 6.2.1 (unsafe), 6.2.2
+(unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Linkage attributes, exported symbols and
-foreign bindings.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Linkage attributes,
+exported symbols and foreign bindings.
 
 Exported symbols shall have unique definitions and compatible declarations in each delivered binary.
 Centralize foreign declarations in reviewed binding modules/crates. Use minimal visibility; justify
@@ -304,10 +316,11 @@ alone.
 SCR-RUST-014: Avoid misleading name shadowing and method resolution
 ===================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 6.4.1, 6.4.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 6.4.1 (safe), 6.4.2
+(beyond SCRC).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Bindings, inherent methods and trait
-methods.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Bindings, inherent
+methods and trait methods.
 
 Rebinding shall not silently change the logical meaning of a value. A same-name transformation may
 be allowed when its purpose is immediate and documented by the expression. Where inherent and trait
@@ -324,10 +337,11 @@ composition is not class inheritance; a broad shadowing ban would enforce a diff
 SCR-RUST-015: Preserve lifetimes across raw interfaces
 ======================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 6.8.1, 6.8.2, 6.8.3, 6.8.4.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 6.8.1 (unsafe), 6.8.2
+(unsafe), 6.8.3 (unsafe), 6.8.4 (unsafe), 8.1.2 (unsafe), 28.6.3 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** References, raw pointers, callbacks and
-ownership transfers.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** References, raw pointers,
+callbacks and ownership transfers.
 
 An access shall not outlive its referent. Do not expose a dangling local pointer as a usable API
 result or store borrowed addresses beyond their valid lifetime. Raw-pointer wrappers shall establish
@@ -344,10 +358,11 @@ reference lifetimes do not establish equivalent guarantees for raw pointers or f
 SCR-RUST-016: Make numeric, Boolean and character conversions intentional
 =========================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 7.0.1, 7.0.2, 7.0.3, 7.0.6.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 7.0.1 (safe), 7.0.2
+(unsafe), 8.2.2 (safe), 10.2.3 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** All conversions, including safe casts and
-unsafe reinterpretation.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** All conversions,
+including safe casts and unsafe reinterpretation.
 
 Conversions shall preserve the required value or perform explicit range/validity checks with a
 defined error. Boolean/character values shall not be used as incidental numbers; documented
@@ -366,9 +381,10 @@ requirements.
 SCR-RUST-017: Represent absent pointers explicitly
 ==================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 7.11.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 7.11.1 (beyond SCRC).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Raw-pointer and foreign APIs.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Raw-pointer and foreign
+APIs.
 
 Use typed null constructors when a raw null pointer is required. Use Option or another explicit type
 for optional references/handles in safe APIs. Check required pointer validity before dereference; a
@@ -385,9 +401,9 @@ neither allocation validity nor lifetime/alignment.
 SCR-RUST-018: Make mixed-operator intent clear
 ==============================================
 
-**Proposed level:** Advisory. **Source IDs (MISRA C++:2023):** 8.0.1.
+**Proposed level:** Advisory. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.0.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production expressions.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production expressions.
 
 Expressions mixing arithmetic, bitwise, shift or Boolean operators should use grouping that makes
 the intended evaluation clear. Split complex expressions when parentheses alone do not make them
@@ -403,10 +419,10 @@ readability judgment.
 SCR-RUST-019: Use checked type recovery
 =======================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.2.1, 8.2.9.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.2.1 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Type-erased values and trait-object
-downcasts.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Type-erased values and
+trait-object downcasts.
 
 Recover concrete types through checked APIs such as Any downcasts, and handle failure. Unchecked
 type recovery requires a proven type-identity invariant within an approved unsafe abstraction. Do
@@ -424,11 +440,11 @@ MISRA-shaped check.
 SCR-RUST-020: Restrict pointer casts and representation changes
 ===============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.2.3, 8.2.5, 8.2.6, 8.2.7, 8.2.8,
-23.11.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.2.3 (unsafe), 8.2.5
+(unsafe), 8.2.6 (unsafe), 8.2.7 (unsafe), 8.2.8 (safe), 23.11.1 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** All raw-pointer transformations, safe and
-unsafe.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** All raw-pointer
+transformations, safe and unsafe.
 
 Prefer typed pointer/reference APIs. Pointer-to-integer conversions, reconstruction of pointers,
 mutability-changing casts and transmute shall be restricted to reviewed low-level interfaces with
@@ -447,10 +463,11 @@ from equal sizes.
 SCR-RUST-021: Preserve function-call ABI and variadic contracts
 ===============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.2.4, 8.2.11.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.2.4 (unsafe), 8.2.11
+(unsafe), 21.10.1 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Function pointers, callbacks and variadic
-foreign calls.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Function pointers,
+callbacks and variadic foreign calls.
 
 Calls shall use a compatible function signature, calling convention and ABI. Function-pointer
 representation changes require boundary review. Avoid C variadic calls in application code; a
@@ -467,10 +484,10 @@ variadic argument contract. The paper excludes full FFI analysis.
 SCR-RUST-022: Control recursion and stack consumption
 =====================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.2.10.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.2.10 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production call paths, including callbacks
-and recursive destruction.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production call paths,
+including callbacks and recursive destruction.
 
 Direct and indirect recursion shall be prohibited in safety-relevant execution paths unless a scoped
 deviation establishes a finite depth and stack budget. Assess recursive parsing, traversal and
@@ -488,10 +505,11 @@ general proof of bounded stack use.
 SCR-RUST-023: Respect allocation boundaries in pointer operations
 =================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.7.1, 8.7.2, 8.9.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.7.1 (unsafe), 8.7.2
+(unsafe), 8.9.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Raw-pointer arithmetic, differences,
-comparisons and later use.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Raw-pointer arithmetic,
+differences, comparisons and later use.
 
 Pointer operations shall meet their individual API contracts, including allocation/provenance and
 bounds requirements. Relational comparisons shall not infer object order across unrelated
@@ -510,9 +528,10 @@ access determine validity. The project comparison restriction is stronger than l
 SCR-RUST-024: Separate persistent effects from short-circuit decisions
 ======================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.14.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.14.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production Boolean expressions.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production Boolean
+expressions.
 
 Required persistent effects shall not depend on accidental short-circuit evaluation. Move state
 changes and critical I/O out of the right side of && or ||, or document an intentional conditional-
@@ -528,9 +547,11 @@ call in a condition is not automatically a violation.
 SCR-RUST-025: Use memory-copy operations with valid overlap and ownership
 =========================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.18.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 8.18.1 (unsafe), 24.5.2
+(unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Raw copies and buffer movement.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Raw copies and buffer
+movement.
 
 Choose copy operations whose overlap contract matches the buffers. copy_nonoverlapping requires
 disjoint regions; overlapping movement must use an operation permitting overlap. Both cases require
@@ -548,10 +569,11 @@ owning values.
 SCR-RUST-026: Specify arithmetic overflow and shift behavior
 ============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 8.20.1, 7.0.4.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 7.0.4 (safe), 8.20.1
+(safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Integer arithmetic, shifts and constant
-calculations.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Integer arithmetic,
+shifts and constant calculations.
 
 Arithmetic shall stay within its required range or use explicit checked, saturating, wrapping or
 overflowing operations with justified semantics. Check division/remainder exceptional inputs and
@@ -570,10 +592,10 @@ behavior depend on operation and build configuration.
 SCR-RUST-027: Make decision fallbacks explicit
 ==============================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 9.4.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 9.4.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Safety-relevant if/else-if decision
-chains.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Safety-relevant if/else-
+if decision chains.
 
 Each safety-relevant decision chain shall define behavior when no condition matches. Prefer
 exhaustive match for finite cases; otherwise provide a final else that performs the defined fallback
@@ -590,9 +612,10 @@ project scope adapts the original rule rather than imposing an else on every ind
 SCR-RUST-028: Separate volatile I/O from synchronization
 ========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 10.1.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 10.1.2 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Hardware access and volatile operations.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Hardware access and
+volatile operations.
 
 Volatile operations shall be confined to reviewed hardware/platform abstractions with documented
 address, width, alignment and device-ordering assumptions. Use appropriate synchronization for
@@ -608,9 +631,10 @@ differ for the specific I/O operation and memory region.
 SCR-RUST-029: Restrict assembly to reviewed platform modules
 ============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 10.4.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 10.4.1 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Inline and global assembly.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Inline and global
+assembly.
 
 Assembly is prohibited in ordinary application components. A platform exception shall document the
 instruction contract, registers/clobbers, stack, memory effects, target assumptions and safe wrapper
@@ -626,9 +650,10 @@ Scan generated and macro-expanded code too.
 SCR-RUST-030: Limit raw-pointer indirection
 ===========================================
 
-**Proposed level:** Advisory. **Source IDs (MISRA C++:2023):** 11.3.2.
+**Proposed level:** Advisory. **Source IDs (MISRA C++:2023, SCRC verdict):** 11.3.2 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Raw-pointer APIs and declarations.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Raw-pointer APIs and
+declarations.
 
 Raw-pointer interfaces should use no more than two pointer-indirection levels. Deeper foreign
 interfaces should be isolated behind a typed adapter with explicit ownership and extent contracts.
@@ -644,10 +669,11 @@ benign safe abstractions must not be classified solely by textual asterisks.
 SCR-RUST-031: Establish initialization and value validity before use
 ====================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 11.6.1, 11.6.2.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 11.6.1 (unsafe), 11.6.2
+(unsafe), 15.1.4 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Native initialization, MaybeUninit, unions
-and raw storage.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Native initialization,
+MaybeUninit, unions and raw storage.
 
 Every observed value shall be initialized and valid for its Rust type. A MaybeUninit/raw-storage
 abstraction shall prove initialization before assume_init/read/reference creation, track partial
@@ -665,10 +691,10 @@ storage. Some invalid references are already UB when created, before an explicit
 SCR-RUST-032: Prefer enums over untagged unions
 ===============================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 12.3.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 12.3.1 (unsafe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Application data models and foreign/low-
-level representations.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Application data models
+and foreign/low-level representations.
 
 Use enums for application alternatives. A union shall be confined to a justified representation
 boundary with a documented discriminant/active-field protocol, field validity and destruction
@@ -684,10 +710,10 @@ alone cannot satisfy. FFI layout may require a reviewed exception.
 SCR-RUST-033: Make parameter roles consistent
 =============================================
 
-**Proposed level:** Advisory. **Source IDs (MISRA C++:2023):** 13.3.3.
+**Proposed level:** Advisory. **Source IDs (MISRA C++:2023, SCRC verdict):** 13.3.3 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Trait methods, implementations and public
-API documentation.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Trait methods,
+implementations and public API documentation.
 
 Parameter names should consistently describe their semantic roles across trait declarations,
 implementations and examples. Mark intentionally unused parameters explicitly and explain why an
@@ -703,9 +729,10 @@ contracts, not C++ overriding syntax.
 SCR-RUST-034: Protect type invariants through visibility
 ========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 14.1.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 14.1.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Struct fields and constructors.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Struct fields and
+constructors.
 
 Fields whose arbitrary mutation can violate an invariant shall be private and changed through
 validating APIs. Plain data carriers may expose fields when all representable states are valid for
@@ -721,11 +748,11 @@ preservation. This replaces the C++ structural recommendation with a Rust invari
 SCR-RUST-035: Review ownership traits and resource lifecycle
 ============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 15.0.1, 21.6.2, 21.6.5, 28.6.1,
-15.0.2, 9.2.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 15.0.1 (safe), 15.8.1
+(unsafe), 21.6.2 (safe), 28.6.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Copy/Clone/Drop, pinning, custom owners
-and raw allocation wrappers.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Copy/Clone/Drop, pinning,
+custom owners and raw allocation wrappers.
 
 Copy/Clone/Drop implementations shall preserve ownership and type invariants. Every acquired
 resource shall have a defined release/transfer policy, including partial failure paths. Unsafe
@@ -746,10 +773,11 @@ differences; no artificial direct Rust equivalent is assumed.
 SCR-RUST-036: Define panic, termination and cleanup behavior
 ============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 18.5.2, 18.4.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 18.1.1 (unsafe), 18.4.1
+(safe), 18.5.2 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Production library code, process
-boundaries and destructors.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Production library code,
+process boundaries and destructors.
 
 Recoverable failures shall use explicit error handling. Application libraries shall not directly
 terminate the process or panic on expected invalid input. Any intentional fail-stop path requires a
@@ -768,10 +796,10 @@ system may nevertheless treat it as a safety failure.
 SCR-RUST-037: Validate attributes and configuration coverage
 ============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 19.0.1, 19.1.3.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 19.0.1 (beyond SCRC).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** cfg/features, attributes and build-
-generated configuration.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** cfg/features, attributes
+and build-generated configuration.
 
 All cfg names/values and features shall be declared and checked. Invalid or unrecognized
 attributes/configuration diagnostics shall block analysis. Maintain and analyze the supported
@@ -789,10 +817,11 @@ not establish that every delivered variant was analyzed.
 SCR-RUST-038: Control macro expansion and argument effects
 ==========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 19.3.4.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 19.0.2 (safe), 19.3.4
+(safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Declarative/procedural macros and
-generated Rust.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Declarative/procedural
+macros and generated Rust.
 
 Macros shall document whether arguments are evaluated once, more than once or not at all. Use
 expression fragments where expression semantics are intended. Safety-relevant macro-generated unsafe
@@ -810,10 +839,11 @@ review.
 SCR-RUST-039: Bound allocation and isolate manual allocators
 ============================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 21.6.1, 21.6.3, 21.6.4.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 21.6.1 (safe), 21.6.3
+(unsafe), 21.6.4 (beyond SCRC).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Heap allocation, container growth and
-custom allocation.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Heap allocation,
+container growth and custom allocation.
 
 Each component shall declare where allocation is permitted and justify peak memory, growth limits
 and failure behavior. Unbounded input-driven growth is prohibited. Manual allocators and raw
@@ -831,9 +861,10 @@ prevent leaks or guarantee recovery from OOM.
 SCR-RUST-040: Separate compile-time and runtime assertions
 ==========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** 22.3.1.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 22.3.1 (safe).
 
-**Origin:** MISRust-derived S-CORE adaptation. **Scope:** Assertions and invariant checks.
+**Origin:** S-CORE interpretation of MISRA C++:2023 guidelines. **Scope:** Assertions and invariant
+checks.
 
 An invariant intended for compile-time checking shall use a const-evaluated construct supported by
 the pinned compiler. Required runtime validation shall remain active in production and return the
@@ -851,10 +882,10 @@ evaluation. debug_assert! can be disabled and must not carry a required safety c
 SCR-RUST-041: Account for dependency and generated-code soundness
 =================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** No direct mapping.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** No direct mapping.
 
-**Origin:** S-CORE supplement to the paper's scope. **Scope:** Transitive crates, standard library
-assumptions, macros and generators.
+**Origin:** S-CORE supplement (dependency and generated-code soundness). **Scope:** Transitive
+crates, standard library assumptions, macros and generators.
 
 Maintain the dependency/generator inventory and record the evidence relied on for unsafe
 implementations, feature selection and foreign code. Component safe-only status shall describe
@@ -871,7 +902,8 @@ paper analyzes language constructs, not the delivered dependency graph.
 SCR-RUST-042: Assess foreign-language boundaries explicitly
 ===========================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** No direct mapping.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** 21.10.2 (unsafe),
+21.10.3 (unsafe), 22.4.1 (unsafe), 25.5.1 (unsafe), 25.5.2 (unsafe), 25.5.3 (unsafe).
 
 **Origin:** S-CORE supplement informed by MISRA C:2025 Addendum 6. **Scope:** Every Rust/C/C++
 boundary.
@@ -893,7 +925,7 @@ claim one.
 SCR-RUST-043: Record coverage, deviations and residual obligations
 ==================================================================
 
-**Proposed level:** Required. **Source IDs (MISRA C++:2023):** No direct mapping.
+**Proposed level:** Required. **Source IDs (MISRA C++:2023, SCRC verdict):** No direct mapping.
 
 **Origin:** S-CORE governance supplement. **Scope:** Every adopted guideline and delivered
 configuration.

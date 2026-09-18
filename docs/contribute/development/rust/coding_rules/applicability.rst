@@ -25,136 +25,145 @@ Sources and Applicability
    :security: YES
    :realizes: wp__sw_development_plan[version==1]
 
-Primary analysis
-================
+Primary reference: SCRC MISRA C++ cross-reference
+==================================================
 
-The primary input is the paper
+The primary applicability reference is the *Rust Cross Reference with MISRA C++ 2023*
+prepared by the Coding Guidelines Subcommittee of the Safety-Critical Rust Consortium
+(SCRC). It is submitted as
+`pull request #1226 <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/pull/1226>`_
+to the `safety-critical-rust-coding-guidelines <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines>`_
+repository. The register uses the revision at commit ``9e81abd4`` of 9 September 2026.
+The mapping is still under weekly review by the subcommittee and is not merged. The
+pinned revision is recorded in the source manifest and must be re-checked, and the
+register re-aligned, whenever the mapping changes.
+
+The SCRC cross-reference assesses all 179 MISRA C++:2023 guidelines in three groups.
+For each guideline it also names the related MISRA C:2025 guideline where one exists,
+and the SCRC coding guideline that implements it where one exists.
+
+.. list-table:: SCRC verdicts at the pinned revision
+   :header-rows: 1
+   :widths: 30 10 60
+
+   * - SCRC group
+     - Count
+     - Register treatment
+   * - Applicable to Rust in general (safe Rust)
+     - 54
+     - Mapped to S-CORE rules, or queued for rule assignment.
+   * - Additionally applicable in the presence of unsafe code
+     - 38
+     - Mapped to S-CORE rules, or queued for rule assignment.
+   * - Not currently applicable to Rust
+     - 87
+     - Excluded, except five guidelines retained with a stated reason.
+
+At the pinned revision three guidelines have an SCRC coding guideline: 7.0.4, 8.2.2
+and 8.2.10. The remaining applicable guidelines have a verdict and a rationale but no
+SCRC rule text yet, which is the gap the S-CORE catalogue proposes to fill.
+
+How the register follows the SCRC verdict
+=========================================
+
+Each register row records the SCRC verdict, the related MISRA C:2025 guideline, the
+SCRC guideline link and category, and the S-CORE disposition:
+
+* **proposed rust obligation** (83): SCRC marks the guideline applicable and one or
+  more S-CORE rules interpret it.
+* **rule assignment pending** (9): SCRC marks the guideline applicable but no S-CORE
+  rule covers it yet. These need a new rule or an explicit exclusion decision.
+* **not applicable** (82): SCRC marks the guideline not applicable and S-CORE agrees.
+* **retained beyond SCRC** (5): SCRC marks the guideline not applicable but S-CORE
+  keeps it as a supporting source for an existing rule, with the reason in the note.
+
+The safe/unsafe distinction is recorded per source guideline and shown in the rule
+catalogue. It does not by itself set the scope of an S-CORE rule; a rule's scope and
+the component's production, test and tooling profiles decide where it applies.
+
+Both open groups are listed in the :ref:`review queue <rust_coding_rules_review_queue>`
+below. Resolving them, in either direction, is a review decision and is recorded in
+the register with a note.
+
+Secondary reference: MISRust
+============================
+
+The paper
 `MISRust: Mapping MISRA-C++ Coding Guidelines to the Rust Programming Language
 <https://arxiv.org/abs/2605.23490v2>`_ by Marius Molz, Niels Schneider, Sven Lechner,
-Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University, Embedded Software
-Laboratory), arXiv:2605.23490v2, 27 August 2026. The study covers Rust 1.92.0 /
-edition 2024; its full cross-language FFI analysis is explicitly out of scope.
+Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University), arXiv:2605.23490v2,
+27 August 2026, and its
+`research dataset <https://github.com/embedded-software-laboratory/MISRust/blob/9aafed8ea5d222625d4be7982b4f9e8ca2e29bec/misra_cpp_rust_comparison_rules.csv>`_
+were the starting point of this draft and remain a secondary reference. The
+``misrust_class`` column keeps the study's C1 to C6 classification for every guideline
+so that the origin of the rule grouping stays traceable.
 
-The paper explains the methodology and selected adaptations; the
-`pinned MISRust research dataset <https://github.com/embedded-software-laboratory/MISRust/blob/9aafed8ea5d222625d4be7982b4f9e8ca2e29bec/misra_cpp_rust_comparison_rules.csv>`_
-supplies all 179 guideline classifications. The MISRA C++:2023 document was used
-to check source identifiers, original categories and rule intents.
+Where MISRust and the SCRC cross-reference disagree, the SCRC verdict is followed. The
+subcommittee's own
+`analysis of the differences <https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst>`_
+identifies the main weaknesses of the study: compiler warnings treated as language
+guarantees, raw-pointer operations in safe code overlooked, and foreign interfaces not
+considered when dismissing C++ library guidelines. The corrections this draft had
+applied to the study point in the same direction and are now superseded by the SCRC
+verdicts.
 
-The supporting MISRA C:2025 Addendum 6 assesses applicability **to Rust**, including
-foreign interfaces. It supports the boundary review in
-:ref:`SCR-RUST-042 <scr-rust-042>`. The full MISRA C:2025 standard was not
-part of the analysis, so a complete C-rule interpretation is not claimed.
+Supporting references
+=====================
 
-The
-`Safety-Critical Rust Consortium guidelines <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines>`_
-are a further source for review. This draft does not yet include a full mapping
-to that guideline set.
+MISRA C:2025 Addendum 6 assesses the applicability of MISRA C:2025 **to Rust**,
+including foreign interfaces. The SCRC cross-reference names the related MISRA C
+guideline per row, and the register carries that column. Addendum 6 supports the
+boundary review in :ref:`SCR-RUST-042 <scr-rust-042>`. The full MISRA C:2025 rule
+text was not part of the analysis, so a complete C-rule interpretation is not claimed.
+
+The `SCRC coding guidelines <https://coding-guidelines.arewesafetycriticalyet.org/>`_
+themselves are the intended long-term home of Rust-specific rule text. Where an SCRC
+guideline exists for a mapped source, the register links it; S-CORE rule text for the
+same source is a candidate contribution, not a competing standard.
 
 Attribution and records
 =======================
 
-Classification facts are reproduced unchanged from the MISRust authors' research
-artifacts, licensed under
-`CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0/>`_. Rule grouping, Rust
-requirements, dispositions, assessment notes, enforcement assessments and corrections
-are S-CORE modifications and additions. The register cites MISRA guidelines by
-number, kind, category and page only; no MISRA guideline text is reproduced, and the
-MISRA documents are not redistributed here. The source manifest records the
-documents used by role and content hash.
+The SCRC cross-reference is documentation in the consortium repository and is
+licensed under
+`CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0/>`_ per that repository's
+COPYRIGHT file. Its verdicts, MISRA C references and guideline links are reproduced
+unchanged; its rationale text is not copied, and readers should consult the pull
+request for it. The MISRust classifications are reproduced unchanged from the CC-BY-4.0
+research artifacts. Rule grouping, Rust rule text, dispositions, assessment notes and
+the review queue are S-CORE modifications and additions. Neither the SCRC nor the
+MISRust authors have reviewed or endorsed this draft.
 
-* :download:`Source manifest with document hashes <_assets/sources.json>`
+The register cites MISRA guidelines by number, kind, category and page only; no MISRA
+guideline text is reproduced, and the MISRA documents are not redistributed here. The
+source manifest records the documents used by role and content hash.
+
+* :download:`Source manifest with pinned revisions and document hashes <_assets/sources.json>`
 * :download:`Full 179-row applicability register <_assets/applicability.csv>`
 * :download:`Machine-readable Rust rules <_assets/rules.json>`
 
-The source manifest pins the paper version, research artifact commit and dataset
-checksum. The complete register includes original rule/directive category, physical
-MISRA C++ PDF page (counted from 1), artifact row and draft review disposition.
+.. _rust_coding_rules_review_queue:
 
-Classification and adoption
-===========================
+Review queue
+============
 
-.. list-table:: MISRust classifications
+Guidelines whose S-CORE disposition still diverges from a simple reading of the SCRC
+verdict. Nine need a rule or an exclusion decision; five are retained beyond the SCRC
+verdict and need confirmation or removal.
+
+.. csv-table:: Open applicability decisions
+   :file: _assets/review_queue.csv
    :header-rows: 1
-   :widths: 15 10 35 40
-
-   * - Class
-     - Count
-     - Study classification
-     - Draft treatment
-   * - C1
-     - 15
-     - C++ library-specific
-     - Candidate native-Rust exclusion; reassess foreign boundaries.
-   * - C2
-     - 42
-     - C++ feature-specific
-     - Candidate exclusion; review semantic analogues.
-   * - C3
-     - 53
-     - Claimed language coverage
-     - Verify compiler/diagnostic assumptions; restore selected obligations.
-   * - C4 excluding C6
-     - 36
-     - Retained outside the safe subset
-     - Explicit Rust obligations, with corrected scope where necessary.
-   * - C6
-     - 22
-     - Retained even in safe Rust
-     - Explicit Rust obligations.
-   * - C5
-     - 11
-     - Adaptation needed
-     - Explicit Rust interpretations.
-
-In the paper C6 is a subset of C4: C4 totals 58. The artifact encodes C4 (36)
-and C6 (22) separately. Therefore the retained total is 36 + 22 + 11 = **69**.
-The paper's page 8 reference to C3/C4 for that set appears to be a label typo;
-its diagram and counts identify C4/C5.
-
-The 22 C6 entries are not a complete safe-Rust policy. Adapted rules, dependencies,
-configuration, runtime failures and safe raw-pointer operations need assessment too.
-Each adopting component must check the analysis against its actual Rust edition,
-toolchain and delivered configurations.
-
-Corrections requiring explicit review
-=====================================
-
-The register preserves the authors' classifications and records draft interpretation
-separately. In particular:
-
-* Raw pointers may be created, cast and compared outside unsafe blocks. Pointer
-  restrictions must scan all code, not just unsafe syntax.
-* A warning is not a hard language guarantee. Unused/unreachable-code coverage
-  depends on diagnostics, visibility, configuration and suppression policy.
-* Dynamic shifts (7.0.4), escaping raw pointers (6.8.2), immediately discarded
-  guards (9.2.1), destructor panics (18.4.1) and allocator customization (21.6.4)
-  need reconsideration even where the study sets a guideline aside.
-* Safe code can leak or forget resources; destruction is not guaranteed.
-  ``Pin`` is a type, not a trait.
-* ``ptr::copy`` permits overlap; ``copy_nonoverlapping`` does not. Pointer API
-  contracts, provenance and valid ownership determine correctness.
-* Memory safety, panic freedom, bounded resource use, race-free application logic
-  and functional correctness are separate claims.
-
-Technical references for these interpretations include the
-`Rust operator reference <https://doc.rust-lang.org/reference/expressions/operator-expr.html>`_,
-`pointer documentation <https://doc.rust-lang.org/std/ptr/index.html>`_,
-`undefined-behavior reference <https://doc.rust-lang.org/reference/behavior-considered-undefined.html>`_,
-`forget contract <https://doc.rust-lang.org/std/mem/fn.forget.html>`_,
-`copy contract <https://doc.rust-lang.org/std/ptr/fn.copy.html>`_,
-`Drop documentation <https://doc.rust-lang.org/std/ops/trait.Drop.html>`_,
-`allocator interfaces <https://doc.rust-lang.org/std/alloc/index.html>`_ and
-`pinning documentation <https://doc.rust-lang.org/std/pin/index.html>`_.
-Recheck these against the selected toolchain's supported language documentation.
+   :widths: 8 9 8 8 20 47
 
 Complete source mapping
 =======================
 
-Every entry is a draft requiring review, including candidate exclusions and compiler
-coverage. A link to a Rust rule records an interpretation, not proven enforcement.
-The original source level is distinct from a Rust rule's proposed S-CORE level.
+Every entry is a draft requiring review. A link to a Rust rule records an
+interpretation, not proven enforcement. The original MISRA level is distinct from a
+Rust rule's proposed S-CORE level.
 
-.. csv-table:: MISRA C++ to proposed Rust rules
+.. csv-table:: MISRA C++:2023 to proposed Rust rules
    :file: _assets/applicability_summary.csv
    :header-rows: 1
-   :widths: 9 6 10 25 50
+   :widths: 8 9 8 8 20 47

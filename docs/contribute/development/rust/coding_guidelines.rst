@@ -258,9 +258,10 @@ Research sources such as
 are used as supporting rationale for topic prioritization, not as normative
 compliance criteria.
 
-A rule-by-rule reading of the MISRA C++:2023 guidelines that MISRust retains for
-Rust, together with an applicability register and the evidence expected per rule,
-is maintained as a draft in :need:`doc__rust_coding_rules`. It supplements the
+Proposed S-CORE rule text for the MISRA C++:2023 guidelines that the SCRC's own
+cross-reference marks as applicable to Rust, together with an applicability register
+and the evidence expected per rule, is maintained as a draft in
+:need:`doc__rust_coding_rules`. It supplements the
 lint profile described here and binds a component only once adopted through its
 Software Development Plan.
 

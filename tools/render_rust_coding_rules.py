@@ -68,7 +68,10 @@ does not establish compliance.
 """
 EXPECTED_RULES = 43
 EXPECTED_SOURCES = 179
-EXPECTED_CLASSES = {"C1": 15, "C2": 42, "C3": 53, "C4": 36, "C5": 11, "C6": 22}
+EXPECTED_MISRUST_CLASSES = {"C1": 15, "C2": 42, "C3": 53, "C4": 36, "C5": 11, "C6": 22}
+EXPECTED_SCRC = {"safe": 54, "unsafe": 38, "not_applicable": 87}
+APPLICABLE = {"safe", "unsafe"}
+SCRC_LABEL = {"safe": "safe", "unsafe": "unsafe", "not_applicable": "beyond SCRC"}
 
 
 def paragraph(text):
@@ -84,23 +87,32 @@ def validate(rules, rows):
         raise ValueError(
             "Update the documented baseline counts when intentionally changing the catalogue"
         )
-    counts = Counter(r["misrust_class"] for r in rows)
-    if counts != EXPECTED_CLASSES:
+    if Counter(r["misrust_class"] for r in rows) != EXPECTED_MISRUST_CLASSES:
+        raise ValueError("The MISRust classifications do not match the pinned dataset")
+    if Counter(r["scrc_applicability"] for r in rows) != EXPECTED_SCRC:
         raise ValueError(
-            "The source classifications do not match the pinned MISRust baseline"
+            "The SCRC applicability verdicts do not match the pinned mapping revision"
         )
     for row in rows:
+        gid = row["misra_cpp_id"]
         linked = set(filter(None, row["score_rule_ids"].split(";")))
-        expected = {r["id"] for r in rules if row["misra_cpp_id"] in r["misra_cpp_ids"]}
+        expected = {r["id"] for r in rules if gid in r["misra_cpp_ids"]}
         if linked != expected or not linked <= ids:
-            raise ValueError(f"Inconsistent rule mapping: {row['misra_cpp_id']}")
-        retained = row["misrust_class"] in ("C4", "C5", "C6")
-        if (row["paper_relevant_set"] == "yes") != retained or (
-            retained and not linked
-        ):
+            raise ValueError(f"Inconsistent rule mapping: {gid}")
+        disposition = row["score_disposition"]
+        if row["scrc_applicability"] in APPLICABLE:
+            wanted = "proposed_rust_obligation" if linked else "rule_assignment_pending"
+        else:
+            wanted = "retained_beyond_scrc" if linked else "not_applicable"
+        if disposition != wanted:
             raise ValueError(
-                f"Missing or incorrect retained-rule mapping: {row['misra_cpp_id']}"
+                f"Disposition of {gid} must be {wanted} given its SCRC verdict and rule links"
             )
+        if (
+            disposition in ("rule_assignment_pending", "retained_beyond_scrc")
+            and not row["assessment_note"]
+        ):
+            raise ValueError(f"{gid} needs an assessment note explaining the open item")
     for rule in rules:
         if not set(rule["misra_cpp_ids"]) <= source_ids:
             raise ValueError(f"Unknown source guideline in {rule['id']}")
@@ -108,19 +120,23 @@ def validate(rules, rows):
             raise ValueError(f"Unknown proposed level in {rule['id']}")
 
 
-def render_rules(rules):
+def render_rules(rules, rows):
+    verdict = {r["misra_cpp_id"]: SCRC_LABEL[r["scrc_applicability"]] for r in rows}
     parts = [HEADER, PREAMBLE]
     for rule in rules:
         rid = rule["id"]
         title = f"{rid}: {rule['title']}"
-        sources = ", ".join(rule["misra_cpp_ids"]) or "No direct mapping"
+        sources = (
+            ", ".join(f"{g} ({verdict[g]})" for g in rule["misra_cpp_ids"])
+            or "No direct mapping"
+        )
         parts.extend(
             [
                 f".. _{rid.lower()}:\n\n",
                 title + "\n" + "=" * len(title) + "\n\n",
                 paragraph(
                     f"**Proposed level:** {rule['proposed_level']}. "
-                    f"**Source IDs (MISRA C++:2023):** {sources}."
+                    f"**Source IDs (MISRA C++:2023, SCRC verdict):** {sources}."
                 ),
                 paragraph(f"**Origin:** {rule['origin']}. **Scope:** {rule['scope']}."),
                 paragraph(rule["requirement"]),
@@ -131,38 +147,41 @@ def render_rules(rules):
     return "".join(parts)
 
 
-def render_summary(rows):
-    summary = io.StringIO(newline="")
-    writer = csv.writer(summary, lineterminator="\n")
+def summary_row(row):
+    links = [
+        f":ref:`{rid} <{rid.lower()}>`"
+        for rid in filter(None, row["score_rule_ids"].split(";"))
+    ]
+    disposition = "; ".join(links) or row["score_disposition"].replace("_", " ")
+    assessment = (
+        row["assessment_note"]
+        or "Draft interpretation; applicability and enforcement require review."
+    )
+    return [
+        row["misra_cpp_id"],
+        row["scrc_applicability"].replace("_", " "),
+        row["misrust_class"],
+        row["source_category"],
+        disposition,
+        assessment,
+    ]
+
+
+def render_csv(rows):
+    out = io.StringIO(newline="")
+    writer = csv.writer(out, lineterminator="\n")
     writer.writerow(
         [
             "Source ID",
+            "SCRC verdict",
             "MISRust class",
             "Source level",
             "Proposed Rust rules",
             "Assessment",
         ]
     )
-    for row in rows:
-        links = [
-            f":ref:`{rid} <{rid.lower()}>`"
-            for rid in filter(None, row["score_rule_ids"].split(";"))
-        ]
-        disposition = "; ".join(links) or row["score_disposition"].replace("_", " ")
-        assessment = (
-            row["assessment_note"]
-            or "Draft interpretation; applicability and enforcement require review."
-        )
-        writer.writerow(
-            [
-                row["misra_cpp_id"],
-                row["misrust_class"],
-                row["source_category"],
-                disposition,
-                assessment,
-            ]
-        )
-    return summary.getvalue()
+    writer.writerows(summary_row(r) for r in rows)
+    return out.getvalue()
 
 
 def render():
@@ -171,9 +190,15 @@ def render():
     with (BASE / "_assets/applicability.csv").open(newline="") as source:
         rows = list(csv.DictReader(source))
     validate(rules, rows)
+    queue = [
+        r
+        for r in rows
+        if r["score_disposition"] in ("rule_assignment_pending", "retained_beyond_scrc")
+    ]
     return {
-        BASE / "rules.rst": render_rules(rules),
-        BASE / "_assets/applicability_summary.csv": render_summary(rows),
+        BASE / "rules.rst": render_rules(rules, rows),
+        BASE / "_assets/applicability_summary.csv": render_csv(rows),
+        BASE / "_assets/review_queue.csv": render_csv(queue),
     }
 
 
@@ -205,8 +230,8 @@ def main():
         )
         return 1
     print(
-        f"Validated {EXPECTED_RULES} Rust rules, {EXPECTED_SOURCES} source mappings and all 69 retained "
-        "source rules; generated files "
+        f"Validated {EXPECTED_RULES} Rust rules and {EXPECTED_SOURCES} source mappings against the pinned "
+        "SCRC verdicts; generated files "
         + ("are current." if args.check else "updated.")
     )
     return 0

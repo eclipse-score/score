@@ -87,7 +87,10 @@ No deviation can permit Rust undefined behavior.
 Adoption and rollout
 ====================
 
-#. Review the proposed rules and classification corrections; assign rule owners.
+#. Resolve the review queue of the applicability register: assign or write rules for
+   the guidelines SCRC marks applicable, and confirm or drop the guidelines retained
+   beyond the SCRC verdict.
+#. Review the proposed rules; assign rule owners.
    Resolve component-specific allocation, recursion, panic, numerical precision
    and foreign-interface requirements.
 #. Validate selected compiler/Clippy checks first, particularly

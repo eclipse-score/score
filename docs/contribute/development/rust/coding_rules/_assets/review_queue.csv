@@ -1,0 +1,15 @@
+Source ID,SCRC verdict,MISRust class,Source level,Proposed Rust rules,Assessment
+5.10.1,safe,C3,Required,rule assignment pending,SCRC: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).
+5.13.4,safe,C3,Required,rule assignment pending,SCRC: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.
+6.4.2,not applicable,C5,Required,:ref:`SCR-RUST-014 <scr-rust-014>`,"SCRC: not currently applicable, applicable once specialization stabilizes. Retained as supporting source for shadowing review."
+7.11.1,not applicable,C4,Required,:ref:`SCR-RUST-017 <scr-rust-017>`,"SCRC: not applicable (no overloads, no NULL macro). Retained: raw null pointers are still constructible in safe Rust."
+9.4.2,safe,C3,Required,rule assignment pending,SCRC: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.
+9.5.1,safe,C3,Advisory,rule assignment pending,SCRC: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.
+10.1.1,safe,C3,Advisory,rule assignment pending,"SCRC: applies to safe Rust; take &mut only when needed, with trait-definition exception. No S-CORE rule yet."
+10.2.1,safe,C3,Required,rule assignment pending,"SCRC: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet."
+13.3.4,safe,C2,Required,rule assignment pending,SCRC: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.
+19.0.1,not applicable,C5,Required,:ref:`SCR-RUST-037 <scr-rust-037>`,SCRC: not applicable (cfg attaches to the next item). Retained: cfg_select and attribute placement still need review.
+19.2.3,not applicable,C4,Required,:ref:`SCR-RUST-011 <scr-rust-011>`,SCRC: not applicable (raw strings supported). Retained as supporting source for include!/path provenance.
+21.2.3,safe,C1,Required,rule assignment pending,SCRC: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.
+21.6.4,not applicable,C2,Required,:ref:`SCR-RUST-039 <scr-rust-039>`,SCRC: not applicable (GlobalAlloc dealloc always receives the layout). Retained: allocator customization still needs review.
+28.3.1,safe,C2,Required,rule assignment pending,SCRC: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.
