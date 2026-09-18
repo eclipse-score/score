@@ -102,13 +102,22 @@ Adress/ Leak Sanitizer (ASAN/LSAN)
 
 If both tools are combined at runtime memory leaks and the corresponding address can be investigated.
 
-Coverage
-========
+Code Coverage
+=============
 
-As required by the verification guideline coverage needs to be calculated for the code which is used in the project. Therefore two approaches should be available:
+As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. Coverage is calculated on the host using LLVM's source-based coverage:
 
-* As a quick solution it is possible to calculate the coverage on the host via gcc.
-* But for a more accurate statement coverage can also be calculated with the qcc compiler with the appropriate libraries and POSIX interfaces. This method will also be used for the reporting.
+* Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.
+
+In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with ``llvm-profdata`` and evaluated with ``llvm-cov``.
+
+S-CORE determines structural coverage on the host using LLVM's source-based coverage. Structural coverage on the target is not determined by S-CORE. It shall be determined by the user or distributor for the target on which the S-CORE software is integrated. Target structural coverage is needed to identify uncovered target-specific code and to provide evidence for the absence of undefined behaviour on the target.
+
+LLVM's source-based coverage is preferred over ``gcov``-based coverage for the following reasons:
+
+
+* **Precision with templates, generics and modern C++:** legacy GCC line-based coverage ``gcov`` is line-oriented, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM's source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.
+* **MC/DC support:** LLVM/clang supports MC/DC natively (``-fcoverage-mcdc``), which is required for the higher ASIL levels.
 
 To enable this, following tools are used:
 
@@ -116,11 +125,11 @@ To enable this, following tools are used:
 
    object "Coverage" as coverage
    object "gtest" as gtest
-   object "gcov + gcovr" as gcov
+   object "llvm-cov + llvm-profdata" as llvm
    object "host" as host
-   object "QNX" as qnx
 
    coverage --> gtest
-   gtest --> gcov
-   gcov --> host
-   gcov --> qnx
+   gtest --> llvm
+   llvm --> host
+
+Host and target coverage have different responsibilities. LLVM coverage on the host provides S-CORE's structural-coverage result. The user or distributor shall determine structural coverage on the target used for integration, including target-specific code paths, as required by the platform AoU :need:`aou_req__platform__target_structural_coverage`. Target execution tests and target structural-coverage results are separate verification evidence and shall not be treated as interchangeable.
