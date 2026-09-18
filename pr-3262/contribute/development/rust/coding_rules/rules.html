@@ -667,7 +667,7 @@
                   
   <section id="rust-rule-catalogue">
 <span id="rust-coding-rules"></span><h1>Rust Rule Catalogue<a class="headerlink" href="#rust-rule-catalogue" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-03dcc0e0">
+<div class="need_container docutils container" id="SNCB-d680236e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules_catalogue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -764,9 +764,9 @@ does not establish compliance.</p>
 </nav>
 <section id="scr-rust-001-define-the-supported-rust-language-and-build-configuration">
 <span id="scr-rust-001"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink">SCR-RUST-001: Define the supported Rust language and build configuration</a><a class="headerlink" href="#scr-rust-001-define-the-supported-rust-language-and-build-configuration" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 4.1.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> All production crates and their build
-inputs.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 4.1.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All production crates and
+their build inputs.</p>
 <p>Each component shall record its compiler/toolchain revision, Rust edition, target, dependency
 resolution, enabled features, panic strategy, and overflow-check settings. Production builds shall
 use this controlled configuration. Unstable features and compiler-specific assumptions require
@@ -778,9 +778,10 @@ Bazel inputs; a host-only build does not cover QNX or a different feature set.</
 </section>
 <section id="scr-rust-002-enforce-selected-diagnostics-and-control-suppressions">
 <span id="scr-rust-002"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">SCR-RUST-002: Enforce selected diagnostics and control suppressions</a><a class="headerlink" href="#scr-rust-002-enforce-selected-diagnostics-and-control-suppressions" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 4.1.2, 0.0.1, 0.2.1, 0.2.2, 0.2.3,
-0.2.4.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> All first-party production crates.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 0.0.1 (safe), 0.2.1
+(safe), 0.2.2 (safe), 0.2.3 (safe), 0.2.4 (safe), 4.1.2 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All first-party
+production crates.</p>
 <p>The adopted lint profile shall make selected unused-code, unused-value, unreachable-code and
 deprecated-API diagnostics blocking. Any suppression shall identify a scoped rationale and
 rule/deviation. Suppressions inherited from generated or third-party code shall be recorded
@@ -793,8 +794,9 @@ warning-free build with complete coverage of the mapped rules.</p>
 </section>
 <section id="scr-rust-003-avoid-invariant-decisions-and-ineffective-writes">
 <span id="scr-rust-003"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">SCR-RUST-003: Avoid invariant decisions and ineffective writes</a><a class="headerlink" href="#scr-rust-003-avoid-invariant-decisions-and-ineffective-writes" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 0.0.2, 0.1.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production control flow.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 0.0.2 (safe), 0.1.1
+(safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production control flow.</p>
 <p>Conditions shall express a meaningful runtime decision unless explicitly designated as a constant
 configuration choice or intentional loop. A value shall not be written only to be overwritten before
 any required observation.</p>
@@ -805,8 +807,10 @@ value across calls. Record intentional loop and configuration exceptions.</p>
 </section>
 <section id="scr-rust-004-handle-results-and-preserve-error-information">
 <span id="scr-rust-004"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">SCR-RUST-004: Handle results and preserve error information</a><a class="headerlink" href="#scr-rust-004-handle-results-and-preserve-error-information" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 0.1.2, 18.5.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production APIs and their callers.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 0.1.2 (safe), 18.5.1
+(safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production APIs and their
+callers.</p>
 <p>Callers shall use returned values whose contracts require action. Errors shall be propagated,
 converted with necessary context, or handled according to an explicit recovery policy. Silently
 discarding a critical Result through let _, drop, .ok(), or a catch-all branch is prohibited.
@@ -819,9 +823,9 @@ side-effect APIs.</p>
 </section>
 <section id="scr-rust-005-define-floating-point-range-and-precision-contracts">
 <span id="scr-rust-005"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">SCR-RUST-005: Define floating-point range and precision contracts</a><a class="headerlink" href="#scr-rust-005-define-floating-point-range-and-precision-contracts" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 0.3.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Floating-point calculations, conversions
-and persistence.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 0.3.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Floating-point
+calculations, conversions and persistence.</p>
 <p>Each safety-relevant floating-point use shall specify acceptable range, precision, rounding,
 comparison tolerance, and handling of NaN, infinity and signed zero. Serialization shall preserve
 the required information or reject values that cannot meet the declared contract.</p>
@@ -833,9 +837,9 @@ contract.</p>
 </section>
 <section id="scr-rust-006-validate-preconditions-at-trust-boundaries">
 <span id="scr-rust-006"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">SCR-RUST-006: Validate preconditions at trust boundaries</a><a class="headerlink" href="#scr-rust-006-validate-preconditions-at-trust-boundaries" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 0.3.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Public APIs, external data, stored data
-and unsafe wrappers.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 0.3.2 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Public APIs, external
+data, stored data and unsafe wrappers.</p>
 <p>A function shall be called only when its documented preconditions hold. Encode invariants in
 validated types where possible; otherwise validate untrusted values before use and return a defined
 error. Stored data shall be treated as potentially malformed.</p>
@@ -846,9 +850,9 @@ success branch match the precondition. Arbitrary application contracts require r
 </section>
 <section id="scr-rust-007-isolate-unsafe-operations-and-establish-their-contracts">
 <span id="scr-rust-007"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">SCR-RUST-007: Isolate unsafe operations and establish their contracts</a><a class="headerlink" href="#scr-rust-007-isolate-unsafe-operations-and-establish-their-contracts" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 4.1.3.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Unsafe code, unsafe traits/attributes,
-safe wrappers and their dependencies.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 4.1.3 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Unsafe code, unsafe
+traits/attributes, safe wrappers and their dependencies.</p>
 <p>Undefined behavior is prohibited. Unsafe operations shall be confined to identified modules and
 justified by operation-specific invariants covering validity, lifetime, aliasing, alignment and
 concurrency as applicable. Safe APIs shall preserve soundness for all permitted safe callers. Crates
@@ -861,9 +865,10 @@ is a separate property.</p>
 </section>
 <section id="scr-rust-008-control-shared-state-and-memory-ordering">
 <span id="scr-rust-008"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">SCR-RUST-008: Control shared state and memory ordering</a><a class="headerlink" href="#scr-rust-008-control-shared-state-and-memory-ordering" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 4.6.1, 6.7.1, 6.7.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> All shared state, including Mutex, atomics
-and unsafe implementations.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 6.7.1 (safe), 6.7.2
+(safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All shared state,
+including Mutex, atomics and unsafe implementations.</p>
 <p>Shared mutable state shall have a documented owner, initialization protocol and synchronization
 design. Uncontrolled static mut is prohibited. Each use of shared globals, atomics, and unsafe
 Send/Sync shall justify ordering and lifecycle assumptions. Lock ordering and reentrancy constraints
@@ -876,8 +881,10 @@ paper’s unsafe-only grouping.</p>
 </section>
 <section id="scr-rust-009-remove-disabled-code-from-comments">
 <span id="scr-rust-009"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">SCR-RUST-009: Remove disabled code from comments</a><a class="headerlink" href="#scr-rust-009-remove-disabled-code-from-comments" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023):</strong> 5.7.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production source comments.</p>
+<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 5.7.1 (safe), 5.7.2
+(safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production source
+comments.</p>
 <p>Obsolete implementations should be removed and recovered through version control when needed.
 Comments should explain intent and constraints. Documentation examples and explanatory pseudocode
 are permitted.</p>
@@ -887,8 +894,9 @@ documentation.</p>
 </section>
 <section id="scr-rust-010-make-array-and-buffer-extents-explicit-at-interfaces">
 <span id="scr-rust-010"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">SCR-RUST-010: Make array and buffer extents explicit at interfaces</a><a class="headerlink" href="#scr-rust-010-make-array-and-buffer-extents-explicit-at-interfaces" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 6.0.2, 7.11.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Rust APIs and foreign buffer boundaries.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> No direct mapping.</p>
+<p><strong>Origin:</strong> S-CORE supplement (raw buffer extents at foreign interfaces). <strong>Scope:</strong> Rust APIs and
+foreign buffer boundaries.</p>
 <p>Use arrays or slices that carry the required extent in native Rust interfaces. Raw buffer interfaces
 shall document pointer, length, ownership and validity together, with validation before constructing
 a slice. Exported fixed-size arrays shall declare their size.</p>
@@ -899,8 +907,10 @@ and bounds-checked access can still panic.</p>
 </section>
 <section id="scr-rust-011-keep-imports-and-module-interfaces-explicit">
 <span id="scr-rust-011"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">SCR-RUST-011: Keep imports and module interfaces explicit</a><a class="headerlink" href="#scr-rust-011-keep-imports-and-module-interfaces-explicit" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023):</strong> 6.0.3, 19.0.3, 19.2.2, 19.2.3.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Crate/module layout and source inclusion.</p>
+<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 6.0.3 (unsafe), 19.0.3
+(safe), 19.2.1 (safe), 19.2.3 (beyond SCRC).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Crate/module layout and
+source inclusion.</p>
 <p>Imports and re-exports should make dependencies and ownership of names clear. Keep ordinary imports
 together; document exceptions for narrow local scope. Glob imports should be limited to explicitly
 designated preludes or tests. Generated/include-based source shall have controlled provenance.</p>
@@ -911,8 +921,9 @@ C++ include is incomplete. Valid syntax alone does not establish clarity or prov
 </section>
 <section id="scr-rust-012-reserve-entry-point-naming">
 <span id="scr-rust-012"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">SCR-RUST-012: Reserve entry-point naming</a><a class="headerlink" href="#scr-rust-012-reserve-entry-point-naming" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 6.0.4.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> First-party production functions.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 6.0.4 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> First-party production
+functions.</p>
 <p>Reserve main for actual executable entry points. Other production functions shall use names
 expressing their role. Generated wrappers and embedded entry-point conventions require an explicit
 scoped exception.</p>
@@ -922,9 +933,10 @@ entry points.</p>
 </section>
 <section id="scr-rust-013-control-exported-symbols-and-foreign-declarations">
 <span id="scr-rust-013"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">SCR-RUST-013: Control exported symbols and foreign declarations</a><a class="headerlink" href="#scr-rust-013-control-exported-symbols-and-foreign-declarations" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 6.2.1, 6.2.4, 6.5.1, 6.5.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Linkage attributes, exported symbols and
-foreign bindings.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 6.2.1 (unsafe), 6.2.2
+(unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Linkage attributes,
+exported symbols and foreign bindings.</p>
 <p>Exported symbols shall have unique definitions and compatible declarations in each delivered binary.
 Centralize foreign declarations in reviewed binding modules/crates. Use minimal visibility; justify
 no_mangle, export_name, link_section and equivalent linkage controls.</p>
@@ -936,9 +948,10 @@ alone.</p>
 </section>
 <section id="scr-rust-014-avoid-misleading-name-shadowing-and-method-resolution">
 <span id="scr-rust-014"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">SCR-RUST-014: Avoid misleading name shadowing and method resolution</a><a class="headerlink" href="#scr-rust-014-avoid-misleading-name-shadowing-and-method-resolution" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 6.4.1, 6.4.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Bindings, inherent methods and trait
-methods.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 6.4.1 (safe), 6.4.2
+(beyond SCRC).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Bindings, inherent
+methods and trait methods.</p>
 <p>Rebinding shall not silently change the logical meaning of a value. A same-name transformation may
 be allowed when its purpose is immediate and documented by the expression. Where inherent and trait
 methods share a name but differ semantically, use explicit qualification or change the API.</p>
@@ -949,9 +962,10 @@ composition is not class inheritance; a broad shadowing ban would enforce a diff
 </section>
 <section id="scr-rust-015-preserve-lifetimes-across-raw-interfaces">
 <span id="scr-rust-015"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">SCR-RUST-015: Preserve lifetimes across raw interfaces</a><a class="headerlink" href="#scr-rust-015-preserve-lifetimes-across-raw-interfaces" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 6.8.1, 6.8.2, 6.8.3, 6.8.4.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> References, raw pointers, callbacks and
-ownership transfers.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 6.8.1 (unsafe), 6.8.2
+(unsafe), 6.8.3 (unsafe), 6.8.4 (unsafe), 8.1.2 (unsafe), 28.6.3 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> References, raw pointers,
+callbacks and ownership transfers.</p>
 <p>An access shall not outlive its referent. Do not expose a dangling local pointer as a usable API
 result or store borrowed addresses beyond their valid lifetime. Raw-pointer wrappers shall establish
 lifetime invariants for returned references and asynchronous/foreign callbacks.</p>
@@ -962,9 +976,10 @@ reference lifetimes do not establish equivalent guarantees for raw pointers or f
 </section>
 <section id="scr-rust-016-make-numeric-boolean-and-character-conversions-intentional">
 <span id="scr-rust-016"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">SCR-RUST-016: Make numeric, Boolean and character conversions intentional</a><a class="headerlink" href="#scr-rust-016-make-numeric-boolean-and-character-conversions-intentional" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 7.0.1, 7.0.2, 7.0.3, 7.0.6.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> All conversions, including safe casts and
-unsafe reinterpretation.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 7.0.1 (safe), 7.0.2
+(unsafe), 8.2.2 (safe), 10.2.3 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All conversions,
+including safe casts and unsafe reinterpretation.</p>
 <p>Conversions shall preserve the required value or perform explicit range/validity checks with a
 defined error. Boolean/character values shall not be used as incidental numbers; documented
 encoding/decoding boundaries may convert them through valid representations. Lossy floating-point
@@ -977,8 +992,9 @@ requirements.</p>
 </section>
 <section id="scr-rust-017-represent-absent-pointers-explicitly">
 <span id="scr-rust-017"></span><h2><a class="toc-backref" href="#id17" role="doc-backlink">SCR-RUST-017: Represent absent pointers explicitly</a><a class="headerlink" href="#scr-rust-017-represent-absent-pointers-explicitly" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 7.11.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Raw-pointer and foreign APIs.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 7.11.1 (beyond SCRC).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Raw-pointer and foreign
+APIs.</p>
 <p>Use typed null constructors when a raw null pointer is required. Use Option or another explicit type
 for optional references/handles in safe APIs. Check required pointer validity before dereference; a
 null check alone is insufficient.</p>
@@ -989,8 +1005,8 @@ neither allocation validity nor lifetime/alignment.</p>
 </section>
 <section id="scr-rust-018-make-mixed-operator-intent-clear">
 <span id="scr-rust-018"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">SCR-RUST-018: Make mixed-operator intent clear</a><a class="headerlink" href="#scr-rust-018-make-mixed-operator-intent-clear" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023):</strong> 8.0.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production expressions.</p>
+<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.0.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production expressions.</p>
 <p>Expressions mixing arithmetic, bitwise, shift or Boolean operators should use grouping that makes
 the intended evaluation clear. Split complex expressions when parentheses alone do not make them
 readable.</p>
@@ -1000,9 +1016,9 @@ readability judgment.</p>
 </section>
 <section id="scr-rust-019-use-checked-type-recovery">
 <span id="scr-rust-019"></span><h2><a class="toc-backref" href="#id19" role="doc-backlink">SCR-RUST-019: Use checked type recovery</a><a class="headerlink" href="#scr-rust-019-use-checked-type-recovery" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.2.1, 8.2.9.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Type-erased values and trait-object
-downcasts.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.2.1 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Type-erased values and
+trait-object downcasts.</p>
 <p>Recover concrete types through checked APIs such as Any downcasts, and handle failure. Unchecked
 type recovery requires a proven type-identity invariant within an approved unsafe abstraction. Do
 not invent a ban on ordinary TypeId queries.</p>
@@ -1014,10 +1030,10 @@ MISRA-shaped check.</p>
 </section>
 <section id="scr-rust-020-restrict-pointer-casts-and-representation-changes">
 <span id="scr-rust-020"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink">SCR-RUST-020: Restrict pointer casts and representation changes</a><a class="headerlink" href="#scr-rust-020-restrict-pointer-casts-and-representation-changes" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.2.3, 8.2.5, 8.2.6, 8.2.7, 8.2.8,
-23.11.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> All raw-pointer transformations, safe and
-unsafe.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.2.3 (unsafe), 8.2.5
+(unsafe), 8.2.6 (unsafe), 8.2.7 (unsafe), 8.2.8 (safe), 23.11.1 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All raw-pointer
+transformations, safe and unsafe.</p>
 <p>Prefer typed pointer/reference APIs. Pointer-to-integer conversions, reconstruction of pointers,
 mutability-changing casts and transmute shall be restricted to reviewed low-level interfaces with
 documented provenance, alignment, validity and aliasing assumptions. Do not truncate addresses or
@@ -1030,9 +1046,10 @@ from equal sizes.</p>
 </section>
 <section id="scr-rust-021-preserve-function-call-abi-and-variadic-contracts">
 <span id="scr-rust-021"></span><h2><a class="toc-backref" href="#id21" role="doc-backlink">SCR-RUST-021: Preserve function-call ABI and variadic contracts</a><a class="headerlink" href="#scr-rust-021-preserve-function-call-abi-and-variadic-contracts" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.2.4, 8.2.11.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Function pointers, callbacks and variadic
-foreign calls.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.2.4 (unsafe), 8.2.11
+(unsafe), 21.10.1 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Function pointers,
+callbacks and variadic foreign calls.</p>
 <p>Calls shall use a compatible function signature, calling convention and ABI. Function-pointer
 representation changes require boundary review. Avoid C variadic calls in application code; a
 necessary adapter shall validate argument types and applicable promotion rules.</p>
@@ -1043,9 +1060,9 @@ variadic argument contract. The paper excludes full FFI analysis.</p>
 </section>
 <section id="scr-rust-022-control-recursion-and-stack-consumption">
 <span id="scr-rust-022"></span><h2><a class="toc-backref" href="#id22" role="doc-backlink">SCR-RUST-022: Control recursion and stack consumption</a><a class="headerlink" href="#scr-rust-022-control-recursion-and-stack-consumption" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.2.10.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production call paths, including callbacks
-and recursive destruction.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.2.10 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production call paths,
+including callbacks and recursive destruction.</p>
 <p>Direct and indirect recursion shall be prohibited in safety-relevant execution paths unless a scoped
 deviation establishes a finite depth and stack budget. Assess recursive parsing, traversal and
 destructor chains as well as explicit self-calls.</p>
@@ -1057,9 +1074,10 @@ general proof of bounded stack use.</p>
 </section>
 <section id="scr-rust-023-respect-allocation-boundaries-in-pointer-operations">
 <span id="scr-rust-023"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink">SCR-RUST-023: Respect allocation boundaries in pointer operations</a><a class="headerlink" href="#scr-rust-023-respect-allocation-boundaries-in-pointer-operations" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.7.1, 8.7.2, 8.9.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Raw-pointer arithmetic, differences,
-comparisons and later use.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.7.1 (unsafe), 8.7.2
+(unsafe), 8.9.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Raw-pointer arithmetic,
+differences, comparisons and later use.</p>
 <p>Pointer operations shall meet their individual API contracts, including allocation/provenance and
 bounds requirements. Relational comparisons shall not infer object order across unrelated
 allocations. Prefer slice indexing/iteration; document any reviewed address-ordering exception
@@ -1072,8 +1090,9 @@ access determine validity. The project comparison restriction is stronger than l
 </section>
 <section id="scr-rust-024-separate-persistent-effects-from-short-circuit-decisions">
 <span id="scr-rust-024"></span><h2><a class="toc-backref" href="#id24" role="doc-backlink">SCR-RUST-024: Separate persistent effects from short-circuit decisions</a><a class="headerlink" href="#scr-rust-024-separate-persistent-effects-from-short-circuit-decisions" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.14.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production Boolean expressions.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.14.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production Boolean
+expressions.</p>
 <p>Required persistent effects shall not depend on accidental short-circuit evaluation. Move state
 changes and critical I/O out of the right side of &amp;&amp; or ||, or document an intentional conditional-
 effect contract at the call site.</p>
@@ -1083,8 +1102,10 @@ call in a condition is not automatically a violation.</p>
 </section>
 <section id="scr-rust-025-use-memory-copy-operations-with-valid-overlap-and-ownership">
 <span id="scr-rust-025"></span><h2><a class="toc-backref" href="#id25" role="doc-backlink">SCR-RUST-025: Use memory-copy operations with valid overlap and ownership</a><a class="headerlink" href="#scr-rust-025-use-memory-copy-operations-with-valid-overlap-and-ownership" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.18.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Raw copies and buffer movement.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 8.18.1 (unsafe), 24.5.2
+(unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Raw copies and buffer
+movement.</p>
 <p>Choose copy operations whose overlap contract matches the buffers. copy_nonoverlapping requires
 disjoint regions; overlapping movement must use an operation permitting overlap. Both cases require
 valid alignment, size, initialization and ownership handling without double drop.</p>
@@ -1096,9 +1117,10 @@ owning values.</p>
 </section>
 <section id="scr-rust-026-specify-arithmetic-overflow-and-shift-behavior">
 <span id="scr-rust-026"></span><h2><a class="toc-backref" href="#id26" role="doc-backlink">SCR-RUST-026: Specify arithmetic overflow and shift behavior</a><a class="headerlink" href="#scr-rust-026-specify-arithmetic-overflow-and-shift-behavior" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 8.20.1, 7.0.4.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Integer arithmetic, shifts and constant
-calculations.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 7.0.4 (safe), 8.20.1
+(safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Integer arithmetic,
+shifts and constant calculations.</p>
 <p>Arithmetic shall stay within its required range or use explicit checked, saturating, wrapping or
 overflowing operations with justified semantics. Check division/remainder exceptional inputs and
 shift counts, including negative counts where applicable. Constants shall not silently wrap contrary
@@ -1111,9 +1133,9 @@ behavior depend on operation and build configuration.</p>
 </section>
 <section id="scr-rust-027-make-decision-fallbacks-explicit">
 <span id="scr-rust-027"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink">SCR-RUST-027: Make decision fallbacks explicit</a><a class="headerlink" href="#scr-rust-027-make-decision-fallbacks-explicit" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 9.4.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Safety-relevant if/else-if decision
-chains.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 9.4.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Safety-relevant if/else-
+if decision chains.</p>
 <p>Each safety-relevant decision chain shall define behavior when no condition matches. Prefer
 exhaustive match for finite cases; otherwise provide a final else that performs the defined fallback
 or documents the intentionally empty action.</p>
@@ -1124,8 +1146,9 @@ project scope adapts the original rule rather than imposing an else on every ind
 </section>
 <section id="scr-rust-028-separate-volatile-i-o-from-synchronization">
 <span id="scr-rust-028"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">SCR-RUST-028: Separate volatile I/O from synchronization</a><a class="headerlink" href="#scr-rust-028-separate-volatile-i-o-from-synchronization" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 10.1.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Hardware access and volatile operations.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 10.1.2 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Hardware access and
+volatile operations.</p>
 <p>Volatile operations shall be confined to reviewed hardware/platform abstractions with documented
 address, width, alignment and device-ordering assumptions. Use appropriate synchronization for
 shared memory; volatile shall not be used as a substitute for atomics or locks.</p>
@@ -1135,8 +1158,9 @@ differ for the specific I/O operation and memory region.</p>
 </section>
 <section id="scr-rust-029-restrict-assembly-to-reviewed-platform-modules">
 <span id="scr-rust-029"></span><h2><a class="toc-backref" href="#id29" role="doc-backlink">SCR-RUST-029: Restrict assembly to reviewed platform modules</a><a class="headerlink" href="#scr-rust-029-restrict-assembly-to-reviewed-platform-modules" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 10.4.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Inline and global assembly.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 10.4.1 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Inline and global
+assembly.</p>
 <p>Assembly is prohibited in ordinary application components. A platform exception shall document the
 instruction contract, registers/clobbers, stack, memory effects, target assumptions and safe wrapper
 invariants.</p>
@@ -1146,8 +1170,9 @@ Scan generated and macro-expanded code too.</p>
 </section>
 <section id="scr-rust-030-limit-raw-pointer-indirection">
 <span id="scr-rust-030"></span><h2><a class="toc-backref" href="#id30" role="doc-backlink">SCR-RUST-030: Limit raw-pointer indirection</a><a class="headerlink" href="#scr-rust-030-limit-raw-pointer-indirection" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023):</strong> 11.3.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Raw-pointer APIs and declarations.</p>
+<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 11.3.2 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Raw-pointer APIs and
+declarations.</p>
 <p>Raw-pointer interfaces should use no more than two pointer-indirection levels. Deeper foreign
 interfaces should be isolated behind a typed adapter with explicit ownership and extent contracts.
 Native references and smart-pointer composition require separate design assessment.</p>
@@ -1157,9 +1182,10 @@ benign safe abstractions must not be classified solely by textual asterisks.</p>
 </section>
 <section id="scr-rust-031-establish-initialization-and-value-validity-before-use">
 <span id="scr-rust-031"></span><h2><a class="toc-backref" href="#id31" role="doc-backlink">SCR-RUST-031: Establish initialization and value validity before use</a><a class="headerlink" href="#scr-rust-031-establish-initialization-and-value-validity-before-use" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 11.6.1, 11.6.2.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Native initialization, MaybeUninit, unions
-and raw storage.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 11.6.1 (unsafe), 11.6.2
+(unsafe), 15.1.4 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Native initialization,
+MaybeUninit, unions and raw storage.</p>
 <p>Every observed value shall be initialized and valid for its Rust type. A MaybeUninit/raw-storage
 abstraction shall prove initialization before assume_init/read/reference creation, track partial
 initialization and avoid duplicate destruction. Zero-filled storage shall not be treated as a valid
@@ -1171,9 +1197,9 @@ storage. Some invalid references are already UB when created, before an explicit
 </section>
 <section id="scr-rust-032-prefer-enums-over-untagged-unions">
 <span id="scr-rust-032"></span><h2><a class="toc-backref" href="#id32" role="doc-backlink">SCR-RUST-032: Prefer enums over untagged unions</a><a class="headerlink" href="#scr-rust-032-prefer-enums-over-untagged-unions" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 12.3.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Application data models and foreign/low-
-level representations.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 12.3.1 (unsafe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Application data models
+and foreign/low-level representations.</p>
 <p>Use enums for application alternatives. A union shall be confined to a justified representation
 boundary with a documented discriminant/active-field protocol, field validity and destruction
 policy.</p>
@@ -1183,9 +1209,9 @@ alone cannot satisfy. FFI layout may require a reviewed exception.</p>
 </section>
 <section id="scr-rust-033-make-parameter-roles-consistent">
 <span id="scr-rust-033"></span><h2><a class="toc-backref" href="#id33" role="doc-backlink">SCR-RUST-033: Make parameter roles consistent</a><a class="headerlink" href="#scr-rust-033-make-parameter-roles-consistent" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023):</strong> 13.3.3.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Trait methods, implementations and public
-API documentation.</p>
+<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 13.3.3 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Trait methods,
+implementations and public API documentation.</p>
 <p>Parameter names should consistently describe their semantic roles across trait declarations,
 implementations and examples. Mark intentionally unused parameters explicitly and explain why an
 implementation ignores them.</p>
@@ -1195,8 +1221,9 @@ contracts, not C++ overriding syntax.</p>
 </section>
 <section id="scr-rust-034-protect-type-invariants-through-visibility">
 <span id="scr-rust-034"></span><h2><a class="toc-backref" href="#id34" role="doc-backlink">SCR-RUST-034: Protect type invariants through visibility</a><a class="headerlink" href="#scr-rust-034-protect-type-invariants-through-visibility" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 14.1.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Struct fields and constructors.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 14.1.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Struct fields and
+constructors.</p>
 <p>Fields whose arbitrary mutation can violate an invariant shall be private and changed through
 validating APIs. Plain data carriers may expose fields when all representable states are valid for
 their contract. Review mixed visibility explicitly.</p>
@@ -1206,10 +1233,10 @@ preservation. This replaces the C++ structural recommendation with a Rust invari
 </section>
 <section id="scr-rust-035-review-ownership-traits-and-resource-lifecycle">
 <span id="scr-rust-035"></span><h2><a class="toc-backref" href="#id35" role="doc-backlink">SCR-RUST-035: Review ownership traits and resource lifecycle</a><a class="headerlink" href="#scr-rust-035-review-ownership-traits-and-resource-lifecycle" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 15.0.1, 21.6.2, 21.6.5, 28.6.1,
-15.0.2, 9.2.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Copy/Clone/Drop, pinning, custom owners
-and raw allocation wrappers.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 15.0.1 (safe), 15.8.1
+(unsafe), 21.6.2 (safe), 28.6.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Copy/Clone/Drop, pinning,
+custom owners and raw allocation wrappers.</p>
 <p>Copy/Clone/Drop implementations shall preserve ownership and type invariants. Every acquired
 resource shall have a defined release/transfer policy, including partial failure paths. Unsafe
 pinning abstractions shall preserve their promised pinning invariants. Do not rely on destructors
@@ -1224,9 +1251,10 @@ differences; no artificial direct Rust equivalent is assumed.</p>
 </section>
 <section id="scr-rust-036-define-panic-termination-and-cleanup-behavior">
 <span id="scr-rust-036"></span><h2><a class="toc-backref" href="#id36" role="doc-backlink">SCR-RUST-036: Define panic, termination and cleanup behavior</a><a class="headerlink" href="#scr-rust-036-define-panic-termination-and-cleanup-behavior" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 18.5.2, 18.4.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Production library code, process
-boundaries and destructors.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 18.1.1 (unsafe), 18.4.1
+(safe), 18.5.2 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production library code,
+process boundaries and destructors.</p>
 <p>Recoverable failures shall use explicit error handling. Application libraries shall not directly
 terminate the process or panic on expected invalid input. Any intentional fail-stop path requires a
 documented system response. Account for implicit panics, destructor panics, allocation failure and
@@ -1239,9 +1267,9 @@ system may nevertheless treat it as a safety failure.</p>
 </section>
 <section id="scr-rust-037-validate-attributes-and-configuration-coverage">
 <span id="scr-rust-037"></span><h2><a class="toc-backref" href="#id37" role="doc-backlink">SCR-RUST-037: Validate attributes and configuration coverage</a><a class="headerlink" href="#scr-rust-037-validate-attributes-and-configuration-coverage" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 19.0.1, 19.1.3.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> cfg/features, attributes and build-
-generated configuration.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 19.0.1 (beyond SCRC).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> cfg/features, attributes
+and build-generated configuration.</p>
 <p>All cfg names/values and features shall be declared and checked. Invalid or unrecognized
 attributes/configuration diagnostics shall block analysis. Maintain and analyze the supported
 configuration matrix, including mutually exclusive features, rather than assuming one all-features
@@ -1253,9 +1281,10 @@ not establish that every delivered variant was analyzed.</p>
 </section>
 <section id="scr-rust-038-control-macro-expansion-and-argument-effects">
 <span id="scr-rust-038"></span><h2><a class="toc-backref" href="#id38" role="doc-backlink">SCR-RUST-038: Control macro expansion and argument effects</a><a class="headerlink" href="#scr-rust-038-control-macro-expansion-and-argument-effects" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 19.3.4.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Declarative/procedural macros and
-generated Rust.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 19.0.2 (safe), 19.3.4
+(safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Declarative/procedural
+macros and generated Rust.</p>
 <p>Macros shall document whether arguments are evaluated once, more than once or not at all. Use
 expression fragments where expression semantics are intended. Safety-relevant macro-generated unsafe
 code and effects shall be included in review and checker coverage.</p>
@@ -1267,9 +1296,10 @@ review.</p>
 </section>
 <section id="scr-rust-039-bound-allocation-and-isolate-manual-allocators">
 <span id="scr-rust-039"></span><h2><a class="toc-backref" href="#id39" role="doc-backlink">SCR-RUST-039: Bound allocation and isolate manual allocators</a><a class="headerlink" href="#scr-rust-039-bound-allocation-and-isolate-manual-allocators" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 21.6.1, 21.6.3, 21.6.4.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Heap allocation, container growth and
-custom allocation.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 21.6.1 (safe), 21.6.3
+(unsafe), 21.6.4 (beyond SCRC).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Heap allocation,
+container growth and custom allocation.</p>
 <p>Each component shall declare where allocation is permitted and justify peak memory, growth limits
 and failure behavior. Unbounded input-driven growth is prohibited. Manual allocators and raw
 allocation APIs shall be restricted to reviewed modules with allocator/layout/ownership contracts.</p>
@@ -1281,8 +1311,9 @@ prevent leaks or guarantee recovery from OOM.</p>
 </section>
 <section id="scr-rust-040-separate-compile-time-and-runtime-assertions">
 <span id="scr-rust-040"></span><h2><a class="toc-backref" href="#id40" role="doc-backlink">SCR-RUST-040: Separate compile-time and runtime assertions</a><a class="headerlink" href="#scr-rust-040-separate-compile-time-and-runtime-assertions" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> 22.3.1.</p>
-<p><strong>Origin:</strong> MISRust-derived S-CORE adaptation. <strong>Scope:</strong> Assertions and invariant checks.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 22.3.1 (safe).</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Assertions and invariant
+checks.</p>
 <p>An invariant intended for compile-time checking shall use a const-evaluated construct supported by
 the pinned compiler. Required runtime validation shall remain active in production and return the
 specified error or enter the approved failure path. Do not put required side effects inside
@@ -1294,9 +1325,9 @@ evaluation. debug_assert! can be disabled and must not carry a required safety c
 </section>
 <section id="scr-rust-041-account-for-dependency-and-generated-code-soundness">
 <span id="scr-rust-041"></span><h2><a class="toc-backref" href="#id41" role="doc-backlink">SCR-RUST-041: Account for dependency and generated-code soundness</a><a class="headerlink" href="#scr-rust-041-account-for-dependency-and-generated-code-soundness" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> No direct mapping.</p>
-<p><strong>Origin:</strong> S-CORE supplement to the paper’s scope. <strong>Scope:</strong> Transitive crates, standard library
-assumptions, macros and generators.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> No direct mapping.</p>
+<p><strong>Origin:</strong> S-CORE supplement (dependency and generated-code soundness). <strong>Scope:</strong> Transitive
+crates, standard library assumptions, macros and generators.</p>
 <p>Maintain the dependency/generator inventory and record the evidence relied on for unsafe
 implementations, feature selection and foreign code. Component safe-only status shall describe
 first-party source scope separately from the full linked dependency graph.</p>
@@ -1307,7 +1338,8 @@ paper analyzes language constructs, not the delivered dependency graph.</p>
 </section>
 <section id="scr-rust-042-assess-foreign-language-boundaries-explicitly">
 <span id="scr-rust-042"></span><h2><a class="toc-backref" href="#id42" role="doc-backlink">SCR-RUST-042: Assess foreign-language boundaries explicitly</a><a class="headerlink" href="#scr-rust-042-assess-foreign-language-boundaries-explicitly" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> No direct mapping.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> 21.10.2 (unsafe),
+21.10.3 (unsafe), 22.4.1 (unsafe), 25.5.1 (unsafe), 25.5.2 (unsafe), 25.5.3 (unsafe).</p>
 <p><strong>Origin:</strong> S-CORE supplement informed by MISRA C:2025 Addendum 6. <strong>Scope:</strong> Every Rust/C/C++
 boundary.</p>
 <p>Foreign bindings shall match the actual ABI, layout, types and exported definitions. Document
@@ -1322,7 +1354,7 @@ claim one.</p>
 </section>
 <section id="scr-rust-043-record-coverage-deviations-and-residual-obligations">
 <span id="scr-rust-043"></span><h2><a class="toc-backref" href="#id43" role="doc-backlink">SCR-RUST-043: Record coverage, deviations and residual obligations</a><a class="headerlink" href="#scr-rust-043-record-coverage-deviations-and-residual-obligations" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023):</strong> No direct mapping.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, SCRC verdict):</strong> No direct mapping.</p>
 <p><strong>Origin:</strong> S-CORE governance supplement. <strong>Scope:</strong> Every adopted guideline and delivered
 configuration.</p>
 <p>Each required adopted rule shall have evidence of conformance or an approved scoped deviation.

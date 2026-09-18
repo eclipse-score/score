@@ -1,7 +1,27 @@
 {
-  "draft_date": "2026-09-17",
-  "status": "Proposed S-CORE policy, not approved or enforced",
-  "primary_paper": {
+  "draft_date": "2026-09-18",
+  "status": "Proposed S-CORE rules, not approved or enforced",
+  "primary_reference_scrc": {
+    "title": "Rust Cross Reference with MISRA C++ 2023 (MISRA C++:2023 mapping)",
+    "publisher": "Safety-Critical Rust Consortium, Coding Guidelines Subcommittee",
+    "repository": "https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines",
+    "pull_request": "https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/pull/1226",
+    "file": "src/appendices/standards-matrices/misra-cpp-2023-mapping.rst",
+    "commit": "9e81abd4b9c642cad7bb62860aca355017f57ea9",
+    "revision_date": "2026-09-09",
+    "state": "Open pull request under weekly subcommittee review; not merged",
+    "license": "CC-BY-4.0 for documentation per the repository COPYRIGHT file (https://creativecommons.org/licenses/by/4.0/)",
+    "counts": {
+      "safe": 54,
+      "unsafe": 38,
+      "not_applicable": 87,
+      "total": 179,
+      "with_scrc_guideline": 3
+    },
+    "usage": "Primary applicability reference. The safe/unsafe/not-applicable verdict, the related MISRA C:2025 guideline and the SCRC guideline link are reproduced unchanged in the applicability register.",
+    "differences_analysis": "https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst"
+  },
+  "secondary_reference_misrust_paper": {
     "title": "MISRust: Mapping MISRA-C++ Coding Guidelines to the Rust Programming Language",
     "authors": [
       "Marius Molz",
@@ -23,7 +43,18 @@
       "unsafe_scope": "9",
       "adaptations": "9-11",
       "limitations": "12-13"
-    }
+    },
+    "usage": "Secondary reference. Its C1-C6 classification is kept per guideline for traceability; where it differs from the SCRC mapping, the SCRC mapping is followed."
+  },
+  "misrust_artifact": {
+    "repository": "https://github.com/embedded-software-laboratory/MISRust",
+    "commit": "9aafed8ea5d222625d4be7982b4f9e8ca2e29bec",
+    "dataset_url": "https://github.com/embedded-software-laboratory/MISRust/blob/9aafed8ea5d222625d4be7982b4f9e8ca2e29bec/misra_cpp_rust_comparison_rules.csv",
+    "dataset_sha256": "f140c3d4ce51575c5bc67c70c8e616ef1bec70e030479a3b9ed5c4a20b874e69",
+    "license": "CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/) for the paper and research artifacts; underlying MISRA material retains its own rights",
+    "attribution": "Classification facts derived from the MISRust research artifacts by the paper authors. Rust obligations, grouping, enforcement assessments and corrections are new draft interpretations.",
+    "dataset_encoding": "179 lines, no header; split each line at first two semicolons. Artifact uses disjoint C4 (36) and C6 (22); paper C4 total includes C6 (58).",
+    "modifications": "Classifications are reproduced unchanged. Rule grouping, Rust rule text, proposed levels, dispositions, assessment notes and corrections are S-CORE additions."
   },
   "reference_documents": [
     {
@@ -40,28 +71,19 @@
     },
     {
       "document": "MISRust paper, arXiv:2605.23490v2 (PDF)",
-      "role": "Primary analysis input, CC-BY-4.0",
+      "role": "Secondary analysis input, CC-BY-4.0",
       "redistributed": false,
       "sha256": "34cacd5e45da7a2a4cd26fb1194cf767910b03f489e2e389b1c35dcb0f09c2c8"
     }
   ],
-  "misrust_artifact": {
-    "repository": "https://github.com/embedded-software-laboratory/MISRust",
-    "commit": "9aafed8ea5d222625d4be7982b4f9e8ca2e29bec",
-    "dataset_url": "https://github.com/embedded-software-laboratory/MISRust/blob/9aafed8ea5d222625d4be7982b4f9e8ca2e29bec/misra_cpp_rust_comparison_rules.csv",
-    "dataset_sha256": "f140c3d4ce51575c5bc67c70c8e616ef1bec70e030479a3b9ed5c4a20b874e69",
-    "license": "CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/) for the paper and research artifacts; underlying MISRA material retains its own rights",
-    "attribution": "Classification facts derived from the MISRust research artifacts by the paper authors. Rust obligations, grouping, enforcement assessments and corrections are new draft interpretations.",
-    "dataset_encoding": "179 lines, no header; split each line at first two semicolons. Artifact uses disjoint C4 (36) and C6 (22); paper C4 total includes C6 (58).",
-    "modifications": "Classifications are reproduced unchanged. Rule grouping, Rust rule text, proposed levels, dispositions, assessment notes and corrections are S-CORE additions."
-  },
   "not_claimed": [
     "Official MISRA Rust standard",
     "MISRA compliance",
     "S-CORE approval",
     "Full checker implementation or validation",
     "Full MISRA C:2025 mapping",
-    "Full consortium-guideline mapping"
+    "Full consortium-guideline mapping",
+    "SCRC endorsement or adoption"
   ],
   "technical_references": {
     "rust_operators": "https://doc.rust-lang.org/reference/expressions/operator-expr.html",

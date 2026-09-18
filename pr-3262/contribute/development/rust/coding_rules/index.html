@@ -664,7 +664,7 @@
                   
   <section id="rust-coding-rules-misra-derived-draft">
 <span id="rust-coding-rules-overview"></span><h1>Rust Coding Rules (MISRA-derived draft)<a class="headerlink" href="#rust-coding-rules-misra-derived-draft" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d256f782">
+<div class="need_container docutils container" id="SNCB-5a7fffdc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -709,7 +709,8 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Proposed rulebook revision: <strong>0.1.0-draft</strong>, based on the analysis dated 2026-09-17.
+<p>Proposed rulebook revision: <strong>0.2.0-draft</strong>, aligned on 2026-09-18 with the SCRC MISRA C++
+cross-reference at commit <code class="docutils literal notranslate"><span class="pre">9e81abd4</span></code>.
 The rules are available for technical and safety review. Publishing this section
 does not approve the rulebook, establish MISRA compliance, or enable any CI check.</p>
 </div>
@@ -722,17 +723,22 @@ does not approve the rulebook, establish MISRA compliance, or enable any CI chec
 </div>
 <section id="attribution">
 <h2>Attribution<a class="headerlink" href="#attribution" title="Link to this heading">#</a></h2>
-<p>This catalogue builds on the paper
+<p>The applicability verdicts in this catalogue come from the <em>Rust Cross Reference with
+MISRA C++ 2023</em> prepared by the Coding Guidelines Subcommittee of the
+<a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines">Safety-Critical Rust Consortium</a>
+and submitted as
+<a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/pull/1226">pull request #1226</a>,
+still under review at the time of writing. The rule grouping started from the paper
 <a class="reference external" href="https://arxiv.org/abs/2605.23490v2">MISRust: Mapping MISRA-C++ Coding Guidelines to the Rust Programming Language</a> by Marius Molz, Niels Schneider, Sven Lechner,
-Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University) and on the
-<a class="reference external" href="https://github.com/embedded-software-laboratory/MISRust">MISRust research dataset</a>
-published by the authors. Both are licensed under
-<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.
-The classification of each MISRA C++:2023 guideline is theirs and is reproduced
-unchanged in the applicability register. The grouping into Rust rules, the rule
-wording, the proposed levels, the enforcement candidates, the dispositions and the
-corrections are S-CORE modifications and additions; they should not be attributed
-to the authors, and the authors do not endorse this draft.</p>
+Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University) and its
+<a class="reference external" href="https://github.com/embedded-software-laboratory/MISRust">research dataset</a>, which
+remain a secondary reference. Both sources are licensed under
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>
+and their classifications are reproduced unchanged in the applicability register.</p>
+<p>The grouping into Rust rules, the rule wording, the proposed levels, the enforcement
+candidates, the dispositions and the review queue are S-CORE modifications and
+additions. They should not be attributed to the SCRC or the MISRust authors, and
+neither has reviewed or endorsed this draft.</p>
 <p>The register refers to MISRA guidelines by number, kind and category only. MISRA
 guideline text remains the property of The MISRA Consortium Limited and is not
 reproduced here. Readers need their own licensed copy of MISRA C++:2023 to consult
@@ -746,19 +752,24 @@ guidelines: practical, evidence-based checks enforced through the <code class="d
 configuration in the <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> repository are preferred over rigid
 language subsetting, and research such as MISRust is used as supporting rationale
 rather than as normative compliance criteria.</p>
-<p>This section does not change that position. It offers a systematic, rule-by-rule
-reading of the MISRA C++:2023 guidelines that the MISRust study found relevant to
-Rust, so that reviewers can check the existing lint profile for gaps and decide,
-rule by rule, which obligations S-CORE wants to adopt, map to a validated check, or
-reject with a recorded reason. A rule listed here binds a component only after it has
-been adopted through the component’s Software Development Plan.</p>
+<p>This section does not change that position. It takes the SCRC’s own MISRA C++:2023
+cross-reference as the authority on which guidelines apply to Rust, and proposes S-CORE
+rule text for the applicable guidelines that have no SCRC coding guideline yet. This
+lets reviewers check the existing lint profile for gaps and decide, rule by rule, which
+obligations S-CORE wants to adopt, map to a validated check, or reject with a recorded
+reason. A rule listed here binds a component only after it has been adopted through the
+component’s Software Development Plan. Rule text that proves useful is a candidate
+contribution to the SCRC guidelines rather than a competing standard.</p>
 </section>
 <section id="purpose-and-scope">
 <h2>Purpose and scope<a class="headerlink" href="#purpose-and-scope" title="Link to this heading">#</a></h2>
-<p>The catalogue contains 43 proposed Rust rules: 40 grouped interpretations covering
-all 69 MISRA C++ guidelines retained by the MISRust study, plus three explicit
-S-CORE supplements for dependencies, foreign interfaces and verification governance.
-Several guidelines set aside by the study are also reconsidered. Grouping is
+<p>The catalogue contains 43 proposed Rust rules: 40 interpretations of MISRA C++:2023
+guidelines and three S-CORE supplements for buffer extents at foreign interfaces,
+dependency and generated-code soundness, and verification governance. They cover 83 of
+the 92 guidelines the SCRC cross-reference marks as applicable to safe or unsafe Rust,
+plus five guidelines retained beyond the SCRC verdict with a stated reason. Nine
+applicable guidelines have no S-CORE rule yet and are listed in the review queue of
+the <a class="reference internal" href="applicability.html#rust-coding-rules-applicability"><span class="std std-ref">applicability register</span></a>. Grouping is
 many-to-one: the number of Rust rules is not the number of mapped source guidelines.</p>
 <p>The scope is first-party production Rust and the dependency, generated-code and
 foreign-interface evidence needed for its safety claims. Both QM and safety-related
@@ -795,7 +806,7 @@ rulebook revision.</p>
 <section id="responsibilities-and-maintenance">
 <h2>Responsibilities and maintenance<a class="headerlink" href="#responsibilities-and-maintenance" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 14 </span><span class="caption-text">Ownership of the rulebook and its implementation</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">Ownership of the rulebook and its implementation</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -832,7 +843,9 @@ bazel<span class="w"> </span>run<span class="w"> </span>//:docs
 </pre></div>
 </div>
 <p>Review rule changes together with their applicability and checker-impact changes.
-Upstream guideline changes do not silently alter an adopted component revision.</p>
+When the SCRC cross-reference changes, re-pin its revision in the source manifest and
+re-align the register before publishing a new rulebook revision. Upstream changes do
+not silently alter an adopted component revision.</p>
 </section>
 </section>
 
