@@ -35,7 +35,7 @@ Previously, there was this unfinished
 
 For discussion, this subset of S-CORE modules shall serve as an example:
 
-.. image:: ../img/DR-004-example.png
+.. image:: img/DR-004-example.png
 
 
 Goals and Requirements
@@ -64,7 +64,7 @@ To understand how backlinks do not imply circular dependencies we must understan
 
 *If* Baselibs wants to see backlinks (i.e. COM references) in their documentation, they need to introduce the blue dependencies below:
 
-.. image:: ../img/DR-004-backlinking.png
+.. image:: img/DR-004-backlinking.png
 
 There is an additional module dependency to the Integration module.
 This is circular because Integration also uses the Baselibs module.
