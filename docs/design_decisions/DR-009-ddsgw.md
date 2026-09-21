@@ -4,7 +4,8 @@
 
 ```{dec_rec} Introduce DDS communication for mw::com
 :id: dec_rec__arch__introduce_dds_communication
-:status: draft
+:status: accepted
+:version: 1
 :tracking: https://github.com/eclipse-score/score/issues/2726
 :context: S-CORE lacks a common way for mw::com applications and services to use DDS data-centric communication or interoperate with native DDS systems.
 :decision: Add DDS communication through a DDS binding beneath the mw::com front end and a deployable DDS Gateway for bridging existing mw::com services to DDS domains.
