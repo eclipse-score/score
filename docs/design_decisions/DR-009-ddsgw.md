@@ -112,7 +112,7 @@ safety separation, and DDS implementation independence.
 
 ### Logical architecture
 
-![DDS communication architecture](/docs/design_decisions/_assets/dds_communication_architecture.svg)
+![DDS communication architecture](_assets/dds_communication_architecture.svg)
 
 For gateway-to-gateway communication, the complete path is:
 

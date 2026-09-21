@@ -61,7 +61,7 @@ Integration
    DR-*-int*
 
 DDS Communication
-~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 1
