@@ -59,3 +59,12 @@ Integration
    :glob:
 
    DR-*-int*
+
+DDS Communication
+~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-ddsgw*
