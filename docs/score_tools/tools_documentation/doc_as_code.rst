@@ -354,17 +354,42 @@ to the docs-as-code tool requirements (``tool_req``) that implement the correspo
      - Tool requirements (with testlinks)
      - Tool requirements (without testlinks)
    * - M1
-     - :need:`tool_req__docs_common_attr_id_scheme`, :need:`tool_req__docs_common_attr_security`, :need:`tool_req__docs_common_attr_status`
-     - :need:`tool_req__docs_doc_types`, :need:`tool_req__docs_doc_generic_mandatory`, :need:`tool_req__docs_common_attr_id`, :need:`tool_req__docs_common_attr_safety`
+     - | :need:`tool_req__docs_common_attr_id_scheme`,
+       | :need:`tool_req__docs_common_attr_status`, :need:`tool_req__docs_common_attr_description`,
+       | :need:`tool_req__docs_common_attr_title`,
+       | :need:`tool_req__docs_common_attr_desc_wording`,
+       | :need:`tool_req__docs_common_attr_security`
+       | :need:`tool_req__docs_saf_attrs_mandatory`,
+       | :need:`tool_req__docs_sec_attr_stride_threat_id`, :need:`tool_req__docs_sec_attrs_mandatory`
+     - | :need:`tool_req__docs_doc_generic_mandatory`,
+       | :need:`tool_req__docs_common_attr_id`, :need:`tool_req__docs_common_attr_safety`,
+       | :need:`tool_req__docs_common_attr_version`, :need:`tool_req__docs_common_attr_suspicious`,
+       | :need:`tool_req__docs_req_attr_rationale`, :need:`tool_req__docs_req_attr_reqtype`,
+       | :need:`tool_req__docs_req_attr_testcov`,
+       | :need:`tool_req__docs_req_attr_validity_correctness`, :need:`tool_req__docs_req_attr_validity_consistency`,
+       | :need:`tool_req__arch_linkage_safety`,
+       | :need:`tool_req__arch_consistency_interf`,
+       | :need:`tool_req__docs_tvr_safety`, :need:`tool_req__docs_tvr_security`,
+       | :need:`tool_req__docs_tvr_status`, :need:`tool_req__docs_tvr_version`, :need:`tool_req__docs_tvr_confidence_level`,
+       | :need:`tool_req__docs_saf_attrs_mitigated_by`, :need:`tool_req__docs_saf_attrs_mitigation_issue`,
+       | :need:`tool_req__docs_saf_attrs_sufficient`, :need:`tool_req__docs_saf_attrs_sufficient_check`,
+       | :need:`tool_req__docs_saf_attrs_content`, :need:`tool_req__docs_saf_attrs_violates`,
+       | :need:`tool_req__docs_saf_attr_fmea_fault_id`,
+       | :need:`tool_req__docs_saf_attr_fmea_failure_effect`
    * - M2
      - :need:`tool_req__docs_common_attr_safety_link_check`, :need:`tool_req__docs_req_arch_link_safety_to_arch`
-     -
+     - | :need:`tool_req__docs_req_link_satisfies_allowed`, :need:`tool_req__docs_req_link_covers_aou`,
+       | :need:`tool_req__docs_arch_link_fulfils`, :need:`tool_req__docs_arch_link_fulfils_aou`, :need:`tool_req__docs_arch_link_aou_check`,
+       | :need:`tool_req__docs_arch_link_safety_to_req`,
+       | :need:`tool_req__docs_req_arch_link_safety_to_arch`, :need:`tool_req__docs_arch_link_security`
    * - M3
-     - :need:`tool_req__docs_test_linkage_metrics`
+     -
      - :need:`tool_req__docs_verification_report_need`
    * - M5
      - :need:`tool_req__docs_test_link_testcase`, :need:`tool_req__docs_test_linkage_metrics`
-     - :need:`tool_req__docs_verification_report_need`
+     - | :need:`tool_req__docs_verification_report_need`,
+       | :need:`tool_req__docs_test_metadata_mandatory_1`, :need:`tool_req__docs_test_metadata_mandatory_2`,
+       | :need:`tool_req__docs_test_metadata_link_levels`
    * - M6
      - :need:`tool_req__docs_test_link_testcase`
      -
