@@ -1,0 +1,1271 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-009-ddsgw: Introduce DDS communication for mw::com &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=415257cb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-009-ddsgw';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eclipse S-CORE (Eclipse Safe Open Vehicle Core)" href="../introduction/index.html" />
+    <link rel="prev" title="DR-008-Int: S-CORE integration scope in reference_integration repository" href="DR-008-int.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-strat.html">DR-002-Strat: Eclipse Project Structure for S-Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-strat.html">DR-003-Strat: Module Maturity Classification (Release / Experimental / Preview)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch.html">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra-extension.html">DR-001-B-Infra-Extension: S-CORE Build Execution Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-proc.html">DR-002-Proc: Feature &amp; Enhancement Proposal (FEP) Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-proc.html">DR-003-Proc: Module Folder Structure</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-009-ddsgw: Introduce DDS communication for mw::com</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-009-ddsgw: Introduce DDS communication for mw::com</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dr-009-ddsgw-introduce-dds-communication-for-mw-com">
+<h1>DR-009-ddsgw: Introduce DDS communication for mw::com<a class="headerlink" href="#dr-009-ddsgw-introduce-dds-communication-for-mw-com" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2026-09-17</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-3a3cbf17">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__introduce_dds_communication">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Introduce DDS communication for mw::com</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">S-CORE lacks a common way for mw::com applications and services to use DDS data-centric communication or interoperate with native DDS systems.</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Add DDS communication through a DDS binding beneath the mw::com front end and a deployable DDS Gateway for bridging existing mw::com services to DDS domains.</span></span></div>
+<div class="line"><span class="needs_tracking"><span class="needs_label">tracking: </span><span class="needs_data"><a class="reference external" href="https://github.com/eclipse-score/score/issues/2726">score#2726</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__arch__introduce_dds_communication" title="dec_rec__arch__introduce_dds_communication">dec_rec__arch__introduce_dds_communication</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<section id="context-problem">
+<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>S-CORE applications use <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> as their service-oriented communication API.
+The LoLa binding provides high-performance shared-memory communication on the
+same ECU, and SOME/IP support provides service-oriented communication across
+networked ECUs.</p>
+<p>DDS adds a different and complementary communication model. It is an
+OMG-standardized, data-centric publish/subscribe technology designed for
+distributed systems. DDS is relevant to S-CORE because it provides:</p>
+<ul class="simple">
+<li><p>Automatic discovery of publishers and subscribers.</p></li>
+<li><p>One-to-one, one-to-many, and many-to-many data distribution.</p></li>
+<li><p>Configurable Quality of Service for reliability, durability, history,
+deadline, liveliness, lifespan, ownership, and resource limits.</p></li>
+<li><p>Efficient distribution of high-rate and large data where supported by the
+selected DDS implementation and deployment.</p></li>
+<li><p>Late-joiner access to retained state through durability and history.</p></li>
+<li><p>Separation of communication environments through DDS domains.</p></li>
+<li><p>Standardized DDS-XTypes and XCDR1/XCDR2 data representations.</p></li>
+</ul>
+<p>These capabilities make DDS suitable where several consumers need the same
+data, different data streams require different delivery behavior, high-rate or
+large data must be distributed, or a system must interoperate with DDS-native
+components.</p>
+<p>DDS does not replace LoLa or SOME/IP. LoLa remains appropriate for efficient
+local shared-memory communication. SOME/IP remains appropriate where its
+service-oriented protocol and ecosystem are required. DDS provides an
+additional deployment choice for data-centric distributed communication.</p>
+<p>S-CORE currently has no standardized DDS integration for <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>. Without
+one:</p>
+<ol class="arabic simple">
+<li><p>Applications must use DDS-specific APIs directly and lose the common
+<code class="docutils literal notranslate"><span class="pre">mw::com</span></code> front end.</p></li>
+<li><p>Projects create incompatible adapters for mapping, types, serialization,
+discovery, QoS, E2E protection, and recovery.</p></li>
+<li><p>Existing LoLa-based services cannot connect to DDS domains without a
+project-specific gateway.</p></li>
+<li><p>Native DDS applications cannot expose their data through a consistent local
+<code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service.</p></li>
+<li><p>Safety-related application logic can become coupled to a DDS stack integrated
+as a QM component.</p></li>
+</ol>
+<p>S-CORE therefore needs both:</p>
+<ol class="arabic simple">
+<li><p>A DDS communication binding underneath the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> front end for
+applications deployed directly with DDS communication.</p></li>
+<li><p>A DDS Gateway for bridging existing <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>/LoLa deployments with DDS
+domains and native DDS applications.</p></li>
+</ol>
+<p>The originating feature material is available in:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2726">DDS Gateway tracking issue #2726</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score/pull/2997">DDS Gateway feature request PR #2997</a></p></li>
+</ul>
+<p>This Decision Record establishes the feature and its architectural boundaries.
+Detailed APIs, configuration schemas, IPC messages, concurrency, serialization
+algorithms, and source-code structure belong to downstream requirements and
+implementation-design documents.</p>
+</section>
+<section id="decision">
+<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<p>S-CORE shall add DDS communication for <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> through two complementary
+deployment options.</p>
+<section id="option-a-dds-gateway">
+<h3>Option A: DDS Gateway<a class="headerlink" href="#option-a-dds-gateway" title="Link to this heading">#</a></h3>
+<p>A deployable DDS Gateway shall consume and provide existing <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> services,
+normally through LoLa, and bridge them to configured DDS domains.</p>
+<p>This option is intended when:</p>
+<ul class="simple">
+<li><p>Existing <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> applications shall remain unchanged.</p></li>
+<li><p>DDS is introduced at a deployment boundary.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service shall interoperate with a native DDS application.</p></li>
+<li><p>Two S-CORE systems shall exchange <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> services over DDS.</p></li>
+<li><p>Routing between configured DDS domains is required.</p></li>
+</ul>
+</section>
+<section id="option-b-dds-binding-beneath-mw-com">
+<h3>Option B: DDS binding beneath mw::com<a class="headerlink" href="#option-b-dds-binding-beneath-mw-com" title="Link to this heading">#</a></h3>
+<p>An application shall continue to use the existing <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> Skeleton and Proxy
+interfaces. Deployment configuration shall select the DDS binding instead of,
+or in addition to, another communication binding.</p>
+<p>The DDS binding shall map configured <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service elements to DDS entities
+and provide the required type transformation, availability mapping, DDS QoS,
+and E2E handling.</p>
+<p>This option is intended for applications whose configured communication path is
+DDS while retaining the common <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> application API.</p>
+<p>Both options shall use common architectural principles for service mapping,
+type descriptions, serialized DDS data, QoS, availability, E2E protection,
+safety separation, and DDS implementation independence.</p>
+</section>
+<section id="logical-architecture">
+<h3>Logical architecture<a class="headerlink" href="#logical-architecture" title="Link to this heading">#</a></h3>
+<p><img alt="DDS communication architecture" src="../_images/dds_communication_architecture.svg" /></p>
+<p>For gateway-to-gateway communication, the complete path is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>S-CORE App A ↔ mw::com/LoLa ↔ Gateway A ↔ DDS Daemon A
+             ↔ DDS Domain ↔ DDS Daemon B ↔ Gateway B
+             ↔ mw::com/LoLa ↔ S-CORE App B
+</pre></div>
+</div>
+<p>A native DDS application participates directly in the DDS domain and does not
+require an S-CORE Gateway Daemon.</p>
+</section>
+<section id="common-service-mapping">
+<h3>Common service mapping<a class="headerlink" href="#common-service-mapping" title="Link to this heading">#</a></h3>
+<p>Both deployment options shall support bidirectional mapping.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">mw::com</span></code> concept</p></th>
+<th class="head"><p>DDS communication responsibility</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Event</p></td>
+<td><p>Map publication and subscription to configured DDS data communication</p></td>
+</tr>
+<tr class="row-odd"><td><p>Field</p></td>
+<td><p>Preserve notification, current-value, getter, setter, and error semantics</p></td>
+</tr>
+<tr class="row-even"><td><p>Method</p></td>
+<td><p>Preserve request, response, error, timeout, and correlation semantics</p></td>
+</tr>
+<tr class="row-odd"><td><p>Service instance</p></td>
+<td><p>Map provider, service, and instance identity</p></td>
+</tr>
+<tr class="row-even"><td><p>Offer/StopOffer</p></td>
+<td><p>Propagate service availability or unavailability</p></td>
+</tr>
+<tr class="row-odd"><td><p>Proxy discovery</p></td>
+<td><p>Report availability only when configured DDS conditions are satisfied</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The downstream interface specification shall define exact DDS entities, Topic
+naming, request/response correlation, and message formats.</p>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<p>Deployment configuration shall define:</p>
+<ul class="simple">
+<li><p>Selected integration option and communication direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service and service-element identifiers.</p></li>
+<li><p>DDS Domain ID, Topic name, and type name.</p></li>
+<li><p>DDS type description and XCDR representation.</p></li>
+<li><p>DDS QoS.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mw::com</span></code> Quality Type and DDS-domain mapping.</p></li>
+<li><p>Explicit or endpoint-based availability.</p></li>
+<li><p>E2E configuration.</p></li>
+<li><p>Type, sample, entity, instance, and route limits.</p></li>
+</ul>
+<p>Only configured routes shall be active. Discovery of an arbitrary DDS Topic
+shall not automatically create a route.</p>
+</section>
+<section id="dds-types-and-serialized-data">
+<h3>DDS types and serialized data<a class="headerlink" href="#dds-types-and-serialized-data" title="Link to this heading">#</a></h3>
+<p>Applications shall not be required to include DDS-vendor-specific or
+IDL-generated APIs. Type descriptions shall be supplied as deployment input or
+generated artifacts and used to create DDS Dynamic Types or equivalent runtime
+types.</p>
+<p>The DDS binding or Gateway Daemon shall transform native <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> data to and
+from the configured XCDR1 or XCDR2 representation. Native C++ padding shall not
+be transferred as DDS application data.</p>
+<p>The type model shall support the constructs required by the mapped interfaces,
+including DDS keys and RTPS KeyHash calculation.</p>
+<p>Serialized payloads shall be given to the DDS integration through a serialized-
+data interface. DDS discovery, matching, history, reliability, liveliness,
+instance management, and network transport remain DDS stack responsibilities.</p>
+</section>
+<section id="dds-qos-and-data-rates">
+<h3>DDS QoS and data rates<a class="headerlink" href="#dds-qos-and-data-rates" title="Link to this heading">#</a></h3>
+<p>Deployment configuration shall expose the DDS QoS required by a route,
+including reliability, durability, history, resource limits, deadline,
+liveliness, lifespan, ownership, destination order, partition, and data
+representation.</p>
+<p>The DDS stack shall evaluate compatibility and perform the configured DDS
+behavior.</p>
+<p>The design shall support different payload sizes and rates, including high-rate
+and large-data communication when supported by the selected DDS stack and
+deployment. It shall avoid unnecessary transformations and copies and permit
+zero-copy optimization where all interfaces support it.</p>
+<p>The feature does not define an additional gateway-owned worker pool, QoS-lane
+scheduler, or per-route queue. Buffering and delivery behavior are provided by
+the applicable <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>/SoCom, IPC, and DDS mechanisms.</p>
+</section>
+<section id="availability">
+<h3>Availability<a class="headerlink" href="#availability" title="Link to this heading">#</a></h3>
+<p>Cooperating gateways shall exchange explicit service-instance state through a
+keyed DDS administration Topic. The identity shall distinguish provider,
+service, and instance. QoS shall retain the current state per configured
+instance.</p>
+<p>For native DDS applications without explicit service state, availability may be
+derived from configured endpoint matching and liveliness. All mandatory
+endpoints shall be available before the corresponding local <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service
+is offered.</p>
+</section>
+<section id="safety-e2e-and-recovery">
+<h3>Safety, E2E, and recovery<a class="headerlink" href="#safety-e2e-and-recovery" title="Link to this heading">#</a></h3>
+<p>The architecture shall permit the DDS stack and DDS Communication Daemon to
+remain QM while safety-related mapping, E2E processing, and availability control
+remain on the safety-related side.</p>
+<p>Where required, E2E protection shall be generated or validated above the DDS
+integration interface. DDS reliability does not replace safety E2E protection.</p>
+<p>The feature shall reconcile complete configured and observed state after a
+Gateway Daemon, DDS Communication Daemon, DDS participant, IPC connection, or
+remote endpoint restarts. Stale DDS-derived services shall not remain offered.</p>
+</section>
+<section id="dds-implementation-independence">
+<h3>DDS implementation independence<a class="headerlink" href="#dds-implementation-independence" title="Link to this heading">#</a></h3>
+<p>A reference implementation may use Eclipse Cyclone DDS. Vendor-specific APIs
+shall remain contained in the DDS integration. Another suitable DDS stack shall
+be integrable without changing the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> application interface or the
+behavior established by this decision.</p>
+</section>
+<section id="limitations-and-out-of-scope">
+<h3>Limitations and out of scope<a class="headerlink" href="#limitations-and-out-of-scope" title="Link to this heading">#</a></h3>
+<p>DDS content-filtered Topics and gateway-configured content filtering are not
+part of this decision. Filtering inside the QM DDS integration would decide
+which application samples cross toward the safety-related component. The
+required semantics, safety responsibility, configuration authority, and failure
+behavior have not been defined.</p>
+<p>Samples received for a configured active route shall be forwarded subject to
+configured DDS QoS and resource limits. Application-level sample selection
+remains outside DDS content filtering. Adding DDS content filtering requires a
+follow-up architectural decision.</p>
+<p>Also outside scope are:</p>
+<ul class="simple">
+<li><p>Automatic bridging of arbitrary discovered Topics.</p></li>
+<li><p>Selection of a mandatory DDS vendor.</p></li>
+<li><p>Internal classes, threads, and IPC wire formats.</p></li>
+<li><p>Implementation phases or delivery order.</p></li>
+</ul>
+</section>
+</section>
+<section id="backwards-compatibility">
+<h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
+<p>The feature is use-case dependent. Existing <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>, LoLa, and SOME/IP applications and
+deployments require no changes unless DDS communication is selected.</p>
+<p>No stable <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> application API is removed. Any later breaking API change
+shall follow the Breaking Change FEP process.</p>
+</section>
+<section id="alternatives-considered">
+<h2>Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Link to this heading">#</a></h2>
+<section id="use-dds-apis-directly-in-applications">
+<h3>Use DDS APIs directly in applications<a class="headerlink" href="#use-dds-apis-directly-in-applications" title="Link to this heading">#</a></h3>
+<p>Applications could use DDS APIs directly, including their type, discovery,
+QoS, and lifecycle interfaces.</p>
+<p>However, this would introduce DDS-specific dependencies into application code
+and require each project to define its own integration with <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> services.</p>
+<p>This alternative is not selected because the proposal preserves <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>
+as the common application-facing interface. Native DDS applications remain
+supported as communication peers.</p>
+</section>
+<section id="integrate-the-qm-dds-stack-into-safety-related-processes">
+<h3>Integrate the QM DDS stack into safety-related processes<a class="headerlink" href="#integrate-the-qm-dds-stack-into-safety-related-processes" title="Link to this heading">#</a></h3>
+<p>This simplifies deployment and avoids IPC between safety-related processing
+and the DDS stack.</p>
+<p>However, it places the QM DDS stack in the same address space as safety-related
+processing, increasing the scope of fault-containment and interference concerns.</p>
+<p>This alternative is not selected as the reference safety architecture.
+The selected approach separates the DDS stack from safety-related communication
+processing through a defined process and interface boundary.</p>
+</section>
+<section id="require-dds-generated-type-support-and-serialization">
+<h3>Require DDS-generated type support and serialization<a class="headerlink" href="#require-dds-generated-type-support-and-serialization" title="Link to this heading">#</a></h3>
+<p>The integration could use IDL-generated DDS interfaces and their associated
+DDS-provided serialization and deserialization support.</p>
+<p>This provides compile-time interfaces and reuses the DDS implementation’s
+type support. However, it introduces dependencies on deployment-specific
+generated artifacts and vendor-specific serialization support.</p>
+<p>Where generated artifacts participate in safety-related processing, their
+verification and the required confidence in the generation tools must be
+addressed. Depending on tool usage and output-verification measures, this may
+require tool qualification or additional verification evidence.</p>
+<p>Delegating application-data transformation to the QM DDS daemon would also
+place that responsibility outside the intended safety-related boundary.</p>
+<p>This alternative is not selected as the required integration model.
+The selected approach keeps application-data transformation in the Gateway
+or DDS binding and passes serialized payloads to the DDS integration.</p>
+<p>IDL and generated type-description artifacts remain permitted as configuration
+inputs, provided their correctness is established.</p>
+</section>
+<section id="rely-entirely-on-dds-discovery-for-service-availability">
+<h3>Rely entirely on DDS discovery for service availability<a class="headerlink" href="#rely-entirely-on-dds-discovery-for-service-availability" title="Link to this heading">#</a></h3>
+<p>DDS discovery could be used directly as the source of availability exposed
+to <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> applications.</p>
+<p>However, discovering compatible communication endpoints does not necessarily
+mean that the corresponding application service is ready or offered.
+DDS discovery and <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service availability therefore cannot always
+be treated as equivalent.</p>
+<p>This alternative is not selected as the complete availability model.
+The integration must preserve <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service availability while also
+supporting native DDS applications. The detailed mapping shall be defined
+in the downstream architecture.</p>
+</section>
+</section>
+<section id="rationale">
+<h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
+<p>The selected approach integrates DDS through the common <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> interface
+while preserving service behavior, deployment flexibility, and the required
+safety boundary.</p>
+<section id="preserve-the-application-interface">
+<h3>Preserve the application interface<a class="headerlink" href="#preserve-the-application-interface" title="Link to this heading">#</a></h3>
+<p>Applications continue to use <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> Skeletons and Proxies.
+DDS-specific types, Topics, Domains, QoS, and discovery configuration remain
+within the communication integration and deployment configuration.</p>
+<p>This avoids repeating DDS integration logic in applications and limits
+their dependency on a particular DDS implementation.</p>
+</section>
+<section id="preserve-service-semantics">
+<h3>Preserve service semantics<a class="headerlink" href="#preserve-service-semantics" title="Link to this heading">#</a></h3>
+<p>The integration provides a common mapping for <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> events, fields,
+methods, and service-instance availability.</p>
+<p>This is necessary because DDS communication entities do not directly represent
+all <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> service semantics. A shared contract prevents projects from
+introducing incompatible behavior across the DDS boundary.</p>
+<p>Availability handling must account for both cooperating S-CORE integrations
+and native DDS peers without requiring every native DDS application to
+implement an S-CORE-specific service-state protocol.</p>
+</section>
+<section id="separate-safety-related-processing-from-the-qm-dds-stack">
+<h3>Separate safety-related processing from the QM DDS stack<a class="headerlink" href="#separate-safety-related-processing-from-the-qm-dds-stack" title="Link to this heading">#</a></h3>
+<p>The architecture allows the DDS stack to remain QM while safety-related
+transformation, E2E processing, and availability control remain above the
+DDS integration boundary.</p>
+<p>Process separation supports fault containment, independent supervision,
+and recovery. The downstream safety analysis must additionally address
+IPC behavior, resource interference, and failure propagation.</p>
+</section>
+<section id="keep-application-data-transformation-under-s-core-control">
+<h3>Keep application-data transformation under S-CORE control<a class="headerlink" href="#keep-application-data-transformation-under-s-core-control" title="Link to this heading">#</a></h3>
+<p>The Gateway or DDS binding transforms between native <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> data and
+the configured DDS representation. The DDS integration handles the resulting
+serialized application payloads.</p>
+<p>This keeps transformation behavior and its verification within the
+safety-related communication component, without requiring deployment-specific
+DDS-generated executable type support.</p>
+<p>The serializer, deserializer, type descriptions, and any tools generating those
+descriptions still require the applicable validation, verification, and
+tool-confidence measures.</p>
+</section>
+<section id="enable-configurable-and-reusable-integration">
+<h3>Enable configurable and reusable integration<a class="headerlink" href="#enable-configurable-and-reusable-integration" title="Link to this heading">#</a></h3>
+<p>Deployment-provided type descriptions and route configuration allow the
+integration to support different service interfaces without embedding their
+DDS details in application code.</p>
+<p>Containing vendor-specific APIs within the DDS integration permits another
+suitable DDS stack to be used while preserving the application-facing contract.</p>
+</section>
+<section id="reuse-dds-middleware-functionality">
+<h3>Reuse DDS middleware functionality<a class="headerlink" href="#reuse-dds-middleware-functionality" title="Link to this heading">#</a></h3>
+<p>Discovery, endpoint matching, reliability, history, liveliness, and transport
+remain responsibilities of the DDS stack.</p>
+<p>S-CORE provides the service adaptation, data transformation, E2E processing,
+and availability mapping required by <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>. This avoids duplicating DDS
+middleware functionality while establishing consistent integration behavior.</p>
+</section>
+</section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<p>Acceptance establishes DDS communication as an additional S-CORE capability and
+approves both architectural options. Implementation remains tracked separately
+during Phase 4 of the FEP process.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Work product</p></th>
+<th class="head"><p>Required follow-up</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Feature description</p></td>
+<td><p>Align PR #2997 with this decision</p></td>
+</tr>
+<tr class="row-odd"><td><p>Requirements</p></td>
+<td><p>Define verifiable binding and gateway behavior</p></td>
+</tr>
+<tr class="row-even"><td><p>Logical architecture</p></td>
+<td><p>Detail both deployment options and safety boundaries</p></td>
+</tr>
+<tr class="row-odd"><td><p>Interfaces</p></td>
+<td><p>Define binding, IPC, serialized-data, and DDS contracts</p></td>
+</tr>
+<tr class="row-even"><td><p>Service mapping</p></td>
+<td><p>Define event, field, and method mappings</p></td>
+</tr>
+<tr class="row-odd"><td><p>Configuration</p></td>
+<td><p>Define routes, types, Domains, Topics, QoS, E2E, availability, and limits</p></td>
+</tr>
+<tr class="row-even"><td><p>Discovery and lifecycle</p></td>
+<td><p>Define availability, failure, restart, and reconciliation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Safety and security</p></td>
+<td><p>Analyze the QM boundary, E2E, interference, and allowed routes</p></td>
+</tr>
+<tr class="row-even"><td><p>Verification</p></td>
+<td><p>Cover interoperability, QoS, data rates, recovery, and fault injection</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If implementation reveals that this accepted architecture must materially
+change, it shall be handled through an amendment or follow-up FEP rather than
+silent implementation divergence.</p>
+</section>
+<section id="rejected-ideas">
+<h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
+<p>No additional idea has yet been formally rejected during the Final Comment
+Period. This section shall be updated when an alternative is explicitly
+rejected during FCP.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-008-int.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-008-Int: S-CORE integration scope in reference_integration repository</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../introduction/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eclipse S-CORE (Eclipse Safe Open Vehicle Core)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-dds-gateway">Option A: DDS Gateway</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-dds-binding-beneath-mw-com">Option B: DDS binding beneath mw::com</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-architecture">Logical architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-service-mapping">Common service mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dds-types-and-serialized-data">DDS types and serialized data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dds-qos-and-data-rates">DDS QoS and data rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#availability">Availability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-e2e-and-recovery">Safety, E2E, and recovery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dds-implementation-independence">DDS implementation independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-out-of-scope">Limitations and out of scope</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-considered">Alternatives Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-dds-apis-directly-in-applications">Use DDS APIs directly in applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-the-qm-dds-stack-into-safety-related-processes">Integrate the QM DDS stack into safety-related processes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#require-dds-generated-type-support-and-serialization">Require DDS-generated type support and serialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rely-entirely-on-dds-discovery-for-service-availability">Rely entirely on DDS discovery for service availability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preserve-the-application-interface">Preserve the application interface</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preserve-service-semantics">Preserve service semantics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-safety-related-processing-from-the-qm-dds-stack">Separate safety-related processing from the QM DDS stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-application-data-transformation-under-s-core-control">Keep application-data transformation under S-CORE control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-configurable-and-reusable-integration">Enable configurable and reusable integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reuse-dds-middleware-functionality">Reuse DDS middleware functionality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-009-ddsgw.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
