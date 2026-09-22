@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DR-009-Infra: Alternatives for implementing a merge queue &#8212; S-CORE  documentation</title>
+    <title>DR-009-Infra: Alternatives for ensuring always stable default branch &#8212; S-CORE  documentation</title>
   
   
   
@@ -582,7 +582,7 @@
 <li class="toctree-l2"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">DR-009-Infra: Alternatives for implementing a merge queue</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DR-009-Infra: Alternatives for ensuring always stable default branch</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../process/index.html">Process</a></li>
@@ -633,7 +633,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Infrastructure</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-009-Infra: Alternatives for implementing a merge queue</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-009-Infra: Alternatives for ensuring always stable default branch</span></li>
   </ul>
 </nav>
 </div>
@@ -650,16 +650,16 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dr-009-infra-alternatives-for-implementing-a-merge-queue">
-<h1>DR-009-Infra: Alternatives for implementing a merge queue<a class="headerlink" href="#dr-009-infra-alternatives-for-implementing-a-merge-queue" title="Link to this heading">#</a></h1>
+  <section id="dr-009-infra-alternatives-for-ensuring-always-stable-default-branch">
+<h1>DR-009-Infra: Alternatives for ensuring always stable default branch<a class="headerlink" href="#dr-009-infra-alternatives-for-ensuring-always-stable-default-branch" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-09-22</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-f063d423">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__merge_queue">
+<div class="need_container docutils container" id="SNCB-722897a5">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__stable_default_branch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Alternatives for implementing a merge queue</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Alternatives for ensuring always stable default branch</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -675,7 +675,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">GitHub native merge queue</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">GitHub native merge queue with labels</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -686,7 +686,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__infra__merge_queue" title="dec_rec__infra__merge_queue">dec_rec__infra__merge_queue</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__infra__stable_default_branch" title="dec_rec__infra__stable_default_branch">dec_rec__infra__stable_default_branch</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -728,20 +728,17 @@ The solution should be easy to operate, compatible with the repository’s exist
 </section>
 <section id="options-considered">
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
-<section id="option-a-no-merge-queue-keep-merging-manually">
-<h3>Option A: No merge queue; keep merging manually<a class="headerlink" href="#option-a-no-merge-queue-keep-merging-manually" title="Link to this heading">#</a></h3>
+<section id="option-a-force-pull-requests-to-be-up-to-date-before-merging-keep-merging-manually">
+<h3>Option A: Force pull requests to be up-to-date before merging; keep merging manually<a class="headerlink" href="#option-a-force-pull-requests-to-be-up-to-date-before-merging-keep-merging-manually" title="Link to this heading">#</a></h3>
 <p>Continue to merge pull requests directly into the default branch using the existing branch protection and CI rules.
-This is the current baseline.</p>
+But use setting to force them to be up-to-date with the base branch before merging.</p>
 <p>In practice, this means that:</p>
 <ul class="simple">
-<li><p>each PR is validated only at the time it is first checked,</p></li>
 <li><p>maintainers must manually coordinate merges,</p></li>
-<li><p>the default branch may be temporarily unstable during bursts of merges,</p></li>
 <li><p>workflows accessing secrets always need manual approval for pull requests from forks,</p></li>
 <li><p>contributors must re-trigger checks repeatedly when their branch becomes stale.</p></li>
 </ul>
 <p>Effort 💚: No new implementation effort.</p>
-<p>Safety 😡: Weakest option because it does not prevent a stale branch from merging and does not guarantee final-state validation.</p>
 <p>UX 😡: Contributors repeatedly have to rebase and re-run validation.</p>
 <p>Maintainability 💚: Very simple, but with high operational friction.</p>
 </section>
@@ -764,7 +761,6 @@ This is useful if in a previous merge queue run an expensive workflow failed and
 <p>This option works especially well for repositories where branch protection is already enforced and where jobs are mostly standard GitHub Actions workloads.</p>
 <p>Because some checks are performed twice (pull request, merge queue) it is important to keep them fast and reliable.</p>
 <p>Effort 💚: Low.</p>
-<p>Safety 💚: Strong because every queued PR is checked against the latest branch state before merge.</p>
 <p>UX 💚: Pull requests process is largely unchanged.</p>
 <p>Maintainability 💚: Excellent; no custom service or bot to maintain.</p>
 </section>
@@ -784,19 +780,15 @@ This is useful if in a previous merge queue run an expensive workflow failed and
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Safety</p></td>
+<tr class="row-even"><td><p>Effort</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+</tr>
+<tr class="row-odd"><td><p>UX</p></td>
 <td><p>😡</p></td>
 <td><p>💚</p></td>
 </tr>
-<tr class="row-odd"><td><p>Effort</p></td>
-<td><p>💚</p></td>
-<td><p>💚</p></td>
-</tr>
-<tr class="row-even"><td><p>UX</p></td>
-<td><p>😡</p></td>
-<td><p>💚</p></td>
-</tr>
-<tr class="row-odd"><td><p>Maintainability</p></td>
+<tr class="row-even"><td><p>Maintainability</p></td>
 <td><p>💚</p></td>
 <td><p>💚</p></td>
 </tr>
@@ -875,7 +867,7 @@ keeps the default branch in a validated state, and aligns with standard GitHub b
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-no-merge-queue-keep-merging-manually">Option A: No merge queue; keep merging manually</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-a-force-pull-requests-to-be-up-to-date-before-merging-keep-merging-manually">Option A: Force pull requests to be up-to-date before merging; keep merging manually</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-use-the-github-native-merge-queue-with-labels-to-enable-expensive-checks-in-pull-requests">Option B: Use the GitHub native merge queue with labels to enable expensive checks in pull requests</a></li>
 </ul>
 </li>
