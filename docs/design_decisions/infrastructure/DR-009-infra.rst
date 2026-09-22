@@ -10,17 +10,17 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-009-Infra: Alternatives for implementing a merge queue
-=========================================================
+DR-009-Infra: Alternatives for ensuring always stable default branch
+====================================================================
 
 - **Date:** 2026-09-22
 
-.. dec_rec:: Alternatives for implementing a merge queue
-   :id: dec_rec__infra__merge_queue
+.. dec_rec:: Alternatives for ensuring always stable default branch
+   :id: dec_rec__infra__stable_default_branch
    :status: accepted
    :version: 1
    :context: Infrastructure
-   :decision: GitHub native merge queue
+   :decision: GitHub native merge queue with labels
 
 Context / Problem
 -----------------
@@ -52,23 +52,19 @@ Non-Goals
 Options Considered
 ------------------
 
-Option A: No merge queue; keep merging manually
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option A: Force pull requests to be up-to-date before merging; keep merging manually
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Continue to merge pull requests directly into the default branch using the existing branch protection and CI rules.
-This is the current baseline.
+But use setting to force them to be up-to-date with the base branch before merging.
 
 In practice, this means that:
 
-* each PR is validated only at the time it is first checked,
 * maintainers must manually coordinate merges,
-* the default branch may be temporarily unstable during bursts of merges,
 * workflows accessing secrets always need manual approval for pull requests from forks,
 * contributors must re-trigger checks repeatedly when their branch becomes stale.
 
 Effort 💚: No new implementation effort.
-
-Safety 😡: Weakest option because it does not prevent a stale branch from merging and does not guarantee final-state validation.
 
 UX 😡: Contributors repeatedly have to rebase and re-run validation.
 
@@ -100,8 +96,6 @@ Because some checks are performed twice (pull request, merge queue) it is import
 
 Effort 💚: Low.
 
-Safety 💚: Strong because every queued PR is checked against the latest branch state before merge.
-
 UX 💚: Pull requests process is largely unchanged.
 
 Maintainability 💚: Excellent; no custom service or bot to maintain.
@@ -113,7 +107,6 @@ Evaluation
    :header: Criteria, Option A, Option B
    :widths: 15, 10, 10
 
-   Safety, 😡, 💚
    Effort, 💚, 💚
    UX, 😡, 💚
    Maintainability, 💚, 💚
