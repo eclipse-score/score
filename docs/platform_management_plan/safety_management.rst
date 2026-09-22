@@ -478,9 +478,21 @@ Platform Management Plan - Feature Work Product Lists
 
 :need:`doc__com_ipc_safety_wp`
 
-`Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/features/persistency/safety_planning/index.html>`__
+`Config Management Safety Planning <https://eclipse-score.github.io/config_management/main/>`__
+
+`Diagnostics Safety Planning <https://eclipse-score.github.io/inc_diagnostics/main/>`__
 
 `Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/features/lifecycle/safety_planning/index.html>`__
+
+`Logging Safety Planning <https://eclipse-score.github.io/logging/main/features/logging/safety_planning/index.html>`__
+
+`Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/features/persistency/safety_planning/index.html>`__
+
+`Security/Crypto Safety Planning <https://eclipse-score.github.io/inc_security_crypto/main/docs/safety_mgt/module_safety_plan.html>`__
+
+`SOME/IP Gateway Safety Planning <https://eclipse-score.github.io/inc_someip_gateway/main/>`__
+
+`Time Safety Planning <https://eclipse-score.github.io/time/main/>`__
 
 Note: list of features according to :ref:`releases`
 
