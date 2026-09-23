@@ -27,7 +27,7 @@ Launching Processes
 -------------------
 
 ..
-    Verweist auf health monitor dummy requirement
+    Currently health monitor dummy requirement is linked to it
 
 .. feat_req:: Support for launching processes
     :id: feat_req__lifecycle__launch_support
@@ -268,9 +268,9 @@ Control Interface
     states via the :term:`Control Interface`.
 
 ..
-    Eher feature requirement, weil es ein externes Interface ist. Allerdings fehlt report_running() in der Architektur
-    Ist die Frage um welches Interface es hier genau geht.
-    Wenn es in die ähnliche Richtung wie das requirement zuvor geht, wäre es wohl für V 1.0 invalid.
+    Rather feature requirement, because of external interface. However report_running() is missing in the architecture.
+    The question is which interface exactly is meant here.
+    If it goes in a similar direction as the previous requirement, it would probably be invalid for V 1.0.
 
 .. feat_req:: Report "started/running/degraded"
     :id: feat_req__lifecycle__controlif_status
