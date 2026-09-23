@@ -105,13 +105,14 @@ cross-repository builds and detect integration issues early in the development c
     patches/                           -> Patches applied during the build
     platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements.
                                           [:need:`wp__verification_platform_int_test`]
+                                          A further subfolder structuring (for example by feature or stakeholder area) is possible.
     runners/                           -> Thin logic to reuse runners (e.g. docker runner) between images
     rust_coverage/                     -> Rust coverage configuration
     scripts/                           -> Internal tooling scripts (known_good management,
-                                          workspace metadata generation, etc.)
+        │                                 workspace metadata generation, etc.)
+        └── tooling/                   -> Single point of interaction with all tooling artifacts
     showcases/                         -> S-CORE wide showcases deployed into images
     score_starter                      -> Launcher script to select and run an integration scenario
-    tooling/                           -> Single point of interaction with all tooling artifacts
     MODULE.bazel                       -> Bazel module definition
     README.md                          -> Entrypoint of the repository
 
@@ -284,9 +285,9 @@ For identification of the single feature, the repository name or module name sho
     │   │   │   │                           component classification [:need:`wp__sw_component_class`] for pre-existing software
     │   │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
     │   │   │                               [:need:`wp__sw_component_security_analysis`], [:need:`wp__requirements_comp_aou`]
-    │   │   └── tests/                   -> Component-level tests (e.g., integration tests)
+    │   │   └── tests/                   -> Component-level tests (e.g. integration tests)
     │   │                                   [:need:`wp__verification_comp_int_test`]
-    │   └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
+    │   └── tests/                       -> Module-level tests (e.g. feature integration test)
     │                                       [:need:`wp__verification_feat_int_test`]
     ├── MODULE.bazel                     -> Bazel module definition
     ├── BUILD                            -> Root build rules
