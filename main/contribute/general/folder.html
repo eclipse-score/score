@@ -259,13 +259,6 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
-    User’s Guide
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
     Modules
   </a>
@@ -476,13 +469,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../users_guide/index.html">
-    User’s Guide
   </a>
 </li>
 
@@ -728,13 +714,14 @@ known_good.json                    -&gt; Pinned versions of all integrated S-COR
 patches/                           -&gt; Patches applied during the build
 platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements.
                                       [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
+                                      A further subfolder structuring (for example by feature or stakeholder area) is possible.
 runners/                           -&gt; Thin logic to reuse runners (e.g. docker runner) between images
 rust_coverage/                     -&gt; Rust coverage configuration
 scripts/                           -&gt; Internal tooling scripts (known_good management,
-                                      workspace metadata generation, etc.)
+    │                                 workspace metadata generation, etc.)
+    └── tooling/                   -&gt; Single point of interaction with all tooling artifacts
 showcases/                         -&gt; S-CORE wide showcases deployed into images
 score_starter                      -&gt; Launcher script to select and run an integration scenario
-tooling/                           -&gt; Single point of interaction with all tooling artifacts
 MODULE.bazel                       -&gt; Bazel module definition
 README.md                          -&gt; Entrypoint of the repository</pre>
 </section>
@@ -896,9 +883,9 @@ For identification of the single feature, the repository name or module name sho
 │   │   │   │                           component classification [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a>] for pre-existing software
 │   │   │   └── security_analysis/   -&gt; Security analysis on component level (only if component architecture exists)
 │   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__sw_component_security_analysis">wp__sw_component_security_analysis</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>]
-│   │   └── tests/                   -&gt; Component-level tests (e.g., integration tests)
+│   │   └── tests/                   -&gt; Component-level tests (e.g. integration tests)
 │   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a>]
-│   └── tests/                       -&gt; Module-level tests (e.g., feature integration tests, system tests)
+│   └── tests/                       -&gt; Module-level tests (e.g. feature integration test)
 │                                       [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>]
 ├── MODULE.bazel                     -&gt; Bazel module definition
 ├── BUILD                            -&gt; Root build rules
