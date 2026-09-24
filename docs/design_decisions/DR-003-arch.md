@@ -60,6 +60,19 @@ target granularity), which this decision fills.
 - Keep the public API consumable by non-Bazel tools and build systems without source rewrites.
 - Keep the developer's day-to-day workflow (edit `.h` next to `.cc`) reasonable.
 
+### Bazel Header-Export Constraint
+
+Any header included, directly or indirectly, while compiling a consumer-visible
+public header must be exported through the `hdrs` of the relevant `cc_library`
+dependency. This includes headers included by another included header: if
+`component.h` includes `detail.h` and `detail.h` includes `helper.h`, then
+`helper.h` is part of the required header dependency chain as well. A header listed
+only in `srcs` is private to that library's own implementation and must not be
+required by a public header. The directory name or location (`impl/` or otherwise)
+does not change this rule; Bazel's `hdrs`/`srcs` attributes define header
+availability, while target `visibility` controls which libraries may be named in
+`deps`.
+
 ### External references
 
 - **[The Canonical Project Structure (P1204R0)](https://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1204r0.html)** —
@@ -89,9 +102,10 @@ separates them. This DR follows the former.
 ### Option A: Bazel-native flat layout (headers next to sources) — recommended
 
 Headers and sources live **next to each other** in the component's package, and the
-public/private boundary is drawn by Bazel: public headers go in `hdrs`, everything
-non-public is isolated in an `impl/` subpackage whose `visibility` is restricted to
-the component. Headers are included by their **full, project-prefixed repo-root path**
+public/private boundary is drawn by Bazel: public headers go in `hdrs`, while private
+headers may either live beside their implementation sources in the same package or
+be isolated in an `impl/` subpackage when a separate target and restricted target
+visibility are useful. Headers are included by their **full, project-prefixed repo-root path**
 (`#include "score/mw/my_component/my_component.h"`), which keeps include paths globally
 unique. This matches the WG21 Canonical Project Structure and the Bazel recommendation
 for new projects, and it is the dominant pattern already used by `communication` and
@@ -110,15 +124,22 @@ score/mw/my_component/
 
 #### Advantages
 
-- **Encapsulation enforced by Bazel, not by hope:** `impl/` visibility is restricted
-  to the component's own subpackages, so no external target can depend on internal
-  headers — even the ones a public, templated header must `#include`. The boundary
-  holds for template/inline APIs, which the `include/`-vs-`src/` split cannot (see
-  Option B).
+- **Dependency ownership is explicit:** `impl/` visibility is restricted to the
+  component's own subpackages, so external targets cannot declare a direct dependency
+  on the implementation library. This does not make headers in a public target's
+  transitive C++ dependency closure textually unreachable: template and inline APIs
+  must expose any implementation headers they include to consumers. The layout still
+  makes ownership and intended use clear, while the `include/`-vs-`src/` split cannot
+  hide those headers either (see Option B).
 - **Headers and sources stay together:** Declarations sit next to their
   implementations. Editing, grep'ing, "go to file", and code browsing (e.g. on GitHub)
   all land on the pair immediately, and the source tree makes *likely affected code*
   visible by vicinity — a maintainability property, not just a navigation convenience.
+- **Private headers may stay beside their sources:** A private header that is used only
+  by implementation `.cc` files may live in the same package, in parallel with the
+  source files, and be listed in the owning library's `srcs`. The `impl/` subpackage is
+  used when a separate implementation target and target-level visibility boundary are
+  beneficial; the directory location itself does not determine header visibility.
 - **No `strip_include_prefix` machinery:** The header's on-disk path *is* its include
   path. Non-Bazel tools and other build systems see the file exactly where the
   `#include` says it is, so packaging and IDE indexing work without source rewrites.
@@ -232,7 +253,7 @@ into `include/`. In practice it collapses toward either Option A or "all headers
 
 | Criterion                                       | A: Bazel-native flat | B: Separate `include/` | C: Hybrid |
 |-------------------------------------------------|:--------------------:|:----------------------:|:---------:|
-| Encapsulation enforced (incl. template APIs)    |         ++           |           -            |    -      |
+| Direct dependency ownership enforced            |         ++           |           -            |    -      |
 | Public API greppable without `BUILD.bazel`      |          +           |          ++            |    +      |
 | Collision-free `#include` paths                 |         ++           |          ++            |    ++     |
 | Works with non-Bazel tools / packaging          |         ++           |           --           |    -      |
@@ -268,11 +289,13 @@ packaging harder rather than easier.
 
 ### Rationale
 
-1. **Encapsulation actually holds.** Restricting `impl/` visibility guarantees that no
-   external target can depend on an internal header, including the
-   implementation-detail headers that public *template* headers must `#include`. The
-   `include/`/`src/` split cannot promise this, because those details end up in the
-   public tree anyway (P1204R0 §4).
+1. **Dependency ownership is explicit.** Restricting `impl/` visibility prevents
+  external targets from declaring a direct dependency on the implementation library.
+  It does not prevent textual inclusion of headers that are transitively available
+  through a public target; implementation headers required by public *template* or
+  inline APIs necessarily remain consumer-visible. The `include/`/`src/` split cannot
+  hide those details either, because they must also be shipped in the public tree
+  (P1204R0 §4).
 
 2. **The include path matches the file on disk.** Without `strip_include_prefix`, the
    path a source writes is exactly where the header lives, so non-Bazel build systems,
@@ -353,9 +376,13 @@ path:
 ```
 
 Implementation-detail headers use the same full-path scheme
-(`#include "score/mw/my_component/impl/internal_helper.h"`) and are unreachable from
-outside the component because of the restricted `impl/` visibility — even when a
-public, templated header includes them.
+(`#include "score/mw/my_component/impl/internal_helper.h"`). The restricted
+`impl/` visibility prevents consumers from declaring a direct dependency on the
+implementation library. If a public, templated or inline header includes one, the
+header must be listed in the `hdrs` of the relevant dependency and is necessarily
+available through the public target's transitive dependency closure. It must
+therefore be treated as part of that target's consumer-visible compilation surface;
+putting it only in `srcs` would break consumers of the public header.
 
 > **Note on `strip_include_prefix` / `include_prefix` / `includes`:** avoid these for
 > public APIs. They decouple the include path from the on-disk location, which breaks
@@ -373,12 +400,15 @@ cc_library(
 
 ```cpp
 // app.cc
-#include "score/mw/my_component/my_component.h"   // impl/ headers are not reachable
+#include "score/mw/my_component/my_component.h"
 ```
 
-Bazel rejects an `#include` of an `impl/` header from an external target, because that
-target is outside the `impl/` package's visibility. The package layout and the build
-system enforce the same boundary.
+The external target depends on the public library, not directly on the `impl` library.
+That dependency declaration is rejected if it names the `impl` target because the
+target is outside the restricted visibility. However, Bazel's C++ compilation model
+does not make headers in the public library's transitive dependency closure
+textually unreachable, so this layout is a convention and dependency-ownership
+boundary rather than a complete include firewall.
 
 ### Consuming the component as a Bazel module (bzlmod)
 
@@ -491,8 +521,9 @@ decision.
 
 ### Positive
 
-- Encapsulation is enforced by Bazel `visibility` (via the `impl/` subpackage) and
-  holds even for template/inline public APIs.
+- Direct dependency ownership is enforced by Bazel `visibility` (via the `impl/`
+  subpackage). Headers required by template/inline public APIs remain available through
+  the public target's transitive dependency closure and are documented as such.
 - Include paths match on-disk locations, so non-Bazel tools, IDEs, analyzers, and
   packagers work without source rewrites.
 - Consumers get stable, collision-free, project-prefixed include paths regardless of
