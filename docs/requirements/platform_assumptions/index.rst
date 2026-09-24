@@ -435,3 +435,19 @@ In this section assumptions are described which need to be fulfilled by the syst
    - C library
    - math library
    - high precision time source (HW synchronized)
+
+.. aou_req:: Vehicle time end-to-end integrity
+   :id: aou_req__platform__veh_time_e2e_integrity
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :tags: environment
+
+   If the system using the SW-platform has the safety goal to achive end-to-end integrity of the vehicle time
+   information, the involved external components (like the grand master clock, any intermediate master clock,
+   and time-aware bridges/switches) must support respective measures for the integrity protection.
+
+   Note: If this assumption is violated, the data integrity level of the vehicle time information will fall
+         back to QM and must be marked accordingly in the respective project documentation.

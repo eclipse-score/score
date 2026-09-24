@@ -63,7 +63,15 @@ setup_starpls(
 
 docs(
     data = [
-        "@score_process//:needs_json",
+        "@score_docs_as_code//:needs_json",
+        "@score_process_description//:needs_json",
     ],
     source_dir = "docs",
+)
+
+# Exposed (without a nested BUILD file, to avoid excluding it from //:docs'
+# root-level glob) for cross-repo consumption by score_logging for trlc import.
+exports_files(
+    ["docs/features/log_and_trace/logging/requirements/index.rst"],
+    visibility = ["//visibility:public"],
 )

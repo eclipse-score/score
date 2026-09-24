@@ -64,7 +64,7 @@ release, as part of the Tool Verification Report.
    * - 1-1
      - Doc-as-Code
      - Documentation generation tool
-     - 3.0.0 (see [1]_)
+     - 7.0.1 (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__doc_as_code`

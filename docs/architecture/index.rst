@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _platform_architecture:
+
 Platform Architecture
 #####################
 
