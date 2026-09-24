@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Requirements
-============
+Lifecycle Requirements
+======================
 
 .. document:: Lifecycle Requirements
    :id: doc__lifecycle_requirements
@@ -110,7 +110,7 @@ Process Management
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -123,7 +123,7 @@ Process Management
     :security: NO
     :safety: ASIL_B
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
     :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
@@ -229,7 +229,7 @@ Control Interface
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -244,7 +244,7 @@ Control Interface
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -307,7 +307,7 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -322,7 +322,7 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -354,7 +354,7 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v2.0.0
 
@@ -457,7 +457,7 @@ Configuration file
     :safety: ASIL_B
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -472,7 +472,7 @@ Configuration file
     :safety: ASIL_B
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -500,7 +500,7 @@ Configuration file
     :safety: QM
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 

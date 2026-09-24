@@ -21,7 +21,7 @@ IPC Binding Component Architecture
    :safety:  ASIL_B
    :status: valid
    :version: 1
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__baselibs__memory_shared[version==1], logic_arc_int__com__message_passing[version==1], logic_arc_int__baselibs__json[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__baselibs__memory_shared[version==1], logic_arc_int__com__message_passing[version==1], logic_arc_int__baselibs__json[version==1]
    :belongs_to: feat__com_communication[version==1]
 
    .. needarch::

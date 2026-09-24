@@ -32,5 +32,5 @@ see `LoLa trlc <https://github.com/eclipse-score/communication/blob/main/score/m
 LoLa component Assumptions of Use
 =================================
 
-.. needextend:: is_external == False and "lola" in id
+.. needextend:: c.this_doc() and is_external == False and "lola" in id
    :+tags: lola

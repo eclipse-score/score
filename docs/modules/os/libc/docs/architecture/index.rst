@@ -32,6 +32,7 @@ libc Component Architecture
 
 .. logic_arc_int:: fcntl
    :id: logic_arc_int__os__fcntl
+   :included_by: feat__os
    :security: YES
    :safety:  ASIL_B
    :status: valid
@@ -71,6 +72,7 @@ libc Component Architecture
 
 .. logic_arc_int:: mman
    :id: logic_arc_int__os__mman
+   :included_by: feat__os
    :security: YES
    :safety:  ASIL_B
    :status: valid
@@ -102,6 +104,7 @@ libc Component Architecture
 
 .. logic_arc_int:: stat
    :id: logic_arc_int__os__stat
+   :included_by: feat__os
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -163,6 +166,7 @@ libc Component Architecture
 
 .. logic_arc_int:: unistd
    :id: logic_arc_int__os__unistd
+   :included_by: feat__os
    :security: YES
    :safety: ASIL_B
    :status: valid

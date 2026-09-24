@@ -14,8 +14,8 @@
 
 .. _diagnostics_requirements:
 
-Requirements
-############
+Diagnostic and Fault Management Requirements
+############################################
 
 Diagnostic and Fault Management
 ===============================

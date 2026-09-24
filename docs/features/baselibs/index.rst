@@ -22,7 +22,7 @@ Base Libraries
    :status: valid
    :version: 1
    :safety: ASIL_B
-   :tags: feature_request
+   :tags: feature_request, baselibs
    :security: YES
    :realizes: wp__feat_request[version==1]
 
@@ -30,9 +30,10 @@ Base Libraries
 .. toctree::
    :hidden:
 
-   docs/requirements/index.rst
-   docs/requirements/chklst_req_inspection.rst
-   docs/architecture/index.rst
+   architecture/index.rst
+   requirements/index.rst
+   requirements/chklst_req_inspection.rst
+
 
 Feature flag
 ============

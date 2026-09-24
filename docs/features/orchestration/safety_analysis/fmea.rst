@@ -13,8 +13,8 @@
    # *******************************************************************************
 
 
-FMEA (Failure Modes and Effects Analysis)
-=========================================
+Orchstration Failure Modes and Effects Analysis
+===============================================
 
 .. document:: Orchestration FMEA
    :id: doc__orchestration_fmea

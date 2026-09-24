@@ -32,7 +32,8 @@ Communication
    :titlesonly:
    :hidden:
 
-   docs/**/index
+   architecture/index
+   requirements/index
    ipc/index
    some_ip_gateway/index
 

@@ -14,8 +14,8 @@
 
 .. _feature_persistency_requirements:
 
-Requirements
-############
+Persistency Requirements
+########################
 
 .. document:: Persistency Requirements
    :id: doc__feature_persistency_requirements
@@ -588,5 +588,5 @@ Requirements
    The Persistency shall support the production mode.
    The production mode should enforce the most restrictive data access controls feasible.
 
-.. needextend:: is_external == False and "persistency/requirements" in docname
+.. needextend:: c.this_doc() and is_external == False and "persistency/requirements" in docname
    :+tags: persistency

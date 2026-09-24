@@ -377,5 +377,5 @@ Assumptions of Use
    It shall be ensured that all safety relevant events/fields in the service type,
    are the same in all configurations.
 
-.. needextend:: is_external == False and "__communication_" in id
+.. needextend:: c.this_doc() and is_external == False and "__communication_" in id
    :+tags: communication

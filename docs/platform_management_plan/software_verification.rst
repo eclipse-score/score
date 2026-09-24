@@ -149,6 +149,8 @@ There are the following different levels of integration and verification defined
   Practically, this means S-CORE will implement Platform Integration Tests for stakeholder requirements for demonstration,
   but these are not intended to completely covering all stakeholder requirements.
 
+.. _verification-methods:
+
 Verification Methods
 --------------------
 
