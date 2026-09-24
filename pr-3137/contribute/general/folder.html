@@ -32,16 +32,16 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=bb63a8e1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=415257cb" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
@@ -259,13 +259,6 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
-    User’s Guide
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
     Modules
   </a>
@@ -476,13 +469,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../users_guide/index.html">
-    User’s Guide
   </a>
 </li>
 
@@ -728,20 +714,22 @@ known_good.json                    -&gt; Pinned versions of all integrated S-COR
 patches/                           -&gt; Patches applied during the build
 platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements.
                                       [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
+                                      A further subfolder structuring (for example by feature or stakeholder area) is possible.
 runners/                           -&gt; Thin logic to reuse runners (e.g. docker runner) between images
 rust_coverage/                     -&gt; Rust coverage configuration
 scripts/                           -&gt; Internal tooling scripts (known_good management,
-                                      workspace metadata generation, etc.)
+    │                                 workspace metadata generation, etc.)
+    └── tooling/                   -&gt; Single point of interaction with all tooling artifacts
 showcases/                         -&gt; S-CORE wide showcases deployed into images
 score_starter                      -&gt; Launcher script to select and run an integration scenario
-tooling/                           -&gt; Single point of interaction with all tooling artifacts
 MODULE.bazel                       -&gt; Bazel module definition
 README.md                          -&gt; Entrypoint of the repository</pre>
 </section>
 <section id="module-folder-structure">
 <span id="id2"></span><h2>Module Folder Structure<a class="headerlink" href="#module-folder-structure" title="Link to this heading">#</a></h2>
-<p>The modules and components shall follow the folder structure which was presented. However if there are good reasons the structure can be adapted.</p>
-<p>See also <a class="reference external" href="https://github.com/eclipse-score/module_template">module template repository</a> for more details on the folder structure of a module.</p>
+<p>The modules and components shall follow the folder structure which was presented. However if there are good reasons the structure can be adapted.
+This is confirmed by <a class="reference internal" href="../../design_decisions/process/DR-003-proc.html#dec_rec__platform__module_folder_structure" title="dec_rec__platform__module_folder_structure"><em class="xref need">Module Folder Structure (dec_rec__platform__module_folder_structure)</em></a>.</p>
+<p>For more details on the folder structure of a module see <a class="reference external" href="https://github.com/eclipse-score/module_template">module template repository</a> .</p>
 <pre class="literal-block">&lt;module_name&gt;/                       -&gt; Folder containing all artifacts corresponding to one module.
 │                                       As folder optional if the repository only contains a single module.
 ├── .github/                         -&gt; GitHub configuration
@@ -789,6 +777,10 @@ README.md                          -&gt; Entrypoint of the repository</pre>
 ├── score/                           -&gt; Folder containing all artifacts corresponding to the components of the module.
 │   ├── &lt;component_name&gt;/            -&gt; Components of the module.
 │   │   │                               Folder containing all artifacts corresponding to one component.
+│   │   |                            -&gt; Source files of the component consisting of
+│   │   |                               Include and source Files [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>]
+│   │   |                               Unit tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a>]
+│   │   ├── &lt;lower_level_comp&gt;/      -&gt; lower level component following &lt;component_name&gt; folder structure
 │   │   ├── docs/                    -&gt; Documentation of the component
 │   │   │   ├── architecture/        -&gt; Component architecture (only if lower level components exist)
 │   │   │   │                           [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a>].
@@ -805,10 +797,6 @@ README.md                          -&gt; Entrypoint of the repository</pre>
 │   │   │   │                           component classification [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a>] for pre-existing software
 │   │   │   └── security_analysis/   -&gt; Security analysis on component level (only if component architecture exists)
 │   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__sw_component_security_analysis">wp__sw_component_security_analysis</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>]
-│   │   ├── src/                     -&gt; Source files of the component consisting of
-│   │   |   │                           Include and source Files [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>]
-│   │   |   │                           Unit tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a>]
-│   │   |   └── &lt;lower_level_comp&gt;/  -&gt; lower level component following &lt;component_name&gt; folder structure
 │   │   └── tests/                   -&gt; Component-level tests (e.g., integration tests)
 │   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a>]
 │   └── tests/                       -&gt; Module-level tests (e.g., feature integration tests, system tests)
@@ -827,7 +815,8 @@ if more than one feature is implemented in the module.</p>
 <h2>Module Folder Structure (Single-Feature Variant)<a class="headerlink" href="#module-folder-structure-single-feature-variant" title="Link to this heading">#</a></h2>
 <p>The following variant keeps the same structure but removes the additional
 feature-name nesting under <code class="docutils literal notranslate"><span class="pre">docs/features/</span></code>. In this case, the <code class="docutils literal notranslate"><span class="pre">features/</span></code>
-subfolder is optional and omitted. This variant is intended for modules that only implement a single feature, to avoid unnecessary nesting.
+subfolder is still advised for similar documentation structure.
+This variant is intended for modules that only implement a single feature, to avoid unnecessary nesting.
 For identification of the single feature, the repository name or module name should be replicate the feature name.</p>
 <pre class="literal-block">&lt;module_name&gt;/                       -&gt; Folder containing all artifacts corresponding to one module.
 │                                       As folder optional if the repository only contains a single module.
@@ -874,6 +863,10 @@ For identification of the single feature, the repository name or module name sho
 ├── score/                           -&gt; Folder containing all artifacts corresponding to the components of the module.
 │   ├── &lt;component_name&gt;/            -&gt; Components of the module.
 │   │   │                               Folder containing all artifacts corresponding to one component.
+│   │   |                            -&gt; Source files of the component consisting of
+│   │   |                               Include and source Files [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>]
+│   │   |                               Unit tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a>]
+│   │   ├── &lt;lower_level_comp&gt;/      -&gt; lower level component following &lt;component_name&gt; folder structure
 │   │   ├── docs/                    -&gt; Documentation of the component
 │   │   │   ├── architecture/        -&gt; Component architecture (only if lower level components exist)
 │   │   │   │                           [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a>].
@@ -890,13 +883,9 @@ For identification of the single feature, the repository name or module name sho
 │   │   │   │                           component classification [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a>] for pre-existing software
 │   │   │   └── security_analysis/   -&gt; Security analysis on component level (only if component architecture exists)
 │   │   │                               [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__sw_component_security_analysis">wp__sw_component_security_analysis</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a>]
-│   │   ├── src/                     -&gt; Source files of the component consisting of
-│   │   |   │                           Include and source Files [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>]
-│   │   |   │                           Unit tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a>]
-│   │   |   └── &lt;lower_level_comp&gt;/  -&gt; lower level component following &lt;component_name&gt; folder structure
-│   │   └── tests/                   -&gt; Component-level tests (e.g., integration tests)
+│   │   └── tests/                   -&gt; Component-level tests (e.g. integration tests)
 │   │                                   [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a>]
-│   └── tests/                       -&gt; Module-level tests (e.g., feature integration tests, system tests)
+│   └── tests/                       -&gt; Module-level tests (e.g. feature integration test)
 │                                       [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>]
 ├── MODULE.bazel                     -&gt; Bazel module definition
 ├── BUILD                            -&gt; Root build rules
