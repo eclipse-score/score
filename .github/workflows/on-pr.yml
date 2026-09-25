@@ -44,3 +44,15 @@ jobs:
         with:
           pr-number: ${{ github.event.number }}
           base-branch: ${{ github.event.pull_request.base.ref }}
+
+  fep-fcp-tests:
+    name: fep-fcp-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Run FEP FCP bot unit tests
+        run: |
+          pip install --user -r .github/fep_fcp/requirements.txt pytest
+          python -m pytest -p no:cacheprovider .github/fep_fcp

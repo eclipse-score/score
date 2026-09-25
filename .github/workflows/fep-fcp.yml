@@ -1,0 +1,75 @@
+# *******************************************************************************
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+# FEP Final Comment Period bot, see docs/contribute/contribution_request/feature_request.rst
+#
+# Runs in the context of the base repository (never checks out or executes PR code),
+# so it can comment and set the `fep/fcp` commit status on PRs from forks too.
+
+name: FEP Final Comment Period
+
+on:
+  workflow_run:
+    workflows: ["FEP FCP Trigger"]
+    types: [completed]
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: "0 6 * * *" # closes expired FCPs and sends reminders
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR to process (empty: all PRs in their Final Comment Period)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fep-fcp
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  fcp:
+    name: FEP Final Comment Period
+    if: >-
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && startsWith(github.event.comment.body, '/fcp')) ||
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+      statuses: write
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v7
+
+      - name: Install dependencies
+        run: pip install --user -r .github/fep_fcp/requirements.txt
+
+      - name: Run FCP bot
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_EVENT: ${{ github.event.workflow_run.event }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          HEAD_OWNER: ${{ github.event.workflow_run.head_repository.owner.login }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number || github.event.issue.number || inputs.pr_number }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: python .github/fep_fcp/fcp.py
