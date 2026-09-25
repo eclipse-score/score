@@ -91,6 +91,8 @@ The qualification boundary is explicitly limited to this workflow:
 
 * clang adds instrumentation during host builds through LLVM source-based
   coverage options.
+* Check that the report is generated, non-empty, and contains the expected source
+  files and instrumented code before using its coverage values as verification evidence.
 * ``llvm-profdata`` merges ``*.profraw`` execution data into ``*.profdata``.
 * ``llvm-cov`` converts the instrumented binaries and merged profile data into
   developer-facing coverage reports.
@@ -156,6 +158,51 @@ S-CORE project.
      - yes
      - no
      - high
+   * - 5
+     - Coverage report generation
+     - | Report is not generated, empty, or incomplete
+       | Coverage evidence is unavailable or only partially available.
+     - yes
+     - yes
+     - yes
+     - no
+     - high
+   * - 6
+     - Coverage report generation
+     - | Expected source files or instrumented code are missing from the report
+       | Unmeasured code could be mistaken for covered code if the omission is not detected.
+     - yes
+     - yes
+     - yes
+     - no
+     - high
+   * - 7
+     - Coverage instrumentation
+     - | Instrumentation is missing, incomplete, or applied to the wrong build
+       | The report can omit executable code or represent a different binary than the one tested.
+     - yes
+     - yes
+     - yes
+     - no
+     - high
+   * - 8
+     - Profile merge
+     - | Stale, mismatched, or cross-build profile data is used
+       | Execution data can be attributed to the wrong source or binary and produce optimistic coverage.
+     - yes
+     - yes
+     - yes
+     - no
+     - high
+   * - 9
+     - Coverage report generation
+     - | Incorrect source, region, branch, or function attribution
+       | Executed code can be reported against the wrong source locations or coverage metric.
+     - yes
+     - yes
+     - yes
+     - no
+     - high
 
 Security evaluation
 -------------------
@@ -203,6 +250,12 @@ verification environment:
 * Include at least one intentionally uncovered file or line in the validation
   suite so that false-positive reporting is easier to detect during review and
   CI execution.
+* Check that the report is generated, non-empty, and contains the expected source
+  files and instrumented code before using its coverage values as verification evidence.
+* Tie the instrumented binary, raw profiles, merged profile, source revision, and
+  report to the same clean build, and reject stale or mismatched profile inputs.
+* Include reference cases with known source locations, branches, regions, and
+  functions so that coverage attribution is checked, not only aggregate percentages.
 * Re-run the coverage workflow from a clean build in CI so that profile merge
   failures, missing reports and threshold regressions are visible as build
   failures rather than silent degradations.
