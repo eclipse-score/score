@@ -66,18 +66,54 @@ class Config:
     breaking_change_quorum: int
     quorum_group: str
     bot_login: str
-    chair_and_proxy: list[str]
     known_good_url: str
     known_good_groups: list[str]
     extra_registry_modules: list[str]
     registry_metadata_url: str
-    extra_stakeholders: dict[str, list[str]]
+    # Groups and chair/proxy are either listed here directly, or taken from the
+    # owners of a CODEOWNERS pattern (resolved by load()).
+    extra_stakeholders: dict[str, list[str]] = field(default_factory=dict)
+    chair_and_proxy: list[str] = field(default_factory=list)
+    codeowners_file: str = ".github/CODEOWNERS"
+    codeowners_stakeholders: dict[str, str] = field(default_factory=dict)
+    chair_and_proxy_codeowners: str = ""
 
     @classmethod
-    def load(cls, path: Path = CONFIG_PATH) -> Config:
+    def load(cls, path: Path = CONFIG_PATH, repo_root: Path | None = None) -> Config:
         data = json.loads(path.read_text())
         data.pop("_comment", None)
-        return cls(**data)
+        cfg = cls(**data)
+        if cfg.codeowners_stakeholders or cfg.chair_and_proxy_codeowners:
+            root = repo_root or path.resolve().parents[2]
+            text = (root / cfg.codeowners_file).read_text()
+            for group, pattern in cfg.codeowners_stakeholders.items():
+                cfg.extra_stakeholders[group] = codeowners(text, pattern)
+            if cfg.chair_and_proxy_codeowners:
+                cfg.chair_and_proxy = codeowners(text, cfg.chair_and_proxy_codeowners)
+        return cfg
+
+
+def codeowners(text: str, pattern: str) -> list[str]:
+    """Individual owners of ``pattern`` in a CODEOWNERS file (the last matching line wins).
+
+    Teams (``@org/team``) are skipped: reviews are given by users, not by teams.
+    """
+    owners: list[str] | None = None
+    for line in text.splitlines():
+        tokens = line.split("#", 1)[0].split()
+        if tokens and tokens[0] == pattern:
+            owners = []
+            for token in tokens[1:]:
+                if token.startswith("@") and "/" not in token:
+                    owners.append(token[1:])
+                else:
+                    print(
+                        f"Warning: skipping CODEOWNERS entry {token} of {pattern}",
+                        file=sys.stderr,
+                    )
+    if owners is None:
+        raise ValueError(f"CODEOWNERS has no entry for {pattern}")
+    return owners
 
 
 # --------------------------------------------------------------------------- stakeholders

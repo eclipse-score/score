@@ -181,10 +181,23 @@ def repo(pr: FakePR) -> FakeRepo:
 # --------------------------------------------------------------------------- pure logic
 
 
-def test_config_file_loads() -> None:
+def test_config_file_loads_groups_from_codeowners() -> None:
     cfg = fcp.Config.load()
     assert cfg.fcp_days == 14
-    assert cfg.quorum_group in cfg.extra_stakeholders
+    assert "qor-lb" in cfg.extra_stakeholders[cfg.quorum_group]
+    assert cfg.chair_and_proxy == ["qor-lb", "arsibo"]
+
+
+def test_codeowners_last_match_wins_and_teams_are_skipped() -> None:
+    text = """
+# /docs/features/  @commented-out
+/docs/features/    @old
+/docs/features/    @a @b  @org/team  # inline comment
+/docs/features/x/  @other
+"""
+    assert fcp.codeowners(text, "/docs/features/") == ["a", "b"]
+    with pytest.raises(ValueError, match="no entry for /missing/"):
+        fcp.codeowners(text, "/missing/")
 
 
 def test_resolve_stakeholders_keeps_modules_without_maintainers() -> None:
