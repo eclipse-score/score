@@ -145,7 +145,7 @@ The host result described above is the baseline of the coverage analysis. For th
 
 1. **Similarity argument (with or without manual review):** the host coverage result is reused for the target based on the argument that the source code executed on the target is equivalent to the source code covered on the host.
 2. **Code coverage on the target with clang/llvm:** structural coverage is measured directly on the target using clang and ``llvm-cov``, i.e. the same source-based coverage method as on the host.
-3. **Code coverage on the target with qcc + llvm-cov:** structural coverage is measured on the target using the QNX compiler ``qcc`` together with ``llvm-cov``.
+3. **Code coverage on the target with qcc + llvm-cov:** structural coverage is measured on the target using the QNX compiler ``qcc`` importing and analyzing the host coverage data together with ``llvm-cov``.
 4. **Code coverage on the target with qcc + gcov:** structural coverage is measured on the target using the QNX compiler ``qcc`` together with ``gcov``.
 
 The selection of the approach depends on the source-code deviation between host and target and on the effort and availability of the respective target solution:
