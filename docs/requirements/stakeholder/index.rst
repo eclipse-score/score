@@ -1110,6 +1110,48 @@ AI SW-platform
    The SW-platform shall expose structured APIs to access vehicle state and execute safe commands.
 
 
+.. stkh_req:: Deterministic AI Agent Execution
+   :id: stkh_req__ai_platform__agent_execution
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: AI-based agents share compute resources with vehicle functions of higher criticality and therefore need bounded and predictable resource usage.
+   :status: valid
+   :version: 1
+   :tags: artificial_intelligence
+   :valid_from: v2.0.0
+
+   The SW-platform shall execute AI-based agents with defined scheduling and resource budgets per criticality domain.
+
+
+.. stkh_req:: AI Model Artifact Lifecycle
+   :id: stkh_req__ai_platform__model_lifecycle
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: AI models are updated independently of the application software and must be updatable and revertible in the field without re-releasing the application.
+   :status: valid
+   :version: 1
+   :tags: artificial_intelligence
+   :valid_from: v2.0.0
+
+   The SW-platform shall manage AI model artifacts over their lifecycle, including versioning, update and rollback.
+
+
+.. stkh_req:: AI Workload Observability
+   :id: stkh_req__ai_platform__observability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Degradation of AI workloads is not detectable by functional monitoring alone and must be observable in the field and during development.
+   :status: valid
+   :version: 1
+   :tags: artificial_intelligence
+   :valid_from: v2.0.0
+
+   The SW-platform shall expose runtime characteristics of AI workloads, such as inference latency and resource consumption, via the platform observability mechanisms.
+
+
 Diagnostics and Fault Management
 --------------------------------
 
