@@ -644,7 +644,7 @@
                   
   <section id="code-analysis-c">
 <h1>Code Analysis C++<a class="headerlink" href="#code-analysis-c" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0bc4ccec">
+<div class="need_container docutils container" id="SNCB-6332300b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__cpp_code_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -736,21 +736,43 @@
 </section>
 <section id="code-coverage">
 <h2>Code Coverage<a class="headerlink" href="#code-coverage" title="Link to this heading">#</a></h2>
-<p>As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. Coverage is calculated on the host using LLVM’s source-based coverage:</p>
+<section id="host-baseline">
+<h3>Host baseline<a class="headerlink" href="#host-baseline" title="Link to this heading">#</a></h3>
+<p>As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. The basis of the code-coverage analysis is always the host system (Linux) using LLVM’s source-based coverage with clang and <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>:</p>
 <ul class="simple">
 <li><p>Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.</p></li>
 </ul>
 <p>In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> and evaluated with <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p>
-<p>S-CORE determines structural coverage on the host using LLVM’s source-based coverage. Structural coverage on the target is not determined by S-CORE. It shall be determined by the user or distributor for the target on which the S-CORE software is integrated. Target structural coverage is needed to identify uncovered target-specific code and to provide evidence for the absence of undefined behaviour on the target.</p>
+<p>The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a>. The concrete coverage percentage goals (e.g. 100% statement and branch coverage for safety-critical code and 85% for QM code) are listed in the quality criteria of the <a class="reference internal" href="../../../platform_management_plan/software_verification.html#doc__verification_plan" title="doc__verification_plan"><em class="xref need">Software Verification Plan (doc__verification_plan)</em></a>. Where the required coverage is not achieved, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).</p>
+<p>S-CORE determines structural coverage on the host using LLVM’s source-based coverage. Structural coverage on the target is not determined by S-CORE; it is the responsibility of the integrator or distributor for the target on which the S-CORE software is integrated, and a module or project may pre-provide it. Target structural coverage is needed to identify uncovered target-specific code paths, including those that could exhibit undefined behaviour on the target. Evidence for the absence of undefined behaviour itself is provided by the dynamic analysis tools (e.g. UBSAN) together with the target execution, not by structural coverage alone.</p>
 <p>LLVM’s source-based coverage is preferred over <code class="docutils literal notranslate"><span class="pre">gcov</span></code>-based coverage for the following reasons:</p>
 <ul class="simple">
 <li><p><strong>Precision with templates, generics and modern C++:</strong> legacy GCC line-based coverage <code class="docutils literal notranslate"><span class="pre">gcov</span></code> is line-oriented, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM’s source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.</p></li>
-<li><p><strong>MC/DC support:</strong> LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>), which is required for the higher ASIL levels.</p></li>
+<li><p><strong>MC/DC support:</strong> LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>). Per ISO 26262-6:2018, Table 9, MC/DC is highly recommended only for ASIL D and recommended for ASIL A to C, while branch coverage is the highly recommended metric for ASIL B and C.</p></li>
 </ul>
+<p>The coverage measurement tools themselves (on the host the LLVM <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>/<code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> chain, on the target the tools of the chosen approach below) are subject to tool classification and, where applicable, tool qualification according to ISO 26262-8:2018, Clause 11.</p>
 <p>To enable this, following tools are used:</p>
 <p class="plantuml" id="needuml-contribute/development/cpp/code_analysis-2">
 <object data="../../../_images/plantuml-0b7427b3021b8aba2ca46b5eaeb4711d2e1d5da5.svg" type="image/svg+xml" style="width:201px;height:337px;background:#FFFFFF;"></object></p>
-<p>Host and target coverage have different responsibilities. LLVM coverage on the host provides S-CORE’s structural-coverage result. The user or distributor shall determine structural coverage on the target used for integration, including target-specific code paths, as required by the platform AoU <a class="reference internal" href="../../../requirements/platform_assumptions/index.html#aou_req__platform__target_structural_coverage" title="aou_req__platform__target_structural_coverage"><em class="xref need">Target structural coverage (aou_req__platform__target_structural_coverage)</em></a>. Target execution tests and target structural-coverage results are separate verification evidence and shall not be treated as interchangeable.</p>
+<p>Host and target coverage have different responsibilities. LLVM coverage on the host provides S-CORE’s structural-coverage result. Structural coverage for the target used for integration, including target-specific code paths, has to be rationalized separately as described in <a class="reference internal" href="#target-coverage-rationalization">Target coverage rationalization</a>. Target execution tests and target structural-coverage results are separate verification evidence and shall not be treated as interchangeable.</p>
+</section>
+<section id="target-coverage-rationalization">
+<h3>Target coverage rationalization<a class="headerlink" href="#target-coverage-rationalization" title="Link to this heading">#</a></h3>
+<p>The host result described above is the baseline of the coverage analysis. For the target system, the coverage of the source code that actually runs on the target has to be rationalized on top of this baseline. Depending on how much the source code deviates between host and target and on the effort and availability of a solution for the target, a module or project may choose one of the following four approaches:</p>
+<ol class="arabic simple">
+<li><p><strong>Similarity argument (with or without manual review):</strong> the host coverage result is reused for the target based on the argument that the source code executed on the target is equivalent to the source code covered on the host.</p></li>
+<li><p><strong>Code coverage on the target with clang/llvm:</strong> structural coverage is measured directly on the target using clang and <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>, i.e. the same source-based coverage method as on the host.</p></li>
+<li><p><strong>Code coverage on the target with qcc + llvm-cov:</strong> structural coverage is measured on the target using the QNX compiler <code class="docutils literal notranslate"><span class="pre">qcc</span></code> together with <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p></li>
+<li><p><strong>Code coverage on the target with qcc + gcov:</strong> structural coverage is measured on the target using the QNX compiler <code class="docutils literal notranslate"><span class="pre">qcc</span></code> together with <code class="docutils literal notranslate"><span class="pre">gcov</span></code>.</p></li>
+</ol>
+<p>The selection of the approach depends on the source-code deviation between host and target and on the effort and availability of the respective target solution:</p>
+<ul class="simple">
+<li><p>If there is no source-code deviation between host and target, approach 1 (similarity argument) can be chosen. Even in this case an equivalence justification shall be documented, because compiler and target differences (e.g. optimization, inlining, integer widths, alignment, library implementations) can affect the executed code independently of the source (ISO 26262-6:2018, 9.4.6 / 11.4.8).</p></li>
+<li><p>If there are only few local deviations (e.g. guarded by <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">__QNX__</span></code>), approach 1 with manual review and documentation of these specific locations shall be chosen.</p></li>
+<li><p>For larger deviations (different code paths or implementations between host and target), approach 2, 3 or 4 should be chosen, provided the respective solution is available for the target system. These three approaches differ only in the effort for tool classification/qualification, the tool quality, and the effort for infrastructure and workflow implementation.</p></li>
+</ul>
+<p>Regardless of the chosen approach, differences between the host and target compilers and coverage tools can introduce side effects in the reported coverage output. Typical effects are: branches or regions that appear or disappear because of compiler-specific optimization, inlining or dead-code elimination; a different source-line-to-region mapping (e.g. <code class="docutils literal notranslate"><span class="pre">gcov</span></code> line-based versus <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> region-based counting) leading to differing coverage percentages for the same source; additional or missing branches introduced by the instrumentation itself or by different standard-library implementations; and diverging results for template instantiations or target-specific <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> code paths. As a consequence, the same source can report different structural coverage depending on the compiler and coverage tool used. The validity of the code-coverage result is therefore rationalized by executing the unit tests with and without code-coverage instrumentation and across the relevant build configurations and target systems, and by demonstrating that the results are equivalent. This execution shall be performed as required by <a class="reference internal" href="../../../requirements/platform_assumptions/index.html#aou_req__platform__ut_execution_consistency" title="aou_req__platform__ut_execution_consistency"><em class="xref need">Unit test execution across ... (aou_req__platform__ut_execution_consistency)</em></a>.</p>
+</section>
 </section>
 </section>
 
@@ -809,7 +831,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adress-leak-sanitizer-asan-lsan">Adress/ Leak Sanitizer (ASAN/LSAN)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-coverage">Code Coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-coverage">Code Coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-baseline">Host baseline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-coverage-rationalization">Target coverage rationalization</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
