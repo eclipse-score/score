@@ -108,15 +108,13 @@ Code Coverage
 Host baseline
 -------------
 
-As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. The basis of the code-coverage analysis is always the host system (Linux) using LLVM's source-based coverage with clang and ``llvm-cov``:
-
-* Coverage is calculated on the host via clang/llvm. This method is also used for the reporting.
+As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. The basis of the code-coverage analysis is always the host system (Linux) using LLVM's source-based coverage with clang and ``llvm-cov``. This method is also used for the reporting.
 
 In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with ``llvm-profdata`` and evaluated with ``llvm-cov``.
 
 The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the :need:`gd_guidl__verification_guide`. The concrete coverage percentage goals (e.g. 100% statement and branch coverage for safety-critical code and 85% for QM code) are listed in the quality criteria of the :need:`doc__verification_plan`. Where the required coverage is not achieved, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).
 
-S-CORE determines structural coverage on the host using LLVM's source-based coverage. Structural coverage on the target is not determined by S-CORE; it is the responsibility of the integrator or distributor for the target on which the S-CORE software is integrated, and a module or project may pre-provide it. Target structural coverage is needed to identify uncovered target-specific code paths, including those that could exhibit undefined behaviour on the target. Evidence for the absence of undefined behaviour itself is provided by the dynamic analysis tools (e.g. UBSAN) together with the target execution, not by structural coverage alone.
+Structural coverage on the target, in contrast to the host baseline, may be provided either by S-CORE (for example for a reference target) or by the integrator or distributor for the target on which the S-CORE software is integrated. Target structural coverage is needed to identify uncovered target-specific code paths, including those that could exhibit undefined behaviour on the target. Evidence for the absence of undefined behaviour itself is provided by the dynamic analysis tools (e.g. UBSAN) together with the target execution, not by structural coverage alone.
 
 LLVM's source-based coverage is preferred over ``gcov``-based coverage for the following reasons:
 
@@ -138,7 +136,7 @@ To enable this, following tools are used:
    gtest --> llvm
    llvm --> host
 
-Host and target coverage have different responsibilities. LLVM coverage on the host provides S-CORE's structural-coverage result. Structural coverage for the target used for integration, including target-specific code paths, has to be rationalized separately as described in `Target coverage rationalization`_. Target execution tests and target structural-coverage results are separate verification evidence and shall not be treated as interchangeable.
+The structural coverage for the target used for integration, including target-specific code paths, has to be rationalized separately, as described in `Target coverage rationalization`_. Target execution tests and target structural-coverage results are separate verification evidence and shall not be treated as interchangeable.
 
 Target coverage rationalization
 -------------------------------
