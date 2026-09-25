@@ -48,8 +48,8 @@ LEDGER_RE = re.compile(r"<!-- fep-fcp-ledger (\{.*?\}) -->", re.DOTALL)
 ISSUE_REF_RE = re.compile(
     r"(?:(?<![\w/])#|github\.com/eclipse-score/score/issues/)(\d+)\b"
 )
+SHEPHERD_RE = re.compile(r"^\s*shepherd:\s*@([\w-]+)", re.IGNORECASE | re.MULTILINE)
 DECISIVE_STATES = ("APPROVED", "CHANGES_REQUESTED", "DISMISSED")
-WRITE_PERMISSIONS = ("admin", "maintain", "write")
 
 
 # --------------------------------------------------------------------------- configuration
@@ -66,6 +66,7 @@ class Config:
     breaking_change_quorum: int
     quorum_group: str
     bot_login: str
+    chair_and_proxy: list[str]
     known_good_url: str
     known_good_groups: list[str]
     extra_registry_modules: list[str]
@@ -121,6 +122,25 @@ def _fmt(moment: datetime) -> str:
     return moment.strftime("%Y-%m-%d %H:%M UTC")
 
 
+def _duration(delta: timedelta) -> str:
+    """Human readable duration: days and hours, or minutes below one hour."""
+
+    def unit(count: int, name: str) -> str:
+        return f"{count} {name}{'' if count == 1 else 's'}"
+
+    seconds = max(int(delta.total_seconds()), 0)
+    days, hours, minutes = (
+        seconds // 86400,
+        seconds % 86400 // 3600,
+        seconds % 3600 // 60,
+    )
+    if days:
+        return unit(days, "day") + (f" {unit(hours, 'hour')}" if hours else "")
+    if hours:
+        return unit(hours, "hour")
+    return unit(minutes, "minute")
+
+
 def _utc(moment: datetime) -> datetime:
     return moment if moment.tzinfo else moment.replace(tzinfo=timezone.utc)
 
@@ -136,6 +156,7 @@ class Ledger:
     reminders_sent: list[int] = field(default_factory=list)
     closed_at: datetime | None = None
     tracking_issues: list[int] = field(default_factory=list)
+    shepherds: list[str] = field(default_factory=list)
 
     def to_marker(self) -> str:
         data = asdict(self)
@@ -162,6 +183,50 @@ class Review:
     login: str
     state: str
     submitted_at: datetime
+    id: int = 0
+
+
+@dataclass
+class Dismissal:
+    """A dismissed change request, as recorded in the PR timeline."""
+
+    reviewer: str
+    by: str
+    at: datetime
+    message: str
+    honored: bool = False  # dismissed in time by the Shepherd, chair or proxy
+
+
+def apply_dismissals(
+    reviews: list[Review],
+    events: list[tuple[int, str, datetime, str]],
+    trusted: set[str],
+    deadline: datetime,
+) -> tuple[list[Review], list[Dismissal]]:
+    """Only the Shepherd, chair or proxy may dismiss an objection, before the deadline.
+
+    ``events`` are (review id, dismissed by, dismissed at, message) of dismissed change
+    requests. Any other dismissal is not honored: the review counts as a change request again.
+    """
+    by_id = {e[0]: e for e in events}
+    result: list[Review] = []
+    dismissals: list[Dismissal] = []
+    for review in reviews:
+        event = by_id.get(review.id) if review.state == "DISMISSED" else None
+        if event is None:
+            result.append(review)
+            continue
+        _, by, at, message = event
+        honored = by.lower() in trusted and at <= deadline
+        dismissals.append(Dismissal(review.login, by, at, message, honored))
+        result.append(
+            review
+            if honored
+            else Review(
+                review.login, "CHANGES_REQUESTED", review.submitted_at, review.id
+            )
+        )
+    return result, dismissals
 
 
 @dataclass
@@ -185,6 +250,7 @@ class Evaluation:
     groups: list[GroupResult]
     explicit_approvers: list[str]
     other_objections: list[str]  # change requests by people who are not stakeholders
+    dismissals: list[Dismissal] = field(default_factory=list)
 
     @property
     def blocking(self) -> list[GroupResult]:
@@ -214,7 +280,12 @@ def latest_decisive_reviews(
     return latest
 
 
-def evaluate(ledger: Ledger, reviews: list[Review], quorum_group: str) -> Evaluation:
+def evaluate(
+    ledger: Ledger,
+    reviews: list[Review],
+    quorum_group: str,
+    dismissals: list[Dismissal] | None = None,
+) -> Evaluation:
     latest = latest_decisive_reviews(reviews, ledger.deadline)
     groups = []
     stakeholder_logins: set[str] = set()
@@ -244,6 +315,7 @@ def evaluate(ledger: Ledger, reviews: list[Review], quorum_group: str) -> Evalua
             for login, r in latest.items()
             if r.state == "CHANGES_REQUESTED" and login not in stakeholder_logins
         ),
+        dismissals=dismissals or [],
     )
 
 
@@ -295,13 +367,36 @@ def _group_status(group: GroupResult, closed: bool) -> str:
     return "☑️ approved by silence" if closed else "⏳ no response yet"
 
 
+def _dismissal_lines(evaluation: Evaluation) -> list[str]:
+    lines = []
+    for d in evaluation.dismissals:
+        text = f'{d.reviewer}\'s objection dismissed by {d.by} at {_fmt(d.at)}: "{d.message}"'
+        if not d.honored:
+            text = (
+                f"⚠️ {text}. Not by the Shepherd, chair or proxy before the deadline, "
+                "so it **still counts as blocking**."
+            )
+        lines.append(f"* {text}")
+    return lines
+
+
+def _roles_line(ledger: Ledger, cfg: Config) -> str:
+    chair = ", ".join(cfg.chair_and_proxy) or "none configured"
+    if ledger.shepherds:
+        return f"Shepherd: {', '.join(ledger.shepherds)} · chair / proxy: {chair}"
+    return (
+        f"⚠️ No Shepherd found in the tracking issue (expected a line `shepherd: @login`); "
+        f"only the chair / proxy ({chair}) can dismiss objections or reset the FCP."
+    )
+
+
 def render_sticky(
     ledger: Ledger, evaluation: Evaluation, cfg: Config, now: datetime, reason: str = ""
 ) -> str:
     closed = ledger.state != "open"
     headline = {
         "open": f"🟡 **Open**: closes **{_fmt(ledger.deadline)}** "
-        f"({max((ledger.deadline - now).days, 0)} days left)",
+        f"({_duration(ledger.deadline - now)} left)",
         "accepted": f"✅ **Accepted**: FCP closed {_fmt(ledger.closed_at or now)}, {reason}",
         "rejected": f"🚫 **Rejected**: FCP closed {_fmt(ledger.closed_at or now)}, {reason}",
         "cancelled": f"⏹️ **Cancelled**: the `{cfg.fcp_label}` label was removed before the FCP closed",
@@ -312,14 +407,16 @@ def render_sticky(
         headline,
         "",
         (
-            f"The stakeholders below were notified on {_fmt(ledger.start)}. They have {cfg.fcp_days} calendar "
-            f"days, until **{_fmt(ledger.deadline)}**, to review this FEP:"
+            f"The stakeholders below were notified on {_fmt(ledger.start)}. They have "
+            f"{_duration(ledger.deadline - ledger.start)}, until **{_fmt(ledger.deadline)}**, "
+            "to review this FEP:"
         ),
         "",
         "* **Approve** the PR if you agree, or leave it: **silence counts as approval** once the period ends.",
         (
             "* Submit a **Request changes** review for a substantive, technical objection. The Shepherd decides "
-            "whether it is blocking and dismisses non-blocking ones."
+            "whether it is blocking and dismisses non-blocking ones; only dismissals by the Shepherd, "
+            "chair or proxy count."
         ),
         "* Reviews submitted after the deadline are not taken into account.",
         "",
@@ -339,6 +436,8 @@ def render_sticky(
         for g in evaluation.groups
     ]
     lines.append("")
+    if evaluation.dismissals:
+        lines += ["**Dismissed objections:**", "", *_dismissal_lines(evaluation), ""]
     if evaluation.other_objections:
         lines += [
             (
@@ -347,6 +446,7 @@ def render_sticky(
             ),
             "",
         ]
+    lines += [_roles_line(ledger, cfg), ""]
     if ledger.tracking_issues:
         lines.append(
             f"Tracking issue: {', '.join(f'#{n}' for n in ledger.tracking_issues)}"
@@ -361,13 +461,16 @@ def render_sticky(
     return "\n".join(lines)
 
 
-def render_reminder(ledger: Ledger, evaluation: Evaluation, days: int) -> str:
+def render_reminder(ledger: Ledger, evaluation: Evaluation, now: datetime) -> str:
     silent = [
         f"* {g.name}: {_mentions(g.members)}" for g in evaluation.silent if g.members
     ]
     return "\n".join(
         [
-            f"⏰ **FEP Final Comment Period: {days} day(s) left** (closes {_fmt(ledger.deadline)}).",
+            (
+                f"⏰ **FEP Final Comment Period: {_duration(ledger.deadline - now)} left** "
+                f"(closes {_fmt(ledger.deadline)})."
+            ),
             "",
             "No response yet from:",
             "",
@@ -409,6 +512,14 @@ def render_final(ledger: Ledger, evaluation: Evaluation, reason: str) -> str:
             f"* Approved explicitly: {names(evaluation.approved)}",
             f"* Approved by silence: {names(evaluation.silent)}",
             f"* Blocking objections: {names(evaluation.blocking)}",
+            *(
+                [
+                    "* Dismissed objections:",
+                    *[f"  {x}" for x in _dismissal_lines(evaluation)],
+                ]
+                if evaluation.dismissals
+                else []
+            ),
             "",
             "All stakeholders listed in the FCP comment above were notified when the period started.",
         ]
@@ -446,12 +557,44 @@ class Bot:
                     return comment, ledger
         return None, None
 
-    def _reviews(self, pr: Any) -> list[Review]:
-        return [
-            Review(r.user.login, r.state, _utc(r.submitted_at))
+    def _reviews(self, pr: Any, ledger: Ledger) -> tuple[list[Review], list[Dismissal]]:
+        reviews = [
+            Review(r.user.login, r.state, _utc(r.submitted_at), r.id)
             for r in pr.get_reviews()
             if r.user is not None and r.submitted_at is not None
         ]
+        events = []
+        for event in pr.get_issue_events():
+            dismissed = event.raw_data.get("dismissed_review") or {}
+            if (
+                event.event == "review_dismissed"
+                and dismissed.get("state") == "changes_requested"
+            ):
+                events.append(
+                    (
+                        dismissed.get("review_id"),
+                        event.actor.login if event.actor else "ghost",
+                        _utc(event.created_at),
+                        dismissed.get("dismissal_message") or "",
+                    )
+                )
+        return apply_dismissals(reviews, events, self._trusted(ledger), ledger.deadline)
+
+    def _evaluate(self, pr: Any, ledger: Ledger) -> Evaluation:
+        reviews, dismissals = self._reviews(pr, ledger)
+        return evaluate(ledger, reviews, self.cfg.quorum_group, dismissals)
+
+    def _trusted(self, ledger: Ledger) -> set[str]:
+        return {
+            login.lower() for login in [*ledger.shepherds, *self.cfg.chair_and_proxy]
+        }
+
+    def _shepherds(self, issue_numbers: list[int]) -> list[str]:
+        shepherds: list[str] = []
+        for number in issue_numbers:
+            body = self.repo.get_issue(number).body or ""
+            shepherds += [s for s in SHEPHERD_RE.findall(body) if s not in shepherds]
+        return shepherds
 
     def _status(
         self, sha: str, state: str, description: str, url: str | None = None
@@ -529,7 +672,10 @@ class Bot:
             )
             return
 
-        evaluation = evaluate(ledger, self._reviews(pr), self.cfg.quorum_group)
+        # The Shepherd may change during the FCP, read it from the tracking issue every time.
+        if ledger.state == "open":
+            ledger.shepherds = self._shepherds(ledger.tracking_issues)
+        evaluation = self._evaluate(pr, ledger)
         reason = ""
 
         if ledger.state == "open" and not in_fcp:
@@ -540,9 +686,9 @@ class Bot:
             ledger.closed_at = self.now
             self._close(pr, ledger, evaluation, reason)
         elif ledger.state == "open":
-            days = due_reminder(ledger, self.now, self.cfg.reminder_days_before)
-            if days is not None and evaluation.silent:
-                pr.create_issue_comment(render_reminder(ledger, evaluation, days))
+            due = due_reminder(ledger, self.now, self.cfg.reminder_days_before)
+            if due is not None and evaluation.silent:
+                pr.create_issue_comment(render_reminder(ledger, evaluation, self.now))
         elif ledger.state in ("accepted", "rejected"):
             reason = closing_state(evaluation, ledger, self.cfg)[1]
 
@@ -573,8 +719,9 @@ class Bot:
             stakeholders=resolve_stakeholders(self.cfg, self.fetch),
             breaking=self.cfg.breaking_change_label in labels,
             tracking_issues=[issue.number for issue in tracking],
+            shepherds=self._shepherds([issue.number for issue in tracking]),
         )
-        evaluation = evaluate(ledger, self._reviews(pr), self.cfg.quorum_group)
+        evaluation = self._evaluate(pr, ledger)
         # A new comment (not an edit) so that every stakeholder gets an @-mention notification.
         if comment is not None:
             comment.edit(
@@ -610,14 +757,15 @@ class Bot:
         if (body or "").strip().splitlines()[:1] != ["/fcp reset"]:
             return
         comment, ledger = self._sticky(pr)
-        if self.repo.get_collaborator_permission(author) not in WRITE_PERMISSIONS:
-            pr.create_issue_comment(
-                f"@{author} only committers (Shepherd, chair or proxy) can reset the FCP."
-            )
-            return
         if ledger is None or ledger.state != "open":
             pr.create_issue_comment(
                 f"@{author} there is no open Final Comment Period to reset."
+            )
+            return
+        ledger.shepherds = self._shepherds(ledger.tracking_issues)
+        if author.lower() not in self._trusted(ledger):
+            pr.create_issue_comment(
+                f"@{author} only the Shepherd, chair or proxy can reset the FCP."
             )
             return
         if ledger.resets >= self.cfg.max_resets:
@@ -630,7 +778,7 @@ class Bot:
         ledger.deadline = self.now + timedelta(days=self.cfg.fcp_days)
         ledger.reminders_sent = []
         pr.create_issue_comment(render_reset(ledger, author))
-        evaluation = evaluate(ledger, self._reviews(pr), self.cfg.quorum_group)
+        evaluation = self._evaluate(pr, ledger)
         comment = self._publish(pr, comment, ledger, evaluation)
         self._status(
             pr.head.sha, *self._status_for(ledger, evaluation), comment.html_url
