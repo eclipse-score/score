@@ -270,7 +270,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    Note: S-CORE determines structural coverage on the host using LLVM's source-based coverage. Target structural coverage is required to cover target-specific code and undefined behaviour and is not determined by S-CORE.
 
 .. aou_req:: Unit test execution across build configurations and target systems
-   :id: aou_req__platform__unit_test_execution_consistency
+   :id: aou_req__platform__ut_execution_consistency
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
