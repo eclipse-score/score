@@ -74,8 +74,11 @@ a board or filtered view is built on.
 ``fep:needs-shepherd`` is applied to the tracking Issue while no Shepherd is confirmed, and removed
 once one is.
 
-``fep:fcp`` is applied to the tracking Issue only while it is in its Final Comment Period, and
-removed once the FCP closes.
+``fep:fcp`` is applied to the FEP PR only while it is in its Final Comment Period. Adding it starts
+the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both once the FCP closes.
+
+``fep:breaking-change`` is applied to the FEP PR of a Breaking Change FEP (see `Breaking Change FEPs -
+Additional Requirements`_), so that the FCP bot requires the explicit approval quorum.
 
 A FEP that sees no activity for an extended period, most commonly while unshepherded or shepherded
 but not yet ready for FCP, may be marked with the existing ``Stale`` label like any other inactive
@@ -105,7 +108,9 @@ status ``Draft - Shepherded``, and update it to name the Shepherd.
 Author and Shepherd iterate until the proposal is complete and well-argued. When the Shepherd judges
 it ready, they propose entry into the Final Comment Period to the Architecture Community chair (or
 proxy). The chair/proxy then formally announces the FCP across all channels, including Slack, moves
-the tracking Issue to status ``Under Review``, and adds the ``fep:fcp`` label.
+the tracking Issue to status ``Under Review``, and adds the ``fep:fcp`` label to the FEP PR. The
+FEP PR description must reference the tracking Issue (for example ``Tracking: #1234``), and the
+tracking Issue must name the Shepherd on a line ``shepherd: @login``.
 
 **Phase 2 - Final Comment Period (FCP)** (status: ``Under Review``)
 
@@ -117,6 +122,28 @@ Silence is approval. FCP closes with no unresolved blocking objections, the FEP 
 closes with unresolved blocking objections, the FEP is rejected. Escalation may intervene in
 exceptional cases but is not the default path. Either way, the ``fep:fcp`` label is removed from the
 tracking Issue once FCP closes.
+
+The FCP is tracked by a bot (``.github/workflows/fep-fcp.yml``):
+
+* **Notification**: when ``fep:fcp`` is added, the bot @-mentions the maintainers of every S-CORE
+  module (as registered in the ``bazel_registry`` for the modules of the reference integration) and
+  the Architecture Community in a PR comment. They are informed, not added as reviewers. The list of
+  notified people and the start date are recorded in that comment, so it stays traceable who was
+  informed and when.
+* **Taking part**: stakeholders *Approve* the PR, or submit a *Request changes* review for a
+  substantive, technical objection. Reminders are posted 7 and 2 days before the deadline to groups
+  that have not responded.
+* **Dismissing objections**: the Shepherd dismisses change requests judged non-blocking, giving the
+  reason in the dismissal message. Only dismissals by the Shepherd or the Architecture Community
+  chair/proxy, made before the deadline, count; any other dismissed change request still blocks.
+  Every dismissal, with who dismissed it, when and why, is listed in the FCP record.
+* **Closing**: after 14 days, groups that did not respond count as having approved. Reviews submitted
+  after the deadline are ignored. The FEP is accepted unless an undismissed change request from a
+  stakeholder remains; a Breaking Change FEP also needs explicit approvals from the Architecture
+  Community quorum. The result is posted to the PR and the tracking Issue, and reported as the
+  ``fep/fcp`` commit status.
+* **Reset**: the Shepherd or the chair/proxy comments ``/fcp reset`` on the FEP PR to restart the
+  14 days once, which notifies all stakeholders again.
 
 **Phase 3 - Decision** (status: ``Accepted`` | ``Rejected`` | ``Withdrawn``)
 
