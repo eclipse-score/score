@@ -112,7 +112,7 @@ As required by the verification guideline code coverage needs to be calculated f
 
 In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with ``llvm-profdata`` and evaluated with ``llvm-cov``.
 
-The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the :need:`gd_guidl__verification_guide`. The concrete coverage percentage goals (e.g. 100% statement and branch coverage for safety-critical code and 85% for QM code) are listed in the quality criteria of the :need:`doc__verification_plan`. Where the required coverage is not achieved, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).
+The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the :need:`gd_guidl__verification_guide`. The concrete coverage percentage goals (e.g. 100% statement and branch coverage for safety-critical code and 85% for QM code) are listed in the quality criteria of the :need:`doc__verification_plan`. In practice, the line coverage reported by the LLVM tooling is used as the statement-coverage metric. Where the required coverage is not achieved, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).
 
 Structural coverage on the target, in contrast to the host baseline, may be provided either by S-CORE (for example for a reference target) or by the integrator or distributor for the target on which the S-CORE software is integrated. Target structural coverage is needed to identify uncovered target-specific code paths, including those that could exhibit undefined behaviour on the target. Evidence for the absence of undefined behaviour itself is provided by the dynamic analysis tools (e.g. UBSAN) together with the target execution, not by structural coverage alone.
 
@@ -152,6 +152,40 @@ The selection of the approach depends on the source-code deviation between host 
 
 * If there is no source-code deviation between host and target, approach 1 (similarity argument) can be chosen. Even in this case an equivalence justification shall be documented, because compiler and target differences (e.g. optimization, inlining, integer widths, alignment, library implementations) can affect the executed code independently of the source (ISO 26262-6:2018, 9.4.6 / 11.4.8).
 * If there are only few local deviations (e.g. guarded by ``#ifdef __QNX__``), approach 1 with manual review and documentation of these specific locations shall be chosen.
-* For larger deviations (different code paths or implementations between host and target), approach 2, 3 or 4 should be chosen, provided the respective solution is available for the target system. These three approaches differ only in the effort for tool classification/qualification, the tool quality, and the effort for infrastructure and workflow implementation.
+* For larger deviations (different code paths or implementations between host and target, e.g. whole files compiled only for the target such as QNX-only files, or host-only code such as mocks), approach 2, 3 or 4 should be chosen for the target-specific code, provided the respective solution is available for the target system. Host-only code (e.g. mocks or emulation) is excluded from the safety-relevant coverage baseline. These three approaches differ only in the effort for tool classification/qualification, the tool quality, and the effort for infrastructure and workflow implementation.
 
 Regardless of the chosen approach, differences between the host and target compilers and coverage tools can introduce side effects in the reported coverage output. Typical effects are: branches or regions that appear or disappear because of compiler-specific optimization, inlining or dead-code elimination; a different source-line-to-region mapping (e.g. ``gcov`` line-based versus ``llvm-cov`` region-based counting) leading to differing coverage percentages for the same source; additional or missing branches introduced by the instrumentation itself or by different standard-library implementations; and diverging results for template instantiations or target-specific ``#ifdef`` code paths. As a consequence, the same source can report different structural coverage depending on the compiler and coverage tool used. The validity of the code-coverage result is therefore rationalized by executing the unit tests with and without code-coverage instrumentation and across the relevant build configurations and target systems, and by demonstrating that the results are equivalent. This execution shall be performed as required by :need:`aou_req__platform__ut_execution_consistency`.
+
+.. note::
+
+   Identifying platform-specific code (in particular whole files compiled only for one platform) should not rely on manually searching for ``#ifdef`` guards. A reliable approach is a build-set comparison: the set of source files compiled for the host is diffed against the set compiled for the target (e.g. via ``bazel aquery``/``cquery`` per platform configuration or per-configuration ``compile_commands.json``); files present only in the target build are flagged as target-only. Within-file conditional regions can be detected by comparing the preprocessed output or the coverage region data of the two configurations. This build-set comparison and a corresponding reviewed exclusion list might become a requirement towards the infrastructure tooling to make the delta between the host baseline and the target code base visible and enforceable in CI.
+
+   For example, the set of source files that participate in a build can be extracted per platform configuration with ``bazel aquery`` and then diffed:
+
+   .. code-block:: bash
+
+      # List the source inputs of all C++ compile actions for the host configuration.
+      bazel aquery --output=jsonproto \
+        --platforms=//path/to/platforms:x86_64_linux \
+        'mnemonic("CppCompile", deps(//path/to:target))' \
+        | jq -r '.artifacts[].execPath' | sort -u > host_sources.txt
+
+      # Same for the target configuration.
+      bazel aquery --output=jsonproto \
+        --platforms=//path/to/platforms:qnx_aarch64 \
+        'mnemonic("CppCompile", deps(//path/to:target))' \
+        | jq -r '.artifacts[].execPath' | sort -u > target_sources.txt
+
+      # Files compiled only for the target (candidates for target-specific coverage).
+      comm -13 host_sources.txt target_sources.txt
+
+      # Files compiled only for the host (e.g. mocks, excluded from the safety baseline).
+      comm -23 host_sources.txt target_sources.txt
+
+   Within-file conditional regions can be compared by preprocessing the same source with both toolchains and diffing the result:
+
+   .. code-block:: bash
+
+      clang -E -P path/to/file.cpp > host_preprocessed.cpp
+      qcc  -E -P path/to/file.cpp > target_preprocessed.cpp
+      diff host_preprocessed.cpp target_preprocessed.cpp
