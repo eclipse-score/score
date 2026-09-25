@@ -643,10 +643,16 @@ class Bot:
 def _pull_request(repo: Any, env: dict[str, str]) -> Any | None:
     if env.get("PR_NUMBER"):
         return repo.get_pull(int(env["PR_NUMBER"]))
-    # workflow_run payloads of fork PRs have no pull_requests[], look the PR up by its head.
-    owner, branch = env.get("HEAD_OWNER"), env.get("HEAD_BRANCH")
-    if owner and branch:
-        for pr in repo.get_pulls(state="open", head=f"{owner}:{branch}"):
+    # workflow_run payloads of fork PRs have no pull_requests[]. For pull_request_review
+    # events head_repository is even the base repository, so owner:branch is not reliable
+    # either: match the head commit first, the branch name only as a fallback.
+    sha, branch = env.get("HEAD_SHA"), env.get("HEAD_BRANCH")
+    open_prs = list(repo.get_pulls(state="open"))
+    for pr in open_prs:
+        if sha and pr.head.sha == sha:
+            return pr
+    for pr in open_prs:
+        if branch and pr.head.ref == branch:
             return pr
     return None
 

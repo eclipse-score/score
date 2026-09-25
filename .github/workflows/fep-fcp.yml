@@ -67,7 +67,6 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           RUN_EVENT: ${{ github.event.workflow_run.event }}
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
-          HEAD_OWNER: ${{ github.event.workflow_run.head_repository.owner.login }}
           HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
           PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number || github.event.issue.number || inputs.pr_number }}
           COMMENT_AUTHOR: ${{ github.event.comment.user.login }}

@@ -338,3 +338,16 @@ def test_reset_once_by_committer(pr: FakePR, repo: FakeRepo) -> None:
 
     bot.command(pr, "shepherd", "/fcp reset")
     assert "no further reset" in pr.issue_comments[-1].body
+
+
+def test_pull_request_lookup_for_fork_review_event() -> None:
+    # pull_request_review from a fork: no PR number, head_repository is the base repo
+    fork_pr = SimpleNamespace(number=3, head=SimpleNamespace(sha="abc", ref="proposal"))
+    other = SimpleNamespace(number=2, head=SimpleNamespace(sha="def", ref="proposal"))
+    repo = SimpleNamespace(get_pulls=lambda state: [other, fork_pr])
+    env = {"HEAD_SHA": "abc", "HEAD_OWNER": "eclipse-score", "HEAD_BRANCH": "proposal"}
+    assert fcp._pull_request(repo, env) is fork_pr
+    assert (
+        fcp._pull_request(repo, {"HEAD_SHA": "zzz", "HEAD_BRANCH": "proposal"}) is other
+    )
+    assert fcp._pull_request(repo, {"HEAD_SHA": "zzz", "HEAD_BRANCH": "nope"}) is None
