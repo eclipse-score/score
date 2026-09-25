@@ -1,0 +1,180 @@
+Source ID,SCRC verdict,MISRust class,Source level,Proposed Rust rules,Assessment
+0.0.1,safe,C3,Required,:ref:`SCR-RUST-002 <scr-rust-002>`,"SCRC: applies. Reassess C3: unreachable_code is a partial diagnostic, not a general proof of unreachable-statement absence."
+0.0.2,safe,C6,Advisory,:ref:`SCR-RUST-003 <scr-rust-003>`,Draft interpretation; applicability and enforcement require review.
+0.1.1,safe,C6,Advisory,:ref:`SCR-RUST-003 <scr-rust-003>`,Draft interpretation; applicability and enforcement require review.
+0.1.2,safe,C6,Required,:ref:`SCR-RUST-004 <scr-rust-004>`,Draft interpretation; applicability and enforcement require review.
+0.2.1,safe,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC: applies. Reassess C3: warning activation and suppressions matter; no unconditional hard-error guarantee.
+0.2.2,safe,C3,Required,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC: applies. Reassess C3: unused parameters can compile; underscore patterns and suppression need a policy.
+0.2.3,safe,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC: applies. Reassess C3: unused-type diagnostics depend on visibility and configuration.
+0.2.4,safe,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC: applies. Reassess C3: unused-function diagnostics depend on visibility and configuration.
+0.3.1,safe,C6,Advisory,:ref:`SCR-RUST-005 <scr-rust-005>`,Draft interpretation; applicability and enforcement require review.
+0.3.2,safe,C6,Required,:ref:`SCR-RUST-006 <scr-rust-006>`,Draft interpretation; applicability and enforcement require review.
+4.1.1,safe,C5,Required,:ref:`SCR-RUST-001 <scr-rust-001>`,Draft interpretation; applicability and enforcement require review.
+4.1.2,safe,C6,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,Draft interpretation; applicability and enforcement require review.
+4.1.3,safe,C4,Required,:ref:`SCR-RUST-007 <scr-rust-007>`,Draft interpretation; applicability and enforcement require review.
+4.6.1,not applicable,C4,Required,not applicable,SCRC: not applicable. Rust evaluation order is well defined. Mapping removed.
+5.0.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+5.7.1,safe,C3,Required,:ref:`SCR-RUST-009 <scr-rust-009>`,SCRC: applies to safe Rust; nested block comments make accidental commenting-out likely.
+5.7.2,safe,C6,Advisory,:ref:`SCR-RUST-009 <scr-rust-009>`,Draft interpretation; applicability and enforcement require review.
+5.7.3,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.10.1,safe,C3,Required,rule assignment pending,SCRC: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).
+5.13.1,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.2,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.3,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.4,safe,C3,Required,rule assignment pending,SCRC: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.
+5.13.5,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.6,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+5.13.7,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.0.1,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.0.2,not applicable,C6,Advisory,not applicable,SCRC: not applicable. Follows MISRA C mapping; arrays carry their extent. Mapping removed.
+6.0.3,unsafe,C5,Advisory,:ref:`SCR-RUST-011 <scr-rust-011>`,Draft interpretation; applicability and enforcement require review.
+6.0.4,safe,C6,Required,:ref:`SCR-RUST-012 <scr-rust-012>`,Draft interpretation; applicability and enforcement require review.
+6.2.1,unsafe,C4,Required,:ref:`SCR-RUST-013 <scr-rust-013>`,Check symbol attributes across editions; edition 2021 and 2024 differ in unsafe-attribute syntax.
+6.2.2,unsafe,C3,Required,:ref:`SCR-RUST-013 <scr-rust-013>`,SCRC: applies to unsafe Rust; extern declarations shall be type-compatible with the C declaration.
+6.2.3,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.2.4,not applicable,C4,Required,not applicable,SCRC: not applicable. No header/linkage mechanism; covered by 6.2.1. Mapping removed.
+6.4.1,safe,C6,Required,:ref:`SCR-RUST-014 <scr-rust-014>`,Adaptation permits clear same-name transformations; this differs from a blanket shadowing prohibition.
+6.4.2,not applicable,C5,Required,:ref:`SCR-RUST-014 <scr-rust-014>`,"SCRC: not currently applicable, applicable once specialization stabilizes. Retained as supporting source for shadowing review."
+6.4.3,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.5.1,not applicable,C5,Advisory,not applicable,SCRC: not applicable. No header files; module system defines the interface. Mapping removed.
+6.5.2,not applicable,C4,Advisory,not applicable,SCRC: not applicable. Symbol export requires explicit no_mangle/link_name/extern. Mapping removed.
+6.7.1,safe,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,Broaden beyond unsafe: safe interior-mutability/global synchronization still needs design review.
+6.7.2,safe,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,Broaden beyond unsafe: Send is not a mutual-exclusion mechanism; globals can use safe interior mutability.
+6.8.1,unsafe,C4,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,Draft interpretation; applicability and enforcement require review.
+6.8.2,unsafe,C3,Mandatory,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC: applies. Reassess C3: raw dangling pointers can escape compiler reference-lifetime checks.
+6.8.3,unsafe,C3,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC: applies. Compiler reference guarantees do not extend to every raw-pointer storage pattern.
+6.8.4,unsafe,C4,Advisory,:ref:`SCR-RUST-015 <scr-rust-015>`,Draft interpretation; applicability and enforcement require review.
+6.9.1,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+6.9.2,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+7.0.1,safe,C6,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,Draft interpretation; applicability and enforcement require review.
+7.0.2,unsafe,C4,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,Draft interpretation; applicability and enforcement require review.
+7.0.3,not applicable,C4,Required,not applicable,SCRC: not applicable. char converts only explicitly via u32. Mapping removed.
+7.0.4,safe,C3,Required,:ref:`SCR-RUST-026 <scr-rust-026>`,SCRC: applies. Restore check obligation from C3: dynamic shift counts can be invalid and operand types need not match.
+7.0.5,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+7.0.6,not applicable,C6,Required,not applicable,SCRC: not applicable. No integral promotion or overload sets. Mapping removed.
+7.11.1,not applicable,C4,Required,:ref:`SCR-RUST-017 <scr-rust-017>`,"SCRC: not applicable (no overloads, no NULL macro). Retained: raw null pointers are still constructible in safe Rust."
+7.11.2,not applicable,C3,Required,not applicable,SCRC: not applicable. Arrays do not decay to pointers. Mapping removed.
+7.11.3,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.0.1,safe,C6,Advisory,:ref:`SCR-RUST-018 <scr-rust-018>`,Draft interpretation; applicability and enforcement require review.
+8.1.1,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.1.2,unsafe,C3,Advisory,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC: applies to unsafe Rust; closures can capture raw pointers outside borrow-checker guarantees.
+8.2.1,unsafe,C4,Required,:ref:`SCR-RUST-019 <scr-rust-019>`,Draft interpretation; applicability and enforcement require review.
+8.2.2,safe,C3,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,"SCRC: applies to safe Rust (gui_ADHABsmK9FXz, Advisory); `as` casts hide intent, prefer specific conversion functions."
+8.2.3,unsafe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,Raw-pointer mutability casts can be safe syntax; validity of subsequent access still needs review.
+8.2.4,unsafe,C4,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,Safe function-pointer casts exist; do not infer ABI correctness from absence of unsafe syntax.
+8.2.5,unsafe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,transmute is not generally a safer alternative to a cast; review all representation invariants.
+8.2.6,unsafe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,Pointer casts/reconstruction may occur outside unsafe blocks; scan all code.
+8.2.7,unsafe,C4,Advisory,:ref:`SCR-RUST-020 <scr-rust-020>`,Correction: pointer-to-integer casts do not require an unsafe block.
+8.2.8,safe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,Address width and provenance obligations apply even when the cast is safe syntax.
+8.2.9,not applicable,C4,Required,not applicable,SCRC: not applicable. type_id/type_name are compile-time. Mapping removed.
+8.2.10,safe,C6,Required,:ref:`SCR-RUST-022 <scr-rust-022>`,Draft interpretation; applicability and enforcement require review.
+8.2.11,unsafe,C4,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,Draft interpretation; applicability and enforcement require review.
+8.3.1,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.3.2,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.7.1,unsafe,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,Pointer APIs differ: some wrapping operations permit intermediate out-of-bounds values.
+8.7.2,unsafe,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,Draft interpretation; applicability and enforcement require review.
+8.9.1,safe,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,Correction: raw-pointer relational comparisons can be safe expressions; project ordering restrictions still apply.
+8.14.1,safe,C6,Advisory,:ref:`SCR-RUST-024 <scr-rust-024>`,Draft interpretation; applicability and enforcement require review.
+8.18.1,unsafe,C4,Mandatory,:ref:`SCR-RUST-025 <scr-rust-025>`,Use the Rust API contract: ptr::copy permits overlap; copy_nonoverlapping does not.
+8.18.2,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+8.19.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+8.20.1,safe,C6,Advisory,:ref:`SCR-RUST-026 <scr-rust-026>`,Draft interpretation; applicability and enforcement require review.
+9.2.1,not applicable,C3,Required,not applicable,SCRC: not applicable. let syntax prevents the confusion. Mapping removed.
+9.3.1,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+9.4.1,safe,C6,Required,:ref:`SCR-RUST-027 <scr-rust-027>`,Draft interpretation; applicability and enforcement require review.
+9.4.2,safe,C3,Required,rule assignment pending,SCRC: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.
+9.5.1,safe,C3,Advisory,rule assignment pending,SCRC: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.
+9.5.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.3,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+9.6.4,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+9.6.5,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.0.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+10.1.1,safe,C3,Advisory,rule assignment pending,"SCRC: applies to safe Rust; take &mut only when needed, with trait-definition exception. No S-CORE rule yet."
+10.1.2,unsafe,C4,Required,:ref:`SCR-RUST-028 <scr-rust-028>`,Draft interpretation; applicability and enforcement require review.
+10.2.1,safe,C3,Required,rule assignment pending,"SCRC: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet."
+10.2.2,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.2.3,safe,C3,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,SCRC: applies to safe Rust; `as` casts of enum discriminants to narrow integers can overflow.
+10.3.1,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+10.4.1,unsafe,C4,Required,:ref:`SCR-RUST-029 <scr-rust-029>`,Draft interpretation; applicability and enforcement require review.
+11.3.1,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Do not adopt the artifact claim that arrays never implement Copy: Copy arrays exist when their elements are Copy. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+11.3.2,safe,C4,Advisory,:ref:`SCR-RUST-030 <scr-rust-030>`,Draft interpretation; applicability and enforcement require review.
+11.6.1,unsafe,C4,Advisory,:ref:`SCR-RUST-031 <scr-rust-031>`,Draft interpretation; applicability and enforcement require review.
+11.6.2,unsafe,C4,Mandatory,:ref:`SCR-RUST-031 <scr-rust-031>`,Draft interpretation; applicability and enforcement require review.
+11.6.3,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+12.2.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+12.2.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+12.2.3,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+12.3.1,unsafe,C5,Required,:ref:`SCR-RUST-032 <scr-rust-032>`,Draft interpretation; applicability and enforcement require review.
+13.1.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.1.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.3.1,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.3.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+13.3.3,safe,C6,Required,:ref:`SCR-RUST-033 <scr-rust-033>`,Rust accepts underscore parameter patterns; names and unused-role policy need explicit interpretation.
+13.3.4,safe,C2,Required,rule assignment pending,SCRC: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.
+14.1.1,safe,C6,Advisory,:ref:`SCR-RUST-034 <scr-rust-034>`,Adapt structural public/private restriction into invariant protection; record as project interpretation.
+15.0.1,safe,C5,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,"Pin is a type, not a trait; review Unpin/structural pinning only where used."
+15.0.2,not applicable,C3,Advisory,not applicable,SCRC: not applicable. No move constructors; Clone signature fixed by the trait. Mapping removed.
+15.1.1,not applicable,C3,Required,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+15.1.2,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+15.1.3,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+15.1.4,unsafe,C3,Advisory,:ref:`SCR-RUST-031 <scr-rust-031>`,SCRC: applies to unsafe Rust; MaybeUninit and similar bypass initialization checks.
+15.1.5,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+15.8.1,unsafe,C3,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,SCRC: applies to unsafe Rust; Pin-based move emulation must define self-assignment behavior.
+16.5.1,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+16.5.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+16.6.1,not applicable,C3,Advisory,not applicable,SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.
+17.8.1,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.1.1,unsafe,C2,Required,:ref:`SCR-RUST-036 <scr-rust-036>`,SCRC: applies to unsafe Rust; raw-pointer panic payloads (panic_any) have unclear ownership.
+18.1.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.3.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.3.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.3.3,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+18.4.1,safe,C2,Required,:ref:`SCR-RUST-036 <scr-rust-036>`,SCRC: applies. Restore related obligation from C2: Drop can panic and a second panic during unwinding can abort.
+18.5.1,safe,C5,Advisory,:ref:`SCR-RUST-004 <scr-rust-004>`,Result error propagation and panic/unwinding are distinct; both need explicit policies.
+18.5.2,safe,C6,Advisory,:ref:`SCR-RUST-036 <scr-rust-036>`,Draft interpretation; applicability and enforcement require review.
+19.0.1,not applicable,C5,Required,:ref:`SCR-RUST-037 <scr-rust-037>`,SCRC: not applicable (cfg attaches to the next item). Retained: cfg_select and attribute placement still need review.
+19.0.2,safe,C2,Required,:ref:`SCR-RUST-038 <scr-rust-038>`,"SCRC: applies to safe Rust; prefer functions over function-like macros, variadic macros excepted."
+19.0.3,safe,C6,Advisory,:ref:`SCR-RUST-011 <scr-rust-011>`,Draft interpretation; applicability and enforcement require review.
+19.0.4,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.1.1,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.1.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.1.3,not applicable,C4,Required,not applicable,SCRC: not applicable. Undefined identifiers are compile errors. Mapping removed.
+19.2.1,safe,C3,Required,:ref:`SCR-RUST-011 <scr-rust-011>`,SCRC: applies to safe Rust; include! and path attributes can shadow items in outer scopes.
+19.2.2,not applicable,C5,Required,not applicable,SCRC: not applicable. Invalid include paths are compile errors. Mapping removed.
+19.2.3,not applicable,C4,Required,:ref:`SCR-RUST-011 <scr-rust-011>`,SCRC: not applicable (raw strings supported). Retained as supporting source for include!/path provenance.
+19.3.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.3.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.3.3,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.3.4,safe,C4,Required,:ref:`SCR-RUST-038 <scr-rust-038>`,Macro expression matching does not ensure single evaluation or absence of hidden effects.
+19.3.5,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+19.6.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.1,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.2,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.2.3,safe,C1,Required,rule assignment pending,SCRC: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.
+21.2.4,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+21.6.1,safe,C6,Advisory,:ref:`SCR-RUST-039 <scr-rust-039>`,Controlled allocation is a proposed project adaptation; do not silently impose a blanket allocation ban.
+21.6.2,safe,C5,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,Drop is not guaranteed to run; mem::forget and leaks are safe operations.
+21.6.3,unsafe,C4,Required,:ref:`SCR-RUST-039 <scr-rust-039>`,Draft interpretation; applicability and enforcement require review.
+21.6.4,not applicable,C2,Required,:ref:`SCR-RUST-039 <scr-rust-039>`,SCRC: not applicable (GlobalAlloc dealloc always receives the layout). Retained: allocator customization still needs review.
+21.6.5,not applicable,C4,Required,not applicable,SCRC: not applicable. No incomplete types. Mapping removed.
+21.10.1,unsafe,C1,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,SCRC: applies to unsafe Rust; C-variadic arguments (VaList) carry the same hazards as in C.
+21.10.2,unsafe,C1,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC: applies to unsafe Rust; setjmp/longjmp reachable through FFI or inline assembly and often UB.
+21.10.3,unsafe,C1,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC: applies to unsafe Rust; signal handling only through platform APIs.
+22.3.1,safe,C5,Required,:ref:`SCR-RUST-040 <scr-rust-040>`,A constant argument to ordinary assert! does not by itself force compile-time evaluation.
+22.4.1,unsafe,C2,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC: applies to unsafe Rust; errno is writable only through platform APIs.
+23.11.1,unsafe,C2,Advisory,:ref:`SCR-RUST-020 <scr-rust-020>`,"SCRC: applies. Reassess C2: raw pointers can be constructed in safe Rust; audit boundaries by operations, not unsafe keywords."
+24.5.1,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+24.5.2,unsafe,C1,Required,:ref:`SCR-RUST-025 <scr-rust-025>`,SCRC: applies to unsafe Rust; ptr::copy and copy_nonoverlapping are the memmove/memcpy analogues.
+25.5.1,unsafe,C1,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC: applies to unsafe Rust; locale handling requires FFI.
+25.5.2,unsafe,C1,Mandatory,:ref:`SCR-RUST-042 <scr-rust-042>`,"SCRC: applies to unsafe Rust; only the FFI part (OS error strings, setenv) is in scope; std::env::var returns owned data."
+25.5.3,unsafe,C1,Mandatory,:ref:`SCR-RUST-042 <scr-rust-042>`,"SCRC: applies to unsafe Rust; time zone, locale and errno access through FFI."
+26.3.1,not applicable,C2,Advisory,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+28.3.1,safe,C2,Required,rule assignment pending,SCRC: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.
+28.6.1,safe,C4,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,"Comment describes a C++-specific move issue; native moves are compiler-checked, custom owners still need review."
+28.6.2,not applicable,C2,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+28.6.3,unsafe,C2,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC: applies to unsafe Rust; a raw pointer can observe a moved-from location.
+28.6.4,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+30.0.1,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
+30.0.2,not applicable,C1,Required,not applicable,"SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion."
