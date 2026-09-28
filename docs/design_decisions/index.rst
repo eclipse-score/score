@@ -15,12 +15,11 @@
 Decision Records
 ================
 
-Strategy
-~~~~~~~~
+The decision records are grouped by category. Each category is a collapsible
+section in the navigation menu; select one to browse its decision records.
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    DR-*-strat*
 
@@ -68,3 +67,8 @@ DDS Communication
    :glob:
 
    DR-*-ddsgw*
+   strategy/index
+   architecture/index
+   infrastructure/index
+   process/index
+   integration/index
