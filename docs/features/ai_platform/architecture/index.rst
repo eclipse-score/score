@@ -43,7 +43,7 @@ options, accelerator selection and memory placement, which remain platform-inter
 .. logic_arc_int:: Inference Interface
    :id: logic_arc_int__ai_platform__inference_if
    :included_by: feat__ai_platform
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
@@ -68,7 +68,7 @@ options, accelerator selection and memory placement, which remain platform-inter
 
 .. logic_arc_int_op:: describe
    :id: logic_arc_int_op__ai_platform__describe
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
@@ -89,7 +89,7 @@ options, accelerator selection and memory placement, which remain platform-inter
 
 .. logic_arc_int_op:: invoke_async
    :id: logic_arc_int_op__ai_platform__invoke_async
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
