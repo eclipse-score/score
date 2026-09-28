@@ -72,9 +72,8 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__support_of_store[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
-   :valid_from: v1.0.0
 
    The Persistency shall not allocate dynamic memory during runtime. All required dynamic memory shall be allocated during initialization.
 
@@ -103,7 +102,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__support_of_store[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -119,7 +118,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__dependability__security_features[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -137,7 +136,7 @@ Persistency Requirements
    :derived_from: stkh_req__functional_req__file_based[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
    :tags: config
 
@@ -167,7 +166,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__file_based[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
    :tags: config
@@ -181,7 +180,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__support_of_store[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -329,7 +328,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__app_architectures__support_data[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -365,6 +364,22 @@ Persistency Requirements
 
    The Persistency shall support caching mechanisms to improve access times for frequently accessed key-value pairs.
 
+   .. feat_req:: Direct access
+   :id: feat_req__persistency__direct_access
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__dependability__availability[version==1]
+   :satisfied_by: feat__persistency[version==1]
+   :status: invalid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The Persistency shall support direct access to key-value pairs without the necessity to load the entire storage to RAM in advance.
+
+   .. note::
+      Direct access improves availability of data and reduces memory consumption for large data sets.
+
 .. feat_req:: Integrity check
    :id: feat_req__persistency__integrity_check
    :reqtype: Functional
@@ -385,7 +400,7 @@ Persistency Requirements
    :safety: QM
    :derived_from: stkh_req__functional_req__data_persistency[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v2.0.0
 
@@ -402,7 +417,7 @@ Persistency Requirements
    :derived_from: stkh_req__functional_req__support_of_store[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
    The Persistency shall support multiple storage backends.
@@ -420,7 +435,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__dependability__availability[version==1], stkh_req__app_architectures__support_request[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -433,7 +448,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__app_architectures__support_data[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -477,7 +492,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__support_of_store[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -490,7 +505,7 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__communication__intra_process[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -503,9 +518,9 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__support_of_store[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v1.5.0
 
    The Persistency shall support versioning for different data representation of KVS.
 
@@ -520,9 +535,9 @@ Persistency Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__overall_goals__variant_management[version==1]
    :satisfied_by: feat__persistency[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The Persistency shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
 
@@ -558,6 +573,31 @@ Persistency Requirements
    - viewing and modifying key-value pairs during development, testing and debugging
    - provisioning of default values via external file
 
+.. feat_req:: Support development mode
+   :id: feat_req__persistency__dev_mode
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :derived_from: stkh_req__dependability__safety_features_11[version==1]
+   :satisfied_by: feat__persistency[version==1]
+   :status: invalid
+   :version: 1
+
+   The Persistency shall support the development mode.
+   The development mode shall allow unrestricted data access and bypass security policies.
+
+.. feat_req:: Support production mode
+   :id: feat_req__persistency__prod_mode
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :derived_from: stkh_req__dependability__safety_features_11[version==1]
+   :satisfied_by: feat__persistency[version==1]
+   :status: invalid
+   :version: 1
+
+   The Persistency shall support the production mode.
+   The production mode should enforce the most restrictive data access controls feasible.
 
 .. needextend:: c.this_doc() and is_external == False and "persistency/requirements" in docname
    :+tags: persistency
