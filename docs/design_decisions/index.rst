@@ -21,6 +21,52 @@ section in the navigation menu; select one to browse its decision records.
 .. toctree::
    :maxdepth: 1
 
+   DR-*-strat*
+
+Architecture
+~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-arch*
+
+Infrastructure
+~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-infra*
+
+Process
+~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-proc*
+
+Integration
+~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-int*
+
+DDS Communication
+~~~~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-ddsgw*
    strategy/index
    architecture/index
    infrastructure/index
