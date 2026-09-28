@@ -144,24 +144,35 @@ Persistency Requirements
    The Persistency shall support configuration via a configuration file.
    The configuration shall include:
 
-   - Global settings:
-      - Maximum number of KVS instances
-      - Maximum size of a key
-
    - Settings for KVS instance:
       - Instance identifier
       - Storage URI
-      - Maximum number of Key-Value pairs
-      - Maximum number of snapshots
-      - Maximum consumed storage size (Including all metadata and redundant data)
-      - Security settings
-      - Redundancy settings
-      - Backend specific settings
+      - Access Mode
+      - Need Defaults
+      - Need Kvs
+      - Snapshots max count
+      - Storage size in bytes
+
 
    Configuration file shall be optional and all configuration attributes shall have sensible default values defined at compile time.
 
    .. note::
       To improve the user experience during rapid prototyping, the Persistency shall also be able to operate without a configuration file.
+
+
+.. feat_req:: Configuration
+   :id: feat_req__persistency__cfg_priority
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__persistency[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+   :tags: config
+
+   The Persistency Configuration file shall have higher priority over configuration by code.
 
 .. feat_req:: Supported datatypes (Keys)
    :id: feat_req__persistency__support_datatype_keys
@@ -354,22 +365,6 @@ Persistency Requirements
 
    The Persistency shall support caching mechanisms to improve access times for frequently accessed key-value pairs.
 
-.. feat_req:: Direct access
-   :id: feat_req__persistency__direct_access
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :derived_from: stkh_req__dependability__availability[version==1]
-   :satisfied_by: feat__persistency[version==1]
-   :status: valid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The Persistency shall support direct access to key-value pairs without the necessity to load the entire storage to RAM in advance.
-
-   .. note::
-      Direct access improves availability of data and reduces memory consumption for large data sets.
-
 .. feat_req:: Integrity check
    :id: feat_req__persistency__integrity_check
    :reqtype: Functional
@@ -392,7 +387,7 @@ Persistency Requirements
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The Persistency shall support confidential storage of key-value pairs using encryption mechanisms.
 
@@ -411,12 +406,12 @@ Persistency Requirements
    :valid_from: v1.0.0
 
    The Persistency shall support multiple storage backends.
-   More than one storage backend of the same type shall be optionally supported for the sake of redundancy.
-   The storage backends shall be compile time configurable for each KVS instance.
+   The storage backend used by a KVS instance shall be selectable via a compile time configuration parameter.
 
    .. note::
       Storage backend represents an abstraction for the underlying storage format and mechanism.
       Configurable storage backends allow the user to select the most suitable solution for their specific use case (Performance, easy of use, resource consumption, ...).
+      Storage backend selection is not related to redundancy.
 
 .. feat_req:: Asynchronous operation
    :id: feat_req__persistency__async_api
@@ -531,6 +526,9 @@ Persistency Requirements
 
    The Persistency shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
 
+   .. Note::
+      Persisted data is written by one version of the software and later read by a newer version, whose data layout may have changed.
+
 .. feat_req:: Random access time
    :id: feat_req__persistency__fast_access
    :reqtype: Non-Functional
@@ -560,33 +558,6 @@ Persistency Requirements
    - viewing and modifying key-value pairs during development, testing and debugging
    - provisioning of default values via external file
 
-.. feat_req:: Support development mode
-   :id: feat_req__persistency__dev_mode
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :derived_from: stkh_req__dependability__safety_features_11[version==1]
-   :satisfied_by: feat__persistency[version==1]
-   :status: valid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The Persistency shall support the development mode.
-   The development mode shall allow unrestricted data access and bypass security policies.
-
-.. feat_req:: Support production mode
-   :id: feat_req__persistency__prod_mode
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :derived_from: stkh_req__dependability__safety_features_11[version==1]
-   :satisfied_by: feat__persistency[version==1]
-   :status: valid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The Persistency shall support the production mode.
-   The production mode should enforce the most restrictive data access controls feasible.
 
 .. needextend:: c.this_doc() and is_external == False and "persistency/requirements" in docname
    :+tags: persistency
