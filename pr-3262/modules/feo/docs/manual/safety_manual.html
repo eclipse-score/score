@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/feo/docs/manual/safety_manual';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -254,13 +254,6 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../users_guide/index.html">
-    User’s Guide
   </a>
 </li>
 
@@ -480,13 +473,6 @@
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../users_guide/index.html">
-    User’s Guide
-  </a>
-</li>
-
-
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../../index.html">
     Modules
@@ -662,7 +648,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-404b9921">
+  <div class="need_container docutils container" id="SNCB-9f47cb22">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -719,8 +705,8 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 <ul class="simple">
 <li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="stkh_req__app_architectures__support_time"><em class="xref need">Support for Time-based Arch... (stkh_req__app_architectures__support_time)</em></a></p></li>
 <li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="stkh_req__app_architectures__support_data"><em class="xref need">Support for Data-driven Arc... (stkh_req__app_architectures__support_data)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features_1" title="stkh_req__dependability__safety_features_1"><em class="xref need">Health Management (stkh_req__dependability__safety_features_1)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features_4" title="stkh_req__dependability__safety_features_4"><em class="xref need">Safe Startup and Reset (stkh_req__dependability__safety_features_4)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__health_management" title="stkh_req__dependability__health_management"><em class="xref need">Health Management (stkh_req__dependability__health_management)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safe_startup_reset" title="stkh_req__dependability__safe_startup_reset"><em class="xref need">Safe Startup and Reset (stkh_req__dependability__safe_startup_reset)</em></a></p></li>
 </ul>
 </section>
 <section id="assumptions-of-use">
@@ -730,7 +716,7 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 <div class="line-block">
 <div class="line">Generally the assumption of the S-CORE platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</div>
 </div>
-<div class="need_container docutils container" id="SNCB-f14d6bce">
+<div class="need_container docutils container" id="SNCB-a623e4c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__on_target_crates">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -781,7 +767,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d2c25c4a">
+<div class="need_container docutils container" id="SNCB-50729e4c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_core_lib">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -824,7 +810,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b7dded59">
+<div class="need_container docutils container" id="SNCB-4f67241f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_std_lib_modules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1349,8 +1335,8 @@ but it gets quickly out of date with a changing codebase.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1374,7 +1360,7 @@ but it gets quickly out of date with a changing codebase.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>

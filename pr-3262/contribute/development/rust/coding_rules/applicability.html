@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/development/rust/coding_rules/applicability';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -254,13 +254,6 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../users_guide/index.html">
-    User’s Guide
   </a>
 </li>
 
@@ -481,13 +474,6 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../users_guide/index.html">
-    User’s Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../modules/index.html">
     Modules
   </a>
@@ -667,7 +653,7 @@
                   
   <section id="sources-and-applicability">
 <span id="rust-coding-rules-applicability"></span><h1>Sources and Applicability<a class="headerlink" href="#sources-and-applicability" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-e05ded9f">
+<div class="need_container docutils container" id="SNCB-f5e61bd9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules_applicability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -712,7 +698,8 @@
 </div>
 <section id="primary-reference-scrc-misra-c-cross-reference">
 <h2>Primary reference: SCRC MISRA C++ cross-reference<a class="headerlink" href="#primary-reference-scrc-misra-c-cross-reference" title="Link to this heading">#</a></h2>
-<p>The primary applicability reference is the <em>Rust Cross Reference with MISRA C++ 2023</em>
+<p>The primary applicability reference, used as a working reference and not as an approved
+standard, is the <em>Rust Cross Reference with MISRA C++ 2023</em>
 prepared by the Coding Guidelines Subcommittee of the Safety-Critical Rust Consortium
 (SCRC). It is submitted as
 <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/pull/1226">pull request #1226</a>
@@ -725,7 +712,7 @@ register re-aligned, whenever the mapping changes.</p>
 For each guideline it also names the related MISRA C:2025 guideline where one exists,
 and the SCRC coding guideline that implements it where one exists.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 12 </span><span class="caption-text">SCRC verdicts at the pinned revision</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Draft SCRC assessment at the pinned revision</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 10.0%" />
@@ -753,13 +740,22 @@ and the SCRC coding guideline that implements it where one exists.</p>
 </tbody>
 </table>
 </div>
-<p>At the pinned revision three guidelines have an SCRC coding guideline: 7.0.4, 8.2.2
-and 8.2.10. The remaining applicable guidelines have a verdict and a rationale but no
-SCRC rule text yet, which is the gap the S-CORE catalogue proposes to fill.</p>
+<p>At the pinned revision three guidelines have a draft SCRC coding guideline:</p>
+<ul class="simple">
+<li><p>7.0.4, <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/expressions/gui_RHvQj8BHlz9b.rst">shift-count bounds</a>,
+linked from <a class="reference internal" href="rules.html#scr-rust-026"><span class="std std-ref">SCR-RUST-026</span></a>.</p></li>
+<li><p>8.2.2, <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/expressions/gui_ADHABsmK9FXz.rst">numeric uses of as</a>,
+linked from <a class="reference internal" href="rules.html#scr-rust-016"><span class="std std-ref">SCR-RUST-016</span></a>.</p></li>
+<li><p>8.2.10, <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/associated-items/gui_ot2Zt3dd6of1.rst">recursion</a>,
+linked from <a class="reference internal" href="rules.html#scr-rust-022"><span class="std std-ref">SCR-RUST-022</span></a>.</p></li>
+</ul>
+<p>The S-CORE rules that build on these are to be reconciled with the SCRC text as it
+matures. The remaining applicable guidelines have an assessment and a rationale but no
+SCRC rule text yet; for those the S-CORE catalogue proposes candidate text.</p>
 </section>
-<section id="how-the-register-follows-the-scrc-verdict">
-<h2>How the register follows the SCRC verdict<a class="headerlink" href="#how-the-register-follows-the-scrc-verdict" title="Link to this heading">#</a></h2>
-<p>Each register row records the SCRC verdict, the related MISRA C:2025 guideline, the
+<section id="how-the-register-follows-the-draft-scrc-assessment">
+<h2>How the register follows the draft SCRC assessment<a class="headerlink" href="#how-the-register-follows-the-draft-scrc-assessment" title="Link to this heading">#</a></h2>
+<p>Each register row records the draft SCRC assessment, the related MISRA C:2025 guideline, the
 SCRC guideline link and category, and the S-CORE disposition:</p>
 <ul class="simple">
 <li><p><strong>proposed rust obligation</strong> (83): SCRC marks the guideline applicable and one or
@@ -767,7 +763,7 @@ more S-CORE rules interpret it.</p></li>
 <li><p><strong>rule assignment pending</strong> (9): SCRC marks the guideline applicable but no S-CORE
 rule covers it yet. These need a new rule or an explicit exclusion decision.</p></li>
 <li><p><strong>not applicable</strong> (82): SCRC marks the guideline not applicable and S-CORE agrees.</p></li>
-<li><p><strong>retained beyond SCRC</strong> (5): SCRC marks the guideline not applicable but S-CORE
+<li><p><strong>retained beyond SCRC</strong> (5): the SCRC draft marks the guideline not applicable but S-CORE
 keeps it as a supporting source for an existing rule, with the reason in the note.</p></li>
 </ul>
 <p>The safe/unsafe distinction is recorded per source guideline and shown in the rule
@@ -787,14 +783,14 @@ Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University), arXiv:2605.23
 were the starting point of this draft and remain a secondary reference. The
 <code class="docutils literal notranslate"><span class="pre">misrust_class</span></code> column keeps the study’s C1 to C6 classification for every guideline
 so that the origin of the rule grouping stays traceable.</p>
-<p>Where MISRust and the SCRC cross-reference disagree, the SCRC verdict is followed. The
+<p>Where MISRust and the SCRC cross-reference disagree, the SCRC assessment is followed. The
 subcommittee’s own
 <a class="reference external" href="https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst">analysis of the differences</a>
 identifies the main weaknesses of the study: compiler warnings treated as language
 guarantees, raw-pointer operations in safe code overlooked, and foreign interfaces not
 considered when dismissing C++ library guidelines. The corrections this draft had
 applied to the study point in the same direction and are now superseded by the SCRC
-verdicts.</p>
+assessments.</p>
 </section>
 <section id="supporting-references">
 <h2>Supporting references<a class="headerlink" href="#supporting-references" title="Link to this heading">#</a></h2>
@@ -813,7 +809,7 @@ same source is a candidate contribution, not a competing standard.</p>
 <p>The SCRC cross-reference is documentation in the consortium repository and is
 licensed under
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> per that repository’s
-COPYRIGHT file. Its verdicts, MISRA C references and guideline links are reproduced
+COPYRIGHT file. Its assessments, MISRA C references and guideline links are reproduced
 unchanged; its rationale text is not copied, and readers should consult the pull
 request for it. The MISRust classifications are reproduced unchanged from the CC-BY-4.0
 research artifacts. Rule grouping, Rust rule text, dispositions, assessment notes and
@@ -830,9 +826,9 @@ source manifest records the documents used by role and content hash.</p>
 </section>
 <section id="review-queue">
 <span id="rust-coding-rules-review-queue"></span><h2>Review queue<a class="headerlink" href="#review-queue" title="Link to this heading">#</a></h2>
-<p>Guidelines whose S-CORE disposition still diverges from a simple reading of the SCRC
-verdict. Nine need a rule or an exclusion decision; five are retained beyond the SCRC
-verdict and need confirmation or removal.</p>
+<p>Guidelines whose S-CORE disposition still diverges from a simple reading of the draft
+SCRC assessment. Nine need a rule or an exclusion decision; five are retained although
+the SCRC draft assesses them as not applicable, and need confirmation or removal.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
 <caption><span class="caption-number">Table 13 </span><span class="caption-text">Open applicability decisions</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
@@ -845,7 +841,7 @@ verdict and need confirmation or removal.</p>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Source ID</p></th>
-<th class="head"><p>SCRC verdict</p></th>
+<th class="head"><p>Draft SCRC assessment</p></th>
 <th class="head"><p>MISRust class</p></th>
 <th class="head"><p>Source level</p></th>
 <th class="head"><p>Proposed Rust rules</p></th>
@@ -972,7 +968,7 @@ Rust rule’s proposed S-CORE level.</p>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Source ID</p></th>
-<th class="head"><p>SCRC verdict</p></th>
+<th class="head"><p>Draft SCRC assessment</p></th>
 <th class="head"><p>MISRust class</p></th>
 <th class="head"><p>Source level</p></th>
 <th class="head"><p>Proposed Rust rules</p></th>
@@ -2287,7 +2283,7 @@ Rust rule’s proposed S-CORE level.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-reference-scrc-misra-c-cross-reference">Primary reference: SCRC MISRA C++ cross-reference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-register-follows-the-scrc-verdict">How the register follows the SCRC verdict</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-register-follows-the-draft-scrc-assessment">How the register follows the draft SCRC assessment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secondary-reference-misrust">Secondary reference: MISRust</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supporting-references">Supporting references</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribution-and-records">Attribution and records</a></li>
@@ -2325,8 +2321,8 @@ Rust rule’s proposed S-CORE level.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2350,7 +2346,7 @@ Rust rule’s proposed S-CORE level.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>
