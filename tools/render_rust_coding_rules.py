@@ -11,12 +11,22 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-"""Render the Rust rule catalogue and mapping table, or check they are current."""
+"""Render the Rust rule catalogue, mapping table and review queue, or check they are current.
+
+Without --upstream the checks are internal: unique IDs, rule/register link consistency,
+dispositions derived from the recorded SCRC assessment, and totals equal to the pinned
+revision. They cannot detect two rows whose assessments were swapped. With --upstream
+pointing at a local copy of the SCRC mapping file (misra-cpp-2023-mapping.rst at the
+pinned commit), every row is compared with the upstream table and the file hash is
+checked against the source manifest.
+"""
 
 import argparse
 import csv
+import hashlib
 import io
 import json
+import re
 import sys
 import textwrap
 from collections import Counter
@@ -80,6 +90,67 @@ SCRC_LABEL = {
 
 def paragraph(text):
     return textwrap.fill(text, width=100) + "\n\n"
+
+
+def parse_upstream(path):
+    """Parse the SCRC mapping tables into {guideline: (kind, misra_c, scrc_guideline)}."""
+    text = Path(path).read_text()
+    parts = re.split(r"\n(Table \d[^\n]*)\n-+\n", text)
+    cell = r"\n\s*-(?:[ \t]*(.*?))?"
+    out = {}
+    for i in range(1, len(parts), 2):
+        title, body = parts[i], parts[i + 1]
+        kind = (
+            "safe"
+            if title.startswith("Table 1")
+            else "unsafe"
+            if title.startswith("Table 2")
+            else "not_applicable"
+        )
+        ncells = 2 if kind == "not_applicable" else 4
+        for row in re.split(r"\n\s*\* - ", body)[1:]:
+            m = re.match(
+                r"((?:Rule|Dir) (\d+\.\d+\.\d+))" + cell * ncells + r"\s*\Z",
+                row.rstrip(),
+                re.DOTALL,
+            )
+            if not m:
+                continue
+            cells = [
+                re.sub(r"\s+", " ", c or "").replace("``-``", "").strip()
+                for c in m.groups()[2:]
+            ]
+            guideline = "" if ncells == 2 else re.sub(r":need:`(.*?)`", r"\1", cells[1])
+            out[m.group(2)] = (kind, cells[0], guideline)
+    return out
+
+
+def compare_upstream(rows, path, manifest):
+    digest = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    expected = manifest["primary_reference_scrc"]["file_sha256"]
+    if digest != expected:
+        raise ValueError(
+            f"Upstream file hash {digest[:12]} differs from the pinned {expected[:12]} in sources.json"
+        )
+    upstream = parse_upstream(path)
+    if len(upstream) != EXPECTED_SOURCES:
+        raise ValueError(
+            f"Parsed {len(upstream)} upstream rows, expected {EXPECTED_SOURCES}"
+        )
+    for row in rows:
+        gid = row["misra_cpp_id"]
+        if gid not in upstream:
+            raise ValueError(f"{gid} is missing from the upstream mapping")
+        kind, misra_c, guideline = upstream[gid]
+        recorded = (
+            row["scrc_applicability"],
+            row["scrc_misra_c_ref"],
+            row["scrc_guideline"],
+        )
+        if recorded != (kind, misra_c, guideline):
+            raise ValueError(
+                f"{gid}: register records {recorded}, upstream has {(kind, misra_c, guideline)}"
+            )
 
 
 def validate(rules, rows, guidelines):
@@ -253,8 +324,17 @@ def main():
         action="store_true",
         help="Fail if mappings are inconsistent or generated files differ",
     )
+    parser.add_argument(
+        "--upstream",
+        metavar="PATH",
+        help="Local copy of the SCRC misra-cpp-2023-mapping.rst at the pinned commit; compares every row",
+    )
     args = parser.parse_args()
     try:
+        if args.upstream:
+            with (BASE / "_assets/applicability.csv").open(newline="") as source:
+                manifest = json.loads((BASE / "_assets/sources.json").read_text())
+                compare_upstream(list(csv.DictReader(source)), args.upstream, manifest)
         outputs = render()
     except (ValueError, KeyError) as error:
         print(error, file=sys.stderr)
@@ -274,8 +354,14 @@ def main():
         )
         return 1
     print(
-        f"Validated {EXPECTED_RULES} Rust rules and {EXPECTED_SOURCES} source mappings against the pinned "
-        "SCRC assessment; generated files "
+        f"Checked internal consistency of {EXPECTED_RULES} rules and {EXPECTED_SOURCES} register rows; SCRC "
+        "totals match the pinned revision"
+        + (
+            "; every row matches the upstream file"
+            if args.upstream
+            else " (row-level upstream comparison needs --upstream)"
+        )
+        + "; generated files "
         + ("are current." if args.check else "updated.")
     )
     return 0

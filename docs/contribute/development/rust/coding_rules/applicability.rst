@@ -58,7 +58,7 @@ and the SCRC coding guideline that implements it where one exists.
      - Mapped to S-CORE rules, or queued for rule assignment.
    * - Not currently applicable to Rust
      - 87
-     - Excluded, except five guidelines retained with a stated reason.
+     - Excluded, except one guideline retained with a stated reason.
 
 At the pinned revision three guidelines have a draft SCRC coding guideline:
 
@@ -83,8 +83,8 @@ SCRC guideline link and category, and the S-CORE disposition:
   more S-CORE rules interpret it.
 * **rule assignment pending** (9): SCRC marks the guideline applicable but no S-CORE
   rule covers it yet. These need a new rule or an explicit exclusion decision.
-* **not applicable** (82): SCRC marks the guideline not applicable and S-CORE agrees.
-* **retained beyond SCRC** (5): the SCRC draft marks the guideline not applicable but S-CORE
+* **not applicable** (86): the SCRC draft marks the guideline not applicable and S-CORE agrees.
+* **retained beyond SCRC** (1): the SCRC draft marks the guideline not applicable but S-CORE
   keeps it as a supporting source for an existing rule, with the reason in the note.
 
 The safe/unsafe distinction is recorded per source guideline and shown in the rule
@@ -108,10 +108,11 @@ were the starting point of this draft and remain a secondary reference. The
 ``misrust_class`` column keeps the study's C1 to C6 classification for every guideline
 so that the origin of the rule grouping stays traceable.
 
-Where MISRust and the SCRC cross-reference disagree, the SCRC assessment is followed. The
-subcommittee's own
-`analysis of the differences <https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst>`_
-identifies the main weaknesses of the study: compiler warnings treated as language
+Where MISRust and the SCRC cross-reference disagree, the SCRC assessment is followed. A
+contributor's
+`working notes on the differences <https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst>`_,
+kept on a personal fork against an earlier mapping revision and not a subcommittee
+document, identify the main weaknesses of the study: compiler warnings treated as language
 guarantees, raw-pointer operations in safe code overlooked, and foreign interfaces not
 considered when dismissing C++ library guidelines. The corrections this draft had
 applied to the study point in the same direction and are now superseded by the SCRC
@@ -158,8 +159,8 @@ Review queue
 ============
 
 Guidelines whose S-CORE disposition still diverges from a simple reading of the draft
-SCRC assessment. Nine need a rule or an exclusion decision; five are retained although
-the SCRC draft assesses them as not applicable, and need confirmation or removal.
+SCRC assessment. Nine need a rule or an exclusion decision; one is retained although
+the SCRC draft assesses it as not applicable, and needs confirmation or removal.
 
 .. csv-table:: Open applicability decisions
    :file: _assets/review_queue.csv

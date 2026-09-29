@@ -93,14 +93,15 @@ contribution to the SCRC guidelines rather than a competing standard.
 Purpose and scope
 =================
 
-The catalogue contains 43 proposed Rust rules: 39 interpretations of MISRA C++:2023
-guidelines and four S-CORE supplements, for buffer extents at foreign interfaces,
+The catalogue contains 43 proposed Rust rules: 38 interpretations of MISRA C++:2023
+guidelines and five S-CORE supplements or adaptations without a retained MISRA C++
+source, for buffer extents at foreign interfaces, absent-pointer representation,
 dependency and generated-code soundness, foreign-language boundaries and verification
 governance. The foreign-boundary supplement also links MISRA C++ sources that the SCRC
-draft assesses as applicable to unsafe Rust. Together the rules link 83 of the 92 MISRA
-C++ guidelines the SCRC draft assesses as applicable to safe or unsafe Rust, plus five
-guidelines retained by S-CORE although the SCRC draft assesses them as not applicable,
-each with a stated reason. Linking a source records an interpretation; whether a rule
+draft assesses as applicable. Together the rules link 83 of the 92 MISRA C++ guidelines
+the SCRC draft assesses as applicable to safe or unsafe Rust, plus one guideline
+retained by S-CORE although the SCRC draft assesses it as not applicable, with a stated
+reason. Linking a source records an interpretation; whether a rule
 makes every obligation of its sources explicit is part of the review. Nine
 applicable guidelines have no S-CORE rule yet and are listed in the review queue of
 the :ref:`applicability register <rust_coding_rules_applicability>`. Grouping is
@@ -172,14 +173,23 @@ the accountable reviewers for safety-relevant interpretations and deviations.
 
 The rule text and metadata are maintained in ``_assets/rules.json`` beside this page.
 The rendered catalogue and the compact source table are generated from the data files.
-From the repository root, regenerate and check them with:
+Maintainers edit the data files, never the generated ones. After a change, from the
+repository root:
 
 .. code-block:: bash
 
+   # regenerate rules.rst, applicability_summary.csv and review_queue.csv from the data
    python3 tools/render_rust_coding_rules.py
+   # read-only: fail if the generated files are stale or the data is inconsistent (CI use)
    python3 tools/render_rust_coding_rules.py --check
+   # optional: compare every register row with a local copy of the pinned SCRC file
+   python3 tools/render_rust_coding_rules.py --check --upstream path/to/misra-cpp-2023-mapping.rst
+   # the repository's normal documentation check, and the HTML build for viewing
    bazel run //:docs_check
    bazel run //:docs
+
+Without ``--upstream`` the check verifies internal consistency and that the SCRC totals
+equal the pinned revision; it cannot detect two rows whose assessments were swapped.
 
 Review rule changes together with their applicability and checker-impact changes.
 When the SCRC cross-reference changes, re-pin its revision in the source manifest and

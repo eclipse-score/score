@@ -11,8 +11,8 @@
       "scope": "All production crates and their build inputs",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Each component shall record its compiler/toolchain revision, Rust edition, target, dependency resolution, enabled features, panic strategy, and overflow-check settings. Production builds shall use this controlled configuration. Unstable features and compiler-specific assumptions require explicit assessment.",
-      "enforcement": "Check manifests, lockfiles and Bazel toolchain/configuration in CI; review language and target assumptions against the chosen compiler documentation.",
+      "requirement": "Each component shall record its compiler/toolchain revision, the language specification revision used as the reference for that toolchain (for example a Ferrocene Language Specification revision, with relevant known differences noted), Rust edition, target, dependency resolution, enabled features, panic strategy and overflow-check settings. Production builds shall use this controlled configuration. Stable toolchains reject unstable features; where a nightly or custom toolchain is permitted, the assessment shall list the permitted unstable features and the assumptions relied on. Links to the existing configuration and assessment records satisfy this requirement.",
+      "enforcement": "Check manifests, lockfiles and Bazel toolchain/configuration in CI; review language and target assumptions against the referenced specification and the compiler documentation.",
       "coverage_limit": "A successful build does not establish tool qualification. Reconcile Cargo and Bazel inputs; a host-only build does not cover QNX or a different feature set."
     },
     {
@@ -43,24 +43,28 @@
       "scope": "Production control flow",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Conditions shall express a meaningful runtime decision unless explicitly designated as a constant configuration choice or intentional loop. A value shall not be written only to be overwritten before any required observation.",
+      "requirement": "A condition shall express a decision whose outcome can differ at runtime for inputs the component accepts. A condition whose outcome is fixed is a violation whether it is written as a constant expression or fixed by construction, such as testing a value just assigned from a literal or comparing a value with itself, unless it is a designated configuration choice (a cfg predicate or a named constant flag) or an intentional loop with an explicit exit. A value shall not be written and then overwritten or dropped before any observation. This covers both assignments overwritten before being read and owning values replaced before being observed (adaptation of 0.1.1 to all Rust objects, not only trivially destructible ones). Replacing an owning value runs its Drop, so such a write is unnecessary only when neither the value nor its destructor effect is required.",
       "enforcement": "rustc unused_assignments; selected Clippy condition/comparison checks; candidate CodeQL control-flow and value-use analysis; review intentional constant branches.",
-      "coverage_limit": "Local diagnostics do not establish path feasibility or detect every overwritten value across calls. Record intentional loop and configuration exceptions.",
-      "level_rationale": "Required although both sources are Advisory: an invariant condition or an ineffective write usually indicates a logic defect, the consequence in Rust is the same as in C++, and compiler and Clippy checks make conformance cheap to demonstrate."
+      "coverage_limit": "Local diagnostics do not establish path feasibility or detect every overwritten value across calls, and unused_assignments does not consider destructor effects. Record intentional loop and configuration exceptions.",
+      "level_rationale": "Required although both sources are Advisory: an invariant condition or an ineffective write usually indicates a logic defect, the consequence in Rust is the same as in C++, and compiler and Clippy checks make conformance cheap to demonstrate.",
+      "example": {
+        "compliant": "// Compliant: the outcome depends on runtime input.\nfn accept(frame: &[u8]) -> Result<(), ()> {\n    if frame.len() > MAX_FRAME { return Err(()); }\n    Ok(())\n}",
+        "non_compliant": "// Non-compliant: the condition is fixed by construction.\nfn accept(frame: &[u8]) -> Result<(), ()> {\n    let ready = true;\n    if ready { return Ok(()); }\n    Err(())\n}",
+        "note": "Both compile. The first decides on the accepted input; the second always takes the first branch, so the else path is dead and the decision is meaningless unless ``ready`` is a documented configuration flag."
+      }
     },
     {
       "id": "SCR-RUST-004",
       "title": "Handle results and preserve error information",
       "misra_cpp_ids": [
-        "0.1.2",
-        "18.5.1"
+        "0.1.2"
       ],
       "scope": "Production APIs and their callers",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Callers shall use returned values whose contracts require action. Errors shall be propagated, converted with necessary context, or handled according to an explicit recovery policy. Silently discarding a critical Result through let _, drop, .ok(), or a catch-all branch is prohibited. Annotate project APIs with must_use where omission is a defect.",
+      "requirement": "Non-unit results of explicit function and method calls shall be used or deliberately discarded under the project's reviewed discard convention, for example a ``let _ =`` binding with a comment naming why the value is not needed (adaptation of 0.1.2, which covers explicit call syntax and not operator syntax). ``#[must_use]`` contracts apply in addition, including to functions returning unit. Errors shall be propagated, converted with necessary context, or handled according to the API's documented error-handling contract. A Result is critical when that contract states that the error requires action by the caller; discarding a critical error through ``let _``, ``drop``, ``.ok()``, a default value or a catch-all branch is prohibited unless the branch implements the documented recovery. Project APIs shall carry ``#[must_use]`` where omission is a defect and shall document which errors require action and what handling is acceptable.",
       "enforcement": "rustc unused_must_use and selectively unused_results; Clippy let_underscore_must_use; candidate CodeQL checks for project error-discard patterns; review recovery paths.",
-      "coverage_limit": "must_use does not prove meaningful handling. Explicitly discarded or superficially inspected errors require additional checks; broad unused_results can flag intentional side-effect APIs."
+      "coverage_limit": "``#[must_use]`` checks that a result is used, not that it is handled meaningfully. Whether ``.ok()`` or a catch-all branch discards or recovers rests on the API contract, which no lint can judge; broad unused_results can flag intentional side-effect APIs."
     },
     {
       "id": "SCR-RUST-005",
@@ -71,7 +75,7 @@
       "scope": "Floating-point calculations, conversions and persistence",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Each safety-relevant floating-point use shall specify acceptable range, precision, rounding, comparison tolerance, and handling of NaN, infinity and signed zero. Serialization shall preserve the required information or reject values that cannot meet the declared contract.",
+      "requirement": "Safety-relevant floating-point calculations shall be covered by a numerical contract that specifies acceptable range, precision, rounding, comparison tolerance, handling of NaN, infinity and signed zero, and serialization guarantees. One shared contract may cover all calculations it applies to, for example at a module or API boundary, provided each calculation is traceable to it. Serialization shall preserve the required information or reject values that cannot meet the contract.",
       "enforcement": "Selected Clippy floating-point/cast checks; boundary and round-trip tests; numerical review. Candidate CodeQL checks can locate values reaching sensitive conversion APIs.",
       "coverage_limit": "A lint cannot select application tolerances or prove numerical accuracy. Components that store integers as f64 (for example in a JSON backend) need an explicit round-trip contract.",
       "level_rationale": "Required although Directive 0.3.1 is Advisory: unspecified floating-point range, precision or special-value handling produces silent numerical error in stored and compared values, which is a safety consequence rather than a style concern."
@@ -122,9 +126,9 @@
       "scope": "All shared state, including Mutex, atomics and unsafe implementations",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Shared mutable state shall have a documented owner, initialization protocol and synchronization design. Uncontrolled static mut is prohibited. Each use of shared globals, atomics, and unsafe Send/Sync shall justify ordering and lifecycle assumptions. Lock ordering and reentrancy constraints shall be documented.",
-      "enforcement": "Compiler trait checks, shared-state inventory, unsafe review and concurrency tests; candidate checks for global-state access and unsafe trait implementations.",
-      "coverage_limit": "Safe Rust prevents many data races under soundness assumptions but does not prevent deadlocks, logical races or incorrect atomic protocols. This obligation applies beyond the paper's unsafe-only grouping."
+      "requirement": "Shared mutable state shall have a documented owner, initialization protocol and synchronization design. Scope (adaptation of 6.7.1 and 6.7.2): the rule covers every item reachable from more than one thread, or from more than one function through a shared path, including ``static`` items without ``mut`` whose type provides interior mutability (Mutex, RwLock, atomics, OnceLock, UnsafeCell) and ``thread_local!`` storage. ``const`` items, ``static`` items of types without interior mutability, and locals that never escape their function are excluded, which corresponds to the source exclusions for constants. ``static mut`` is prohibited in first-party production code. A reviewed exception requires single-writer or externally synchronized access documented at the declaration, no references to the item, and raw-pointer access confined to the owning module. Each use of shared globals, atomics and unsafe Send/Sync shall justify ordering and lifecycle assumptions. Lock ordering and reentrancy constraints shall be documented.",
+      "enforcement": "Compiler trait checks; rustc static_mut_refs (deny by default in edition 2024) for references to mutable statics; a syntax check for ``static mut`` declarations; shared-state inventory, unsafe review and concurrency tests; candidate checks for global-state access and unsafe trait implementations.",
+      "coverage_limit": "Safe Rust prevents many data races under soundness assumptions but does not prevent deadlocks, logical races or incorrect atomic protocols. static_mut_refs catches references, not declarations or raw-pointer uses; the declaration ban needs its own check."
     },
     {
       "id": "SCR-RUST-009",
@@ -136,8 +140,8 @@
       "scope": "Production source comments",
       "proposed_level": "Advisory",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Obsolete implementations should be removed and recovered through version control when needed. Comments should explain intent and constraints. Documentation examples and explanatory pseudocode are permitted.",
-      "enforcement": "Code review; a comment-pattern checker may identify candidates for review.",
+      "requirement": "Obsolete implementations shall be removed and recovered through version control when needed, rather than parked in comments or behind permanently false or undeclared cfg predicates, the Rust analogue of ``#if 0`` (adaptation of 5.7.2). Supported feature, target and test configurations are intentional conditional compilation and are not affected. Nested block comments shall not be used to disable code, since Rust nests ``/* */`` and a stray delimiter can hide a whole section (concern of 5.7.1); a block comment containing code shall be a documentation example or explanatory pseudocode. Comments should explain intent and constraints.",
+      "enforcement": "Code review; a comment-pattern checker may identify candidates; rustc unexpected_cfgs with check-cfg identifies undeclared predicates used to park code.",
       "coverage_limit": "Text matching cannot reliably distinguish obsolete code from useful documentation.",
       "level_rationale": "Advisory although Rule 5.7.1 is Required: text matching cannot reliably separate disabled code from documentation, so enforcement rests on review judgement. The nested block comment hazard from 5.7.1 is recorded in the requirement."
     },
@@ -148,7 +152,7 @@
       "scope": "Rust APIs and foreign buffer boundaries",
       "proposed_level": "Required",
       "origin": "S-CORE supplement (raw buffer extents at foreign interfaces)",
-      "requirement": "Use arrays or slices that carry the required extent in native Rust interfaces. Raw buffer interfaces shall document pointer, length, ownership and validity together, with validation before constructing a slice. Exported fixed-size arrays shall declare their size.",
+      "requirement": "Use arrays or slices that carry the required extent in native Rust interfaces. Raw buffer interfaces shall document pointer, length, ownership and validity together, with validation before constructing a slice.",
       "enforcement": "Compiler typing for native arrays/slices; API review and boundary tests for raw pointer/length pairs.",
       "coverage_limit": "Native array extents are largely compiler-enforced. FFI buffer validity is not, and bounds-checked access can still panic."
     },
@@ -156,18 +160,16 @@
       "id": "SCR-RUST-011",
       "title": "Keep imports and module interfaces explicit",
       "misra_cpp_ids": [
-        "6.0.3",
         "19.0.3",
-        "19.2.1",
-        "19.2.3"
+        "19.2.1"
       ],
       "scope": "Crate/module layout and source inclusion",
       "proposed_level": "Advisory",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Imports and re-exports should make dependencies and ownership of names clear. Keep ordinary imports together; document exceptions for narrow local scope. Glob imports should be limited to explicitly designated preludes or tests. Generated/include-based source shall have controlled provenance.",
+      "requirement": "Imports and re-exports should make dependencies and ownership of names clear. Keep ordinary imports together; document exceptions for narrow local scope. Glob imports should be limited to explicitly designated preludes or tests. Generated or included source (``include!``, ``include_str!``, build-script output, ``#[path]`` attributes) shall have controlled provenance: a reviewer can trace it to a reviewed source file or to a controlled build input recorded in the component's source and build records, and generation is reproducible from those inputs. Existing source and build records satisfy this; ``include!`` shall not shadow items of an outer scope (19.2.1).",
       "enforcement": "Formatting, compiler name resolution, selected import lints and review of re-export/prelude design.",
-      "coverage_limit": "Rust permits include! and generated source; the paper's comparison of use with C++ include is incomplete. Valid syntax alone does not establish clarity or provenance.",
-      "level_rationale": "Advisory although Rules 19.2.1 and 19.2.3 are Required: Rust's module system removes the undefined and ambiguous behavior of C++ header inclusion, leaving clarity and provenance of names as the residual concern."
+      "coverage_limit": "Rust permits ``include!`` and generated source; valid syntax alone does not establish clarity or provenance.",
+      "level_rationale": "Advisory although Rule 19.2.1 is Required: Rust's module system removes the undefined and ambiguous behavior of C++ header inclusion, leaving clarity and provenance of names as the residual concern."
     },
     {
       "id": "SCR-RUST-012",
@@ -191,13 +193,14 @@
       "id": "SCR-RUST-013",
       "title": "Control exported symbols and foreign declarations",
       "misra_cpp_ids": [
+        "6.0.3",
         "6.2.1",
         "6.2.2"
       ],
       "scope": "Linkage attributes, exported symbols and foreign bindings",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Exported symbols shall have unique definitions and compatible declarations in each delivered binary. Centralize foreign declarations in reviewed binding modules/crates. Use minimal visibility; justify no_mangle, export_name, link_section and equivalent linkage controls.",
+      "requirement": "Exported symbols shall have unique definitions and compatible declarations in each delivered binary. Centralize foreign declarations in reviewed binding modules/crates. Use minimal visibility; justify no_mangle, export_name, link_section and equivalent linkage controls. Items exported with ``#[no_mangle]``, ``#[unsafe(no_mangle)]`` or ``export_name`` enter the global symbol namespace (6.0.3): each shall be declared in a reviewed binding module and its name shall be unique across the delivered binary.",
       "enforcement": "Compiler/linker checks, binding review and final symbol-table inspection for each delivered target.",
       "coverage_limit": "Cross-crate/linker behavior is not fully captured by Rust name resolution. Edition 2021 permits syntax that edition 2024 marks unsafe; do not scope this check by unsafe blocks alone."
     },
@@ -205,15 +208,19 @@
       "id": "SCR-RUST-014",
       "title": "Avoid misleading name shadowing and method resolution",
       "misra_cpp_ids": [
-        "6.4.1",
-        "6.4.2"
+        "6.4.1"
       ],
       "scope": "Bindings, inherent methods and trait methods",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Rebinding shall not silently change the logical meaning of a value. A same-name transformation may be allowed when its purpose is immediate and documented by the expression. Where inherent and trait methods share a name but differ semantically, use explicit qualification or change the API.",
+      "requirement": "Rebinding shall not silently change the logical meaning of a value. A same-name binding is permitted when the new value is the same quantity in a refined form (trimmed, parsed, validated, unwrapped) and the transformation is visible in the initializer. It is prohibited when the new binding represents a different quantity, unit or role. Where inherent and trait methods share a name but differ semantically, use explicit qualification or change the API; this method-resolution policy is an S-CORE addition without a MISRA C++ source, since the SCRC draft assesses 6.4.2 as not applicable until ``supertrait_item_shadowing`` stabilizes.",
       "enforcement": "Selected Clippy shadowing checks plus type-aware custom checks and review of trait/inherent method collisions.",
-      "coverage_limit": "This intentionally adapts the C++ restriction to Rust idioms. Rust trait composition is not class inheritance; a broad shadowing ban would enforce a different policy."
+      "coverage_limit": "This intentionally adapts the C++ restriction to Rust idioms. Rust trait composition is not class inheritance; a broad shadowing ban would enforce a different policy. Clippy shadow lints cannot judge whether a quantity changed meaning.",
+      "example": {
+        "compliant": "// Compliant: same quantity, refined form, transformation visible.\nfn parse(input: &str) -> Option<u32> {\n    let input = input.trim();\n    input.parse().ok()\n}",
+        "non_compliant": "// Non-compliant: the same name now holds a different unit.\nfn schedule(timeout: u32) -> u32 {\n    let timeout = timeout * 1000; // seconds silently become milliseconds\n    timeout + 1\n}",
+        "note": "Both compile. In the first the rebinding is still ``input``, only trimmed. In the second ``timeout`` changes unit under the same name, so later readers cannot tell which unit a use refers to."
+      }
     },
     {
       "id": "SCR-RUST-015",
@@ -229,7 +236,7 @@
       "scope": "References, raw pointers, callbacks and ownership transfers",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "An access shall not outlive its referent. Do not expose a dangling local pointer as a usable API result or store borrowed addresses beyond their valid lifetime. Raw-pointer wrappers shall establish lifetime invariants for returned references and asynchronous/foreign callbacks.",
+      "requirement": "An access shall not outlive its referent. Do not expose a dangling local pointer as a usable API result or store borrowed addresses beyond their valid lifetime. Closures and callbacks that capture raw pointers to local data shall be invoked only while that data is live; if the callback can run later, the captured storage shall be owned or ``'static`` (8.1.2). Storing or transporting a dangling raw-pointer value is permitted; accessing its expired referent is not. After a value has been moved out of or dropped from storage reachable through a raw pointer, a typed read of that storage requires initialization, validity and ownership to be re-established first; copying a ``Copy`` value leaves the source initialized (28.6.3). Raw-pointer wrappers shall establish lifetime invariants for returned references and asynchronous/foreign callbacks.",
       "enforcement": "Borrow checking for references; available dangling-pointer diagnostics; unsafe/API review and targeted Miri tests.",
       "coverage_limit": "Creating or returning a dangling raw pointer can compile. Compiler-enforced reference lifetimes do not establish equivalent guarantees for raw pointers or foreign callbacks."
     },
@@ -245,19 +252,17 @@
       "scope": "All conversions, including safe casts and unsafe reinterpretation",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Conversions shall preserve the required value or perform explicit range/validity checks with a defined error. Boolean/character values shall not be used as incidental numbers; documented encoding/decoding boundaries may convert them through valid representations. Lossy floating-point conversion requires a precision contract.",
+      "requirement": "Conversions shall preserve the required value or perform explicit range/validity checks with a defined error. ``bool`` and ``char`` shall not be used as incidental numbers: arithmetic on ``bool``, and casts from ``char`` other than the lossless ``char as u32`` or ``u32::from(c)``, are prohibited outside documented encoding or decoding boundaries. At such a boundary a narrowing character cast such as ``char as u8`` requires a preceding range check or a checked conversion such as ``u8::try_from(u32::from(c))``. The prohibition of truncating character casts is an S-CORE addition; the SCRC draft assesses 7.0.3 as not applicable. Lossy floating-point conversion requires a precision contract.",
       "enforcement": "Clippy cast_possible_truncation, cast_possible_wrap, cast_sign_loss, cast_precision_loss and cast_lossless as candidate mappings; custom conversion inventory and boundary tests.",
-      "coverage_limit": "as is often legal safe Rust. From/TryFrom are preferred where supplied, but not every numeric pair implements them. S-CORE encoding exceptions are adaptations, not verbatim MISRA requirements."
+      "coverage_limit": "``as`` is legal in safe Rust, so an inventory is needed. ``From``/``TryFrom`` are preferred where supplied, but not every numeric pair implements them. The encoding-boundary exception and the character-cast restriction are S-CORE adaptations, not verbatim MISRA requirements."
     },
     {
       "id": "SCR-RUST-017",
       "title": "Represent absent pointers explicitly",
-      "misra_cpp_ids": [
-        "7.11.1"
-      ],
+      "misra_cpp_ids": [],
       "scope": "Raw-pointer and foreign APIs",
       "proposed_level": "Required",
-      "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
+      "origin": "S-CORE adaptation of the C++ null-pointer-constant concern; MISRA C++ 7.11.1 is assessed not applicable and is not retained as a source",
       "requirement": "Use typed null constructors when a raw null pointer is required. Use Option or another explicit type for optional references/handles in safe APIs. Check required pointer validity before dereference; a null check alone is insufficient.",
       "enforcement": "Compiler typing, candidate checks for integer-fabricated null pointers, and foreign API review.",
       "coverage_limit": "Raw null pointers can be created in safe Rust. Non-nullness alone establishes neither allocation validity nor lifetime/alignment."
@@ -286,7 +291,7 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Recover concrete types through checked APIs such as Any downcasts, and handle failure. Unchecked type recovery requires a proven type-identity invariant within an approved unsafe abstraction. Do not invent a ban on ordinary TypeId queries.",
       "enforcement": "API inventory, compiler type checks and review of unchecked downcast/representation operations.",
-      "coverage_limit": "The paper retains 8.2.9 despite explaining that its specific C++ behavior has no direct counterpart. This is an intent-based policy; ordinary checked native APIs need no custom MISRA-shaped check."
+      "coverage_limit": "A checked downcast establishes type identity at the point of the call only; it does not establish that the recovered value satisfies the invariants the caller expects, and a failed downcast still needs a defined error path. Only an inventory of unchecked recovery (transmute, pointer casts) finds bypasses. Ordinary checked native APIs need no custom MISRA-shaped check."
     },
     {
       "id": "SCR-RUST-020",
@@ -302,7 +307,7 @@
       "scope": "All raw-pointer transformations, safe and unsafe",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Prefer typed pointer/reference APIs. Pointer-to-integer conversions, reconstruction of pointers, mutability-changing casts and transmute shall be restricted to reviewed low-level interfaces with documented provenance, alignment, validity and aliasing assumptions. Do not truncate addresses or fabricate a mutable reference from shared access outside valid interior-mutability rules.",
+      "requirement": "Prefer typed pointer/reference APIs. Pointer-to-integer conversions, reconstruction of pointers, mutability-changing casts and transmute shall be restricted to reviewed low-level interfaces with documented provenance, alignment, validity and aliasing assumptions. Do not truncate addresses or fabricate a mutable reference from shared access outside valid interior-mutability rules. Creating an owning value from a raw pointer (``Box::from_raw``, ``Vec::from_raw_parts``, ``CString::from_raw``, ``Rc::from_raw``, ``Arc::from_raw`` and similar; 23.11.1) shall satisfy that API's producer, allocation and ownership preconditions: the pointer came from the matching ``into_raw`` or from an allocation with the same layout, ownership is transferred exactly once, and for ``Rc``/``Arc`` the reference-count accounting (``from_raw`` paired with ``into_raw`` or ``increment_strong_count``) is documented. The resulting ownership obligations follow SCR-RUST-035.",
       "enforcement": "Candidate Clippy pointer/transmute lints and API restrictions; compiler invalid-reference diagnostics; custom AST inventory, unsafe review and Miri where applicable.",
       "coverage_limit": "Many pointer casts are legal outside unsafe. Inventory the entire crate; transmute is not a generally safer replacement for as. Provenance correctness cannot be inferred from equal sizes."
     },
@@ -317,7 +322,7 @@
       "scope": "Function pointers, callbacks and variadic foreign calls",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Calls shall use a compatible function signature, calling convention and ABI. Function-pointer representation changes require boundary review. Avoid C variadic calls in application code; a necessary adapter shall validate argument types and applicable promotion rules.",
+      "requirement": "Calls shall use a compatible function signature, calling convention and ABI. Function-pointer representation changes require boundary review. Defining C-variadic functions in Rust is prohibited in first-party production code (21.10.1; the feature is unstable and its ``VaList`` handling is unsafe). Calling a foreign variadic function is limited to a reviewed adapter that validates argument types and applicable promotion rules (8.2.11).",
       "enforcement": "Compiler ABI/type diagnostics, binding generation checks, adapter review and cross-language integration tests.",
       "coverage_limit": "A successful link does not validate an incorrectly declared foreign signature or variadic argument contract. The paper excludes full FFI analysis."
     },
@@ -330,7 +335,7 @@
       "scope": "Production call paths, including callbacks and recursive destruction",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Direct and indirect recursion shall be prohibited in safety-relevant execution paths unless a scoped deviation establishes a finite depth and stack budget. Assess recursive parsing, traversal and destructor chains as well as explicit self-calls.",
+      "requirement": "Direct and indirect recursion that executes at runtime shall be prohibited in production call paths unless a scoped deviation establishes a finite depth and stack budget. Recursion in a ``const fn`` is permitted when the call is evaluated in a constant context, where the compiler bounds it through the const-evaluation limit; the same ``const fn`` called at runtime falls under the prohibition (adaptation of the ``constexpr`` exception in 8.2.10). Assess recursive parsing, traversal and destructor chains as well as explicit self-calls.",
       "enforcement": "Compiler unconditional_recursion provides a narrow check; candidate CodeQL/call-graph analysis and stack/depth testing provide additional evidence.",
       "coverage_limit": "Unconditional-recursion diagnostics do not detect all terminating recursion. Dynamic dispatch, callbacks and foreign calls leave call-graph gaps; static analysis is not a general proof of bounded stack use."
     },
@@ -363,7 +368,7 @@
       "scope": "Production Boolean expressions",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Required persistent effects shall not depend on accidental short-circuit evaluation. Move state changes and critical I/O out of the right side of && or ||, or document an intentional conditional-effect contract at the call site.",
+      "requirement": "Required persistent effects shall not depend on accidental short-circuit evaluation. A state change or I/O on the right side of ``&&`` or ``||`` is acceptable only when skipping it is the specified behavior whenever the left operand decides the expression, and the call site documents that conditional-effect contract, for example filling a cache entry that is correctly skipped when the entry is already present. Otherwise move the effect out of the condition.",
       "enforcement": "Candidate AST checks for obvious mutations and CodeQL effect/call analysis; code review.",
       "coverage_limit": "Identifying arbitrary side effects through calls requires models. A function call in a condition is not automatically a violation.",
       "level_rationale": "Required although Rule 8.14.1 is Advisory: a state change skipped because the left operand short-circuits the expression alters program behavior silently and is not diagnosed by the compiler."
@@ -378,9 +383,9 @@
       "scope": "Raw copies and buffer movement",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Choose copy operations whose overlap contract matches the buffers. copy_nonoverlapping requires disjoint regions; overlapping movement must use an operation permitting overlap. Both cases require valid alignment, size, initialization and ownership handling without double drop.",
+      "requirement": "Choose copy operations whose overlap contract matches the buffers: ``copy_nonoverlapping`` requires disjoint regions; overlapping movement must use ``ptr::copy``. The copy operation itself requires valid, aligned, in-bounds pointers for the element count, the overlap condition of the chosen API, and ownership handling without double drop; it may copy uninitialized storage such as ``MaybeUninit`` buffers. Using the destination as an initialized ``T`` is a separate step that requires ``T``'s validity invariant to hold for the copied bytes, since the raw copy preserves uninitialized padding. Byte-wise comparison of whole objects is permitted only where every compared byte is initialized and accessible under valid lifetime and aliasing conditions, and byte equality is the intended equality; otherwise compare semantically through ``PartialEq``. This conditional permission is an adaptation of 24.5.2's ban on the C++ memory functions.",
       "enforcement": "API review, boundary tests and Miri; candidate checks for raw copy calls and buffer relationships.",
-      "coverage_limit": "Rust ptr::copy permits overlap. The C++ rule cannot become a blanket ban on overlap without changing its intent. Overlap correctness alone does not establish safe copying of owning values."
+      "coverage_limit": "``ptr::copy`` permits overlap; the C++ rule cannot become a blanket ban on overlap without changing its intent. ``repr(C)`` and ``Copy`` do not establish that padding is initialized, and even a valid byte view compares differently from value equality for signed zero or unused buffer bytes."
     },
     {
       "id": "SCR-RUST-026",
@@ -392,9 +397,9 @@
       "scope": "Integer arithmetic, shifts and constant calculations",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Arithmetic shall stay within its required range or use explicit checked, saturating, wrapping or overflowing operations with justified semantics. Check division/remainder exceptional inputs and shift counts, including negative counts where applicable. Constants shall not silently wrap contrary to their intended value.",
+      "requirement": "Arithmetic shall stay within its required range or use explicit checked, saturating, wrapping or overflowing operations with justified semantics. A shift count shall be non-negative and less than the bit width of the left operand's type, the criterion shared with the draft SCRC guideline for 7.0.4. Division and remainder shall check for a zero divisor and for ``MIN / -1``. Constants shall not silently wrap contrary to their intended value (8.20.1). The policy for general runtime arithmetic is an S-CORE extension; the two MISRA C++ sources address shift counts and constant expressions.",
       "enforcement": "Compiler constant/overflow diagnostics; Clippy arithmetic_side_effects as a candidate restriction; boundary tests under the delivered build settings.",
-      "coverage_limit": "The paper drops 7.0.4 too broadly: Rust permits different shift-operand types and runtime invalid shift counts. This draft restores a check obligation; panic and release-mode behavior depend on operation and build configuration."
+      "coverage_limit": "Panic and release-mode behavior depend on the operation and the delivered overflow-check setting; a shift by an out-of-range count panics in debug and masks in release unless overflow checks are on."
     },
     {
       "id": "SCR-RUST-027",
@@ -402,12 +407,12 @@
       "misra_cpp_ids": [
         "9.4.1"
       ],
-      "scope": "Safety-relevant if/else-if decision chains",
+      "scope": "Production if/else-if decision chains",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Each safety-relevant decision chain shall define behavior when no condition matches. Prefer exhaustive match for finite cases; otherwise provide a final else that performs the defined fallback or documents the intentionally empty action.",
+      "requirement": "Each if/else-if chain with two or more conditions shall define behavior when no condition matches. Prefer an exhaustive ``match`` for finite cases; otherwise provide a final ``else`` that performs the defined fallback or documents the intentionally empty action. The rule applies to all production chains, as 9.4.1 does; a single ``if`` without ``else if`` is an independent guard and is not affected.",
       "enforcement": "Compiler match exhaustiveness; candidate syntax check for missing final else; review of fallback requirements.",
-      "coverage_limit": "A final else or wildcard arm does not prove that the fallback is correct. This project scope adapts the original rule rather than imposing an else on every independent guard."
+      "coverage_limit": "A final ``else`` or wildcard arm does not prove that the fallback is correct."
     },
     {
       "id": "SCR-RUST-028",
@@ -446,7 +451,7 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Raw-pointer interfaces should use no more than two pointer-indirection levels. Deeper foreign interfaces should be isolated behind a typed adapter with explicit ownership and extent contracts. Native references and smart-pointer composition require separate design assessment.",
       "enforcement": "A type-aware syntax check and interface review.",
-      "coverage_limit": "Indirection count is a complexity restriction, not proof of memory safety; benign safe abstractions must not be classified solely by textual asterisks."
+      "coverage_limit": "Indirection count is a complexity restriction, not proof of memory safety; benign safe abstractions must not be classified solely by textual asterisks. Scope choice: the SCRC draft assesses 11.3.2 as applicable to safe Rust because it includes references. This rule deliberately counts raw pointers only; reference and smart-pointer composition such as ``&&T`` or ``Box<Rc<T>>`` is left to the component's design assessment because the type system makes that nesting explicit and checked."
     },
     {
       "id": "SCR-RUST-031",
@@ -459,9 +464,9 @@
       "scope": "Native initialization, MaybeUninit, unions and raw storage",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Every observed value shall be initialized and valid for its Rust type. A MaybeUninit/raw-storage abstraction shall prove initialization before assume_init/read/reference creation, track partial initialization and avoid duplicate destruction. Zero-filled storage shall not be treated as a valid arbitrary T.",
+      "requirement": "Every value observed as its type ``T`` shall be initialized and valid for ``T``. For ``MaybeUninit<T>`` and raw storage the requirement applies to producing or accessing the payload as ``T``: ``assume_init``, ``assume_init_ref``/``assume_init_mut``, ``ptr::read`` as ``T``, and creating ``&T`` or ``&mut T``. Operations on the container are not restricted: taking ``&mut MaybeUninit<T>``, calling ``MaybeUninit::write``, and reading or copying storage as ``MaybeUninit<T>`` or as bytes are valid while the payload is uninitialized. Track partial initialization and avoid duplicate destruction. Zero-filled storage shall not be treated as a valid arbitrary ``T``.",
       "enforcement": "Compiler definite-initialization checks; unsafe review and Miri tests for low-level storage; candidate inventories for initialization-bypassing APIs.",
-      "coverage_limit": "Compiler checks for ordinary locals do not establish initialization of raw storage. Some invalid references are already UB when created, before an explicit read."
+      "coverage_limit": "Compiler checks for ordinary locals do not establish initialization of raw storage. Creating ``&T`` to an invalid value is already undefined behavior, before any explicit read; Miri detects such payload accesses on executed paths."
     },
     {
       "id": "SCR-RUST-032",
@@ -526,9 +531,9 @@
       "scope": "Copy/Clone/Drop, pinning, custom owners and raw allocation wrappers",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Copy/Clone/Drop implementations shall preserve ownership and type invariants. Every acquired resource shall have a defined release/transfer policy, including partial failure paths. Unsafe pinning abstractions shall preserve their promised pinning invariants. Do not rely on destructors running to maintain memory safety. Synchronization/resource guards shall remain bound for the intended duration; do not accidentally discard them immediately.",
+      "requirement": "Copy/Clone/Drop implementations shall preserve ownership and type invariants. Every acquired resource shall have a defined release/transfer policy, including partial failure paths. Unsafe pinning abstractions shall preserve their promised pinning invariants. Do not rely on destructors running to maintain memory safety. Synchronization/resource guards shall remain bound for the intended duration; do not accidentally discard them immediately. Where a borrowed-to-owned conversion matters, use an explicit operation such as ``to_vec()``, ``to_owned()`` or ``clone()`` rather than a generic ``From``/``Into`` call whose behavior, moving an owner or copying from a borrow, depends on the argument type (adaptation of 28.6.1). APIs that emulate move or assignment through raw pointers, including ``Pin``-based move emulation and in-place replacement, shall define behavior when source and destination coincide: either the aliasing case preserves the value, invariants and resources, or it is an explicit unsafe precondition that every safe wrapper establishes (adaptation of Directive 15.8.1).",
       "enforcement": "Compiler move/trait checks, review of custom implementations and targeted Miri/resource-failure tests; inventory mem::forget, leaks and manual ownership transfer. Include the rustc let_underscore_lock diagnostic where supported.",
-      "coverage_limit": "Safe Rust permits leaks and mem::forget, and termination may skip Drop. Pin is a type, not a trait. The paper's 21.6.5/28.6.1 comments describe largely compiler-handled C++ differences; no artificial direct Rust equivalent is assumed."
+      "coverage_limit": "Safe Rust permits leaks and ``mem::forget``, and termination may skip ``Drop``. ``Pin`` is a type, not a trait. The compiler decides whether a generic conversion moves or copies, but a reader cannot see which without an explicit operation."
     },
     {
       "id": "SCR-RUST-036",
@@ -536,14 +541,15 @@
       "misra_cpp_ids": [
         "18.1.1",
         "18.4.1",
+        "18.5.1",
         "18.5.2"
       ],
       "scope": "Production library code, process boundaries and destructors",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Recoverable failures shall use explicit error handling. Application libraries shall not directly terminate the process or panic on expected invalid input. Any intentional fail-stop path requires a documented system response. Account for implicit panics, destructor panics, allocation failure and panic strategy; keep critical fallible cleanup in explicit APIs.",
-      "enforcement": "Selected Clippy panic/unwrap_used/expect_used restrictions and disallowed termination APIs; failure-injection tests and call-path review.",
-      "coverage_limit": "Absence of panic! and unwrap does not prove panic freedom: indexing, arithmetic, dependencies and destructors can fail. Panic is not synonymous with Rust undefined behavior; the system may nevertheless treat it as a safety failure."
+      "requirement": "Recoverable failures shall use explicit error handling. Application libraries shall not terminate the process directly or indirectly: calling ``std::process::exit`` or ``abort``, taking or storing their addresses, or reaching them through foreign code is prohibited; the only accepted fail-stop is the abort produced by a failed assertion or by the delivered panic strategy, and any broader fail-stop path requires a documented system response including cleanup or external recovery (adaptation of 18.5.2). Two levels are distinguished per boundary: a **panic-free** path never initiates a panic, including implicit panics from indexing, arithmetic and allocation; a **panic-contained** boundary may see a panic but shall not let it escape. Destructors are panic-free: a custom ``Drop`` and the field cleanup it relies on shall not panic (18.4.1). Catching a panic with ``catch_unwind`` to convert it into an error is acceptable only on a panic-contained boundary under ``panic=unwind``, and the code after the catch, including dropping the payload and any guards, shall itself be panic-free; under ``panic=abort`` catching cannot recover, and a panic during unwinding terminates. No panic shall cross a foreign-language boundary (18.5.1; see SCR-RUST-042). Panic payloads passed to ``panic_any`` shall carry only owned data or ``'static`` references; wrappers, integer addresses or handles that give access to borrowed non-``'static`` storage are prohibited (adaptation of 18.1.1; permitting ``'static`` references is a Rust adaptation of the C++ pointer restriction). Account for allocation failure and the panic strategy; keep critical fallible cleanup in explicit APIs.",
+      "enforcement": "Selected Clippy panic/unwrap_used/expect_used restrictions; ``clippy::exit`` for direct calls plus an inventory of stored or passed function pointers to termination APIs; failure-injection tests and call-path review; Miri or tests for destructor panic paths.",
+      "coverage_limit": "Absence of ``panic!`` and ``unwrap`` does not prove panic freedom: indexing, arithmetic, dependencies and destructors can fail. ``clippy::exit`` sees direct calls only. Panic is not synonymous with Rust undefined behavior; the system may nevertheless treat it as a safety failure."
     },
     {
       "id": "SCR-RUST-037",
@@ -573,7 +579,7 @@
       "scope": "Declarative/procedural macros and generated Rust",
       "proposed_level": "Required",
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
-      "requirement": "Macros shall document whether arguments are evaluated once, more than once or not at all. Use expression fragments where expression semantics are intended. Safety-relevant macro-generated unsafe code and effects shall be included in review and checker coverage.",
+      "requirement": "Prefer a function where a function can express the intended behavior. A macro is justified for variadic arity, item or implementation generation, compile-time token or string processing, or capturing the caller location, and the crate shall state which of these exceptions it uses (adaptation of 19.0.2). Macros shall document whether arguments are evaluated once, more than once or not at all. Use expression fragments where expression semantics are intended. Safety-relevant macro-generated unsafe code and effects shall be included in review and checker coverage.",
       "enforcement": "Macro expansion inspection, tests using arguments with observable effects, and lint coverage checks on generated code.",
       "coverage_limit": "Rust macros avoid some C++ textual-substitution hazards but can still duplicate evaluation, introduce panics or unsafe code. Compiler type checking is not a substitute for semantic review."
     },
@@ -582,8 +588,7 @@
       "title": "Bound allocation and isolate manual allocators",
       "misra_cpp_ids": [
         "21.6.1",
-        "21.6.3",
-        "21.6.4"
+        "21.6.3"
       ],
       "scope": "Heap allocation, container growth and custom allocation",
       "proposed_level": "Required",
@@ -625,6 +630,7 @@
       "id": "SCR-RUST-042",
       "title": "Assess foreign-language boundaries explicitly",
       "misra_cpp_ids": [
+        "18.5.1",
         "21.10.2",
         "21.10.3",
         "22.4.1",
@@ -635,9 +641,9 @@
       "scope": "Every Rust/C/C++ boundary",
       "proposed_level": "Required",
       "origin": "S-CORE supplement informed by MISRA C:2025 Addendum 6",
-      "requirement": "Foreign bindings shall match the actual ABI, layout, types and exported definitions. Document ownership, pointer/length contracts, threading and callback lifetime, error conventions and unwinding behavior in both directions. Prohibit unwinding across a boundary that does not support it. Assess C/C++ implementations under their own applicable policy.",
+      "requirement": "Foreign bindings shall match the actual ABI, layout, types and exported definitions. Document ownership, pointer/length contracts, threading and callback lifetime, error conventions and unwinding behavior in both directions. Unwinding: no Rust panic shall reach a foreign frame and no foreign exception shall enter Rust. Functions exported or imported through ``extern \"C\"`` shall be panic-contained on the Rust side (see SCR-RUST-036) and the foreign side shall not throw across them; ``extern \"C-unwind\"`` may be used only when both sides support unwinding and the delivered panic strategy is unwind; ``catch_unwind`` shall not be relied on to recover foreign exceptions or aborts (18.5.1). Nonlocal transfers: ``setjmp``/``longjmp`` and similar shall not cross a Rust frame; foreign-only use stays inside the foreign region under that code's own policy (21.10.2). Signals: signal handling is limited to the platform APIs the component documents, a handler requires an async-signal-safety assessment, and disabling a signal is permitted where documented (21.10.3 exception). Error state: handle ``errno`` and equivalents per the API contract, reading it only when the return value makes it meaningful, clearing it before the call where the API requires, and capturing it before logging or any other call can overwrite it; application code shall not write ``errno`` except to assign a literal zero directly or through a constant that expands to it, computed values included as an S-CORE adaptation are not permitted (22.4.1); ``std::io::Error::last_os_error`` reads ``GetLastError`` on Windows and is not a portable substitute. Locale: Rust code shall not change the process-wide locale (25.5.1); a component that must do so shall document initialization ordering and concurrency conditions for all affected foreign code as an explicit adaptation. Returned storage: storage returned by ``localeconv``, ``getenv``, ``setlocale`` and ``strerror``, including strings nested in ``lconv``, shall be treated as read-only; a shared reference created from it, including through ``CStr::from_ptr``, is valid only while no foreign code can mutate the storage, and an owned snapshot shall be taken by a valid, race-free read of the whole data including nested strings; the addresses of these four functions shall not be taken or stored for indirect calls (25.5.2, adopted). Pointers returned by ``asctime``, ``ctime``, ``gmtime``, ``localtime``, ``localeconv``, ``getenv``, ``setlocale`` and ``strerror`` shall not be used after a later call, on any thread, to the same function or to one that invalidates the same storage, such as ``setlocale`` after ``localeconv``, ``asctime``/``ctime`` and ``gmtime``/``localtime``; copy the data while the read is valid and protected (25.5.3). Assess C/C++ implementations under their own applicable policy.",
       "enforcement": "MISRA C:2025 Addendum 6 cross-check, binding/layout/symbol review and tests on delivered targets. Its explicit comments on R.8.3, R.8.5, R.8.6 and R.8.15 provide boundary cross-references.",
-      "coverage_limit": "The addendum is an applicability assessment, and the full MISRA C:2025 rule text was not part of the analysis. A complete C-to-Rust rule mapping is pending; this supplement does not claim one."
+      "coverage_limit": "MISRA C:2025 Addendum 6 is an applicability assessment with 223 guideline entries. S-CORE has not yet derived and checked an obligation for every MISRA C guideline the addendum assesses as applicable to Rust boundaries; this supplement covers the boundary concerns of its linked MISRA C++ sources and the addendum comments on R.8.3, R.8.5, R.8.6 and R.8.15. Completing that derivation is open work for a later rulebook revision."
     },
     {
       "id": "SCR-RUST-043",
