@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/contribution_request/feature_request';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -254,13 +254,6 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../users_guide/index.html">
-    User’s Guide
   </a>
 </li>
 
@@ -481,13 +474,6 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../users_guide/index.html">
-    User’s Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
     Modules
   </a>
@@ -645,7 +631,7 @@
                   
   <section id="feature-enhancement-proposal-fep">
 <h1>Feature &amp; Enhancement Proposal (FEP)<a class="headerlink" href="#feature-enhancement-proposal-fep" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9cd9603c">
+<div class="need_container docutils container" id="SNCB-1139656e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feature_request_guideline">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -729,8 +715,10 @@ silence.</p>
 a board or filtered view is built on.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fep:needs-shepherd</span></code> is applied to the tracking Issue while no Shepherd is confirmed, and removed
 once one is.</p>
-<p><code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> is applied to the tracking Issue only while it is in its Final Comment Period, and
-removed once the FCP closes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> is applied to the FEP PR only while it is in its Final Comment Period. Adding it starts
+the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both once the FCP closes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fep:breaking-change</span></code> is applied to the FEP PR of a Breaking Change FEP (see <a class="reference internal" href="#breaking-change-feps-additional-requirements">Breaking Change FEPs -
+Additional Requirements</a>), so that the FCP bot requires the explicit approval quorum.</p>
 <p>A FEP that sees no activity for an extended period, most commonly while unshepherded or shepherded
 but not yet ready for FCP, may be marked with the existing <code class="docutils literal notranslate"><span class="pre">Stale</span></code> label like any other inactive
 issue. This does not reject the FEP; it signals that it has lost momentum and may be picked up again
@@ -753,7 +741,9 @@ status <code class="docutils literal notranslate"><span class="pre">Draft</span>
 <p>Author and Shepherd iterate until the proposal is complete and well-argued. When the Shepherd judges
 it ready, they propose entry into the Final Comment Period to the Architecture Community chair (or
 proxy). The chair/proxy then formally announces the FCP across all channels, including Slack, moves
-the tracking Issue to status <code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">Review</span></code>, and adds the <code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> label.</p>
+the tracking Issue to status <code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">Review</span></code>, and adds the <code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> label to the FEP PR. The
+FEP PR description must reference the tracking Issue (for example <code class="docutils literal notranslate"><span class="pre">Tracking:</span> <span class="pre">#1234</span></code>), and the
+tracking Issue must name the Shepherd on a line <code class="docutils literal notranslate"><span class="pre">shepherd:</span> <span class="pre">&#64;login</span></code>.</p>
 <p><strong>Phase 2 - Final Comment Period (FCP)</strong> (status: <code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">Review</span></code>)</p>
 <p>The Architecture Community has 14 calendar days to engage. Objections must be substantive and
 technical; the Shepherd distinguishes blocking from non-blocking feedback and can reset the FCP once
@@ -762,6 +752,28 @@ if a significant new issue requires a revised proposal.</p>
 closes with unresolved blocking objections, the FEP is rejected. Escalation may intervene in
 exceptional cases but is not the default path. Either way, the <code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> label is removed from the
 tracking Issue once FCP closes.</p>
+<p>The FCP is tracked by a bot (<code class="docutils literal notranslate"><span class="pre">.github/workflows/fep-fcp.yml</span></code>):</p>
+<ul class="simple">
+<li><p><strong>Notification</strong>: when <code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> is added, the bot &#64;-mentions the maintainers of every S-CORE
+module (as registered in the <code class="docutils literal notranslate"><span class="pre">bazel_registry</span></code> for the modules of the reference integration) and
+the Architecture Community in a PR comment. They are informed, not added as reviewers. The list of
+notified people and the start date are recorded in that comment, so it stays traceable who was
+informed and when.</p></li>
+<li><p><strong>Taking part</strong>: stakeholders <em>Approve</em> the PR, or submit a <em>Request changes</em> review for a
+substantive, technical objection. Reminders are posted 7 and 2 days before the deadline to groups
+that have not responded.</p></li>
+<li><p><strong>Dismissing objections</strong>: the Shepherd dismisses change requests judged non-blocking, giving the
+reason in the dismissal message. Only dismissals by the Shepherd or the Architecture Community
+chair/proxy, made before the deadline, count; any other dismissed change request still blocks.
+Every dismissal, with who dismissed it, when and why, is listed in the FCP record.</p></li>
+<li><p><strong>Closing</strong>: after 14 days, groups that did not respond count as having approved. Reviews submitted
+after the deadline are ignored. The FEP is accepted unless an undismissed change request from a
+stakeholder remains; a Breaking Change FEP also needs explicit approvals from the Architecture
+Community quorum. The result is posted to the PR and the tracking Issue, and reported as the
+<code class="docutils literal notranslate"><span class="pre">fep/fcp</span></code> commit status.</p></li>
+<li><p><strong>Reset</strong>: the Shepherd or the chair/proxy comments <code class="docutils literal notranslate"><span class="pre">/fcp</span> <span class="pre">reset</span></code> on the FEP PR to restart the
+14 days once, which notifies all stakeholders again.</p></li>
+</ul>
 <p><strong>Phase 3 - Decision</strong> (status: <code class="docutils literal notranslate"><span class="pre">Accepted</span></code> | <code class="docutils literal notranslate"><span class="pre">Rejected</span></code> | <code class="docutils literal notranslate"><span class="pre">Withdrawn</span></code>)</p>
 <p>If the FCP closed cleanly, the FEP PR is merged and recorded as a Decision Record. If the FCP closed
 with unresolved blocking objections, the FEP is rejected. The author may withdraw at any point
@@ -882,8 +894,8 @@ known to be directly affected before FCP entry</p></li>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -907,7 +919,7 @@ known to be directly affected before FCP entry</p></li>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>
