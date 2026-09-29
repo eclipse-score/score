@@ -106,6 +106,96 @@ Interfaces
    :status: valid
    :version: 1
 
+The Operating System Abstraction Layer (OSAL) interfaces group services into general,
+Linux-specific, and QNX-specific service families. The service operations below represent
+families of existing wrapper functions, not generic dispatch functions. Individual wrapper
+functions and their detailed contracts are outside this feature-level view.
+
+The interfaces support allocation to the ASIL-B OSAL component. The ASIL-B/QM classification
+of individual functions is defined at component level, independently of this grouping.
+
+.. logic_arc_int:: OSAL General
+   :id: logic_arc_int__baselibs__osal_general
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Provides C++ abstractions of POSIX and C standard library services shared by Linux and QNX.
+
+.. logic_arc_int_op:: Invoke General Service
+   :id: logic_arc_int_op__baselibs__osal_general_call
+   :included_by: logic_arc_int__baselibs__osal_general
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Invokes supported POSIX or C standard library functionality through the selected general
+   OSAL wrapper with the supplied arguments, providing its operation-specific result and
+   output values. Error information, where exposed by the wrapper's contract, is accessed
+   through :need:`logic_arc_int_op__baselibs__osal_error_info`.
+
+.. logic_arc_int_op:: Inspect Error Information
+   :id: logic_arc_int_op__baselibs__osal_error_info
+   :included_by: logic_arc_int__baselibs__osal_general
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Provides access to error information exposed by general, Linux-specific, and QNX-specific
+   wrappers according to each wrapper's error-reporting contract.
+
+.. logic_arc_int:: OSAL Linux
+   :id: logic_arc_int__baselibs__osal_linux
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: QM
+   :status: valid
+   :version: 1
+
+   Provides C++ abstractions of Linux-specific services. These services complement the general
+   OSAL interface and are available only on Linux.
+
+.. logic_arc_int_op:: Invoke Linux Service
+   :id: logic_arc_int_op__baselibs__osal_linux_call
+   :included_by: logic_arc_int__baselibs__osal_linux
+   :security: YES
+   :safety: QM
+   :status: valid
+   :version: 1
+
+   Invokes supported Linux-specific functionality through the selected OSAL wrapper with the
+   supplied arguments, providing its operation-specific result and output values. Error
+   information, where exposed by the wrapper's contract, is accessed through
+   :need:`logic_arc_int_op__baselibs__osal_error_info`.
+
+.. logic_arc_int:: OSAL QNX
+   :id: logic_arc_int__baselibs__osal_qnx
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Provides C++ abstractions of QNX-specific services. These services complement the general OSAL
+   interface and are available only on QNX.
+
+.. logic_arc_int_op:: Invoke QNX Service
+   :id: logic_arc_int_op__baselibs__osal_qnx_call
+   :included_by: logic_arc_int__baselibs__osal_qnx
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Invokes supported QNX-specific functionality through the selected OSAL wrapper with the
+   supplied arguments, providing its operation-specific result and output values. Error
+   information, where exposed by the wrapper's contract, is accessed through
+   :need:`logic_arc_int_op__baselibs__osal_error_info`.
+
 .. logic_arc_int:: Base64
    :id: logic_arc_int__baselibs__utils_base64
    :included_by: feat__baselibs
