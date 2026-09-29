@@ -106,6 +106,45 @@ Interfaces
    :status: valid
    :version: 1
 
+The Operating System Abstraction Layer (OSAL) interfaces group services into general,
+Linux-specific, and QNX-specific service families. Individual operations and their contracts
+are defined in the component architecture rather than duplicated at feature level.
+
+The interfaces support allocation to the ASIL-B OSAL component. The ASIL-B/QM classification
+of individual functions is defined at component level, independently of this grouping.
+
+.. logic_arc_int:: OSAL General
+   :id: logic_arc_int__baselibs__osal_general
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Provides C++ abstractions of POSIX and C standard library services shared by Linux and QNX.
+
+.. logic_arc_int:: OSAL Linux
+   :id: logic_arc_int__baselibs__osal_linux
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: QM
+   :status: valid
+   :version: 1
+
+   Provides C++ abstractions of Linux-specific services. These services complement the general
+   OSAL interface and are available only on Linux.
+
+.. logic_arc_int:: OSAL QNX
+   :id: logic_arc_int__baselibs__osal_qnx
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+   Provides C++ abstractions of QNX-specific services. These services complement the general OSAL
+   interface and are available only on QNX.
+
 .. logic_arc_int:: Base64
    :id: logic_arc_int__baselibs__utils_base64
    :included_by: feat__baselibs
