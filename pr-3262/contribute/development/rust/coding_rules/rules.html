@@ -653,7 +653,7 @@
                   
   <section id="rust-rule-catalogue">
 <span id="rust-coding-rules"></span><h1>Rust Rule Catalogue<a class="headerlink" href="#rust-rule-catalogue" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-37ea379f">
+<div class="need_container docutils container" id="SNCB-78895af8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules_catalogue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -754,12 +754,15 @@ does not establish compliance.</p>
 draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All production crates and
 their build inputs.</p>
-<p>Each component shall record its compiler/toolchain revision, Rust edition, target, dependency
-resolution, enabled features, panic strategy, and overflow-check settings. Production builds shall
-use this controlled configuration. Unstable features and compiler-specific assumptions require
-explicit assessment.</p>
+<p>Each component shall record its compiler/toolchain revision, the language specification revision
+used as the reference for that toolchain (for example a Ferrocene Language Specification revision,
+with relevant known differences noted), Rust edition, target, dependency resolution, enabled
+features, panic strategy and overflow-check settings. Production builds shall use this controlled
+configuration. Stable toolchains reject unstable features; where a nightly or custom toolchain is
+permitted, the assessment shall list the permitted unstable features and the assumptions relied on.
+Links to the existing configuration and assessment records satisfy this requirement.</p>
 <p><strong>Check:</strong> Check manifests, lockfiles and Bazel toolchain/configuration in CI; review language and
-target assumptions against the chosen compiler documentation.</p>
+target assumptions against the referenced specification and the compiler documentation.</p>
 <p><strong>Coverage limit:</strong> A successful build does not establish tool qualification. Reconcile Cargo and
 Bazel inputs; a host-only build does not cover QNX or a different feature set.</p>
 </section>
@@ -788,29 +791,61 @@ draft: safe), 0.1.1 (SCRC draft: safe).</p>
 <p><strong>Level rationale:</strong> Required although both sources are Advisory: an invariant condition or an
 ineffective write usually indicates a logic defect, the consequence in Rust is the same as in C++,
 and compiler and Clippy checks make conformance cheap to demonstrate.</p>
-<p>Conditions shall express a meaningful runtime decision unless explicitly designated as a constant
-configuration choice or intentional loop. A value shall not be written only to be overwritten before
-any required observation.</p>
+<p>A condition shall express a decision whose outcome can differ at runtime for inputs the component
+accepts. A condition whose outcome is fixed is a violation whether it is written as a constant
+expression or fixed by construction, such as testing a value just assigned from a literal or
+comparing a value with itself, unless it is a designated configuration choice (a cfg predicate or a
+named constant flag) or an intentional loop with an explicit exit. A value shall not be written and
+then overwritten or dropped before any observation. This covers both assignments overwritten before
+being read and owning values replaced before being observed (adaptation of 0.1.1 to all Rust
+objects, not only trivially destructible ones). Replacing an owning value runs its Drop, so such a
+write is unnecessary only when neither the value nor its destructor effect is required.</p>
 <p><strong>Check:</strong> rustc unused_assignments; selected Clippy condition/comparison checks; candidate CodeQL
 control-flow and value-use analysis; review intentional constant branches.</p>
 <p><strong>Coverage limit:</strong> Local diagnostics do not establish path feasibility or detect every overwritten
-value across calls. Record intentional loop and configuration exceptions.</p>
+value across calls, and unused_assignments does not consider destructor effects. Record intentional
+loop and configuration exceptions.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// Compliant: the outcome depends on runtime input.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">frame</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MAX_FRAME</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(());</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// Non-compliant: the condition is fixed by construction.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">frame</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">ready</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(());</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">Err</span><span class="p">(())</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Both compile. The first decides on the accepted input; the second always takes the first branch, so
+the else path is dead and the decision is meaningless unless <code class="docutils literal notranslate"><span class="pre">ready</span></code> is a documented configuration
+flag.</p>
 </section>
 <section id="scr-rust-004-handle-results-and-preserve-error-information">
 <span id="scr-rust-004"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">SCR-RUST-004: Handle results and preserve error information</a><a class="headerlink" href="#scr-rust-004-handle-results-and-preserve-error-information" title="Link to this heading">#</a></h2>
 <p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 0.1.2 (SCRC
-draft: safe), 18.5.1 (SCRC draft: safe).</p>
+draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production APIs and their
 callers.</p>
-<p>Callers shall use returned values whose contracts require action. Errors shall be propagated,
-converted with necessary context, or handled according to an explicit recovery policy. Silently
-discarding a critical Result through let _, drop, .ok(), or a catch-all branch is prohibited.
-Annotate project APIs with must_use where omission is a defect.</p>
+<p>Non-unit results of explicit function and method calls shall be used or deliberately discarded under
+the project’s reviewed discard convention, for example a <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">_</span> <span class="pre">=</span></code> binding with a comment naming
+why the value is not needed (adaptation of 0.1.2, which covers explicit call syntax and not operator
+syntax). <code class="docutils literal notranslate"><span class="pre">#[must_use]</span></code> contracts apply in addition, including to functions returning unit. Errors
+shall be propagated, converted with necessary context, or handled according to the API’s documented
+error-handling contract. A Result is critical when that contract states that the error requires
+action by the caller; discarding a critical error through <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">_</span></code>, <code class="docutils literal notranslate"><span class="pre">drop</span></code>, <code class="docutils literal notranslate"><span class="pre">.ok()</span></code>, a default
+value or a catch-all branch is prohibited unless the branch implements the documented recovery.
+Project APIs shall carry <code class="docutils literal notranslate"><span class="pre">#[must_use]</span></code> where omission is a defect and shall document which errors
+require action and what handling is acceptable.</p>
 <p><strong>Check:</strong> rustc unused_must_use and selectively unused_results; Clippy let_underscore_must_use;
 candidate CodeQL checks for project error-discard patterns; review recovery paths.</p>
-<p><strong>Coverage limit:</strong> must_use does not prove meaningful handling. Explicitly discarded or
-superficially inspected errors require additional checks; broad unused_results can flag intentional
-side-effect APIs.</p>
+<p><strong>Coverage limit:</strong> <code class="docutils literal notranslate"><span class="pre">#[must_use]</span></code> checks that a result is used, not that it is handled
+meaningfully. Whether <code class="docutils literal notranslate"><span class="pre">.ok()</span></code> or a catch-all branch discards or recovers rests on the API
+contract, which no lint can judge; broad unused_results can flag intentional side-effect APIs.</p>
 </section>
 <section id="scr-rust-005-define-floating-point-range-and-precision-contracts">
 <span id="scr-rust-005"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">SCR-RUST-005: Define floating-point range and precision contracts</a><a class="headerlink" href="#scr-rust-005-define-floating-point-range-and-precision-contracts" title="Link to this heading">#</a></h2>
@@ -821,9 +856,11 @@ calculations, conversions and persistence.</p>
 <p><strong>Level rationale:</strong> Required although Directive 0.3.1 is Advisory: unspecified floating-point
 range, precision or special-value handling produces silent numerical error in stored and compared
 values, which is a safety consequence rather than a style concern.</p>
-<p>Each safety-relevant floating-point use shall specify acceptable range, precision, rounding,
-comparison tolerance, and handling of NaN, infinity and signed zero. Serialization shall preserve
-the required information or reject values that cannot meet the declared contract.</p>
+<p>Safety-relevant floating-point calculations shall be covered by a numerical contract that specifies
+acceptable range, precision, rounding, comparison tolerance, handling of NaN, infinity and signed
+zero, and serialization guarantees. One shared contract may cover all calculations it applies to,
+for example at a module or API boundary, provided each calculation is traceable to it. Serialization
+shall preserve the required information or reject values that cannot meet the contract.</p>
 <p><strong>Check:</strong> Selected Clippy floating-point/cast checks; boundary and round-trip tests; numerical
 review. Candidate CodeQL checks can locate values reaching sensitive conversion APIs.</p>
 <p><strong>Coverage limit:</strong> A lint cannot select application tolerances or prove numerical accuracy.
@@ -897,14 +934,23 @@ draft: safe), 6.7.2 (SCRC draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> All shared state,
 including Mutex, atomics and unsafe implementations.</p>
 <p>Shared mutable state shall have a documented owner, initialization protocol and synchronization
-design. Uncontrolled static mut is prohibited. Each use of shared globals, atomics, and unsafe
-Send/Sync shall justify ordering and lifecycle assumptions. Lock ordering and reentrancy constraints
-shall be documented.</p>
-<p><strong>Check:</strong> Compiler trait checks, shared-state inventory, unsafe review and concurrency tests;
-candidate checks for global-state access and unsafe trait implementations.</p>
+design. Scope (adaptation of 6.7.1 and 6.7.2): the rule covers every item reachable from more than
+one thread, or from more than one function through a shared path, including <code class="docutils literal notranslate"><span class="pre">static</span></code> items without
+<code class="docutils literal notranslate"><span class="pre">mut</span></code> whose type provides interior mutability (Mutex, RwLock, atomics, OnceLock, UnsafeCell) and
+<code class="docutils literal notranslate"><span class="pre">thread_local!</span></code> storage. <code class="docutils literal notranslate"><span class="pre">const</span></code> items, <code class="docutils literal notranslate"><span class="pre">static</span></code> items of types without interior mutability,
+and locals that never escape their function are excluded, which corresponds to the source exclusions
+for constants. <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">mut</span></code> is prohibited in first-party production code. A reviewed exception
+requires single-writer or externally synchronized access documented at the declaration, no
+references to the item, and raw-pointer access confined to the owning module. Each use of shared
+globals, atomics and unsafe Send/Sync shall justify ordering and lifecycle assumptions. Lock
+ordering and reentrancy constraints shall be documented.</p>
+<p><strong>Check:</strong> Compiler trait checks; rustc static_mut_refs (deny by default in edition 2024) for
+references to mutable statics; a syntax check for <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">mut</span></code> declarations; shared-state
+inventory, unsafe review and concurrency tests; candidate checks for global-state access and unsafe
+trait implementations.</p>
 <p><strong>Coverage limit:</strong> Safe Rust prevents many data races under soundness assumptions but does not
-prevent deadlocks, logical races or incorrect atomic protocols. This obligation applies beyond the
-paper’s unsafe-only grouping.</p>
+prevent deadlocks, logical races or incorrect atomic protocols. static_mut_refs catches references,
+not declarations or raw-pointer uses; the declaration ban needs its own check.</p>
 </section>
 <section id="scr-rust-009-remove-disabled-code-from-comments">
 <span id="scr-rust-009"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">SCR-RUST-009: Remove disabled code from comments</a><a class="headerlink" href="#scr-rust-009-remove-disabled-code-from-comments" title="Link to this heading">#</a></h2>
@@ -915,10 +961,15 @@ comments.</p>
 <p><strong>Level rationale:</strong> Advisory although Rule 5.7.1 is Required: text matching cannot reliably
 separate disabled code from documentation, so enforcement rests on review judgement. The nested
 block comment hazard from 5.7.1 is recorded in the requirement.</p>
-<p>Obsolete implementations should be removed and recovered through version control when needed.
-Comments should explain intent and constraints. Documentation examples and explanatory pseudocode
-are permitted.</p>
-<p><strong>Check:</strong> Code review; a comment-pattern checker may identify candidates for review.</p>
+<p>Obsolete implementations shall be removed and recovered through version control when needed, rather
+than parked in comments or behind permanently false or undeclared cfg predicates, the Rust analogue
+of <code class="docutils literal notranslate"><span class="pre">#if</span> <span class="pre">0</span></code> (adaptation of 5.7.2). Supported feature, target and test configurations are
+intentional conditional compilation and are not affected. Nested block comments shall not be used to
+disable code, since Rust nests <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">*/</span></code> and a stray delimiter can hide a whole section (concern of
+5.7.1); a block comment containing code shall be a documentation example or explanatory pseudocode.
+Comments should explain intent and constraints.</p>
+<p><strong>Check:</strong> Code review; a comment-pattern checker may identify candidates; rustc unexpected_cfgs
+with check-cfg identifies undeclared predicates used to park code.</p>
 <p><strong>Coverage limit:</strong> Text matching cannot reliably distinguish obsolete code from useful
 documentation.</p>
 </section>
@@ -930,7 +981,7 @@ mapping.</p>
 foreign buffer boundaries.</p>
 <p>Use arrays or slices that carry the required extent in native Rust interfaces. Raw buffer interfaces
 shall document pointer, length, ownership and validity together, with validation before constructing
-a slice. Exported fixed-size arrays shall declare their size.</p>
+a slice.</p>
 <p><strong>Check:</strong> Compiler typing for native arrays/slices; API review and boundary tests for raw
 pointer/length pairs.</p>
 <p><strong>Coverage limit:</strong> Native array extents are largely compiler-enforced. FFI buffer validity is not,
@@ -938,21 +989,24 @@ and bounds-checked access can still panic.</p>
 </section>
 <section id="scr-rust-011-keep-imports-and-module-interfaces-explicit">
 <span id="scr-rust-011"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">SCR-RUST-011: Keep imports and module interfaces explicit</a><a class="headerlink" href="#scr-rust-011-keep-imports-and-module-interfaces-explicit" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 6.0.3 (SCRC
-draft: unsafe), 19.0.3 (SCRC draft: safe), 19.2.1 (SCRC draft: safe), 19.2.3 (SCRC draft: not
-applicable, retained by S-CORE).</p>
+<p><strong>Proposed level:</strong> Advisory. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 19.0.3 (SCRC
+draft: safe), 19.2.1 (SCRC draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Crate/module layout and
 source inclusion.</p>
-<p><strong>Level rationale:</strong> Advisory although Rules 19.2.1 and 19.2.3 are Required: Rust’s module system
-removes the undefined and ambiguous behavior of C++ header inclusion, leaving clarity and provenance
-of names as the residual concern.</p>
+<p><strong>Level rationale:</strong> Advisory although Rule 19.2.1 is Required: Rust’s module system removes the
+undefined and ambiguous behavior of C++ header inclusion, leaving clarity and provenance of names as
+the residual concern.</p>
 <p>Imports and re-exports should make dependencies and ownership of names clear. Keep ordinary imports
 together; document exceptions for narrow local scope. Glob imports should be limited to explicitly
-designated preludes or tests. Generated/include-based source shall have controlled provenance.</p>
+designated preludes or tests. Generated or included source (<code class="docutils literal notranslate"><span class="pre">include!</span></code>, <code class="docutils literal notranslate"><span class="pre">include_str!</span></code>, build-
+script output, <code class="docutils literal notranslate"><span class="pre">#[path]</span></code> attributes) shall have controlled provenance: a reviewer can trace it to
+a reviewed source file or to a controlled build input recorded in the component’s source and build
+records, and generation is reproducible from those inputs. Existing source and build records satisfy
+this; <code class="docutils literal notranslate"><span class="pre">include!</span></code> shall not shadow items of an outer scope (19.2.1).</p>
 <p><strong>Check:</strong> Formatting, compiler name resolution, selected import lints and review of re-
 export/prelude design.</p>
-<p><strong>Coverage limit:</strong> Rust permits include! and generated source; the paper’s comparison of use with
-C++ include is incomplete. Valid syntax alone does not establish clarity or provenance.</p>
+<p><strong>Coverage limit:</strong> Rust permits <code class="docutils literal notranslate"><span class="pre">include!</span></code> and generated source; valid syntax alone does not
+establish clarity or provenance.</p>
 </section>
 <section id="scr-rust-012-reserve-entry-point-naming">
 <span id="scr-rust-012"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">SCR-RUST-012: Reserve entry-point naming</a><a class="headerlink" href="#scr-rust-012-reserve-entry-point-naming" title="Link to this heading">#</a></h2>
@@ -986,13 +1040,16 @@ production module with no generated-wrapper or embedded-entry-point exception.</
 </section>
 <section id="scr-rust-013-control-exported-symbols-and-foreign-declarations">
 <span id="scr-rust-013"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">SCR-RUST-013: Control exported symbols and foreign declarations</a><a class="headerlink" href="#scr-rust-013-control-exported-symbols-and-foreign-declarations" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 6.2.1 (SCRC
-draft: unsafe), 6.2.2 (SCRC draft: unsafe).</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 6.0.3 (SCRC
+draft: unsafe), 6.2.1 (SCRC draft: unsafe), 6.2.2 (SCRC draft: unsafe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Linkage attributes,
 exported symbols and foreign bindings.</p>
 <p>Exported symbols shall have unique definitions and compatible declarations in each delivered binary.
 Centralize foreign declarations in reviewed binding modules/crates. Use minimal visibility; justify
-no_mangle, export_name, link_section and equivalent linkage controls.</p>
+no_mangle, export_name, link_section and equivalent linkage controls. Items exported with
+<code class="docutils literal notranslate"><span class="pre">#[no_mangle]</span></code>, <code class="docutils literal notranslate"><span class="pre">#[unsafe(no_mangle)]</span></code> or <code class="docutils literal notranslate"><span class="pre">export_name</span></code> enter the global symbol namespace
+(6.0.3): each shall be declared in a reviewed binding module and its name shall be unique across the
+delivered binary.</p>
 <p><strong>Check:</strong> Compiler/linker checks, binding review and final symbol-table inspection for each
 delivered target.</p>
 <p><strong>Coverage limit:</strong> Cross-crate/linker behavior is not fully captured by Rust name resolution.
@@ -1002,16 +1059,38 @@ alone.</p>
 <section id="scr-rust-014-avoid-misleading-name-shadowing-and-method-resolution">
 <span id="scr-rust-014"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">SCR-RUST-014: Avoid misleading name shadowing and method resolution</a><a class="headerlink" href="#scr-rust-014-avoid-misleading-name-shadowing-and-method-resolution" title="Link to this heading">#</a></h2>
 <p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 6.4.1 (SCRC
-draft: safe), 6.4.2 (SCRC draft: not applicable, retained by S-CORE).</p>
+draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Bindings, inherent
 methods and trait methods.</p>
-<p>Rebinding shall not silently change the logical meaning of a value. A same-name transformation may
-be allowed when its purpose is immediate and documented by the expression. Where inherent and trait
-methods share a name but differ semantically, use explicit qualification or change the API.</p>
+<p>Rebinding shall not silently change the logical meaning of a value. A same-name binding is permitted
+when the new value is the same quantity in a refined form (trimmed, parsed, validated, unwrapped)
+and the transformation is visible in the initializer. It is prohibited when the new binding
+represents a different quantity, unit or role. Where inherent and trait methods share a name but
+differ semantically, use explicit qualification or change the API; this method-resolution policy is
+an S-CORE addition without a MISRA C++ source, since the SCRC draft assesses 6.4.2 as not applicable
+until <code class="docutils literal notranslate"><span class="pre">supertrait_item_shadowing</span></code> stabilizes.</p>
 <p><strong>Check:</strong> Selected Clippy shadowing checks plus type-aware custom checks and review of
 trait/inherent method collisions.</p>
 <p><strong>Coverage limit:</strong> This intentionally adapts the C++ restriction to Rust idioms. Rust trait
-composition is not class inheritance; a broad shadowing ban would enforce a different policy.</p>
+composition is not class inheritance; a broad shadowing ban would enforce a different policy. Clippy
+shadow lints cannot judge whether a quantity changed meaning.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// Compliant: same quantity, refined form, transformation visible.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">u32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
+<span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">().</span><span class="n">ok</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// Non-compliant: the same name now holds a different unit.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">schedule</span><span class="p">(</span><span class="n">timeout</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u32</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="c1">// seconds silently become milliseconds</span>
+<span class="w">    </span><span class="n">timeout</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Both compile. In the first the rebinding is still <code class="docutils literal notranslate"><span class="pre">input</span></code>, only trimmed. In the second <code class="docutils literal notranslate"><span class="pre">timeout</span></code>
+changes unit under the same name, so later readers cannot tell which unit a use refers to.</p>
 </section>
 <section id="scr-rust-015-preserve-lifetimes-across-raw-interfaces">
 <span id="scr-rust-015"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">SCR-RUST-015: Preserve lifetimes across raw interfaces</a><a class="headerlink" href="#scr-rust-015-preserve-lifetimes-across-raw-interfaces" title="Link to this heading">#</a></h2>
@@ -1021,8 +1100,14 @@ draft: unsafe), 6.8.2 (SCRC draft: unsafe), 6.8.3 (SCRC draft: unsafe), 6.8.4 (S
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> References, raw pointers,
 callbacks and ownership transfers.</p>
 <p>An access shall not outlive its referent. Do not expose a dangling local pointer as a usable API
-result or store borrowed addresses beyond their valid lifetime. Raw-pointer wrappers shall establish
-lifetime invariants for returned references and asynchronous/foreign callbacks.</p>
+result or store borrowed addresses beyond their valid lifetime. Closures and callbacks that capture
+raw pointers to local data shall be invoked only while that data is live; if the callback can run
+later, the captured storage shall be owned or <code class="docutils literal notranslate"><span class="pre">'static</span></code> (8.1.2). Storing or transporting a
+dangling raw-pointer value is permitted; accessing its expired referent is not. After a value has
+been moved out of or dropped from storage reachable through a raw pointer, a typed read of that
+storage requires initialization, validity and ownership to be re-established first; copying a
+<code class="docutils literal notranslate"><span class="pre">Copy</span></code> value leaves the source initialized (28.6.3). Raw-pointer wrappers shall establish lifetime
+invariants for returned references and asynchronous/foreign callbacks.</p>
 <p><strong>Check:</strong> Borrow checking for references; available dangling-pointer diagnostics; unsafe/API review
 and targeted Miri tests.</p>
 <p><strong>Coverage limit:</strong> Creating or returning a dangling raw pointer can compile. Compiler-enforced
@@ -1037,21 +1122,26 @@ including safe casts and unsafe reinterpretation.</p>
 <p><strong>Related draft SCRC guideline:</strong> <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/expressions/gui_ADHABsmK9FXz.rst">gui_ADHABsmK9FXz</a> (numeric uses of as, for 8.2.2). This rule is to be
 reconciled with the SCRC text as it matures.</p>
 <p>Conversions shall preserve the required value or perform explicit range/validity checks with a
-defined error. Boolean/character values shall not be used as incidental numbers; documented
-encoding/decoding boundaries may convert them through valid representations. Lossy floating-point
-conversion requires a precision contract.</p>
+defined error. <code class="docutils literal notranslate"><span class="pre">bool</span></code> and <code class="docutils literal notranslate"><span class="pre">char</span></code> shall not be used as incidental numbers: arithmetic on
+<code class="docutils literal notranslate"><span class="pre">bool</span></code>, and casts from <code class="docutils literal notranslate"><span class="pre">char</span></code> other than the lossless <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">as</span> <span class="pre">u32</span></code> or <code class="docutils literal notranslate"><span class="pre">u32::from(c)</span></code>, are
+prohibited outside documented encoding or decoding boundaries. At such a boundary a narrowing
+character cast such as <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">as</span> <span class="pre">u8</span></code> requires a preceding range check or a checked conversion such
+as <code class="docutils literal notranslate"><span class="pre">u8::try_from(u32::from(c))</span></code>. The prohibition of truncating character casts is an S-CORE
+addition; the SCRC draft assesses 7.0.3 as not applicable. Lossy floating-point conversion requires
+a precision contract.</p>
 <p><strong>Check:</strong> Clippy cast_possible_truncation, cast_possible_wrap, cast_sign_loss, cast_precision_loss
 and cast_lossless as candidate mappings; custom conversion inventory and boundary tests.</p>
-<p><strong>Coverage limit:</strong> as is often legal safe Rust. From/TryFrom are preferred where supplied, but not
-every numeric pair implements them. S-CORE encoding exceptions are adaptations, not verbatim MISRA
+<p><strong>Coverage limit:</strong> <code class="docutils literal notranslate"><span class="pre">as</span></code> is legal in safe Rust, so an inventory is needed. <code class="docutils literal notranslate"><span class="pre">From</span></code>/<code class="docutils literal notranslate"><span class="pre">TryFrom</span></code>
+are preferred where supplied, but not every numeric pair implements them. The encoding-boundary
+exception and the character-cast restriction are S-CORE adaptations, not verbatim MISRA
 requirements.</p>
 </section>
 <section id="scr-rust-017-represent-absent-pointers-explicitly">
 <span id="scr-rust-017"></span><h2><a class="toc-backref" href="#id17" role="doc-backlink">SCR-RUST-017: Represent absent pointers explicitly</a><a class="headerlink" href="#scr-rust-017-represent-absent-pointers-explicitly" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 7.11.1 (SCRC
-draft: not applicable, retained by S-CORE).</p>
-<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Raw-pointer and foreign
-APIs.</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> No direct
+mapping.</p>
+<p><strong>Origin:</strong> S-CORE adaptation of the C++ null-pointer-constant concern; MISRA C++ 7.11.1 is assessed
+not applicable and is not retained as a source. <strong>Scope:</strong> Raw-pointer and foreign APIs.</p>
 <p>Use typed null constructors when a raw null pointer is required. Use Option or another explicit type
 for optional references/handles in safe APIs. Check required pointer validity before dereference; a
 null check alone is insufficient.</p>
@@ -1083,9 +1173,11 @@ type recovery requires a proven type-identity invariant within an approved unsaf
 not invent a ban on ordinary TypeId queries.</p>
 <p><strong>Check:</strong> API inventory, compiler type checks and review of unchecked downcast/representation
 operations.</p>
-<p><strong>Coverage limit:</strong> The paper retains 8.2.9 despite explaining that its specific C++ behavior has no
-direct counterpart. This is an intent-based policy; ordinary checked native APIs need no custom
-MISRA-shaped check.</p>
+<p><strong>Coverage limit:</strong> A checked downcast establishes type identity at the point of the call only; it
+does not establish that the recovered value satisfies the invariants the caller expects, and a
+failed downcast still needs a defined error path. Only an inventory of unchecked recovery
+(transmute, pointer casts) finds bypasses. Ordinary checked native APIs need no custom MISRA-shaped
+check.</p>
 </section>
 <section id="scr-rust-020-restrict-pointer-casts-and-representation-changes">
 <span id="scr-rust-020"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink">SCR-RUST-020: Restrict pointer casts and representation changes</a><a class="headerlink" href="#scr-rust-020-restrict-pointer-casts-and-representation-changes" title="Link to this heading">#</a></h2>
@@ -1097,7 +1189,13 @@ transformations, safe and unsafe.</p>
 <p>Prefer typed pointer/reference APIs. Pointer-to-integer conversions, reconstruction of pointers,
 mutability-changing casts and transmute shall be restricted to reviewed low-level interfaces with
 documented provenance, alignment, validity and aliasing assumptions. Do not truncate addresses or
-fabricate a mutable reference from shared access outside valid interior-mutability rules.</p>
+fabricate a mutable reference from shared access outside valid interior-mutability rules. Creating
+an owning value from a raw pointer (<code class="docutils literal notranslate"><span class="pre">Box::from_raw</span></code>, <code class="docutils literal notranslate"><span class="pre">Vec::from_raw_parts</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CString::from_raw</span></code>, <code class="docutils literal notranslate"><span class="pre">Rc::from_raw</span></code>, <code class="docutils literal notranslate"><span class="pre">Arc::from_raw</span></code> and similar; 23.11.1) shall satisfy that
+API’s producer, allocation and ownership preconditions: the pointer came from the matching
+<code class="docutils literal notranslate"><span class="pre">into_raw</span></code> or from an allocation with the same layout, ownership is transferred exactly once, and
+for <code class="docutils literal notranslate"><span class="pre">Rc</span></code>/<code class="docutils literal notranslate"><span class="pre">Arc</span></code> the reference-count accounting (<code class="docutils literal notranslate"><span class="pre">from_raw</span></code> paired with <code class="docutils literal notranslate"><span class="pre">into_raw</span></code> or
+<code class="docutils literal notranslate"><span class="pre">increment_strong_count</span></code>) is documented. The resulting ownership obligations follow SCR-RUST-035.</p>
 <p><strong>Check:</strong> Candidate Clippy pointer/transmute lints and API restrictions; compiler invalid-reference
 diagnostics; custom AST inventory, unsafe review and Miri where applicable.</p>
 <p><strong>Coverage limit:</strong> Many pointer casts are legal outside unsafe. Inventory the entire crate;
@@ -1111,8 +1209,10 @@ draft: unsafe), 8.2.11 (SCRC draft: unsafe), 21.10.1 (SCRC draft: unsafe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Function pointers,
 callbacks and variadic foreign calls.</p>
 <p>Calls shall use a compatible function signature, calling convention and ABI. Function-pointer
-representation changes require boundary review. Avoid C variadic calls in application code; a
-necessary adapter shall validate argument types and applicable promotion rules.</p>
+representation changes require boundary review. Defining C-variadic functions in Rust is prohibited
+in first-party production code (21.10.1; the feature is unstable and its <code class="docutils literal notranslate"><span class="pre">VaList</span></code> handling is
+unsafe). Calling a foreign variadic function is limited to a reviewed adapter that validates
+argument types and applicable promotion rules (8.2.11).</p>
 <p><strong>Check:</strong> Compiler ABI/type diagnostics, binding generation checks, adapter review and cross-
 language integration tests.</p>
 <p><strong>Coverage limit:</strong> A successful link does not validate an incorrectly declared foreign signature or
@@ -1126,8 +1226,11 @@ draft: safe).</p>
 including callbacks and recursive destruction.</p>
 <p><strong>Related draft SCRC guideline:</strong> <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/associated-items/gui_ot2Zt3dd6of1.rst">gui_ot2Zt3dd6of1</a> (recursion, for 8.2.10). This rule is to be reconciled with the SCRC
 text as it matures.</p>
-<p>Direct and indirect recursion shall be prohibited in safety-relevant execution paths unless a scoped
-deviation establishes a finite depth and stack budget. Assess recursive parsing, traversal and
+<p>Direct and indirect recursion that executes at runtime shall be prohibited in production call paths
+unless a scoped deviation establishes a finite depth and stack budget. Recursion in a <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">fn</span></code>
+is permitted when the call is evaluated in a constant context, where the compiler bounds it through
+the const-evaluation limit; the same <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">fn</span></code> called at runtime falls under the prohibition
+(adaptation of the <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> exception in 8.2.10). Assess recursive parsing, traversal and
 destructor chains as well as explicit self-calls.</p>
 <p><strong>Check:</strong> Compiler unconditional_recursion provides a narrow check; candidate CodeQL/call-graph
 analysis and stack/depth testing provide additional evidence.</p>
@@ -1185,9 +1288,11 @@ expressions.</p>
 <p><strong>Level rationale:</strong> Required although Rule 8.14.1 is Advisory: a state change skipped because the
 left operand short-circuits the expression alters program behavior silently and is not diagnosed by
 the compiler.</p>
-<p>Required persistent effects shall not depend on accidental short-circuit evaluation. Move state
-changes and critical I/O out of the right side of &amp;&amp; or ||, or document an intentional conditional-
-effect contract at the call site.</p>
+<p>Required persistent effects shall not depend on accidental short-circuit evaluation. A state change
+or I/O on the right side of <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> or <code class="docutils literal notranslate"><span class="pre">||</span></code> is acceptable only when skipping it is the specified
+behavior whenever the left operand decides the expression, and the call site documents that
+conditional-effect contract, for example filling a cache entry that is correctly skipped when the
+entry is already present. Otherwise move the effect out of the condition.</p>
 <p><strong>Check:</strong> Candidate AST checks for obvious mutations and CodeQL effect/call analysis; code review.</p>
 <p><strong>Coverage limit:</strong> Identifying arbitrary side effects through calls requires models. A function
 call in a condition is not automatically a violation.</p>
@@ -1198,14 +1303,22 @@ call in a condition is not automatically a violation.</p>
 draft: unsafe), 24.5.2 (SCRC draft: unsafe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Raw copies and buffer
 movement.</p>
-<p>Choose copy operations whose overlap contract matches the buffers. copy_nonoverlapping requires
-disjoint regions; overlapping movement must use an operation permitting overlap. Both cases require
-valid alignment, size, initialization and ownership handling without double drop.</p>
+<p>Choose copy operations whose overlap contract matches the buffers: <code class="docutils literal notranslate"><span class="pre">copy_nonoverlapping</span></code> requires
+disjoint regions; overlapping movement must use <code class="docutils literal notranslate"><span class="pre">ptr::copy</span></code>. The copy operation itself requires
+valid, aligned, in-bounds pointers for the element count, the overlap condition of the chosen API,
+and ownership handling without double drop; it may copy uninitialized storage such as
+<code class="docutils literal notranslate"><span class="pre">MaybeUninit</span></code> buffers. Using the destination as an initialized <code class="docutils literal notranslate"><span class="pre">T</span></code> is a separate step that
+requires <code class="docutils literal notranslate"><span class="pre">T</span></code>’s validity invariant to hold for the copied bytes, since the raw copy preserves
+uninitialized padding. Byte-wise comparison of whole objects is permitted only where every compared
+byte is initialized and accessible under valid lifetime and aliasing conditions, and byte equality
+is the intended equality; otherwise compare semantically through <code class="docutils literal notranslate"><span class="pre">PartialEq</span></code>. This conditional
+permission is an adaptation of 24.5.2’s ban on the C++ memory functions.</p>
 <p><strong>Check:</strong> API review, boundary tests and Miri; candidate checks for raw copy calls and buffer
 relationships.</p>
-<p><strong>Coverage limit:</strong> Rust ptr::copy permits overlap. The C++ rule cannot become a blanket ban on
-overlap without changing its intent. Overlap correctness alone does not establish safe copying of
-owning values.</p>
+<p><strong>Coverage limit:</strong> <code class="docutils literal notranslate"><span class="pre">ptr::copy</span></code> permits overlap; the C++ rule cannot become a blanket ban on
+overlap without changing its intent. <code class="docutils literal notranslate"><span class="pre">repr(C)</span></code> and <code class="docutils literal notranslate"><span class="pre">Copy</span></code> do not establish that padding is
+initialized, and even a valid byte view compares differently from value equality for signed zero or
+unused buffer bytes.</p>
 </section>
 <section id="scr-rust-026-specify-arithmetic-overflow-and-shift-behavior">
 <span id="scr-rust-026"></span><h2><a class="toc-backref" href="#id26" role="doc-backlink">SCR-RUST-026: Specify arithmetic overflow and shift behavior</a><a class="headerlink" href="#scr-rust-026-specify-arithmetic-overflow-and-shift-behavior" title="Link to this heading">#</a></h2>
@@ -1216,28 +1329,32 @@ shifts and constant calculations.</p>
 <p><strong>Related draft SCRC guideline:</strong> <a class="reference external" href="https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/expressions/gui_RHvQj8BHlz9b.rst">gui_RHvQj8BHlz9b</a> (shift-count bounds, for 7.0.4). This rule is to be
 reconciled with the SCRC text as it matures.</p>
 <p>Arithmetic shall stay within its required range or use explicit checked, saturating, wrapping or
-overflowing operations with justified semantics. Check division/remainder exceptional inputs and
-shift counts, including negative counts where applicable. Constants shall not silently wrap contrary
-to their intended value.</p>
+overflowing operations with justified semantics. A shift count shall be non-negative and less than
+the bit width of the left operand’s type, the criterion shared with the draft SCRC guideline for
+7.0.4. Division and remainder shall check for a zero divisor and for <code class="docutils literal notranslate"><span class="pre">MIN</span> <span class="pre">/</span> <span class="pre">-1</span></code>. Constants shall
+not silently wrap contrary to their intended value (8.20.1). The policy for general runtime
+arithmetic is an S-CORE extension; the two MISRA C++ sources address shift counts and constant
+expressions.</p>
 <p><strong>Check:</strong> Compiler constant/overflow diagnostics; Clippy arithmetic_side_effects as a candidate
 restriction; boundary tests under the delivered build settings.</p>
-<p><strong>Coverage limit:</strong> The paper drops 7.0.4 too broadly: Rust permits different shift-operand types
-and runtime invalid shift counts. This draft restores a check obligation; panic and release-mode
-behavior depend on operation and build configuration.</p>
+<p><strong>Coverage limit:</strong> Panic and release-mode behavior depend on the operation and the delivered
+overflow-check setting; a shift by an out-of-range count panics in debug and masks in release unless
+overflow checks are on.</p>
 </section>
 <section id="scr-rust-027-make-decision-fallbacks-explicit">
 <span id="scr-rust-027"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink">SCR-RUST-027: Make decision fallbacks explicit</a><a class="headerlink" href="#scr-rust-027-make-decision-fallbacks-explicit" title="Link to this heading">#</a></h2>
 <p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 9.4.1 (SCRC
 draft: safe).</p>
-<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Safety-relevant if/else-
-if decision chains.</p>
-<p>Each safety-relevant decision chain shall define behavior when no condition matches. Prefer
-exhaustive match for finite cases; otherwise provide a final else that performs the defined fallback
-or documents the intentionally empty action.</p>
+<p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production if/else-if
+decision chains.</p>
+<p>Each if/else-if chain with two or more conditions shall define behavior when no condition matches.
+Prefer an exhaustive <code class="docutils literal notranslate"><span class="pre">match</span></code> for finite cases; otherwise provide a final <code class="docutils literal notranslate"><span class="pre">else</span></code> that performs
+the defined fallback or documents the intentionally empty action. The rule applies to all production
+chains, as 9.4.1 does; a single <code class="docutils literal notranslate"><span class="pre">if</span></code> without <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code> is an independent guard and is not
+affected.</p>
 <p><strong>Check:</strong> Compiler match exhaustiveness; candidate syntax check for missing final else; review of
 fallback requirements.</p>
-<p><strong>Coverage limit:</strong> A final else or wildcard arm does not prove that the fallback is correct. This
-project scope adapts the original rule rather than imposing an else on every independent guard.</p>
+<p><strong>Coverage limit:</strong> A final <code class="docutils literal notranslate"><span class="pre">else</span></code> or wildcard arm does not prove that the fallback is correct.</p>
 </section>
 <section id="scr-rust-028-separate-volatile-i-o-from-synchronization">
 <span id="scr-rust-028"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">SCR-RUST-028: Separate volatile I/O from synchronization</a><a class="headerlink" href="#scr-rust-028-separate-volatile-i-o-from-synchronization" title="Link to this heading">#</a></h2>
@@ -1276,7 +1393,11 @@ interfaces should be isolated behind a typed adapter with explicit ownership and
 Native references and smart-pointer composition require separate design assessment.</p>
 <p><strong>Check:</strong> A type-aware syntax check and interface review.</p>
 <p><strong>Coverage limit:</strong> Indirection count is a complexity restriction, not proof of memory safety;
-benign safe abstractions must not be classified solely by textual asterisks.</p>
+benign safe abstractions must not be classified solely by textual asterisks. Scope choice: the SCRC
+draft assesses 11.3.2 as applicable to safe Rust because it includes references. This rule
+deliberately counts raw pointers only; reference and smart-pointer composition such as <code class="docutils literal notranslate"><span class="pre">&amp;&amp;T</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Box&lt;Rc&lt;T&gt;&gt;</span></code> is left to the component’s design assessment because the type system makes that
+nesting explicit and checked.</p>
 </section>
 <section id="scr-rust-031-establish-initialization-and-value-validity-before-use">
 <span id="scr-rust-031"></span><h2><a class="toc-backref" href="#id31" role="doc-backlink">SCR-RUST-031: Establish initialization and value validity before use</a><a class="headerlink" href="#scr-rust-031-establish-initialization-and-value-validity-before-use" title="Link to this heading">#</a></h2>
@@ -1284,14 +1405,19 @@ benign safe abstractions must not be classified solely by textual asterisks.</p>
 draft: unsafe), 11.6.2 (SCRC draft: unsafe), 15.1.4 (SCRC draft: unsafe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Native initialization,
 MaybeUninit, unions and raw storage.</p>
-<p>Every observed value shall be initialized and valid for its Rust type. A MaybeUninit/raw-storage
-abstraction shall prove initialization before assume_init/read/reference creation, track partial
+<p>Every value observed as its type <code class="docutils literal notranslate"><span class="pre">T</span></code> shall be initialized and valid for <code class="docutils literal notranslate"><span class="pre">T</span></code>. For
+<code class="docutils literal notranslate"><span class="pre">MaybeUninit&lt;T&gt;</span></code> and raw storage the requirement applies to producing or accessing the payload as
+<code class="docutils literal notranslate"><span class="pre">T</span></code>: <code class="docutils literal notranslate"><span class="pre">assume_init</span></code>, <code class="docutils literal notranslate"><span class="pre">assume_init_ref</span></code>/<code class="docutils literal notranslate"><span class="pre">assume_init_mut</span></code>, <code class="docutils literal notranslate"><span class="pre">ptr::read</span></code> as <code class="docutils literal notranslate"><span class="pre">T</span></code>, and
+creating <code class="docutils literal notranslate"><span class="pre">&amp;T</span></code> or <code class="docutils literal notranslate"><span class="pre">&amp;mut</span> <span class="pre">T</span></code>. Operations on the container are not restricted: taking <code class="docutils literal notranslate"><span class="pre">&amp;mut</span>
+<span class="pre">MaybeUninit&lt;T&gt;</span></code>, calling <code class="docutils literal notranslate"><span class="pre">MaybeUninit::write</span></code>, and reading or copying storage as
+<code class="docutils literal notranslate"><span class="pre">MaybeUninit&lt;T&gt;</span></code> or as bytes are valid while the payload is uninitialized. Track partial
 initialization and avoid duplicate destruction. Zero-filled storage shall not be treated as a valid
-arbitrary T.</p>
+arbitrary <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p>
 <p><strong>Check:</strong> Compiler definite-initialization checks; unsafe review and Miri tests for low-level
 storage; candidate inventories for initialization-bypassing APIs.</p>
 <p><strong>Coverage limit:</strong> Compiler checks for ordinary locals do not establish initialization of raw
-storage. Some invalid references are already UB when created, before an explicit read.</p>
+storage. Creating <code class="docutils literal notranslate"><span class="pre">&amp;T</span></code> to an invalid value is already undefined behavior, before any explicit
+read; Miri detects such payload accesses on executed paths.</p>
 </section>
 <section id="scr-rust-032-prefer-enums-over-untagged-unions">
 <span id="scr-rust-032"></span><h2><a class="toc-backref" href="#id32" role="doc-backlink">SCR-RUST-032: Prefer enums over untagged unions</a><a class="headerlink" href="#scr-rust-032-prefer-enums-over-untagged-unions" title="Link to this heading">#</a></h2>
@@ -1400,29 +1526,51 @@ custom owners and raw allocation wrappers.</p>
 resource shall have a defined release/transfer policy, including partial failure paths. Unsafe
 pinning abstractions shall preserve their promised pinning invariants. Do not rely on destructors
 running to maintain memory safety. Synchronization/resource guards shall remain bound for the
-intended duration; do not accidentally discard them immediately.</p>
+intended duration; do not accidentally discard them immediately. Where a borrowed-to-owned
+conversion matters, use an explicit operation such as <code class="docutils literal notranslate"><span class="pre">to_vec()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_owned()</span></code> or <code class="docutils literal notranslate"><span class="pre">clone()</span></code>
+rather than a generic <code class="docutils literal notranslate"><span class="pre">From</span></code>/<code class="docutils literal notranslate"><span class="pre">Into</span></code> call whose behavior, moving an owner or copying from a
+borrow, depends on the argument type (adaptation of 28.6.1). APIs that emulate move or assignment
+through raw pointers, including <code class="docutils literal notranslate"><span class="pre">Pin</span></code>-based move emulation and in-place replacement, shall define
+behavior when source and destination coincide: either the aliasing case preserves the value,
+invariants and resources, or it is an explicit unsafe precondition that every safe wrapper
+establishes (adaptation of Directive 15.8.1).</p>
 <p><strong>Check:</strong> Compiler move/trait checks, review of custom implementations and targeted Miri/resource-
 failure tests; inventory mem::forget, leaks and manual ownership transfer. Include the rustc
 let_underscore_lock diagnostic where supported.</p>
-<p><strong>Coverage limit:</strong> Safe Rust permits leaks and mem::forget, and termination may skip Drop. Pin is a
-type, not a trait. The paper’s 21.6.5/28.6.1 comments describe largely compiler-handled C++
-differences; no artificial direct Rust equivalent is assumed.</p>
+<p><strong>Coverage limit:</strong> Safe Rust permits leaks and <code class="docutils literal notranslate"><span class="pre">mem::forget</span></code>, and termination may skip <code class="docutils literal notranslate"><span class="pre">Drop</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Pin</span></code> is a type, not a trait. The compiler decides whether a generic conversion moves or copies,
+but a reader cannot see which without an explicit operation.</p>
 </section>
 <section id="scr-rust-036-define-panic-termination-and-cleanup-behavior">
 <span id="scr-rust-036"></span><h2><a class="toc-backref" href="#id36" role="doc-backlink">SCR-RUST-036: Define panic, termination and cleanup behavior</a><a class="headerlink" href="#scr-rust-036-define-panic-termination-and-cleanup-behavior" title="Link to this heading">#</a></h2>
 <p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 18.1.1 (SCRC
-draft: unsafe), 18.4.1 (SCRC draft: safe), 18.5.2 (SCRC draft: safe).</p>
+draft: unsafe), 18.4.1 (SCRC draft: safe), 18.5.1 (SCRC draft: safe), 18.5.2 (SCRC draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Production library code,
 process boundaries and destructors.</p>
-<p>Recoverable failures shall use explicit error handling. Application libraries shall not directly
-terminate the process or panic on expected invalid input. Any intentional fail-stop path requires a
-documented system response. Account for implicit panics, destructor panics, allocation failure and
-panic strategy; keep critical fallible cleanup in explicit APIs.</p>
-<p><strong>Check:</strong> Selected Clippy panic/unwrap_used/expect_used restrictions and disallowed termination
-APIs; failure-injection tests and call-path review.</p>
-<p><strong>Coverage limit:</strong> Absence of panic! and unwrap does not prove panic freedom: indexing, arithmetic,
-dependencies and destructors can fail. Panic is not synonymous with Rust undefined behavior; the
-system may nevertheless treat it as a safety failure.</p>
+<p>Recoverable failures shall use explicit error handling. Application libraries shall not terminate
+the process directly or indirectly: calling <code class="docutils literal notranslate"><span class="pre">std::process::exit</span></code> or <code class="docutils literal notranslate"><span class="pre">abort</span></code>, taking or storing
+their addresses, or reaching them through foreign code is prohibited; the only accepted fail-stop is
+the abort produced by a failed assertion or by the delivered panic strategy, and any broader fail-
+stop path requires a documented system response including cleanup or external recovery (adaptation
+of 18.5.2). Two levels are distinguished per boundary: a <strong>panic-free</strong> path never initiates a
+panic, including implicit panics from indexing, arithmetic and allocation; a <strong>panic-contained</strong>
+boundary may see a panic but shall not let it escape. Destructors are panic-free: a custom <code class="docutils literal notranslate"><span class="pre">Drop</span></code>
+and the field cleanup it relies on shall not panic (18.4.1). Catching a panic with <code class="docutils literal notranslate"><span class="pre">catch_unwind</span></code>
+to convert it into an error is acceptable only on a panic-contained boundary under <code class="docutils literal notranslate"><span class="pre">panic=unwind</span></code>,
+and the code after the catch, including dropping the payload and any guards, shall itself be panic-
+free; under <code class="docutils literal notranslate"><span class="pre">panic=abort</span></code> catching cannot recover, and a panic during unwinding terminates. No
+panic shall cross a foreign-language boundary (18.5.1; see SCR-RUST-042). Panic payloads passed to
+<code class="docutils literal notranslate"><span class="pre">panic_any</span></code> shall carry only owned data or <code class="docutils literal notranslate"><span class="pre">'static</span></code> references; wrappers, integer addresses or
+handles that give access to borrowed non-<code class="docutils literal notranslate"><span class="pre">'static</span></code> storage are prohibited (adaptation of 18.1.1;
+permitting <code class="docutils literal notranslate"><span class="pre">'static</span></code> references is a Rust adaptation of the C++ pointer restriction). Account for
+allocation failure and the panic strategy; keep critical fallible cleanup in explicit APIs.</p>
+<p><strong>Check:</strong> Selected Clippy panic/unwrap_used/expect_used restrictions; <code class="docutils literal notranslate"><span class="pre">clippy::exit</span></code> for direct
+calls plus an inventory of stored or passed function pointers to termination APIs; failure-injection
+tests and call-path review; Miri or tests for destructor panic paths.</p>
+<p><strong>Coverage limit:</strong> Absence of <code class="docutils literal notranslate"><span class="pre">panic!</span></code> and <code class="docutils literal notranslate"><span class="pre">unwrap</span></code> does not prove panic freedom: indexing,
+arithmetic, dependencies and destructors can fail. <code class="docutils literal notranslate"><span class="pre">clippy::exit</span></code> sees direct calls only. Panic is
+not synonymous with Rust undefined behavior; the system may nevertheless treat it as a safety
+failure.</p>
 </section>
 <section id="scr-rust-037-validate-attributes-and-configuration-coverage">
 <span id="scr-rust-037"></span><h2><a class="toc-backref" href="#id37" role="doc-backlink">SCR-RUST-037: Validate attributes and configuration coverage</a><a class="headerlink" href="#scr-rust-037-validate-attributes-and-configuration-coverage" title="Link to this heading">#</a></h2>
@@ -1461,9 +1609,12 @@ not establish that every delivered variant was analyzed.</p>
 draft: safe), 19.3.4 (SCRC draft: safe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Declarative/procedural
 macros and generated Rust.</p>
-<p>Macros shall document whether arguments are evaluated once, more than once or not at all. Use
-expression fragments where expression semantics are intended. Safety-relevant macro-generated unsafe
-code and effects shall be included in review and checker coverage.</p>
+<p>Prefer a function where a function can express the intended behavior. A macro is justified for
+variadic arity, item or implementation generation, compile-time token or string processing, or
+capturing the caller location, and the crate shall state which of these exceptions it uses
+(adaptation of 19.0.2). Macros shall document whether arguments are evaluated once, more than once
+or not at all. Use expression fragments where expression semantics are intended. Safety-relevant
+macro-generated unsafe code and effects shall be included in review and checker coverage.</p>
 <p><strong>Check:</strong> Macro expansion inspection, tests using arguments with observable effects, and lint
 coverage checks on generated code.</p>
 <p><strong>Coverage limit:</strong> Rust macros avoid some C++ textual-substitution hazards but can still duplicate
@@ -1473,7 +1624,7 @@ review.</p>
 <section id="scr-rust-039-bound-allocation-and-isolate-manual-allocators">
 <span id="scr-rust-039"></span><h2><a class="toc-backref" href="#id39" role="doc-backlink">SCR-RUST-039: Bound allocation and isolate manual allocators</a><a class="headerlink" href="#scr-rust-039-bound-allocation-and-isolate-manual-allocators" title="Link to this heading">#</a></h2>
 <p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 21.6.1 (SCRC
-draft: safe), 21.6.3 (SCRC draft: unsafe), 21.6.4 (SCRC draft: not applicable, retained by S-CORE).</p>
+draft: safe), 21.6.3 (SCRC draft: unsafe).</p>
 <p><strong>Origin:</strong> S-CORE interpretation of MISRA C++:2023 guidelines. <strong>Scope:</strong> Heap allocation,
 container growth and custom allocation.</p>
 <p>Each component shall declare where allocation is permitted and justify peak memory, growth limits
@@ -1533,20 +1684,48 @@ paper analyzes language constructs, not the delivered dependency graph.</p>
 </section>
 <section id="scr-rust-042-assess-foreign-language-boundaries-explicitly">
 <span id="scr-rust-042"></span><h2><a class="toc-backref" href="#id42" role="doc-backlink">SCR-RUST-042: Assess foreign-language boundaries explicitly</a><a class="headerlink" href="#scr-rust-042-assess-foreign-language-boundaries-explicitly" title="Link to this heading">#</a></h2>
-<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 21.10.2 (SCRC
-draft: unsafe), 21.10.3 (SCRC draft: unsafe), 22.4.1 (SCRC draft: unsafe), 25.5.1 (SCRC draft:
-unsafe), 25.5.2 (SCRC draft: unsafe), 25.5.3 (SCRC draft: unsafe).</p>
+<p><strong>Proposed level:</strong> Required. <strong>Source IDs (MISRA C++:2023, draft SCRC assessment):</strong> 18.5.1 (SCRC
+draft: safe), 21.10.2 (SCRC draft: unsafe), 21.10.3 (SCRC draft: unsafe), 22.4.1 (SCRC draft:
+unsafe), 25.5.1 (SCRC draft: unsafe), 25.5.2 (SCRC draft: unsafe), 25.5.3 (SCRC draft: unsafe).</p>
 <p><strong>Origin:</strong> S-CORE supplement informed by MISRA C:2025 Addendum 6. <strong>Scope:</strong> Every Rust/C/C++
 boundary.</p>
 <p>Foreign bindings shall match the actual ABI, layout, types and exported definitions. Document
 ownership, pointer/length contracts, threading and callback lifetime, error conventions and
-unwinding behavior in both directions. Prohibit unwinding across a boundary that does not support
-it. Assess C/C++ implementations under their own applicable policy.</p>
+unwinding behavior in both directions. Unwinding: no Rust panic shall reach a foreign frame and no
+foreign exception shall enter Rust. Functions exported or imported through <code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> shall be
+panic-contained on the Rust side (see SCR-RUST-036) and the foreign side shall not throw across
+them; <code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C-unwind&quot;</span></code> may be used only when both sides support unwinding and the delivered
+panic strategy is unwind; <code class="docutils literal notranslate"><span class="pre">catch_unwind</span></code> shall not be relied on to recover foreign exceptions or
+aborts (18.5.1). Nonlocal transfers: <code class="docutils literal notranslate"><span class="pre">setjmp</span></code>/<code class="docutils literal notranslate"><span class="pre">longjmp</span></code> and similar shall not cross a Rust
+frame; foreign-only use stays inside the foreign region under that code’s own policy (21.10.2).
+Signals: signal handling is limited to the platform APIs the component documents, a handler requires
+an async-signal-safety assessment, and disabling a signal is permitted where documented (21.10.3
+exception). Error state: handle <code class="docutils literal notranslate"><span class="pre">errno</span></code> and equivalents per the API contract, reading it only when
+the return value makes it meaningful, clearing it before the call where the API requires, and
+capturing it before logging or any other call can overwrite it; application code shall not write
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> except to assign a literal zero directly or through a constant that expands to it,
+computed values included as an S-CORE adaptation are not permitted (22.4.1);
+<code class="docutils literal notranslate"><span class="pre">std::io::Error::last_os_error</span></code> reads <code class="docutils literal notranslate"><span class="pre">GetLastError</span></code> on Windows and is not a portable
+substitute. Locale: Rust code shall not change the process-wide locale (25.5.1); a component that
+must do so shall document initialization ordering and concurrency conditions for all affected
+foreign code as an explicit adaptation. Returned storage: storage returned by <code class="docutils literal notranslate"><span class="pre">localeconv</span></code>,
+<code class="docutils literal notranslate"><span class="pre">getenv</span></code>, <code class="docutils literal notranslate"><span class="pre">setlocale</span></code> and <code class="docutils literal notranslate"><span class="pre">strerror</span></code>, including strings nested in <code class="docutils literal notranslate"><span class="pre">lconv</span></code>, shall be treated
+as read-only; a shared reference created from it, including through <code class="docutils literal notranslate"><span class="pre">CStr::from_ptr</span></code>, is valid
+only while no foreign code can mutate the storage, and an owned snapshot shall be taken by a valid,
+race-free read of the whole data including nested strings; the addresses of these four functions
+shall not be taken or stored for indirect calls (25.5.2, adopted). Pointers returned by <code class="docutils literal notranslate"><span class="pre">asctime</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ctime</span></code>, <code class="docutils literal notranslate"><span class="pre">gmtime</span></code>, <code class="docutils literal notranslate"><span class="pre">localtime</span></code>, <code class="docutils literal notranslate"><span class="pre">localeconv</span></code>, <code class="docutils literal notranslate"><span class="pre">getenv</span></code>, <code class="docutils literal notranslate"><span class="pre">setlocale</span></code> and <code class="docutils literal notranslate"><span class="pre">strerror</span></code>
+shall not be used after a later call, on any thread, to the same function or to one that invalidates
+the same storage, such as <code class="docutils literal notranslate"><span class="pre">setlocale</span></code> after <code class="docutils literal notranslate"><span class="pre">localeconv</span></code>, <code class="docutils literal notranslate"><span class="pre">asctime</span></code>/<code class="docutils literal notranslate"><span class="pre">ctime</span></code> and
+<code class="docutils literal notranslate"><span class="pre">gmtime</span></code>/<code class="docutils literal notranslate"><span class="pre">localtime</span></code>; copy the data while the read is valid and protected (25.5.3). Assess C/C++
+implementations under their own applicable policy.</p>
 <p><strong>Check:</strong> MISRA C:2025 Addendum 6 cross-check, binding/layout/symbol review and tests on delivered
 targets. Its explicit comments on R.8.3, R.8.5, R.8.6 and R.8.15 provide boundary cross-references.</p>
-<p><strong>Coverage limit:</strong> The addendum is an applicability assessment, and the full MISRA C:2025 rule text
-was not part of the analysis. A complete C-to-Rust rule mapping is pending; this supplement does not
-claim one.</p>
+<p><strong>Coverage limit:</strong> MISRA C:2025 Addendum 6 is an applicability assessment with 223 guideline
+entries. S-CORE has not yet derived and checked an obligation for every MISRA C guideline the
+addendum assesses as applicable to Rust boundaries; this supplement covers the boundary concerns of
+its linked MISRA C++ sources and the addendum comments on R.8.3, R.8.5, R.8.6 and R.8.15. Completing
+that derivation is open work for a later rulebook revision.</p>
 </section>
 <section id="scr-rust-043-record-coverage-deviations-and-residual-obligations">
 <span id="scr-rust-043"></span><h2><a class="toc-backref" href="#id43" role="doc-backlink">SCR-RUST-043: Record coverage, deviations and residual obligations</a><a class="headerlink" href="#scr-rust-043-record-coverage-deviations-and-residual-obligations" title="Link to this heading">#</a></h2>

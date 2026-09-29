@@ -653,7 +653,7 @@
                   
   <section id="sources-and-applicability">
 <span id="rust-coding-rules-applicability"></span><h1>Sources and Applicability<a class="headerlink" href="#sources-and-applicability" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-f5e61bd9">
+<div class="need_container docutils container" id="SNCB-5ee85aa7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules_applicability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -735,7 +735,7 @@ and the SCRC coding guideline that implements it where one exists.</p>
 </tr>
 <tr class="row-even"><td><p>Not currently applicable to Rust</p></td>
 <td><p>87</p></td>
-<td><p>Excluded, except five guidelines retained with a stated reason.</p></td>
+<td><p>Excluded, except one guideline retained with a stated reason.</p></td>
 </tr>
 </tbody>
 </table>
@@ -762,8 +762,8 @@ SCRC guideline link and category, and the S-CORE disposition:</p>
 more S-CORE rules interpret it.</p></li>
 <li><p><strong>rule assignment pending</strong> (9): SCRC marks the guideline applicable but no S-CORE
 rule covers it yet. These need a new rule or an explicit exclusion decision.</p></li>
-<li><p><strong>not applicable</strong> (82): SCRC marks the guideline not applicable and S-CORE agrees.</p></li>
-<li><p><strong>retained beyond SCRC</strong> (5): the SCRC draft marks the guideline not applicable but S-CORE
+<li><p><strong>not applicable</strong> (86): the SCRC draft marks the guideline not applicable and S-CORE agrees.</p></li>
+<li><p><strong>retained beyond SCRC</strong> (1): the SCRC draft marks the guideline not applicable but S-CORE
 keeps it as a supporting source for an existing rule, with the reason in the note.</p></li>
 </ul>
 <p>The safe/unsafe distinction is recorded per source guideline and shown in the rule
@@ -783,10 +783,11 @@ Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University), arXiv:2605.23
 were the starting point of this draft and remain a secondary reference. The
 <code class="docutils literal notranslate"><span class="pre">misrust_class</span></code> column keeps the study’s C1 to C6 classification for every guideline
 so that the origin of the rule grouping stays traceable.</p>
-<p>Where MISRust and the SCRC cross-reference disagree, the SCRC assessment is followed. The
-subcommittee’s own
-<a class="reference external" href="https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst">analysis of the differences</a>
-identifies the main weaknesses of the study: compiler warnings treated as language
+<p>Where MISRust and the SCRC cross-reference disagree, the SCRC assessment is followed. A
+contributor’s
+<a class="reference external" href="https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst">working notes on the differences</a>,
+kept on a personal fork against an earlier mapping revision and not a subcommittee
+document, identify the main weaknesses of the study: compiler warnings treated as language
 guarantees, raw-pointer operations in safe code overlooked, and foreign interfaces not
 considered when dismissing C++ library guidelines. The corrections this draft had
 applied to the study point in the same direction and are now superseded by the SCRC
@@ -827,8 +828,8 @@ source manifest records the documents used by role and content hash.</p>
 <section id="review-queue">
 <span id="rust-coding-rules-review-queue"></span><h2>Review queue<a class="headerlink" href="#review-queue" title="Link to this heading">#</a></h2>
 <p>Guidelines whose S-CORE disposition still diverges from a simple reading of the draft
-SCRC assessment. Nine need a rule or an exclusion decision; five are retained although
-the SCRC draft assesses them as not applicable, and need confirmation or removal.</p>
+SCRC assessment. Nine need a rule or an exclusion decision; one is retained although
+the SCRC draft assesses it as not applicable, and needs confirmation or removal.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
 <caption><span class="caption-number">Table 13 </span><span class="caption-text">Open applicability decisions</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
@@ -854,98 +855,70 @@ the SCRC draft assesses them as not applicable, and need confirmation or removal
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).</p></td>
+<td><p>SCRC draft: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.13.4</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.</p></td>
-</tr>
-<tr class="row-even"><td><p>6.4.2</p></td>
-<td><p>not applicable</p></td>
-<td><p>C5</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-014"><span class="std std-ref">SCR-RUST-014</span></a></p></td>
-<td><p>SCRC: not currently applicable, applicable once specialization stabilizes. Retained as supporting source for shadowing review.</p></td>
-</tr>
-<tr class="row-odd"><td><p>7.11.1</p></td>
-<td><p>not applicable</p></td>
-<td><p>C4</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-017"><span class="std std-ref">SCR-RUST-017</span></a></p></td>
-<td><p>SCRC: not applicable (no overloads, no NULL macro). Retained: raw null pointers are still constructible in safe Rust.</p></td>
+<td><p>SCRC draft: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.4.2</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>9.5.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>10.1.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; take &amp;mut only when needed, with trait-definition exception. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; take &amp;mut only when needed, with trait-definition exception. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>10.2.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>13.3.4</p></td>
 <td><p>safe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.0.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-037"><span class="std std-ref">SCR-RUST-037</span></a></p></td>
-<td><p>SCRC: not applicable (cfg attaches to the next item). Retained: cfg_select and attribute placement still need review.</p></td>
+<td><p>SCRC draft: not applicable (cfg attaches to the next item). Retained by S-CORE for the cfg-name typo hazard: a misspelled cfg predicate silently disables code unless check-cfg is enforced (SCR-RUST-037).</p></td>
 </tr>
-<tr class="row-even"><td><p>19.2.3</p></td>
-<td><p>not applicable</p></td>
-<td><p>C4</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-011"><span class="std std-ref">SCR-RUST-011</span></a></p></td>
-<td><p>SCRC: not applicable (raw strings supported). Retained as supporting source for include!/path provenance.</p></td>
-</tr>
-<tr class="row-odd"><td><p>21.2.3</p></td>
+<tr class="row-even"><td><p>21.2.3</p></td>
 <td><p>safe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.</p></td>
-</tr>
-<tr class="row-even"><td><p>21.6.4</p></td>
-<td><p>not applicable</p></td>
-<td><p>C2</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-039"><span class="std std-ref">SCR-RUST-039</span></a></p></td>
-<td><p>SCRC: not applicable (GlobalAlloc dealloc always receives the layout). Retained: allocator customization still needs review.</p></td>
+<td><p>SCRC draft: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>28.3.1</p></td>
 <td><p>safe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.</p></td>
 </tr>
 </tbody>
 </table>
@@ -981,1253 +954,1253 @@ Rust rule’s proposed S-CORE level.</p>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-002"><span class="std std-ref">SCR-RUST-002</span></a></p></td>
-<td><p>SCRC: applies. Reassess C3: unreachable_code is a partial diagnostic, not a general proof of unreachable-statement absence.</p></td>
+<td><p>SCRC draft: applies. Unreachable code shall be removed; unreachable_code is a partial diagnostic that depends on lint activation and cannot prove absence (SCR-RUST-002).</p></td>
 </tr>
 <tr class="row-odd"><td><p>0.0.2</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-003"><span class="std std-ref">SCR-RUST-003</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-003.</p></td>
 </tr>
 <tr class="row-even"><td><p>0.1.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-003"><span class="std std-ref">SCR-RUST-003</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-003.</p></td>
 </tr>
 <tr class="row-odd"><td><p>0.1.2</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-004"><span class="std std-ref">SCR-RUST-004</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-004.</p></td>
 </tr>
 <tr class="row-even"><td><p>0.2.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-002"><span class="std std-ref">SCR-RUST-002</span></a></p></td>
-<td><p>SCRC: applies. Reassess C3: warning activation and suppressions matter; no unconditional hard-error guarantee.</p></td>
+<td><p>SCRC draft: applies. Unused declarations shall be removed or justified; warning activation and suppressions decide coverage (SCR-RUST-002).</p></td>
 </tr>
 <tr class="row-odd"><td><p>0.2.2</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-002"><span class="std std-ref">SCR-RUST-002</span></a></p></td>
-<td><p>SCRC: applies. Reassess C3: unused parameters can compile; underscore patterns and suppression need a policy.</p></td>
+<td><p>SCRC draft: applies. Unused parameters compile; underscore-prefixed names and allow attributes need a documented policy (SCR-RUST-002).</p></td>
 </tr>
 <tr class="row-even"><td><p>0.2.3</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-002"><span class="std std-ref">SCR-RUST-002</span></a></p></td>
-<td><p>SCRC: applies. Reassess C3: unused-type diagnostics depend on visibility and configuration.</p></td>
+<td><p>SCRC draft: applies. Unused types shall be removed or justified; diagnostics depend on visibility and configuration (SCR-RUST-002).</p></td>
 </tr>
 <tr class="row-odd"><td><p>0.2.4</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-002"><span class="std std-ref">SCR-RUST-002</span></a></p></td>
-<td><p>SCRC: applies. Reassess C3: unused-function diagnostics depend on visibility and configuration.</p></td>
+<td><p>SCRC draft: applies. Unused functions shall be removed or justified; diagnostics depend on visibility and configuration (SCR-RUST-002).</p></td>
 </tr>
 <tr class="row-even"><td><p>0.3.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-005"><span class="std std-ref">SCR-RUST-005</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-005.</p></td>
 </tr>
 <tr class="row-odd"><td><p>0.3.2</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-006"><span class="std std-ref">SCR-RUST-006</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-006.</p></td>
 </tr>
 <tr class="row-even"><td><p>4.1.1</p></td>
 <td><p>safe</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-001"><span class="std std-ref">SCR-RUST-001</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-001.</p></td>
 </tr>
 <tr class="row-odd"><td><p>4.1.2</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-002"><span class="std std-ref">SCR-RUST-002</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-002.</p></td>
 </tr>
 <tr class="row-even"><td><p>4.1.3</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-007"><span class="std std-ref">SCR-RUST-007</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies; the SCRC draft authors question the safe classification in their rationale, so the safe/unsafe scope is an open item (SCR-RUST-007).</p></td>
 </tr>
 <tr class="row-odd"><td><p>4.6.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Rust evaluation order is well defined. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. Rust evaluation order is well defined. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>5.0.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.7.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-009"><span class="std std-ref">SCR-RUST-009</span></a></p></td>
-<td><p>SCRC: applies to safe Rust; nested block comments make accidental commenting-out likely.</p></td>
+<td><p>SCRC draft: applies to safe Rust; nested block comments make accidental commenting-out likely.</p></td>
 </tr>
 <tr class="row-even"><td><p>5.7.2</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-009"><span class="std std-ref">SCR-RUST-009</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-009.</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.7.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>5.10.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).</p></td>
+<td><p>SCRC draft: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.13.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>5.13.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.13.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>5.13.4</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.13.5</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>5.13.6</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>5.13.7</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.0.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.0.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Follows MISRA C mapping; arrays carry their extent. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. Follows MISRA C mapping; arrays carry their extent. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.0.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C5</p></td>
 <td><p>Advisory</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-011"><span class="std std-ref">SCR-RUST-011</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p><a class="reference internal" href="rules.html#scr-rust-013"><span class="std std-ref">SCR-RUST-013</span></a></p></td>
+<td><p>SCRC draft: applies to safe Rust: no_mangle items enter the global symbol namespace; moved to the exported-symbol rule (SCR-RUST-013).</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.0.4</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-012"><span class="std std-ref">SCR-RUST-012</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-012.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.2.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-013"><span class="std std-ref">SCR-RUST-013</span></a></p></td>
-<td><p>Check symbol attributes across editions; edition 2021 and 2024 differ in unsafe-attribute syntax.</p></td>
+<td><p>SCRC draft: Check symbol attributes across editions; edition 2021 and 2024 differ in unsafe-attribute syntax.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.2.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-013"><span class="std std-ref">SCR-RUST-013</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; extern declarations shall be type-compatible with the C declaration.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; extern declarations shall be type-compatible with the C declaration.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.2.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.2.4</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. No header/linkage mechanism; covered by 6.2.1. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. No header/linkage mechanism; covered by 6.2.1. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.4.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-014"><span class="std std-ref">SCR-RUST-014</span></a></p></td>
-<td><p>Adaptation permits clear same-name transformations; this differs from a blanket shadowing prohibition.</p></td>
+<td><p>SCRC draft: Adaptation permits clear same-name transformations; this differs from a blanket shadowing prohibition.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.4.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-014"><span class="std std-ref">SCR-RUST-014</span></a></p></td>
-<td><p>SCRC: not currently applicable, applicable once specialization stabilizes. Retained as supporting source for shadowing review.</p></td>
+<td><p>not applicable</p></td>
+<td><p>SCRC draft: not applicable until supertrait_item_shadowing stabilizes. S-CORE agrees; the inherent/trait method-resolution policy in SCR-RUST-014 is an S-CORE addition without this source.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.4.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.5.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C5</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. No header files; module system defines the interface. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. No header files; module system defines the interface. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.5.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Symbol export requires explicit no_mangle/link_name/extern. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. Symbol export requires explicit no_mangle/link_name/extern. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.7.1</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-008"><span class="std std-ref">SCR-RUST-008</span></a></p></td>
-<td><p>Broaden beyond unsafe: safe interior-mutability/global synchronization still needs design review.</p></td>
+<td><p>SCRC draft: applies to safe Rust too: safe interior-mutability/global synchronization still needs design review.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.7.2</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-008"><span class="std std-ref">SCR-RUST-008</span></a></p></td>
-<td><p>Broaden beyond unsafe: Send is not a mutual-exclusion mechanism; globals can use safe interior mutability.</p></td>
+<td><p>SCRC draft: applies to safe Rust too: Send is not a mutual-exclusion mechanism; globals can use safe interior mutability.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.8.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-015"><span class="std std-ref">SCR-RUST-015</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-015.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.8.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C3</p></td>
 <td><p>Mandatory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-015"><span class="std std-ref">SCR-RUST-015</span></a></p></td>
-<td><p>SCRC: applies. Reassess C3: raw dangling pointers can escape compiler reference-lifetime checks.</p></td>
+<td><p>SCRC draft: applies. A function shall not return a raw pointer to its local storage; the borrow checker covers references only (SCR-RUST-015).</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.8.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-015"><span class="std std-ref">SCR-RUST-015</span></a></p></td>
-<td><p>SCRC: applies. Compiler reference guarantees do not extend to every raw-pointer storage pattern.</p></td>
+<td><p>SCRC draft: applies. A raw pointer to a local shall not be stored beyond the local’s lifetime; compiler guarantees cover references only (SCR-RUST-015).</p></td>
 </tr>
 <tr class="row-even"><td><p>6.8.4</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-015"><span class="std std-ref">SCR-RUST-015</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-015.</p></td>
 </tr>
 <tr class="row-odd"><td><p>6.9.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>6.9.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>7.0.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-016"><span class="std std-ref">SCR-RUST-016</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies; the SCRC draft authors question the safe classification in their rationale, so the safe/unsafe scope is an open item (SCR-RUST-016).</p></td>
 </tr>
 <tr class="row-even"><td><p>7.0.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-016"><span class="std std-ref">SCR-RUST-016</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-016.</p></td>
 </tr>
 <tr class="row-odd"><td><p>7.0.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. char converts only explicitly via u32. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. char converts only explicitly via u32. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>7.0.4</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-026"><span class="std std-ref">SCR-RUST-026</span></a></p></td>
-<td><p>SCRC: applies. Restore check obligation from C3: dynamic shift counts can be invalid and operand types need not match.</p></td>
+<td><p>SCRC draft: applies. The shift count shall be non-negative and below the bit width of the left operand; draft SCRC guideline gui_RHvQj8BHlz9b (SCR-RUST-026).</p></td>
 </tr>
 <tr class="row-odd"><td><p>7.0.5</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>7.0.6</p></td>
 <td><p>not applicable</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. No integral promotion or overload sets. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. No integral promotion or overload sets. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>7.11.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-017"><span class="std std-ref">SCR-RUST-017</span></a></p></td>
-<td><p>SCRC: not applicable (no overloads, no NULL macro). Retained: raw null pointers are still constructible in safe Rust.</p></td>
+<td><p>not applicable</p></td>
+<td><p>SCRC draft: not applicable: the source concerns the spelling of the C++ null pointer constant and overload resolution. S-CORE agrees; the typed-null policy in SCR-RUST-017 is an S-CORE adaptation without this source.</p></td>
 </tr>
 <tr class="row-even"><td><p>7.11.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Arrays do not decay to pointers. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. Arrays do not decay to pointers. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>7.11.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.0.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-018"><span class="std std-ref">SCR-RUST-018</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-018.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.1.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.1.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-015"><span class="std std-ref">SCR-RUST-015</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; closures can capture raw pointers outside borrow-checker guarantees.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; closures can capture raw pointers outside borrow-checker guarantees.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.2.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-019"><span class="std std-ref">SCR-RUST-019</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-019.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.2.2</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-016"><span class="std std-ref">SCR-RUST-016</span></a></p></td>
-<td><p>SCRC: applies to safe Rust (gui_ADHABsmK9FXz, Advisory); <cite>as</cite> casts hide intent, prefer specific conversion functions.</p></td>
+<td><p>SCRC draft: applies to safe Rust (gui_ADHABsmK9FXz, Advisory); <cite>as</cite> casts hide intent, prefer specific conversion functions.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.2.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-020"><span class="std std-ref">SCR-RUST-020</span></a></p></td>
-<td><p>Raw-pointer mutability casts can be safe syntax; validity of subsequent access still needs review.</p></td>
+<td><p>SCRC draft: Raw-pointer mutability casts can be safe syntax; validity of subsequent access still needs review.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.2.4</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-021"><span class="std std-ref">SCR-RUST-021</span></a></p></td>
-<td><p>Safe function-pointer casts exist; do not infer ABI correctness from absence of unsafe syntax.</p></td>
+<td><p>SCRC draft: Safe function-pointer casts exist; do not infer ABI correctness from absence of unsafe syntax.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.2.5</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-020"><span class="std std-ref">SCR-RUST-020</span></a></p></td>
-<td><p>transmute is not generally a safer alternative to a cast; review all representation invariants.</p></td>
+<td><p>SCRC draft: transmute is not generally a safer alternative to a cast; review all representation invariants.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.2.6</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-020"><span class="std std-ref">SCR-RUST-020</span></a></p></td>
-<td><p>Pointer casts/reconstruction may occur outside unsafe blocks; scan all code.</p></td>
+<td><p>SCRC draft: Pointer casts/reconstruction may occur outside unsafe blocks; scan all code.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.2.7</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-020"><span class="std std-ref">SCR-RUST-020</span></a></p></td>
-<td><p>Correction: pointer-to-integer casts do not require an unsafe block.</p></td>
+<td><p>SCRC draft: Correction: pointer-to-integer casts do not require an unsafe block.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.2.8</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-020"><span class="std std-ref">SCR-RUST-020</span></a></p></td>
-<td><p>Address width and provenance obligations apply even when the cast is safe syntax.</p></td>
+<td><p>SCRC draft: Address width and provenance obligations apply even when the cast is safe syntax.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.2.9</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. type_id/type_name are compile-time. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. type_id/type_name are compile-time. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.2.10</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-022"><span class="std std-ref">SCR-RUST-022</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-022.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.2.11</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-021"><span class="std std-ref">SCR-RUST-021</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-021.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.3.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.7.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-023"><span class="std std-ref">SCR-RUST-023</span></a></p></td>
-<td><p>Pointer APIs differ: some wrapping operations permit intermediate out-of-bounds values.</p></td>
+<td><p>SCRC draft: Pointer APIs differ: some wrapping operations permit intermediate out-of-bounds values.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.7.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-023"><span class="std std-ref">SCR-RUST-023</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-023.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.9.1</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-023"><span class="std std-ref">SCR-RUST-023</span></a></p></td>
-<td><p>Correction: raw-pointer relational comparisons can be safe expressions; project ordering restrictions still apply.</p></td>
+<td><p>SCRC draft: Correction: raw-pointer relational comparisons can be safe expressions; project ordering restrictions still apply.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.14.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-024"><span class="std std-ref">SCR-RUST-024</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-024.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.18.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Mandatory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-025"><span class="std std-ref">SCR-RUST-025</span></a></p></td>
-<td><p>Use the Rust API contract: ptr::copy permits overlap; copy_nonoverlapping does not.</p></td>
+<td><p>SCRC draft: Use the Rust API contract: ptr::copy permits overlap; copy_nonoverlapping does not.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.18.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>8.19.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>8.20.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-026"><span class="std std-ref">SCR-RUST-026</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-026.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.2.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. let syntax prevents the confusion. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. let syntax prevents the confusion. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>9.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.4.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-027"><span class="std std-ref">SCR-RUST-027</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-027.</p></td>
 </tr>
 <tr class="row-odd"><td><p>9.4.2</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.5.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>9.5.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.6.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>9.6.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.6.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>9.6.4</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>9.6.5</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>10.0.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>10.1.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; take &amp;mut only when needed, with trait-definition exception. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; take &amp;mut only when needed, with trait-definition exception. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>10.1.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-028"><span class="std std-ref">SCR-RUST-028</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-028.</p></td>
 </tr>
 <tr class="row-even"><td><p>10.2.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>10.2.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>10.2.3</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-016"><span class="std std-ref">SCR-RUST-016</span></a></p></td>
-<td><p>SCRC: applies to safe Rust; <cite>as</cite> casts of enum discriminants to narrow integers can overflow.</p></td>
+<td><p>SCRC draft: applies to safe Rust; <cite>as</cite> casts of enum discriminants to narrow integers can overflow.</p></td>
 </tr>
 <tr class="row-odd"><td><p>10.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>10.4.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-029"><span class="std std-ref">SCR-RUST-029</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-029.</p></td>
 </tr>
 <tr class="row-odd"><td><p>11.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Do not adopt the artifact claim that arrays never implement Copy: Copy arrays exist when their elements are Copy. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>11.3.2</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-030"><span class="std std-ref">SCR-RUST-030</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-030.</p></td>
 </tr>
 <tr class="row-odd"><td><p>11.6.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-031"><span class="std std-ref">SCR-RUST-031</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-031.</p></td>
 </tr>
 <tr class="row-even"><td><p>11.6.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Mandatory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-031"><span class="std std-ref">SCR-RUST-031</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-031.</p></td>
 </tr>
 <tr class="row-odd"><td><p>11.6.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>12.2.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>12.2.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>12.2.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>12.3.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-032"><span class="std std-ref">SCR-RUST-032</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-032.</p></td>
 </tr>
 <tr class="row-even"><td><p>13.1.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>13.1.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>13.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>13.3.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>13.3.3</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-033"><span class="std std-ref">SCR-RUST-033</span></a></p></td>
-<td><p>Rust accepts underscore parameter patterns; names and unused-role policy need explicit interpretation.</p></td>
+<td><p>SCRC draft: Rust accepts underscore parameter patterns; names and unused-role policy need explicit interpretation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>13.3.4</p></td>
 <td><p>safe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>14.1.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-034"><span class="std std-ref">SCR-RUST-034</span></a></p></td>
-<td><p>Adapt structural public/private restriction into invariant protection; record as project interpretation.</p></td>
+<td><p>SCRC draft: Adapt structural public/private restriction into invariant protection; record as project interpretation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>15.0.1</p></td>
 <td><p>safe</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-035"><span class="std std-ref">SCR-RUST-035</span></a></p></td>
-<td><p>Pin is a type, not a trait; review Unpin/structural pinning only where used.</p></td>
+<td><p>SCRC draft: Pin is a type, not a trait; review Unpin/structural pinning only where used.</p></td>
 </tr>
 <tr class="row-even"><td><p>15.0.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. No move constructors; Clone signature fixed by the trait. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. No move constructors; Clone signature fixed by the trait. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>15.1.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>15.1.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>15.1.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>15.1.4</p></td>
 <td><p>unsafe</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-031"><span class="std std-ref">SCR-RUST-031</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; MaybeUninit and similar bypass initialization checks.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; MaybeUninit and similar bypass initialization checks.</p></td>
 </tr>
 <tr class="row-odd"><td><p>15.1.5</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>15.8.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-035"><span class="std std-ref">SCR-RUST-035</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; Pin-based move emulation must define self-assignment behavior.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; Pin-based move emulation must define self-assignment behavior.</p></td>
 </tr>
 <tr class="row-odd"><td><p>16.5.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>16.5.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>16.6.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C3</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Verify the rationale against the pinned compiler/configuration before accepting coverage; no automatic waiver.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>17.8.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>18.1.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-036"><span class="std std-ref">SCR-RUST-036</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; raw-pointer panic payloads (panic_any) have unclear ownership.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; raw-pointer panic payloads (panic_any) have unclear ownership.</p></td>
 </tr>
 <tr class="row-even"><td><p>18.1.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>18.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>18.3.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>18.3.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>18.4.1</p></td>
 <td><p>safe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-036"><span class="std std-ref">SCR-RUST-036</span></a></p></td>
-<td><p>SCRC: applies. Restore related obligation from C2: Drop can panic and a second panic during unwinding can abort.</p></td>
+<td><p>SCRC draft: applies. Restore related obligation from C2: Drop can panic and a second panic during unwinding can abort.</p></td>
 </tr>
 <tr class="row-odd"><td><p>18.5.1</p></td>
 <td><p>safe</p></td>
 <td><p>C5</p></td>
 <td><p>Advisory</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-004"><span class="std std-ref">SCR-RUST-004</span></a></p></td>
-<td><p>Result error propagation and panic/unwinding are distinct; both need explicit policies.</p></td>
+<td><p><a class="reference internal" href="rules.html#scr-rust-036"><span class="std std-ref">SCR-RUST-036</span></a>; <a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
+<td><p>SCRC draft: applies. Unwinding across a foreign-language boundary; a panic reaching a non-unwinding extern “C” boundary aborts and a foreign exception entering Rust is undefined behavior (SCR-RUST-036, SCR-RUST-042).</p></td>
 </tr>
 <tr class="row-even"><td><p>18.5.2</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-036"><span class="std std-ref">SCR-RUST-036</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-036.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.0.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-037"><span class="std std-ref">SCR-RUST-037</span></a></p></td>
-<td><p>SCRC: not applicable (cfg attaches to the next item). Retained: cfg_select and attribute placement still need review.</p></td>
+<td><p>SCRC draft: not applicable (cfg attaches to the next item). Retained by S-CORE for the cfg-name typo hazard: a misspelled cfg predicate silently disables code unless check-cfg is enforced (SCR-RUST-037).</p></td>
 </tr>
 <tr class="row-even"><td><p>19.0.2</p></td>
 <td><p>safe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-038"><span class="std std-ref">SCR-RUST-038</span></a></p></td>
-<td><p>SCRC: applies to safe Rust; prefer functions over function-like macros, variadic macros excepted.</p></td>
+<td><p>SCRC draft: applies to safe Rust; prefer functions over function-like macros, variadic macros excepted.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.0.3</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-011"><span class="std std-ref">SCR-RUST-011</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-011.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.0.4</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.1.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.1.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.1.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Undefined identifiers are compile errors. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. Undefined identifiers are compile errors. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.2.1</p></td>
 <td><p>safe</p></td>
 <td><p>C3</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-011"><span class="std std-ref">SCR-RUST-011</span></a></p></td>
-<td><p>SCRC: applies to safe Rust; include! and path attributes can shadow items in outer scopes.</p></td>
+<td><p>SCRC draft: applies to safe Rust; include! and path attributes can shadow items in outer scopes.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.2.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Invalid include paths are compile errors. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. Invalid include paths are compile errors. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.2.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-011"><span class="std std-ref">SCR-RUST-011</span></a></p></td>
-<td><p>SCRC: not applicable (raw strings supported). Retained as supporting source for include!/path provenance.</p></td>
+<td><p>not applicable</p></td>
+<td><p>SCRC draft: not applicable: the source concerns characters in header-file names. S-CORE agrees; include!/path provenance is covered by SCR-RUST-011 without this source.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.3.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.3.3</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.3.4</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-038"><span class="std std-ref">SCR-RUST-038</span></a></p></td>
-<td><p>Macro expression matching does not ensure single evaluation or absence of hidden effects.</p></td>
+<td><p>SCRC draft: Macro expression matching does not ensure single evaluation or absence of hidden effects.</p></td>
 </tr>
 <tr class="row-odd"><td><p>19.3.5</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>19.6.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>21.2.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>21.2.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>21.2.3</p></td>
 <td><p>safe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>21.2.4</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>21.6.1</p></td>
 <td><p>safe</p></td>
 <td><p>C6</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-039"><span class="std std-ref">SCR-RUST-039</span></a></p></td>
-<td><p>Controlled allocation is a proposed project adaptation; do not silently impose a blanket allocation ban.</p></td>
+<td><p>SCRC draft: Controlled allocation is a proposed project adaptation; do not silently impose a blanket allocation ban.</p></td>
 </tr>
 <tr class="row-even"><td><p>21.6.2</p></td>
 <td><p>safe</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-035"><span class="std std-ref">SCR-RUST-035</span></a></p></td>
-<td><p>Drop is not guaranteed to run; mem::forget and leaks are safe operations.</p></td>
+<td><p>SCRC draft: Drop is not guaranteed to run; mem::forget and leaks are safe operations.</p></td>
 </tr>
 <tr class="row-odd"><td><p>21.6.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-039"><span class="std std-ref">SCR-RUST-039</span></a></p></td>
-<td><p>Draft interpretation; applicability and enforcement require review.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-039.</p></td>
 </tr>
 <tr class="row-even"><td><p>21.6.4</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="rules.html#scr-rust-039"><span class="std std-ref">SCR-RUST-039</span></a></p></td>
-<td><p>SCRC: not applicable (GlobalAlloc dealloc always receives the layout). Retained: allocator customization still needs review.</p></td>
+<td><p>not applicable</p></td>
+<td><p>SCRC draft: not applicable: GlobalAlloc::dealloc always receives the layout, so the sized/unsized delete pairing has no counterpart. S-CORE agrees; allocator customization is represented by 21.6.3.</p></td>
 </tr>
 <tr class="row-odd"><td><p>21.6.5</p></td>
 <td><p>not applicable</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. No incomplete types. Mapping removed.</p></td>
+<td><p>SCRC draft: not applicable. No incomplete types. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>21.10.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-021"><span class="std std-ref">SCR-RUST-021</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; C-variadic arguments (VaList) carry the same hazards as in C.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; C-variadic arguments (VaList) carry the same hazards as in C.</p></td>
 </tr>
 <tr class="row-odd"><td><p>21.10.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; setjmp/longjmp reachable through FFI or inline assembly and often UB.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; setjmp/longjmp reachable through FFI or inline assembly and often UB.</p></td>
 </tr>
 <tr class="row-even"><td><p>21.10.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; signal handling only through platform APIs.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; signal handling only through platform APIs.</p></td>
 </tr>
 <tr class="row-odd"><td><p>22.3.1</p></td>
 <td><p>safe</p></td>
 <td><p>C5</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-040"><span class="std std-ref">SCR-RUST-040</span></a></p></td>
-<td><p>A constant argument to ordinary assert! does not by itself force compile-time evaluation.</p></td>
+<td><p>SCRC draft: A constant argument to ordinary assert! does not by itself force compile-time evaluation.</p></td>
 </tr>
 <tr class="row-even"><td><p>22.4.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; errno is writable only through platform APIs.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; errno is writable only through platform APIs.</p></td>
 </tr>
 <tr class="row-odd"><td><p>23.11.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-020"><span class="std std-ref">SCR-RUST-020</span></a></p></td>
-<td><p>SCRC: applies. Reassess C2: raw pointers can be constructed in safe Rust; audit boundaries by operations, not unsafe keywords.</p></td>
+<td><p>SCRC draft: applies. Reassess C2: raw pointers can be constructed in safe Rust; audit boundaries by operations, not unsafe keywords.</p></td>
 </tr>
 <tr class="row-even"><td><p>24.5.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>24.5.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-025"><span class="std std-ref">SCR-RUST-025</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; ptr::copy and copy_nonoverlapping are the memmove/memcpy analogues.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; ptr::copy and copy_nonoverlapping are the memmove/memcpy analogues.</p></td>
 </tr>
 <tr class="row-even"><td><p>25.5.1</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; locale handling requires FFI.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; locale handling requires FFI.</p></td>
 </tr>
 <tr class="row-odd"><td><p>25.5.2</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Mandatory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; only the FFI part (OS error strings, setenv) is in scope; std::env::var returns owned data.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; only the FFI part (OS error strings, setenv) is in scope; std::env::var returns owned data.</p></td>
 </tr>
 <tr class="row-even"><td><p>25.5.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C1</p></td>
 <td><p>Mandatory</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-042"><span class="std std-ref">SCR-RUST-042</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; time zone, locale and errno access through FFI.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; time zone, locale and errno access through FFI.</p></td>
 </tr>
 <tr class="row-odd"><td><p>26.3.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Advisory</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>28.3.1</p></td>
 <td><p>safe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>rule assignment pending</p></td>
-<td><p>SCRC: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.</p></td>
+<td><p>SCRC draft: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>28.6.1</p></td>
 <td><p>safe</p></td>
 <td><p>C4</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-035"><span class="std std-ref">SCR-RUST-035</span></a></p></td>
-<td><p>Comment describes a C++-specific move issue; native moves are compiler-checked, custom owners still need review.</p></td>
+<td><p>SCRC draft: Comment describes a C++-specific move issue; native moves are compiler-checked, custom owners still need review.</p></td>
 </tr>
 <tr class="row-even"><td><p>28.6.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>28.6.3</p></td>
 <td><p>unsafe</p></td>
 <td><p>C2</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="rules.html#scr-rust-015"><span class="std std-ref">SCR-RUST-015</span></a></p></td>
-<td><p>SCRC: applies to unsafe Rust; a raw pointer can observe a moved-from location.</p></td>
+<td><p>SCRC draft: applies to unsafe Rust; a raw pointer can observe a moved-from location.</p></td>
 </tr>
 <tr class="row-even"><td><p>28.6.4</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-odd"><td><p>30.0.1</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 <tr class="row-even"><td><p>30.0.2</p></td>
 <td><p>not applicable</p></td>
 <td><p>C1</p></td>
 <td><p>Required</p></td>
 <td><p>not applicable</p></td>
-<td><p>SCRC: not applicable. Native Rust rationale only; reconsider foreign calls, generated code and semantic analogues before exclusion.</p></td>
+<td><p>SCRC draft: not applicable. S-CORE agrees; no open item.</p></td>
 </tr>
 </tbody>
 </table>

@@ -650,7 +650,7 @@
                   
   <section id="rust-coding-rules-misra-derived-draft">
 <span id="rust-coding-rules-overview"></span><h1>Rust Coding Rules (MISRA-derived draft)<a class="headerlink" href="#rust-coding-rules-misra-derived-draft" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-e4f221b4">
+<div class="need_container docutils container" id="SNCB-d4ecf23b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -754,14 +754,15 @@ contribution to the SCRC guidelines rather than a competing standard.</p>
 </section>
 <section id="purpose-and-scope">
 <h2>Purpose and scope<a class="headerlink" href="#purpose-and-scope" title="Link to this heading">#</a></h2>
-<p>The catalogue contains 43 proposed Rust rules: 39 interpretations of MISRA C++:2023
-guidelines and four S-CORE supplements, for buffer extents at foreign interfaces,
+<p>The catalogue contains 43 proposed Rust rules: 38 interpretations of MISRA C++:2023
+guidelines and five S-CORE supplements or adaptations without a retained MISRA C++
+source, for buffer extents at foreign interfaces, absent-pointer representation,
 dependency and generated-code soundness, foreign-language boundaries and verification
 governance. The foreign-boundary supplement also links MISRA C++ sources that the SCRC
-draft assesses as applicable to unsafe Rust. Together the rules link 83 of the 92 MISRA
-C++ guidelines the SCRC draft assesses as applicable to safe or unsafe Rust, plus five
-guidelines retained by S-CORE although the SCRC draft assesses them as not applicable,
-each with a stated reason. Linking a source records an interpretation; whether a rule
+draft assesses as applicable. Together the rules link 83 of the 92 MISRA C++ guidelines
+the SCRC draft assesses as applicable to safe or unsafe Rust, plus one guideline
+retained by S-CORE although the SCRC draft assesses it as not applicable, with a stated
+reason. Linking a source records an interpretation; whether a rule
 makes every obligation of its sources explicit is part of the review. Nine
 applicable guidelines have no S-CORE rule yet and are listed in the review queue of
 the <a class="reference internal" href="applicability.html#rust-coding-rules-applicability"><span class="std std-ref">applicability register</span></a>. Grouping is
@@ -837,13 +838,21 @@ does not create a separate approval authority. The applicable project plan ident
 the accountable reviewers for safety-relevant interpretations and deviations.</p>
 <p>The rule text and metadata are maintained in <code class="docutils literal notranslate"><span class="pre">_assets/rules.json</span></code> beside this page.
 The rendered catalogue and the compact source table are generated from the data files.
-From the repository root, regenerate and check them with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>tools/render_rust_coding_rules.py
+Maintainers edit the data files, never the generated ones. After a change, from the
+repository root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># regenerate rules.rst, applicability_summary.csv and review_queue.csv from the data</span>
+python3<span class="w"> </span>tools/render_rust_coding_rules.py
+<span class="c1"># read-only: fail if the generated files are stale or the data is inconsistent (CI use)</span>
 python3<span class="w"> </span>tools/render_rust_coding_rules.py<span class="w"> </span>--check
+<span class="c1"># optional: compare every register row with a local copy of the pinned SCRC file</span>
+python3<span class="w"> </span>tools/render_rust_coding_rules.py<span class="w"> </span>--check<span class="w"> </span>--upstream<span class="w"> </span>path/to/misra-cpp-2023-mapping.rst
+<span class="c1"># the repository&#39;s normal documentation check, and the HTML build for viewing</span>
 bazel<span class="w"> </span>run<span class="w"> </span>//:docs_check
 bazel<span class="w"> </span>run<span class="w"> </span>//:docs
 </pre></div>
 </div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">--upstream</span></code> the check verifies internal consistency and that the SCRC totals
+equal the pinned revision; it cannot detect two rows whose assessments were swapped.</p>
 <p>Review rule changes together with their applicability and checker-impact changes.
 When the SCRC cross-reference changes, re-pin its revision in the source manifest and
 re-align the register before publishing a new rulebook revision. Upstream changes do
