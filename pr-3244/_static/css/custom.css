@@ -1,0 +1,253 @@
+/* *******************************************************************************
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * ***************************************************************************** */
+
+/* Custom overrides for the S-CORE documentation.
+ * Loaded after the score_docs_as_code bundle, so rules here win. */
+
+/* Background of the colored card header (octicon + title) on the landing pages.
+ * Change the color value below to whatever you like.
+ *
+ * NOTE: the !important here is unavoidable. The bundled theme rule
+ * ".score-grid .sd-card-header" in score_design.css declares the header
+ * background-color with !important. An !important declaration can only be
+ * overridden by another !important declaration, so we must mirror it here. */
+html .score-grid .sd-card-header {
+    background-color: #eef1f5 !important;
+}
+
+/* Title text inside the card header (the line above "^^^"). */
+html .score-grid .sd-card-header {
+    color: #1a2733;                  /* text color */
+    font-size: 1.2em;                /* text size */
+    font-weight: 900;                /* boldness */
+    /* font-family: "Arial", sans-serif; */
+}
+
+/* Put the icon and the title on the same line.
+ * Both sit in the card header as separate paragraphs. Flex aligns them in a
+ * single row: the icon stays on the left, and the title sits right next to it. */
+html .score-grid .sd-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* Icon: keep its natural width, pinned to the left. */
+html .score-grid .sd-card-header .sd-octicon {
+    flex: 0 0 auto;
+}
+
+/* Title: keep it left-aligned next to the icon. */
+html .score-grid .sd-card-header p {
+    margin: 0;
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+/* The octicon (icon) in the header. */
+html .score-grid .sd-card-header .sd-octicon {
+    color: #1a2733;
+}
+
+/* Background of the card body (description text area).
+ * NOTE: the pydata theme sets this via ".bd-content .sd-card .sd-card-body"
+ * (3 classes). We must match/exceed that specificity, otherwise nothing
+ * changes. The ".bd-content .sd-card" ancestors below do exactly that. */
+html .bd-content .score-grid .sd-card .sd-card-body {
+    background-color: #eef1f5;
+}
+
+/* Description text inside the card body. */
+html .bd-content .score-grid .sd-card .sd-card-body {
+    color: #1a2733;                  /* text color */
+    font-size: 1em;                  /* text size */
+    text-align: left;                /* left-align body text (sphinx-design centers by default) */
+    /* font-family: "Arial", sans-serif; */
+}
+
+/* Background of the whole card. */
+html .score-grid .sd-card {
+    background-color: #eef1f5;
+}
+
+/* Link text color inside the cards.
+ * The bundle sets ".score-grid a { color: #FFFFFF }", so we override it here.
+ * Covers normal, visited and hover states. */
+html .score-grid a,
+html .score-grid a:visited {
+    color: #0a5fb4;                  /* blue */
+}
+
+html .score-grid a:hover,
+html .score-grid a:hover:visited {
+    color: #0848a0;                  /* darker blue on hover */
+}
+
+/* Spacing between the landing-page subchapters.
+ * Each subchapter is a section heading followed by a ".score-grid". Adding top
+ * margin to the grid pushes each subchapter further from the previous one.
+ * Increase/decrease the value below to taste. */
+html .bd-content .score-grid {
+    margin-top: 3rem;
+}
+
+/* Size of the subchapter titles (Introduction, Get started, ...).
+ * ":has(.score-grid)" limits this to the landing-page sections that contain a
+ * grid, so headings on other pages are not affected. Lower the value to shrink. */
+html .bd-content section:has(> .score-grid) > h2 {
+    font-size: 1.5rem;
+}
+
+/* ===========================================================================
+ * Per-chapter overrides.
+ *
+ * Each landing-page chapter (grid) carries its own class via :class-container:
+ * in docs/index.rst, e.g. ":class-container: score-grid score-grid-artifacts".
+ * The per-chapter rules below are more specific than the generic ".score-grid"
+ * rules above, so they win.
+ *
+ * To restyle one chapter, edit only its block below.
+ * =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+ * Chapter: Introduction  (.score-grid-intro)
+ * Proposed color: very light green.
+ * ------------------------------------------------------------------------- */
+
+/* Header background (same as body). */
+html .score-grid-intro .sd-card-header {
+    background-color: #eaf7ee !important;
+}
+
+/* Card / body background. */
+html .bd-content .score-grid-intro .sd-card,
+html .bd-content .score-grid-intro .sd-card .sd-card-body {
+    background-color: #eaf7ee;
+}
+
+/* Title + icon: dark so they stay readable on the light header. */
+html .score-grid-intro .sd-card-header,
+html .score-grid-intro .sd-card-header .sd-octicon {
+    color: #1d2c22;
+}
+
+/* ---------------------------------------------------------------------------
+ * Chapter: Get started with S-CORE  (.score-grid-getstarted)
+ * Proposed color: happy lilac (vibrant).
+ * ------------------------------------------------------------------------- */
+
+/* Header background (same as body). */
+html .score-grid-getstarted .sd-card-header {
+    background-color: #ede0fb !important;
+}
+
+/* Card / body background. */
+html .bd-content .score-grid-getstarted .sd-card,
+html .bd-content .score-grid-getstarted .sd-card .sd-card-body {
+    background-color: #ede0fb;
+}
+
+/* Title + icon: dark so they stay readable on the light header. */
+html .score-grid-getstarted .sd-card-header,
+html .score-grid-getstarted .sd-card-header .sd-octicon {
+    color: #36204f;
+}
+
+/* ---------------------------------------------------------------------------
+ * Chapter: Software artifacts  (.score-grid-artifacts)
+ * Proposed color: very light cyan.
+ * ------------------------------------------------------------------------- */
+
+/* Header background (same as body). */
+html .score-grid-artifacts .sd-card-header {
+    background-color: #e9f7f9 !important;
+}
+
+/* Card / body background. */
+html .bd-content .score-grid-artifacts .sd-card,
+html .bd-content .score-grid-artifacts .sd-card .sd-card-body {
+    background-color: #e9f7f9;
+}
+
+/* Title + icon: dark so they stay readable on the light header. */
+html .score-grid-artifacts .sd-card-header,
+html .score-grid-artifacts .sd-card-header .sd-octicon {
+    color: #16292c;
+}
+
+/* ---------------------------------------------------------------------------
+ * Chapter: Project structure and processes  (.score-grid-processes)
+ * Proposed color: very light amber.
+ * ------------------------------------------------------------------------- */
+
+/* Header background (same as body). */
+html .score-grid-processes .sd-card-header {
+    background-color: #fdf4e6 !important;
+}
+
+/* Card / body background. */
+html .bd-content .score-grid-processes .sd-card,
+html .bd-content .score-grid-processes .sd-card .sd-card-body {
+    background-color: #fdf4e6;
+}
+
+/* Title + icon: dark so they stay readable on the light header. */
+html .score-grid-processes .sd-card-header,
+html .score-grid-processes .sd-card-header .sd-octicon {
+    color: #33291a;
+}
+
+/* ---------------------------------------------------------------------------
+ * Chapter: Reference Integration  (.score-grid-refintegration)
+ * Proposed color: very light purple.
+ * ------------------------------------------------------------------------- */
+
+/* Header background (same as body). */
+html .score-grid-refintegration .sd-card-header {
+    background-color: #f3eefb !important;
+}
+
+/* Card / body background. */
+html .bd-content .score-grid-refintegration .sd-card,
+html .bd-content .score-grid-refintegration .sd-card .sd-card-body {
+    background-color: #f3eefb;
+}
+
+/* Title + icon: dark so they stay readable on the light header. */
+html .score-grid-refintegration .sd-card-header,
+html .score-grid-refintegration .sd-card-header .sd-octicon {
+    color: #271a33;
+}
+
+/* ---------------------------------------------------------------------------
+ * Chapter: Infrastructure and Tooling  (.score-grid-infratooling)
+ * Proposed color: very light rose.
+ * ------------------------------------------------------------------------- */
+
+/* Header background (same as body). */
+html .score-grid-infratooling .sd-card-header {
+    background-color: #fbeef0 !important;
+}
+
+/* Card / body background. */
+html .bd-content .score-grid-infratooling .sd-card,
+html .bd-content .score-grid-infratooling .sd-card .sd-card-body {
+    background-color: #fbeef0;
+}
+
+/* Title + icon: dark so they stay readable on the light header. */
+html .score-grid-infratooling .sd-card-header,
+html .score-grid-infratooling .sd-card-header .sd-octicon {
+    color: #331a1f;
+}
