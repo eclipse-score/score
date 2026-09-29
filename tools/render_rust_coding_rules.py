@@ -71,14 +71,18 @@ EXPECTED_SOURCES = 179
 EXPECTED_MISRUST_CLASSES = {"C1": 15, "C2": 42, "C3": 53, "C4": 36, "C5": 11, "C6": 22}
 EXPECTED_SCRC = {"safe": 54, "unsafe": 38, "not_applicable": 87}
 APPLICABLE = {"safe", "unsafe"}
-SCRC_LABEL = {"safe": "safe", "unsafe": "unsafe", "not_applicable": "beyond SCRC"}
+SCRC_LABEL = {
+    "safe": "SCRC draft: safe",
+    "unsafe": "SCRC draft: unsafe",
+    "not_applicable": "SCRC draft: not applicable, retained by S-CORE",
+}
 
 
 def paragraph(text):
     return textwrap.fill(text, width=100) + "\n\n"
 
 
-def validate(rules, rows):
+def validate(rules, rows, guidelines):
     ids = {r["id"] for r in rules}
     source_ids = {r["misra_cpp_id"] for r in rows}
     if len(ids) != len(rules) or len(source_ids) != len(rows):
@@ -91,7 +95,7 @@ def validate(rules, rows):
         raise ValueError("The MISRust classifications do not match the pinned dataset")
     if Counter(r["scrc_applicability"] for r in rows) != EXPECTED_SCRC:
         raise ValueError(
-            "The SCRC applicability verdicts do not match the pinned mapping revision"
+            "The SCRC applicability assessments do not match the pinned mapping revision"
         )
     for row in rows:
         gid = row["misra_cpp_id"]
@@ -106,13 +110,18 @@ def validate(rules, rows):
             wanted = "retained_beyond_scrc" if linked else "not_applicable"
         if disposition != wanted:
             raise ValueError(
-                f"Disposition of {gid} must be {wanted} given its SCRC verdict and rule links"
+                f"Disposition of {gid} must be {wanted} given its SCRC assessment and rule links"
             )
         if (
             disposition in ("rule_assignment_pending", "retained_beyond_scrc")
             and not row["assessment_note"]
         ):
             raise ValueError(f"{gid} needs an assessment note explaining the open item")
+    for row in rows:
+        if row["scrc_guideline"] and row["scrc_guideline"] not in guidelines:
+            raise ValueError(
+                f"Unknown SCRC guideline {row['scrc_guideline']} for {row['misra_cpp_id']}; add it to sources.json"
+            )
     for rule in rules:
         if not set(rule["misra_cpp_ids"]) <= source_ids:
             raise ValueError(f"Unknown source guideline in {rule['id']}")
@@ -120,8 +129,15 @@ def validate(rules, rows):
             raise ValueError(f"Unknown proposed level in {rule['id']}")
 
 
-def render_rules(rules, rows):
+def code_block(code):
+    return ".. code-block:: rust\n\n" + textwrap.indent(code, "   ") + "\n\n"
+
+
+def render_rules(rules, rows, guidelines):
     verdict = {r["misra_cpp_id"]: SCRC_LABEL[r["scrc_applicability"]] for r in rows}
+    scrc_rule = {
+        r["misra_cpp_id"]: r["scrc_guideline"] for r in rows if r["scrc_guideline"]
+    }
     parts = [HEADER, PREAMBLE]
     for rule in rules:
         rid = rule["id"]
@@ -136,14 +152,39 @@ def render_rules(rules, rows):
                 title + "\n" + "=" * len(title) + "\n\n",
                 paragraph(
                     f"**Proposed level:** {rule['proposed_level']}. "
-                    f"**Source IDs (MISRA C++:2023, SCRC verdict):** {sources}."
+                    f"**Source IDs (MISRA C++:2023, draft SCRC assessment):** {sources}."
                 ),
                 paragraph(f"**Origin:** {rule['origin']}. **Scope:** {rule['scope']}."),
+            ]
+        )
+        if rule.get("level_rationale"):
+            parts.append(paragraph("**Level rationale:** " + rule["level_rationale"]))
+        related = [(g, scrc_rule[g]) for g in rule["misra_cpp_ids"] if g in scrc_rule]
+        if related:
+            links = ", ".join(
+                f"`{gid} <{guidelines[gid]['url']}>`_ ({guidelines[gid]['topic']}, for {g})"
+                for g, gid in related
+            )
+            parts.append(
+                paragraph(
+                    "**Related draft SCRC guideline:** "
+                    + links
+                    + ". This rule is to be reconciled with the SCRC text as it matures."
+                )
+            )
+        parts.extend(
+            [
                 paragraph(rule["requirement"]),
                 paragraph("**Check:** " + rule["enforcement"]),
                 paragraph("**Coverage limit:** " + rule["coverage_limit"]),
             ]
         )
+        if rule.get("example"):
+            ex = rule["example"]
+            parts.append("**Example:**\n\n")
+            parts.append(code_block(ex["compliant"]))
+            parts.append(code_block(ex["non_compliant"]))
+            parts.append(paragraph(ex["note"]))
     return "".join(parts)
 
 
@@ -173,7 +214,7 @@ def render_csv(rows):
     writer.writerow(
         [
             "Source ID",
-            "SCRC verdict",
+            "Draft SCRC assessment",
             "MISRust class",
             "Source level",
             "Proposed Rust rules",
@@ -187,16 +228,19 @@ def render_csv(rows):
 def render():
     payload = json.loads((BASE / "_assets/rules.json").read_text())
     rules = payload["rules"]
+    guidelines = json.loads((BASE / "_assets/sources.json").read_text())[
+        "primary_reference_scrc"
+    ]["draft_guidelines"]
     with (BASE / "_assets/applicability.csv").open(newline="") as source:
         rows = list(csv.DictReader(source))
-    validate(rules, rows)
+    validate(rules, rows, guidelines)
     queue = [
         r
         for r in rows
         if r["score_disposition"] in ("rule_assignment_pending", "retained_beyond_scrc")
     ]
     return {
-        BASE / "rules.rst": render_rules(rules, rows),
+        BASE / "rules.rst": render_rules(rules, rows, guidelines),
         BASE / "_assets/applicability_summary.csv": render_csv(rows),
         BASE / "_assets/review_queue.csv": render_csv(queue),
     }
@@ -231,7 +275,7 @@ def main():
         return 1
     print(
         f"Validated {EXPECTED_RULES} Rust rules and {EXPECTED_SOURCES} source mappings against the pinned "
-        "SCRC verdicts; generated files "
+        "SCRC assessment; generated files "
         + ("are current." if args.check else "updated.")
     )
     return 0

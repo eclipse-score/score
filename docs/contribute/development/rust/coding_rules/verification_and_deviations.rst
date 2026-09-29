@@ -88,8 +88,8 @@ Adoption and rollout
 ====================
 
 #. Resolve the review queue of the applicability register: assign or write rules for
-   the guidelines SCRC marks applicable, and confirm or drop the guidelines retained
-   beyond the SCRC verdict.
+   the guidelines the SCRC draft assesses as applicable, and confirm or drop the
+   guidelines retained although that draft assesses them as not applicable.
 #. Review the proposed rules; assign rule owners.
    Resolve component-specific allocation, recursion, panic, numerical precision
    and foreign-interface requirements.

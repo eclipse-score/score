@@ -45,7 +45,8 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Conditions shall express a meaningful runtime decision unless explicitly designated as a constant configuration choice or intentional loop. A value shall not be written only to be overwritten before any required observation.",
       "enforcement": "rustc unused_assignments; selected Clippy condition/comparison checks; candidate CodeQL control-flow and value-use analysis; review intentional constant branches.",
-      "coverage_limit": "Local diagnostics do not establish path feasibility or detect every overwritten value across calls. Record intentional loop and configuration exceptions."
+      "coverage_limit": "Local diagnostics do not establish path feasibility or detect every overwritten value across calls. Record intentional loop and configuration exceptions.",
+      "level_rationale": "Required although both sources are Advisory: an invariant condition or an ineffective write usually indicates a logic defect, the consequence in Rust is the same as in C++, and compiler and Clippy checks make conformance cheap to demonstrate."
     },
     {
       "id": "SCR-RUST-004",
@@ -72,7 +73,8 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Each safety-relevant floating-point use shall specify acceptable range, precision, rounding, comparison tolerance, and handling of NaN, infinity and signed zero. Serialization shall preserve the required information or reject values that cannot meet the declared contract.",
       "enforcement": "Selected Clippy floating-point/cast checks; boundary and round-trip tests; numerical review. Candidate CodeQL checks can locate values reaching sensitive conversion APIs.",
-      "coverage_limit": "A lint cannot select application tolerances or prove numerical accuracy. Components that store integers as f64 (for example in a JSON backend) need an explicit round-trip contract."
+      "coverage_limit": "A lint cannot select application tolerances or prove numerical accuracy. Components that store integers as f64 (for example in a JSON backend) need an explicit round-trip contract.",
+      "level_rationale": "Required although Directive 0.3.1 is Advisory: unspecified floating-point range, precision or special-value handling produces silent numerical error in stored and compared values, which is a safety consequence rather than a style concern."
     },
     {
       "id": "SCR-RUST-006",
@@ -85,7 +87,12 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "A function shall be called only when its documented preconditions hold. Encode invariants in validated types where possible; otherwise validate untrusted values before use and return a defined error. Stored data shall be treated as potentially malformed.",
       "enforcement": "Type/API review and negative tests; candidate CodeQL source-to-use checks with explicitly modeled validators and error paths.",
-      "coverage_limit": "A validation call is not sufficient evidence unless the checked property and success branch match the precondition. Arbitrary application contracts require review."
+      "coverage_limit": "A validation call is not sufficient evidence unless the checked property and success branch match the precondition. Arbitrary application contracts require review.",
+      "example": {
+        "compliant": "// Compliant for this input contract: an untrusted rate is valid only in 1..=10.\nfn rate(raw: u8) -> Result<u8, ()> {\n    if (1..=10).contains(&raw) { Ok(raw) } else { Err(()) }\n}",
+        "non_compliant": "// Non-compliant: accepts out-of-range input.\nfn rate(raw: u8) -> Result<u8, ()> {\n    Ok(raw)\n}",
+        "note": "Both compile. Only the first rejects input outside the documented precondition."
+      }
     },
     {
       "id": "SCR-RUST-007",
@@ -98,7 +105,12 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Undefined behavior is prohibited. Unsafe operations shall be confined to identified modules and justified by operation-specific invariants covering validity, lifetime, aliasing, alignment and concurrency as applicable. Safe APIs shall preserve soundness for all permitted safe callers. Crates designated safe-only shall forbid unsafe_code.",
       "enforcement": "rustc unsafe_op_in_unsafe_fn; Clippy missing_safety_doc and undocumented_unsafe_blocks; independent unsafe review; targeted Miri and applicable verification.",
-      "coverage_limit": "Documentation checks establish presence, not correctness. Miri covers supported executed paths. A crate with no unsafe blocks may still rely on unsafe dependencies; panic freedom is a separate property."
+      "coverage_limit": "Documentation checks establish presence, not correctness. Miri covers supported executed paths. A crate with no unsafe blocks may still rely on unsafe dependencies; panic freedom is a separate property.",
+      "example": {
+        "compliant": "// Compliant: handles every slice length without unsafe access.\nfn first(input: &[u8]) -> Option<u8> {\n    input.first().copied()\n}",
+        "non_compliant": "// Non-compliant: the safe API permits an invalid read for input = &[].\nfn first(input: &[u8]) -> Option<u8> {\n    Some(unsafe { *input.as_ptr() })\n}",
+        "note": "Both function bodies compile. An empty slice is a valid input to either safe function; Miri accepts the first and reports undefined behavior for the second on an empty slice. A safe wrapper must be sound for every input its signature admits."
+      }
     },
     {
       "id": "SCR-RUST-008",
@@ -126,7 +138,8 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Obsolete implementations should be removed and recovered through version control when needed. Comments should explain intent and constraints. Documentation examples and explanatory pseudocode are permitted.",
       "enforcement": "Code review; a comment-pattern checker may identify candidates for review.",
-      "coverage_limit": "Text matching cannot reliably distinguish obsolete code from useful documentation."
+      "coverage_limit": "Text matching cannot reliably distinguish obsolete code from useful documentation.",
+      "level_rationale": "Advisory although Rule 5.7.1 is Required: text matching cannot reliably separate disabled code from documentation, so enforcement rests on review judgement. The nested block comment hazard from 5.7.1 is recorded in the requirement."
     },
     {
       "id": "SCR-RUST-010",
@@ -153,7 +166,8 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Imports and re-exports should make dependencies and ownership of names clear. Keep ordinary imports together; document exceptions for narrow local scope. Glob imports should be limited to explicitly designated preludes or tests. Generated/include-based source shall have controlled provenance.",
       "enforcement": "Formatting, compiler name resolution, selected import lints and review of re-export/prelude design.",
-      "coverage_limit": "Rust permits include! and generated source; the paper's comparison of use with C++ include is incomplete. Valid syntax alone does not establish clarity or provenance."
+      "coverage_limit": "Rust permits include! and generated source; the paper's comparison of use with C++ include is incomplete. Valid syntax alone does not establish clarity or provenance.",
+      "level_rationale": "Advisory although Rules 19.2.1 and 19.2.3 are Required: Rust's module system removes the undefined and ambiguous behavior of C++ header inclusion, leaving clarity and provenance of names as the residual concern."
     },
     {
       "id": "SCR-RUST-012",
@@ -166,7 +180,12 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Reserve main for actual executable entry points. Other production functions shall use names expressing their role. Generated wrappers and embedded entry-point conventions require an explicit scoped exception.",
       "enforcement": "A syntax/name checker can enforce the declared policy; review generated and platform entry points.",
-      "coverage_limit": "This is a project naming restriction, not a Rust language requirement."
+      "coverage_limit": "This is a project naming restriction, not a Rust language requirement.",
+      "example": {
+        "compliant": "// Compliant: the helper's name describes its role.\nmod worker {\n    pub fn process() -> u8 { 1 }\n}\nfn main() { let _ = worker::process(); }",
+        "non_compliant": "// Non-compliant: worker::main is not an executable entry point.\nmod worker {\n    pub fn main() -> u8 { 1 }\n}\nfn main() { let _ = worker::main(); }",
+        "note": "Both compile and run. The nested ``main`` violates the naming policy; ``worker`` is an ordinary production module with no generated-wrapper or embedded-entry-point exception."
+      }
     },
     {
       "id": "SCR-RUST-013",
@@ -328,7 +347,12 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Pointer operations shall meet their individual API contracts, including allocation/provenance and bounds requirements. Relational comparisons shall not infer object order across unrelated allocations. Prefer slice indexing/iteration; document any reviewed address-ordering exception separately.",
       "enforcement": "Unsafe review, targeted Miri tests, and candidate checks for pointer operations and their data flow.",
-      "coverage_limit": "Some construction, wrapping arithmetic and comparisons are safe operations. An out-of-bounds intermediate is not universally forbidden by Rust; the applicable API and eventual access determine validity. The project comparison restriction is stronger than language UB rules."
+      "coverage_limit": "Some construction, wrapping arithmetic and comparisons are safe operations. An out-of-bounds intermediate is not universally forbidden by Rust; the applicable API and eventual access determine validity. The project comparison restriction is stronger than language UB rules.",
+      "example": {
+        "compliant": "// Compliant: no access occurs during the wrapping excursion.\nfn read_first() -> u8 {\n    let bytes = [1_u8, 2];\n    let p = bytes.as_ptr();\n    let q = p.wrapping_add(20).wrapping_sub(20);\n    // SAFETY: q is back at the initialized first byte; bytes is still live.\n    unsafe { *q }\n}",
+        "non_compliant": "// Non-compliant: add(20) itself exceeds its permitted bounds.\nfn read_first() -> u8 {\n    let bytes = [1_u8, 2];\n    let p = bytes.as_ptr();\n    let q = unsafe { p.add(20) }.wrapping_sub(20);\n    unsafe { *q }\n}",
+        "note": "Both function bodies compile and both are operations inside a reviewed low-level implementation; the pointer remains derived from the live two-byte array. Miri accepts the first and reports undefined behavior at ``add(20)`` in the second, before the read, because ``add`` requires the result to stay in bounds while ``wrapping_add`` does not. The individual pointer API contract decides, not the final address."
+      }
     },
     {
       "id": "SCR-RUST-024",
@@ -341,7 +365,8 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Required persistent effects shall not depend on accidental short-circuit evaluation. Move state changes and critical I/O out of the right side of && or ||, or document an intentional conditional-effect contract at the call site.",
       "enforcement": "Candidate AST checks for obvious mutations and CodeQL effect/call analysis; code review.",
-      "coverage_limit": "Identifying arbitrary side effects through calls requires models. A function call in a condition is not automatically a violation."
+      "coverage_limit": "Identifying arbitrary side effects through calls requires models. A function call in a condition is not automatically a violation.",
+      "level_rationale": "Required although Rule 8.14.1 is Advisory: a state change skipped because the left operand short-circuits the expression alters program behavior silently and is not diagnosed by the compiler."
     },
     {
       "id": "SCR-RUST-025",
@@ -462,7 +487,13 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Parameter names should consistently describe their semantic roles across trait declarations, implementations and examples. Mark intentionally unused parameters explicitly and explain why an implementation ignores them.",
       "enforcement": "Compiler unused_variables and API review; optional trait/implementation name comparison.",
-      "coverage_limit": "Rust permits unnamed patterns such as _. This adaptation concerns readable contracts, not C++ overriding syntax."
+      "coverage_limit": "Rust permits unnamed patterns such as _. This adaptation concerns readable contracts, not C++ overriding syntax.",
+      "level_rationale": "Advisory although Rule 13.3.3 is Required: Rust has neither default arguments nor overload sets, so the residual concern is consistent naming of parameter roles across trait and implementation signatures, which the compiler accepts either way.",
+      "example": {
+        "compliant": "trait Distance {\n    fn millimetres(&self, metres: u32) -> u64;\n}\nstruct Converter;\nimpl Distance for Converter {\n    // Compliant: preserves the parameter's stated role.\n    fn millimetres(&self, metres: u32) -> u64 {\n        u64::from(metres) * 1000\n    }\n}",
+        "non_compliant": "trait Distance {\n    fn millimetres(&self, metres: u32) -> u64;\n}\nstruct Converter;\nimpl Distance for Converter {\n    // Non-compliant: seconds misstates the parameter's role.\n    fn millimetres(&self, seconds: u32) -> u64 {\n        u64::from(seconds) * 1000\n    }\n}",
+        "note": "Both compile and produce the same result. The second describes a distance as a duration, a semantic mismatch the compiler accepts."
+      }
     },
     {
       "id": "SCR-RUST-034",
@@ -475,7 +506,13 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "Fields whose arbitrary mutation can violate an invariant shall be private and changed through validating APIs. Plain data carriers may expose fields when all representable states are valid for their contract. Review mixed visibility explicitly.",
       "enforcement": "API/design review; custom checks may inventory public fields and constructor bypasses.",
-      "coverage_limit": "Making every field public or private does not itself prove invariant preservation. This replaces the C++ structural recommendation with a Rust invariant-oriented policy."
+      "coverage_limit": "Making every field public or private does not itself prove invariant preservation. This replaces the C++ structural recommendation with a Rust invariant-oriented policy.",
+      "level_rationale": "Required although Rule 14.1.1 is Advisory: visibility is the only language mechanism that protects a type invariant in Rust; a public field lets safe code create an invalid state without any diagnostic.",
+      "example": {
+        "compliant": "// Compliant: callers outside the module cannot bypass validation.\nmod percentage {\n    pub struct Percent { value: u8 }\n    impl Percent {\n        pub fn new(value: u8) -> Option<Self> {\n            if value <= 100 { Some(Self { value }) } else { None }\n        }\n        pub fn value(&self) -> u8 { self.value }\n    }\n}",
+        "non_compliant": "// Non-compliant for the same invariant: callers can bypass validation.\nmod percentage {\n    pub struct Percent { pub value: u8 }\n}\nfn break_invariant() {\n    let mut p = percentage::Percent { value: 50 };\n    p.value = 101;\n}",
+        "note": "Both compile. ``Percent`` promises a value in 0..=100; the second permits an invalid state through safe public access."
+      }
     },
     {
       "id": "SCR-RUST-035",
@@ -519,7 +556,12 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "All cfg names/values and features shall be declared and checked. Invalid or unrecognized attributes/configuration diagnostics shall block analysis. Maintain and analyze the supported configuration matrix, including mutually exclusive features, rather than assuming one all-features build is representative.",
       "enforcement": "rustc unexpected_cfgs and appropriate check-cfg flags, attribute diagnostics, build-matrix checks and configuration review.",
-      "coverage_limit": "Inactive code is not necessarily type-checked. Correct configuration syntax does not establish that every delivered variant was analyzed."
+      "coverage_limit": "Inactive code is not necessarily type-checked. Correct configuration syntax does not establish that every delivered variant was analyzed.",
+      "example": {
+        "compliant": "// Compliant feature spelling.\n#[cfg(feature = \"enabled\")]\nfn feature_marker() {}\nfn main() {}",
+        "non_compliant": "// Non-compliant: undeclared, misspelled feature value.\n#[cfg(feature = \"enabeld\")]\nfn feature_marker() {}\nfn main() {}",
+        "note": "With the only declared feature value being ``enabled`` and ``--check-cfg 'cfg(feature, values(\"enabled\"))' -D unexpected_cfgs``, the first passes and the second is rejected by the ``unexpected_cfgs`` lint even though the feature is inactive. See the rustc check-cfg documentation."
+      }
     },
     {
       "id": "SCR-RUST-038",
@@ -561,7 +603,12 @@
       "origin": "S-CORE interpretation of MISRA C++:2023 guidelines",
       "requirement": "An invariant intended for compile-time checking shall use a const-evaluated construct supported by the pinned compiler. Required runtime validation shall remain active in production and return the specified error or enter the approved failure path. Do not put required side effects inside debug_assert!.",
       "enforcement": "Compiler const evaluation; Clippy assertions_on_constants as a candidate; release-configuration tests and assertion review.",
-      "coverage_limit": "A constant argument to an ordinary assert! does not by itself request const evaluation. debug_assert! can be disabled and must not carry a required safety check."
+      "coverage_limit": "A constant argument to an ordinary assert! does not by itself request const evaluation. debug_assert! can be disabled and must not carry a required safety check.",
+      "example": {
+        "compliant": "// Compliant: the check remains active in production.\nfn check(value: u8) -> Result<(), ()> {\n    if value <= 10 { Ok(()) } else { Err(()) }\n}",
+        "non_compliant": "// Non-compliant: the required check can disappear.\nfn check(value: u8) -> Result<(), ()> {\n    debug_assert!(value <= 10);\n    Ok(())\n}",
+        "note": "Both compile. The API must reject values above 10 in production builds too; with ``-C debug-assertions=no`` the second returns ``Ok(())`` for 11. ``debug_assert!`` is conditional on that build setting and cannot carry a required runtime check."
+      }
     },
     {
       "id": "SCR-RUST-041",

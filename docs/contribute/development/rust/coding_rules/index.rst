@@ -42,12 +42,13 @@ Rust Coding Rules (MISRA-derived draft)
 Attribution
 ===========
 
-The applicability verdicts in this catalogue come from the *Rust Cross Reference with
+The applicability assessments in this catalogue come from the *Rust Cross Reference with
 MISRA C++ 2023* prepared by the Coding Guidelines Subcommittee of the
 `Safety-Critical Rust Consortium <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines>`_
 and submitted as
 `pull request #1226 <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/pull/1226>`_,
-still under review at the time of writing. The rule grouping started from the paper
+still under review at the time of writing and used here as a working reference, not
+as an approved standard. The rule grouping started from the paper
 `MISRust: Mapping MISRA-C++ Coding Guidelines to the Rust Programming Language
 <https://arxiv.org/abs/2605.23490v2>`_ by Marius Molz, Niels Schneider, Sven Lechner,
 Stefan Kowalewski and Alexandru Kampmann (RWTH Aachen University) and its
@@ -76,9 +77,13 @@ configuration in the ``score_rust_policies`` repository are preferred over rigid
 language subsetting, and research such as MISRust is used as supporting rationale
 rather than as normative compliance criteria.
 
-This section does not change that position. It takes the SCRC's own MISRA C++:2023
-cross-reference as the authority on which guidelines apply to Rust, and proposes S-CORE
-rule text for the applicable guidelines that have no SCRC coding guideline yet. This
+This section does not change that position. It takes the SCRC's own draft MISRA
+C++:2023 cross-reference as the working reference for which guidelines apply to Rust,
+and proposes S-CORE rule text for the applicable guidelines. At the pinned revision
+three of them already have a draft SCRC coding guideline, for shift-count bounds,
+numeric uses of ``as`` and recursion; the corresponding S-CORE rules link to those
+drafts and are to be reconciled with them rather than compete. For the remaining
+applicable guidelines no SCRC rule text exists yet. This
 lets reviewers check the existing lint profile for gaps and decide, rule by rule, which
 obligations S-CORE wants to adopt, map to a validated check, or reject with a recorded
 reason. A rule listed here binds a component only after it has been adopted through the
@@ -88,11 +93,15 @@ contribution to the SCRC guidelines rather than a competing standard.
 Purpose and scope
 =================
 
-The catalogue contains 43 proposed Rust rules: 40 interpretations of MISRA C++:2023
-guidelines and three S-CORE supplements for buffer extents at foreign interfaces,
-dependency and generated-code soundness, and verification governance. They cover 83 of
-the 92 guidelines the SCRC cross-reference marks as applicable to safe or unsafe Rust,
-plus five guidelines retained beyond the SCRC verdict with a stated reason. Nine
+The catalogue contains 43 proposed Rust rules: 39 interpretations of MISRA C++:2023
+guidelines and four S-CORE supplements, for buffer extents at foreign interfaces,
+dependency and generated-code soundness, foreign-language boundaries and verification
+governance. The foreign-boundary supplement also links MISRA C++ sources that the SCRC
+draft assesses as applicable to unsafe Rust. Together the rules link 83 of the 92 MISRA
+C++ guidelines the SCRC draft assesses as applicable to safe or unsafe Rust, plus five
+guidelines retained by S-CORE although the SCRC draft assesses them as not applicable,
+each with a stated reason. Linking a source records an interpretation; whether a rule
+makes every obligation of its sources explicit is part of the review. Nine
 applicable guidelines have no S-CORE rule yet and are listed in the review queue of
 the :ref:`applicability register <rust_coding_rules_applicability>`. Grouping is
 many-to-one: the number of Rust rules is not the number of mapped source guidelines.
@@ -122,8 +131,15 @@ The proposed levels mean:
   deviation. A deviation cannot make Rust undefined behavior acceptable.
 * **Advisory:** assess and document nonconformance and its disposition.
 
-These are proposed S-CORE levels, not inherited MISRA categories. The source
-categories and classification decisions remain in the
+These are proposed S-CORE levels, not inherited MISRA categories. S-CORE assigns
+**Required** where a violation can lead to undefined behavior, silent data corruption,
+a masked error or an unchecked invalid state, or where a validated automatic check
+makes conformance cheap to demonstrate. It assigns **Advisory** where the residual
+concern in Rust is readability or structure, or where enforcement would rest on manual
+judgement because the C++ hazard behind the source does not exist in Rust. Where the
+resulting level differs from the category of every MISRA C++ source, the rule entry
+states a level rationale; seven rules currently do. The source categories and
+classification decisions remain in the
 :ref:`applicability register <rust_coding_rules_applicability>`. The ``draft``
 status of this section describes its review state, independently of a rule's
 proposed enforcement level.

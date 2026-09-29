@@ -28,7 +28,8 @@ Sources and Applicability
 Primary reference: SCRC MISRA C++ cross-reference
 ==================================================
 
-The primary applicability reference is the *Rust Cross Reference with MISRA C++ 2023*
+The primary applicability reference, used as a working reference and not as an approved
+standard, is the *Rust Cross Reference with MISRA C++ 2023*
 prepared by the Coding Guidelines Subcommittee of the Safety-Critical Rust Consortium
 (SCRC). It is submitted as
 `pull request #1226 <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/pull/1226>`_
@@ -42,7 +43,7 @@ The SCRC cross-reference assesses all 179 MISRA C++:2023 guidelines in three gro
 For each guideline it also names the related MISRA C:2025 guideline where one exists,
 and the SCRC coding guideline that implements it where one exists.
 
-.. list-table:: SCRC verdicts at the pinned revision
+.. list-table:: Draft SCRC assessment at the pinned revision
    :header-rows: 1
    :widths: 30 10 60
 
@@ -59,14 +60,23 @@ and the SCRC coding guideline that implements it where one exists.
      - 87
      - Excluded, except five guidelines retained with a stated reason.
 
-At the pinned revision three guidelines have an SCRC coding guideline: 7.0.4, 8.2.2
-and 8.2.10. The remaining applicable guidelines have a verdict and a rationale but no
-SCRC rule text yet, which is the gap the S-CORE catalogue proposes to fill.
+At the pinned revision three guidelines have a draft SCRC coding guideline:
 
-How the register follows the SCRC verdict
-=========================================
+* 7.0.4, `shift-count bounds <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/expressions/gui_RHvQj8BHlz9b.rst>`_,
+  linked from :ref:`SCR-RUST-026 <scr-rust-026>`.
+* 8.2.2, `numeric uses of as <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/expressions/gui_ADHABsmK9FXz.rst>`_,
+  linked from :ref:`SCR-RUST-016 <scr-rust-016>`.
+* 8.2.10, `recursion <https://github.com/Safety-Critical-Rust-Consortium/safety-critical-rust-coding-guidelines/blob/9e81abd4b9c642cad7bb62860aca355017f57ea9/src/coding-guidelines/associated-items/gui_ot2Zt3dd6of1.rst>`_,
+  linked from :ref:`SCR-RUST-022 <scr-rust-022>`.
 
-Each register row records the SCRC verdict, the related MISRA C:2025 guideline, the
+The S-CORE rules that build on these are to be reconciled with the SCRC text as it
+matures. The remaining applicable guidelines have an assessment and a rationale but no
+SCRC rule text yet; for those the S-CORE catalogue proposes candidate text.
+
+How the register follows the draft SCRC assessment
+==================================================
+
+Each register row records the draft SCRC assessment, the related MISRA C:2025 guideline, the
 SCRC guideline link and category, and the S-CORE disposition:
 
 * **proposed rust obligation** (83): SCRC marks the guideline applicable and one or
@@ -74,7 +84,7 @@ SCRC guideline link and category, and the S-CORE disposition:
 * **rule assignment pending** (9): SCRC marks the guideline applicable but no S-CORE
   rule covers it yet. These need a new rule or an explicit exclusion decision.
 * **not applicable** (82): SCRC marks the guideline not applicable and S-CORE agrees.
-* **retained beyond SCRC** (5): SCRC marks the guideline not applicable but S-CORE
+* **retained beyond SCRC** (5): the SCRC draft marks the guideline not applicable but S-CORE
   keeps it as a supporting source for an existing rule, with the reason in the note.
 
 The safe/unsafe distinction is recorded per source guideline and shown in the rule
@@ -98,14 +108,14 @@ were the starting point of this draft and remain a secondary reference. The
 ``misrust_class`` column keeps the study's C1 to C6 classification for every guideline
 so that the origin of the rule grouping stays traceable.
 
-Where MISRust and the SCRC cross-reference disagree, the SCRC verdict is followed. The
+Where MISRust and the SCRC cross-reference disagree, the SCRC assessment is followed. The
 subcommittee's own
 `analysis of the differences <https://github.com/inkreasing/safety-critical-rust-coding-guidelines/blob/misrust/src/appendices/standards-matrices/differences-to-misrust.rst>`_
 identifies the main weaknesses of the study: compiler warnings treated as language
 guarantees, raw-pointer operations in safe code overlooked, and foreign interfaces not
 considered when dismissing C++ library guidelines. The corrections this draft had
 applied to the study point in the same direction and are now superseded by the SCRC
-verdicts.
+assessments.
 
 Supporting references
 =====================
@@ -127,7 +137,7 @@ Attribution and records
 The SCRC cross-reference is documentation in the consortium repository and is
 licensed under
 `CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0/>`_ per that repository's
-COPYRIGHT file. Its verdicts, MISRA C references and guideline links are reproduced
+COPYRIGHT file. Its assessments, MISRA C references and guideline links are reproduced
 unchanged; its rationale text is not copied, and readers should consult the pull
 request for it. The MISRust classifications are reproduced unchanged from the CC-BY-4.0
 research artifacts. Rule grouping, Rust rule text, dispositions, assessment notes and
@@ -147,9 +157,9 @@ source manifest records the documents used by role and content hash.
 Review queue
 ============
 
-Guidelines whose S-CORE disposition still diverges from a simple reading of the SCRC
-verdict. Nine need a rule or an exclusion decision; five are retained beyond the SCRC
-verdict and need confirmation or removal.
+Guidelines whose S-CORE disposition still diverges from a simple reading of the draft
+SCRC assessment. Nine need a rule or an exclusion decision; five are retained although
+the SCRC draft assesses them as not applicable, and need confirmation or removal.
 
 .. csv-table:: Open applicability decisions
    :file: _assets/review_queue.csv
