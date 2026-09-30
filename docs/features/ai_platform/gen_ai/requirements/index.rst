@@ -69,7 +69,7 @@ Requirements
 
    The platform shall provide structured APIs (e.g., via MCP) to access vehicle state and invoke safe vehicle commands.
 
-.. feat_req:: GenAI Context Management
+.. feat_req:: GenAI Context API
    :id: feat_req__gen_ai__context_api
    :reqtype: Functional
    :security: YES
@@ -80,9 +80,20 @@ Requirements
    :version: 1
    :valid_from: v2.0.0
 
-   The platform shall provide a Context API that manages short-term context (e.g. current goal, location, dialogue state)
-   and long-term context (e.g. driver preferences, history) for GenAI-based agents,
-   decoupled from low-level system interfaces such as file system or persistent storage.
+   The platform shall provide GenAI-based agents read access through the Context API to the active interaction's current goal, location, and dialogue state.
+
+.. feat_req:: GenAI Long-Term Context Access
+   :id: feat_req__gen_ai__context_long_term
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall provide GenAI-based agents read access through the Context API to the selected driver's preferences and interaction history.
 
 .. feat_req:: Scoped Long-Term Context Updates
    :id: feat_req__gen_ai__context_write_scope
