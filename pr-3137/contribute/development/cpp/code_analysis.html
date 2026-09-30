@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +47,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +65,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/development/cpp/code_analysis';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -644,7 +644,7 @@
                   
   <section id="code-analysis-c">
 <h1>Code Analysis C++<a class="headerlink" href="#code-analysis-c" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-682f0ba1">
+<div class="need_container docutils container" id="SNCB-d7aaf233">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__cpp_code_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -740,14 +740,14 @@
 <h3>Host baseline<a class="headerlink" href="#host-baseline" title="Link to this heading">#</a></h3>
 <p>As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. The basis of the code-coverage analysis is always the host system (Linux) using LLVM’s source-based coverage with clang and <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>. This method is also used for the reporting.</p>
 <p>In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> and evaluated with <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p>
-<p>The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a>. The concrete coverage percentage goals (e.g. 100% statement and branch coverage for safety-critical code and 85% for QM code) are listed in the quality criteria of the <a class="reference internal" href="../../../platform_management_plan/software_verification.html#doc__verification_plan" title="doc__verification_plan"><em class="xref need">Software Verification Plan (doc__verification_plan)</em></a>. In practice, the line coverage reported by the LLVM tooling is used as the statement-coverage metric. Where the required coverage is not achieved, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).</p>
+<p>The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a>. The concrete coverage percentage goals are listed in the quality criteria of the <a class="reference internal" href="../../../platform_management_plan/software_verification.html#doc__verification_plan" title="doc__verification_plan"><em class="xref need">Software Verification Plan (doc__verification_plan)</em></a>. In practice, the line coverage reported by the LLVM tooling is used as the statement-coverage metric. Where the required coverage cannot be achieved by unit testing improvement, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).</p>
 <p>Structural coverage on the target, in contrast to the host baseline, may be provided either by S-CORE (for example for a reference target) or by the integrator or distributor for the target on which the S-CORE software is integrated. Target structural coverage is needed to identify uncovered target-specific code paths, including those that could exhibit undefined behaviour on the target. Evidence for the absence of undefined behaviour itself is provided by the dynamic analysis tools (e.g. UBSAN) together with the target execution, not by structural coverage alone.</p>
 <p>LLVM’s source-based coverage is preferred over <code class="docutils literal notranslate"><span class="pre">gcov</span></code>-based coverage for the following reasons:</p>
 <ul class="simple">
 <li><p><strong>Precision with templates, generics and modern C++:</strong> legacy GCC line-based coverage <code class="docutils literal notranslate"><span class="pre">gcov</span></code> is line-oriented, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM’s source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.</p></li>
 <li><p><strong>MC/DC support:</strong> LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>). Per ISO 26262-6:2018, Table 9, MC/DC is highly recommended only for ASIL D and recommended for ASIL A to C, while branch coverage is the highly recommended metric for ASIL B and C.</p></li>
 </ul>
-<p>The coverage measurement tools themselves (on the host the LLVM <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>/<code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> chain, on the target the tools of the chosen approach below) are subject to tool classification and, where applicable, tool qualification according to ISO 26262-8:2018, Clause 11.</p>
+<p>The coverage measurement tools themselves (on the host the LLVM <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>/<code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> chain, on the target the tools of the chosen approach below) are subject to tool evaluation and, where applicable, tool qualification according to ISO 26262-8:2018, Clause 11.</p>
 <p>To enable this, following tools are used:</p>
 <p class="plantuml" id="needuml-contribute/development/cpp/code_analysis-2">
 <object data="../../../_images/plantuml-0b7427b3021b8aba2ca46b5eaeb4711d2e1d5da5.svg" type="image/svg+xml" style="width:201px;height:337px;background:#FFFFFF;"></object></p>
@@ -766,7 +766,7 @@
 <ul class="simple">
 <li><p>If there is no source-code deviation between host and target, approach 1 (similarity argument) can be chosen. Even in this case an equivalence justification shall be documented, because compiler and target differences (e.g. optimization, inlining, integer widths, alignment, library implementations) can affect the executed code independently of the source (ISO 26262-6:2018, 9.4.6 / 11.4.8).</p></li>
 <li><p>If there are only few local deviations (e.g. guarded by <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">__QNX__</span></code>), approach 1 with manual review and documentation of these specific locations shall be chosen.</p></li>
-<li><p>For larger deviations (different code paths or implementations between host and target, e.g. whole files compiled only for the target such as QNX-only files, or host-only code such as mocks), approach 2, 3 or 4 should be chosen for the target-specific code, provided the respective solution is available for the target system. Host-only code (e.g. mocks or emulation) is excluded from the safety-relevant coverage baseline. These three approaches differ only in the effort for tool classification/qualification, the tool quality, and the effort for infrastructure and workflow implementation.</p></li>
+<li><p>For larger deviations (different code paths or implementations between host and target, e.g. whole files compiled only for the target such as QNX-only files, or host-only code such as mocks), approach 2, 3 or 4 should be chosen for the target-specific code, provided the respective solution is available for the target system. Host-only code (e.g. mocks or emulation) is excluded from the safety-relevant coverage baseline. These three approaches differ only in the effort for tool evaluation/qualification, the tool quality, and the effort for infrastructure and workflow implementation.</p></li>
 </ul>
 <p>Regardless of the chosen approach, differences between the host and target compilers and coverage tools can introduce side effects in the reported coverage output. Typical effects are: branches or regions that appear or disappear because of compiler-specific optimization, inlining or dead-code elimination; a different source-line-to-region mapping (e.g. <code class="docutils literal notranslate"><span class="pre">gcov</span></code> line-based versus <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> region-based counting) leading to differing coverage percentages for the same source; additional or missing branches introduced by the instrumentation itself or by different standard-library implementations; and diverging results for template instantiations or target-specific <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> code paths. As a consequence, the same source can report different structural coverage depending on the compiler and coverage tool used. The validity of the code-coverage result is therefore rationalized by executing the unit tests with and without code-coverage instrumentation and across the relevant build configurations and target systems, and by demonstrating that the results are equivalent. This execution shall be performed as required by <a class="reference internal" href="../../../requirements/platform_assumptions/index.html#aou_req__platform__ut_execution_consistency" title="aou_req__platform__ut_execution_consistency"><em class="xref need">Unit test execution across ... (aou_req__platform__ut_execution_consistency)</em></a>.</p>
 <div class="admonition note">
@@ -895,8 +895,8 @@ diff<span class="w"> </span>host_preprocessed.cpp<span class="w"> </span>target_
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -920,7 +920,7 @@ diff<span class="w"> </span>host_preprocessed.cpp<span class="w"> </span>target_
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>
