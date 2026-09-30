@@ -687,42 +687,24 @@ on <strong>Run Target B</strong>.</p>
 </dd>
 <dt id="term-Process">Process<a class="headerlink" href="#term-Process" title="Link to this term">#</a></dt><dd><p>Instantiation of an Executable programs running on the system that are managed by the Launch Manager.</p>
 </dd>
-<dt id="term-UID">UID<a class="headerlink" href="#term-UID" title="Link to this term">#</a></dt><dd><p>User Identifier - a unique number assigned to each user on a Unix-like operating system.</p>
-</dd>
-<dt id="term-GID">GID<a class="headerlink" href="#term-GID" title="Link to this term">#</a></dt><dd><p>Group Identifier - a unique number assigned to each group on a Unix-like operating system.</p>
-</dd>
 <dt id="term-Polling-Interval">Polling Interval<a class="headerlink" href="#term-Polling-Interval" title="Link to this term">#</a></dt><dd><p>The time interval between successive checks of a condition or status.</p>
-</dd>
-<dt id="term-Working-Directory">Working Directory<a class="headerlink" href="#term-Working-Directory" title="Link to this term">#</a></dt><dd><p>The current directory from which a process is executed, also known as CWD (Current Working Directory).</p>
-</dd>
-<dt id="term-File-Descriptor">File Descriptor<a class="headerlink" href="#term-File-Descriptor" title="Link to this term">#</a></dt><dd><p>A handle used by a process to access files or other input/output resources.</p>
-</dd>
-<dt id="term-Procmgr">Procmgr<a class="headerlink" href="#term-Procmgr" title="Link to this term">#</a></dt><dd><p>Process Manager - a QNX system component that manages process creation and execution.</p>
-</dd>
-<dt id="term-ASLR">ASLR<a class="headerlink" href="#term-ASLR" title="Link to this term">#</a></dt><dd><p>Address Space Layout Randomization - a security technique that randomizes the memory layout of processes.</p>
 </dd>
 <dt id="term-Recovery-Action">Recovery Action<a class="headerlink" href="#term-Recovery-Action" title="Link to this term">#</a></dt><dd><p>Actions taken by the Launch Manager when a process fails or terminates abnormally.</p>
 </dd>
 <dt id="term-Ready-Condition">Ready Condition<a class="headerlink" href="#term-Ready-Condition" title="Link to this term">#</a></dt><dd><p>A configurable condition that must be satisfied before a component is considered ready and operational. Ready conditions can include file system checks, network availability, or custom application-specific signals.</p>
 <p>Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.</p>
 </dd>
-<dt id="term-Liveliness">Liveliness<a class="headerlink" href="#term-Liveliness" title="Link to this term">#</a></dt><dd><p>The state indicating that a process is active and responding as expected.</p>
+<dt id="term-Liveliness">Liveliness<a class="headerlink" href="#term-Liveliness" title="Link to this term">#</a></dt><dd><p>The status of a process, notified by periodic calls to <a class="reference internal" href="#term-Health-Monitor-Interface"><span class="xref std std-term">Health Monitor Interface</span></a>, as per configuration.</p>
+</dd>
+<dt id="term-Monitoring-of-Processes">Monitoring of Processes<a class="headerlink" href="#term-Monitoring-of-Processes" title="Link to this term">#</a></dt><dd><p>The activity of observing and checking if a process is running or has been exited with an abnormal status.</p>
 </dd>
 <dt id="term-Watchdog">Watchdog<a class="headerlink" href="#term-Watchdog" title="Link to this term">#</a></dt><dd><p>A monitoring mechanism that detects system failures and can trigger recovery actions.</p>
 </dd>
 <dt id="term-Interval">Interval<a class="headerlink" href="#term-Interval" title="Link to this term">#</a></dt><dd><p>A period of time between events or measurements.</p>
 </dd>
-<dt id="term-QNX">QNX<a class="headerlink" href="#term-QNX" title="Link to this term">#</a></dt><dd><p>A real-time operating system commonly used in embedded systems.</p>
-</dd>
-<dt id="term-DSS">DSS<a class="headerlink" href="#term-DSS" title="Link to this term">#</a></dt><dd><p>Device Safe State - a safe operational state that a system can enter during failures.</p>
-</dd>
-<dt id="term-DAG">DAG<a class="headerlink" href="#term-DAG" title="Link to this term">#</a></dt><dd><p>Directed Acyclic Graph - a data structure used to represent dependencies between processes.</p>
-</dd>
 <dt id="term-SWC">SWC<a class="headerlink" href="#term-SWC" title="Link to this term">#</a></dt><dd><p>Software Components - modular software units that can be independently managed.</p>
 </dd>
 <dt id="term-Run-target">Run target<a class="headerlink" href="#term-Run-target" title="Link to this term">#</a></dt><dd><p>A named collection of processes and their dependencies that can be launched, stopped, or switched as a group to achieve a specific operational mode or configuration.</p>
-</dd>
-<dt id="term-Operating-System">Operating System<a class="headerlink" href="#term-Operating-System" title="Link to this term">#</a></dt><dd><p>The system software that manages computer hardware and software resources and provides common services for computer programs.</p>
 </dd>
 </dl>
 </section>
