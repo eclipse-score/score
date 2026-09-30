@@ -379,7 +379,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__health_management[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__dev_experience__prog_languages[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
