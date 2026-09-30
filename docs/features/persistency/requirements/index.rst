@@ -365,23 +365,6 @@ Persistency Requirements
 
    The Persistency shall support caching mechanisms to improve access times for frequently accessed key-value pairs.
 
-.. feat_req:: Direct access
-   :id: feat_req__persistency__direct_access
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :derived_from: stkh_req__dependability__availability[version==1]
-   :satisfied_by: feat__persistency[version==1]
-   :status: invalid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The Persistency shall support direct access to key-value pairs without the necessity to load the entire storage to RAM in advance.
-
-   .. note::
-      Direct access improves availability of data and reduces memory consumption for large data sets.
-      This requirement is marked as invalid because direct access may not be feasible for all storage backends, especially those that require loading the entire storage into RAM for efficient access.
-
 .. feat_req:: Integrity check
    :id: feat_req__persistency__integrity_check
    :reqtype: Functional
@@ -574,40 +557,6 @@ Persistency Requirements
 
    - viewing and modifying key-value pairs during development, testing and debugging
    - provisioning of default values via external file
-
-.. feat_req:: Support development mode
-   :id: feat_req__persistency__dev_mode
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :derived_from: stkh_req__dependability__safe_mode_switch[version==1]
-   :satisfied_by: feat__persistency[version==1]
-   :status: invalid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The Persistency shall support the development mode.
-   The development mode shall allow unrestricted data access and bypass security policies.
-
-   .. note::
-      This requirement will not be implemented and in development mode you can change logLevel to kDebug.
-
-.. feat_req:: Support production mode
-   :id: feat_req__persistency__prod_mode
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :derived_from: stkh_req__dependability__safe_mode_switch[version==1]
-   :satisfied_by: feat__persistency[version==1]
-   :status: invalid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The Persistency shall support the production mode.
-   The production mode should enforce the most restrictive data access controls feasible.
-
-   .. note::
-      This requirement will not be implemented and in production mode you can change logLevel to kInfo.
 
 .. needextend:: c.this_doc() and is_external == False and "persistency/requirements" in docname
    :+tags: persistency
