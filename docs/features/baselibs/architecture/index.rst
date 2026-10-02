@@ -106,6 +106,14 @@ Interfaces
    :status: valid
    :version: 1
 
+.. logic_arc_int:: Operating System Abstraction Library
+   :id: logic_arc_int__baselibs__os
+   :included_by: feat__baselibs[version==1]
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
 .. logic_arc_int:: Base64
    :id: logic_arc_int__baselibs__utils_base64
    :included_by: feat__baselibs
