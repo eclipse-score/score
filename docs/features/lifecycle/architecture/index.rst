@@ -46,7 +46,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__lifecycle__switch_run_targets[version==1], feat_req__lifecycle__liveliness_detection[version==1]
+   :fulfils: feat_req__lifecycle__monitor_processes[version==1]
 
    .. needarch::
       :scale: 50
