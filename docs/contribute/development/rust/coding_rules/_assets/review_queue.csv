@@ -1,0 +1,11 @@
+Source ID,Draft SCRC assessment,MISRust class,Source level,Proposed Rust rules,Assessment
+5.10.1,safe,C3,Required,rule assignment pending,SCRC draft: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).
+5.13.4,safe,C3,Required,rule assignment pending,SCRC draft: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.
+9.4.2,safe,C3,Required,rule assignment pending,SCRC draft: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.
+9.5.1,safe,C3,Advisory,rule assignment pending,SCRC draft: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.
+10.1.1,safe,C3,Advisory,rule assignment pending,"SCRC draft: applies to safe Rust; take &mut only when needed, with trait-definition exception. No S-CORE rule yet."
+10.2.1,safe,C3,Required,rule assignment pending,"SCRC draft: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet."
+13.3.4,safe,C2,Required,rule assignment pending,SCRC draft: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.
+19.0.1,not applicable,C5,Required,:ref:`SCR-RUST-037 <scr-rust-037>`,SCRC draft: not applicable (cfg attaches to the next item). Retained by S-CORE for the cfg-name typo hazard: a misspelled cfg predicate silently disables code unless check-cfg is enforced (SCR-RUST-037).
+21.2.3,safe,C1,Required,rule assignment pending,SCRC draft: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.
+28.3.1,safe,C2,Required,rule assignment pending,SCRC draft: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.
