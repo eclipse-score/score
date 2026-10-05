@@ -14,8 +14,8 @@
 
 .. _tools_compiler:
 
-Compiler Tools Overview
-=======================
+Compiler Tools
+==============
 
 .. needtable:: Compiler Tools List
    :tags: tool_management, tools_compiler

@@ -96,6 +96,23 @@ documents are listed as well, so that it is easy to identify missing documents.
 Platform documentation
 ++++++++++++++++++++++
 
+.. _documents_docs_architecture:
+
+docs/architecture
+#################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "architecture/" in need["docname"] and not "features/" in need["docname"] and not "modules/" in need["docname"]:
+          results.append(need)
+
+
 .. _documents_docs_contribute:
 
 docs/contribute
@@ -112,8 +129,6 @@ docs/contribute
        if need["docname"] is not None and "contribute/" in need["docname"]:
           results.append(need)
 
-
-.. _documents_docs_glossary:
 
 .. _documents_docs_features:
 
@@ -223,7 +238,7 @@ docs/features/daal
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/daal/" in need["docname"]:
+       if need["docname"] is not None and "features/frameworks/daal/" in need["docname"]:
           results.append(need)
 
 .. _documents_docs_features_diagnostics:
@@ -257,8 +272,26 @@ docs/features/feo
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/feo/" in need["docname"]:
+       if need["docname"] is not None and "features/frameworks/feo/" in need["docname"]:
           results.append(need)
+
+.. _documents_docs_features_frameworks:
+
+docs/features/frameworks
+########################
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
+   :sort: id
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "features/frameworks/" in need["docname"]:
+          results.append(need)
+
 
 .. _documents_docs_features_gen_ai:
 
@@ -274,7 +307,7 @@ docs/features/gen_ai
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/gen_ai/" in need["docname"]:
+       if need["docname"] is not None and "features/ai_platform/gen_ai/" in need["docname"]:
           results.append(need)
 
 .. _documents_docs_features_lifecycle:
@@ -294,12 +327,11 @@ docs/features/lifecycle
        if need["docname"] is not None and "features/lifecycle/" in need["docname"]:
           results.append(need)
 
-.. _documents_docs_features_frameworks:
 
 .. _documents_docs_features_logging:
 
-docs/features/logging
-#####################
+docs/features/log_and_trace
+###########################
 
 .. needtable::
    :style: table
@@ -310,7 +342,7 @@ docs/features/logging
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/logging/" in need["docname"]:
+       if need["docname"] is not None and "features/log_and_trace/" in need["docname"]:
           results.append(need)
 
 
@@ -400,22 +432,7 @@ docs/features/time
        if need["docname"] is not None and "features/time/" in need["docname"]:
           results.append(need)
 
-.. _documents_docs_features_tracing:
-
-docs/features/tracing
-#####################
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/tracing/" in need["docname"]:
-          results.append(need)
+.. _documents_docs_glossary:
 
 docs/glossary
 #############
@@ -433,27 +450,10 @@ docs/glossary
           results.append(need)
 
 
-.. _documents_docs_handbook:
+.. _documents_docs_introduction:
 
-docs/handbook
-#############
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "handbook/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_manuals:
-
-docs/manuals
-############
+docs/introduction
+#################
 
 .. needtable::
    :style: table
@@ -464,7 +464,7 @@ docs/manuals
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "manuals/" in need["docname"]:
+       if need["docname"] is not None and "introduction/" in need["docname"]:
           results.append(need)
 
 .. _documents_docs_modules:
@@ -565,9 +565,24 @@ docs/score_tools
 
    results = []
 
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "score_tools/" in need["docname"]:
+          results.append(need)
+
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety_affected;security_affected;status
+   :colwidths: 25,45,10,10,10
+   :sort: docname
+
+   results = []
+
    for need in needs.filter_types(["doc_tool"]):
        if need["docname"] is not None and "score_tools/" in need["docname"]:
           results.append(need)
+
+
 
 .. _documents_docs_security:
 
@@ -584,21 +599,4 @@ docs/security
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "security/" in need["docname"]:
-          results.append(need)
-
-.. _documents_docs_tools:
-
-docs/tools
-##########
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;security;status
-   :colwidths: 25,45,10,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "tools/" in need["docname"]:
           results.append(need)

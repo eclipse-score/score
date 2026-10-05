@@ -15,47 +15,14 @@
 Decision Records
 ================
 
-Strategy
-~~~~~~~~
+The decision records are grouped by category. Each category is a collapsible
+section in the navigation menu; select one to browse its decision records.
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   DR-*-strat*
-
-Architecture
-~~~~~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   DR-*-arch*
-
-Infrastructure
-~~~~~~~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   DR-*-infra*
-
-Process
-~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   DR-*-proc*
-
-Integration
-~~~~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   DR-*-int*
+   strategy/index
+   architecture/index
+   infrastructure/index
+   process/index
+   integration/index

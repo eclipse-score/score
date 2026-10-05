@@ -73,7 +73,7 @@ The components are designed to cover the expectations from the feature architect
    :status: valid
    :version: 1
    :implements: logic_arc_int__orchestration__user[version==1], logic_arc_int__orchestration__deployment[version==1], logic_arc_int__orchestration__design[version==1]
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__communication__user[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__communication__user[version==1]
    :consists_of: comp__orch_design_impl[version==1], comp__orch_deployment_impl[version==1]
    :belongs_to: feat__orchestration[version==1]
 
@@ -90,7 +90,7 @@ The components are designed to cover the expectations from the feature architect
    :safety:  ASIL_B
    :status: valid
    :version: 1
-   :uses: logic_arc_int__logging__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__communication__user[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1], logic_arc_int__tracing__tracing[version==1], logic_arc_int__communication__user[version==1]
    :belongs_to: comp__orchestrator[version==1]
    :fulfils: comp_req__orchestrator__deploy[version==1]
 

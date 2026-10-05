@@ -14,8 +14,8 @@
 
 .. _tools_static_analysis_code_quality:
 
-Static Analysis & Code Quality Tools Overview
-=============================================
+Static Analysis & Code Quality Tools
+====================================
 
 .. needtable:: Static Analysis & Code Quality List
    :tags: tool_management, tools_static_analysis_code_quality

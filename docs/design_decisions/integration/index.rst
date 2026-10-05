@@ -12,30 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. mod:: Logging
-   :id: mod__logging
-   :status: valid
-   :version: 1
-   :safety: ASIL_B
-   :security: YES
-   :includes: comp__logging
-
-.. mod_view_sta:: Logging
-   :id: mod_view_sta__logging__logging
-   :version: 1
-   :includes: comp__logging
-   :belongs_to: mod__logging[version==1]
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_module(need(), needs) }}
-
-
-Module Documents
-================
+Integration
+===========
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
+   :maxdepth: 1
+   :glob:
+
+   DR-*-int*
