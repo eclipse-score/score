@@ -13,7 +13,7 @@
 DR-011-Infra: AI Agent Context Packaging Tooling Selection
 ==========================================================
 
-- **Date:** 2026-07-31
+- **Date:** 2026-10-05
 - **Issue:** `#3115 <https://github.com/eclipse-score/score/issues/3115>`_
 
 .. dec_rec:: AI Agent Context Packaging Tooling Selection
@@ -160,7 +160,3 @@ project matures significantly.
      - Low
      - **DO NOT USE** at this maturity
 
-.. note::
-
-   Status remains **proposed** until a proof-of-concept pilot validates integration with
-   S-CORE's Bazel/Sphinx/sphinx-needs infrastructure and CI pipeline.
