@@ -14,8 +14,9 @@
 
 .. doc_tool:: pytest
    :id: doc_tool__pytest
-   :status: draft
-   :version: 9.0.3
+   :status: evaluated
+   :version: 1
+   :tool_version: 9.0.3
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
