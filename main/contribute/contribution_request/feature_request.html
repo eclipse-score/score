@@ -631,7 +631,7 @@
                   
   <section id="feature-enhancement-proposal-fep">
 <h1>Feature &amp; Enhancement Proposal (FEP)<a class="headerlink" href="#feature-enhancement-proposal-fep" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-2569fcc2">
+<div class="need_container docutils container" id="SNCB-71f3db0d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feature_request_guideline">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -650,7 +650,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>2</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>3</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_workproducts.html#wp__training_path">wp__training_path</a></span></span></div>
 </span></div>
@@ -719,6 +719,8 @@ once one is.</p>
 the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both once the FCP closes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fep:breaking-change</span></code> is applied to the FEP PR of a Breaking Change FEP (see <a class="reference internal" href="#breaking-change-feps-additional-requirements">Breaking Change FEPs -
 Additional Requirements</a>), so that the FCP bot requires the explicit approval quorum.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fep:incubating</span></code> is applied to the tracking Issue while an incubator repository for the FEP is
+active, and removed when the repository is renamed or archived.</p>
 <p>A FEP that sees no activity for an extended period, most commonly while unshepherded or shepherded
 but not yet ready for FCP, may be marked with the existing <code class="docutils literal notranslate"><span class="pre">Stale</span></code> label like any other inactive
 issue. This does not reject the FEP; it signals that it has lost momentum and may be picked up again
@@ -729,13 +731,40 @@ later.</p>
 <p><strong>Phase 0 - Idea Exploration</strong> (informal, no status)</p>
 <p>Post the idea informally in the S-CORE architecture channel before writing anything formal. This
 surfaces obvious problems early, finds prior related proposals, and identifies whether a Shepherd
-might be willing to pick it up. Move to Phase 1 once you have a willing Shepherd.</p>
+might be willing to pick it up. Move to Phase 1 once you have a willing Shepherd. If the content
+of the FEP is not yet clear and needs implementation work to take shape, Phase 1 offers an
+incubation step before the write-up.</p>
 <p><strong>Phase 1 - Draft + Shepherd Shaping</strong> (status: <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Needs</span> <span class="pre">Shepherd</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span>
 <span class="pre">Shepherded</span></code>)</p>
-<p>Open a PR with your FEP draft, using the FEP template below. At the same time, open a tracking Issue
-of type <em>Feature Request</em>, labeled <code class="docutils literal notranslate"><span class="pre">fep</span></code> and <code class="docutils literal notranslate"><span class="pre">fep:needs-shepherd</span></code>, set to status <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Needs</span>
-<span class="pre">Shepherd</span></code>, and reference it in the FEP via the <code class="docutils literal notranslate"><span class="pre">:tracking:</span></code> field. The Issue links back to the
-FEP PR, giving bidirectional traceability.</p>
+<details class="admonition-optional-incubation-before-the-write-up admonition">
+<summary class="admonition-title">Optional: Incubation before the write-up</summary>
+<p>If the content of the FEP is not yet clear and needs implementation work close to the S-CORE
+ecosystem to take shape, an incubator repository (<code class="docutils literal notranslate"><span class="pre">inc_&lt;topic&gt;</span></code>) in the S-CORE organization can
+be created. This requires that</p>
+<ul class="simple">
+<li><p>the Shepherd is already confirmed and committed to the idea, and</p></li>
+<li><p>no FEP PR (Decision Record) for the topic exists in the score repository yet.</p></li>
+</ul>
+<p>On this path, open the tracking Issue first (labels <code class="docutils literal notranslate"><span class="pre">fep</span></code> and <code class="docutils literal notranslate"><span class="pre">fep:incubating</span></code>, status
+<code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Shepherded</span></code>). Link the incubator repository in the Issue, and link the Issue back from
+the repository README. The author opens the FEP PR once the incubation result is mature enough to
+write down. The same Issue continues; no second Issue is opened.</p>
+<p>The incubator repository follows the lifecycle of the FEP:</p>
+<ul class="simple">
+<li><p>It stays active during the rest of Phase 1 and the FCP, and reviewers may use it as evidence for
+the proposal.</p></li>
+<li><p>After the FEP is accepted, the repository is renamed and continues as the implementation
+repository of the Feature (Git history is kept), or it is archived if the implementation moves
+elsewhere.</p></li>
+<li><p>After the FEP is rejected or withdrawn, the repository is archived.</p></li>
+</ul>
+<p>Work in an incubator repository carries no commitment: it is not part of the reference
+integration and does not extend the S-CORE scope.</p>
+</details>
+<p>Open a PR with your FEP draft, using the FEP template below. Unless the Issue already exists from
+Phase 0, open a tracking Issue of type <em>Feature Request</em>, labeled <code class="docutils literal notranslate"><span class="pre">fep</span></code> and
+<code class="docutils literal notranslate"><span class="pre">fep:needs-shepherd</span></code>, set to status <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Needs</span> <span class="pre">Shepherd</span></code>, and reference it in the FEP via
+the <code class="docutils literal notranslate"><span class="pre">:tracking:</span></code> field. The Issue links back to the FEP PR, giving bidirectional traceability.</p>
 <p>Once a Shepherd is confirmed, remove the <code class="docutils literal notranslate"><span class="pre">fep:needs-shepherd</span></code> label, move the tracking Issue to
 status <code class="docutils literal notranslate"><span class="pre">Draft</span> <span class="pre">-</span> <span class="pre">Shepherded</span></code>, and update it to name the Shepherd.</p>
 <p>Author and Shepherd iterate until the proposal is complete and well-argued. When the Shepherd judges
@@ -778,7 +807,8 @@ Community quorum. The result is posted to the PR and the tracking Issue, and rep
 <p>If the FCP closed cleanly, the FEP PR is merged and recorded as a Decision Record. If the FCP closed
 with unresolved blocking objections, the FEP is rejected. The author may withdraw at any point
 before acceptance. In each case, the tracking Issue’s status is updated to match: <code class="docutils literal notranslate"><span class="pre">Accepted</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Rejected</span></code>, or <code class="docutils literal notranslate"><span class="pre">Withdrawn</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">Rejected</span></code>, or <code class="docutils literal notranslate"><span class="pre">Withdrawn</span></code>. If an incubator repository exists, it is renamed (Accepted) or
+archived (Rejected, Withdrawn) as described in Phase 1.</p>
 <p>Breaking Change FEPs additionally require explicit approval from a minimum quorum of Architecture
 Community members; they cannot pass by silence alone.</p>
 <p><strong>Phase 4 - Implementation Tracking</strong> (status: <code class="docutils literal notranslate"><span class="pre">Implementing</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Implemented</span></code>)</p>
