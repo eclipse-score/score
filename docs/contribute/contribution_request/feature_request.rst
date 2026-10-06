@@ -19,7 +19,7 @@ Feature & Enhancement Proposal (FEP)
 .. document:: Feature Request Guideline
   :id: doc__feature_request_guideline
   :status: valid
-  :version: 2
+  :version: 3
   :safety: QM
   :security: NO
   :realizes: wp__training_path[version==1]
@@ -80,6 +80,9 @@ the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both o
 ``fep:breaking-change`` is applied to the FEP PR of a Breaking Change FEP (see `Breaking Change FEPs -
 Additional Requirements`_), so that the FCP bot requires the explicit approval quorum.
 
+``fep:incubating`` is applied to the tracking Issue while an incubator repository for the FEP is
+active, and removed when the repository is renamed or archived.
+
 A FEP that sees no activity for an extended period, most commonly while unshepherded or shepherded
 but not yet ready for FCP, may be marked with the existing ``Stale`` label like any other inactive
 issue. This does not reject the FEP; it signals that it has lost momentum and may be picked up again
@@ -92,15 +95,44 @@ The Process: Five Phases
 
 Post the idea informally in the S-CORE architecture channel before writing anything formal. This
 surfaces obvious problems early, finds prior related proposals, and identifies whether a Shepherd
-might be willing to pick it up. Move to Phase 1 once you have a willing Shepherd.
+might be willing to pick it up. Move to Phase 1 once you have a willing Shepherd. If the content
+of the FEP is not yet clear and needs implementation work to take shape, Phase 1 offers an
+incubation step before the write-up.
 
 **Phase 1 - Draft + Shepherd Shaping** (status: ``Draft - Needs Shepherd`` -> ``Draft -
 Shepherded``)
 
-Open a PR with your FEP draft, using the FEP template below. At the same time, open a tracking Issue
-of type *Feature Request*, labeled ``fep`` and ``fep:needs-shepherd``, set to status ``Draft - Needs
-Shepherd``, and reference it in the FEP via the ``:tracking:`` field. The Issue links back to the
-FEP PR, giving bidirectional traceability.
+.. admonition:: Optional: Incubation before the write-up
+  :collapsible: closed
+
+  If the content of the FEP is not yet clear and needs implementation work close to the S-CORE
+  ecosystem to take shape, an incubator repository (``inc_<topic>``) in the S-CORE organization can
+  be created. This requires that
+
+  * the Shepherd is already confirmed and committed to the idea, and
+  * no FEP PR (Decision Record) for the topic exists in the score repository yet.
+
+  On this path, open the tracking Issue first (labels ``fep`` and ``fep:incubating``, status
+  ``Draft - Shepherded``). Link the incubator repository in the Issue, and link the Issue back from
+  the repository README. The author opens the FEP PR once the incubation result is mature enough to
+  write down. The same Issue continues; no second Issue is opened.
+
+  The incubator repository follows the lifecycle of the FEP:
+
+  * It stays active during the rest of Phase 1 and the FCP, and reviewers may use it as evidence for
+    the proposal.
+  * After the FEP is accepted, the repository is renamed and continues as the implementation
+    repository of the Feature (Git history is kept), or it is archived if the implementation moves
+    elsewhere.
+  * After the FEP is rejected or withdrawn, the repository is archived.
+
+  Work in an incubator repository carries no commitment: it is not part of the reference
+  integration and does not extend the S-CORE scope.
+
+Open a PR with your FEP draft, using the FEP template below. Unless the Issue already exists from
+Phase 0, open a tracking Issue of type *Feature Request*, labeled ``fep`` and
+``fep:needs-shepherd``, set to status ``Draft - Needs Shepherd``, and reference it in the FEP via
+the ``:tracking:`` field. The Issue links back to the FEP PR, giving bidirectional traceability.
 
 Once a Shepherd is confirmed, remove the ``fep:needs-shepherd`` label, move the tracking Issue to
 status ``Draft - Shepherded``, and update it to name the Shepherd.
@@ -150,7 +182,8 @@ The FCP is tracked by a bot (``.github/workflows/fep-fcp.yml``):
 If the FCP closed cleanly, the FEP PR is merged and recorded as a Decision Record. If the FCP closed
 with unresolved blocking objections, the FEP is rejected. The author may withdraw at any point
 before acceptance. In each case, the tracking Issue's status is updated to match: ``Accepted``,
-``Rejected``, or ``Withdrawn``.
+``Rejected``, or ``Withdrawn``. If an incubator repository exists, it is renamed (Accepted) or
+archived (Rejected, Withdrawn) as described in Phase 1.
 
 Breaking Change FEPs additionally require explicit approval from a minimum quorum of Architecture
 Community members; they cannot pass by silence alone.
