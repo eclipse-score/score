@@ -25,6 +25,13 @@ extensions = [
     "score_sphinx_bundle",
 ]
 
+# Feature documentation is provided by one Bazel bundle per feature and mounted
+# below ``features/``. Keep the live workspace sources out of the host
+# project's discovery so they are not registered twice by Sphinx.
+exclude_patterns = [
+    "features/*/**",
+]
+
 # Serve files from docs/_assets and load our own CSS overrides last so they win
 # over the styles shipped by the score_docs_as_code bundle.
 html_static_path = ["_assets"]
