@@ -63,9 +63,13 @@ html[data-theme="dark"] {
 .bd-main .bd-content .bd-article-container {
     max-width: 100%;  /* default is 60em */
   }
-/* Whole page size */
+/* Whole page size — stretch to the full viewport width on wide screens
+   (default max-width is 88rem), but keep a small left/right gutter so the
+   content doesn't run to the screen edges. */
 .bd-page-width {
-    max-width: 100rem;  /* default is 88rem */
+    max-width: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 
@@ -140,6 +144,13 @@ ul.bd-breadcrumbs li.breadcrumb-item:not(.breadcrumb-home)::before {
 }
 
 blockquote {
+    color: var(--pst-color-text-base);
+}
+
+/* Override text-muted for content-area elements that need readable text on light backgrounds.
+   --pst-color-text-muted is set to #FFF for the dark header, but these sit on the page body. */
+html[data-theme="light"] table caption,
+html[data-theme="light"] figure figcaption {
     color: var(--pst-color-text-base);
 }
 

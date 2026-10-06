@@ -16,8 +16,34 @@
     font-size: 1.2em;
 
 }
+
+.score-grid .sd-card {
+    border: 1px solid rgba(45, 25, 66, 0.15);
+    box-shadow: none !important;
+    border-radius: 0.5rem;
+}
+
 .score-grid .sd-card-body {
-    text-align: justify;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+.score-grid .sd-card-body img {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.score-grid .needs_filter_warning {
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--pst-color-text-base);
+    margin: 0;
 }
 
 details.sd-dropdown summary.sd-card-header + div.sd-summary-content

@@ -16,6 +16,36 @@ table.needs_type_tool_req > tbody > tr.head > td {
 /* Common NEED configs       */
 /* ######################### */
 
+/* Improve wrapping and width usage for Sphinx-Needs tables/datatables only */
+.needstable_wrapper .pst-scrollable-table-container,
+.needstable_wrapper .dataTables_wrapper,
+.needstable_wrapper table.NEEDS_TABLE,
+.needstable_wrapper table.NEEDS_DATATABLES,
+table.NEEDS_TABLE,
+table.NEEDS_DATATABLES {
+    width: 100%;
+}
+
+.needstable_wrapper table.NEEDS_TABLE,
+.needstable_wrapper table.NEEDS_DATATABLES,
+table.NEEDS_TABLE,
+table.NEEDS_DATATABLES {
+    table-layout: fixed;
+}
+
+.needstable_wrapper table.NEEDS_TABLE th,
+.needstable_wrapper table.NEEDS_TABLE td,
+.needstable_wrapper table.NEEDS_DATATABLES th,
+.needstable_wrapper table.NEEDS_DATATABLES td,
+table.NEEDS_TABLE th,
+table.NEEDS_TABLE td,
+table.NEEDS_DATATABLES th,
+table.NEEDS_DATATABLES td {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 /* All need table cells */
 table.need.need.need > tbody > tr > td {
     padding: 0.7em 1.25em;
