@@ -10,23 +10,24 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-010-Infra: Evaluate AI tooling through a bounded native-process pilot
-========================================================================
+DR-010-Infra: Select AI tooling for S-CORE integration and evaluation
+=====================================================================
 
-.. dec_rec:: Evaluate AI tooling through a bounded native-process pilot
+.. dec_rec:: Select AI tooling for S-CORE integration and evaluation
    :id: dec_rec__infra__ai_sdlc_tooling
    :status: proposed
-   :version: 2
+   :version: 3
    :context: Infrastructure; integrate AI assistance within the existing S-CORE engineering process
-   :decision: Evaluate tools by layer using a bounded native-process pilot before organization-wide selection
+   :decision: Recommend APM for packaging, Spec Kit for integration development and Harbor for evaluation; retain the native S-CORE engineering workflow
    :tracking: https://github.com/eclipse-score/score/issues/3115
    :consequences: Retain native artifact authority and human accountability; require compatibility and comparative pilot evidence
 
-This is a review candidate for the proposed decision record in
-`PR #3140 <https://github.com/eclipse-score/score/pull/3140>`_. It preserves
-that proposal's identifier and proposed status, uses the current infrastructure
-category, and adds experience from ``s-core_sw_fabric``. It does not record
-an accepted tool selection, process change or qualification decision.
+This is the proposed evaluation outcome for
+`issue #3115 <https://github.com/eclipse-score/score/issues/3115>`_, replacing
+the same-ID candidate in `PR #3140 <https://github.com/eclipse-score/score/pull/3140>`_.
+Version 3 makes the recommendation explicit. Maintainer acceptance is pending.
+The recommendation selects tools for the roles below; operational rollout and
+qualification are separate implementation decisions.
 
 Context
 -------
@@ -54,8 +55,28 @@ an agent benchmark does not establish engineering acceptance.
 Decision
 --------
 
-Evaluate tooling by layer and execute a bounded native-process pilot before
-organization-wide selection:
+Recommend the following combination on the available evidence:
+
+* **APM for distributing agent context.** Its captured documentation explicitly
+  describes resolved-source/content locks, installation policy, drift checks and
+  SBOM export. These capabilities match reproducibility, provenance and bounded
+  destinations. This supports the issue assignee's packaging recommendation.
+  Organization-wide installation behavior remains to be validated.
+* **Spec Kit for developing the integration and supporting tools.** This is the
+  SDLC option with retained implementation experience in this packet. Keep the
+  existing S-CORE workflow and native work products for target engineering;
+  translate selected procedures rather than replacing the native metamodel.
+* **Harbor for comparative agent evaluation.** Its documented custom benchmark
+  environments fit an independently reviewed S-CORE task corpus. Native outcome
+  checks and human engineering review remain the acceptance authority. No Harbor
+  benchmark result or execution is claimed here.
+
+This recommendation is a qualitative engineering inference from the captured
+sources and the labelled implementation evidence. It is not a numerical ranking
+or a measured claim of comparative performance. The rejected/deferred options
+and conditions for reconsideration are recorded below.
+
+Apply these integration constraints:
 
 #. Keep native S-CORE artifacts, identifiers, metamodel and accepted tailoring
    authoritative. Generate or derive agent context from pinned native sources.
@@ -80,6 +101,32 @@ Fabro is the fabric pilot's pinned execution candidate. It is not one of the
 eight issue-listed options, and this proposal does not select it for S-CORE.
 The observed resume limitation is included in the assessment.
 
+Selection Criteria
+------------------
+
+The comparison prioritizes native Sphinx-Needs/metamodel compatibility,
+reproducible context and destination control, requirement-change loopbacks,
+independent deterministic verification, portable evidence, supported developer
+clients, and maintenance/integration effort. These priorities derive from the
+S-CORE ownership and review concerns in PR #3140 and the retained native pilot.
+They are evaluation criteria for this decision, not newly accepted requirements.
+
+APM is the strongest documented match for governed packaging in this survey;
+Lola remains a credible distribution alternative. OKIT's recorded source commits
+are useful provenance, so the evaluation does not repeat the earlier assertion
+that it has no version tracking. Its automatic provider enablement is a concrete
+reason to require destination checks for wider use. No undocumented absence of
+security or governance features is treated as a proven defect.
+
+Spec Kit is selected for the role actually exercised by this packet. Syspilot's
+Sphinx-Needs focus makes it a preferred next native-context experiment, while its
+stated early research status, client/license dependencies and silent loss of
+handoff capability when its extension is disabled prevent an unqualified default
+rollout recommendation. BMAD documents adaptable workflows, but this packet does
+not establish its native S-CORE adaptation. Pharaoh supplies relevant native
+analysis concepts, yet its archived repository cannot establish maintained
+support. Harbor fits the evaluation role; its score never replaces native review.
+
 Alternatives Considered
 -----------------------
 
@@ -97,39 +144,39 @@ No numeric ranking is assigned to an untested tool.
    * - Candidate
      - Documented purpose
      - Experience in this packet
-     - Proposed evaluation
+     - Selection and reason
    * - `APM <https://github.com/microsoft/apm>`_
      - Manifest-based agent context packaging, locks, policy and MCP integration
      - S-CORE package inspection and disposable MCP probes; no APM CLI distribution pilot
-     - Measure reproducibility, drift, upgrades, rollback and destination controls
+     - Recommend as primary packaging tool: documented locks, policy, drift and inventory directly match provenance needs
    * - `Lola <https://github.com/LobsterTrap/lola>`_
      - Cross-assistant skill/context packages and declarative installation
      - Primary-source research; not executed
-     - Compare the same S-CORE installation and upgrade cases with APM
+     - Retain as packaging fallback when supported clients and the same installation/upgrade cases are demonstrated
    * - `OKIT <https://github.com/Mumme-IT/okit>`_
      - Installs skills/agents to providers and records source commits
      - Primary-source research; not executed
-     - Measure provenance, provider writes, upgrades and isolation
+     - Restrict to isolated personal prototyping; documented auto-enabling of detected providers needs explicit destination control before shared rollout
    * - `Syspilot <https://github.com/enthali/syspilot>`_
      - Sphinx-Needs links and focused change context; labelled early research
      - Primary-source research; not executed
-     - Evaluate native metamodel compatibility, loopbacks and reproducibility
+     - Prefer for a subsequent native-context prototype; defer baseline adoption because early breaking changes and VS Code/Copilot/jarvis-core requirements need compatibility checks
    * - `BMAD <https://github.com/bmad-code-org/BMAD-METHOD>`_
      - Skills and workflows for explicit planning, implementation and learning loops
      - Primary-source research; not executed
-     - Test native artifact adaptation and requirement-change loopbacks
+     - Keep as an alternative; adaptive planning is useful, but native artifact/loopback adaptation is unmeasured here and Spec Kit has retained integration experience
    * - `Spec Kit <https://github.com/github/spec-kit>`_
      - Specification-driven development workflow
      - Used to develop the fabric at pinned v1.0.12 / e77daa9021d20db26b878f7dfa5640fe5a42d04e
-     - Retain this development experience; assess native-task adoption separately
+     - Recommend for integration development on measured experience; adapt native tasks without imposing duplicate Spec Kit work products
    * - `Pharaoh <https://github.com/useblocks/pharaoh-skills>`_
      - Sphinx-Needs analysis encoded in skills and agent instructions
      - Primary-source research; requested URL redirects to an archived repository
-     - Assess reusable concepts and successor maintenance separately
+     - Do not add the archived repository as a maintained dependency; reuse reviewed native-trace concepts and assess successors separately
    * - `Harbor <https://github.com/harbor-framework/harbor>`_
      - Agent benchmarks and evaluation environments
      - Primary-source research; not executed
-     - Evaluate as a driver for an agreed public corpus with native outcome checks
+     - Recommend as the comparative benchmark driver: custom environments and arbitrary agents match a shared native task corpus
 
 Current README capabilities are not transferred to historically measured
 versions. The fabric's source and tool locks remain distinct from this dated
@@ -220,9 +267,35 @@ piloting those patterns, rather than adopting a framework wholesale. It does
 not demonstrate comparative tool superiority, community-scale behavior or
 qualification of tools for a safety-related use.
 
-Before issue #3115 is considered complete, maintainers must agree the decision
-scope and evidence threshold, reconcile this candidate with PR #3140, decide
-which comparative pilots are required, and review the native document through
-its documentation CI and ownership rules. Native process applicability,
-qualification, production trust and organization-scale behavior remain open.
-No accepting person, acceptance date or approval is inferred from measurements.
+This record supplies an evaluation outcome for all eight issue-listed options
+and the rationale for the recommended combination. Acceptance of this decision
+record is the requested completion of issue #3115. It does not assert completed
+rollout, comparative benchmarks or qualification. Maintainers decide whether the
+available evidence supports this recommendation and may require additional
+comparison before accepting it. No accepting person, date or approval is inferred.
+
+Reconciliation and Implementation Handoff
+-----------------------------------------
+
+PR #3307 offers this version as a replacement for the DR-010 candidate in #3140.
+Both use ``dec_rec__infra__ai_sdlc_tooling``. Merge one representation of that ID
+at ``docs/design_decisions/infrastructure/DR-010-infra.rst``. If #3307 is accepted,
+the owner of #3140 can close or supersede its same-ID proposal. If #3140 is the
+preferred vehicle, incorporate this record there and supersede #3307. Do not
+merge both records or recreate the removed legacy directory. This PR does not
+modify another contributor's branch or infer their acceptance.
+
+Follow-on rollout work should retain a reviewed public task corpus and immutable
+source pins. Check repeated installation output, allowed provider destinations,
+content/source integrity, upgrades, drift and rollback for packaging. Check native
+IDs/link directions, requirement-change loopbacks, stale-evidence refusal and
+required artifact coverage for procedures. Evaluate agents on native build/test
+and review outcomes, recording retries, failures, usage and environment; fixture
+rendering proxies do not establish task savings. Disposition unsupported clients,
+unknown usage and missing checks before unattended use. Provision trust and
+qualified human review for any claimed safety-related application.
+
+These are explicit follow-on validation needs for implementation and adoption.
+They are not reported as executed work or automatically added to #3115's DoD.
+Tool licensing, native tailoring and qualification applicability remain subject
+to the selected versions, use cases and authorized engineering decisions.
