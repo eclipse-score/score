@@ -105,6 +105,8 @@ If both tools are combined at runtime memory leaks and the corresponding address
 Code Coverage
 =============
 
+The pipeline-based implementation of code coverage tools is maintained in the `coverage_tool repository <https://github.com/eclipse-score/coverage_tool>`__. It provides a Bazel module for collecting coverage data, generating reports and enforcing coverage thresholds in CI. The pipeline uses LLVM source-based coverage on Linux and also provides backend for QNX target tests. See the `coverage_tool documentation <https://eclipse-score.github.io/coverage_tool>`__ for adoption guidance, command references and details about its architecture and verification.
+
 Host baseline
 -------------
 
