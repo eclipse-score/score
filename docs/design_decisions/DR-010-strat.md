@@ -40,8 +40,8 @@ compliance**. "Compliance" here means three concrete, testable claims:
    source/ABI compatible with the S-CORE contract.
 3. **Behavior** — the expected functional workflows behave as specified.
 
-The problem has a structural subtlety that any solution must respect: **most
-S-CORE modules are libraries**, not long-running services. A library's
+The problem has a structural subtlety that any solution must respect: **a
+considerable number of S-CORE modules are libraries**, not long-running services. A library's
 compatibility is a *build/link-time* property, not something that can be observed
 by deploying a binary and watching it call APIs across a process boundary — a
 missing or changed symbol prevents the consumer from *linking* in the first
@@ -153,7 +153,7 @@ claims compliance against a specific SCTS version.
 ## Rationale
 
 - **Two stages because there are two kinds of compatibility.** Build/link-time
-  for libraries (the majority), runtime/wire for services. One mechanism cannot
+  for libraries (a considerable share), runtime/wire for services. One mechanism cannot
   cover both; conflating them is the root of the "how do I test a library?"
   confusion.
 - **Root-module governance makes the test real.** By relying on Bzlmod diamond
