@@ -78,8 +78,51 @@ Proves **presence** and **API surface** without needing a running target.
 - The suite **never names a module-under-test with its own `bazel_dep`**.
   Instead it exposes **binding points** (Bazel `label_flag`s, e.g.
   `time_api`, `kvs_api`, `logging_api`) whose default is an `unbound` target
-  that **fails the build with a descriptive message**. The distribution binds
-  each point to its own target, e.g. in its root `MODULE.bazel`:
+  that **fails the build with a descriptive message**. Inside the test module
+  the binding point and its fail-closed default look like this:
+
+  ```python
+  # @score_compatibility_test_suite//time/BUILD.bazel
+
+  load("@score_compatibility_test_suite//:unbound.bzl", "unbound_binding")
+
+  # Fail-closed default: errors at build time until the root module binds it.
+  unbound_binding(
+      name = "time_api.unbound",
+      message = "SCTS binding 'time_api' is unbound. Bind it in your root " +
+                "MODULE.bazel: compliance.bind(time_api = \"@<impl>//time:api\").",
+  )
+
+  # The binding point the distribution overrides.
+  label_flag(
+      name = "time_api",
+      build_setting_default = ":time_api.unbound",
+  )
+
+  # Conformance program compiled + linked against whatever 'time_api' resolves
+  # to. Compiling proves the source API; linking proves the symbols/ABI.
+  cc_test(
+      name = "time_api_conformance",
+      srcs = ["time_api_conformance.cc"],
+      deps = [":time_api"],  # the label_flag is consumed as a normal dependency
+  )
+  ```
+
+  ```python
+  # @score_compatibility_test_suite//:unbound.bzl
+
+  def _unbound_impl(ctx):
+      # Any attempt to build an unbound binding stops the build.
+      fail(ctx.attr.message)
+
+  unbound_binding = rule(
+      implementation = _unbound_impl,
+      attrs = {"message": attr.string(mandatory = True)},
+  )
+  ```
+
+- The distribution binds each point to its own target, e.g. in its root
+  `MODULE.bazel`:
 
   ```python
   compliance = use_extension("@score_compatibility_test_suite//:bind.bzl", "compliance")
