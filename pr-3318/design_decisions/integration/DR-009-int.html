@@ -1,0 +1,1160 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-009-Int: Portable safety traceability and SBOM exchange &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=415257cb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/integration/DR-009-int';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Eclipse S-CORE (Eclipse Safe Open Vehicle Core)" href="../../introduction/index.html" />
+    <link rel="prev" title="DR-008-Int: S-CORE integration scope in reference_integration repository" href="DR-008-int.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../strategy/index.html">Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process/index.html">Process</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DR-009-Int: Portable safety traceability and SBOM exchange</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Decision Records</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Integration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-009-Int: Portable safety traceability and SBOM exchange</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dr-009-int-portable-safety-traceability-and-sbom-exchange">
+<h1>DR-009-Int: Portable safety traceability and SBOM exchange<a class="headerlink" href="#dr-009-int-portable-safety-traceability-and-sbom-exchange" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2026-10-08</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-92ce9bb4">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__int__portable_safety_traceability">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Portable safety traceability and SBOM exchange</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Integration</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option 3 (proposed)</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__int__portable_safety_traceability" title="dec_rec__int__portable_safety_traceability">dec_rec__int__portable_safety_traceability</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="context-problem">
+<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>S-CORE safety lifecycle information is created and reviewed in engineering
+systems such as Sphinx-Needs and emerging Dependable Element or graph-based
+tooling. Downstream consumers, including product integrators, OEMs and
+independent assessors, also need to discover the safety context associated
+with delivered software and its SBOM components.</p>
+<p>Copying classification, rationale, requirements, evidence and approval state
+into a hand-authored sidecar would create a second source of truth. Exporting
+directly from every authoring tool into every receiving format would instead
+create tool-specific coupling and inconsistent semantics. Waiting for future
+native SPDX and CycloneDX safety models would leave current S-CORE delivery and
+evaluation use cases unaddressed.</p>
+<p>The integration therefore needs a source-neutral mapping boundary that:</p>
+<ul class="simple">
+<li><p>preserves the authoritative lifecycle records and their identifiers;</p></li>
+<li><p>supports more than one S-CORE authoring and traceability approach;</p></li>
+<li><p>transports selected safety context with software and SBOM deliveries;</p></li>
+<li><p>allows deterministic validation and correlation by receiving tools;</p></li>
+<li><p>distinguishes artifact integrity from analysis completeness and truth; and</p></li>
+<li><p>never lets an exporter or receiving tool create or approve a safety decision.</p></li>
+</ul>
+<section id="goals-and-requirements">
+<h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Single source of truth:</strong> Requirements, architecture, safety
+classification, evidence, verification and approval remain authoritative in
+their lifecycle systems.</p></li>
+<li><p><strong>Tool independence:</strong> Sphinx-Needs, Dependable Element, TRLC/Lobster and
+future sources can map into the same portable semantics without making one
+tool mandatory for all producers.</p></li>
+<li><p><strong>Traceability:</strong> Stable identifiers preserve the paths from requirement to
+design, implementation, test, evidence, analysis and approval.</p></li>
+<li><p><strong>Context:</strong> Safety relevance is expressed for a product-component or
+system-element context, not as an intrinsic global property of a package.</p></li>
+<li><p><strong>Fail-closed behavior:</strong> Missing, contradictory, ambiguous, stale or
+integrity-invalid records remain explicit and cannot be silently promoted to
+an approved state.</p></li>
+<li><p><strong>Exchange:</strong> Current SPDX 2.3 and CycloneDX 1.x deliveries can discover an
+external safety artifact. Future native SPDX or CycloneDX representations can
+map into the same receiving model.</p></li>
+<li><p><strong>Provenance:</strong> Exports carry source identity, source revision, policy and
+tool versions, record identities, review state and content digests.</p></li>
+<li><p><strong>Human authority:</strong> Automated tooling may validate, correlate and propose
+findings. Authorized people remain responsible for classification, impact
+decisions, approvals and safety-case acceptance.</p></li>
+</ul>
+<section id="non-goals">
+<h4>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Replacing the S-CORE lifecycle model, safety case or review workflow.</p></li>
+<li><p>Defining a new safety classification or integrity-level vocabulary.</p></li>
+<li><p>Treating functional-safety relevance as vulnerability exploitability or a
+VEX <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">affected</span></code> justification.</p></li>
+<li><p>Automatically determining legal applicability, safety relevance, impact or
+approval.</p></li>
+<li><p>Claiming that a digest alone proves authorship, authority or correctness.</p></li>
+<li><p>Requiring receiving tools to support the experimental transport before the
+corresponding governance and implementation decisions are accepted.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="primary-use-cases">
+<h2>Primary Use Cases<a class="headerlink" href="#primary-use-cases" title="Link to this heading">#</a></h2>
+<section id="supplier-oem-and-independent-assessment-handover">
+<h3>Supplier, OEM and independent-assessment handover<a class="headerlink" href="#supplier-oem-and-independent-assessment-handover" title="Link to this heading">#</a></h3>
+<p>A Tier 1 or internal component team delivers software, an SBOM and available
+safety lifecycle metadata. The OEM or system integrator checks the package
+against its product context and applicable policies, records its own decisions
+with identity and provenance, and prepares a safety-case or assessment evidence
+package for an independent assessor or approval authority.</p>
+</section>
+<section id="internal-feature-development">
+<h3>Internal feature development<a class="headerlink" href="#internal-feature-development" title="Link to this heading">#</a></h3>
+<p>A code, dependency, requirement, architecture, vulnerability or policy change
+opens an impact analysis. The traceability graph identifies the potentially
+affected requirements, tests, evidence and approval records. Routine changes
+may pass automated checks; defined checkpoints require human review. Incremental
+evaluation is supplemented by periodic or baseline-triggered full evaluation so
+that an incomplete impact boundary cannot silently omit transitive effects.</p>
+</section>
+<section id="responsibility-or-jurisdiction-transfer">
+<h3>Responsibility or jurisdiction transfer<a class="headerlink" href="#responsibility-or-jurisdiction-transfer" title="Link to this heading">#</a></h3>
+<p>When software responsibility moves between legal entities, organizations or
+countries, tooling proposes candidate policy changes for legal and compliance
+confirmation. The accountable organization records the confirmed policy set,
+required checks and human approvals before accepting the package.</p>
+</section>
+<section id="open-source-intake">
+<h3>Open-source intake<a class="headerlink" href="#open-source-intake" title="Link to this heading">#</a></h3>
+<p>An open-source project may publish useful component metadata but is not a
+contractual supplier or responsible party. The adopting OEM or integrator
+retains responsibility for classification, applicability, missing evidence and
+approval. Missing safety metadata is represented as an undetermined upstream
+state, not as evidence that the component is not safety-relevant.</p>
+</section>
+</section>
+<section id="options-considered">
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="option-1-hand-authored-srac-record-as-an-independent-source">
+<h3>Option 1: Hand-authored SRAC record as an independent source<a class="headerlink" href="#option-1-hand-authored-srac-record-as-an-independent-source" title="Link to this heading">#</a></h3>
+<p>Teams manually maintain a portable safety assertion alongside the lifecycle
+model.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li><p>Simple for an initial demonstration.</p></li>
+<li><p>Independent of a specific lifecycle tool.</p></li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li><p>Duplicates safety decisions and evidence.</p></li>
+<li><p>Allows the portable record and authoritative lifecycle state to drift.</p></li>
+<li><p>Adds a second review and maintenance workflow.</p></li>
+</ul>
+</section>
+<section id="option-2-direct-authoring-tool-exporters-for-every-target-format">
+<h3>Option 2: Direct authoring-tool exporters for every target format<a class="headerlink" href="#option-2-direct-authoring-tool-exporters-for-every-target-format" title="Link to this heading">#</a></h3>
+<p>Each lifecycle tool exports its records directly into SPDX, CycloneDX and
+receiving-tool-specific representations.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li><p>Avoids a separately authored safety file.</p></li>
+<li><p>Can exploit source-tool-specific information.</p></li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li><p>Couples each source to every transport and receiver.</p></li>
+<li><p>Repeats mapping and validation logic.</p></li>
+<li><p>Makes semantic consistency and migration difficult.</p></li>
+</ul>
+</section>
+<section id="option-3-canonical-projection-with-mapping-overlays-and-portable-transport">
+<h3>Option 3: Canonical projection with mapping overlays and portable transport<a class="headerlink" href="#option-3-canonical-projection-with-mapping-overlays-and-portable-transport" title="Link to this heading">#</a></h3>
+<p>Authoritative source records are mapped read-only into a source-neutral safety
+traceability projection. A validated exporter packages the selected projection
+as an integrity-bound SRAC artifact and references it from the delivered SPDX or
+CycloneDX SBOM. Receivers verify and correlate the artifact without becoming an
+authority for its safety decisions.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li><p>Preserves one authoritative authoring source.</p></li>
+<li><p>Supports multiple S-CORE metamodel and tooling approaches through adapters.</p></li>
+<li><p>Separates lifecycle semantics, exchange transport and receiving-tool storage.</p></li>
+<li><p>Provides a migration path to native SPDX and CycloneDX safety models.</p></li>
+<li><p>Allows deterministic positive and negative testing.</p></li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li><p>Requires governance of the canonical projection and mappings.</p></li>
+<li><p>Requires versioning and compatibility rules.</p></li>
+<li><p>Adds exporter, validation and packaging work.</p></li>
+<li><p>Does not itself prove the truth or completeness of a safety claim.</p></li>
+</ul>
+</section>
+<section id="option-4-wait-for-native-standards-support">
+<h3>Option 4: Wait for native standards support<a class="headerlink" href="#option-4-wait-for-native-standards-support" title="Link to this heading">#</a></h3>
+<p>No portable safety metadata is emitted until released SPDX and CycloneDX
+formats provide all required native concepts.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li><p>Avoids an interim transport convention.</p></li>
+<li><p>Reduces near-term implementation work.</p></li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li><p>Provides no present-day exchange path.</p></li>
+<li><p>Delays validation of S-CORE requirements against the developing standards.</p></li>
+<li><p>Does not solve the mapping between multiple authoritative source models.</p></li>
+</ul>
+</section>
+</section>
+<section id="proposed-decision">
+<h2>Proposed Decision<a class="headerlink" href="#proposed-decision" title="Link to this heading">#</a></h2>
+<p>Adopt <strong>Option 3</strong> as the direction for evaluation and staged implementation.</p>
+<p>The portable representation is a generated projection, not a second authoring
+system. Mapping overlays translate authoritative S-CORE source concepts into a
+canonical safety traceability model. The initial Sphinx-Needs adapter reads
+<code class="docutils literal notranslate"><span class="pre">needs.json</span></code>; additional adapters may support Dependable Element,
+TRLC/Lobster or graph-based sources after their mappings are reviewed.</p>
+<p>The canonical projection shall cover, at minimum:</p>
+<ul class="simple">
+<li><p>subject and product/system context;</p></li>
+<li><p>requirements and architecture elements;</p></li>
+<li><p>domain-specific safety classification and relevance;</p></li>
+<li><p>analysis triggers, impacted elements and impact levels;</p></li>
+<li><p>decisions, responsible agents and lifecycle state;</p></li>
+<li><p>verification, evidence and approval records;</p></li>
+<li><p>assumptions of use and applicability where supplied by the source;</p></li>
+<li><p>source, policy and tool provenance; and</p></li>
+<li><p>publication roots and analysis-closure state.</p></li>
+</ul>
+<p>The projection shall not invent a missing relationship, classification,
+decision, approval or policy conclusion.</p>
+</section>
+<section id="architecture-and-packaging-boundary">
+<h2>Architecture and Packaging Boundary<a class="headerlink" href="#architecture-and-packaging-boundary" title="Link to this heading">#</a></h2>
+<p>The intended flow is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>authoritative lifecycle sources
+    Sphinx-Needs | Dependable Element | TRLC/Lobster | future sources
+                           |
+                    reviewed mappings
+                           v
+           canonical safety traceability projection
+                           |
+          producer validation and package generation
+                           v
+            integrity-bound SRAC exchange artifact
+                           |
+          SPDX/CycloneDX external reference and digest
+                           v
+            receiver verification and correlation
+</pre></div>
+</div>
+<p>For current formats, the CycloneDX 1.x path uses an <code class="docutils literal notranslate"><span class="pre">externalReference</span></code> and
+native hash field. The SPDX 2.3 path uses a package <code class="docutils literal notranslate"><span class="pre">ExternalRef</span></code> in category
+<code class="docutils literal notranslate"><span class="pre">OTHER</span></code> and carries the digest by a documented convention, such as the
+comment or an annotation; SPDX 2.3 does not provide a native checksum field on
+<code class="docutils literal notranslate"><span class="pre">ExternalRef</span></code>. A signed in-toto/DSSE statement may strengthen identity and
+provenance where available, but signatures do not replace semantic completeness
+validation.</p>
+<p>Native future SPDX or CycloneDX safety data shall enter the same canonical
+receiver model rather than creating a separate UI, query or policy path.</p>
+</section>
+<section id="validation-and-trust-boundaries">
+<h2>Validation and Trust Boundaries<a class="headerlink" href="#validation-and-trust-boundaries" title="Link to this heading">#</a></h2>
+<p>Producer-side validation checks:</p>
+<ul class="simple">
+<li><p>schema and vocabulary conformance;</p></li>
+<li><p>identifier uniqueness and referential integrity;</p></li>
+<li><p>requirement-to-evidence and decision traceability;</p></li>
+<li><p>consistency between related classification fields;</p></li>
+<li><p>required lifecycle and closure state;</p></li>
+<li><p>source revision and artifact digests; and</p></li>
+<li><p>deterministic regeneration of derived artifacts.</p></li>
+</ul>
+<p>Receiver-side validation repeats schema, reference, digest and correlation
+checks. It exposes matched, unmatched, ambiguous, invalid and stale states and
+preserves the original provenance. A receiver must not convert any of those
+states into an approved safety decision.</p>
+<p>Artifact integrity, claim completeness and claim truth are separate properties:</p>
+<ul class="simple">
+<li><p>a digest proves that retrieved bytes match the referenced bytes;</p></li>
+<li><p>a signature or attestation can bind bytes and subject to an identity;</p></li>
+<li><p>closure validation can show whether required graph branches are present; and</p></li>
+<li><p>engineering review determines whether the underlying claim is acceptable.</p></li>
+</ul>
+</section>
+<section id="policies-and-human-checkpoints">
+<h2>Policies and Human Checkpoints<a class="headerlink" href="#policies-and-human-checkpoints" title="Link to this heading">#</a></h2>
+<p>Policy evaluation may automate objective checks and propose applicable policy,
+but human confirmation is required when at least one of the following applies:</p>
+<ul class="simple">
+<li><p>safety relevance, integrity level or an assumption of use changes;</p></li>
+<li><p>a requirement, verification result, evidence link or approval becomes stale;</p></li>
+<li><p>a vulnerability or security finding affects a safety-relevant component;</p></li>
+<li><p>the calculated impact boundary is incomplete or ambiguous;</p></li>
+<li><p>software responsibility crosses an organization, legal entity or country;</p></li>
+<li><p>legal or regulatory applicability changes; or</p></li>
+<li><p>an analysis contains an unresolved required decision or evidence branch.</p></li>
+</ul>
+<p>OEM or integrator decisions are recorded with responsible identity, policy
+version, timestamp and digest before packaging.</p>
+</section>
+<section id="tool-confidence">
+<h2>Tool Confidence<a class="headerlink" href="#tool-confidence" title="Link to this heading">#</a></h2>
+<p>Generated evidence records the exporter, validator and mapping versions. Each
+adopter remains responsible for assessing the confidence or qualification needs
+of tools whose output is used in a safety case, including the considerations in
+ISO 26262-8 clause 11 where applicable.</p>
+</section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>S-CORE keeps lifecycle rules and safety decisions in authoritative models.</p></li>
+<li><p>SRAC becomes a derived portability and packaging layer.</p></li>
+<li><p>Competing authoring approaches can be evaluated through explicit mappings
+rather than parallel exchange formats.</p></li>
+<li><p>SPDX and CycloneDX remain transport and standardization targets, not the
+original authority for an S-CORE engineering decision.</p></li>
+<li><p>Downstream tools can implement read-only correlation before native safety
+models are released, while retaining a migration path.</p></li>
+<li><p>A governance owner is required for the canonical projection, mappings,
+versioning rules and compatibility tests.</p></li>
+</ul>
+</section>
+<section id="staged-implementation">
+<h2>Staged Implementation<a class="headerlink" href="#staged-implementation" title="Link to this heading">#</a></h2>
+<p>Following acceptance of this decision record, implementation should be split
+into independently reviewable changes:</p>
+<ol class="arabic simple">
+<li><p>Define and test the canonical projection and mapping contract.</p></li>
+<li><p>Add the Sphinx-Needs <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> adapter without changing source records.</p></li>
+<li><p>Add producer-side validation and deterministic SRAC generation.</p></li>
+<li><p>Add current SPDX 2.3 and CycloneDX 1.x reference mappings.</p></li>
+<li><p>Add receiving-side integrity verification and deterministic correlation.</p></li>
+<li><p>Add packaging, provenance and optional attestation integration.</p></li>
+<li><p>Add further source adapters only after their mappings and ownership are
+agreed.</p></li>
+</ol>
+</section>
+<section id="acceptance-criteria">
+<h2>Acceptance Criteria<a class="headerlink" href="#acceptance-criteria" title="Link to this heading">#</a></h2>
+<p>A demonstrator is accepted only when it proves all of the following:</p>
+<ol class="arabic simple">
+<li><p>The same source revision produces byte-identical portable output.</p></li>
+<li><p>A product-specific assertion correlates only by an approved stable identity,
+such as PURL and version, digest or an explicit SBOM reference; name-only
+matching is rejected.</p></li>
+<li><p>Requirement, evidence, decision and approval references resolve.</p></li>
+<li><p>An unmatched or ambiguous component fails closed without creating a safety
+conclusion.</p></li>
+<li><p>A tampered artifact or mismatched digest is rejected.</p></li>
+<li><p>Removing a required decision or evidence edge leaves signature verification
+unaffected but causes completeness validation to fail.</p></li>
+<li><p>A source update marks dependent exported information stale until it is
+regenerated and reviewed.</p></li>
+<li><p>Tool and policy versions are present in generated provenance.</p></li>
+<li><p>Incremental evaluation is backed by a periodic or baseline-triggered full
+evaluation.</p></li>
+</ol>
+</section>
+<section id="related-work">
+<h2>Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/3282">S-CORE safety relevance proposal issue #3282</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/pull/370">S-CORE SRAC proof of concept PR #370</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/pull/393">Policy-aware use-case documentation PR #393</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/tooling/pull/502">S-CORE tooling mapping overlay PR #502</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/mcp-servers/pull/22">S-CORE metamodel flow PR #22</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spdx/spdx-3-model/pulls?q=is%3Apr+1436+1442+1443+1458">SPDX 3.1-dev FunctionalSafety work</a></p></li>
+<li><p><a class="reference external" href="https://github.com/CycloneDX/specification/pull/1120">CycloneDX safety-model proposal PR #1120</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-008-int.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-008-Int: S-CORE integration scope in reference_integration repository</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../introduction/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eclipse S-CORE (Eclipse Safe Open Vehicle Core)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-use-cases">Primary Use Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supplier-oem-and-independent-assessment-handover">Supplier, OEM and independent-assessment handover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-feature-development">Internal feature development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responsibility-or-jurisdiction-transfer">Responsibility or jurisdiction transfer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-intake">Open-source intake</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-hand-authored-srac-record-as-an-independent-source">Option 1: Hand-authored SRAC record as an independent source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-direct-authoring-tool-exporters-for-every-target-format">Option 2: Direct authoring-tool exporters for every target format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-canonical-projection-with-mapping-overlays-and-portable-transport">Option 3: Canonical projection with mapping overlays and portable transport</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-4-wait-for-native-standards-support">Option 4: Wait for native standards support</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-decision">Proposed Decision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-and-packaging-boundary">Architecture and Packaging Boundary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-and-trust-boundaries">Validation and Trust Boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies-and-human-checkpoints">Policies and Human Checkpoints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-confidence">Tool Confidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#staged-implementation">Staged Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-criteria">Acceptance Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/integration/DR-009-int.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
