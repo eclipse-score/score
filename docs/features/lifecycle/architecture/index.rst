@@ -48,11 +48,33 @@ Interfaces
    :version: 1
    :fulfils: feat_req__lifecycle__monitor_processes[version==1]
 
+   The lifecycle interface supports the initialization, execution, and termination phases of the application.
+   It registers the necessary signal handler for termination signals.
+   It calls the Initialize() and Run() methods in sequence which need to be implemented by the user.
+
    .. needarch::
       :scale: 50
       :align: center
 
       {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: Initialize
+   :id: logic_arc_int_op__lifecycle__initialize
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__lifecycle__lifecycle_if
+
+   Initialize() method shall be implemented by the user to perform the initialization of the application.
+
+   Input:
+      - Application context (e.g. CLI arguments)
+
+   Output:
+      - Integer indicating whether the initialization was successful or not.
+
+   Upon successful initialization, the Run() method is invoked next.
 
 .. logic_arc_int_op:: Run
    :id: logic_arc_int_op__lifecycle__run
@@ -62,13 +84,14 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__lifecycle_if
 
-.. logic_arc_int_op:: Terminate
-   :id: logic_arc_int_op__lifecycle__terminate
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :version: 1
-   :included_by: logic_arc_int__lifecycle__lifecycle_if
+   Run() method shall be implemented by the user to perform the main execution of the application.
+
+   Input:
+      - Shutdown flag indicating whether the application received the request to terminate.
+
+   Output:
+      - Integer indicating whether the execution was successful or not.
+
 
 **Report Running**
 
@@ -80,6 +103,9 @@ Interfaces
    :status: valid
    :version: 1
    :fulfils: feat_req__lifecycle__monitor_processes[version==1]
+
+   The report running interface allows the application to report to the Launch Manager that it finished its initialization phase.
+   The interface only offers a simple function without the sourrounding framework of the full Lifecycle interface.
 
    .. needarch::
       :scale: 50
@@ -95,6 +121,15 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__report_running_if
 
+   Input:
+      - None
+
+   Output:
+      - None
+
+   The operation does not indicate the success or failure of the reporting.
+   Failure to report would eventually result in an activation timeout and forced termination of the application process by the Launch Manager.
+
 **Alive**
 
 .. logic_arc_int:: Alive
@@ -105,6 +140,8 @@ Interfaces
    :status: valid
    :version: 1
    :fulfils: feat_req__com__interfaces[version==1]
+
+   The alive interface allows the application to periodically report its liveness to the Launch Manager or escalate failures.
 
    .. needarch::
       :scale: 50
@@ -120,6 +157,14 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__alive_if
 
+   ReportAlive() operation is used by the application to cyclically indicate that it is still alive.
+
+   Input:
+      - None
+
+   Output:
+      - None
+
 .. logic_arc_int_op:: ReportFailure
    :id: logic_arc_int_op__lifecycle__report_failure
    :security: YES
@@ -127,6 +172,14 @@ Interfaces
    :status: valid
    :version: 1
    :included_by: logic_arc_int__lifecycle__alive_if
+
+   ReportFailure() operation is used by the application to indicate that it has encountered a failure condition.
+
+   Input:
+      - None
+
+   Output:
+      - None
 
 **Control**
 
@@ -138,6 +191,8 @@ Interfaces
    :status: valid
    :version: 1
    :fulfils: feat_req__com__interfaces[version==1]
+
+   The Control interface is used by a State Manager application to control which components shall be active at any given time through the activation run targets.
 
    .. needarch::
       :scale: 50
@@ -153,6 +208,17 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__controlif
 
+   ActivateRunTarget() operation is used by the application to request the activation of a specific run target.
+
+   Input:
+      - Run target to be activated
+      - Force flag indicating whether to cancel any ongoing activation of a different run target or queue the request
+
+   Output:
+      - Boolean indicating whether the request was accepted or not
+
+   The successful execution of the request is returned asynchronously by the callback registered via RegisterActivationCallback().
+
 .. logic_arc_int_op:: GetActiveRunTarget
    :id: logic_arc_int_op__lifecycle__get_act_target
    :security: YES
@@ -161,6 +227,14 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__controlif
 
+   GetActiveRunTarget() operation is used by the application to query the currently active run target.
+
+   Input:
+      - None
+
+   Output:
+      - Currently active run target or error if no run target is currently active
+
 .. logic_arc_int_op:: RegisterActivationCallback
    :id: logic_arc_int_op__lifecycle__reg_callback
    :security: YES
@@ -168,6 +242,14 @@ Interfaces
    :status: valid
    :version: 1
    :included_by: logic_arc_int__lifecycle__controlif
+
+   RegisterActivationCallback() operation is used by the application to register a callback that will be invoked upon the successful execution of a Run Target activation.
+
+   Input:
+      - Callback function to be registered. The callback will be invoked with the name of the newly activated Run Target and the reason for activating it.
+
+   Output:
+      - None
 
 
 **Deadline**
