@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-4a407ae3">
+  <div class="need_container docutils container" id="SNCB-84db249d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -799,6 +799,39 @@ of clause 11 is tailored out accordingly for S-CORE (see: <a class="external_lin
 Practically, this means S-CORE will implement Platform Integration Tests for stakeholder requirements for demonstration,
 but these are not intended to completely covering all stakeholder requirements.</p>
 </div></blockquote>
+</section>
+<section id="consistent-set-of-verifications">
+<h3>Consistent Set of Verifications<a class="headerlink" href="#consistent-set-of-verifications" title="Link to this heading">#</a></h3>
+<p>The S-CORE project selected a multi-repository approach but still decided to provide a “consistent stack”
+to its users (see <a class="reference internal" href="../design_decisions/strategy/DR-001-strat.html#dec_rec__strat__consistent_stack_vs_reference" title="dec_rec__strat__consistent_stack_vs_reference"><em class="xref need">Consistent Stack vs. Refere... (dec_rec__strat__consistent_stack_vs_reference)</em></a>). Consequently there is the need
+to collect a consistent verification evidence for this “Stack”, which is the S-CORE SW platform.</p>
+<ul class="simple">
+<li><p>S-CORE SEooCs/dependable elements developed in the module repositories can deliver their
+feature(s) independently, based on verification evidence collected in one repository and documented
+in one module verification report (see also <a class="reference internal" href="../design_decisions/process/DR-001-proc.html#dec_rec__platform__feature_delivery" title="dec_rec__platform__feature_delivery"><em class="xref need">Feature as Independent Deli... (dec_rec__platform__feature_delivery)</em></a>).
+So this should be consistent and does not need special consideration in this chapter.</p></li>
+<li><p>S-CORE SW platform needs to collect verification evidence from all the modules it integrates and releases.
+This is done in S-CORE within a dedicated repository, which is the “reference_integration”.
+Also the reference_integration demonstrates what is required to be done by the user of the S-CORE platform
+(in the AoU <a class="reference internal" href="../requirements/platform_assumptions/index.html#aou_req__platform__testing" title="aou_req__platform__testing"><em class="xref need">SW-platform testing (aou_req__platform__testing)</em></a>) for safety qualification. S-CORE shows this for one combination of S-CORE SW Platform Modules/OS/Hypervisor/HW.
+Important: For every S-CORE module only one version is used in the reference_integration,
+meaning that all users of the S-CORE module need to depend on this one version. This “aligned” dependency
+may be different from the one used in the module repositories, raising the need to re-perform verifications
+which are affected by these dependencies.</p></li>
+</ul>
+<p>Thus a <strong>consistent set of verifications</strong> for S-CORE SW platform is:</p>
+<ul class="simple">
+<li><p>platform integration test (only possible with modules integrated to a platform)</p></li>
+<li><p>feature integration test (should be tested with one set of modules versions)</p></li>
+<li><p>component integration test (components may depend on components of another module)</p></li>
+<li><p>structural coverage (may be affected, as also component tests are used for coverage calculation)</p></li>
+<li><p>unit test (results should not be affected due to mocking, but needed for structural coverage completeness)</p></li>
+<li><p>static code analysis (some checks depend also on the dependencies)</p></li>
+<li><p>documentation build (as the produced documentation, including e.g. inspections, should match the used module version)</p></li>
+</ul>
+<p>How this <strong>consistent set of verifications</strong> is produced (e.g. by re-creating all the verification in the reference_integration
+or by collecting verification done in more than one repository) is not prescribed by this document.
+The best method should be agreed in S-CORE in a decision record, e.g. <a class="reference internal" href="../design_decisions/integration/DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a></p>
 </section>
 <section id="verification-methods">
 <span id="id1"></span><h3>Verification Methods<a class="headerlink" href="#verification-methods" title="Link to this heading">#</a></h3>
@@ -1295,6 +1328,7 @@ This includes physical maintenance as well as virtual access.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-approach">General approach</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software-integration">Software integration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#levels-of-integration-and-verification">Levels of integration and verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-set-of-verifications">Consistent Set of Verifications</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-methods">Verification Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-derivation-methods">Test Derivation Methods</a></li>
 </ul>
