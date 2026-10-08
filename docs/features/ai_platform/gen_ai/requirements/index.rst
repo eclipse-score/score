@@ -68,3 +68,97 @@ Requirements
    :valid_from: v2.0.0
 
    The platform shall provide structured APIs (e.g., via MCP) to access vehicle state and invoke safe vehicle commands.
+
+.. feat_req:: GenAI Context API
+   :id: feat_req__gen_ai__context_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall provide GenAI-based agents read access through the Context API to the active interaction's current goal, location, and dialogue state.
+
+.. feat_req:: GenAI Long-Term Context Access
+   :id: feat_req__gen_ai__context_long_term
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall provide GenAI-based agents read access through the Context API to the selected driver's preferences and interaction history.
+
+.. feat_req:: Scoped Long-Term Context Updates
+   :id: feat_req__gen_ai__context_write_scope
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall restrict write operations to long-term context to explicitly scoped and validated updates.
+
+.. feat_req:: Prompt Input Validation
+   :id: feat_req__gen_ai__prompt_input_validation
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall validate and rate-limit prompt inputs to the GenAI runtime
+   to protect against malformed sequences and prompt injection.
+
+.. feat_req:: Concurrent Model Execution
+   :id: feat_req__gen_ai__multi_model
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__enablement[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall support the concurrent execution of multiple GenAI models.
+
+.. feat_req:: GenAI Runtime Neutrality
+   :id: feat_req__gen_ai__runtime_neutrality
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :derived_from: stkh_req__gen_ai__enablement[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall integrate established GenAI model runtimes via a runtime-agnostic interface
+   and shall not provide a proprietary GenAI runtime implementation.
+
+.. feat_req:: MCP Access Control
+   :id: feat_req__gen_ai__mcp_access_control
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__ai_platform__model_security[version==1]
+   :satisfied_by: feat__gen_ai[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall authenticate and authorize all communication between MCP Client and MCP Server
+   before vehicle state is exposed or vehicle commands are invoked.
