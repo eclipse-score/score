@@ -306,6 +306,7 @@ Infrastructure and Tooling
    users_guide/index
    architecture/index
    features/index
+   AI/index
    requirements/index
    contribute/index
 

@@ -10,17 +10,17 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-011-Infra: AI Agent Context Packaging Tooling Selection
-==========================================================
+DR-011-AI: AI Agent Context Packaging Tooling Selection
+========================================================
 
 - **Date:** 2026-10-05
 - **Issue:** `#3115 <https://github.com/eclipse-score/score/issues/3115>`_
 
 .. dec_rec:: AI Agent Context Packaging Tooling Selection
-   :id: dec_rec__infra__ai_packaging_tooling
+   :id: dec_rec__ai__ai_packaging_tooling
    :status: accepted
    :version: 01
-   :context: Infrastructure
+   :context: AI
    :decision: APM is the primary AI agent context packaging tool; Lola is the fallback; OKIT is not recommended
 
 Context / Problem
