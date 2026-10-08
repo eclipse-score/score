@@ -26,7 +26,7 @@ Quality Report
    :tags:
 
 
-This document implements :need:`wp__qms_report` and based on the :need:`wp__qms_plan`. It summarizes
+This document implements :need:`wp__qms_report` and based on the :need:`doc__platform_quality_plan` (version 2), which realizes :need:`wp__qms_plan`. It summarizes
 the results of the quality related activities. It shall be referred in the :need:`wp__platform_sw_release_note`
 of a platform release.
 
@@ -130,13 +130,13 @@ Quantitative Quality Goals
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - One process conformance check has been done for every stable feature release
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`wp__qms_report` - Process conformance is available
+      - Ensured by the process quality management, :need:`wp__qms_report` - Process conformance is available
     * - 3
       - Only quality-assured project/platform work products are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform work products are quality-assured
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`wp__verification_platform_ver_report` - Work products contain the verification of the quality assurance
+      - Ensured by the process verification, :need:`wp__verification_platform_ver_report` - Verification report contains the verification results of the work products
     * - 4
       - Only quality-assured project/platform releases are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`

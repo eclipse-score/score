@@ -121,7 +121,7 @@ cross-repository builds and detect integration issues early in the development c
 Module Folder Structure
 -----------------------
 
-The modules and components shall follow the folder structure which was presented. However if there are good reasons the structure can be adapted.
+The modules and components shall follow the folder structure which was presented.
 This is confirmed by :need:`dec_rec__platform__module_folder_structure`.
 
 For more details on the folder structure of a module see `module template repository <https://github.com/eclipse-score/module_template>`_ .
