@@ -152,8 +152,8 @@ There are the following different levels of integration and verification defined
 Consistent Set of Verifications
 -------------------------------
 
-The S-CORE project selected a multi-repository approach but still decided to provide a Consistent Stack
-to its users (:need:`dec_rec__strat__consistent_stack_vs_reference`). Consequently there is the need
+The S-CORE project selected a multi-repository approach but still decided to provide a "consistent stack"
+to its users (see :need:`dec_rec__strat__consistent_stack_vs_reference`). Consequently there is the need
 to collect a consistent verification evidence for this "Stack", which is the S-CORE SW platform.
 
 - S-CORE SEooCs/dependable elements developed in the module repositories can deliver their
@@ -163,8 +163,8 @@ to collect a consistent verification evidence for this "Stack", which is the S-C
 - S-CORE SW platform needs to collect verification evidence from all the modules it integrates and releases.
   This is done in S-CORE within a dedicated repository, which is the "reference_integration".
   Also the reference_integration demonstrates what is required to be done by the user of the S-CORE platform
-  (in the AoU :need:`aou_req__platform__testing`) for safety qualification. S-CORE shows this for one combinaion of S-CORE SW Platform Modules/OS/Hypervisor/HW.
-  Important: for every S-CORE module only one version is used in the reference_integration,
+  (in the AoU :need:`aou_req__platform__testing`) for safety qualification. S-CORE shows this for one combination of S-CORE SW Platform Modules/OS/Hypervisor/HW.
+  Important: For every S-CORE module only one version is used in the reference_integration,
   meaning that all users of the S-CORE module need to depend on this one version. This "aligned" dependency
   may be different from the one used in the module repositories, raising the need to re-perform verifications
   which are affected by these dependencies.
