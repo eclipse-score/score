@@ -320,6 +320,12 @@ Infrastructure and Tooling
 
 .. toctree::
    :maxdepth: 1
+   :caption: Main sections
+
+   AI/index
+
+.. toctree::
+   :maxdepth: 1
    :hidden:
 
    introduction/index
