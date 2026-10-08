@@ -254,9 +254,16 @@ Source usage note: normative decisions in this document are based on the
 S-CORE process and MISRA references (including
 `MISRA C:2025 Addendum 6 Applicability of MISRA C:2025 to the Rust Programming Language <https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf>`_).
 Research sources such as
-`MISRust (arXiv:2605.23490v1), Table 3 <https://arxiv.org/html/2605.23490v1>`_
+`MISRust (arXiv:2605.23490v2), Table 3 <https://arxiv.org/pdf/2605.23490v2>`_
 are used as supporting rationale for topic prioritization, not as normative
 compliance criteria.
+
+Proposed S-CORE rule text for the MISRA C++:2023 guidelines that the SCRC's own
+cross-reference marks as applicable to Rust, together with an applicability register
+and the evidence expected per rule, is maintained as a draft in
+:need:`doc__rust_coding_rules`. It supplements the
+lint profile described here and binds a component only once adopted through its
+Software Development Plan.
 
 The recommended ``[lints.rust]``, ``[lints.clippy]``, and ``[profile.release]``
 settings are maintained centrally in the
