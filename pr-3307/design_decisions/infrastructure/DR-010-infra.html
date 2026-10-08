@@ -1,0 +1,1099 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-010-Infra: Select AI tooling for S-CORE integration and evaluation &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=415257cb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/infrastructure/DR-010-infra';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Process" href="../process/index.html" />
+    <link rel="prev" title="DR-008-Infra: Generating documentation sources via Bazel" href="DR-008-infra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../strategy/index.html">Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Infrastructure</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-001-infra-extension.html">DR-001-B-Infra-Extension: S-CORE Build Execution Contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Generating documentation sources via Bazel</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DR-010-Infra: Select AI tooling for S-CORE integration and evaluation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../process/index.html">Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Decision Records</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Infrastructure</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-010-Infra: Select AI tooling for S-CORE integration and evaluation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dr-010-infra-select-ai-tooling-for-s-core-integration-and-evaluation">
+<h1>DR-010-Infra: Select AI tooling for S-CORE integration and evaluation<a class="headerlink" href="#dr-010-infra-select-ai-tooling-for-s-core-integration-and-evaluation" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-8fcc9593">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__ai_sdlc_tooling">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Select AI tooling for S-CORE integration and evaluation</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_consequences"><span class="needs_label">consequences: </span><span class="needs_data">Retain native artifact authority and human accountability; require compatibility and comparative pilot evidence</span></span></div>
+<div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure; integrate AI assistance within the existing S-CORE engineering process</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Recommend APM for packaging, Spec Kit for integration development and Harbor for evaluation; retain the native S-CORE engineering workflow</span></span></div>
+<div class="line"><span class="needs_tracking"><span class="needs_label">tracking: </span><span class="needs_data"><a class="reference external" href="https://github.com/eclipse-score/score/issues/3115">score#3115</a></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>3</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__infra__ai_sdlc_tooling" title="dec_rec__infra__ai_sdlc_tooling">dec_rec__infra__ai_sdlc_tooling</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This is the proposed evaluation outcome for
+<a class="reference external" href="https://github.com/eclipse-score/score/issues/3115">issue #3115</a>, replacing
+the same-ID candidate in <a class="reference external" href="https://github.com/eclipse-score/score/pull/3140">PR #3140</a>.
+Version 3 makes the recommendation explicit. Maintainer acceptance is pending.
+The recommendation selects tools for the roles below; operational rollout and
+qualification are separate implementation decisions.</p>
+<section id="context">
+<h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
+<p>S-CORE already defines its engineering process, work products, metamodel,
+traceability and review responsibilities. The problem is how AI assistance can
+operate within those rules while retaining understandable artifacts, measured
+verification and human accountability. Another authoritative requirements or
+process store would introduce synchronization work and obscure ownership.</p>
+<p>The review of PR #3140 requests real experience on S-CORE artifacts, lifecycle
+loopbacks when requirements change, manageable agent context, technical
+feasibility and clear qualification limits. The <code class="docutils literal notranslate"><span class="pre">s-core_sw_fabric</span></code> pilot
+provides one exploratory implementation and historical measurements against
+pinned S-CORE artifacts. It is not a head-to-head benchmark of every candidate
+or an organization-scale deployment.</p>
+<p>The scope of this evaluation is the eight options listed in
+<a class="reference external" href="https://github.com/eclipse-score/score/issues/3115">issue #3115</a>: APM, Lola
+and OKIT for packaging; Syspilot, BMAD, Spec Kit and Pharaoh for SDLC/harness;
+Harbor for evaluation. Their different responsibilities require separate
+assessments. A packaging manager does not establish workflow correctness, and
+an agent benchmark does not establish engineering acceptance.</p>
+</section>
+<section id="decision">
+<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<p>Recommend the following combination on the available evidence:</p>
+<ul class="simple">
+<li><p><strong>APM for distributing agent context.</strong> Its captured documentation explicitly
+describes resolved-source/content locks, installation policy, drift checks and
+SBOM export. These capabilities match reproducibility, provenance and bounded
+destinations. This supports the issue assignee’s packaging recommendation.
+Organization-wide installation behavior remains to be validated.</p></li>
+<li><p><strong>Spec Kit for developing the integration and supporting tools.</strong> This is the
+SDLC option with retained implementation experience in this packet. Keep the
+existing S-CORE workflow and native work products for target engineering;
+translate selected procedures rather than replacing the native metamodel.</p></li>
+<li><p><strong>Harbor for comparative agent evaluation.</strong> Its documented custom benchmark
+environments fit an independently reviewed S-CORE task corpus. Native outcome
+checks and human engineering review remain the acceptance authority. No Harbor
+benchmark result or execution is claimed here.</p></li>
+</ul>
+<p>This recommendation is a qualitative engineering inference from the captured
+sources and the labelled implementation evidence. It is not a numerical ranking
+or a measured claim of comparative performance. The rejected/deferred options
+and conditions for reconsideration are recorded below.</p>
+<p>Apply these integration constraints:</p>
+<ol class="arabic simple">
+<li><p>Keep native S-CORE artifacts, identifiers, metamodel and accepted tailoring
+authoritative. Generate or derive agent context from pinned native sources.
+Sidecar graphs must remain rebuildable views, not another requirements store.</p></li>
+<li><p>Use Spec Kit for developing the integration itself. Evaluate adapted
+procedures for native tasks without requiring S-CORE work products to become
+Spec Kit documents or creating duplicate mandatory artifacts.</p></li>
+<li><p>Evaluate packaging separately from execution. APM remains a candidate,
+consistent with the issue’s existing packaging proposal. Test distribution,
+upgrades, drift and destination controls before selecting a packaging tool.</p></li>
+<li><p>Use deterministic tools to measure required checks. Agents may draft and
+critique. Required engineering judgments remain with authorized humans;
+unattended runs export evidence and terminate at the human boundary.</p></li>
+<li><p>Admit source-bound tasks with explicit write paths, check scope, context,
+tools, attempts and budgets. Changed requirements or subjects must trigger
+renewed impact and evidence assessment. Preserve missing checks and failures.</p></li>
+<li><p>Retain portable evidence and understandable source. Successful orchestration
+must not hide failed compilation, missing quality evidence, unsupported
+platforms or pending engineering review.</p></li>
+</ol>
+<p>Fabro is the fabric pilot’s pinned execution candidate. It is not one of the
+eight issue-listed options, and this proposal does not select it for S-CORE.
+The observed resume limitation is included in the assessment.</p>
+</section>
+<section id="selection-criteria">
+<h2>Selection Criteria<a class="headerlink" href="#selection-criteria" title="Link to this heading">#</a></h2>
+<p>The comparison prioritizes native Sphinx-Needs/metamodel compatibility,
+reproducible context and destination control, requirement-change loopbacks,
+independent deterministic verification, portable evidence, supported developer
+clients, and maintenance/integration effort. These priorities derive from the
+S-CORE ownership and review concerns in PR #3140 and the retained native pilot.
+They are evaluation criteria for this decision, not newly accepted requirements.</p>
+<p>APM is the strongest documented match for governed packaging in this survey;
+Lola remains a credible distribution alternative. OKIT’s recorded source commits
+are useful provenance, so the evaluation does not repeat the earlier assertion
+that it has no version tracking. Its automatic provider enablement is a concrete
+reason to require destination checks for wider use. No undocumented absence of
+security or governance features is treated as a proven defect.</p>
+<p>Spec Kit is selected for the role actually exercised by this packet. Syspilot’s
+Sphinx-Needs focus makes it a preferred next native-context experiment, while its
+stated early research status, client/license dependencies and silent loss of
+handoff capability when its extension is disabled prevent an unqualified default
+rollout recommendation. BMAD documents adaptable workflows, but this packet does
+not establish its native S-CORE adaptation. Pharaoh supplies relevant native
+analysis concepts, yet its archived repository cannot establish maintained
+support. Harbor fits the evaluation role; its score never replaces native review.</p>
+</section>
+<section id="alternatives-considered">
+<h2>Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Link to this heading">#</a></h2>
+<p>All repository descriptions below are primary-source observations captured on
+2026-10-07. Documentation support is not proof of executed behavior. Exact
+source commits, original README bytes, redirects and available licenses are
+retained in the <a class="reference external" href="https://github.com/Eclipse-SDV-Hackathon-Chapter-Four/Thinking_CAPs/blob/contrib/score-ai-sdlc-3115-evidence/contributions/issues/eclipse-score/score/3115/evidence/candidates/index.json">candidate inventory</a>.
+No numeric ranking is assigned to an untested tool.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 84 </span><span class="caption-text">Issue-listed options and evidence levels</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 30.0%" />
+<col style="width: 25.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Candidate</p></th>
+<th class="head"><p>Documented purpose</p></th>
+<th class="head"><p>Experience in this packet</p></th>
+<th class="head"><p>Selection and reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/microsoft/apm">APM</a></p></td>
+<td><p>Manifest-based agent context packaging, locks, policy and MCP integration</p></td>
+<td><p>S-CORE package inspection and disposable MCP probes; no APM CLI distribution pilot</p></td>
+<td><p>Recommend as primary packaging tool: documented locks, policy, drift and inventory directly match provenance needs</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/LobsterTrap/lola">Lola</a></p></td>
+<td><p>Cross-assistant skill/context packages and declarative installation</p></td>
+<td><p>Primary-source research; not executed</p></td>
+<td><p>Retain as packaging fallback when supported clients and the same installation/upgrade cases are demonstrated</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/Mumme-IT/okit">OKIT</a></p></td>
+<td><p>Installs skills/agents to providers and records source commits</p></td>
+<td><p>Primary-source research; not executed</p></td>
+<td><p>Restrict to isolated personal prototyping; documented auto-enabling of detected providers needs explicit destination control before shared rollout</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/enthali/syspilot">Syspilot</a></p></td>
+<td><p>Sphinx-Needs links and focused change context; labelled early research</p></td>
+<td><p>Primary-source research; not executed</p></td>
+<td><p>Prefer for a subsequent native-context prototype; defer baseline adoption because early breaking changes and VS Code/Copilot/jarvis-core requirements need compatibility checks</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD</a></p></td>
+<td><p>Skills and workflows for explicit planning, implementation and learning loops</p></td>
+<td><p>Primary-source research; not executed</p></td>
+<td><p>Keep as an alternative; adaptive planning is useful, but native artifact/loopback adaptation is unmeasured here and Spec Kit has retained integration experience</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/github/spec-kit">Spec Kit</a></p></td>
+<td><p>Specification-driven development workflow</p></td>
+<td><p>Used to develop the fabric at pinned v1.0.12 / e77daa9021d20db26b878f7dfa5640fe5a42d04e</p></td>
+<td><p>Recommend for integration development on measured experience; adapt native tasks without imposing duplicate Spec Kit work products</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/useblocks/pharaoh-skills">Pharaoh</a></p></td>
+<td><p>Sphinx-Needs analysis encoded in skills and agent instructions</p></td>
+<td><p>Primary-source research; requested URL redirects to an archived repository</p></td>
+<td><p>Do not add the archived repository as a maintained dependency; reuse reviewed native-trace concepts and assess successors separately</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/harbor-framework/harbor">Harbor</a></p></td>
+<td><p>Agent benchmarks and evaluation environments</p></td>
+<td><p>Primary-source research; not executed</p></td>
+<td><p>Recommend as the comparative benchmark driver: custom environments and arbitrary agents match a shared native task corpus</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Current README capabilities are not transferred to historically measured
+versions. The fabric’s source and tool locks remain distinct from this dated
+repository survey. This pilot cannot establish comparative superiority over
+the seven alternatives that were not executed.</p>
+</section>
+<section id="pilot-evidence">
+<h2>Pilot Evidence<a class="headerlink" href="#pilot-evidence" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/Eclipse-SDV-Hackathon-Chapter-Four/Thinking_CAPs/tree/contrib/score-ai-sdlc-3115-evidence/contributions/issues/eclipse-score/score/3115">portable evaluation packet</a>
+contains a source snapshot, per-file hashes, original command records,
+historical logs and acceptance limitations. Its <a class="reference external" href="https://github.com/Eclipse-SDV-Hackathon-Chapter-Four/Thinking_CAPs/blob/contrib/score-ai-sdlc-3115-evidence/contributions/issues/eclipse-score/score/3115/evidence-map.md">evidence map</a>
+identifies supplied bytes, existing native packets and omitted deep history.</p>
+<p>The fabric baseline is <code class="docutils literal notranslate"><span class="pre">7e24a43c258f1dcaa2b27e02b501964847bc8714</span></code> plus a
+captured dirty working tree, including selected untracked development files.
+A commit identifier alone does not describe that snapshot. Historical test
+results belong to their recorded subjects; they are not rebound to the current
+snapshot or treated as fresh qualification evidence.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 85 </span><span class="caption-text">Measured experience and practical limits</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 45.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Question</p></th>
+<th class="head"><p>Retained experience</p></th>
+<th class="head"><p>Limit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Native ownership and traceability</p></td>
+<td><p>Locked process/docs sources, native export/import, artifact indexing, expected-set trace, drift and impact implementations</p></td>
+<td><p>Production mappings, profile review and broader native compatibility remain open</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lifecycle loopbacks</p></td>
+<td><p>Old/new reverse impact, stale-subject rejection, changed-relation regression and bounded correction/evidence-refresh modes</p></td>
+<td><p>Implementation checks do not establish complete B1-B5 engineering qualification</p></td>
+</tr>
+<tr class="row-even"><td><p>Agent context and procedures</p></td>
+<td><p>Pinned MCP discovery/probes, baseline-bound manifests, selected skills, bounded summaries/retrieval and call limits</p></td>
+<td><p>Unsupported tools or unknown usage block relevant stages; APM rollout is untested</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deterministic development validation</p></td>
+<td><p>Historical 011 full regression: 2,056 passed and 22 skipped; affected scope: 139 passed; initial failing run retained</p></td>
+<td><p>Logs apply to historical subjects; no current dirty-worktree pass or complete native readiness claim</p></td>
+</tr>
+<tr class="row-even"><td><p>Context measurement</p></td>
+<td><p>Synthetic byte estimates: 86.94-95.12%; first live rendering proxies: 30.46-30.63%; later tool-projection proxies: 66.32-66.60%</p></td>
+<td><p>Controlled rendering fixtures; real-task savings, semantic quality, billing and runtime advantage remain unestablished</p></td>
+</tr>
+<tr class="row-odd"><td><p>Native use</p></td>
+<td><p>Lifecycle #704 retains a scoped implementation and 113 passing native cases</p></td>
+<td><p>Selected revision/check scope applies; native review and qualification remain distinct</p></td>
+</tr>
+<tr class="row-even"><td><p>Failure transparency</p></td>
+<td><p>Historical DeepSeek communication #1261 attempt failed compilation with 0/5 tests executed despite orchestration completion; a later Claude correction passed selected Linux checks</p></td>
+<td><p>Failed history and later corrections remain distinct; native acceptance stays pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust and review</p></td>
+<td><p>Fixture assurance gates, stale/unauthorized refusal cases and explicit offline engineering review records</p></td>
+<td><p>Protected production trust roots and acceptance authority are not provisioned; no ASIL-B qualification</p></td>
+</tr>
+<tr class="row-even"><td><p>Runtime suitability</p></td>
+<td><p>Pinned Fabro disposable register/run/status/cancel/export probes</p></td>
+<td><p>Same-run checkpoint resume was unavailable on the candidate; no runtime selection</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The token observations distinguish synthetic context estimates from actual
+provider usage on controlled rendering fixtures. Equal expected fixture
+outputs do not establish equal engineering adequacy. Neither experiment
+establishes the fabric’s intended 60-80% real routine-task savings target.</p>
+<p>Raw development/JUnit logs and rendering request/response records travel in
+the packet. Native implementation packets are retained separately in the
+same repository. Some deep source/build/tool payloads are only inventoried;
+full replay requires those original bytes. The byte-integrity verifier does
+not execute tests, qualify tools or authenticate engineering decisions.</p>
+</section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<p>The proposal retains one native engineering authority and makes tool choices
+separable. It adds compatibility, integration, evidence retention and review
+work. Spec Kit artifacts used to develop the fabric must not become duplicate
+mandatory artifacts for all S-CORE development.</p>
+<p>Native-version drift, platform applicability and complete check denominators
+require explicit treatment. Generated artifacts and code must remain
+understandable to the people accountable for their review. Neither tests nor
+agent judgments replace the required engineering review or qualification.</p>
+</section>
+<section id="justification-for-the-decision">
+<h2>Justification for the Decision<a class="headerlink" href="#justification-for-the-decision" title="Link to this heading">#</a></h2>
+<p>The fabric supplies implementation experience for architectural boundaries,
+selective context, negative outcomes and native verification. It supports
+piloting those patterns, rather than adopting a framework wholesale. It does
+not demonstrate comparative tool superiority, community-scale behavior or
+qualification of tools for a safety-related use.</p>
+<p>This record supplies an evaluation outcome for all eight issue-listed options
+and the rationale for the recommended combination. Acceptance of this decision
+record is the requested completion of issue #3115. It does not assert completed
+rollout, comparative benchmarks or qualification. Maintainers decide whether the
+available evidence supports this recommendation and may require additional
+comparison before accepting it. No accepting person, date or approval is inferred.</p>
+</section>
+<section id="reconciliation-and-implementation-handoff">
+<h2>Reconciliation and Implementation Handoff<a class="headerlink" href="#reconciliation-and-implementation-handoff" title="Link to this heading">#</a></h2>
+<p>PR #3307 offers this version as a replacement for the DR-010 candidate in #3140.
+Both use <code class="docutils literal notranslate"><span class="pre">dec_rec__infra__ai_sdlc_tooling</span></code>. Merge one representation of that ID
+at <code class="docutils literal notranslate"><span class="pre">docs/design_decisions/infrastructure/DR-010-infra.rst</span></code>. If #3307 is accepted,
+the owner of #3140 can close or supersede its same-ID proposal. If #3140 is the
+preferred vehicle, incorporate this record there and supersede #3307. Do not
+merge both records or recreate the removed legacy directory. This PR does not
+modify another contributor’s branch or infer their acceptance.</p>
+<p>Follow-on rollout work should retain a reviewed public task corpus and immutable
+source pins. Check repeated installation output, allowed provider destinations,
+content/source integrity, upgrades, drift and rollback for packaging. Check native
+IDs/link directions, requirement-change loopbacks, stale-evidence refusal and
+required artifact coverage for procedures. Evaluate agents on native build/test
+and review outcomes, recording retries, failures, usage and environment; fixture
+rendering proxies do not establish task savings. Disposition unsupported clients,
+unknown usage and missing checks before unattended use. Provision trust and
+qualified human review for any claimed safety-related application.</p>
+<p>These are explicit follow-on validation needs for implementation and adoption.
+They are not reported as executed work or automatically added to #3115’s DoD.
+Tool licensing, native tailoring and qualification applicability remain subject
+to the selected versions, use cases and authorized engineering decisions.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-008-infra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-008-Infra: Generating documentation sources via Bazel</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../process/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Process</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-criteria">Selection Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-considered">Alternatives Considered</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pilot-evidence">Pilot Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-for-the-decision">Justification for the Decision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconciliation-and-implementation-handoff">Reconciliation and Implementation Handoff</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/infrastructure/DR-010-infra.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
