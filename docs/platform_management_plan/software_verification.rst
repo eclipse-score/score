@@ -422,7 +422,7 @@ Tests which are suitable for the coverage are:
 - :need:`wp__verification_platform_int_test`
 - :need:`wp__verification_sw_unit_test`
 
-A requirements with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the the attribute ``complete test coverage`` is not judged as not covered.
+A requirement with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the attribute ``complete test coverage`` is judged as not covered.
 For QM software parts, it is not necessary to have the requirements attribute ``complete test coverage`` but each requirement needs to have at least one linked test case.
 
 Relative amount of executed and passed tests
