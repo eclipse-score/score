@@ -1,19 +1,37 @@
----
-name: Feature Request
-about: Introduce System Monitoring (SMon) middleware component for automotive ECUs
-title: "[Feature Request] System Monitoring (SMon) — CPU & Memory health monitoring middleware for automotive ECUs"
-labels: feature-request, platform-services, health-monitoring, automotive, linux, qnx
-assignees: ''
+# DR-010-SMon: Introduce System Monitoring (SMon) middleware component for automotive ECUs
+
+- **Date:** 2026-10-09
+
+```{dec_rec} Introduce System Monitoring (SMon) middleware
+:id: dec_rec__arch__introduce_smon_middleware
+:status: proposed
+:version: 1
+:tracking:
+:context: S-CORE lacks a common, portable, and configurable system monitoring component for observing CPU and memory resource usage on automotive ECUs across Linux and QNX. Applications currently have no standardized S-CORE mechanism for collecting system-, CPU-core-, process-, and application-level resource metrics and detecting configurable resource threshold violations.
+:decision: Introduce System Monitoring (SMon) as an S-CORE middleware component that periodically collects CPU and memory metrics at system, CPU-core, process, and application level, evaluates configurable monitoring thresholds, and provides the collected monitoring information to S-CORE applications and external diagnostic or visualization tools through defined interfaces.
+```
+
 ---
 
 ## Summary
 
-Valeo requests the introduction of a new S-CORE middleware feature: **System Monitoring (SMon)**
-— a portable, configurable component for monitoring CPU and memory health on automotive Domain
-Controller ECUs.
+This feature request proposes introducing **System Monitoring (SMon)** as a reusable
+S-CORE middleware component for monitoring CPU and volatile memory
+resource utilization on automotive ECUs running Linux or QNX.
 
-A full feature request document (`.rst`) is available at:
-`docs/features/system_monitoring/README.rst`
+SMon provides periodic resource measurements, configurable threshold
+evaluation, and standardized integration interfaces for error
+reporting, diagnostic fault recording, and logging.
+
+## Detailed Feature Requirements
+
+Detailed requirements are documented separately:
+
+```{toctree}
+:maxdepth: 1
+
+DR-010-arch/README
+```
 
 ---
 
@@ -95,7 +113,7 @@ The SMon component integrates with three **platform-provided services** via requ
 > ⚠️ SMon does **not** mandate a specific implementation of any of these services.
 > They are integration points to be fulfilled by the platform adopter.
 
-![SMon Integration Context Diagram](assets/context_diagram.png)
+![SMon Integration Context Diagram](DR-010-arch/_assets/context_diagram.png)
 
 ---
 
@@ -125,7 +143,6 @@ future extensions:
 
 ## Acceptance Criteria
 
-- [ ] Feature request documentation merged under `docs/features/system_monitoring/`
 - [ ] All needs and requirements reviewed and accepted by the S-CORE community
 - [ ] Required interface contracts (`IErrorReporter`, `IDTCRecorder`, `ILogger`) defined and
       agreed upon by the community

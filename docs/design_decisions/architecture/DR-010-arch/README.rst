@@ -20,7 +20,7 @@ Feature Request: System Monitoring (SMon)
      - Linux, QNX
 
 .. contents:: Table of Contents
-   :depth: 3
+   :depth: 2
    :local:
 
 ----
@@ -268,7 +268,7 @@ The SMon component sits between the **OS runtime** (from which it reads raw metr
    These three integration points are **required interfaces** that must be fulfilled by the
    platform adopter. SMon does not mandate a specific implementation of any of them.
 
-.. figure:: assets/context_diagram.png
+.. figure::_assets/context_diagram.png
    :alt: SMon Integration Context Diagram
    :align: center
 
