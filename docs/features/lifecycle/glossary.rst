@@ -61,7 +61,7 @@ Lifecycle Glossary
       A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.
 
     Ready State
-      A state when the component is ready to provide services to other components.
+      A state when the component has fulfilled its :term:`Ready Condition`, i.e. is ready to provide services to other components.
 
     Dependency (between components)
       A configuration parameter indicating that **Component A** can only start
@@ -91,7 +91,8 @@ Lifecycle Glossary
       Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.
 
     Liveliness
-      The status of a process, notified by periodic calls to :term:`Health Monitor Interface`, as per configuration.
+      Term indicating that a :term:`Component` is periodically sending an alive notification (using the
+      :need:`logic_arc_int_op__lifecycle__report_alive` interface) as per configuration.
 
     Monitoring of Processes
       The activity of observing and checking if a process is running or has been exited with an abnormal status.
@@ -105,5 +106,5 @@ Lifecycle Glossary
     SWC
       Software Components - modular software units that can be independently managed.
 
-    Run target
-      A named collection of processes and their dependencies that can be launched, stopped, or switched as a group to achieve a specific operational mode or configuration.
+    Run Target
+      A named collection of components and their dependencies that can be activated, stopped, or switched as a group to achieve a specific operational mode or configuration.
