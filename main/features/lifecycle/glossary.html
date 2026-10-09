@@ -673,7 +673,7 @@ detects abnormal situation it can change the <a class="reference internal" href=
 </dd>
 <dt id="term-Component">Component<a class="headerlink" href="#term-Component" title="Link to this term">#</a></dt><dd><p>A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.</p>
 </dd>
-<dt id="term-Ready-State">Ready State<a class="headerlink" href="#term-Ready-State" title="Link to this term">#</a></dt><dd><p>A state when the component is ready to provide services to other components.</p>
+<dt id="term-Ready-State">Ready State<a class="headerlink" href="#term-Ready-State" title="Link to this term">#</a></dt><dd><p>A state when the component has fulfilled its <a class="reference internal" href="#term-Ready-Condition"><span class="xref std std-term">Ready Condition</span></a>, i.e. is ready to provide services to other components.</p>
 </dd>
 <dt id="term-Dependency-between-components">Dependency (between components)<a class="headerlink" href="#term-Dependency-between-components" title="Link to this term">#</a></dt><dd><p>A configuration parameter indicating that <strong>Component A</strong> can only start
 after <strong>Component B</strong> has reached its <a class="reference internal" href="#term-Ready-State"><span class="xref std std-term">Ready State</span></a>. In this case,
@@ -694,7 +694,8 @@ on <strong>Run Target B</strong>.</p>
 <dt id="term-Ready-Condition">Ready Condition<a class="headerlink" href="#term-Ready-Condition" title="Link to this term">#</a></dt><dd><p>A configurable condition that must be satisfied before a component is considered ready and operational. Ready conditions can include file system checks, network availability, or custom application-specific signals.</p>
 <p>Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.</p>
 </dd>
-<dt id="term-Liveliness">Liveliness<a class="headerlink" href="#term-Liveliness" title="Link to this term">#</a></dt><dd><p>The status of a process, notified by periodic calls to <a class="reference internal" href="#term-Health-Monitor-Interface"><span class="xref std std-term">Health Monitor Interface</span></a>, as per configuration.</p>
+<dt id="term-Liveliness">Liveliness<a class="headerlink" href="#term-Liveliness" title="Link to this term">#</a></dt><dd><p>Term indicating that a <a class="reference internal" href="#term-Component"><span class="xref std std-term">Component</span></a> is periodically sending an alive notification (using the
+<a class="reference internal" href="architecture/index.html#logic_arc_int_op__lifecycle__report_alive" title="logic_arc_int_op__lifecycle__report_alive"><em class="xref need">ReportAlive (logic_arc_int_op__lifecycle__report_alive)</em></a> interface) as per configuration.</p>
 </dd>
 <dt id="term-Monitoring-of-Processes">Monitoring of Processes<a class="headerlink" href="#term-Monitoring-of-Processes" title="Link to this term">#</a></dt><dd><p>The activity of observing and checking if a process is running or has been exited with an abnormal status.</p>
 </dd>
@@ -704,7 +705,7 @@ on <strong>Run Target B</strong>.</p>
 </dd>
 <dt id="term-SWC">SWC<a class="headerlink" href="#term-SWC" title="Link to this term">#</a></dt><dd><p>Software Components - modular software units that can be independently managed.</p>
 </dd>
-<dt id="term-Run-target">Run target<a class="headerlink" href="#term-Run-target" title="Link to this term">#</a></dt><dd><p>A named collection of processes and their dependencies that can be launched, stopped, or switched as a group to achieve a specific operational mode or configuration.</p>
+<dt id="term-Run-Target">Run Target<a class="headerlink" href="#term-Run-Target" title="Link to this term">#</a></dt><dd><p>A named collection of components and their dependencies that can be activated, stopped, or switched as a group to achieve a specific operational mode or configuration.</p>
 </dd>
 </dl>
 </section>
