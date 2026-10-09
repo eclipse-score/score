@@ -12,49 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Decision Records
-================
-
-The decision records are grouped by category. Each category is a collapsible
-section in the navigation menu; select one to browse its decision records.
-
-.. toctree::
-   :maxdepth: 1
-
-   strategy/DR-*-strat*
-
-Architecture
-~~~~~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   architecture/DR-*-arch*
-
-Infrastructure
-~~~~~~~~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   infrastructure/DR-*-infra*
-
-Process
-~~~~~~~
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   process/DR-*-proc*
-
 Integration
-~~~~~~~~~~~
+===========
 
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   integration/DR-*-int*
+   DR-*-int*

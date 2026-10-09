@@ -39,14 +39,14 @@ Interfaces
 
 **Lifecycle**
 
-.. logic_arc_int:: Lifecycle Interface
+.. logic_arc_int:: Lifecycle
    :id: logic_arc_int__lifecycle__lifecycle_if
    :included_by: feat__lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__lifecycle__switch_run_targets[version==1], feat_req__lifecycle__liveliness_detection[version==1]
+   :fulfils: feat_req__lifecycle__monitor_processes[version==1]
 
    .. needarch::
       :scale: 50
@@ -54,7 +54,7 @@ Interfaces
 
       {{ draw_interface(need(), needs) }}
 
-.. logic_arc_int_op:: run
+.. logic_arc_int_op:: Run
    :id: logic_arc_int_op__lifecycle__run
    :security: YES
    :safety: ASIL_B
@@ -62,7 +62,7 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__lifecycle_if
 
-.. logic_arc_int_op:: terminate
+.. logic_arc_int_op:: Terminate
    :id: logic_arc_int_op__lifecycle__terminate
    :security: YES
    :safety: ASIL_B
@@ -70,9 +70,34 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__lifecycle_if
 
+**Report Running**
+
+.. logic_arc_int:: Report Running
+   :id: logic_arc_int__lifecycle__report_running_if
+   :included_by: feat__lifecycle
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__lifecycle__monitor_processes[version==1]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: ReportRunning
+   :id: logic_arc_int_op__lifecycle__report_running
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__lifecycle__report_running_if
+
 **Alive**
 
-.. logic_arc_int:: Alive API
+.. logic_arc_int:: Alive
    :id: logic_arc_int__lifecycle__alive_if
    :included_by: feat__lifecycle
    :security: YES
@@ -87,8 +112,16 @@ Interfaces
 
       {{ draw_interface(need(), needs) }}
 
-.. logic_arc_int_op:: report_health_status
-   :id: logic_arc_int_op__lifecycle__report_health
+.. logic_arc_int_op:: ReportAlive
+   :id: logic_arc_int_op__lifecycle__report_alive
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__lifecycle__alive_if
+
+.. logic_arc_int_op:: ReportFailure
+   :id: logic_arc_int_op__lifecycle__report_failure
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -97,7 +130,7 @@ Interfaces
 
 **Control**
 
-.. logic_arc_int:: Control Interface
+.. logic_arc_int:: Control
    :id: logic_arc_int__lifecycle__controlif
    :included_by: feat__lifecycle
    :security: YES
@@ -112,7 +145,7 @@ Interfaces
 
       {{ draw_interface(need(), needs) }}
 
-.. logic_arc_int_op:: Activate Run Target
+.. logic_arc_int_op:: ActivateRunTarget
    :id: logic_arc_int_op__lifecycle__activate_target
    :security: YES
    :safety: ASIL_B
@@ -120,9 +153,26 @@ Interfaces
    :version: 1
    :included_by: logic_arc_int__lifecycle__controlif
 
+.. logic_arc_int_op:: GetActiveRunTarget
+   :id: logic_arc_int_op__lifecycle__get_act_target
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__lifecycle__controlif
+
+.. logic_arc_int_op:: RegisterActivationCallback
+   :id: logic_arc_int_op__lifecycle__reg_callback
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__lifecycle__controlif
+
+
 **Deadline**
 
-.. logic_arc_int:: Deadline Monitor API
+.. logic_arc_int:: Deadline Monitor
    :id: logic_arc_int__lifecycle__deadline_monitor_if
    :included_by: feat__lifecycle
    :security: YES
@@ -211,7 +261,7 @@ Interfaces
 
 **Logical**
 
-.. logic_arc_int:: Logical Monitor API
+.. logic_arc_int:: Logical Monitor
    :id: logic_arc_int__lifecycle__logical_monitor_if
    :included_by: feat__lifecycle
    :security: YES

@@ -149,6 +149,40 @@ There are the following different levels of integration and verification defined
   Practically, this means S-CORE will implement Platform Integration Tests for stakeholder requirements for demonstration,
   but these are not intended to completely covering all stakeholder requirements.
 
+Consistent Set of Verifications
+-------------------------------
+
+The S-CORE project selected a multi-repository approach but still decided to provide a "consistent stack"
+to its users (see :need:`dec_rec__strat__consistent_stack_vs_reference`). Consequently there is the need
+to collect a consistent verification evidence for this "Stack", which is the S-CORE SW platform.
+
+- S-CORE SEooCs/dependable elements developed in the module repositories can deliver their
+  feature(s) independently, based on verification evidence collected in one repository and documented
+  in one module verification report (see also :need:`dec_rec__platform__feature_delivery`).
+  So this should be consistent and does not need special consideration in this chapter.
+- S-CORE SW platform needs to collect verification evidence from all the modules it integrates and releases.
+  This is done in S-CORE within a dedicated repository, which is the "reference_integration".
+  Also the reference_integration demonstrates what is required to be done by the user of the S-CORE platform
+  (in the AoU :need:`aou_req__platform__testing`) for safety qualification. S-CORE shows this for one combination of S-CORE SW Platform Modules/OS/Hypervisor/HW.
+  Important: For every S-CORE module only one version is used in the reference_integration,
+  meaning that all users of the S-CORE module need to depend on this one version. This "aligned" dependency
+  may be different from the one used in the module repositories, raising the need to re-perform verifications
+  which are affected by these dependencies.
+
+Thus a **consistent set of verifications** for S-CORE SW platform is:
+
+- platform integration test (only possible with modules integrated to a platform)
+- feature integration test (should be tested with one set of modules versions)
+- component integration test (components may depend on components of another module)
+- structural coverage (may be affected, as also component tests are used for coverage calculation)
+- unit test (results should not be affected due to mocking, but needed for structural coverage completeness)
+- static code analysis (some checks depend also on the dependencies)
+- documentation build (as the produced documentation, including e.g. inspections, should match the used module version)
+
+How this **consistent set of verifications** is produced (e.g. by re-creating all the verification in the reference_integration
+or by collecting verification done in more than one repository) is not prescribed by this document.
+The best method should be agreed in S-CORE in a decision record, e.g. :need:`dec_rec__int__scope_reference_integration`
+
 .. _verification-methods:
 
 Verification Methods

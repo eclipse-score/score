@@ -53,9 +53,8 @@ Launching Processes
     The :term:`Lifecycle Feature` shall provide support for ordering the launching of
     :term:`Processes <Process>` based on the dependencies.
 
-
-.. feat_req:: Launching processes in parallel
-    :id: feat_req__lifecycle__parallel_launch_support
+.. feat_req:: Process sandbox options
+    :id: feat_req__lifecycle__sandbox_options
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
@@ -65,22 +64,8 @@ Launching Processes
     :version: 1
     :valid_from: v1.0.0
 
-    The :term:`Lifecycle Feature` shall provide support for launching :term:`Processes <Process>`
-    in parallel.
-
-.. feat_req:: Control interface support
-    :id: feat_req__lifecycle__custom_cond_support
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
-    :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
-    :version: 1
-    :valid_from: v1.0.0
-
-    The :term:`Lifecycle Feature` shall provide support to wait for configurable custom
-    conditions, which can be signaled from applications via :term:`Control Interface`.
+    The :term:`Lifecycle Feature` shall provide support to set :term:`sandbox <Sandbox>` options for
+    each :term:`Process`.
 
 
 Conditional Launching
@@ -110,12 +95,11 @@ Process Management
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall be able to control already running :term:`Processes <Process>`.
-
 
 .. feat_req:: OCI Compliant
     :id: feat_req__lifecycle__oci_compliant
@@ -123,7 +107,7 @@ Process Management
     :security: NO
     :safety: ASIL_B
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
     :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
@@ -148,32 +132,6 @@ Run targets
     The :term:`Lifecycle Feature` shall provide support for :term:`run targets <Run target>` to define
     collections of :term:`Processes <Process>` that can be launched together.
 
-.. feat_req:: Launching run target
-    :id: feat_req__lifecycle__start_named_run_target
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
-    :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
-    :version: 1
-    :valid_from: v1.0.0
-
-    The :term:`Lifecycle Feature` shall be able to start a named :term:`Run target`.
-
-.. feat_req:: Switch between run targets
-    :id: feat_req__lifecycle__switch_run_targets
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
-    :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
-    :version: 1
-    :valid_from: v1.0.0
-
-    The :term:`Lifecycle Feature` shall be able to switch between different :term:`run targets <Run target>`.
-
 
 Terminating Processes
 ---------------------
@@ -192,7 +150,7 @@ Terminating Processes
     The :term:`Lifecycle Feature` shall provide support for terminating :term:`Processes <Process>`.
 
 .. feat_req:: Handling process dependency in termination
-    :id: feat_req__lifecycle__terminationn_dependency
+    :id: feat_req__lifecycle__termination_dependency
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
@@ -220,7 +178,8 @@ Control Interface
     :version: 1
     :valid_from: v1.0.0
 
-    The :term:`Lifecycle Feature` shall provide support for run-target selection.
+    The :term:`Lifecycle Feature` shall provide support for selecting a
+    :term:`run target <Run target>` via the :term:`Control Interface`.
 
 .. feat_req:: Query commands
     :id: feat_req__lifecycle__query_commands
@@ -229,13 +188,12 @@ Control Interface
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall provide support for commands to query component
-    states.
-
+    states via the :term:`Control Interface`.
 
 .. feat_req:: Report "started/running/degraded"
     :id: feat_req__lifecycle__controlif_status
@@ -244,7 +202,7 @@ Control Interface
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -253,26 +211,12 @@ Control Interface
 
     Note: status can be "started/running/degraded" - refer to documentation for details
 
-.. feat_req:: Request run target launch
-    :id: feat_req__lifecycle__request_run_target_start
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
-    :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
-    :version: 1
-    :valid_from: v1.0.0
-
-    The :term:`Lifecycle Feature` shall be able to start a named :term:`Run target` respecting the
-    dependencies when requested.
-
 
 Monitoring, Notification and Recovery
 -------------------------------------
 
-.. feat_req:: Process crash monitoring
-    :id: feat_req__lifecycle__monitor_abnormal_term
+.. feat_req:: Process monitoring
+    :id: feat_req__lifecycle__monitor_processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
@@ -282,9 +226,7 @@ Monitoring, Notification and Recovery
     :version: 1
     :valid_from: v1.0.0
 
-    The :term:`Lifecycle Feature` shall provide support for monitoring abnormal
-    termination of :term:`Processes <Process>`.
-
+    The :term:`Lifecycle Feature` shall provide support for :term:`monitoring of processes <Monitoring of Processes>`.
 
 .. feat_req:: Recovery action
     :id: feat_req__lifecycle__recovery_action_support
@@ -297,23 +239,9 @@ Monitoring, Notification and Recovery
     :version: 1
     :valid_from: v1.0.0
 
-    The :term:`Lifecycle Feature` shall support :term:`Recovery Action` for the
-    abnormally terminated :term:`Processes <Process>`.
-
-.. feat_req:: Run target switch as recovery action
-    :id: feat_req__lifecycle__recov_run_target_switch
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
-    :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
-    :version: 1
-    :valid_from: v1.0.0
-
-    The :term:`Lifecycle Feature` shall support switching to a different :term:`Run target` as
-    recovery action in case a single process terminated abnormally or lost its
-    :term:`Liveliness`.
+    The :term:`Lifecycle Feature` shall support the configuration of a :term:`Recovery Action`,
+    that reacts to a failure in :term:`monitoring of processes <Monitoring of Processes>` or the loss of
+    :term:`Liveliness` of the :term:`Processes <Process>`.
 
 .. feat_req:: Monitoring and recovery: watchdog support
     :id: feat_req__lifecycle__smart_watchdog_config
@@ -322,13 +250,12 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
     The :term:`Lifecycle Feature` shall support a smart :term:`Watchdog`, configurable
     per process.
-
 
 .. feat_req:: Process liveliness detection
     :id: feat_req__lifecycle__liveliness_detection
@@ -341,10 +268,8 @@ Monitoring, Notification and Recovery
     :version: 1
     :valid_from: v1.0.0
 
-    The :term:`Lifecycle Feature` shall be able to detect and react to loss of
-    :term:`Liveliness` of the :term:`Processes <Process>` it owns, by monitoring
-    the state of the :term:`Processes <Process>` as specified by the set of
-    executables.
+    The :term:`Lifecycle Feature` shall be able to detect the loss of :term:`Liveliness`
+    of the :term:`Processes <Process>` it owns.
 
 
 .. feat_req:: Multi-instance
@@ -354,7 +279,7 @@ Monitoring, Notification and Recovery
     :safety: ASIL_B
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v2.0.0
 
@@ -366,7 +291,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__safety_features_1[version==1]
+    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -379,7 +304,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__dev_experience__prog_languages[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -392,7 +317,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -406,7 +331,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -420,7 +345,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -457,7 +382,7 @@ Configuration file
     :safety: ASIL_B
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -472,7 +397,7 @@ Configuration file
     :safety: ASIL_B
     :derived_from: stkh_req__functional_req__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 
@@ -500,7 +425,7 @@ Configuration file
     :safety: QM
     :derived_from: stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__lifecycle[version==1]
-    :status: valid
+    :status: invalid
     :version: 1
     :valid_from: v1.0.0
 

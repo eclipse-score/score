@@ -34,9 +34,12 @@ runs:
       if ! gitlint --commits origin/${{ inputs.base-branch }}..HEAD; then \
         echo -e "\nWARNING: Your commit message does not follow the required format." && \
         echo "Formatting rules: https://eclipse-score.github.io/score/main/contribute/general/git.html" && \
-        echo -e "To fix your commit message, run:\n" && \
+        echo -e "\nIf only the most recent commit is affected, run:\n" && \
         echo " git commit --amend" && \
-        echo "Then update your commit (fix gitlint warnings). Finally, force-push:" && \
+        echo -e "\nIf an older commit is affected, start an interactive rebase and" && \
+        echo -e "change 'pick' to 'reword' for every commit reported above:\n" && \
+        echo " git rebase -i origin/${{ inputs.base-branch }}" && \
+        echo -e "\nAfter updating the commit messages, force-push:\n" && \
         echo " git push --force-with-lease" && \
         exit 1; \
       fi

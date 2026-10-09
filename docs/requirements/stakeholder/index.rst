@@ -259,9 +259,12 @@ Functional requirements
 Dependability
 -------------
 
-.. stkh_req:: Automotive Safety Integrity Level
+Safety
+^^^^^^
+
+.. stkh_req:: Automotive Safety Integrity Level (ASIL)
    :id: stkh_req__dependability__automotive_safety
-   :reqtype: Functional
+   :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :rationale: The SW-platform shall be usable by safety relevant applications.
@@ -273,7 +276,7 @@ Dependability
    integrity level up to ASIL-B.
 
 .. stkh_req:: Health Management
-   :id: stkh_req__dependability__safety_features_1
+   :id: stkh_req__dependability__health_management
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -285,8 +288,8 @@ Dependability
 
    The SW-platform shall implement Health Management (alive, deadline, logical supervision) for time and event based taskchains
 
-.. stkh_req:: E2E Protection
-   :id: stkh_req__dependability__safety_features_2
+.. stkh_req:: End-To-End (E2E) Protection
+   :id: stkh_req__dependability__e2eprotection
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -299,7 +302,7 @@ Dependability
    The SW-platform shall implement E2E Protection for communication
 
 .. stkh_req:: HW Self-Test
-   :id: stkh_req__dependability__safety_features_3
+   :id: stkh_req__dependability__hw_self_test
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -314,7 +317,7 @@ Dependability
    Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
 
 .. stkh_req:: Safe Startup and Reset
-   :id: stkh_req__dependability__safety_features_4
+   :id: stkh_req__dependability__safe_startup_reset
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -326,8 +329,8 @@ Dependability
 
    The SW-platform shall implement and support Safe startup and reset paths
 
-.. stkh_req:: DMA Protection
-   :id: stkh_req__dependability__safety_features_5
+.. stkh_req:: Direct Memory Access (DMA) Protection
+   :id: stkh_req__dependability__dma_protection
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -337,12 +340,12 @@ Dependability
    :tags: safety_mechanism
    :valid_from: v1.0.0
 
-   The SW-platform shall support IO MMU protecting DMA accesses
+   The SW-platform shall support I/O Memory Management Unit protecting DMA accesses
 
    Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
 
 .. stkh_req:: Memory Protection
-   :id: stkh_req__dependability__safety_features_6
+   :id: stkh_req__dependability__memory_protection
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -357,7 +360,7 @@ Dependability
    Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
 
 .. stkh_req:: Cache Protection
-   :id: stkh_req__dependability__safety_features_7
+   :id: stkh_req__dependability__cache_protection
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -372,7 +375,7 @@ Dependability
    Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
 
 .. stkh_req:: Memory Error Correction
-   :id: stkh_req__dependability__safety_features_8
+   :id: stkh_req__dependability__mem_error_correction
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -387,7 +390,7 @@ Dependability
    Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
 
 .. stkh_req:: SW Lockstep
-   :id: stkh_req__dependability__safety_features_9
+   :id: stkh_req__dependability__sw_lockstep
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -400,7 +403,7 @@ Dependability
    The SW-platform shall implement Software Lockstep
 
 .. stkh_req:: External Supervision
-   :id: stkh_req__dependability__safety_features_10
+   :id: stkh_req__dependability__external_supervision
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -415,7 +418,7 @@ Dependability
    Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
 
 .. stkh_req:: Safe Mode Switch
-   :id: stkh_req__dependability__safety_features_11
+   :id: stkh_req__dependability__safe_mode_switch
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -515,7 +518,7 @@ Dependability
    Note1: Reasons for not needing program flow monitoring could be an OS scheduler with timing and execution guarantees.
    Or that the non/late execution of the application keeps the system in a safe state.
 
-   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features_1` "live, deadline, logical supervision"
+   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__health_management` "live, deadline, logical supervision"
 
 
 .. stkh_req:: Availability
@@ -531,6 +534,68 @@ Dependability
    The SW-platform shall support the development of highly available systems.
    (see also `Availability <https://en.wikipedia.org/wiki/Availability>`_).
 
+Security
+^^^^^^^^
+
+.. stkh_req:: Mandatory Access Control (MAC)
+   :id: stkh_req__dependability__mac
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+.. stkh_req:: Secure Boot
+   :id: stkh_req__dependability__secure_boot
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+.. stkh_req:: Secure Onboard Communication
+   :id: stkh_req__dependability__sec_onboard_com
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+.. stkh_req:: IPSec
+   :id: stkh_req__dependability__ipsec
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+.. stkh_req:: MACSec
+   :id: stkh_req__dependability__macsec
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+.. stkh_req:: Firewall
+   :id: stkh_req__dependability__firewall
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
 
 .. stkh_req:: Security features
    :id: stkh_req__dependability__security_features
@@ -541,6 +606,7 @@ Dependability
    :status: valid
    :version: 1
    :valid_from: v1.0.0
+
 
    The SW-platform shall support the following security features:
 
@@ -788,8 +854,6 @@ Communication
 
    The SW-platform shall support safe communication.
 
-   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
-
 
 .. stkh_req:: Secure Communication
    :id: stkh_req__communication__secure
@@ -867,25 +931,29 @@ Time
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables the system to compare events chronologically.
+   :rationale: Enables the system to compare in-vehicle events chronologically.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide a time synchronization framework to synchronize its clock
-   to Time Master within the vehicle.
+   The SW-platform shall provide a framework to synchronize its local vehicle clock representation to a Time Master within the vehicle.
 
 .. stkh_req:: Vehicle Time base API
    :id: stkh_req__time__vehicle_time_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to synchronized vehicle time.
+   The SW-platform shall provide access to the synchronized vehicle time.
+   Access shall be free from interferences for the consuming components.
+
+Note (providing tracebility as long as safety analysis is not available):
+   :need:`stkh_req__time__vehicle_time_api` requires backing by :need:`aou_req__platform__veh_time_e2e_integrity`
+   to guarantee end-to-end data integrity.
 
 .. stkh_req:: Synchronize the HW clock with Vehicle Time
    :id: stkh_req__time__hw_clock_sync
@@ -904,12 +972,12 @@ Time
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
+   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, to add a UTC-timestamp to a data set, etc.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
+   The SW-platform shall provide a framework to synchronize its local absolute clock representation to an external-to-vehicle absolute time base (e.g. UTC).
 
 .. stkh_req:: Absolute time base API
    :id: stkh_req__time__absolute_time_api
@@ -922,38 +990,49 @@ Time
    :valid_from: v1.0.0
 
    The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
+   Access shall be free from interferences for the consuming components.
 
-.. stkh_req:: Local High precision Clock API
-   :id: stkh_req__time__high_precision_clock_api
+.. stkh_req:: Local High Resolution Clock API
+   :id: stkh_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
+   The SW-platform shall provide access to the current high resolution clock from the system time provider in nanoseconds.
+   Access shall be free from interferences for the consuming components.
 
-   Note: to which clock the high precision clock is mapped, depends on the system design.
+   Note: to which clock the high resolution clock is mapped, depends on the system design.
+
+Note (allowing tracebility as long as safety analysis is not available):
+   :need:`stkh_req__time__high_res_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
+   to guarantee FFI and clock data integrity on OS and HW level.
 
 .. stkh_req:: Local Monotonic Clock API
    :id: stkh_req__time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
    The SW-platform shall provide access to the current monotonic clock from the system time provider.
+   Access shall be free from interferences for the consuming components.
 
    Note: to which clock the monotonic clock is mapped, depends on the system design.
 
+Note (allowing tracebility as long as safety analysis is not available):
+   :need:`stkh_req__time__monotonic_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
+   to guarantee FFI and clock data integrity on OS and HW level.
+
+
 AI SW-platform
 --------------
-
 
 .. stkh_req:: On-board ML Workloads
    :id: stkh_req__ai_platform__enablement

@@ -134,12 +134,12 @@ References
 
 :need:`doc__platform_handbook`
 
-`Baselibs Safety Manual <https://eclipse-score.github.io/score/main/modules/baselibs/docs/manual/safety_manual.html>`_
+`Baselibs Safety Manual <https://eclipse-score.github.io/baselibs/main/module/manuals/safety_manual.html>`_
 
 `IPC Safety Manual <https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html>`_
 
 `FEO Safety Manual <https://eclipse-score.github.io/score/main/modules/feo/docs/manual/safety_manual.html>`_
 
-`KVS Safety Manual <https://eclipse-score.github.io/persistency/main/docs/manual/safety_manual.html>`_
+`KVS Safety Manual <https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html>`_
 
 `Orchestrator Safety Manual <https://eclipse-score.github.io/score/main/modules/orchestrator/docs/manual/safety_manual.html>`_

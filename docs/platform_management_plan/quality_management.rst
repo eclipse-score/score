@@ -18,7 +18,7 @@ Quality Management / Platform Quality Management Plan
 .. document:: Platform Quality Management Plan
    :id: doc__platform_quality_plan
    :status: valid
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :realizes: wp__qms_plan[version==1]
@@ -129,13 +129,13 @@ Objectives and scope
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - One process conformance check has been done for every stable feature release
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`wp__qms_report` - Process conformance is available
+      - Ensured by the process quality management, :need:`wp__qms_report` - Process conformance is available
     * - 3
       - Only quality-assured project/platform work products are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform work products are quality-assured
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`wp__verification_platform_ver_report` - Work products contain the verification of the quality assurance
+      - Ensured by the process verification, :need:`wp__verification_platform_ver_report` - Verification report contains the verification results of the work products
     * - 4
       - Only quality-assured project/platform releases are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
@@ -289,76 +289,27 @@ Finally to the Eclipse Foundation if the rules of the Eclipse handbook are not f
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 None
 
-4.4 Quality Management Generic work products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. list-table:: Quality related work products
+4.4 Quality Relevant Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The work products listed below are needed for every development, independent of its safety or security classification.
+Safety and security specific work products are defined in the :doc:`safety_management`, the :doc:`security_management`
+and the module safety/security plans (see :need:`gd_temp__module_safety_plan`, :need:`gd_temp__module_security_plan`).
+
+Platform Work Products
+""""""""""""""""""""""
+Needed once for the platform.
+
+.. list-table:: Quality relevant platform work products
         :header-rows: 1
 
         * - Workproduct Id
           - Link to WP
 
-        * - :need:`wp__chm_plan`
+        * - :need:`wp__policies`
+          - `Eclipse Foundation Project Handbook <https://www.eclipse.org/projects/handbook/>`_
+
+        * - :need:`wp__platform_mgmt`
           - :ref:`project_documents_list`
-
-        * - :need:`wp__document_mgt_plan`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__fdr_reports`
-          - :ref:`documents_docs_modules`
-
-        * - :need:`wp__feat_request`
-          - :ref:`documents_docs_features`
-
-        * - :need:`wp__feature_arch`
-          - :ref:`documents_docs_features`
-
-        * - :need:`wp__feature_dfa`
-          - :ref:`documents_docs_features`
-
-        * - :need:`wp__module_safety_manual`
-          - :ref:`documents_docs_modules`
-
-        * - :need:`wp__module_safety_package`
-          - :ref:`documents_docs_modules`
-
-        * - :need:`wp__module_safety_plan`
-          - :ref:`documents_docs_modules`
-
-        * - :need:`wp__module_sw_release_note`
-          - :ref:`documents_docs_modules`
-
-        * - :need:`wp__module_sw_release_plan`
-          - :ref:`documents_docs_modules`
-
-        * - :need:`wp__platform_dfa`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__platform_safety_manual`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__platform_safety_plan`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__platform_safety_package`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__platform_sw_release_note`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__platform_sw_release_plan`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__prm_plan`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__process_description`
-          - :need:`wp__process_description`
-
-        * - :need:`wp__process_impr_report`
-          - :ref:`project_documents_list`
-
-        * - :need:`wp__process_strategy`
-          - :need:`wp__process_strategy`
 
         * - :need:`wp__project_mgt`
           - :ref:`project_documents_list`
@@ -369,22 +320,34 @@ None
         * - :need:`wp__qms_report`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__requirements_feat`
-          - :ref:`documents_docs_features`
-
-        * - :need:`wp__requirements_inspect`
+        * - :need:`wp__process_impr_report`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__requirements_stkh`
+        * - :need:`wp__training_path`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__sw_arch_verification`
-          - :ref:`project_documents_list`
+        * - :need:`wp__process_strategy`
+          - :need:`wp__process_strategy`
 
-        * - :need:`wp__sw_development_plan`
-          - :ref:`project_documents_list`
+        * - :need:`wp__process_description`
+          - :need:`wp__process_description`
+
+        * - :need:`wp__requirements_proc_tool`
+          - :need:`wp__process_description`
 
         * - :need:`wp__tailoring_work_products`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__chm_plan`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__config_mgt_plan`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__document_mgt_plan`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__prm_plan`
           - :ref:`project_documents_list`
 
         * - :need:`wp__tlm_plan`
@@ -393,7 +356,28 @@ None
         * - :need:`wp__tool_verification_report`
           - :ref:`project_documents_list`
 
+        * - :need:`wp__sw_development_plan`
+          - :ref:`project_documents_list`
+
         * - :need:`wp__verification_plan`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__issue_track_system`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__platform_handbook`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__platform_sw_release_plan`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__platform_sw_release_note`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__requirements_stkh`
+          - :ref:`project_documents_list`
+
+        * - :need:`wp__platform_arch`
           - :ref:`project_documents_list`
 
         * - :need:`wp__verification_platform_int_test`
@@ -401,3 +385,93 @@ None
 
         * - :need:`wp__verification_platform_ver_report`
           - :ref:`project_documents_list`
+
+        * - :need:`wp__sw_platform_sbom`
+          - :ref:`project_documents_list`
+
+Feature Work Products
+"""""""""""""""""""""
+Needed for each feature.
+
+.. list-table:: Quality relevant feature work products
+        :header-rows: 1
+
+        * - Workproduct Id
+          - Link to WP
+
+        * - :need:`wp__feat_request`
+          - :ref:`documents_docs_features`
+
+        * - :need:`wp__requirements_feat`
+          - :ref:`documents_docs_features`
+
+        * - :need:`wp__requirements_inspect`
+          - :ref:`documents_docs_features`
+
+        * - :need:`wp__feature_arch`
+          - :ref:`documents_docs_features`
+
+        * - :need:`wp__verification_feat_int_test`
+          - :ref:`documents_docs_features`
+
+Module Work Products
+""""""""""""""""""""
+Needed for each module.
+
+.. list-table:: Quality relevant module work products
+        :header-rows: 1
+
+        * - Workproduct Id
+          - Link to WP
+
+        * - :need:`wp__module_sw_release_plan`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__module_sw_release_note`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__verification_module_ver_report`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__sw_module_sbom`
+          - :ref:`documents_docs_modules`
+
+Component Work Products
+"""""""""""""""""""""""
+Needed for each component of a module.
+
+.. list-table:: Quality relevant component work products
+        :header-rows: 1
+
+        * - Workproduct Id
+          - Link to WP
+
+        * - :need:`wp__cmpt_request`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__requirements_comp`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__requirements_inspect`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__component_arch`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__sw_arch_verification`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__sw_implementation`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__sw_implementation_inspection`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__verification_sw_unit_test`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__verification_comp_int_test`
+          - :ref:`documents_docs_modules`
+
+        * - :need:`wp__sw_component_class`
+          - :ref:`documents_docs_modules`
