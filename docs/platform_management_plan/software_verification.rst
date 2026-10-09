@@ -394,7 +394,7 @@ Additionally, the following measures are taken to support the coverage of the de
 - Structural coverage as defined by their specific thresholds
 - Static analysis and Linting
 
-These measures are not counting in the coverage percentage of this goal, as they have their own defined goals.
+These measures do not count towards the coverage percentage of this goal, as they have their own defined goals.
 
 For QM rated software no further coverage calculation is expected on the detailed design level,
 but the respective work products are expected to be created and reviewed.
@@ -434,9 +434,9 @@ The goal is to have all tests with linked ``valid`` requirements executed and pa
 Static code analysis
 ^^^^^^^^^^^^^^^^^^^^
 Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
-The respective tools  (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+The respective tools (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
 
-Violation identified by the static code analysis tools are categorized based on their severity.
+Violations identified by the static code analysis tools are categorized based on their severity.
 
 For QM software, the objective is a 100% closure rate of any Critical severity finding prior to release.
 For safety‑critical software, the objective is a 100% closure rate of any Critical and High severity finding prior to release.
@@ -449,7 +449,7 @@ Remaining Medium severity findings are reviewed and justified by documented risk
 Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
 
 Any deviation of the coverage percentage value is documented as part of the module documentation.
-A rationale for the deviation need to be provided for an official release.
+A rationale for the deviation needs to be provided for an official release.
 
 
 Test development
@@ -479,7 +479,7 @@ Release test execution
 ^^^^^^^^^^^^^^^^^^^^^^
 Results of the test execution are captured in the verification reports for the modules and platform
 as release work products documenting the clear pass/fail result for each executed test case id.
-Also, any  deviation in the test execution scope for skipped or not executed tests will be documented
+Also, any deviation in the test execution scope for skipped or not executed tests will be documented
 in the release documentation and the respective reasoning will be provided.
 
 Manual test execution

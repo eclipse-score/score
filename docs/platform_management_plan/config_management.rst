@@ -73,7 +73,7 @@ sphinx-needs is also used to document the work products properties/attributes de
 The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
 GitHub repositories are the realization of the Delivery Containers as described in :need:`doc_concept__general_building_blocks`.
 There is one `platform repository <https://GitHub.com/eclipse-score/score/>`_ and one repository for each set of Dependable elements
-one Delivery Team is responsibel for [TBD add link to role defintion].
+one :need:`Delivery Team <rl__delivery_team>` is responsible for.
 
 In S-CORE every repository shall have only one MODULE.bazel file which defines its version and dependencies.
 Exceptions from this may be needed for testing reasons only.
