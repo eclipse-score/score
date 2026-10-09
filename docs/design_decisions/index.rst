@@ -22,7 +22,7 @@ Strategy
    :maxdepth: 1
    :glob:
 
-   DR-*-strat*
+   strategy/DR-*-strat*
 
 Architecture
 ~~~~~~~~~~~~
@@ -31,7 +31,7 @@ Architecture
    :maxdepth: 1
    :glob:
 
-   DR-*-arch*
+   architecture/DR-*-arch*
 
 Infrastructure
 ~~~~~~~~~~~~~~
@@ -40,7 +40,7 @@ Infrastructure
    :maxdepth: 1
    :glob:
 
-   DR-*-infra*
+   infrastructure/DR-*-infra*
 
 Process
 ~~~~~~~
@@ -49,7 +49,7 @@ Process
    :maxdepth: 1
    :glob:
 
-   DR-*-proc*
+   process/DR-*-proc*
 
 Integration
 ~~~~~~~~~~~
@@ -58,4 +58,4 @@ Integration
    :maxdepth: 1
    :glob:
 
-   DR-*-int*
+   integration/DR-*-int*
