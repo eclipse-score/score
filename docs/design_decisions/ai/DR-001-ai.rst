@@ -10,7 +10,7 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-011-AI: AI Agent Context Packaging Tooling Selection
+DR-001-AI: AI Agent Context Packaging Tooling Selection
 ========================================================
 
 - **Date:** 2026-10-05
@@ -159,4 +159,3 @@ project matures significantly.
    * - OKIT
      - Low
      - **DO NOT USE** at this maturity
-
