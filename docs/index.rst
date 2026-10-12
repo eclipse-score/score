@@ -306,7 +306,6 @@ Infrastructure and Tooling
    users_guide/index
    architecture/index
    features/index
-   AI/index
    requirements/index
    contribute/index
 
@@ -317,12 +316,6 @@ Infrastructure and Tooling
    Safety <safety/index>
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
    design_decisions/index
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Main sections
-
-   AI/index
 
 .. toctree::
    :maxdepth: 1
