@@ -18,7 +18,7 @@ DR-009-Int: Portable safety traceability and SBOM exchange
 .. dec_rec:: Portable safety traceability and SBOM exchange
    :id: dec_rec__int__portable_safety_traceability
    :status: proposed
-   :version: 1
+   :version: 2
    :context: Integration
    :decision: Option 3 (proposed)
 
@@ -231,7 +231,7 @@ decision, approval or policy conclusion.
 Architecture and Packaging Boundary
 -----------------------------------
 
-The intended flow is:
+The intended S-CORE integration flow is:
 
 .. code-block:: text
 
@@ -240,15 +240,66 @@ The intended flow is:
                               |
                        reviewed mappings
                               v
-              canonical safety traceability projection
+      optional exporter in eclipse-score/docs-as-code
                               |
-             producer validation and package generation
+                  SRAC export package contract
+                              |
+         producer validation and deterministic packaging
                               v
-               integrity-bound SRAC exchange artifact
+               eclipse-score/sbom-tool consumer
                               |
-             SPDX/CycloneDX external reference and digest
+          +-------------------+-------------------+
+          |                                       |
+   current external reference              native safety mapping
+   SPDX 2.3 / CycloneDX 1.x          SPDX 3.1 / future CycloneDX
+          |                                       |
+          +-------------------+-------------------+
                               v
                receiver verification and correlation
+
+The exporter is optional and does not change the authoritative lifecycle
+records. The reusable documentation workflow may expose an opt-in export target;
+ordinary documentation builds remain unchanged. S-CORE's Bazel ``sbom`` target
+passes the generated package to ``eclipse-score/sbom-tool`` only when safety
+metadata has been requested.
+
+Repository Responsibilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``eclipse-score/docs-as-code`` owns the optional source adapters and canonical
+  export step, initially stacked on the metamodel export introduced by PR #878.
+* ``eclipse-score/cicd-workflows`` owns a generic, optional workflow input that
+  invokes a configured metadata-export target. It must not hard-code SRAC
+  semantics or run the export by default.
+* ``eclipse-score/sbom-tool`` owns validation of the handoff package and its
+  representation in generated SBOM output. It does not create or approve safety
+  decisions.
+* ``eclipse-score/reference_integration`` is an adopter and demonstrator. It
+  supplies fixtures, invokes the optional targets and proves end-to-end
+  behavior, but it is not the long-term owner of the reusable exporter.
+* The S-CORE integration governance process owns the canonical mapping contract,
+  compatibility rules and reviewed source mappings. Lifecycle owners remain
+  authoritative for requirements, classifications, evidence and approvals.
+
+SRAC Export Package Contract
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The handoff between ``docs-as-code`` and ``sbom-tool`` is format-neutral and
+versioned. At minimum it contains:
+
+* a canonical ``srac.json`` projection;
+* a ``manifest.json`` that identifies the contract and schema version;
+* source document identity, revision and digest;
+* exporter name and version;
+* stable product, system and component identities;
+* requirement, evidence, decision and approval references;
+* review and analysis-closure state; and
+* digests for every packaged file.
+
+The contract is independent of the eventual SBOM serialization. This lets the
+same validated export support today's external-reference paths and future native
+SPDX or CycloneDX safety fields without moving lifecycle authority into the SBOM
+tool.
 
 For current formats, the CycloneDX 1.x path uses an ``externalReference`` and
 native hash field. The SPDX 2.3 path uses a package ``ExternalRef`` in category
@@ -258,8 +309,12 @@ comment or an annotation; SPDX 2.3 does not provide a native checksum field on
 provenance where available, but signatures do not replace semantic completeness
 validation.
 
-Native future SPDX or CycloneDX safety data shall enter the same canonical
-receiver model rather than creating a separate UI, query or policy path.
+The SPDX 3.1 development model already contains the FunctionalSafety profile.
+Native SPDX 3.1 output remains gated by the final specification, generated
+bindings and support in the S-CORE SBOM toolchain. Native CycloneDX safety output
+remains gated by adoption of the corresponding model. Both shall enter the same
+canonical receiver model rather than creating a separate UI, query or policy
+path.
 
 Validation and Trust Boundaries
 -------------------------------
@@ -331,14 +386,29 @@ Staged Implementation
 Following acceptance of this decision record, implementation should be split
 into independently reviewable changes:
 
-#. Define and test the canonical projection and mapping contract.
-#. Add the Sphinx-Needs ``needs.json`` adapter without changing source records.
-#. Add producer-side validation and deterministic SRAC generation.
-#. Add current SPDX 2.3 and CycloneDX 1.x reference mappings.
+#. Finalize the canonical projection and the versioned SRAC export package
+   contract through the S-CORE integration governance process.
+#. Add an optional exporter to ``eclipse-score/docs-as-code``, stacked on the
+   reusable metamodel export rather than maintained in
+   ``reference_integration``.
+#. Add a generic opt-in metadata-export target to
+   ``eclipse-score/cicd-workflows``; preserve the existing default documentation
+   workflow.
+#. Extend ``eclipse-score/sbom-tool`` to accept the export package as optional
+   input from the Bazel ``sbom`` target, validate it and emit the appropriate
+   current-format reference.
+#. Update ``eclipse-score/reference_integration`` with end-to-end fixtures,
+   positive and negative tests and reproducible evidence.
+#. Add native SPDX 3.1 FunctionalSafety serialization after the final
+   specification and required libraries are supported.
+#. Add native CycloneDX safety serialization after the model is adopted and
+   supported.
 #. Add receiving-side integrity verification and deterministic correlation.
-#. Add packaging, provenance and optional attestation integration.
-#. Add further source adapters only after their mappings and ownership are
-   agreed.
+#. Add optional attestation integration and further source adapters only after
+   their mappings and ownership are agreed.
+
+A future Bazel supply-chain metadata producer may emit the same contract. It is
+an additional producer path, not a prerequisite for the S-CORE implementation.
 
 Acceptance Criteria
 -------------------
@@ -369,6 +439,12 @@ Related Work
 * `Policy-aware use-case documentation PR #393 <https://github.com/eclipse-score/reference_integration/pull/393>`_
 * `S-CORE tooling mapping overlay PR #502 <https://github.com/eclipse-score/tooling/pull/502>`_
 * `S-CORE metamodel flow PR #22 <https://github.com/eclipse-score/mcp-servers/pull/22>`_
+* `S-CORE docs-as-code metamodel export PR #878 <https://github.com/eclipse-score/docs-as-code/pull/878>`_
+* `S-CORE reusable documentation workflow <https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/docs.yml>`_
+* `S-CORE SBOM tool <https://github.com/eclipse-score/sbom-tool>`_
+* `Bazel supply-chain roadmap <https://github.com/bazel-contrib/supply-chain/blob/main/roadmap.md>`_
+* `SPDX 3.1 FunctionalSafety profile <https://github.com/spdx/spdx-3-model/tree/develop/model/FunctionalSafety>`_
+* `SPDX 3.1 RC1 <https://github.com/spdx/spdx-3-model/releases/tag/3.1-rc1>`_
 * `SPDX 3.1-dev FunctionalSafety work <https://github.com/spdx/spdx-3-model/pulls?q=is%3Apr+1436+1442+1443+1458>`_
 * `CycloneDX safety-model proposal PR #1120 <https://github.com/CycloneDX/specification/pull/1120>`_
 
