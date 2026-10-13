@@ -309,12 +309,14 @@ comment or an annotation; SPDX 2.3 does not provide a native checksum field on
 provenance where available, but signatures do not replace semantic completeness
 validation.
 
-The SPDX 3.1 development model already contains the FunctionalSafety profile.
-Native SPDX 3.1 output remains gated by the final specification, generated
-bindings and support in the S-CORE SBOM toolchain. Native CycloneDX safety output
-remains gated by adoption of the corresponding model. Both shall enter the same
-canonical receiver model rather than creating a separate UI, query or policy
-path.
+SPDX 3.1 RC1 contains the foundational FunctionalSafety profile. The
+post-RC1 development model additionally contains the merged
+``SafetyContextRelationship`` and ``SafetyIntegrityLevelType`` contribution from
+SPDX PR #1436. Native SPDX 3.1 output remains gated by the final specification,
+generated bindings and support in the S-CORE SBOM toolchain. Native CycloneDX
+safety output remains gated by adoption of the corresponding model. Both shall
+enter the same canonical receiver model rather than creating a separate UI,
+query or policy path.
 
 Validation and Trust Boundaries
 -------------------------------
@@ -444,8 +446,9 @@ Related Work
 * `S-CORE SBOM tool <https://github.com/eclipse-score/sbom-tool>`_
 * `Bazel supply-chain roadmap <https://github.com/bazel-contrib/supply-chain/blob/main/roadmap.md>`_
 * `SPDX 3.1 FunctionalSafety profile <https://github.com/spdx/spdx-3-model/tree/develop/model/FunctionalSafety>`_
-* `SPDX 3.1 RC1 <https://github.com/spdx/spdx-3-model/releases/tag/3.1-rc1>`_
-* `SPDX 3.1-dev FunctionalSafety work <https://github.com/spdx/spdx-3-model/pulls?q=is%3Apr+1436+1442+1443+1458>`_
+* `SPDX 3.1 RC1 foundational FunctionalSafety profile <https://github.com/spdx/spdx-3-model/releases/tag/3.1-rc1>`_
+* `Merged post-RC1 SafetyContextRelationship and SafetyIntegrityLevelType PR #1436 <https://github.com/spdx/spdx-3-model/pull/1436>`_
+* `Additional SPDX 3.1-dev FunctionalSafety work <https://github.com/spdx/spdx-3-model/pulls?q=is%3Apr+1442+1443+1458>`_
 * `CycloneDX safety-model proposal PR #1120 <https://github.com/CycloneDX/specification/pull/1120>`_
 
 
