@@ -74,7 +74,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Eclipse S-CORE (Eclipse Safe Open Vehicle Core)" href="../../introduction/index.html" />
+    <link rel="next" title="AI" href="../ai/index.html" />
     <link rel="prev" title="DR-008-Int: S-CORE integration scope in reference_integration repository" href="DR-008-int.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -566,6 +566,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DR-009-Int: Portable safety traceability and SBOM exchange</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">AI</a></li>
 </ul>
 </div>
 </nav></div>
@@ -634,7 +635,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-10-08</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-92ce9bb4">
+<div class="need_container docutils container" id="SNCB-6ca7b641">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__int__portable_safety_traceability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -655,7 +656,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Integration</span></span></div>
 <div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option 3 (proposed)</span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>2</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -875,23 +876,72 @@ decision, approval or policy conclusion.</p>
 </section>
 <section id="architecture-and-packaging-boundary">
 <h2>Architecture and Packaging Boundary<a class="headerlink" href="#architecture-and-packaging-boundary" title="Link to this heading">#</a></h2>
-<p>The intended flow is:</p>
+<p>The intended S-CORE integration flow is:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>authoritative lifecycle sources
     Sphinx-Needs | Dependable Element | TRLC/Lobster | future sources
                            |
                     reviewed mappings
                            v
-           canonical safety traceability projection
+   optional exporter in eclipse-score/docs-as-code
                            |
-          producer validation and package generation
+               SRAC export package contract
+                           |
+      producer validation and deterministic packaging
                            v
-            integrity-bound SRAC exchange artifact
+            eclipse-score/sbom-tool consumer
                            |
-          SPDX/CycloneDX external reference and digest
+       +-------------------+-------------------+
+       |                                       |
+current external reference              native safety mapping
+SPDX 2.3 / CycloneDX 1.x          SPDX 3.1 / future CycloneDX
+       |                                       |
+       +-------------------+-------------------+
                            v
             receiver verification and correlation
 </pre></div>
 </div>
+<p>The exporter is optional and does not change the authoritative lifecycle
+records. The reusable documentation workflow may expose an opt-in export target;
+ordinary documentation builds remain unchanged. S-CORE’s Bazel <code class="docutils literal notranslate"><span class="pre">sbom</span></code> target
+passes the generated package to <code class="docutils literal notranslate"><span class="pre">eclipse-score/sbom-tool</span></code> only when safety
+metadata has been requested.</p>
+<section id="repository-responsibilities">
+<h3>Repository Responsibilities<a class="headerlink" href="#repository-responsibilities" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eclipse-score/docs-as-code</span></code> owns the optional source adapters and canonical
+export step, initially stacked on the metamodel export introduced by PR #878.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eclipse-score/cicd-workflows</span></code> owns a generic, optional workflow input that
+invokes a configured metadata-export target. It must not hard-code SRAC
+semantics or run the export by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eclipse-score/sbom-tool</span></code> owns validation of the handoff package and its
+representation in generated SBOM output. It does not create or approve safety
+decisions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eclipse-score/reference_integration</span></code> is an adopter and demonstrator. It
+supplies fixtures, invokes the optional targets and proves end-to-end
+behavior, but it is not the long-term owner of the reusable exporter.</p></li>
+<li><p>The S-CORE integration governance process owns the canonical mapping contract,
+compatibility rules and reviewed source mappings. Lifecycle owners remain
+authoritative for requirements, classifications, evidence and approvals.</p></li>
+</ul>
+</section>
+<section id="srac-export-package-contract">
+<h3>SRAC Export Package Contract<a class="headerlink" href="#srac-export-package-contract" title="Link to this heading">#</a></h3>
+<p>The handoff between <code class="docutils literal notranslate"><span class="pre">docs-as-code</span></code> and <code class="docutils literal notranslate"><span class="pre">sbom-tool</span></code> is format-neutral and
+versioned. At minimum it contains:</p>
+<ul class="simple">
+<li><p>a canonical <code class="docutils literal notranslate"><span class="pre">srac.json</span></code> projection;</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code> that identifies the contract and schema version;</p></li>
+<li><p>source document identity, revision and digest;</p></li>
+<li><p>exporter name and version;</p></li>
+<li><p>stable product, system and component identities;</p></li>
+<li><p>requirement, evidence, decision and approval references;</p></li>
+<li><p>review and analysis-closure state; and</p></li>
+<li><p>digests for every packaged file.</p></li>
+</ul>
+<p>The contract is independent of the eventual SBOM serialization. This lets the
+same validated export support today’s external-reference paths and future native
+SPDX or CycloneDX safety fields without moving lifecycle authority into the SBOM
+tool.</p>
 <p>For current formats, the CycloneDX 1.x path uses an <code class="docutils literal notranslate"><span class="pre">externalReference</span></code> and
 native hash field. The SPDX 2.3 path uses a package <code class="docutils literal notranslate"><span class="pre">ExternalRef</span></code> in category
 <code class="docutils literal notranslate"><span class="pre">OTHER</span></code> and carries the digest by a documented convention, such as the
@@ -899,8 +949,13 @@ comment or an annotation; SPDX 2.3 does not provide a native checksum field on
 <code class="docutils literal notranslate"><span class="pre">ExternalRef</span></code>. A signed in-toto/DSSE statement may strengthen identity and
 provenance where available, but signatures do not replace semantic completeness
 validation.</p>
-<p>Native future SPDX or CycloneDX safety data shall enter the same canonical
-receiver model rather than creating a separate UI, query or policy path.</p>
+<p>The SPDX 3.1 development model already contains the FunctionalSafety profile.
+Native SPDX 3.1 output remains gated by the final specification, generated
+bindings and support in the S-CORE SBOM toolchain. Native CycloneDX safety output
+remains gated by adoption of the corresponding model. Both shall enter the same
+canonical receiver model rather than creating a separate UI, query or policy
+path.</p>
+</section>
 </section>
 <section id="validation-and-trust-boundaries">
 <h2>Validation and Trust Boundaries<a class="headerlink" href="#validation-and-trust-boundaries" title="Link to this heading">#</a></h2>
@@ -969,15 +1024,29 @@ versioning rules and compatibility tests.</p></li>
 <p>Following acceptance of this decision record, implementation should be split
 into independently reviewable changes:</p>
 <ol class="arabic simple">
-<li><p>Define and test the canonical projection and mapping contract.</p></li>
-<li><p>Add the Sphinx-Needs <code class="docutils literal notranslate"><span class="pre">needs.json</span></code> adapter without changing source records.</p></li>
-<li><p>Add producer-side validation and deterministic SRAC generation.</p></li>
-<li><p>Add current SPDX 2.3 and CycloneDX 1.x reference mappings.</p></li>
+<li><p>Finalize the canonical projection and the versioned SRAC export package
+contract through the S-CORE integration governance process.</p></li>
+<li><p>Add an optional exporter to <code class="docutils literal notranslate"><span class="pre">eclipse-score/docs-as-code</span></code>, stacked on the
+reusable metamodel export rather than maintained in
+<code class="docutils literal notranslate"><span class="pre">reference_integration</span></code>.</p></li>
+<li><p>Add a generic opt-in metadata-export target to
+<code class="docutils literal notranslate"><span class="pre">eclipse-score/cicd-workflows</span></code>; preserve the existing default documentation
+workflow.</p></li>
+<li><p>Extend <code class="docutils literal notranslate"><span class="pre">eclipse-score/sbom-tool</span></code> to accept the export package as optional
+input from the Bazel <code class="docutils literal notranslate"><span class="pre">sbom</span></code> target, validate it and emit the appropriate
+current-format reference.</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">eclipse-score/reference_integration</span></code> with end-to-end fixtures,
+positive and negative tests and reproducible evidence.</p></li>
+<li><p>Add native SPDX 3.1 FunctionalSafety serialization after the final
+specification and required libraries are supported.</p></li>
+<li><p>Add native CycloneDX safety serialization after the model is adopted and
+supported.</p></li>
 <li><p>Add receiving-side integrity verification and deterministic correlation.</p></li>
-<li><p>Add packaging, provenance and optional attestation integration.</p></li>
-<li><p>Add further source adapters only after their mappings and ownership are
-agreed.</p></li>
+<li><p>Add optional attestation integration and further source adapters only after
+their mappings and ownership are agreed.</p></li>
 </ol>
+<p>A future Bazel supply-chain metadata producer may emit the same contract. It is
+an additional producer path, not a prerequisite for the S-CORE implementation.</p>
 </section>
 <section id="acceptance-criteria">
 <h2>Acceptance Criteria<a class="headerlink" href="#acceptance-criteria" title="Link to this heading">#</a></h2>
@@ -1008,6 +1077,12 @@ evaluation.</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/pull/393">Policy-aware use-case documentation PR #393</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/tooling/pull/502">S-CORE tooling mapping overlay PR #502</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/mcp-servers/pull/22">S-CORE metamodel flow PR #22</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/pull/878">S-CORE docs-as-code metamodel export PR #878</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/docs.yml">S-CORE reusable documentation workflow</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/sbom-tool">S-CORE SBOM tool</a></p></li>
+<li><p><a class="reference external" href="https://github.com/bazel-contrib/supply-chain/blob/main/roadmap.md">Bazel supply-chain roadmap</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spdx/spdx-3-model/tree/develop/model/FunctionalSafety">SPDX 3.1 FunctionalSafety profile</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spdx/spdx-3-model/releases/tag/3.1-rc1">SPDX 3.1 RC1</a></p></li>
 <li><p><a class="reference external" href="https://github.com/spdx/spdx-3-model/pulls?q=is%3Apr+1436+1442+1443+1458">SPDX 3.1-dev FunctionalSafety work</a></p></li>
 <li><p><a class="reference external" href="https://github.com/CycloneDX/specification/pull/1120">CycloneDX safety-model proposal PR #1120</a></p></li>
 </ul>
@@ -1034,11 +1109,11 @@ evaluation.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="../../introduction/index.html"
+       href="../ai/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Eclipse S-CORE (Eclipse Safe Open Vehicle Core)</p>
+        <p class="prev-next-title">AI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1083,7 +1158,11 @@ evaluation.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-decision">Proposed Decision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-and-packaging-boundary">Architecture and Packaging Boundary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-and-packaging-boundary">Architecture and Packaging Boundary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-responsibilities">Repository Responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#srac-export-package-contract">SRAC Export Package Contract</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-and-trust-boundaries">Validation and Trust Boundaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies-and-human-checkpoints">Policies and Human Checkpoints</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-confidence">Tool Confidence</a></li>
