@@ -20,6 +20,7 @@ Development
 
    development_environment
    traceability_tooling
+   modelling_howto
    api_guideline
    cpp/index
    rust/index
