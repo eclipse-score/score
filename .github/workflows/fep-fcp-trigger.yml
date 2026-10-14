@@ -1,0 +1,38 @@
+# *******************************************************************************
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+# Unprivileged first stage of the FEP Final Comment Period bot.
+# PRs from forks only get a read-only token here, and there is no
+# `pull_request_review_target`. This workflow therefore does nothing but trigger
+# fep-fcp.yml via `workflow_run`, which runs with the base repository's token
+# (the same pattern as docs.yml -> docs-publish.yml).
+
+name: FEP FCP Trigger
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+  pull_request_review:
+    types: [submitted, dismissed]
+  merge_group:
+    types: [checks_requested]
+
+jobs:
+  trigger:
+    name: trigger
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Event ${{ github.event_name }} handed over to the FEP Final Comment Period workflow."

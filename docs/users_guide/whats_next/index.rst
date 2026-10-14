@@ -28,7 +28,7 @@ Becoming a contributor
 #. **Read the User's Guide** — Work through the complete :ref:`users_guide` from start to finish to
    build a solid foundation of S-CORE knowledge.
 
-#. **Start the S-CORE test application "scrample"** — Run `scrample <https://github.com/eclipse-score/scrample/tree/v0.1.2-simple-app>`_ locally to experience the
+#. **Start the S-CORE test application "scrample"** — Run `scrample <https://github.com/eclipse-score/scrample/tree/v0.1.1>`_ locally to experience the
    full development loop (build, test, CI/CD) on a real, self-contained project.
 
 #. **Implement an open issue and create a pull request** — Pick up an open issue in any S-CORE

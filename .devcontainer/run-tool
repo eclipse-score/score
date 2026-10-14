@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+# *******************************************************************************
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+# This copy is managed by repo_policy_sync in eclipse-score/tools.
+# Please do not edit this copy; update the score-devcontainer-run-tool policy asset.
+# Consumer repositories install this runner as .devcontainer/run-tool.
+# It runs a pinned CLI tool from PATH in a container, from local PATH on the host
+# when available, or through Bazel otherwise.
+# Use --strict to bypass local tools on the host and force execution through Bazel.
+# See https://github.com/eclipse-score/devcontainer/tree/main/tools.
+
+set -euo pipefail
+
+strict=0
+if [[ "${1:-}" == "--strict" ]]; then
+    strict=1
+    shift
+fi
+
+if [[ "$#" -lt 1 ]]; then
+    echo "Usage: $0 [--strict] <tool> [args...]" >&2
+    exit 2
+fi
+
+tool_name="$1"
+shift
+
+# Tests can force either side of the container boundary without changing the
+# automatic detection behavior. Reject invalid overrides instead of silently
+# treating them as a host environment.
+container_mode="${RUN_TOOL_CONTAINER_MODE:-auto}"
+case "${container_mode}" in
+    host) is_container=0 ;;
+    container) is_container=1 ;;
+    auto)
+        if [[ -f /.dockerenv ]] || [[ -f /run/.containerenv ]] || [[ -d /devcontainer ]]; then
+            is_container=1
+        else
+            is_container=0
+        fi
+        ;;
+    *)
+        echo "Invalid RUN_TOOL_CONTAINER_MODE: ${container_mode}" >&2
+        exit 2
+        ;;
+esac
+
+# A container built from this catalog only ever has the pinned version on
+# PATH, so container execution is direct and untouched.
+if [[ "${is_container}" -eq 1 ]] && command -v "${tool_name}" >/dev/null 2>&1; then
+    exec "${tool_name}" "$@"
+# On the host, prefer the local tool on PATH for faster execution unless --strict
+# is set. If local execution fails, suggest --strict to run the pinned Bazel target.
+elif [[ "${strict}" -eq 0 ]] && command -v "${tool_name}" >/dev/null 2>&1; then
+    if "${tool_name}" "$@"; then
+        exit 0
+    else
+        exit_code=$?
+        echo "Execution of local '${tool_name}' failed with exit code ${exit_code}." >&2
+        echo "Use '--strict' to bypass the local tool and run the pinned version via Bazel." >&2
+        exit "${exit_code}"
+    fi
+elif command -v bazel >/dev/null 2>&1; then
+    # Consumer repositories expose this module as @score_devcontainer; `--`
+    # prevents tool flags from being interpreted as Bazel flags.
+    exec bazel run "@score_devcontainer//tools:${tool_name}" -- "$@"
+else
+    echo "Could not run '${tool_name}': no container command or Bazel executable is available." >&2
+    exit 127
+fi

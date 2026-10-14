@@ -14,6 +14,7 @@
 
 .. mod:: Communication
    :id: mod__com_communication
+   :version: 1
    :includes: comp__com_configuration, comp__com_ipc_binding, comp__com_mock_binding, comp__com_frontend, comp__com_message_passing
 
    .. needarch::
@@ -24,7 +25,7 @@
       comp__com_ipc_binding -r[hidden]-> comp__com_frontend
       comp__com_frontend -r[hidden]-> comp__com_mock_binding
       comp__com_mock_binding -r[hidden]-> comp__com_configuration
-      logic_arc_int__tracing__tracing -r[hidden]-> logic_arc_int__logging__logging
+      logic_arc_int__tracing__tracing -r[hidden]-> logic_arc_int__log_cpp__logging
 
 
 Module Documents

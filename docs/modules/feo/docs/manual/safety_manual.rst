@@ -36,8 +36,8 @@ For FEO module the following safety related stakeholder requirements are assumed
 
 - :need:`stkh_req__app_architectures__support_time`
 - :need:`stkh_req__app_architectures__support_data`
-- :need:`stkh_req__dependability__safety_features_1`
-- :need:`stkh_req__dependability__safety_features_4`
+- :need:`stkh_req__dependability__health_management`
+- :need:`stkh_req__dependability__safe_startup_reset`
 
 Assumptions of Use
 ------------------
@@ -53,6 +53,7 @@ Assumptions on the Environment
    :security: YES
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    Only the following crates of the FEO module shall be used to build code that runs on
    targets in release builds.
@@ -80,6 +81,7 @@ Assumptions on the Environment
    :security: YES
    :safety: ASIL_B
    :status: invalid
+   :version: 1
 
    The following items from the Rust std library shall be safety qualified:
 

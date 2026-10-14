@@ -24,6 +24,7 @@ Terms and definitions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -36,6 +37,7 @@ Terms and definitions
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -51,6 +53,7 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -63,6 +66,7 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -75,6 +79,7 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -87,6 +92,7 @@ Data Housekeeping
    :security: NO
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -99,6 +105,7 @@ Data Housekeeping
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -111,6 +118,7 @@ Data Housekeeping
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -123,6 +131,7 @@ Data Housekeeping
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -138,6 +147,7 @@ Parameter Provision
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -150,6 +160,7 @@ Parameter Provision
    :security: YES
    :safety: QM
    :derived_from: stkh_req__functional_req__file_based[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -165,6 +176,7 @@ Parameter Qualification
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__safe_config[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -177,6 +189,7 @@ Parameter Qualification
    :security: YES
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__safe_config[version==1]
+   :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0

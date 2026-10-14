@@ -24,6 +24,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__app_architectures__support_time[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -36,6 +37,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__overall_goals__reuse_of_app_soft[version==1], stkh_req__execution_model__processes[version==1], stkh_req__execution_model__low_power[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -48,6 +50,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__operating_system[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -62,6 +65,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -74,6 +78,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -86,6 +91,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -98,6 +104,7 @@ General
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__execution_model__processes[version==1]
+   :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0

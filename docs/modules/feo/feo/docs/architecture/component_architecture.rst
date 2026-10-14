@@ -169,5 +169,5 @@ Interfaces
 
   See static architecture.
 
-.. needextend:: is_external == False and "feo/docs/architecture" in docname
+.. needextend:: c.this_doc() and is_external == False and "feo/docs/architecture" in docname
    :+tags: component_feo

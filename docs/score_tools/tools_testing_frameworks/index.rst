@@ -14,8 +14,8 @@
 
 .. _tools_testing_frameworks:
 
-Testing Frameworks Tools Overview
-=================================
+Testing Frameworks Tools
+========================
 
 .. needtable:: Testing Frameworks List
    :tags: tool_management, tools_testing_frameworks
@@ -31,3 +31,4 @@ Testing Frameworks Tools Overview
 
    gtest
    itf
+   pytest

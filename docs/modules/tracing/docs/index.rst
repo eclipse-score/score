@@ -22,6 +22,7 @@
 
 .. mod_view_sta:: Tracing
    :id: mod_view_sta__tracing__tracing
+   :version: 1
    :includes: comp__tracing
    :belongs_to: mod__tracing[version==1]
 

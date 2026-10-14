@@ -21,7 +21,7 @@ Configuration Component Architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :uses: logic_arc_int__logging__logging[version==1]
+   :uses: logic_arc_int__log_cpp__logging[version==1]
    :belongs_to: feat__com_communication[version==1]
 
    .. needarch::
