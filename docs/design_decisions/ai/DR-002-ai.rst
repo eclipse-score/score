@@ -21,7 +21,7 @@ DR-010-Infra: AI SDLC Tooling Evaluation and S-CORE Harness Direction
    :status: proposed
    :version: 2
    :context: Infrastructure
-  :decision: Build a thin, S-CORE-owned layer of reference agents/skills and MCP automation that drives the existing S-CORE process and Sphinx-Needs traceability, operating entirely within the current process metamodel and its established artifact types. Reuse concepts from SpecKit, Syspilot and Pharaoh rather than adopting any framework wholesale. Tool qualification and operational rollout are handled separately.
+   :decision: Build a thin, S-CORE-owned layer of reference agents/skills and MCP automation that drives the existing S-CORE process and Sphinx-Needs traceability, operating entirely within the current process metamodel and its established artifact types. Reuse concepts from SpecKit, Syspilot and Pharaoh rather than adopting any framework wholesale. Tool qualification and operational rollout are handled separately.
 
 1. Context and Problem Statement
 --------------------------------
