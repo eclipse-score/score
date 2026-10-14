@@ -10,61 +10,87 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-010-Infra: AI SDLC / SpecKit Tooling Evaluation for Eclipse S-CORE
-======================================================================
+DR-010-Infra: AI SDLC Tooling Evaluation and S-CORE Harness Direction
+=====================================================================
 
 - **Issue:** `#3115 <https://github.com/eclipse-score/score/issues/3115>`_ — Evaluate AI SDLC / SpecKit Tooling
-- **Date:** 2026-07-31
+- **Date:** 2026-07-31 (rev. 2)
 
-.. dec_rec:: AI SDLC / SpecKit Tooling Evaluation
+.. dec_rec:: AI SDLC Tooling Evaluation and S-CORE Harness Direction
    :id: dec_rec__infra__ai_sdlc_tooling
    :status: proposed
-   :version: 1
+   :version: 2
    :context: Infrastructure
-   :decision: Do not adopt any evaluated framework wholesale; build an S-CORE-owned harness based on SpecKit + Sphinx-Needs traceability
+   :decision: Build a thin, S-CORE-owned layer of reference agents/skills and MCP
+      automation that drives the existing S-CORE process and Sphinx-Needs
+      traceability, operating entirely within the current process metamodel and
+      its established artifact types. Reuse concepts from SpecKit, Syspilot and
+      Pharaoh rather than adopting any framework wholesale. Tool qualification and
+      operational rollout are handled separately.
 
-**Decision driver:** Can a tool create a traceable chain from
-**Requirements → Specifications → ADRs → Code → Tests → Documentation**
-while enabling AI agents to participate in a **governed, reproducible, ASPICE-compatible** workflow?
+1. Context and Problem Statement
+--------------------------------
 
-1. Evaluation Method
---------------------
+S-CORE already has a complete development and design process, with its
+associated artifacts defined in the process model, Sphinx-Needs traceability as
+the artifact backbone, and governance enforced through contribution rules, code
+owners and CI. **This record builds on that process; it does not replace it.**
 
-Each framework was evaluated against ten categories:
+The gap this record addresses is narrower: S-CORE has **no defined, governed way
+for AI agents to participate in that process** while preserving its traceability
+and reviewability. The decision to make is:
 
-1. Requirements Engineering
-2. Specification Management
-3. Traceability
-4. AI Agent Support
-5. Governance
-6. Reproducibility
-7. Open Source Sustainability
-8. S-CORE Integration
-9. ASPICE Alignment
-10. Long-Term Maintainability
+   Should S-CORE **adopt** one external AI-SDLC framework, **depend on several**,
+   or **build and own** a thin automation layer that drives the existing process?
 
-**Scoring scale:**
+This is a tooling/integration decision, not a process-definition decision.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 10 30
+2. Scope and Non-Goals
+----------------------
 
-   * - Score
-     - Meaning
-   * - 1
-     - Poor
-   * - 2
-     - Limited
-   * - 3
-     - Acceptable
-   * - 4
-     - Strong
-   * - 5
-     - Excellent
+**In scope**
 
-Evaluation prioritized **enterprise-scale collaborative engineering** and **compliance evidence**
-over individual developer productivity. Evidence was drawn from each project's source repository
-(README, license, package metadata, configuration) rather than marketing claims.
+- Decide the evaluation outcome and the prototyping direction for AI-SDLC tooling.
+
+**Explicit non-goals**
+
+- This record keeps any harness **outside** the S-CORE toolchain used to produce
+  release artifacts, pending a separate qualification decision.
+- This record makes **no ASIL-B / tool-qualification claim**. Qualification
+  (confidence in the use of software tools, ISO 26262-8) is a **separate, later
+  decision** and a precondition before any such tooling could touch qualified
+  work products.
+- The automation layer **works entirely within the existing process metamodel
+  and its established artifact (need) types**, keeping that model authoritative
+  and unchanged. Agents consume it and extend its *coverage*, not its definition.
+- Operational rollout, enforcement, and agent granularity are tracked as
+  follow-ups (Section 11).
+
+   *Rationale:* several reviewers correctly noted that making AI tooling part of
+   the toolchain raises a qualification question that must be answered with a
+   clear "yes" before adoption. This record is deliberately scoped below that
+   line so the evaluation can land without pre-empting qualification.
+
+3. Evaluation Method and Evidence Basis
+---------------------------------------
+
+The evaluation draws on three distinct, separately-labelled evidence sources, so
+reviewers can weigh each appropriately:
+
+1. **Desk scan (repository evidence).** Each framework was assessed against ten
+   categories from its own source repository (agents/skills, schemas, templates,
+   license, configuration) — Section 4 and Section 12. This is a structured
+   comparison, **not** a claim of hands-on operation on the S-CORE codebase.
+2. **Field evidence.** Hands-on PoC findings contributed during review — notably
+   on OpenSpec and BMAD — are incorporated where they sharpen the desk scan (see
+   Section 4.5 and the loopback finding in 8.3).
+3. **Prototype evidence.** The direction in Section 7 is grounded in the in-flight
+   S-CORE prototype in ``eclipse-score/mcp-servers`` (``metamodel-flow``), which
+   is hands-on experience on S-CORE's own model rather than a third-party demo.
+
+**Scoring scale:** 1 Poor · 2 Limited · 3 Acceptable · 4 Strong · 5 Excellent.
+Evaluation prioritized enterprise-scale collaborative engineering and compliance
+evidence over individual developer productivity.
 
 **Tools evaluated:**
 
@@ -73,44 +99,17 @@ over individual developer productivity. Evidence was drawn from each project's s
    :widths: 20 50
 
    * - Tool
-     - Source
+     - Source / evidence
    * - Syspilot
-     - https://github.com/enthali/syspilot
+     - https://github.com/enthali/syspilot (desk scan)
    * - BMAD Method
-     - https://github.com/bmad-code-org/BMAD-METHOD
+     - https://github.com/bmad-code-org/BMAD-METHOD (desk scan + field PoC)
    * - SpecKit
-     - https://github.com/github/spec-kit · https://speckit.org
+     - https://github.com/github/spec-kit · https://speckit.org (desk scan)
+   * - OpenSpec
+     - Field PoC during review (concurrent-development evaluation)
    * - Pharaoh
-     - https://github.com/useblocks/pharaoh-skills
-
-2. Executive Summary
---------------------
-
-**No single tool fully satisfies the S-CORE decision criterion.**
-The strongest capabilities are distributed across the four frameworks:
-
-- **SpecKit** provides the strongest structured **specification-first workflow** and the best open-source sustainability.
-- **Syspilot** provides **AI-assisted Sphinx-Needs traceability** and focused change-impact context.
-- **Pharaoh** provides the strongest **requirements-centric, ASPICE-aligned concepts** — but the repository is **archived**.
-- **BMAD Method** provides broad **agent collaboration and agile workflows**, but is not traceability- or ASPICE-first.
-
-Therefore, an **adaptation strategy** (combine strengths, own the governance in S-CORE) is preferred
-over direct adoption of any single framework.
-
-3. Why S-CORE Cannot Adopt One Tool Directly
---------------------------------------------
-
-None of the evaluated frameworks fully satisfy all S-CORE requirements.
-The strongest capabilities are distributed:
-
-- **SpecKit** provides structured specification workflows, but no native Sphinx-Needs / ADR / ASPICE semantics.
-- **Syspilot** provides AI-assisted traceability, but is an early research project bound to Copilot + Jarvis.
-- **Pharaoh** provides the strongest requirements-centric, safety-aligned concepts, but its repository is archived and read-only.
-- **BMAD** provides agent collaboration workflows, but lacks a traceability-first artifact model.
-
-Because the required capabilities — specification workflow, traceability, ASPICE evidence, and
-long-term maintainability — are **not present together in any one tool**, an adaptation strategy
-is preferred over direct adoption.
+     - https://github.com/useblocks/pharaoh-skills (desk scan; repo archived)
 
 4. Tool-by-Tool Analysis
 ------------------------
@@ -118,466 +117,397 @@ is preferred over direct adoption.
 4.1 Syspilot
 ~~~~~~~~~~~~
 
-Syspilot is built directly on **Sphinx-Needs**, making it the most naturally aligned with
-S-CORE's documentation stack. Its core idea is strong: AI agents follow **deterministic requirement
-links** rather than searching the whole repository probabilistically
-("the map, not the flashlight").
+Built directly on Sphinx-Needs; agents follow deterministic requirement links
+("the map, not the flashlight"), with change-impact producing focused context
+(``O(affected)``, not ``O(total)``).
 
-**Strengths**
-
-- Native Sphinx-Needs orientation.
-- Strong traceability mindset: user story → requirements → design specs.
-- Change-impact analysis producing focused AI context (``O(affected)``, not ``O(total)``).
-- Manager/engineer agent roles cover PM, change management, quality, design, implementation,
-  UAT, verification, documentation, MECE, trace, and release.
-
-**Weaknesses**
-
-- README explicitly labels it an **early research project** with possible breaking changes.
-- Hard dependency on VS Code, GitHub Copilot, and the ``enthali.jarvis-core`` extension
-  for multi-agent orchestration.
-- Governance/reproducibility are promising but not yet enterprise-hardened.
-
-**S-CORE view:** Good **pilot candidate** for the traceability layer; not mature enough
-to be the sole adopted framework.
+- **Strengths:** native Sphinx-Needs orientation; strong traceability mindset;
+  manager/engineer agent roles across the lifecycle.
+- **Weaknesses:** README labels it an early research project; hard dependency on
+  VS Code, Copilot and ``enthali.jarvis-core``; governance not enterprise-hardened.
+- **S-CORE view:** valuable source of **concepts** for the traceability layer.
 
 4.2 BMAD Method
 ~~~~~~~~~~~~~~~
 
-BMAD is a broad AI-assisted agile development framework, rich in agents and workflows across
-brainstorming, PRDs, architecture, UX, development, and testing. It is more about
-**AI collaboration patterns** than regulated engineering evidence.
+Broad AI-assisted agile framework (34+ workflows, role agents); about
+collaboration patterns rather than regulated engineering evidence.
 
-**Strengths**
-
-- Mature open-source packaging (npm ``bmad-method`` v6.10.0), MIT license, active ecosystem.
-- Large workflow surface (34+ workflows) and role-based agents.
-- Strong CI-friendly tooling (lint, tests, validation scripts) and non-interactive install for CI/CD.
-- Useful for product/architecture ideation and implementation support.
-
-**Weaknesses**
-
-- Not Sphinx-Needs native; not ASPICE native.
-- Traceability is not the central artifact model.
-- Requirement → design → code → test linkage is not provable without extra tooling.
-
-**S-CORE view:** **Not recommended** as the core SDLC governance tool. Keep optional for
-facilitation/ideation.
+- **Strengths:** mature packaging (npm v6.10.0, MIT), CI-friendly tooling.
+- **Weaknesses:** not Sphinx-Needs or ASPICE native; traceability is not the
+  central artifact model.
+- **S-CORE view:** best kept for ideation/facilitation; not compliance evidence.
 
 4.3 SpecKit
 ~~~~~~~~~~~
 
-SpecKit is the strongest candidate for a **governed specification-first workflow**:
-``constitution → specify → plan → tasks → analyze → implement``, with a CLI, templates,
-presets, extensions, and project-local overrides.
+Strongest **specification-first workflow**:
+``constitution → specify → plan → tasks → analyze → implement``, with CLI,
+templates and phase gates.
 
-**Strengths**
-
-- Specification generation is the **core concept**; specs become versioned repo artifacts.
-- Strong governance primitives: constitution, templates, checklists, phase gates.
-- Good reproducibility via templates, deterministic commands, and CLI-managed structure.
-- MIT license (GitHub, Inc.), broad agent support (30+), reducing vendor lock-in.
-- Security-conscious build posture (ruff subprocess-shell lint locks).
-
-**Weaknesses**
-
-- Not built for Sphinx, Sphinx-Needs, Bazel, ADRs, or ASPICE.
-- Traceability is workflow-level, not automatically ASPICE-grade.
-- Requirement IDs, Sphinx-Needs links, ADR links, and test evidence require
-  S-CORE-specific templates/extensions.
-
-**S-CORE view:** **Best foundation** for the specification + AI workflow layer, if extended
-with S-CORE templates and Sphinx-Needs integration.
+- **Strengths:** specs as versioned artifacts; governance primitives; broad agent
+  support (30+); MIT.
+- **Weaknesses:** not built for Sphinx-Needs, Bazel, ADRs or ASPICE; traceability
+  is workflow-level; requirement IDs, Needs links and test evidence require
+  S-CORE-specific integration.
+- **S-CORE view:** best reused as a **phase shell** (Section 8) whose outputs are
+  S-CORE needs.
 
 4.4 Pharaoh
 ~~~~~~~~~~~
 
-Pharaoh is conceptually the closest match to S-CORE's needs. Built for Sphinx-Needs projects,
-it offers a full V-model skill chain: requirement/architecture/test/FMEA drafting and review,
-traceability, MECE, change impact, codelinks, lifecycle checks, standard conformance, decisions,
-quality gates, and reproducibility checks.
+Conceptually the closest match: Sphinx-Needs V-model skill chain with explicit
+ASPICE 4.0 / ISO 26262-8 / ISO 21434 conformance concepts, enforcing mode, review
+metadata and reproducibility checks.
 
-**Strengths**
-
-- Strongest Sphinx-Needs alignment and traceability model.
-- Explicit ASPICE 4.0 / ISO 26262-8 §6 / ISO/SAE 21434 conformance concepts.
-- Advisory vs **enforcing** mode via ``pharaoh.toml``, with required-link rules and codelink support.
-- Review metadata (``:reviewer:``, ``:approved_by:``), lifecycle/status gates, and
-  reproducibility diff checks.
-
-**Weaknesses**
-
-- **The repository is archived (read-only since 2026-07-28) and no longer maintained** —
-  verified directly on GitHub.
-- Functionality has moved to commercial-adjacent **ubCode / ubTrace** (stated free for
-  open-source), which changes the governance/adoption profile.
-- "The AI is the runtime" — flexible, but harder to certify/stabilize.
-
-**S-CORE view:** **Best reference design, risky direct adoption.**
-Reuse its concepts; do not depend on the archived repo.
+- **Weaknesses:** repository **archived (read-only since 2026-07-28)**; skills
+  moved to commercial-adjacent ubCode/ubTrace; "AI is the runtime" is hard to
+  certify/stabilize.
+- **S-CORE view:** best **reference design**; reuse concepts rather than depend on
+  the archived repo.
 
 .. note::
 
-   **Verified evidence:** ``useblocks/pharaoh-skills`` shows "This repository was archived by
-   the owner on Jul 28, 2026. It is now read-only." (24 stars, 3 contributors, latest release
-   v1.2.1). Skills are stated to have moved into ubCode and ubTrace.
+   **Verified:** ``useblocks/pharaoh-skills`` is archived (read-only) as of
+   2026-07-28 (latest release v1.2.1). Functionality is stated to have moved into
+   ubCode / ubTrace.
+
+4.5 OpenSpec
+~~~~~~~~~~~~
+
+Added following review feedback; assessed primarily from **field PoC** (a
+concurrent-development evaluation) rather than desk scan.
+
+- **Strengths:** simple, lightweight SDD workflow; maintained; low adoption cost.
+- **Weaknesses (field-observed):** not Sphinx-Needs or ASPICE native; **no
+  loopbacks within an ongoing change** — once tasks are derived, agents implement
+  and iterate but are never returned to re-check that implementation still matches
+  the original specification, or to raise requirements discovered late (e.g.
+  non-functional/test requirements). Holding even its own simple process requires
+  constant supervision or supporting tooling.
+- **S-CORE view:** reinforces the core finding (Section 8.3): keeping S-CORE's own
+  process and artifact types authoritative — and driving them with automation —
+  is more robust than replacing them with a tool's defaults.
 
 5. Scoring Matrix
 -----------------
 
-Scores: 1 = Poor, 2 = Limited, 3 = Acceptable, 4 = Strong, 5 = Excellent.
+Scores 1–5. OpenSpec scores are field-informed rather than desk-scan.
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 15 10 15 15
+   :widths: 30 12 10 12 12 12
 
    * - Category
      - Syspilot
      - BMAD
      - SpecKit
+     - OpenSpec
      - Pharaoh
    * - Requirements Engineering
      - 4
      - 3
      - 4
+     - 3
      - 5
    * - Specification Management
      - 3
      - 3
      - 5
      - 4
+     - 4
    * - Traceability
      - 5
      - 2
      - 3
+     - 2
      - 5
    * - AI Agent Support
      - 4
      - 5
      - 4
      - 4
+     - 4
    * - Governance
      - 3
      - 3
      - 4
+     - 2
      - 4
    * - Reproducibility
      - 3
      - 2
      - 4
+     - 3
      - 4
    * - Open Source Sustainability
      - 2
      - 4
      - 5
+     - 4
      - 2
    * - S-CORE Integration
      - 5
      - 2
      - 3
+     - 2
      - 5
    * - ASPICE Alignment
      - 3
      - 2
      - 3
+     - 2
      - 5
    * - Long-Term Maintainability
      - 2
      - 4
      - 5
+     - 4
      - 2
    * - **Total**
      - **34**
      - **30**
      - **40**
+     - **30**
      - **40**
 
-**Interpretation:** SpecKit and Pharaoh tie numerically for different reasons — SpecKit is
-maintainable and workflow-ready; Pharaoh is domain-aligned but archived. For the ADR, that
-qualitative difference matters more than the raw total.
+**Interpretation:** the totals are secondary. No tool scores well on *both*
+S-CORE Integration/ASPICE *and* Maintainability — the maintained tools are not
+domain-aligned, and the domain-aligned tool is archived. That split is what
+favours a build-and-own direction that keeps S-CORE's model central.
 
 6. ASPICE Impact Assessment
 ---------------------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 30 15 15 15 15
+   :widths: 28 12 10 12 12 12
 
    * - ASPICE Area
      - Syspilot
      - BMAD
      - SpecKit
+     - OpenSpec
      - Pharaoh
    * - SYS.1 Requirements elicitation
      - Medium
      - Medium
-     - Medium/High
+     - Med/High
+     - Medium
      - High
    * - SYS.2 System requirements
      - High
-     - Low/Medium
+     - Low/Med
      - Medium
+     - Low/Med
      - High
    * - SYS.3 System architecture
      - Medium
-     - Medium/High
+     - Med/High
      - Medium
+     - Low/Med
      - High
    * - SWE.1 Software requirements
      - High
-     - Low/Medium
+     - Low/Med
      - Medium
+     - Low/Med
      - High
    * - SWE.2 Software architecture
      - Medium
-     - Medium/High
+     - Med/High
      - Medium
+     - Low/Med
      - High
-   * - SWE.3 Detailed design / unit construction
+   * - SWE.3 Detailed design
      - Medium
      - Medium
      - Medium
-     - Medium/High
+     - Medium
+     - Med/High
    * - SWE.4 Unit verification
      - Medium
      - Medium
      - Medium
-     - High (if linked to needs/tests)
+     - Low/Med
+     - High
    * - SWE.5 Integration testing
      - Medium
      - Medium
      - Medium
-     - Medium/High
+     - Low/Med
+     - Med/High
    * - SWE.6 Qualification testing
      - Medium
-     - Low/Medium
+     - Low/Med
      - Medium
+     - Low/Med
      - High
 
-**Key point:** ASPICE alignment depends on **traceability evidence**, not just generated
-documents. Pharaoh and Syspilot are closest because they start from Sphinx-Needs trace links.
-SpecKit can support ASPICE only after S-CORE adds requirement IDs, link rules, review states,
-approval metadata, and documentation-pipeline integration.
+**Key point:** ASPICE alignment depends on **traceability evidence**, not
+generated documents. The strongest alignment comes from driving the S-CORE model
+that already produces that evidence — which is the direction this record takes.
 
-7. Integration Architecture
+7. Decision
+-----------
+
+Build and own a thin S-CORE layer — reference agents/skills plus MCP automation —
+that drives the **existing** S-CORE process and Sphinx-Needs traceability, reusing
+proven concepts rather than adopting any framework wholesale.
+
+- **Reuses the existing model as-is.** Agents read the current process metamodel
+  and its defined artifact (need) types via the cached sidecar graph
+  (``metamodel-flow``, ``process_graph.json``), keeping it the single source of
+  truth.
+- **SpecKit — adapt as a phase shell.** Reuse its phase structure; every output is
+  an existing S-CORE need.
+- **Syspilot / Pharaoh — concepts.** Requirement-driven traceability and
+  change-impact (Syspilot); lifecycle governance and conformance (Pharaoh).
+- **BMAD / OpenSpec — reference only.** Useful for ideation; field evidence shows
+  S-CORE's own process is the more robust backbone to automate against.
+
+8. Integration Architecture
 ---------------------------
 
-7.1 Workflow (data flow)
-~~~~~~~~~~~~~~~~~~~~~~~~
+8.1 Principle
+~~~~~~~~~~~~~
+
+The layer adds **automation that drives the existing process**. Every phase output
+is an existing S-CORE need, so the established artifact types remain the backbone
+and the generated chain stays native to S-CORE.
+
+8.2 Phase → Artifact → Process → Tool mapping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Need-type IDs below are representative — bind each to the actual IDs in
+``metamodel.yaml`` / ``process_graph.json`` before merge.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 14 22 20 24 20
+
+   * - SpecKit phase
+     - S-CORE artifact (need)
+     - Process area
+     - Backing MCP tool
+     - Gate / loopback
+   * - constitution
+     - *(reuses existing rules)*
+     - Process model (source of truth)
+     - ``metamodel-flow`` sidecar loader
+     - read-only; existing metamodel stays authoritative
+   * - specify
+     - ``stkh_req``, ``feat_req``
+     - Requirements Eng. (SYS.1/2, SWE.1)
+     - requirement validation + normalization; SpecKit→Needs conversion
+     - human review before needs enter the graph
+   * - plan
+     - ``feat_arc_*``, ``comp_arc_*``, ``dec_rec``
+     - Architecture (SYS.3, SWE.2)
+     - traceability query + change-impact
+     - architecture review; ADR sign-off
+   * - tasks
+     - ``comp_req``, ``dd`` + task breakdown
+     - Detailed design (SWE.3)
+     - task derivation with trace links
+     - requirement→task completeness check
+   * - analyze
+     - *(validation only)* — MECE, orphans, ``needs.json``
+     - Verification planning / Change Mgmt
+     - change-impact + **lifecycle loopback**
+     - **loopback: re-check spec↔impl↔test; block on drift**
+   * - implement
+     - code, ``*_test``, ``mod_ver_report``
+     - Implementation + Verification (SWE.4–6)
+     - evidence collection; progress/reporting
+     - test evidence + trace breadcrumb; human sign-off
+
+8.3 The loopback
+~~~~~~~~~~~~~~~~
+
+Field evaluation of SDD tools (OpenSpec, BMAD) found their decisive weakness:
+**no loopback within an ongoing change.** Agents implement and iterate but are
+never returned to confirm the implementation still matches the specification, or
+to raise requirements discovered late. The S-CORE layer makes this loopback a
+**first-class, enforced gate** (``analyze → specify``) rather than relying on a
+human to notice drift.
 
 .. mermaid::
 
    flowchart LR
-       A[Sphinx-Needs Requirements] --> B[SpecKit Specification Layer]
-       B --> C[Architecture / ADR Generation]
-       C --> D[Implementation Tasks]
-       D --> E[Code + Bazel Build]
-       E --> F[Tests + CI Evidence]
-       F --> G[Sphinx Documentation]
+       A[Sphinx-Needs Requirements] --> B[specify]
+       B --> C[plan: architecture / ADR]
+       C --> D[tasks: detailed design]
+       D --> E[implement: code + Bazel]
+       E --> F[tests + evidence]
+       F --> G[Sphinx documentation]
        G --> A
+       F -->|loopback: drift detected| H{analyze: spec↔impl↔test aligned?}
+       H -->|no| B
+       H -->|yes| I[human sign-off]
 
-       A --> H[Traceability / Impact Analysis]
-       C --> H
-       D --> H
-       E --> H
-       F --> H
+9. Governance and Safety Principles
+-----------------------------------
 
-7.2 Target State (conceptual stack)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- **One process step per agent.** Agents are scoped narrowly and defer to skills,
+  keeping context and review tractable.
+- **Human sign-off at every gate.** No artifact — requirement, design, code or
+  test — enters the graph or merges without human approval.
+- **Everything reviewable.** Everything-as-code, including requirements and
+  generated code, stays human-understandable and reviewable by the person signing
+  it off.
+- **Reproducible by construction.** Prompts, templates, model settings, inputs and
+  generated outputs are versioned in Git so every run is auditable and repeatable.
 
-.. code-block:: text
-
-   +--------------------------------+
-   | AI Agents                      |
-   +--------------------------------+
-   | SpecKit Workflow Layer         |
-   +--------------------------------+
-   | ADRs + Sphinx-Needs            |
-   +--------------------------------+
-   | Code + Bazel + CI/CD           |
-   +--------------------------------+
-   | S-CORE Repository              |
-   +--------------------------------+
-
-7.3 Capability Mapping
-~~~~~~~~~~~~~~~~~~~~~~
+10. Risks and Mitigations
+-------------------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 50
-
-   * - S-CORE Need
-     - Recommended Tooling Role
-   * - Requirements as managed artifacts
-     - Sphinx-Needs + Syspilot/Pharaoh-style skills
-   * - Specification workflow
-     - SpecKit
-   * - ADR generation
-     - S-CORE SpecKit extension or Pharaoh-style decision skill
-   * - Traceability graph
-     - Sphinx-Needs + codelinks / ``needs.json`` validation
-   * - AI agent governance
-     - Versioned prompts/templates in Git
-   * - Reproducibility
-     - SpecKit CLI/templates + CI validation
-   * - ASPICE evidence
-     - Sphinx-Needs reports, CI checks, review metadata
-   * - Documentation output
-     - Sphinx build pipeline
-
-8. Risks and Mitigations
-------------------------
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 15 45
+   :widths: 42 15 43
 
    * - Risk
      - Impact
      - Mitigation
-   * - Pharaoh repo archived (verified 2026-07-28)
+   * - Qualification (ASIL-B) not yet demonstrated
      - High
-     - Do not adopt directly; reuse concepts or evaluate ubCode/ubTrace separately
-   * - Syspilot early research status
+     - Kept outside the toolchain; no canon status until a separate qualification
+       decision gives a clear "yes"
+   * - Generated chain diverging from S-CORE artifacts
      - High
-     - Pilot only; do not make it mandatory infrastructure
-   * - SpecKit lacks ASPICE/Sphinx-Needs model
+     - Phase-shell only; every output is an existing S-CORE need
+   * - Model drift between harness and process
      - Medium
-     - Build S-CORE templates/extensions for ASPICE work products
-   * - BMAD lacks traceability core
-     - Medium
-     - Use only for facilitation, not compliance evidence
+     - Agents read the cached sidecar ``process_graph.json``; the metamodel stays
+       the single source of truth
    * - AI output nondeterminism
      - High
-     - Version prompts, templates, model settings, inputs, and generated outputs
-   * - Weak auditability
+     - Version prompts, templates, model settings, inputs and outputs
+   * - Pharaoh repo archived
      - High
-     - Store all artifacts in Git; require review states and trace links
-   * - Vendor/tool lock-in
+     - Reuse concepts; reassess ubCode/ubTrace separately
+   * - Reviewer/sign-off burden from agent output
      - Medium
-     - Prefer repo-native Markdown/RST/YAML over IDE-only state
+     - Narrow agents + enforced gates + trace evidence to keep review tractable
 
-9. Recommendation
------------------
+11. Open Questions / Follow-ups
+-------------------------------
 
-Adopt a **S-CORE-owned AI SDLC harness** based on **SpecKit + Sphinx-Needs traceability**,
-rather than adopting Syspilot, BMAD, SpecKit, or Pharaoh wholesale.
+- **Qualification assessment** — can this tooling meet ISO 26262-8 tool-use
+  confidence before any toolchain role? (precondition, separate DR)
+- **Agent granularity** — e.g. a process-engineer agent deferring to per-step
+  skills vs. role-specific agents. (separate design DR)
+- **Relationship to** ``mcp-servers`` ``metamodel-flow`` — this record sets the
+  direction the prototype already pursues; keep the two in sync.
+- **ubCode / ubTrace** — reassess as the maintained Pharaoh successor.
 
-- **SpecKit — Adopt/adapt** as the base specification-driven workflow.
-- **Syspilot — Pilot/adapt** for Sphinx-Needs traceability and focused AI context.
-- **Pharaoh — Reference design only** (repo archived); reassess ubCode/ubTrace separately.
-- **BMAD — Optional** for early ideation/planning where no compliance evidence is required.
-
-10. Decision
-------------
-
-**Do not adopt any evaluated framework as mandatory S-CORE infrastructure.** Instead:
-
-1. **Prototype SpecKit-based specification workflows** integrated with the S-CORE repository.
-2. **Reuse Sphinx-Needs traceability patterns** from Syspilot and Pharaoh (concepts, not the archived repo).
-3. **Keep BMAD optional** for developer productivity and facilitation only.
-4. **Re-evaluate after pilot results**, including a separate assessment of ubCode/ubTrace
-   as the maintained Pharaoh successor.
-
-**Expected S-CORE outcome:** a repository-native, Sphinx-compatible AI SDLC process where
-requirements, specs, ADRs, plans, code links, tests, reviews, and documentation are all
-versioned, reviewable, and traceable — with AI agents participating only through governed
-templates and reproducible workflows.
-
-11. Evidence Sources
+12. Evidence Sources
 --------------------
 
-Evidence is drawn from the **full local repositories** (agent/skill definitions, schemas,
-templates, configuration), not only READMEs.
+Desk-scan evidence is drawn from the full repositories (agents/skills, schemas,
+templates, configuration), not only READMEs. Field evidence (OpenSpec, BMAD) is
+from reviewer PoC work and labelled as such.
 
-Syspilot (``syspilot-main/``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Claim
-     - Concrete source in repo
-   * - Sphinx-Needs based, US → REQ → SPEC traceability
-     - ``syspilot/agents/syspilot.trace.agent.md`` (upward/downward tracing, link validation,
-       orphan detection via ``get_need_links.py``)
-   * - Multi-agent architecture (13 agents)
-     - ``syspilot/agents/`` — ``pm``, ``cm``, ``qm``, ``design``, ``implement``, ``uat``,
-       ``verify``, ``docu``, ``mece``, ``trace``, ``release``, ``setup``, ``installer``
-   * - Copilot + Jarvis dependency; per-agent model pinning
-     - Agent frontmatter (``model: Claude Haiku 4.5 (copilot)``), README requirements
-       (``enthali.jarvis-core``)
-   * - Early research status; MIT
-     - ``README.md`` ("Early Research Project"), ``LICENSE`` (MIT, Copyright 2026 Georg)
-   * - Install/bootstrap model
-     - ``syspilot/bootstrap.json``, ``syspilot/{skills,sphinx,templates,prompts}/``
-
-BMAD Method (``BMAD-METHOD-main/``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Claim
-     - Concrete source in repo
-   * - MIT + trademark notice; npm v6.10.0
-     - ``LICENSE``, ``package.json`` (``"version": "6.10.0"``)
-   * - CI tooling / quality gates
-     - ``package.json`` scripts (``lint``, ``test:*``, ``validate:refs``, ``validate:skills``),
-       ``test/`` suite
-   * - Module ecosystem & workflow surface
-     - ``bmad-modules.yaml``,
-       ``src/bmm-skills/{1-analysis,2-plan-workflows,3-solutioning,4-implementation}/``
-   * - Not traceability/ASPICE-first
-     - No Sphinx-Needs schema or trace-link model present in ``src/`` skills
-
-SpecKit (``spec-kit-main/``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Claim
-     - Concrete source in repo
-   * - MIT (GitHub, Inc.); spec-driven CLI
-     - ``LICENSE``, ``pyproject.toml`` (``specify-cli``), ``spec-driven.md``
-   * - Specification-first templates & gates
-     - ``templates/{spec,plan,tasks,constitution,checklist}-template.md`` (prioritized user
-       stories, acceptance scenarios, phase gates)
-   * - Extensible / low lock-in; 30+ agents
-     - ``extensions/``, ``presets/``, ``workflows/``, ``integrations/``, ``.specify/``
-       override stack
-   * - Security-conscious build posture
-     - ``pyproject.toml`` ruff rules S602/S604/S605 (shell-injection lockdown)
-
-Pharaoh (``pharaoh-skills-main/``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Claim
-     - Concrete source in repo
-   * - Sphinx-Needs V-model; 70+ atomic skills
-     - ``skills/`` (e.g. ``pharaoh-req-draft``, ``pharaoh-arch-review``,
-       ``pharaoh-vplan-draft``, ``pharaoh-fmea``, ``pharaoh-flow``, ``pharaoh-trace``)
-   * - Explicit ASPICE/ISO conformance engine
-     - ``skills/pharaoh-standard-conformance/SKILL.md``
-       (``iso26262 | aspice40 | iso21434``, per-indicator pass/fail JSON)
-   * - Advisory vs enforcing governance; required links
-     - ``pharaoh.toml.example`` (``strictness``, ``require_verification``,
-       ``required_links = ["req -> spec", "spec -> impl", "impl -> test"]``, codelinks)
-   * - Schema-validated artifacts & IDs
-     - ``schemas/`` (``artefact-catalog``, ``checklists-frontmatter``,
-       ``id-conventions``, ``workflows``)
-   * - Ships an S-CORE example project
-     - ``examples/score/.pharaoh/project/``
-   * - MIT license
-     - ``LICENSE`` (MIT, Copyright 2026 useblocks GmbH)
-   * - **Repository archived (read-only) since 2026-07-28**
-     - GitHub — ``useblocks/pharaoh-skills`` (verified); README deprecation note
-       points to ubCode/ubTrace
+*(Retain the per-tool evidence tables for Syspilot, BMAD, SpecKit and Pharaoh
+from version 1 here; add an OpenSpec row pointing to the field-PoC findings
+summarized in Section 4.5.)*
