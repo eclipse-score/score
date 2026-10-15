@@ -14,12 +14,12 @@ DR-010-Infra: AI SDLC Tooling Evaluation and S-CORE Harness Direction
 =====================================================================
 
 - **Issue:** `#3115 <https://github.com/eclipse-score/score/issues/3115>`_ — Evaluate AI SDLC / SpecKit Tooling
-- **Date:** 2026-07-31 (rev. 2)
+- **Date:** 2026-07-31 (rev. 3)
 
 .. dec_rec:: AI SDLC Tooling Evaluation and S-CORE Harness Direction
    :id: dec_rec__infra__ai_sdlc_tooling
    :status: proposed
-   :version: 2
+   :version: 3
    :context: Infrastructure
    :decision: Build a thin, S-CORE-owned layer of reference agents/skills and MCP automation that drives the existing S-CORE process and Sphinx-Needs traceability, operating entirely within the current process metamodel and its established artifact types. Reuse concepts from SpecKit, Syspilot and Pharaoh rather than adopting any framework wholesale. Tool qualification and operational rollout are handled separately.
 
@@ -129,7 +129,7 @@ Broad AI-assisted agile framework (34+ workflows, role agents); about
 collaboration patterns rather than regulated engineering evidence.
 
 - **Strengths:** mature packaging (npm v6.10.0, MIT), CI-friendly tooling.
-- **Weaknesses:** not Sphinx-Needs or ASPICE native; traceability is not the
+- **Weaknesses:** not Sphinx-Needs or S-CORE-process native; traceability is not the
   central artifact model.
 - **S-CORE view:** best kept for ideation/facilitation; not compliance evidence.
 
@@ -142,7 +142,8 @@ templates and phase gates.
 
 - **Strengths:** specs as versioned artifacts; governance primitives; broad agent
   support (30+); MIT.
-- **Weaknesses:** not built for Sphinx-Needs, Bazel, ADRs or ASPICE; traceability
+- **Weaknesses:** not built for Sphinx-Needs, Bazel, ADRs or the S-CORE process;
+  traceability
   is workflow-level; requirement IDs, Needs links and test evidence require
   S-CORE-specific integration.
 - **S-CORE view:** best reused as a **phase shell** (Section 8) whose outputs are
@@ -151,9 +152,8 @@ templates and phase gates.
 4.4 Pharaoh
 ~~~~~~~~~~~
 
-Conceptually the closest match: Sphinx-Needs V-model skill chain with explicit
-ASPICE 4.0 / ISO 26262-8 / ISO 21434 conformance concepts, enforcing mode, review
-metadata and reproducibility checks.
+Conceptually the closest match: a Sphinx-Needs V-model skill chain with explicit
+conformance concepts, enforcing mode, review metadata and reproducibility checks.
 
 - **Weaknesses:** repository **archived (read-only since 2026-07-28)**; skills
   moved to commercial-adjacent ubCode/ubTrace; "AI is the runtime" is hard to
@@ -174,7 +174,7 @@ Added following review feedback; assessed primarily from **field PoC** (a
 concurrent-development evaluation) rather than desk scan.
 
 - **Strengths:** simple, lightweight SDD workflow; maintained; low adoption cost.
-- **Weaknesses (field-observed):** not Sphinx-Needs or ASPICE native; **no
+- **Weaknesses (field-observed):** not Sphinx-Needs or S-CORE-process native; **no
   loopbacks within an ongoing change** — once tasks are derived, agents implement
   and iterate but are never returned to re-check that implementation still matches
   the original specification, or to raise requirements discovered late (e.g.
@@ -247,7 +247,7 @@ Scores 1–5. OpenSpec scores are field-informed rather than desk-scan.
      - 3
      - 2
      - 5
-   * - ASPICE Alignment
+  * - S-CORE Process Support
      - 3
      - 2
      - 3
@@ -267,81 +267,53 @@ Scores 1–5. OpenSpec scores are field-informed rather than desk-scan.
      - **40**
 
 **Interpretation:** the totals are secondary. No tool scores well on *both*
-S-CORE Integration/ASPICE *and* Maintainability — the maintained tools are not
-domain-aligned, and the domain-aligned tool is archived. That split is what
-favours a build-and-own direction that keeps S-CORE's model central.
+S-CORE Integration/Process Support *and* Maintainability — the maintained tools
+are not aligned with the S-CORE process, and the closest matching tool is
+archived. That split is what favours a build-and-own direction that keeps
+S-CORE's model central.
 
-6. ASPICE Impact Assessment
----------------------------
+6. S-CORE Process Support Assessment
+------------------------------------
 
 .. list-table::
    :header-rows: 1
    :widths: 28 12 10 12 12 12
 
-   * - ASPICE Area
+  * - S-CORE software process area
      - Syspilot
      - BMAD
      - SpecKit
      - OpenSpec
      - Pharaoh
-   * - SYS.1 Requirements elicitation
-     - Medium
-     - Medium
-     - Med/High
-     - Medium
-     - High
-   * - SYS.2 System requirements
+   * - Requirements Engineering
      - High
      - Low/Med
      - Medium
      - Low/Med
      - High
-   * - SYS.3 System architecture
+   * - Architecture Design
      - Medium
      - Med/High
      - Medium
      - Low/Med
      - High
-   * - SWE.1 Software requirements
-     - High
-     - Low/Med
-     - Medium
-     - Low/Med
-     - High
-   * - SWE.2 Software architecture
-     - Medium
-     - Med/High
-     - Medium
-     - Low/Med
-     - High
-   * - SWE.3 Detailed design
+   * - Implementation
      - Medium
      - Medium
      - Medium
      - Medium
      - Med/High
-   * - SWE.4 Unit verification
+   * - Verification
      - Medium
      - Medium
-     - Medium
-     - Low/Med
-     - High
-   * - SWE.5 Integration testing
-     - Medium
-     - Medium
-     - Medium
-     - Low/Med
-     - Med/High
-   * - SWE.6 Qualification testing
-     - Medium
-     - Low/Med
      - Medium
      - Low/Med
      - High
 
-**Key point:** ASPICE alignment depends on **traceability evidence**, not
-generated documents. The strongest alignment comes from driving the S-CORE model
-that already produces that evidence — which is the direction this record takes.
+**Key point:** support for the S-CORE process depends on **traceability
+evidence**, not generated documents. The strongest support comes from driving
+the S-CORE model that already produces that evidence — which is the direction
+this record takes.
 
 7. Decision
 -----------
@@ -393,17 +365,17 @@ Need-type IDs below are representative — bind each to the actual IDs in
      - read-only; existing metamodel stays authoritative
    * - specify
      - ``stkh_req``, ``feat_req``
-     - Requirements Eng. (SYS.1/2, SWE.1)
+     - Requirements Engineering
      - requirement validation + normalization; SpecKit→Needs conversion
      - human review before needs enter the graph
    * - plan
      - ``feat_arc_*``, ``comp_arc_*``, ``dec_rec``
-     - Architecture (SYS.3, SWE.2)
+     - Architecture Design
      - traceability query + change-impact
      - architecture review; ADR sign-off
    * - tasks
      - ``comp_req``, ``dd`` + task breakdown
-     - Detailed design (SWE.3)
+     - Architecture Design (detailed) / Implementation
      - task derivation with trace links
      - requirement→task completeness check
    * - analyze
@@ -413,7 +385,7 @@ Need-type IDs below are representative — bind each to the actual IDs in
      - **loopback: re-check spec↔impl↔test; block on drift**
    * - implement
      - code, ``*_test``, ``mod_ver_report``
-     - Implementation + Verification (SWE.4–6)
+     - Implementation + Verification
      - evidence collection; progress/reporting
      - test evidence + trace breadcrumb; human sign-off
 
@@ -437,7 +409,7 @@ human to notice drift.
        E --> F[tests + evidence]
        F --> G[Sphinx documentation]
        G --> A
-       F -->|loopback: drift detected| H{analyze: spec↔impl↔test aligned?}
+        F -->|loopback: drift detected| H{"analyze: spec / impl / test aligned?"}
        H -->|no| B
        H -->|yes| I[human sign-off]
 
@@ -495,6 +467,8 @@ human to notice drift.
 - **Relationship to** ``mcp-servers`` ``metamodel-flow`` — this record sets the
   direction the prototype already pursues; keep the two in sync.
 - **ubCode / ubTrace** — reassess as the maintained Pharaoh successor.
+- **AI-SDLC Framework** — a candidate reference for a future autonomous layer;
+  evaluate it through a separate DR after a bounded PoC and qualification review.
 
 12. Evidence Sources
 --------------------
