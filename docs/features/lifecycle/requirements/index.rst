@@ -299,7 +299,7 @@ Monitoring, Notification and Recovery
 
     The :term:`Lifecycle Feature` shall implement time based cyclical monitoring of itself.
 
-.. feat_req:: Lifecycle programing language support
+.. feat_req:: Lifecycle programming language support
     :id: feat_req__lifecycle__prog_lang
     :reqtype: Functional
     :security: NO
