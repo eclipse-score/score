@@ -127,12 +127,23 @@ and the state in the Projects dashboard view. The PR status is also used, if app
 part of the ISSUE. Add here the root cause and impact of the problem. Optionally state, who
 has to be informed or notified, if applicable, e.g. Safety Manager of a feature.
 
+Record whether notification is needed and why, including if not needed, in the Problem
+notifications part of the ISSUE. Identify affected parties. If notification is needed,
+record who was notified, when and how, e.g. a link to an issue comment with an explicit
+mention or another communication reference. Listing a recipient alone does not record a
+performed notification. For suspected vulnerabilities, follow the project's confidential
+reporting policy.
+
 Further information can be provided in the Supporting Information part of the ISSUE. Especially
 "How to reproduce" and "Error occurrence Rate" shall be documented, thus extra parts are provided
 for that in the ISSUE.
 
 To identify, in which version the problem occurred, use the Affected Version
 part of the ISSUE.
+
+:need:`[[title]] <gd_req__problem_attr_affected_versions>` additionally requires the first and
+last affected versions, including versions derived from the faulty version, to be documented.
+Record unknown affected versions as "under investigation" and update them during analysis.
 
 To provide solutions, use the Solution part of the ISSUE.
 
@@ -247,6 +258,9 @@ Notifications will be done for Feature Teams (:ref:`pmp_pm_feature_teams`) by
 - adding optionally the Module Safety Manager and/or Security Manager and/or Quality Manager, if applicable, to the assignees of the ISSUE and by
 - adding the Feature Team label to the ISSUE
 
+In addition, whether notification was needed and, if so, who was notified, when and how must be
+recorded in the Problem notifications part of the ISSUE.
+
 Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
 Report: Problem status: ``rejected`` set the ISSUE status to ``Closed as not planned``.
 
@@ -277,6 +291,12 @@ this case all linked ISSUEs or PRs are closed or merged, respectively.
 
 Especially the solution measures must be checked for their effectiveness and the argumentation
 is convincing.
+
+Where safety is affected, :need:`[[title]] <gd_req__problem_check_safety_closure>` requires a
+rationale supporting either an implemented safety measure with verified effectiveness, or an
+evaluation that the problem does not constitute an unreasonable risk. Per
+:need:`[[title]] <gd_req__problem_check_safety_rationale>` this rationale and its review result
+must be documented.
 
 :need:`gd_chklst__problem_cr_review` can help to verify whether it can be closed.
 
