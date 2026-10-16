@@ -270,19 +270,19 @@ Tests outside these paths are considered unit-level tests.
      - Applicable for QM / ASIL B
    * - Static Code Analysis
      - static-code-analysis
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Structural Statement Coverage (Code coverage)
      - structural-statement-coverage
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Structural Branch Coverage (Code coverage)
      - structural-branch-coverage
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Walkthrough
      - walkthrough
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - QM
    * - Inspection
      - inspection
@@ -290,15 +290,15 @@ Tests outside these paths are considered unit-level tests.
      - ASIL B
    * - Interface Test
      - interface-test
-     - 1 Unit, 1 Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - QM & ASIL B
    * - Requirements-based Test
      - requirements-based
-     - -, 1 Component, 2 Feature Integration, 3 Platform
+     - 1 Component, 2 Feature Integration, 3 Platform
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
      - resource-usage
-     - -, 2 Feature Integration, -
+     - 2 Feature Integration
      - QM & ASIL B
 
 
@@ -348,19 +348,19 @@ Test Derivation Methods
      - Applicable for QM / ASIL B
    * - Analysis of Requirements
      - requirements-analysis
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - QM, ASIL B
    * - Analysis of Boundary Values
      - boundary-values
-     - -, 1 Component, 2 Feature Integration, 3 Platform
+     - 1 Unit/Component, 2 Feature Integration
      - ASIL B
    * - Analysis of Equivalence Classes
      - equivalence-classes
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - ASIL B
    * - Fuzzy Testing (focus security)
      - fuzz-testing
-     - 1 Unit, 1 Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - QM, ASIL B
 
 The ``fuzz-testing`` should especially be taken into account to increase security of the software.
