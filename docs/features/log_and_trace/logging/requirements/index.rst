@@ -17,7 +17,13 @@
 Logging Requirements
 ####################
 
-
+.. document:: Logging Requirements
+   :id: doc__logging_requirements
+   :status: valid
+   :version: 1
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat[version==1]
 
 .. feat_req:: Timestamping - Local Timestamp
    :id: feat_req__logging__timestamping_local

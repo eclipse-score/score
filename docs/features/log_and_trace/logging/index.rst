@@ -215,5 +215,6 @@ All data to recompute a module (Input, Output, States)
    :maxdepth: 1
 
    requirements/index
+   requirements/chklst_req_inspection
    architecture/index
    glossary.rst

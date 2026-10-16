@@ -61,7 +61,7 @@ Lifecycle Glossary
       A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.
 
     Ready State
-      A state when the component is ready to provide services to other components.
+      A state when the component has fulfilled its :term:`Ready Condition`, i.e. is ready to provide services to other components.
 
     Dependency (between components)
       A configuration parameter indicating that **Component A** can only start
@@ -79,26 +79,8 @@ Lifecycle Glossary
     Process
       Instantiation of an Executable programs running on the system that are managed by the Launch Manager.
 
-    UID
-      User Identifier - a unique number assigned to each user on a Unix-like operating system.
-
-    GID
-      Group Identifier - a unique number assigned to each group on a Unix-like operating system.
-
     Polling Interval
       The time interval between successive checks of a condition or status.
-
-    Working Directory
-      The current directory from which a process is executed, also known as CWD (Current Working Directory).
-
-    File Descriptor
-      A handle used by a process to access files or other input/output resources.
-
-    Procmgr
-      Process Manager - a QNX system component that manages process creation and execution.
-
-    ASLR
-      Address Space Layout Randomization - a security technique that randomizes the memory layout of processes.
 
     Recovery Action
       Actions taken by the Launch Manager when a process fails or terminates abnormally.
@@ -109,7 +91,11 @@ Lifecycle Glossary
       Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.
 
     Liveliness
-      The state indicating that a process is active and responding as expected.
+      Term indicating that a :term:`Component` is periodically sending an alive notification (using the
+      :need:`logic_arc_int_op__lifecycle__report_alive` interface) as per configuration.
+
+    Monitoring of Processes
+      The activity of observing and checking if a process is running or has been exited with an abnormal status.
 
     Watchdog
       A monitoring mechanism that detects system failures and can trigger recovery actions.
@@ -117,21 +103,8 @@ Lifecycle Glossary
     Interval
       A period of time between events or measurements.
 
-    QNX
-      A real-time operating system commonly used in embedded systems.
-
-
-    DSS
-      Device Safe State - a safe operational state that a system can enter during failures.
-
-    DAG
-      Directed Acyclic Graph - a data structure used to represent dependencies between processes.
-
     SWC
       Software Components - modular software units that can be independently managed.
 
-    Run target
-      A named collection of processes and their dependencies that can be launched, stopped, or switched as a group to achieve a specific operational mode or configuration.
-
-    Operating System
-      The system software that manages computer hardware and software resources and provides common services for computer programs.
+    Run Target
+      A named collection of components and their dependencies that can be activated, stopped, or switched as a group to achieve a specific operational mode or configuration.

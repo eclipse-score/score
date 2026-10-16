@@ -149,6 +149,42 @@ There are the following different levels of integration and verification defined
   Practically, this means S-CORE will implement Platform Integration Tests for stakeholder requirements for demonstration,
   but these are not intended to completely covering all stakeholder requirements.
 
+Consistent Set of Verifications
+-------------------------------
+
+The S-CORE project selected a multi-repository approach but still decided to provide a "consistent stack"
+to its users (see :need:`dec_rec__strat__consistent_stack_vs_reference`). Consequently there is the need
+to collect a consistent verification evidence for this "Stack", which is the S-CORE SW platform.
+
+- S-CORE SEooCs/dependable elements developed in the module repositories can deliver their
+  feature(s) independently, based on verification evidence collected in one repository and documented
+  in one module verification report (see also :need:`dec_rec__platform__feature_delivery`).
+  So this should be consistent and does not need special consideration in this chapter.
+- S-CORE SW platform needs to collect verification evidence from all the modules it integrates and releases.
+  This is done in S-CORE within a dedicated repository, which is the "reference_integration".
+  Also the reference_integration demonstrates what is required to be done by the user of the S-CORE platform
+  (in the AoU :need:`aou_req__platform__testing`) for safety qualification. S-CORE shows this for one combination of S-CORE SW Platform Modules/OS/Hypervisor/HW.
+  Important: For every S-CORE module only one version is used in the reference_integration,
+  meaning that all users of the S-CORE module need to depend on this one version. This "aligned" dependency
+  may be different from the one used in the module repositories, raising the need to re-perform verifications
+  which are affected by these dependencies.
+
+Thus a **consistent set of verifications** for S-CORE SW platform is:
+
+- platform integration test (only possible with modules integrated to a platform)
+- feature integration test (should be tested with one set of modules versions)
+- component integration test (components may depend on components of another module)
+- structural coverage (may be affected, as also component tests are used for coverage calculation)
+- unit test (results should not be affected due to mocking, but needed for structural coverage completeness)
+- static code analysis (some checks depend also on the dependencies)
+- documentation build (as the produced documentation, including e.g. inspections, should match the used module version)
+
+How this **consistent set of verifications** is produced (e.g. by re-creating all the verification in the reference_integration
+or by collecting verification done in more than one repository) is not prescribed by this document.
+The best method should be agreed in S-CORE in a decision record, e.g. :need:`dec_rec__int__scope_reference_integration`
+
+.. _verification-methods:
+
 Verification Methods
 --------------------
 
@@ -358,7 +394,7 @@ Additionally, the following measures are taken to support the coverage of the de
 - Structural coverage as defined by their specific thresholds
 - Static analysis and Linting
 
-These measures are not counting in the coverage percentage of this goal, as they have their own defined goals.
+These measures do not count towards the coverage percentage of this goal, as they have their own defined goals.
 
 For QM rated software no further coverage calculation is expected on the detailed design level,
 but the respective work products are expected to be created and reviewed.
@@ -386,7 +422,7 @@ Tests which are suitable for the coverage are:
 - :need:`wp__verification_platform_int_test`
 - :need:`wp__verification_sw_unit_test`
 
-A requirements with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the the attribute ``complete test coverage`` is not judged as not covered.
+A requirement with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the attribute ``complete test coverage`` is judged as not covered.
 For QM software parts, it is not necessary to have the requirements attribute ``complete test coverage`` but each requirement needs to have at least one linked test case.
 
 Relative amount of executed and passed tests
@@ -398,9 +434,9 @@ The goal is to have all tests with linked ``valid`` requirements executed and pa
 Static code analysis
 ^^^^^^^^^^^^^^^^^^^^
 Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
-The respective tools  (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+The respective tools (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
 
-Violation identified by the static code analysis tools are categorized based on their severity.
+Violations identified by the static code analysis tools are categorized based on their severity.
 
 For QM software, the objective is a 100% closure rate of any Critical severity finding prior to release.
 For safety‑critical software, the objective is a 100% closure rate of any Critical and High severity finding prior to release.
@@ -413,7 +449,7 @@ Remaining Medium severity findings are reviewed and justified by documented risk
 Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
 
 Any deviation of the coverage percentage value is documented as part of the module documentation.
-A rationale for the deviation need to be provided for an official release.
+A rationale for the deviation needs to be provided for an official release.
 
 
 Test development
@@ -443,7 +479,7 @@ Release test execution
 ^^^^^^^^^^^^^^^^^^^^^^
 Results of the test execution are captured in the verification reports for the modules and platform
 as release work products documenting the clear pass/fail result for each executed test case id.
-Also, any  deviation in the test execution scope for skipped or not executed tests will be documented
+Also, any deviation in the test execution scope for skipped or not executed tests will be documented
 in the release documentation and the respective reasoning will be provided.
 
 Manual test execution

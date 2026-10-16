@@ -202,7 +202,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -217,7 +217,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -232,7 +232,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -247,7 +247,7 @@ Supervision
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__app_architectures__support_data[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -268,7 +268,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -285,7 +285,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -300,7 +300,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -317,7 +317,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -332,7 +332,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -347,7 +347,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -362,7 +362,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_1[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1
@@ -377,7 +377,7 @@ Error Handling for S-CORE v0.5
     :reqtype: Functional
     :security: YES
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__safety_features_4[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__dependability__safe_startup_reset[version==1], stkh_req__dependability__availability[version==1], stkh_req__execution_model__processes[version==1]
     :satisfied_by: feat__feo[version==1]
     :status: valid
     :version: 1

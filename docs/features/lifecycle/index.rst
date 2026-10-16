@@ -76,7 +76,7 @@ The Lifecycle feature addresses the following stakeholder requirements:
 
 • :need:`stkh_req__functional_req__file_based`: Modular configuration file support allowing changes without rebuilding software, enabling flexible system setup and module management
 
-• :need:`stkh_req__dependability__safety_features_1`: Implementation of monitoring safety mechanisms
+• :need:`stkh_req__dependability__health_management`: Implementation of monitoring safety mechanisms
 
 
 

@@ -16,7 +16,7 @@
 .. document:: Baselibs Requirements Inspection Checklist
    :id: doc__baselibs_req_inspection
    :status: valid
-   :version: 2
+   :version: 3
    :safety: ASIL_B
    :security: YES
    :realizes: wp__requirements_inspect[version==1]
@@ -175,7 +175,7 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
     * - REQ_10_01
       - Is the requirement description *complete* ?
       - For every requirement in the inspection, follow to its parent (stakeholder) requirement(s) and then check if this/these are fulfilled completely by its/their linked children (feature requirements, including those which are not in scope of the inspection).
-      - NO
+      - YES
       - Following stakeholder requirements are linked:
 
         - stkh_req__functional_req__base_libraries :  correctly links to all current baselibs feature requirements

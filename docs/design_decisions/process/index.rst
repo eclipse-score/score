@@ -12,16 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_logging:
-
-logging
-#######
-
-Component Documents
-===================
+Process
+=======
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
+   :maxdepth: 1
+   :glob:
 
-   architecture/index
+   DR-*-proc*

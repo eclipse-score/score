@@ -12,21 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging Module
-##############
+Infrastructure
+==============
 
 .. toctree::
-   :titlesonly:
-   :maxdepth: 2
-
-   ./docs/index
-
-Components
-==========
-
-.. toctree::
-   :titlesonly:
    :maxdepth: 1
    :glob:
 
-   ./*/docs/index
+   DR-*-infra*

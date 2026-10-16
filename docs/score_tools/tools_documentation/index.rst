@@ -14,8 +14,8 @@
 
 .. _tools_documentation:
 
-Documentation Tools Overview
-============================
+Documentation Tools
+===================
 
 .. needtable:: Documentation Tools List
    :tags: tool_management, tools_documentation
