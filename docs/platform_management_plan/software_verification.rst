@@ -196,7 +196,69 @@ QM or ASIL B relevant.
 
 Automated test cases should contain further information about which methods have been applied. The corresponding
 guidance is given here: :need:`gd_guidl__verification_guide`. The identifier of the respective
-method is to be used as meta data (*TestType* and *DerivationTechnique*).
+method is to be used as meta data (*TestType* and *DerivationTechnique*). The tool-supported metadata values and
+requirement links are defined below. The method tables in this section also include verification activities which
+are not supported as test metadata values.
+
+.. list-table:: Tool-supported test metadata
+   :header-rows: 1
+   :align: center
+
+   * - Field
+     - Identifier
+     - Applicable test level
+   * - TestType
+     - interface-test
+     - Unit, Component, Feature
+   * - TestType
+     - requirements-based
+     - Component, Feature, Platform
+   * - DerivationTechnique
+     - requirements-analysis
+     - All
+   * - DerivationTechnique
+     - boundary-values
+     - Component, Feature, Platform
+   * - DerivationTechnique
+     - equivalence-classes
+     - All
+   * - DerivationTechnique
+     - fuzz-testing
+     - Unit, Component, Feature
+   * - DerivationTechnique
+     - error-guessing
+     - All
+   * - DerivationTechnique
+     - explorative-testing
+     - All
+
+The fields may contain multiple comma-separated identifiers from the applicable values above.
+
+Test level is determined by the test's folder path. The module and reference-integration folder structures are described
+in :ref:`module_folder_structure` and :ref:`reference_integration_folder_structure`. Test cases shall link to
+requirements allowed for their level:
+
+.. list-table:: Test level and allowed requirement links
+   :header-rows: 1
+   :align: center
+
+   * - Path contains
+     - Test level
+     - Allowed requirement links
+   * - ``score/.*/tests/``
+     - Component
+     - ``comp``, ``comp_req``, ``comp_arc_dyn``, ``comp_arc_sta``, ``real_arc_int``, ``real_arc_int_op``
+   * - ``score/tests/``
+     - Feature
+     - ``feat``, ``feat_req``, ``feat_arc_dyn``, ``feat_arc_sta``, ``mod``, ``mod_view_dyn``, ``mod_view_sta``, ``tool_req``
+   * - ``platform_integration_tests/``
+     - Platform
+     - ``stkh_req``
+   * - anything else
+     - Unit
+     - ``comp_req``, ``feat_req``
+
+Tests outside these paths are considered unit-level tests.
 
 .. list-table:: Software verification methods (TestType)
    :header-rows: 1
@@ -208,19 +270,19 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - Applicable for QM / ASIL B
    * - Static Code Analysis
      - static-code-analysis
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Structural Statement Coverage (Code coverage)
      - structural-statement-coverage
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Structural Branch Coverage (Code coverage)
      - structural-branch-coverage
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Walkthrough
      - walkthrough
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - QM
    * - Inspection
      - inspection
@@ -228,15 +290,15 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - ASIL B
    * - Interface Test
      - interface-test
-     - 1 Unit/Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - QM & ASIL B
    * - Requirements-based Test
      - requirements-based
-     - All level 1, 2, 3
+     - 1 Component, 2 Feature Integration, 3 Platform
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
      - resource-usage
-     - -, 2 Feature Integration, -
+     - 2 Feature Integration
      - QM & ASIL B
 
 
@@ -286,19 +348,19 @@ Test Derivation Methods
      - Applicable for QM / ASIL B
    * - Analysis of Requirements
      - requirements-analysis
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - QM, ASIL B
    * - Analysis of Boundary Values
      - boundary-values
-     - 1 Unit/Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - ASIL B
    * - Analysis of Equivalence Classes
      - equivalence-classes
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - ASIL B
    * - Fuzzy Testing (focus security)
      - fuzz-testing
-     - 1 Unit/Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - QM, ASIL B
 
 The ``fuzz-testing`` should especially be taken into account to increase security of the software.
