@@ -141,7 +141,10 @@ Objectives and scope
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform releases delivered to the community are quality-assured
       - Feature is released as experimental
-      - Ensured by the process release management, :need:`wp__platform_sw_release_note` contain the verification and approval of the quality-assurance
+      - Ensured by the process release management, :need:`wp__platform_sw_release_note` contain
+        the verification and approval of the quality-assurance, performed as part of
+        :need:`wf__vy_ap_modrelease`/:need:`wf__vy_ap_pltrelease`, see
+        :need:`doc__platform_release_management_plan`
     * - 5
       - Only quality-trained personnel are part of the :need:`rl__committer`
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
