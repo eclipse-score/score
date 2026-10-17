@@ -49,6 +49,17 @@ Change Management Goals
 * Changes Requests are tracked until closure and and communicated to affected parties.
 * Change Requests and affected work products are bidirectionally traced.
 
+Change Management Scope
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Change management applies to the work products and configuration items identified in the
+:need:`Configuration Management Plan <doc__config_mgt_plan>`.
+
+Change management applies to these work products and items for their complete lifecycle,
+as defined in :need:`doc__config_mgt_plan` ("Lifecycle"). This is independent of the
+Expected Implementation Version/Milestone of an individual Change Request
+(:need:`gd_req__change_attr_milestone`), which only states the deadline for that request.
+
 Approach
 ++++++++
 
@@ -87,6 +98,11 @@ Therefore the Change Template :need:`gd_temp__change_feature_request` or
 :need:`gd_temp__change_component_request` shall be used.
 In addition  :need:`Impact Analysis Template <gd_temp__change_impact_analysis>` should be
 used, if applicable.
+
+The template covers the affected element, its interfaces and connected elements, the change
+type, work products affected versus those requiring modification, parties and
+responsibilities for distributed development, safety impact, and the
+implementation/verification schedule.
 
 .. note::
   Parts of the template are automatically included in the ISSUE **Change Request**.
@@ -263,6 +279,11 @@ state, the state in the Projects dashboard view and the PR status.
 Description and Impact analysis part of the ISSUE. Further detailed analysis results are part of
 the linked PR, provided as part of the feature/request templates.
 
+The request date is the ISSUE creation date, recorded automatically by the Issue Tracking
+System. The starting release version is the main branch state (or applicable baseline)
+at the time the Change Request is created, identifiable via the base commit of the linked PR;
+this is distinct from the Expected Implementation Version, which identifies the target release.
+
 Further information about detailed implementation can be provided in the Realize part of the ISSUE.
 
 :need:`[[title]] <gd_req__change_attr_impact_safety>`,
@@ -282,6 +303,10 @@ linked PR or other ISSUEs.
 
 :need:`[[title]] <gd_req__change_attr_milestone>` is provided in the Expected Implementation
 Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
+
+For an accepted Change Request, who implements it is recorded via the Assignees part of the
+ISSUE and/or the assignees of linked implementation PRs/Issues, considering the interfaces
+involved.
 
 
 .. _change_mgmt_workflow:
