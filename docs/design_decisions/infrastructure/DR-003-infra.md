@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__infra__devcontainer
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/pull/1845
 :context: Infrastructure
 :decision: Hybrid Approach with Devcontainer Features
+:consequences: Development environments use a base devcontainer plus composable features, so contributors get a consistent core with optional add-ons. New tooling is added as features rather than forking the base image.
 ```
 
 ---

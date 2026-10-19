@@ -9,6 +9,7 @@
 :tracking: https://github.com/eclipse-score/score/issues/2726
 :context: S-CORE lacks a common way for mw::com applications and services to use DDS data-centric communication or interoperate with native DDS systems.
 :decision: Add DDS communication through a DDS binding beneath the mw::com front end and a deployable DDS Gateway for bridging existing mw::com services to DDS domains.
+:consequences: mw::com gains a DDS binding beneath its front end, and a new deployable DDS Gateway bridges existing services to DDS domains. Downstream consumers can interoperate with native DDS systems without changing the mw::com API.
 ```
 
 ---

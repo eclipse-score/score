@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__arch__public_header_layout
 :status: proposed
 :version: 1
+:tracking: https://github.com/eclipse-score/score/issues/3234
 :context: Architecture
 :decision: Bazel-native flat layout — headers next to sources with full project-prefixed include paths; non-public headers isolated in an impl/ subpackage with restricted Bazel visibility
+:consequences: C++ components must restructure headers into a flat, Bazel-native layout with project-prefixed include paths. Non-public headers move into an impl/ subpackage with restricted visibility, changing existing include statements.
 ```
 
 ---

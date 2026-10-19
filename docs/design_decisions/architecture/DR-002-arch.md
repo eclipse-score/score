@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__arch__library_delivery_model
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/pull/2899
 :context: Architecture
 :decision: Opt-in per module — static by default, dynamic where justified
+:consequences: Each module must document and justify its linking choice, with static as the default. Bazel packaging must support both static and dynamic outputs, and downstream applications may carry their own copy of statically linked modules.
 ```
 
 ---
