@@ -77,7 +77,10 @@ How the register follows the draft SCRC assessment
 ==================================================
 
 Each register row records the draft SCRC assessment, the related MISRA C:2025 guideline, the
-SCRC guideline link and category, and the S-CORE disposition:
+SCRC guideline identifier and category where an SCRC guideline exists (the catalogue renders
+the identifier as a link to the pinned file), and the S-CORE disposition. The adaptation
+notes that explain how a rule departs from its MISRA C++ sources are kept with the rule,
+in the collapsed block under each catalogue entry, not in the rule text itself:
 
 * **proposed rust obligation** (83): SCRC marks the guideline applicable and one or
   more S-CORE rules interpret it.

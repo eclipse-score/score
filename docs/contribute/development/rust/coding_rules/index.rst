@@ -36,6 +36,7 @@ Rust Coding Rules (MISRA-derived draft)
    :maxdepth: 1
 
    rules
+   boundary_contracts
    applicability
    verification_and_deviations
 
@@ -89,6 +90,18 @@ obligations S-CORE wants to adopt, map to a validated check, or reject with a re
 reason. A rule listed here binds a component only after it has been adopted through the
 component's Software Development Plan. Rule text that proves useful is a candidate
 contribution to the SCRC guidelines rather than a competing standard.
+
+How to read a rule entry
+========================
+
+Each entry in the :ref:`catalogue <rust_coding_rules>` is written for the developer
+first. It leads with the rule in one or two sentences, explains why it matters in Rust
+without reference to any standard, states the requirement, shows a compliant and a
+non-compliant example where one exists, and says how the rule is checked. The MISRA
+C++:2023 sources, the draft SCRC assessment, adaptation notes, level rationale and
+coverage limits are collapsed under each entry for reviewers and assessors. The detailed
+conditions for panic and foreign-language boundaries are on their own page,
+:ref:`rust_boundary_contracts`, linked from the two rules that need them.
 
 Purpose and scope
 =================
@@ -171,7 +184,9 @@ Adoption follows :need:`wf__sw_development_plan`; implementation and review foll
 does not create a separate approval authority. The applicable project plan identifies
 the accountable reviewers for safety-relevant interpretations and deviations.
 
-The rule text and metadata are maintained in ``_assets/rules.json`` beside this page.
+The rule text and metadata are maintained in ``_assets/rules.json`` beside this page; each rule
+carries a summary, a rationale, the requirement, the check, optional examples, and the
+traceability fields shown in the collapsed block.
 The rendered catalogue and the compact source table are generated from the data files.
 Maintainers edit the data files, never the generated ones. After a change, from the
 repository root:

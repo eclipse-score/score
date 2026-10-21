@@ -66,10 +66,13 @@ Rust Rule Catalogue
    :security: YES
    :realizes: wp__sw_development_plan[version==1]
 
-These are draft rules. The proposed levels take effect only after adoption through the
-Software Development Plan as described in :ref:`rust_coding_rules_overview`. Enforcement
-candidates require validation under :ref:`rust_coding_rules_verification`; a source mapping
-does not establish compliance.
+These are draft rules. Each entry leads with the rule, why it matters in Rust, the
+requirement, an example where one exists, and how it is checked. The MISRA C++ sources,
+the draft SCRC assessment, adaptation notes and coverage limits are collapsed under each
+entry; the full mapping is in :ref:`rust_coding_rules_applicability`. The proposed levels
+take effect only after adoption through the Software Development Plan as described in
+:ref:`rust_coding_rules_overview`. Enforcement candidates require validation under
+:ref:`rust_coding_rules_verification`; a source mapping does not establish compliance.
 
 .. contents:: Rules
    :local:
@@ -89,7 +92,10 @@ SCRC_LABEL = {
 
 
 def paragraph(text):
-    return textwrap.fill(text, width=100) + "\n\n"
+    return (
+        textwrap.fill(text, width=100, break_long_words=False, break_on_hyphens=False)
+        + "\n\n"
+    )
 
 
 def parse_upstream(path):
@@ -198,6 +204,19 @@ def validate(rules, rows, guidelines):
             raise ValueError(f"Unknown source guideline in {rule['id']}")
         if rule["proposed_level"] not in ("Required", "Advisory"):
             raise ValueError(f"Unknown proposed level in {rule['id']}")
+        for field in (
+            "summary",
+            "rationale",
+            "requirement",
+            "enforcement",
+            "coverage_limit",
+        ):
+            if not rule.get(field):
+                raise ValueError(f"{rule['id']} lacks the {field} field")
+        if re.search(r"\b\d{1,2}\.\d{1,2}\.\d{1,2}\b", rule["requirement"]):
+            raise ValueError(
+                f"{rule['id']}: MISRA guideline numbers belong in adaptation_notes, not the requirement"
+            )
 
 
 def code_block(code):
@@ -213,49 +232,61 @@ def render_rules(rules, rows, guidelines):
     for rule in rules:
         rid = rule["id"]
         title = f"{rid}: {rule['title']}"
-        sources = (
-            ", ".join(f"{g} ({verdict[g]})" for g in rule["misra_cpp_ids"])
-            or "No direct mapping"
-        )
         parts.extend(
             [
                 f".. _{rid.lower()}:\n\n",
                 title + "\n" + "=" * len(title) + "\n\n",
-                paragraph(
-                    f"**Proposed level:** {rule['proposed_level']}. "
-                    f"**Source IDs (MISRA C++:2023, draft SCRC assessment):** {sources}."
-                ),
-                paragraph(f"**Origin:** {rule['origin']}. **Scope:** {rule['scope']}."),
+                paragraph(f"**Rule ({rule['proposed_level']}).** {rule['summary']}"),
+                paragraph("**Why it matters in Rust.** " + rule["rationale"]),
+                paragraph("**Requirement.** " + rule["requirement"]),
             ]
         )
-        if rule.get("level_rationale"):
-            parts.append(paragraph("**Level rationale:** " + rule["level_rationale"]))
+        if rule.get("example"):
+            ex = rule["example"]
+            parts.append("**Example.**\n\n")
+            parts.append(code_block(ex["compliant"]))
+            parts.append(code_block(ex["non_compliant"]))
+            parts.append(paragraph(ex["note"]))
+        parts.append(paragraph("**Check.** " + rule["enforcement"]))
+        # collapsed traceability block
+        sources = (
+            ", ".join(f"{g} ({verdict[g]})" for g in rule["misra_cpp_ids"])
+            or "No MISRA C++ source retained"
+        )
+        details = [
+            f"**Scope:** {rule['scope']}.",
+            f"**Origin:** {rule['origin']}.",
+            f"**MISRA C++:2023 sources (draft SCRC assessment):** {sources}.",
+        ]
         related = [(g, scrc_rule[g]) for g in rule["misra_cpp_ids"] if g in scrc_rule]
         if related:
             links = ", ".join(
                 f"`{gid} <{guidelines[gid]['url']}>`_ ({guidelines[gid]['topic']}, for {g})"
                 for g, gid in related
             )
-            parts.append(
-                paragraph(
-                    "**Related draft SCRC guideline:** "
-                    + links
-                    + ". This rule is to be reconciled with the SCRC text as it matures."
-                )
+            details.append(
+                "**Related draft SCRC guideline:** "
+                + links
+                + ". To be reconciled with the SCRC text as it matures."
             )
-        parts.extend(
-            [
-                paragraph(rule["requirement"]),
-                paragraph("**Check:** " + rule["enforcement"]),
-                paragraph("**Coverage limit:** " + rule["coverage_limit"]),
-            ]
-        )
-        if rule.get("example"):
-            ex = rule["example"]
-            parts.append("**Example:**\n\n")
-            parts.append(code_block(ex["compliant"]))
-            parts.append(code_block(ex["non_compliant"]))
-            parts.append(paragraph(ex["note"]))
+        if rule.get("adaptation_notes"):
+            details.append("**Adaptation notes:** " + rule["adaptation_notes"])
+        if rule.get("level_rationale"):
+            details.append("**Level rationale:** " + rule["level_rationale"])
+        details.append("**Coverage limit:** " + rule["coverage_limit"])
+        parts.append(".. dropdown:: Sources, level and coverage limits\n\n")
+        for d in details:
+            parts.append(
+                textwrap.fill(
+                    d,
+                    width=100,
+                    initial_indent="   ",
+                    subsequent_indent="   ",
+                    break_long_words=False,
+                    break_on_hyphens=False,
+                )
+                + "\n\n"
+            )
     return "".join(parts)
 
 
