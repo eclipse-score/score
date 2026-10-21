@@ -640,7 +640,7 @@
                   
   <section id="lifecycle-architecture">
 <h1>Lifecycle Architecture<a class="headerlink" href="#lifecycle-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9fab96be">
+<div class="need_container docutils container" id="SNCB-a876dc1b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,7 +685,7 @@
 </div>
 <section id="lifecycle-feature">
 <h2>Lifecycle Feature<a class="headerlink" href="#lifecycle-feature" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-bf781881">
+<div class="need_container docutils container" id="SNCB-533a1411">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -733,7 +733,7 @@
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
 <p><strong>Lifecycle</strong></p>
-<div class="need_container docutils container" id="SNCB-6e5e6370">
+<div class="need_container docutils container" id="SNCB-a857b3ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__lifecycle_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -756,14 +756,17 @@
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__monitor_processes" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__monitor_processes</a></span></span></div>
 <div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#feat__lifecycle" title="logic_arc_int__lifecycle__lifecycle_if">feat__lifecycle</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__run</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__initialize" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__initialize</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__run</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/index-0">
-<object data="../../../_images/plantuml-67cae1d1420747bc566086a5b9b5762b81794f55.svg" type="image/svg+xml" style="width:134px;height:101px;background:#FFFFFF;"></object></p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The lifecycle interface supports the initialization, execution, and termination phases of the application.
+It registers the necessary signal handler for termination signals.
+It calls the Initialize() and Run() methods in sequence which need to be implemented by the user.</p>
+<p class="plantuml" id="needarch-features/lifecycle/architecture/index-0">
+<object data="../../../_images/plantuml-46a60315bf11d81721ad8da08dda8c516aeac1a3.svg" type="image/svg+xml" style="width:120px;height:101px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -780,7 +783,62 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-089395f6">
+<div class="need_container docutils container" id="SNCB-ff8f5af0">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__initialize">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Initialize</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__initialize">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Initialize() method shall be implemented by the user to perform the initialization of the application.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>Application context (e.g. CLI arguments)</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>Integer indicating whether the initialization was successful or not.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Upon successful initialization, the Run() method is invoked next.</p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__initialize" title="logic_arc_int_op__lifecycle__initialize">logic_arc_int_op__lifecycle__initialize</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-a3bcaf77">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__run">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -807,7 +865,18 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Run() method shall be implemented by the user to perform the main execution of the application.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>Shutdown flag indicating whether the application received the request to terminate.</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>Integer indicating whether the execution was successful or not.</p></li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int_op__lifecycle__run">logic_arc_int_op__lifecycle__run</a></span></span></div>
@@ -823,51 +892,8 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3bcaeba0">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__terminate">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Terminate</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
-</span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <p><strong>Report Running</strong></p>
-<div class="need_container docutils container" id="SNCB-5ca52575">
+<div class="need_container docutils container" id="SNCB-a270cc4a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__report_running_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -896,7 +922,9 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/index-1">
+<tr class="content row-odd"><td class="content" colspan="6"><p>The report running interface allows the application to report to the Launch Manager that it finished its initialization phase.
+The interface only offers a simple function without the sourrounding framework of the full Lifecycle interface.</p>
+<p class="plantuml" id="needarch-features/lifecycle/architecture/index-1">
 <object data="../../../_images/plantuml-dc5aec6ce1be36b1e1ed89d1038ed82c47f4d991.svg" type="image/svg+xml" style="width:167px;height:85px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
@@ -914,7 +942,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b82a9e03">
+<div class="need_container docutils container" id="SNCB-6754e123">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_running">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -941,7 +969,19 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+</dl>
+<p>The operation does not indicate the success or failure of the reporting.
+Failure to report would eventually result in an activation timeout and forced termination of the application process by the Launch Manager.</p>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__report_running" title="logic_arc_int_op__lifecycle__report_running">logic_arc_int_op__lifecycle__report_running</a></span></span></div>
@@ -958,7 +998,7 @@
 </div>
 </div>
 <p><strong>Alive</strong></p>
-<div class="need_container docutils container" id="SNCB-7bcb8253">
+<div class="need_container docutils container" id="SNCB-a7d3cfe7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -987,7 +1027,8 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/index-2">
+<tr class="content row-odd"><td class="content" colspan="6"><p>The alive interface allows the application to periodically report its liveness to the Launch Manager or escalate failures.</p>
+<p class="plantuml" id="needarch-features/lifecycle/architecture/index-2">
 <object data="../../../_images/plantuml-a4523be7041bc663b97c6586420bd576dce941e2.svg" type="image/svg+xml" style="width:157px;height:101px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
@@ -1005,7 +1046,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a402feb0">
+<div class="need_container docutils container" id="SNCB-5a076557">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_alive">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1032,7 +1073,18 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>ReportAlive() operation is used by the application to cyclically indicate that it is still alive.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__report_alive" title="logic_arc_int_op__lifecycle__report_alive">logic_arc_int_op__lifecycle__report_alive</a></span></span></div>
@@ -1048,7 +1100,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9fb6a868">
+<div class="need_container docutils container" id="SNCB-622031c9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_failure">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1075,7 +1127,18 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>ReportFailure() operation is used by the application to indicate that it has encountered a failure condition.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__report_failure" title="logic_arc_int_op__lifecycle__report_failure">logic_arc_int_op__lifecycle__report_failure</a></span></span></div>
@@ -1092,7 +1155,7 @@
 </div>
 </div>
 <p><strong>Control</strong></p>
-<div class="need_container docutils container" id="SNCB-72fc66c4">
+<div class="need_container docutils container" id="SNCB-05d975f2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1121,7 +1184,8 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/index-3">
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Control interface is used by a State Manager application to control which components shall be active at any given time through the activation run targets.</p>
+<p class="plantuml" id="needarch-features/lifecycle/architecture/index-3">
 <object data="../../../_images/plantuml-13d1ccf7c93075a4e762cc85f6516a86c6c3157e.svg" type="image/svg+xml" style="width:250px;height:117px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
@@ -1139,7 +1203,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e109a20">
+<div class="need_container docutils container" id="SNCB-d895df80">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__activate_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1166,7 +1230,20 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>ActivateRunTarget() operation is used by the application to request the activation of a specific run target.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>Run target to be activated</p></li>
+<li><p>Force flag indicating whether to cancel any ongoing activation of a different run target or queue the request</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>Boolean indicating whether the request was accepted or not</p></li>
+</ul>
+</dd>
+</dl>
+<p>The successful execution of the request is returned asynchronously by the callback registered via RegisterActivationCallback().</p>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__activate_target" title="logic_arc_int_op__lifecycle__activate_target">logic_arc_int_op__lifecycle__activate_target</a></span></span></div>
@@ -1182,7 +1259,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1a3db16f">
+<div class="need_container docutils container" id="SNCB-42c1d6ac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__get_act_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1209,7 +1286,18 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>GetActiveRunTarget() operation is used by the application to query the currently active run target.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>Currently active run target or error if no run target is currently active</p></li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__get_act_target" title="logic_arc_int_op__lifecycle__get_act_target">logic_arc_int_op__lifecycle__get_act_target</a></span></span></div>
@@ -1225,7 +1313,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-13822095">
+<div class="need_container docutils container" id="SNCB-2167842e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__reg_callback">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1252,7 +1340,18 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>RegisterActivationCallback() operation is used by the application to register a callback that will be invoked upon the successful execution of a Run Target activation.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>Callback function to be registered. The callback will be invoked with the name of the newly activated Run Target and the reason for activating it.</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>None</p></li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__reg_callback" title="logic_arc_int_op__lifecycle__reg_callback">logic_arc_int_op__lifecycle__reg_callback</a></span></span></div>
@@ -1269,7 +1368,7 @@
 </div>
 </div>
 <p><strong>Deadline</strong></p>
-<div class="need_container docutils container" id="SNCB-acebcc22">
+<div class="need_container docutils container" id="SNCB-1ae4aa08">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__deadline_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1316,7 +1415,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-adc6418d">
+<div class="need_container docutils container" id="SNCB-f416c56e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__min_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1359,7 +1458,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f3126e43">
+<div class="need_container docutils container" id="SNCB-646b609b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__max_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1402,7 +1501,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b5fb40cb">
+<div class="need_container docutils container" id="SNCB-6e3bbaeb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_dl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1445,7 +1544,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7c9e0d3d">
+<div class="need_container docutils container" id="SNCB-d8674b3f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1488,7 +1587,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f2f12223">
+<div class="need_container docutils container" id="SNCB-358fa878">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__end">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1531,7 +1630,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f8aebde4">
+<div class="need_container docutils container" id="SNCB-a2f0e69b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__timer_expiry">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1574,7 +1673,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d251da51">
+<div class="need_container docutils container" id="SNCB-83117562">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1617,7 +1716,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1c0dde17">
+<div class="need_container docutils container" id="SNCB-4d14962b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1660,7 +1759,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-808c557e">
+<div class="need_container docutils container" id="SNCB-4add1842">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__check_cfg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1704,7 +1803,7 @@
 </div>
 </div>
 <p><strong>Logical</strong></p>
-<div class="need_container docutils container" id="SNCB-9ded3679">
+<div class="need_container docutils container" id="SNCB-d566f6d7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__logical_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1751,7 +1850,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-97c20a88">
+<div class="need_container docutils container" id="SNCB-7e35341b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__entry_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1794,7 +1893,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b8e01469">
+<div class="need_container docutils container" id="SNCB-3520291b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__exit_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1837,7 +1936,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5f91c3d3">
+<div class="need_container docutils container" id="SNCB-d71dd7b0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__allowed_trans">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1880,7 +1979,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d32ce10b">
+<div class="need_container docutils container" id="SNCB-f4411ae8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_lg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1923,7 +2022,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a4688089">
+<div class="need_container docutils container" id="SNCB-92d60c56">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__rec_checkpoint">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1966,7 +2065,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-11676170">
+<div class="need_container docutils container" id="SNCB-05ea3159">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2009,7 +2108,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-af8a9a69">
+<div class="need_container docutils container" id="SNCB-baba1772">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2052,7 +2151,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ba59adf2">
+<div class="need_container docutils container" id="SNCB-37cded36">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__verify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
