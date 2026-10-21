@@ -570,6 +570,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../coding_guidelines.html">Writing Rust Code incl. Coding Guidelines</a></li>
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">Rust Coding Rules (MISRA-derived draft)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="rules.html">Rust Rule Catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="boundary_contracts.html">Panic and Foreign Boundary Contracts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="applicability.html">Sources and Applicability</a></li>
 <li class="toctree-l4"><a class="reference internal" href="verification_and_deviations.html">Verification and Deviations</a></li>
 </ul>
@@ -650,7 +651,7 @@
                   
   <section id="rust-coding-rules-misra-derived-draft">
 <span id="rust-coding-rules-overview"></span><h1>Rust Coding Rules (MISRA-derived draft)<a class="headerlink" href="#rust-coding-rules-misra-derived-draft" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d4ecf23b">
+<div class="need_container docutils container" id="SNCB-e79e9911">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -703,6 +704,7 @@ does not approve the rulebook, establish MISRA compliance, or enable any CI chec
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rules.html">Rust Rule Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_contracts.html">Panic and Foreign Boundary Contracts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applicability.html">Sources and Applicability</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verification_and_deviations.html">Verification and Deviations</a></li>
 </ul>
@@ -751,6 +753,17 @@ obligations S-CORE wants to adopt, map to a validated check, or reject with a re
 reason. A rule listed here binds a component only after it has been adopted through the
 component’s Software Development Plan. Rule text that proves useful is a candidate
 contribution to the SCRC guidelines rather than a competing standard.</p>
+</section>
+<section id="how-to-read-a-rule-entry">
+<h2>How to read a rule entry<a class="headerlink" href="#how-to-read-a-rule-entry" title="Link to this heading">#</a></h2>
+<p>Each entry in the <a class="reference internal" href="rules.html#rust-coding-rules"><span class="std std-ref">catalogue</span></a> is written for the developer
+first. It leads with the rule in one or two sentences, explains why it matters in Rust
+without reference to any standard, states the requirement, shows a compliant and a
+non-compliant example where one exists, and says how the rule is checked. The MISRA
+C++:2023 sources, the draft SCRC assessment, adaptation notes, level rationale and
+coverage limits are collapsed under each entry for reviewers and assessors. The detailed
+conditions for panic and foreign-language boundaries are on their own page,
+<a class="reference internal" href="boundary_contracts.html#rust-boundary-contracts"><span class="std std-ref">Panic and Foreign Boundary Contracts</span></a>, linked from the two rules that need them.</p>
 </section>
 <section id="purpose-and-scope">
 <h2>Purpose and scope<a class="headerlink" href="#purpose-and-scope" title="Link to this heading">#</a></h2>
@@ -836,7 +849,9 @@ rulebook revision.</p>
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workflow.html#wf__sw_detailed_design">wf__sw_detailed_design</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workflow.html#wf__sw_verify_implementation">wf__sw_verify_implementation</a>. This draft
 does not create a separate approval authority. The applicable project plan identifies
 the accountable reviewers for safety-relevant interpretations and deviations.</p>
-<p>The rule text and metadata are maintained in <code class="docutils literal notranslate"><span class="pre">_assets/rules.json</span></code> beside this page.
+<p>The rule text and metadata are maintained in <code class="docutils literal notranslate"><span class="pre">_assets/rules.json</span></code> beside this page; each rule
+carries a summary, a rationale, the requirement, the check, optional examples, and the
+traceability fields shown in the collapsed block.
 The rendered catalogue and the compact source table are generated from the data files.
 Maintainers edit the data files, never the generated ones. After a change, from the
 repository root:</p>
@@ -909,6 +924,7 @@ not silently alter an adopted component revision.</p>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribution">Attribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-to-the-s-core-rust-coding-guidelines">Relation to the S-CORE Rust coding guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-read-a-rule-entry">How to read a rule entry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-scope">Purpose and scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-adoption">Project adoption</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responsibilities-and-maintenance">Responsibilities and maintenance</a></li>

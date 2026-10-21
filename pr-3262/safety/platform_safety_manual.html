@@ -624,7 +624,7 @@
                   
   <section id="platform-safety-manual">
 <h1>Platform Safety Manual<a class="headerlink" href="#platform-safety-manual" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a5021b93">
+<div class="need_container docutils container" id="SNCB-10eb9b25">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_platform_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -643,7 +643,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>2</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a></span></span></div>
 </span></div>
@@ -850,7 +850,7 @@ the respective feature DFA see <a class="external_link reference external" href=
 <section id="assumptions-on-the-environment">
 <h3>Assumptions on the Environment<a class="headerlink" href="#assumptions-on-the-environment" title="Link to this heading">#</a></h3>
 <p>Generally the assumption of the project platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</p>
-<p><strong>&lt;List here all the OS calls the project platform expects to be safe.&gt;</strong></p>
+<p><strong>The platform repository does not add implementation, so the user has to check each of the module’s safety manuals of the modules he incorporates in his SW platform to collect the full list of the OS functions required to be at least ASIL B qualified.</strong></p>
 <p>List of AoUs expected from the environment the platform runs on:</p>
 <div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-1">
 <div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-safety/platform_safety_manual-1-table_node">
@@ -1001,16 +1001,15 @@ separate process and may remain QM.</p>
 </section>
 <section id="safety-anomalies">
 <h2>Safety Anomalies<a class="headerlink" href="#safety-anomalies" title="Link to this heading">#</a></h2>
-<p>Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes &lt;add link to release note&gt;.</p>
+<p>Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes &lt;<a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html">https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html</a>&gt;`_.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../index.html#doc__platform_handbook" title="doc__platform_handbook"><em class="xref need">Handbook (doc__platform_handbook)</em></a></p>
 <p><a class="reference external" href="https://eclipse-score.github.io/baselibs/main/module/manuals/safety_manual.html">Baselibs Safety Manual</a></p>
-<p><a class="reference external" href="https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html">IPC Safety Manual</a></p>
-<p><a class="reference external" href="https://eclipse-score.github.io/score/main/modules/feo/docs/manual/safety_manual.html">FEO Safety Manual</a></p>
-<p><a class="reference external" href="https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html">KVS Safety Manual</a></p>
-<p><a class="reference external" href="https://eclipse-score.github.io/score/main/modules/orchestrator/docs/manual/safety_manual.html">Orchestrator Safety Manual</a></p>
+<p><a class="reference external" href="https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html">Communication Safety Manual</a></p>
+<p><a class="reference external" href="https://eclipse-score.github.io/lifecycle/main/module/manuals/safety_manual.html">Lifecycle Safety Manual</a></p>
+<p><a class="reference external" href="https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html">Persistency Safety Manual</a></p>
 </section>
 </section>
 

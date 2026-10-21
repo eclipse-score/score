@@ -75,7 +75,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Verification and Deviations" href="verification_and_deviations.html" />
-    <link rel="prev" title="Rust Rule Catalogue" href="rules.html" />
+    <link rel="prev" title="Panic and Foreign Boundary Contracts" href="boundary_contracts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -570,6 +570,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../coding_guidelines.html">Writing Rust Code incl. Coding Guidelines</a></li>
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Rust Coding Rules (MISRA-derived draft)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="rules.html">Rust Rule Catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="boundary_contracts.html">Panic and Foreign Boundary Contracts</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">Sources and Applicability</a></li>
 <li class="toctree-l4"><a class="reference internal" href="verification_and_deviations.html">Verification and Deviations</a></li>
 </ul>
@@ -653,7 +654,7 @@
                   
   <section id="sources-and-applicability">
 <span id="rust-coding-rules-applicability"></span><h1>Sources and Applicability<a class="headerlink" href="#sources-and-applicability" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5ee85aa7">
+<div class="need_container docutils container" id="SNCB-1312f777">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_rules_applicability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -756,7 +757,10 @@ SCRC rule text yet; for those the S-CORE catalogue proposes candidate text.</p>
 <section id="how-the-register-follows-the-draft-scrc-assessment">
 <h2>How the register follows the draft SCRC assessment<a class="headerlink" href="#how-the-register-follows-the-draft-scrc-assessment" title="Link to this heading">#</a></h2>
 <p>Each register row records the draft SCRC assessment, the related MISRA C:2025 guideline, the
-SCRC guideline link and category, and the S-CORE disposition:</p>
+SCRC guideline identifier and category where an SCRC guideline exists (the catalogue renders
+the identifier as a link to the pinned file), and the S-CORE disposition. The adaptation
+notes that explain how a rule departs from its MISRA C++ sources are kept with the rule,
+in the collapsed block under each catalogue entry, not in the rule text itself:</p>
 <ul class="simple">
 <li><p><strong>proposed rust obligation</strong> (83): SCRC marks the guideline applicable and one or
 more S-CORE rules interpret it.</p></li>
@@ -2219,12 +2223,12 @@ Rust rule’s proposed S-CORE level.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="rules.html"
+       href="boundary_contracts.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Rust Rule Catalogue</p>
+        <p class="prev-next-title">Panic and Foreign Boundary Contracts</p>
       </div>
     </a>
     <a class="right-next"
