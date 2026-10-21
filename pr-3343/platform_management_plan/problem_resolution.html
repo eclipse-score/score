@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-be94a10f">
+  <div class="need_container docutils container" id="SNCB-4625cec4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_problem_resolution_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -801,8 +801,8 @@ reporting policy.</p>
 for that in the ISSUE.</p>
 <p>To identify, in which version the problem occurred, use the Affected Version
 part of the ISSUE.</p>
-<p>The first and last affected versions, including versions derived from the faulty version, must
-additionally be documented.
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_affected_versions">gd_req__problem_attr_affected_versions</a> additionally requires the first and
+last affected versions, including versions derived from the faulty version, to be documented.
 Record unknown affected versions as “under investigation” and update them during analysis.</p>
 <p>To provide solutions, use the Solution part of the ISSUE.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_analysis_results">gd_req__problem_attr_analysis_results</a> is provided in the analysis
@@ -934,9 +934,11 @@ the Problem Resolution.</p>
 this case all linked ISSUEs or PRs are closed or merged, respectively.</p>
 <p>Especially the solution measures must be checked for their effectiveness and the argumentation
 is convincing.</p>
-<p>Where safety is affected, closure requires a rationale supporting either an implemented safety
-measure with verified effectiveness, or an evaluation that the problem does not constitute an
-unreasonable risk. This rationale and its review result must be documented.</p>
+<p>Where safety is affected, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_check_safety_closure">gd_req__problem_check_safety_closure</a> requires a
+rationale supporting either an implemented safety measure with verified effectiveness, or an
+evaluation that the problem does not constitute an unreasonable risk. Per
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_check_safety_rationale">gd_req__problem_check_safety_rationale</a> this rationale and its review result
+must be documented.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_checklist.html#gd_chklst__problem_cr_review">gd_chklst__problem_cr_review</a> can help to verify whether it can be closed.</p>
 <p>If this is the case the ISSUE status is set to <code class="docutils literal notranslate"><span class="pre">Closed</span></code>, otherwise the Projects status is set
 back to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code>.</p>
