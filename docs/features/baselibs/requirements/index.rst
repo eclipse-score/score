@@ -179,6 +179,25 @@ Baselibs Requirements
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
 
+.. feat_req:: Operating System Abstraction Layer
+   :id: feat_req__baselibs__osal
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The base libraries shall provide C++ operating system abstraction libraries for POSIX,
+   C standard library, Linux-specific, and QNX-specific services.
+
+   .. note::
+      The operating system abstraction libraries provide both ASIL-B and QM functionality.
+      The separation is defined by the component requirements and implemented by the
+      corresponding libraries' Bazel targets.
+
 .. feat_req:: Memory Library
    :id: feat_req__baselibs__memory_library
    :reqtype: Functional
