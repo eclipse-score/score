@@ -21,6 +21,8 @@ DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process 
    :version: 1
    :context: Infrastructure
    :decision: Option 3
+   :tracking: https://github.com/eclipse-score/score/pull/2499
+   :consequences: The cyclic dependency between the process_description and docs-as-code repositories is broken, so the two repositories can evolve independently. A maintainability tradeoff is accepted in exchange for the independence, UX, and clear ownership that Option 3 provides.
 
 Context / Problem
 -----------------

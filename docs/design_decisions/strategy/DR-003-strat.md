@@ -18,9 +18,11 @@ SPDX-License-Identifier: Apache-2.0
 ```{dec_rec} Module Maturity Classification
 :id: dec_rec__strat__module_maturity_levels
 :status: proposed
+:version: 1
+:tracking: https://github.com/eclipse-score/score/pull/3124
 :context: Strategy
 :decision: Classify every module into one of three maturity levels — Release, Experimental, or Preview — based on requirement coverage and S-CORE process artifact completeness.
-:version: 1
+:consequences: Every module must be classified as Release, Experimental, or Preview based on requirement coverage and process artifact completeness. Release gating and downstream communication of module stability depend on this classification.
 ```
 
 ---

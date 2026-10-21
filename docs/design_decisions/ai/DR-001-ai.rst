@@ -20,8 +20,10 @@ DR-001-AI: AI Agent Context Packaging Tooling Selection
    :id: dec_rec__ai__ai_packaging_tooling
    :status: accepted
    :version: 01
+   :tracking: https://github.com/eclipse-score/score/issues/3115
    :context: AI
    :decision: APM is the primary AI agent context packaging tool; Lola is the fallback; OKIT is not recommended
+   :consequences: Agent context is distributed declaratively and reproducibly across all contributors via APM, with lockfile integrity, SBOM export, and policy allow-lists enforced as a CI merge gate. Contributors gain a single onboarding step, and the tooling complements the existing sbom-tool and mcp-servers supply-chain controls.
 
 Context / Problem
 -----------------

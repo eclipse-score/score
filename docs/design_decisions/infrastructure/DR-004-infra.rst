@@ -21,6 +21,8 @@ DR-004-Infra: Bi-directional traceability in docs
    :version: 1
    :context: Infrastructure
    :decision: Single documentation build
+   :tracking: https://github.com/eclipse-score/score/pull/1930
+   :consequences: Documentation is built as a single combined build, so every module's Sphinx-Needs elements are available together and bi-directional backlinks resolve across the whole project. Modules trade away fully independent doc builds for a consistent, regulation-compliant release documentation with complete traceability.
 
 Context / Problem
 -----------------

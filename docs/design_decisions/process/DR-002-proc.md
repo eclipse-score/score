@@ -7,8 +7,10 @@
 :id: dec_rec__proc__fep_process
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/issues/3061
 :context: Informal feature request handling no longer scales: proposals are not differentiated by importance, the Architecture Community has an unbounded review obligation, and cross-Feature-Team alignment has no defined governance path.
 :decision: Adopt a FEP process requiring a mandatory Shepherd and a binding 10-day Final Comment Period for platform-level and cross-Feature-Team decisions, while Feature Teams retain full authority within their own domain.
+:consequences: Platform-level and cross-Feature-Team proposals now require a Shepherd and a binding 10-day Final Comment Period, which bounds the Architecture Community's review obligation. Feature Teams retain full authority within their own domain, so in-domain changes stay fast.
 ```
 
 ---

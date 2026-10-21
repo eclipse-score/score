@@ -21,10 +21,11 @@ DR-001-Proc: Feature as Independent Delivery Product
    :id: dec_rec__platform__feature_delivery
    :status: accepted
    :version: 1
-   :Context: Feature artifacts are bound to the S-CORE platform repository and cannot be delivered independently of the platform release. The previous idea of moving all artifacts into the SW-Module repository leads to cyclic dependencies.
-   :Decision: Feature artifacts are split: feature requirements and platform architecture remain in the S-CORE repository. Feature architecture and component artifacts are moved to the SW-Module repository (feature repository). The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository, not the other way around.
+   :tracking: https://github.com/eclipse-score/score/issues/3085
+   :context: Feature artifacts are bound to the S-CORE platform repository and cannot be delivered independently of the platform release. The previous idea of moving all artifacts into the SW-Module repository leads to cyclic dependencies.
+   :decision: Feature artifacts are split: feature requirements and platform architecture remain in the S-CORE repository. Feature architecture and component artifacts are moved to the SW-Module repository (feature repository). The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository, not the other way around.
 
-   :Consequences: Process update required. Feature architecture and component artifacts are moved to SW-Module repositories. Feature requirements and logical feature interfaces remain in the S-CORE repository. The dependency rule is mandatory.
+   :consequences: Process update required. Feature architecture and component artifacts are moved to SW-Module repositories. Feature requirements and logical feature interfaces remain in the S-CORE repository. The dependency rule is mandatory.
 
 
 Context

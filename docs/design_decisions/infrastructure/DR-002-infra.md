@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__infra__int_testing
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/pull/1689
 :context: Infrastructure
 :decision: two testing layers
+:consequences: Modules must provide two testing layers (unit and integration) so cross-repository problems surface early. CI must run both layers, and integration tests are expected to catch issues that per-repo builds miss.
 ```
 
 ---

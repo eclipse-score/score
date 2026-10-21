@@ -20,8 +20,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__infra__dev_tools
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/pull/1687
 :context: Infrastructure
 :decision: Devcontainer is the primary distribution for all tools
+:consequences: All development tools are distributed through the devcontainer, so contributors no longer install tooling on their host systems. Tool updates ship as devcontainer changes rather than per-developer setup.
 ```
 
 ---

@@ -21,8 +21,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__infra__execution_contract
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/pull/2475
 :context: Infrastructure
 :decision: Adopt a layered execution contract
+:consequences: Build execution is standardized through a layered contract that all modules must honor. Modules gain a common, predictable execution interface while retaining module-specific behavior in the upper layers.
 
 ```
 
