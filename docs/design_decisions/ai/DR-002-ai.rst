@@ -143,9 +143,8 @@ templates and phase gates.
 - **Strengths:** specs as versioned artifacts; governance primitives; broad agent
   support (30+); MIT.
 - **Weaknesses:** not built for Sphinx-Needs, Bazel, ADRs or the S-CORE process;
-  traceability
-  is workflow-level; requirement IDs, Needs links and test evidence require
-  S-CORE-specific integration.
+  traceability is workflow-level; requirement IDs, Needs links and test evidence
+  require S-CORE-specific integration.
 - **S-CORE view:** best reused as a **phase shell** (Section 8) whose outputs are
   S-CORE needs.
 
@@ -277,7 +276,8 @@ S-CORE's model central.
 
 .. list-table::
    :header-rows: 1
-   :widths: 28 12 10 12 12 
+   :widths: 28 12 12 12 12 12
+
    * - S-CORE software process area
      - Syspilot
      - BMAD
@@ -408,7 +408,7 @@ human to notice drift.
        E --> F[tests + evidence]
        F --> G[Sphinx documentation]
        G --> A
-        F -->|loopback: drift detected| H{"analyze: spec / impl / test aligned?"}
+       F -->|loopback: drift detected| H{"analyze: spec / impl / test aligned?"}
        H -->|no| B
        H -->|yes| I[human sign-off]
 
