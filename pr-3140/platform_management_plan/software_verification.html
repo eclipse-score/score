@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-41dfab17">
+  <div class="need_container docutils container" id="SNCB-65ac3438">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -842,9 +842,88 @@ applicable level. Another column defines if a respective method is supposed to b
 QM or ASIL B relevant.</p>
 <p>Automated test cases should contain further information about which methods have been applied. The corresponding
 guidance is given here: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a>. The identifier of the respective
-method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique</em>).</p>
+method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique</em>). The tool-supported metadata values and
+requirement links are defined below. The method tables in this section also include verification activities which
+are not supported as test metadata values.</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id2">
-<caption><span class="caption-number">Table 77 </span><span class="caption-text">Software verification methods (TestType)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 77 </span><span class="caption-text">Tool-supported test metadata</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Identifier</p></th>
+<th class="head"><p>Applicable test level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TestType</p></td>
+<td><p>interface-test</p></td>
+<td><p>Unit, Component, Feature</p></td>
+</tr>
+<tr class="row-odd"><td><p>TestType</p></td>
+<td><p>requirements-based</p></td>
+<td><p>Component, Feature, Platform</p></td>
+</tr>
+<tr class="row-even"><td><p>DerivationTechnique</p></td>
+<td><p>requirements-analysis</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>DerivationTechnique</p></td>
+<td><p>boundary-values</p></td>
+<td><p>Component, Feature, Platform</p></td>
+</tr>
+<tr class="row-even"><td><p>DerivationTechnique</p></td>
+<td><p>equivalence-classes</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>DerivationTechnique</p></td>
+<td><p>fuzz-testing</p></td>
+<td><p>Unit, Component, Feature</p></td>
+</tr>
+<tr class="row-even"><td><p>DerivationTechnique</p></td>
+<td><p>error-guessing</p></td>
+<td><p>All</p></td>
+</tr>
+<tr class="row-odd"><td><p>DerivationTechnique</p></td>
+<td><p>explorative-testing</p></td>
+<td><p>All</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The fields may contain multiple comma-separated identifiers from the applicable values above.</p>
+<p>Test level is determined by the test’s folder path. The module and reference-integration folder structures are described
+in <a class="reference internal" href="../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">Module Folder Structure</span></a> and <a class="reference internal" href="../contribute/general/folder.html#reference-integration-folder-structure"><span class="std std-ref">Reference Integration Repository Folder Structure</span></a>. Test cases shall link to
+requirements allowed for their level:</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="id3">
+<caption><span class="caption-number">Table 78 </span><span class="caption-text">Test level and allowed requirement links</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Path contains</p></th>
+<th class="head"><p>Test level</p></th>
+<th class="head"><p>Allowed requirement links</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/.*/tests/</span></code></p></td>
+<td><p>Component</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">comp</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_req</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_arc_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">comp_arc_sta</span></code>, <code class="docutils literal notranslate"><span class="pre">real_arc_int</span></code>, <code class="docutils literal notranslate"><span class="pre">real_arc_int_op</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/tests/</span></code></p></td>
+<td><p>Feature</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feat</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_req</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_arc_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_arc_sta</span></code>, <code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_view_dyn</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_view_sta</span></code>, <code class="docutils literal notranslate"><span class="pre">tool_req</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">platform_integration_tests/</span></code></p></td>
+<td><p>Platform</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">stkh_req</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>anything else</p></td>
+<td><p>Unit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">comp_req</span></code>, <code class="docutils literal notranslate"><span class="pre">feat_req</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tests outside these paths are considered unit-level tests.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="id4">
+<caption><span class="caption-number">Table 79 </span><span class="caption-text">Software verification methods (TestType)</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Methods</p></th>
 <th class="head"><p>Identifier</p></th>
@@ -855,22 +934,22 @@ method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique
 <tbody>
 <tr class="row-even"><td><p>Static Code Analysis</p></td>
 <td><p>static-code-analysis</p></td>
-<td><p>1 Unit/Component, -, -</p></td>
+<td><p>1 Unit/Component</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Structural Statement Coverage (Code coverage)</p></td>
 <td><p>structural-statement-coverage</p></td>
-<td><p>1 Unit/Component, -, -</p></td>
+<td><p>1 Unit/Component</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-even"><td><p>Structural Branch Coverage (Code coverage)</p></td>
 <td><p>structural-branch-coverage</p></td>
-<td><p>1 Unit/Component, -, -</p></td>
+<td><p>1 Unit/Component</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Walkthrough</p></td>
 <td><p>walkthrough</p></td>
-<td><p>All level 1, 2, 3</p></td>
+<td><p>All levels (1, 2, 3)</p></td>
 <td><p>QM</p></td>
 </tr>
 <tr class="row-even"><td><p>Inspection</p></td>
@@ -880,17 +959,17 @@ method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique
 </tr>
 <tr class="row-odd"><td><p>Interface Test</p></td>
 <td><p>interface-test</p></td>
-<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-even"><td><p>Requirements-based Test</p></td>
 <td><p>requirements-based</p></td>
-<td><p>All level 1, 2, 3</p></td>
+<td><p>1 Component, 2 Feature Integration, 3 Platform</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Resource Usage Evaluation (only on reference environment)</p></td>
 <td><p>resource-usage</p></td>
-<td><p>-, 2 Feature Integration, -</p></td>
+<td><p>2 Feature Integration</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 </tbody>
@@ -928,8 +1007,8 @@ at higher levels:</p>
 </div></blockquote>
 <section id="test-derivation-methods">
 <h4>Test Derivation Methods<a class="headerlink" href="#test-derivation-methods" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table table-center" id="id3">
-<caption><span class="caption-number">Table 78 </span><span class="caption-text">Test case derivation methods (DerivationTechnique)</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="id5">
+<caption><span class="caption-number">Table 80 </span><span class="caption-text">Test case derivation methods (DerivationTechnique)</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Methods</p></th>
 <th class="head"><p>Identifier</p></th>
@@ -940,22 +1019,22 @@ at higher levels:</p>
 <tbody>
 <tr class="row-even"><td><p>Analysis of Requirements</p></td>
 <td><p>requirements-analysis</p></td>
-<td><p>All level 1, 2, 3</p></td>
+<td><p>All levels (1, 2, 3)</p></td>
 <td><p>QM, ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Analysis of Boundary Values</p></td>
 <td><p>boundary-values</p></td>
-<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration</p></td>
 <td><p>ASIL B</p></td>
 </tr>
 <tr class="row-even"><td><p>Analysis of Equivalence Classes</p></td>
 <td><p>equivalence-classes</p></td>
-<td><p>All level 1, 2, 3</p></td>
+<td><p>All levels (1, 2, 3)</p></td>
 <td><p>ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fuzzy Testing (focus security)</p></td>
 <td><p>fuzz-testing</p></td>
-<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration</p></td>
 <td><p>QM, ASIL B</p></td>
 </tr>
 </tbody>
@@ -983,8 +1062,8 @@ indicated by <code class="docutils literal notranslate"><span class="pre">explor
 <h3>Quality criteria<a class="headerlink" href="#quality-criteria" title="Link to this heading">#</a></h3>
 <p>The quality criteria of the software verification activities are defined at the following table. The defined goals are
 to be reached with every contribution.</p>
-<div class="pst-scrollable-table-container"><table class="table table-center" id="id4">
-<caption><span class="caption-number">Table 79 </span><span class="caption-text">Quality criteria and respective goals</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="id6">
+<caption><span class="caption-number">Table 81 </span><span class="caption-text">Quality criteria and respective goals</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>#</p></th>
 <th class="head"><p>Criterion</p></th>

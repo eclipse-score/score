@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-1ba2b457">
+  <div class="need_container docutils container" id="SNCB-f6dfefa6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_change_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -706,6 +706,15 @@ an existing feature/component.</p>
 <li><p>Change Requests and affected work products are bidirectionally traced.</p></li>
 </ul>
 </section>
+<section id="change-management-scope">
+<h3>Change Management Scope<a class="headerlink" href="#change-management-scope" title="Link to this heading">#</a></h3>
+<p>Change management applies to the work products and configuration items identified in the
+<a class="reference internal" href="config_management.html#doc__config_mgt_plan" title="doc__config_mgt_plan"><em class="xref need">Configuration Management Plan (doc__config_mgt_plan)</em></a>.</p>
+<p>Change management applies to these work products and items for their complete lifecycle,
+as defined in <a class="reference internal" href="config_management.html#doc__config_mgt_plan" title="doc__config_mgt_plan"><em class="xref need">Configuration Management Plan (doc__config_mgt_plan)</em></a> (“Lifecycle”). This is independent of the
+Expected Implementation Version/Milestone of an individual Change Request
+(<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_milestone">gd_req__change_attr_milestone</a>), which only states the deadline for that request.</p>
+</section>
 </section>
 <section id="approach">
 <h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
@@ -738,6 +747,10 @@ is used to create a Change Request including required attributes as defined in
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_component_template.html#gd_temp__change_component_request">gd_temp__change_component_request</a> shall be used.
 In addition  <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_impact_analysis_template.html#gd_temp__change_impact_analysis">gd_temp__change_impact_analysis</a> should be
 used, if applicable.</p>
+<p>The template covers the affected element, its interfaces and connected elements, the change
+type, work products affected versus those requiring modification, parties and
+responsibilities for distributed development, safety impact, and the
+implementation/verification schedule.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Parts of the template are automatically included in the ISSUE <strong>Change Request</strong>.
@@ -933,6 +946,10 @@ state, the state in the Projects dashboard view and the PR status.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_impact_description">gd_req__change_attr_impact_description</a> is initially provided in the
 Description and Impact analysis part of the ISSUE. Further detailed analysis results are part of
 the linked PR, provided as part of the feature/request templates.</p>
+<p>The request date is the ISSUE creation date, recorded automatically by the Issue Tracking
+System. The starting release version is the main branch state (or applicable baseline)
+at the time the Change Request is created, identifiable via the base commit of the linked PR;
+this is distinct from the Expected Implementation Version, which identifies the target release.</p>
 <p>Further information about detailed implementation can be provided in the Realize part of the ISSUE.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_impact_safety">gd_req__change_attr_impact_safety</a>,
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_impact_security">gd_req__change_attr_impact_security</a> are provided in the Safety or
@@ -946,6 +963,9 @@ Affected work products part of the ISSUE. Further detailed affected work product
 linked PR or other ISSUEs.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_milestone">gd_req__change_attr_milestone</a> is provided in the Expected Implementation
 Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.</p>
+<p>For an accepted Change Request, who implements it is recorded via the Assignees part of the
+ISSUE and/or the assignees of linked implementation PRs/Issues, considering the interfaces
+involved.</p>
 </section>
 <section id="change-request-workflow">
 <span id="change-mgmt-workflow"></span><h3>Change Request Workflow<a class="headerlink" href="#change-request-workflow" title="Link to this heading">#</a></h3>
@@ -1101,6 +1121,7 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-scope">Objectives and Scope</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-management-goals">Change Management Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-management-scope">Change Management Scope</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a><ul class="nav section-nav flex-column">
