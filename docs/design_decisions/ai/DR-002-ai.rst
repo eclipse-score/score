@@ -247,7 +247,7 @@ Scores 1–5. OpenSpec scores are field-informed rather than desk-scan.
      - 3
      - 2
      - 5
-  * - S-CORE Process Support
+   * - S-CORE Process Support
      - 3
      - 2
      - 3
@@ -277,9 +277,8 @@ S-CORE's model central.
 
 .. list-table::
    :header-rows: 1
-   :widths: 28 12 10 12 12 12
-
-  * - S-CORE software process area
+   :widths: 28 12 10 12 12 
+   * - S-CORE software process area
      - Syspilot
      - BMAD
      - SpecKit
