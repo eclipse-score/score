@@ -474,27 +474,21 @@ Link to project planning: `Platform safety work product issue for V1.0 <https://
 Platform Management Plan - Feature Work Product Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/features/safety_planning/index.html#feature-safety-package>`__
+`Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/features/safety_planning/index.html>`__
 
 :need:`doc__com_ipc_safety_wp`
 
-`Config Management Safety Planning <https://eclipse-score.github.io/config_management/main/>`__
-
-`Diagnostics Safety Planning <https://eclipse-score.github.io/inc_diagnostics/main/>`__
-
 `Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/features/lifecycle/safety_planning/index.html>`__
 
-`Logging Safety Planning <https://eclipse-score.github.io/logging/main/features/logging/safety_planning/index.html>`__
+`Logging Safety Planning <https://eclipse-score.github.io/logging/main/features/logging/safety_planning/index.html>`__ (FFI capability only)
 
 `Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/features/persistency/safety_planning/index.html>`__
 
-`Security/Crypto Safety Planning <https://eclipse-score.github.io/inc_security_crypto/main/docs/safety_mgt/module_safety_plan.html>`__
 
-`SOME/IP Gateway Safety Planning <https://eclipse-score.github.io/inc_someip_gateway/main/>`__
+Note: planned list of features according to :ref:`releases` - all features missing in the above list have no safety planning performed.
 
-`Time Safety Planning <https://eclipse-score.github.io/time/main/>`__
-
-Note: list of features according to :ref:`releases`
+Note2: FFI is "Freedom from Interference" and means in this context that the feature's function is delivered in QM quality
+but the API offered by the feature can be used by ASIL components without harm to their safety function.
 
 
 Platform Management Plan - Documents Status Chart
