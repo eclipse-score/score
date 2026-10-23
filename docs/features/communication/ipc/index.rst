@@ -34,9 +34,6 @@ Inter-process Communication
 
    architecture/index
    requirements/index
-   roadmap
-   safety_analysis/dfa
-   safety_analysis/fmea
    safety_planning/index
 
 Feature flag

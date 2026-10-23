@@ -159,7 +159,7 @@ The communication framework must be capable to discover available service offers
 - service id (a unique identifier per different service interface)
 - instance id (a unique identifier per different producer offering the same service interface)
 - criticality level
-- version (not yet supported, see :ref:`ipc_roadmap`)
+- version
 
 To reduce resource consumption we decide against using an approach with a service registry daemon. Instead we choose to use operating system facilities to achieve a performant service discovery.
 
@@ -170,7 +170,7 @@ Keeping track of available service instances is left to the operating system. Pr
 Also complex search requests where a consumer wants to know about all service instances with the same service interface,
 can be solved efficiently with the inotify subsystem.
 
-Service discovery is currently fully explicit. Implicit service discovery for consumers is on our :ref:`ipc_roadmap`. The goal is to handle service discovery transparently wherever possible.
+Service discovery is fully explicit or implicit for consumers.
 
 Partial Restart Capability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

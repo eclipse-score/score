@@ -103,10 +103,9 @@ A producer creates a `Skeleton` to communicate with consumers. Each consumer cre
 
 In addition to these elements, a runtime singleton is used for background tasks to reduce resource consumption. This runtime is invisible to the user. This runtime is responsible for service discovery (explained in :ref:`ipc_service_discovery`), notification reception and other infrastructure tasks.
 
-Compatibility of *Skeleton* and *Proxy* is currently defined by them sharing the same communication interface. Additionally, versioning will be taken into account in the future (see :ref:`ipc_roadmap`).
+Compatibility of *Skeleton* and *Proxy* is currently defined by them sharing the same communication interface. Additionally, versioning is taken into account.
 
-The communication interface for now consists of events. Support for methods and signals will be added in the future
-(see :ref:`ipc_roadmap`).
+The communication interface consists of events, methods and signals.
 
 Since S-CORE supports strongly typed programming languages, the API of *Skeleton* and *Proxy* is also strongly typed. Instead of a code generator, we utilize features like templates in C++ and macros in Rust to "generate" the necessary code at compile time.
 
