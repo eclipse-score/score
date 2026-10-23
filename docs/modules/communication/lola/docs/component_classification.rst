@@ -27,7 +27,7 @@ Component Classification
 
 | Classification of lola
 |
-| `Lola IPC <https://github.com/eclipse-score/communication>`_ v0.1.1
+| `Lola IPC <https://github.com/eclipse-score/communication>`_ v0.5.0
 |
 | Additional documentation considered:
 | :need:`doc__com` and :need:`doc__com_ipc`
@@ -58,27 +58,32 @@ Step 1: Determine (P): the uncertainty of the Processes applied
         * - 2
           - Are requirements available?
           - PE
-          - See `lola trlc <https://github.com/eclipse-score/communication/blob/main/score/mw/com/requirements>`_ available but not according to S-CORE process - perform content centric inspection of component requirements and also checking matching of S-CORE and lola feature requirements
+          - See `lola trlc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/requirements>`_ available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
 
         * - 3
           - Are specifications for functionalities and properties available (architecture)?
-          - HE
-          - Created using S-CORE process: :need:`mod__com_communication`
+          - PE
+          - See `lola arc <https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/index.html>`_
+            and `lola SW arc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/software_architectural_design>`_
+            available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
 
         * - 4
           - Are design specifications available?
           - PE
-          - `lola/design <https://github.com/eclipse-score/communication/blob/main/score/mw/com/design/README.md>`_ available but not according to S-CORE process - perform content centric inspection inclusive the matching of S-CORE feature architecture with lola design
+          - `lola/design <https://github.com/eclipse-score/communication/tree/main/score/mw/com/design>`_
+            and `lola SW api <https://eclipse-score.github.io/communication/latest/generated/api_index.html>`_
+            available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
 
         * - 5
           - Are configuration specification and data available, if applicable?
           - HE
-          - See `lola/design/configuration <https://github.com/eclipse-score/communication/tree/main/score/mw/com/design/configuration>`_
+          - Configuration is done by the user by json files, explained in `tutorial <https://eclipse-score.github.io/communication/latest/score/mw/com/doc/tutorial/README.html>`_
 
         * - 6
           - Are verification measures including tests and reports available?
           - PE
-          - Unit tests available and configured failure blocks the merge of any lola pull request, evidences links TBD, need to check for integration testing
+          - Unit and integration tests available and configured failure blocks the merge of any lola pull request, evidences links see `q-report <https://eclipse-score.github.io/communication/latest/quality_reports.html>`_ and `feat_req test report <https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/traceability_report/feature_requirements.html>`_ - need to find component test report
+            Safety Analysis performed and documented in `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html>`_
 
 
 | (P=1) shall be selected when none of the determined process measures indicate PE or NE.
@@ -113,32 +118,31 @@ Step 2: Determine (C): the uncertainty of finding systematic faults based on the
       - High amount of Lines of Code
       - Lines of Code (without comments) (generated code is excluded)
       - HM
-      - <Number>
+      - >1000
 
     * - 2
       - Cyclomatic complexity
       - Static Code Analysis tooling
-      - NH
-      - <Number>
+      - HM
+      - was determined in external project and did not block qualification
 
     * - 3
-      - | Test exists / Coverage (Function, Line)
-        | (maybe better: testability, but how to measure?)
+      - Test exists / Coverage (Function, Line)
       - Existing Tests Coverage
       - NH
-      - <Number>
+      - See `coverage <https://eclipse-score.github.io/communication/latest/quality/coverage/index.html>`_ - missing coverage gaps in mw/com to be resolved
 
     * - 4
       - High amount of public function interfaces
       - Number of public function interfaces
-      - NH
-      - <Number>
+      - HM
+      - See `<https://eclipse-score.github.io/communication/latest/generated/api_index.html>`_ - interface is comparable to AUTOSAR standard, check if safety analysis full covers interface in :need:`doc__communication_safety_analysis_fdr`
 
     * - 5
       - High amount of function parameters
       - Number of parameters
       - NH
-      - <Number>
+      - see above
 
 
 | (C=1) shall be selected when none of the determined complexity measures indicate HM or NM.

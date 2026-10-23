@@ -18,7 +18,7 @@ Module Safety Plan
 .. document:: Communication Safety Plan
    :id: doc__communication_safety_plan
    :status: draft
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: NO
    :realizes: wp__module_safety_plan[version==1]
@@ -33,8 +33,9 @@ This Safety Plan adds to the :need:`doc__score_platform_safety_plan` all the mod
 Functional Safety Management Scope
 ==================================
 
-This Safety Plan's scope is a SW module of the SW platform :ref:`communication_module_docs`.
-The module consists of one or more SW components and will be qualified as a SEooC.
+This Safety Plan's scope is a SW module of the SW platform: :ref:`communication_module_docs`.
+The module consists of one or more SW components and will be developed as a SEooC in `S-CORE repository <https://github.com/eclipse-score/communication>`_
+but with tooling and process different from S-CORE. It shall be used as a part of the S-CORE platform based on component classification.
 
 Functional Safety Management Roles
 ==================================
@@ -56,11 +57,7 @@ Tailoring
 
 Additional to the tailoring in the SW platform project as defined in the :need:`doc__score_platform_safety_plan` we define here the additional tailoring on module level.
 
-- Excluded for this module are additionally the following work products (and their related requirements):
-
-  - :need:`wp__requirements_inspect`: in version 0.5 the inspections have to be done by the user
-  - :need:`wp__sw_arch_verification`: in version 0.5 the inspections have to be done by the user
-  - :need:`wp__fdr_reports` (module's Safety Analyses & DFA): in version 0.5 the reviews have to be done by the user
+- tailoring is as described in the work products lists based on the component classification.
 
 Functional Safety Module Work products
 ======================================
@@ -101,12 +98,12 @@ Module Work products List
         * - :need:`wp__fdr_reports` (module's Safety Analyses & DFA)
           - :need:`gd_chklst__safety_analysis`
           - :ndf:`copy('status', need_id='gd_chklst__safety_analysis')`
-          - tailored
+          - :need:`doc__communication_safety_analysis_fdr`
 
         * - :need:`wp__audit_report`
           - performed by external experts
           - n/a
-          - <Link to WP>
+          - see platform safety plan
 
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
@@ -116,17 +113,17 @@ Module Work products List
         * - :need:`wp__verification_module_ver_report`
           - :need:`gd_temp__mod_ver_report`
           - :ndf:`copy('status', need_id='gd_temp__mod_ver_report')`
-          - :need:`doc__communication_verification_report`
+          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/traceability_report/index.html>`_
 
         * - :need:`wp__module_sw_release_note`
           - :need:`gd_temp__rel_mod_rel_note`
           - :ndf:`copy('status', need_id='gd_temp__rel_mod_rel_note')`
-          - :need:`doc__communication_release_note`
+          - `<https://github.com/eclipse-score/communication/releases>`_
 
-Component lola Work products List
----------------------------------
+Component mw_com Work products List
+-----------------------------------
 
-.. list-table:: Component lola Work products
+.. list-table:: Component mw_com Work products
         :header-rows: 1
 
         * - Work product Id
@@ -137,57 +134,57 @@ Component lola Work products List
         * - :need:`wp__requirements_comp`
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
-          - :need:`doc__lola_requirements`
+          - `<https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/requirements/component_requirements>`_
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - :need:`doc__communication_aou`
+          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/assumptions_of_use/aous/aous.html>`_
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - tailored
+          - partly tailored as several checks are automated, gap analysis tbd
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - :need:`doc__lola_architecture`
+          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/static_design/overall.html>`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - tailored
+          - partly tailored as several checks are automated, gap analysis tbd
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - :need:`doc__lola_fmea`
+          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html>`_
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - :need:`doc__lola_dfa`
+          - covered by safety analysis link above
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - `lola/.h/.cpp <https://github.com/eclipse-score/communication/blob/main/score/mw/com>`_, :need:`doc__lola_detailed_design`
+          - `mw_com/.h/.cpp <https://github.com/eclipse-score/communication/blob/main/score/mw/com>`_, `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/static_design/index.html>`_
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - `lola/test.cpp <https://github.com/eclipse-score/communication/blob/main/score/mw/com>`_
+          - `mw_com/test.cpp <https://github.com/eclipse-score/communication/tree/main/score/mw/com/test>`_
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - External process
+          - partly tailored as several checks are automated, gap analysis tbd
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - <Link to WP>
+          - `mw_com/test <https://github.com/eclipse-score/communication/tree/main/score/mw/com/test>`_
 
         * - :need:`wp__sw_component_class`
           - :need:`gd_guidl__component_classification`
@@ -233,11 +230,6 @@ Component AoU Status
    :columns: id;status;tags
    :colwidths: 25,25,25
    :sort: title
-
-Component Architecture Status
------------------------------
-
-see document link :need:`doc__lola_architecture` (as above)
 
 Deviations from Module Safety Plan
 ----------------------------------

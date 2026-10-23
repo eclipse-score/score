@@ -32,9 +32,4 @@ As the component implements the complete feature :need:`doc__com_ipc`, there is 
 .. toctree::
    :hidden:
 
-   requirements/index.rst
-   architecture/index.rst
-   detailed_design/index.rst
-   safety_analysis/fmea.rst
-   safety_analysis/dfa.rst
    component_classification.rst

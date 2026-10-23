@@ -17,6 +17,14 @@
 Communication Architecture
 ==========================
 
+.. document:: Communication Architecture
+   :id: doc__communication_architecture
+   :status: valid
+   :version: 2
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__feature_arch[version==1]
+
 Overview
 --------
 
@@ -43,90 +51,10 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    :status: valid
    :version: 1
 
-.. feat_arc_sta:: Feature Architecture Communication
-   :id: feat_arc_sta__com__communication
-   :security: YES
-   :safety:  ASIL_B
-   :status: valid
-   :version: 1
-   :fulfils: feat_req__com__interfaces[version==1]
-   :includes: logic_arc_int__communication__user
-   :belongs_to: feat__com_communication[version==1]
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_feature(need(), needs) }}
-      mod__tracing -[hidden]-> mod__baselibs
-
-In the following sections we will look on the different architectural elements of the communication framework in more
-detail.
-
-Frontend
-^^^^^^^^
-
-The frontend is responsible of providing a stable public API to the user. In general, the communication framework (`mw::com`) follows the client-server, pub-sub and producer-consumer patterns.
-
-Following these patterns, the user interacts with different APIs depending on whether he is producer/server or
-consumer/client.
-
-A producer creates a `Skeleton` to communicate with consumers. Each consumer creates a `Proxy` to connect to a producer. Consumers can find available producers through a service discovery mechanism. This mechanism is tightly bound to the `Proxy`, to only discover producers offering a compatible implementation of a `Skeleton`.
-
-.. uml::
-    :scale: 50
-    :align: center
-    :name: doc__communication__proxy_skeleton
-    :caption: Communication through mw::com
-
-    package "Consumer" <<Rectangle>> {
-        package "Frontend" <<Frame>> #D5E8D4 {
-        object "Proxy" as proxy_t
-        }
-        package "Binding" <<Frame>> #DAE8FC {
-        object "Proxy" as proxy_b
-        }
-    }
-
-    package "Producer" <<Rectangle>>  {
-        package "Frontend" <<Frame>> #D5E8D4 {
-        object "Skeleton" as skeleton_t
-        }
-        package "Binding" <<Frame>> #DAE8FC {
-        object "Skeleton" as skeleton_b
-        }
-    }
-
-    skeleton_t -d-> skeleton_b
-    proxy_t -d-> proxy_b
-    proxy_b -l(0- skeleton_b
-
-In addition to these elements, a runtime singleton is used for background tasks to reduce resource consumption. This runtime is invisible to the user. This runtime is responsible for service discovery (explained in :ref:`ipc_service_discovery`), notification reception and other infrastructure tasks.
-
-Compatibility of *Skeleton* and *Proxy* is currently defined by them sharing the same communication interface. Additionally, versioning will be taken into account in the future (see :ref:`ipc_roadmap`).
-
-The communication interface for now consists of events. Support for methods and signals will be added in the future
-(see :ref:`ipc_roadmap`).
-
-Since S-CORE supports strongly typed programming languages, the API of *Skeleton* and *Proxy* is also strongly typed. Instead of a code generator, we utilize features like templates in C++ and macros in Rust to "generate" the necessary code at compile time.
-
-But there are some "niche" use cases, where the need to "regenerate" and recompile the *Proxy* can be detrimental.
-This is the case when:
-
-- signatures are trivial and changes/differences between them are minimal
-- the communicated data/payload gets handled very generically (loosely typed) anyhow
-- the communicated data/payload has to get deep-inspected based on additional/separate type-information anyhow
-
-For these cases *mw::com* provides a *GenericProxy* that allows introspection of communication interfaces at runtime.
-
-While the frontend is based on a communication model, it is independent from any communication protocol. Therefore, it always forwards user requests to the binding(s) underneath. Which bindings to use is defined in a configuration file.
-
-A multi-binding approach is chosen, where API calls are mapped to a set of selected bindings.
-
 Interface Description
 ^^^^^^^^^^^^^^^^^^^^^
 
-The public API for the frontend is defined as:
+The public API for communication is defined as:
 
 .. logic_arc_int:: Communication User Interface
    :id: logic_arc_int__communication__user
@@ -136,6 +64,7 @@ The public API for the frontend is defined as:
    :status: valid
    :version: 1
    :fulfils: feat_req__com__interfaces[version==1]
+   :tags: communication
 
    .. needarch::
       :scale: 50
@@ -143,13 +72,66 @@ The public API for the frontend is defined as:
 
       {{ draw_interface(need(), needs) }}
 
-Bindings
-^^^^^^^^
+.. logic_arc_int_op:: Initialize
+   :id: logic_arc_int_op__com__initialize
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
 
-The need for bindings was discussed in :ref:`com_multi_binding_support`.
-Bindings reside beneath the frontend layer and accept the forwarded requests
+.. logic_arc_int_op:: Offer Service
+   :id: logic_arc_int_op__com__offer_service
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
 
-Currently, the available bindings are:
+.. logic_arc_int_op:: Update
+   :id: logic_arc_int_op__com__update
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
 
-- :ref:`IPC (LoLa) <communication_ipc>`
-- :ref:`mock binding <mock_binding>`
+.. logic_arc_int_op:: Send
+   :id: logic_arc_int_op__com__send
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
+
+.. logic_arc_int_op:: StartFindService
+   :id: logic_arc_int_op__com__startfindserv
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
+
+.. logic_arc_int_op:: CreateProxy
+   :id: logic_arc_int_op__com__createproxy
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
+
+.. logic_arc_int_op:: Subscribe
+   :id: logic_arc_int_op__com__subscribe
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user
+
+.. logic_arc_int_op:: GetNewSamples
+   :id: logic_arc_int_op__com__getnewsamples
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__communication__user

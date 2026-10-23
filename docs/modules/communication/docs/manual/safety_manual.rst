@@ -105,5 +105,7 @@ Safety Anomalies
 
 References
 ----------
-| `User Manual <https://github.com/eclipse-score/communication/blob/v0.1.1/README.md>`_
-| <other links>
+
+`User Manual <https://eclipse-score.github.io/communication/latest/score/mw/com/doc/tutorial/README.html>`
+
+`Integration Manual <https://github.com/eclipse-score/communication/blob/main/README.md>`
