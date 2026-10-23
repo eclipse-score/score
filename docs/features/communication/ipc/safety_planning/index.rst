@@ -20,7 +20,7 @@ IPC Safety Work Products List
 .. document:: Communication IPC Safety WPs
    :id: doc__com_ipc_safety_wp
    :status: draft
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :realizes: wp__platform_safety_plan[version==1]
@@ -31,10 +31,8 @@ Tailoring
 
 Additional to the tailoring in the SW platform project as defined in the :need:`doc__platform_safety_plan` we define here the additional tailoring on feature level.
 
-- Excluded for this feature are additionally the following work products (and their related requirements):
-
-  - :need:`wp__requirements_inspect`: in version 0.5 the inspections have to be done by the user
-  - :need:`wp__sw_arch_verification`: in version 0.5 the inspections have to be done by the user
+- The feature level artefacts are additionally partly tailored as in below list, as we use an "external" SEooC
+  which provides the feature level artefacts as linked below.
 
 
 Inter-process Communication Safety Work Products
@@ -56,37 +54,37 @@ Inter-process Communication Safety Work Products
     * - :need:`wp__requirements_feat`
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
-      - :need:`doc__ipc_requirements`, :need:`doc__communication_requirements`
+      - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/feature_requirements/feature_requirements_ipc/requirements/feature_requirements/feature_requirements_ipc.html>`_
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-      - :need:`doc__ipc_requirements`, :need:`doc__communication_requirements`
+      - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/assumptions_of_use/aous/aous.html>`_
 
     * - :need:`wp__feature_arch`
       - :need:`gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
-      - :need:`doc__ipc_architecture`
+      - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/static_design/overall.html>`_
 
     * - :need:`wp__feature_fmea`
       - :need:`gd_temp__feat_saf_fmea`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_fmea')`
-      - :need:`doc__ipc_fmea`
+      - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html>`_
 
     * - :need:`wp__feature_dfa`
       - :need:`gd_temp__feat_saf_dfa`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_dfa')`
-      - :need:`doc__ipc_dfa`
+      - covered by safety analysis link above
 
     * - :need:`wp__requirements_inspect`
       - :need:`gd_chklst__req_inspection`
       - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-      - tailored
+      - partly tailored as several checks are automated, gap analysis tbd
 
     * - :need:`wp__sw_arch_verification`
       - :need:`gd_chklst__arch_inspection_checklist`
       - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-      - tailored
+      - partly tailored as several checks are automated, gap analysis tbd
 
     * - :need:`wp__verification_feat_int_test`
       - :need:`gd_guidl__verification_guide`
@@ -110,56 +108,14 @@ See :ref:`documents_docs_features_communication`
 Feature Requirements Status
 ---------------------------
 
-.. needtable::
-   :style: table
-   :types: feat_req
-   :tags: ipc
-   :columns: id;status
-   :colwidths: 25,25
-   :sort: title
-
-.. needtable::
-   :style: table
-   :types: feat_req
-   :tags: com
-   :columns: id;status
-   :colwidths: 25,25
-   :sort: title
+`<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/traceability_report/feature_requirements.html>`_
 
 Feature AoU Status
 ------------------
 
-.. needtable::
-   :style: table
-   :types: aou_req
-   :tags: ipc
-   :columns: id;status
-   :colwidths: 25,25
-   :sort: title
-
-.. needtable::
-   :style: table
-   :types: aou_req
-   :tags: com
-   :columns: id;status
-   :colwidths: 25,25
-   :sort: title
+no status is used for AoU, all AoU merged are implicitly in "valid" state.
 
 Feature Architecture Status
 ---------------------------
 
-.. needtable::
-   :style: table
-   :types: feat_arc_sta; feat_arc_dyn
-   :tags: ipc
-   :columns: id;status
-   :colwidths: 25,25
-   :sort: title
-
-.. needtable::
-   :style: table
-   :types: feat_arc_sta; feat_arc_dyn
-   :tags: com
-   :columns: id;status
-   :colwidths: 25,25
-   :sort: title
+no status is used for architecture elements, all architecture elements merged are implicitly in "valid" state.
