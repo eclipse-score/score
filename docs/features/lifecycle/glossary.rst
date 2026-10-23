@@ -93,6 +93,10 @@ Lifecycle Glossary
     Liveliness
       Term indicating that a :term:`Component` is periodically sending an alive notification (using the
       :need:`logic_arc_int_op__lifecycle__report_alive` interface) as per configuration.
+      The Liveliness is lost if no alive notification is received within the expected interval.
+
+      To speed up the detection of lost Liveliness, the :term:`Component` can explicitly report
+      the state that Liveliness is gone using the :need:`logic_arc_int_op__lifecycle__report_failure` interface.
 
     Monitoring of Processes
       The activity of observing and checking if a process is running or has been exited with an abnormal status.
