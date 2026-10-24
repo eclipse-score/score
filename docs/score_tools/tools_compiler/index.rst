@@ -29,5 +29,6 @@ Compiler Tools
    :hidden:
    :maxdepth: 2
 
+   clang
    gcc
    qcc
