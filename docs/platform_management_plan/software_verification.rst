@@ -510,6 +510,41 @@ Remaining Medium severity findings are reviewed and justified by documented risk
 
 Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
 
+The following rule sets are the minimum to be applied by every module. Modules may add further rules or tools
+(e.g. ``clang-tidy``), but may not remove rules without a documented deviation.
+
+.. list-table:: Static code analysis rule sets and severity classification
+   :header-rows: 1
+   :widths: 10,30,30,30
+
+   * - Language
+     - Tool and rule set
+     - Critical / High
+     - Medium and below
+   * - C++
+     - GitHub CodeQL with the query pack ``codeql/misra-cpp-coding-standards`` (MISRA C++:2023,
+       see :need:`doc__cpp_coding_guidelines` and :need:`doc__cpp_code_analysis`)
+     - Violations of MISRA rules of category *Mandatory* or *Required*
+     - Violations of MISRA rules of category *Advisory*
+   * - C++
+     - GitHub CodeQL default code scanning suite (``c-cpp``)
+     - Alerts with a ``security-severity`` of 9.0 or higher (Critical) and 7.0 to 8.9 (High)
+     - All other alerts
+   * - Rust
+     - Clippy with the S-CORE lint profiles of ``score_rust_policies`` (``strict`` for safety-critical,
+       ``relaxed`` for QM software) and ``rustc`` warnings, see :need:`doc__rust_coding_guidelines`
+     - Lints configured as ``deny`` in the applicable profile
+     - Lints configured as ``warn`` (counted under "Freedom from compiler warnings & errors")
+   * - Rust
+     - GitHub CodeQL default code scanning suite (``rust``)
+     - Alerts with a ``security-severity`` of 9.0 or higher (Critical) and 7.0 to 8.9 (High)
+     - All other alerts
+
+The static code analysis is executed for every module at least on each change of the main branch and before
+each release. The results (SARIF) of the release state are kept as release artifacts and summarized in the
+module verification report. A finding that is not fixed is justified in the source code at the finding location,
+as described in :need:`doc__cpp_code_analysis`, and is listed in the module verification report.
+
 Any deviation of the coverage percentage value is documented as part of the module documentation.
 A rationale for the deviation needs to be provided for an official release.
 
