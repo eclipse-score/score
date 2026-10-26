@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "apm-setup": {
+      "type": "local",
+      "tools": [
+        "*"
+      ],
+      "id": "",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/apm-setup",
+        "apm-setup"
+      ]
+    },
+    "context-discipline": {
+      "type": "local",
+      "tools": [
+        "*"
+      ],
+      "id": "",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/context-discipline",
+        "context-discipline"
+      ]
+    },
+    "graphify-codegraph": {
+      "type": "local",
+      "tools": [
+        "*"
+      ],
+      "id": "",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/graphify-codegraph",
+        "graphify-codegraph"
+      ]
+    },
+    "sdlc-harness": {
+      "type": "local",
+      "tools": [
+        "*"
+      ],
+      "id": "",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/sdlc-harness",
+        "sdlc-harness"
+      ]
+    }
+  }
+}

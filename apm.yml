@@ -1,0 +1,40 @@
+# *******************************************************************************
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+# APM manifest for the S-CORE customer billing service agent.
+#
+# Local primitives live in .apm/ (source layout) and are deployed to .github/
+# for the copilot target. Marketplace packages are pulled from the central
+# eclipse-score agent marketplace (eclipse-score/mcp-servers).
+
+name: customer-billing-service-agent
+version: 1.0.0
+description: Customer billing service agent for the S-CORE platform
+license: Apache-2.0
+targets:
+  - copilot
+
+# Explicit consent list: only the local .apm/ source layout is deployed.
+includes:
+  - .apm/
+
+dependencies:
+  apm:
+    # Central eclipse-score agent marketplace (eclipse-score/mcp-servers).
+    # Each entry is a virtual package: a subdirectory of the marketplace repo,
+    # pinned to the marketplace release tag.
+    - eclipse-score/mcp-servers/packages/apm-setup#v0.2.0
+    - eclipse-score/mcp-servers/packages/context-discipline#v0.2.0
+    - eclipse-score/mcp-servers/packages/graphify-codegraph#v0.2.0
+    - eclipse-score/mcp-servers/packages/sdlc-harness#v0.2.0
+    - eclipse-score/mcp-servers/packages/metamodel-flow#v0.2.0

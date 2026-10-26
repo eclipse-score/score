@@ -1,0 +1,427 @@
+lockfile_version: '1'
+apm_version: 0.30.0
+dependencies:
+- repo_url: eclipse-score/mcp-servers
+  name: apm-setup
+  host: github.com
+  resolved_commit: dacf24072a74526fac6ceffe138fa3aee9be3622
+  resolved_ref: v0.2.0
+  version: 0.2.0
+  virtual_path: packages/apm-setup
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/setup-agent-context
+  - .agents/skills/setup-agent-context/SKILL.md
+  - .github/instructions/setup-propagation.instructions.md
+  deployed_file_hashes:
+    .agents/skills/setup-agent-context/SKILL.md: sha256:1daac35c19bd1015dc170babeb33fed786e6805d92f11d1a1f5cb9976d6a7ec1
+    .github/instructions/setup-propagation.instructions.md: sha256:11c548d507af573eb78484763ba2722469b4696d7d680b53846d9238e2b567a3
+  content_hash: sha256:bb37bca633f63f25071d5a5d5ba3b51436876f56ec06cfcdfcfd3405dfc3be84
+  declared_license: Apache-2.0
+- repo_url: eclipse-score/mcp-servers
+  name: context-discipline
+  host: github.com
+  resolved_commit: dacf24072a74526fac6ceffe138fa3aee9be3622
+  resolved_ref: v0.2.0
+  version: 0.2.0
+  virtual_path: packages/context-discipline
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/maintain-working-memory
+  - .agents/skills/maintain-working-memory/SKILL.md
+  - .github/instructions/context-compression.instructions.md
+  - .github/instructions/working-memory-discipline.instructions.md
+  deployed_file_hashes:
+    .agents/skills/maintain-working-memory/SKILL.md: sha256:b12fe0b053e85acf3f0ff0c04105f506d112bf5ea111da4437314260c86600ed
+    .github/instructions/context-compression.instructions.md: sha256:8243de608251896880538e84c7b3cf193ac4473caee3eb846b852cc9d927db94
+    .github/instructions/working-memory-discipline.instructions.md: sha256:882fe41f53857b94e7c3514c4768c07dec2a1813e13337f2f7839ab56b080222
+  content_hash: sha256:f43169e6762aa884360845cd99540b3a7bc146badf180287899552e42d997f45
+  declared_license: Apache-2.0
+- repo_url: eclipse-score/mcp-servers
+  name: graphify-codegraph
+  host: github.com
+  resolved_commit: dacf24072a74526fac6ceffe138fa3aee9be3622
+  resolved_ref: v0.2.0
+  version: 0.2.0
+  virtual_path: packages/graphify-codegraph
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/map-repository-graph
+  - .agents/skills/map-repository-graph/SKILL.md
+  - .github/instructions/repository-graph-navigation.instructions.md
+  deployed_file_hashes:
+    .agents/skills/map-repository-graph/SKILL.md: sha256:c02d68659b81e5a326453fcda0772cf8c5c99c18fc9636c6d8b67c13cae64b36
+    .github/instructions/repository-graph-navigation.instructions.md: sha256:76a2184c9a7a5e67ef69b4aae149b9f6c40af532b016e8b41701503d611fa02d
+  content_hash: sha256:880f0093e38a5e3414019a797ebba3d246dd1d9f53bdea7dd28b7a6f6887b96c
+  declared_license: Apache-2.0
+- repo_url: eclipse-score/mcp-servers
+  name: metamodel-flow
+  host: github.com
+  resolved_commit: dacf24072a74526fac6ceffe138fa3aee9be3622
+  resolved_ref: v0.2.0
+  version: 0.2.0
+  virtual_path: packages/metamodel-flow
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .github/instructions/authoring-workflow.instructions.md
+  - .github/instructions/score-artifact-model.instructions.md
+  deployed_file_hashes:
+    .github/instructions/authoring-workflow.instructions.md: sha256:b49d5be9935e3f4458b1cb695ea6abafec6c16cecd722e1d6efbb9dcf318840c
+    .github/instructions/score-artifact-model.instructions.md: sha256:bd140954f6d353b6da1eb60b6708a05c9ad69093ffca16f658f957d6ee9e220e
+  content_hash: sha256:aaddd3689809d35f8b7b5c4579fa467d20ad5f1ea3bdb5e4864d1894fb387f74
+  declared_license: Apache-2.0
+- repo_url: eclipse-score/mcp-servers
+  name: sdlc-harness
+  host: github.com
+  resolved_commit: dacf24072a74526fac6ceffe138fa3aee9be3622
+  resolved_ref: v0.2.0
+  version: 0.2.0
+  virtual_path: packages/sdlc-harness
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/bootstrap-sdlc-issue
+  - .agents/skills/bootstrap-sdlc-issue/SKILL.md
+  - .agents/skills/detect-loopback
+  - .agents/skills/detect-loopback/SKILL.md
+  - .agents/skills/track-implementation-progress
+  - .agents/skills/track-implementation-progress/SKILL.md
+  - .agents/skills/write-stage-artifact
+  - .agents/skills/write-stage-artifact/SKILL.md
+  - .github/instructions/loopback-detection.instructions.md
+  - .github/instructions/sdlc-lifecycle-stages.instructions.md
+  deployed_file_hashes:
+    .agents/skills/bootstrap-sdlc-issue/SKILL.md: sha256:a210dc5396be6868611c5ba252b66cc83333f13ba4cc336a489a79d00014f011
+    .agents/skills/detect-loopback/SKILL.md: sha256:a1cc105e137be820d6ddeb3144d9b085b3102cce4451ca52691627b4faf427d6
+    .agents/skills/track-implementation-progress/SKILL.md: sha256:a7b5f20122246f12725ff1443d6efdf4b216480c848dbc360b3a07701ded2c2c
+    .agents/skills/write-stage-artifact/SKILL.md: sha256:c7eef1cb6cd929a2a32b88c691539a4983c1313085e47ab5a407388259097118
+    .github/instructions/loopback-detection.instructions.md: sha256:38ab3c50f5cf7f26be3354b9b2df860995089527b83be477b6e768574006e59e
+    .github/instructions/sdlc-lifecycle-stages.instructions.md: sha256:028ba3443a0f6d8ddbdf3e8ab45ea1ecc627a69671316be45fd09d9dacc15e89
+  content_hash: sha256:9aee5658128e153c7454db89e37e63a31f97a06eeb6c8b810a94039f15a200fa
+  declared_license: Apache-2.0
+deployments:
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/bootstrap-sdlc-issue
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/bootstrap-sdlc-issue/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: sha256:a210dc5396be6868611c5ba252b66cc83333f13ba4cc336a489a79d00014f011
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/detect-loopback
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/detect-loopback/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: sha256:a1cc105e137be820d6ddeb3144d9b085b3102cce4451ca52691627b4faf427d6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/maintain-working-memory
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/context-discipline
+  active_owner: eclipse-score/mcp-servers/packages/context-discipline
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/maintain-working-memory/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/context-discipline
+  active_owner: eclipse-score/mcp-servers/packages/context-discipline
+  content_hash: sha256:b12fe0b053e85acf3f0ff0c04105f506d112bf5ea111da4437314260c86600ed
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/map-repository-graph
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/graphify-codegraph
+  active_owner: eclipse-score/mcp-servers/packages/graphify-codegraph
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/map-repository-graph/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/graphify-codegraph
+  active_owner: eclipse-score/mcp-servers/packages/graphify-codegraph
+  content_hash: sha256:c02d68659b81e5a326453fcda0772cf8c5c99c18fc9636c6d8b67c13cae64b36
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/setup-agent-context
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/apm-setup
+  active_owner: eclipse-score/mcp-servers/packages/apm-setup
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/setup-agent-context/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/apm-setup
+  active_owner: eclipse-score/mcp-servers/packages/apm-setup
+  content_hash: sha256:1daac35c19bd1015dc170babeb33fed786e6805d92f11d1a1f5cb9976d6a7ec1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/track-implementation-progress
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/track-implementation-progress/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: sha256:a7b5f20122246f12725ff1443d6efdf4b216480c848dbc360b3a07701ded2c2c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/write-stage-artifact
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/write-stage-artifact/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: sha256:c7eef1cb6cd929a2a32b88c691539a4983c1313085e47ab5a407388259097118
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/authoring-workflow.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/metamodel-flow
+  active_owner: eclipse-score/mcp-servers/packages/metamodel-flow
+  content_hash: sha256:b49d5be9935e3f4458b1cb695ea6abafec6c16cecd722e1d6efbb9dcf318840c
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/billing-rules.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:31113d92ab0a4ed0715f127fbbca5d3315950cbd7c05df88be515c3c3900181d
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/context-compression.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/context-discipline
+  active_owner: eclipse-score/mcp-servers/packages/context-discipline
+  content_hash: sha256:8243de608251896880538e84c7b3cf193ac4473caee3eb846b852cc9d927db94
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/loopback-detection.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: sha256:38ab3c50f5cf7f26be3354b9b2df860995089527b83be477b6e768574006e59e
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/repository-graph-navigation.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/graphify-codegraph
+  active_owner: eclipse-score/mcp-servers/packages/graphify-codegraph
+  content_hash: sha256:76a2184c9a7a5e67ef69b4aae149b9f6c40af532b016e8b41701503d611fa02d
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/score-artifact-model.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/metamodel-flow
+  active_owner: eclipse-score/mcp-servers/packages/metamodel-flow
+  content_hash: sha256:bd140954f6d353b6da1eb60b6708a05c9ad69093ffca16f658f957d6ee9e220e
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/sdlc-lifecycle-stages.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/sdlc-harness
+  active_owner: eclipse-score/mcp-servers/packages/sdlc-harness
+  content_hash: sha256:028ba3443a0f6d8ddbdf3e8ab45ea1ecc627a69671316be45fd09d9dacc15e89
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/setup-propagation.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/apm-setup
+  active_owner: eclipse-score/mcp-servers/packages/apm-setup
+  content_hash: sha256:11c548d507af573eb78484763ba2722469b4696d7d680b53846d9238e2b567a3
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/working-memory-discipline.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - eclipse-score/mcp-servers/packages/context-discipline
+  active_owner: eclipse-score/mcp-servers/packages/context-discipline
+  content_hash: sha256:882fe41f53857b94e7c3514c4768c07dec2a1813e13337f2f7839ab56b080222
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/validate-invoice-schema
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/validate-invoice-schema/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:9d046cd2af8fc45444057d0a95e226245cce98392c21fec3d9d6332cd2a15556
+- kind: uri
+  target: mcp
+  value: apm-setup
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: context-discipline
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: graphify-codegraph
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: sdlc-harness
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+mcp_servers:
+- apm-setup
+- context-discipline
+- graphify-codegraph
+- sdlc-harness
+mcp_configs:
+  apm-setup:
+    name: apm-setup
+    transport: stdio
+    args:
+    - --from
+    - git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/apm-setup
+    - apm-setup
+    registry: false
+    command: uvx
+  context-discipline:
+    name: context-discipline
+    transport: stdio
+    args:
+    - --from
+    - git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/context-discipline
+    - context-discipline
+    registry: false
+    command: uvx
+  graphify-codegraph:
+    name: graphify-codegraph
+    transport: stdio
+    args:
+    - --from
+    - git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/graphify-codegraph
+    - graphify-codegraph
+    registry: false
+    command: uvx
+  sdlc-harness:
+    name: sdlc-harness
+    transport: stdio
+    args:
+    - --from
+    - git+https://github.com/eclipse-score/mcp-servers@8d03dc1d61f648cf10113a0e5c6ac3fe52fc7fc3#subdirectory=packages/sdlc-harness
+    - sdlc-harness
+    registry: false
+    command: uvx
+mcp_target_servers:
+  copilot:
+  - apm-setup
+  - context-discipline
+  - graphify-codegraph
+  - sdlc-harness
+mcp_config_provenance:
+  apm-setup: apm-setup
+  context-discipline: context-discipline
+  graphify-codegraph: graphify-codegraph
+  sdlc-harness: sdlc-harness
+local_deployed_files:
+- .agents/skills/validate-invoice-schema
+- .agents/skills/validate-invoice-schema/SKILL.md
+- .github/instructions/billing-rules.instructions.md
+local_deployed_file_hashes:
+  .agents/skills/validate-invoice-schema/SKILL.md: sha256:9d046cd2af8fc45444057d0a95e226245cce98392c21fec3d9d6332cd2a15556
+  .github/instructions/billing-rules.instructions.md: sha256:31113d92ab0a4ed0715f127fbbca5d3315950cbd7c05df88be515c3c3900181d
