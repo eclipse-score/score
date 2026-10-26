@@ -695,7 +695,10 @@ on <strong>Run Target B</strong>.</p>
 <p>Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.</p>
 </dd>
 <dt id="term-Liveliness">Liveliness<a class="headerlink" href="#term-Liveliness" title="Link to this term">#</a></dt><dd><p>Term indicating that a <a class="reference internal" href="#term-Component"><span class="xref std std-term">Component</span></a> is periodically sending an alive notification (using the
-<a class="reference internal" href="architecture/index.html#logic_arc_int_op__lifecycle__report_alive" title="logic_arc_int_op__lifecycle__report_alive"><em class="xref need">ReportAlive (logic_arc_int_op__lifecycle__report_alive)</em></a> interface) as per configuration.</p>
+<a class="reference internal" href="architecture/index.html#logic_arc_int_op__lifecycle__report_alive" title="logic_arc_int_op__lifecycle__report_alive"><em class="xref need">ReportAlive (logic_arc_int_op__lifecycle__report_alive)</em></a> interface) as per configuration.
+The Liveliness is lost if no alive notification is received within the expected interval.</p>
+<p>To speed up the detection of lost Liveliness, the <a class="reference internal" href="#term-Component"><span class="xref std std-term">Component</span></a> can explicitly report
+the state that Liveliness is gone using the <a class="reference internal" href="architecture/index.html#logic_arc_int_op__lifecycle__report_failure" title="logic_arc_int_op__lifecycle__report_failure"><em class="xref need">ReportFailure (logic_arc_int_op__lifecycle__report_failure)</em></a> interface.</p>
 </dd>
 <dt id="term-Monitoring-of-Processes">Monitoring of Processes<a class="headerlink" href="#term-Monitoring-of-Processes" title="Link to this term">#</a></dt><dd><p>The activity of observing and checking if a process is running or has been exited with an abnormal status.</p>
 </dd>
