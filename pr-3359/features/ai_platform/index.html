@@ -637,7 +637,7 @@
                   
   <section id="ai-platform">
 <span id="ai-platform-feature"></span><h1>AI Platform<a class="headerlink" href="#ai-platform" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9f472809">
+<div class="need_container docutils container" id="SNCB-625f31ea">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -747,6 +747,21 @@ In addition to the QNX scope, GenAI related components like <strong>MCP Server</
 <img alt="AI Platform Architecture Overview Linux" src="../../_images/score-aip-linux.drawio.svg" />
 </section>
 </section>
+<section id="architecture-principles-and-scope-boundary">
+<h3>Architecture Principles and Scope Boundary<a class="headerlink" href="#architecture-principles-and-scope-boundary" title="Link to this heading">#</a></h3>
+<p>The following principles define where the platform standardizes and, equally important, where it does not.</p>
+<ul class="simple">
+<li><p><strong>Standardization above the vendor runtimes</strong>: The platform standardizes model execution on top of vendor inference
+runtimes such as TensorRT, QNN or ONNX Runtime. It does not define a hardware abstraction layer for accelerators
+(NPU, GPU) — that layer remains the responsibility of the hardware vendors.</p></li>
+<li><p><strong>Inference as a platform service</strong>: Applications consume a platform-provided inference interface and remain
+independent of the selected vendor runtime and of the underlying accelerator.</p></li>
+<li><p><strong>Minimal and auditable abstraction</strong>: The abstraction exposes the common denominator of the supported backends only,
+so that it can be analyzed and certified independently of the wrapped runtimes.</p></li>
+<li><p><strong>Reuse of existing platform mechanisms</strong>: Scheduling, communication, error handling and recording of AI workloads
+reuse existing platform components instead of AI-specific parallel mechanisms.</p></li>
+</ul>
+</section>
 <section id="inference-backend-integration-and-abstraction-layer">
 <h3>Inference Backend Integration and Abstraction Layer<a class="headerlink" href="#inference-backend-integration-and-abstraction-layer" title="Link to this heading">#</a></h3>
 <p>The idea of this component is to provide a lightweight and certifiable abstraction layer that decouples applications from vendor specific APIs.</p>
@@ -754,7 +769,8 @@ In addition to the QNX scope, GenAI related components like <strong>MCP Server</
 This layer will expose a unified interface to the upper layers of the stack while delegating execution to optimized
 vendor runtimes underneath — such as TensorRT for NVIDIA, or QNN for Qualcomm-based systems.
 For non-safety use cases, a standardized backend like ONNX Runtime <a class="footnote-reference brackets" href="#s1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> should be supported to ensure portability and developer accessibility.
-However, ONNX Runtime currently lacks QNX support - which will further be investigated.</p>
+However, ONNX Runtime currently lacks QNX support - which will further be investigated.
+The application-facing form of this interface is specified in <a class="reference internal" href="architecture/index.html"><span class="doc">Feature Architecture</span></a>.</p>
 <section id="concept">
 <h4>Concept<a class="headerlink" href="#concept" title="Link to this heading">#</a></h4>
 <p>The diagram below illustrates the architecture of the AIP Abstraction Layer - here called ModelAPI.
@@ -819,6 +835,23 @@ Therefore, the exact scope and feasibilty of this component and its respective g
 <li><p>Recording: Data between AI/ML nodes with GPU memory object should be recordable in the same manner as regular IPC communication</p></li>
 </ul>
 <p>This unified approach avoids fragmentation and ensures that AI models are treated as first-class citizens within the system.</p>
+</section>
+<section id="proposed-phasing">
+<h3>Proposed Phasing<a class="headerlink" href="#proposed-phasing" title="Link to this heading">#</a></h3>
+<p>The capabilities described above are not intended to be built at once. The following order reflects which parts unblock
+the others and which parts depend on decisions that are still open:</p>
+<ol class="arabic simple">
+<li><p><strong>Inference as a platform service</strong>: the application-facing inference interface, executed through the backend
+abstraction and integrated with the platform lifecycle. Every later capability attaches to this interface.</p></li>
+<li><p><strong>Model artifact lifecycle</strong>: models as versioned, signed artifacts with rollback, reusing the existing persistency
+and update mechanisms. This can be developed and tested without accelerator hardware.</p></li>
+<li><p><strong>AI workload observability</strong>: execution metrics such as latency, memory consumption and error rates, reported
+through the existing logging and tracing mechanisms. It provides the measurements the next step depends on.</p></li>
+<li><p><strong>Resource budgets and arbitration</strong> between QM AI workloads and safety-relevant workloads on a shared accelerator.
+This requires measured timing behaviour on target hardware and is therefore sequenced after the previous steps.</p></li>
+<li><p><strong>Agent execution and action gateway</strong>: lifecycle of agents and policy evaluation for agent-initiated vehicle
+actions, building on the structured vehicle interface of the GenAI feature.</p></li>
+</ol>
 </section>
 <section id="genai">
 <h3>GenAI<a class="headerlink" href="#genai" title="Link to this heading">#</a></h3>
@@ -896,6 +929,13 @@ Therefore, the overall security architecture must be revisited in detail to asse
 Static backend selection at build time enables better certification and minimizes safety risks.</p>
 <p>Direct integration of inference logic into applications without a common abstraction layer was rejected to avoid code duplication, maintain modularity and enable cross-platform backend support.
 The adapter-based architecture allows better testability and reuse across QNX and Linux as well has HW platforms.</p>
+<p>Defining a platform-owned hardware abstraction layer for AI accelerators was rejected.
+Such a layer would duplicate the vendor-provided runtimes (e.g. TensorRT, QNN) and their accelerator-specific
+optimizations without adding portability beyond what the backend abstraction already provides,
+while creating a dependency on hardware details that change per SoC generation.</p>
+<p>A platform-owned compiler and IR stack (e.g. OpenXLA, MLIR, IREE) as the accelerator abstraction was rejected for the same
+reason: it would shift the long-term maintenance and safety qualification of a compiler toolchain onto the platform project,
+for a portability gain that the vendor runtimes already provide behind the backend abstraction.</p>
 </section>
 <section id="open-issues">
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
@@ -904,6 +944,10 @@ The adapter-based architecture allows better testability and reuse across QNX an
 <li><p>ONNX support on QNX</p></li>
 <li><p>S-CORE recording may not capture GPU-to-GPU data flows</p></li>
 <li><p>Decide on inference engine for QNX (e.g. ONNX, LiteRT, ExecuTorch)</p></li>
+<li><p>Extent of the AI safety layer beyond action validation: action permissions, output validation and audit logging</p></li>
+<li><p>Simulation environment for developing and validating AI-based agents before vehicle deployment</p></li>
+<li><p>Resource arbitration between QM AI workloads and safety-relevant workloads on a shared accelerator, including admission control and freedom from interference</p></li>
+<li><p>Gateway for agent-initiated vehicle actions with a policy evaluation against live vehicle state, beyond the existing action validation</p></li>
 </ul>
 </section>
 <section id="footnotes">
@@ -975,6 +1019,7 @@ The adapter-based architecture allows better testability and reuse across QNX an
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-principles-and-scope-boundary">Architecture Principles and Scope Boundary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-backend-integration-and-abstraction-layer">Inference Backend Integration and Abstraction Layer</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-class">Adapter Class</a></li>
@@ -983,6 +1028,7 @@ The adapter-based architecture allows better testability and reuse across QNX an
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pipelining-and-gpu-communication-abstraction">Data Pipelining and GPU Communication Abstraction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-integration-feo-communication-and-fault-management">S-CORE Integration: FEO, Communication, and Fault Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-phasing">Proposed Phasing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genai">GenAI</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 </ul>
