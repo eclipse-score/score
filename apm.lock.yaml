@@ -241,15 +241,6 @@ deployments:
   content_hash: sha256:b49d5be9935e3f4458b1cb695ea6abafec6c16cecd722e1d6efbb9dcf318840c
 - kind: project-relative
   target: copilot
-  value: .github/instructions/billing-rules.instructions.md
-  runtime: null
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: sha256:31113d92ab0a4ed0715f127fbbca5d3315950cbd7c05df88be515c3c3900181d
-- kind: project-relative
-  target: copilot
   value: .github/instructions/context-compression.instructions.md
   runtime: null
   scope: project
@@ -311,60 +302,6 @@ deployments:
   - eclipse-score/mcp-servers/packages/context-discipline
   active_owner: eclipse-score/mcp-servers/packages/context-discipline
   content_hash: sha256:882fe41f53857b94e7c3514c4768c07dec2a1813e13337f2f7839ab56b080222
-- kind: project-relative
-  target: legacy
-  value: .agents/skills/validate-invoice-schema
-  runtime: null
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: project-relative
-  target: legacy
-  value: .agents/skills/validate-invoice-schema/SKILL.md
-  runtime: null
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: sha256:9d046cd2af8fc45444057d0a95e226245cce98392c21fec3d9d6332cd2a15556
-- kind: uri
-  target: mcp
-  value: apm-setup
-  runtime: copilot
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: context-discipline
-  runtime: copilot
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: graphify-codegraph
-  runtime: copilot
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: sdlc-harness
-  runtime: copilot
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
 mcp_servers:
 - apm-setup
 - context-discipline
@@ -407,21 +344,9 @@ mcp_configs:
     - sdlc-harness
     registry: false
     command: uvx
-mcp_target_servers:
-  copilot:
-  - apm-setup
-  - context-discipline
-  - graphify-codegraph
-  - sdlc-harness
+mcp_target_servers: {}
 mcp_config_provenance:
   apm-setup: apm-setup
   context-discipline: context-discipline
   graphify-codegraph: graphify-codegraph
   sdlc-harness: sdlc-harness
-local_deployed_files:
-- .agents/skills/validate-invoice-schema
-- .agents/skills/validate-invoice-schema/SKILL.md
-- .github/instructions/billing-rules.instructions.md
-local_deployed_file_hashes:
-  .agents/skills/validate-invoice-schema/SKILL.md: sha256:9d046cd2af8fc45444057d0a95e226245cce98392c21fec3d9d6332cd2a15556
-  .github/instructions/billing-rules.instructions.md: sha256:31113d92ab0a4ed0715f127fbbca5d3315950cbd7c05df88be515c3c3900181d
