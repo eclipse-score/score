@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture
-====================
+Code Generation Architecture
+############################
 
 .. document:: Code-Generation Architecture
    :id: doc__code_generation_architecture
@@ -23,7 +23,10 @@ Feature Architecture
    :security: NO
    :realizes: wp__feature_arch[version==1]
 
-.. feat:: Code-Generation
+Code Generation Feature
+-----------------------
+
+.. feat:: Code Generation
    :id: feat__code_generation
    :security: NO
    :safety: ASIL_B
