@@ -14,8 +14,18 @@
 
 .. _gen_ai_requirements:
 
-Requirements
-============
+Gen-AI Requirements
+###################
+
+.. document:: Gen-AI Requirements
+   :id: doc__gen_ai_requirements
+   :status: draft
+   :version: 2
+   :safety: QM
+   :security: NO
+   :realizes: wp__requirements_feat[version==1]
+   :tags: gen-ai
+
 
 .. feat_req:: GenAI Execution
    :id: feat_req__gen_ai__workloads_execution

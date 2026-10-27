@@ -14,8 +14,18 @@
 
 .. _ai_platform_requirements:
 
-Requirements
-============
+AI Platform Requirements
+########################
+
+.. document:: AI Platform Requirements
+   :id: doc__ai_platform_requirements
+   :status: draft
+   :version: 2
+   :safety: QM
+   :security: NO
+   :realizes: wp__requirements_feat[version==1]
+   :tags: ai-platform
+
 
 .. feat_req:: ML Execution
    :id: feat_req__ai_platform__workloads_execution

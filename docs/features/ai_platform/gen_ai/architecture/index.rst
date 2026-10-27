@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture
-====================
+Gen-AI Architecture
+###################
 
 .. document:: Gen-AI Architecture
    :id: doc__gen_ai_architecture
@@ -22,6 +22,9 @@ Feature Architecture
    :safety: QM
    :security: NO
    :realizes: wp__feature_arch[version==1]
+
+Gen-AI Feature
+--------------
 
 .. feat:: Gen-AI
    :id: feat__gen_ai
