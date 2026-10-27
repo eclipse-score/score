@@ -15,6 +15,14 @@
 Time Requirements
 #################
 
+.. document:: Time Requirements
+   :id: doc__time_requirements
+   :status: draft
+   :version: 1
+   :safety: ASIL_B
+   :security: NO
+   :realizes: wp__requirements_feat[version==1]
+
 Time Synchronization
 ^^^^^^^^^^^^^^^^^^^^
 
