@@ -149,6 +149,40 @@ There are the following different levels of integration and verification defined
   Practically, this means S-CORE will implement Platform Integration Tests for stakeholder requirements for demonstration,
   but these are not intended to completely covering all stakeholder requirements.
 
+Consistent Set of Verifications
+-------------------------------
+
+The S-CORE project selected a multi-repository approach but still decided to provide a "consistent stack"
+to its users (see :need:`dec_rec__strat__consistent_stack_vs_reference`). Consequently there is the need
+to collect a consistent verification evidence for this "Stack", which is the S-CORE SW platform.
+
+- S-CORE SEooCs/dependable elements developed in the module repositories can deliver their
+  feature(s) independently, based on verification evidence collected in one repository and documented
+  in one module verification report (see also :need:`dec_rec__platform__feature_delivery`).
+  So this should be consistent and does not need special consideration in this chapter.
+- S-CORE SW platform needs to collect verification evidence from all the modules it integrates and releases.
+  This is done in S-CORE within a dedicated repository, which is the "reference_integration".
+  Also the reference_integration demonstrates what is required to be done by the user of the S-CORE platform
+  (in the AoU :need:`aou_req__platform__testing`) for safety qualification. S-CORE shows this for one combination of S-CORE SW Platform Modules/OS/Hypervisor/HW.
+  Important: For every S-CORE module only one version is used in the reference_integration,
+  meaning that all users of the S-CORE module need to depend on this one version. This "aligned" dependency
+  may be different from the one used in the module repositories, raising the need to re-perform verifications
+  which are affected by these dependencies.
+
+Thus a **consistent set of verifications** for S-CORE SW platform is:
+
+- platform integration test (only possible with modules integrated to a platform)
+- feature integration test (should be tested with one set of modules versions)
+- component integration test (components may depend on components of another module)
+- structural coverage (may be affected, as also component tests are used for coverage calculation)
+- unit test (results should not be affected due to mocking, but needed for structural coverage completeness)
+- static code analysis (some checks depend also on the dependencies)
+- documentation build (as the produced documentation, including e.g. inspections, should match the used module version)
+
+How this **consistent set of verifications** is produced (e.g. by re-creating all the verification in the reference_integration
+or by collecting verification done in more than one repository) is not prescribed by this document.
+The best method should be agreed in S-CORE in a decision record, e.g. :need:`dec_rec__int__scope_reference_integration`
+
 .. _verification-methods:
 
 Verification Methods
@@ -162,7 +196,69 @@ QM or ASIL B relevant.
 
 Automated test cases should contain further information about which methods have been applied. The corresponding
 guidance is given here: :need:`gd_guidl__verification_guide`. The identifier of the respective
-method is to be used as meta data (*TestType* and *DerivationTechnique*).
+method is to be used as meta data (*TestType* and *DerivationTechnique*). The tool-supported metadata values and
+requirement links are defined below. The method tables in this section also include verification activities which
+are not supported as test metadata values.
+
+.. list-table:: Tool-supported test metadata
+   :header-rows: 1
+   :align: center
+
+   * - Field
+     - Identifier
+     - Applicable test level
+   * - TestType
+     - interface-test
+     - Unit, Component, Feature
+   * - TestType
+     - requirements-based
+     - Component, Feature, Platform
+   * - DerivationTechnique
+     - requirements-analysis
+     - All
+   * - DerivationTechnique
+     - boundary-values
+     - Component, Feature, Platform
+   * - DerivationTechnique
+     - equivalence-classes
+     - All
+   * - DerivationTechnique
+     - fuzz-testing
+     - Unit, Component, Feature
+   * - DerivationTechnique
+     - error-guessing
+     - All
+   * - DerivationTechnique
+     - explorative-testing
+     - All
+
+The fields may contain multiple comma-separated identifiers from the applicable values above.
+
+Test level is determined by the test's folder path. The module and reference-integration folder structures are described
+in :ref:`module_folder_structure` and :ref:`reference_integration_folder_structure`. Test cases shall link to
+requirements allowed for their level:
+
+.. list-table:: Test level and allowed requirement links
+   :header-rows: 1
+   :align: center
+
+   * - Path contains
+     - Test level
+     - Allowed requirement links
+   * - ``score/.*/tests/``
+     - Component
+     - ``comp``, ``comp_req``, ``comp_arc_dyn``, ``comp_arc_sta``, ``real_arc_int``, ``real_arc_int_op``
+   * - ``score/tests/``
+     - Feature
+     - ``feat``, ``feat_req``, ``feat_arc_dyn``, ``feat_arc_sta``, ``mod``, ``mod_view_dyn``, ``mod_view_sta``, ``tool_req``
+   * - ``platform_integration_tests/``
+     - Platform
+     - ``stkh_req``
+   * - anything else
+     - Unit
+     - ``comp_req``, ``feat_req``
+
+Tests outside these paths are considered unit-level tests.
 
 .. list-table:: Software verification methods (TestType)
    :header-rows: 1
@@ -174,19 +270,19 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - Applicable for QM / ASIL B
    * - Static Code Analysis
      - static-code-analysis
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Structural Statement Coverage (Code coverage)
      - structural-statement-coverage
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Structural Branch Coverage (Code coverage)
      - structural-branch-coverage
-     - 1 Unit/Component, -, -
+     - 1 Unit/Component
      - QM & ASIL B
    * - Walkthrough
      - walkthrough
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - QM
    * - Inspection
      - inspection
@@ -194,15 +290,15 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - ASIL B
    * - Interface Test
      - interface-test
-     - 1 Unit/Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - QM & ASIL B
    * - Requirements-based Test
      - requirements-based
-     - All level 1, 2, 3
+     - 1 Component, 2 Feature Integration, 3 Platform
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
      - resource-usage
-     - -, 2 Feature Integration, -
+     - 2 Feature Integration
      - QM & ASIL B
 
 
@@ -252,19 +348,19 @@ Test Derivation Methods
      - Applicable for QM / ASIL B
    * - Analysis of Requirements
      - requirements-analysis
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - QM, ASIL B
    * - Analysis of Boundary Values
      - boundary-values
-     - 1 Unit/Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - ASIL B
    * - Analysis of Equivalence Classes
      - equivalence-classes
-     - All level 1, 2, 3
+     - All levels (1, 2, 3)
      - ASIL B
    * - Fuzzy Testing (focus security)
      - fuzz-testing
-     - 1 Unit/Component, 2 Feature Integration, -
+     - 1 Unit/Component, 2 Feature Integration
      - QM, ASIL B
 
 The ``fuzz-testing`` should especially be taken into account to increase security of the software.
@@ -360,7 +456,7 @@ Additionally, the following measures are taken to support the coverage of the de
 - Structural coverage as defined by their specific thresholds
 - Static analysis and Linting
 
-These measures are not counting in the coverage percentage of this goal, as they have their own defined goals.
+These measures do not count towards the coverage percentage of this goal, as they have their own defined goals.
 
 For QM rated software no further coverage calculation is expected on the detailed design level,
 but the respective work products are expected to be created and reviewed.
@@ -388,7 +484,7 @@ Tests which are suitable for the coverage are:
 - :need:`wp__verification_platform_int_test`
 - :need:`wp__verification_sw_unit_test`
 
-A requirements with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the the attribute ``complete test coverage`` is not judged as not covered.
+A requirement with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the attribute ``complete test coverage`` is judged as not covered.
 For QM software parts, it is not necessary to have the requirements attribute ``complete test coverage`` but each requirement needs to have at least one linked test case.
 
 Relative amount of executed and passed tests
@@ -400,9 +496,9 @@ The goal is to have all tests with linked ``valid`` requirements executed and pa
 Static code analysis
 ^^^^^^^^^^^^^^^^^^^^
 Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
-The respective tools  (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+The respective tools (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
 
-Violation identified by the static code analysis tools are categorized based on their severity.
+Violations identified by the static code analysis tools are categorized based on their severity.
 
 For QM software, the objective is a 100% closure rate of any Critical severity finding prior to release.
 For safety‑critical software, the objective is a 100% closure rate of any Critical and High severity finding prior to release.
@@ -415,7 +511,7 @@ Remaining Medium severity findings are reviewed and justified by documented risk
 Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
 
 Any deviation of the coverage percentage value is documented as part of the module documentation.
-A rationale for the deviation need to be provided for an official release.
+A rationale for the deviation needs to be provided for an official release.
 
 
 Test development
@@ -445,7 +541,7 @@ Release test execution
 ^^^^^^^^^^^^^^^^^^^^^^
 Results of the test execution are captured in the verification reports for the modules and platform
 as release work products documenting the clear pass/fail result for each executed test case id.
-Also, any  deviation in the test execution scope for skipped or not executed tests will be documented
+Also, any deviation in the test execution scope for skipped or not executed tests will be documented
 in the release documentation and the respective reasoning will be provided.
 
 Manual test execution

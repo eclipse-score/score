@@ -637,9 +637,9 @@ Cadence
 
 Iteration
 """""""""
-The Project calendar is devided into iterations. Each iteration is two weeks long.
+The Project calendar is divided into iterations. Each iteration is two weeks long.
 
-Release Frequence
+Release Frequency
 """""""""""""""""
 After every 3rd iteration, the work is baselined into a Release.
 

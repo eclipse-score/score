@@ -64,7 +64,7 @@ Education and Skills:
 - Process development CMMI - letters of recommendation from employers
 - Safety trainings by Exida (ISO 26262) - part of Safety Case Safe Posix SW platform
 
-S-CORE Committs:
+S-CORE Commits:
 
 - major committer in `process_description repository <https://github.com/eclipse-score/process_description>`_
 

@@ -21,7 +21,7 @@ Verification Report
    :version: 1
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__verification_module_ver_report[version==1]
+   :realizes: wp__verification_module_ver_report
 
 
 This verification report is based on the :need:`gd_temp__verification_plan`.

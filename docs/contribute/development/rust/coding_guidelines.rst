@@ -263,7 +263,7 @@ settings are maintained centrally in the
 `score_rust_policies repository <https://github.com/eclipse-score/score_rust_policies>`_:
 
 CodeQL is handled separately from this repository; see *Rust Tooling: CodeQL*
-above and :doc:`/platform_management_plan/software_verification`.
+above and :doc:`../../../platform_management_plan/software_verification`.
 
 * `Practical baseline (relaxed) <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml>`_ —
   suitable for general SCORE components.
