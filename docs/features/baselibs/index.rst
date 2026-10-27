@@ -14,10 +14,10 @@
 
 .. _baselibs_feature:
 
-Base Libraries
-##############
+Baselibs
+########
 
-.. document:: Base Libraries
+.. document:: Baselibs
    :id: doc__baselibs
    :status: valid
    :version: 1
@@ -32,7 +32,7 @@ Base Libraries
 
    architecture/index.rst
    requirements/index.rst
-   requirements/chklst_req_inspection.rst
+   requirements/req_inspection.rst
 
 
 Feature flag
