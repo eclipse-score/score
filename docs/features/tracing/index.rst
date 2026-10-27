@@ -19,3 +19,4 @@ Tracing
    :maxdepth: 1
 
    architecture/index
+   requirements/index

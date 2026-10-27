@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -15,7 +15,7 @@
 .. _logging_architecture:
 
 Logging Architecture
-====================
+####################
 
 .. document:: Logging Architecture
    :id: doc__logging_architecture
@@ -25,6 +25,9 @@ Logging Architecture
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
+Logging Feature
+---------------
+
 .. feat:: Logging
    :id: feat__logging
    :security: YES
@@ -33,8 +36,8 @@ Logging Architecture
    :version: 1
    :uses: logic_arc_int__baselibs__json[version==1], logic_arc_int__baselibs__filesystem[version==1]
 
-Interfaces
-----------
+Logical Interfaces
+------------------
 
 .. logic_arc_int:: Logging
    :id: logic_arc_int__log_cpp__logging
