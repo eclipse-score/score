@@ -22,6 +22,7 @@ Baselibs Requirements
    :safety: ASIL_B
    :security: YES
    :realizes: wp__requirements_feat[version==1]
+   :tags: baselibs
 
 .. feat_req:: Utils Library
    :id: feat_req__baselibs__utils_library
