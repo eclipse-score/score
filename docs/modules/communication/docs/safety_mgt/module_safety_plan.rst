@@ -120,10 +120,10 @@ Module Work products List
           - :ndf:`copy('status', need_id='gd_temp__rel_mod_rel_note')`
           - `<https://github.com/eclipse-score/communication/releases>`_
 
-Component mw_com Work products List
------------------------------------
+Component LoLa Work products List
+---------------------------------
 
-.. list-table:: Component mw_com Work products
+.. list-table:: Component LoLa Work products
         :header-rows: 1
 
         * - Work product Id
@@ -139,7 +139,7 @@ Component mw_com Work products List
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/assumptions_of_use/aous/aous.html>`_
+          - same as for feature level
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
@@ -149,7 +149,7 @@ Component mw_com Work products List
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/static_design/overall.html>`
+          - `<https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/software_architectural_design>`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
@@ -159,22 +159,22 @@ Component mw_com Work products List
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html>`_
+          - same as for feature level
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - covered by safety analysis link above
+          - same as for feature level
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - `mw_com/.h/.cpp <https://github.com/eclipse-score/communication/blob/main/score/mw/com>`_, `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/static_design/index.html>`_
+          - `LoLa/.h/.cpp <https://github.com/eclipse-score/communication/blob/main/score/mw/com>`_, `LoLa/design <https://github.com/eclipse-score/communication/tree/main/score/mw/com/design>`_
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - `mw_com/test.cpp <https://github.com/eclipse-score/communication/tree/main/score/mw/com/test>`_
+          - `LoLa/test.cpp <https://github.com/eclipse-score/communication/tree/main/score/mw/com/test>`_
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
@@ -184,12 +184,17 @@ Component mw_com Work products List
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - `mw_com/test <https://github.com/eclipse-score/communication/tree/main/score/mw/com/test>`_
+          - `LoLa/test <https://github.com/eclipse-score/communication/tree/main/score/mw/com/test>`_
 
         * - :need:`wp__sw_component_class`
           - :need:`gd_guidl__component_classification`
           - :ndf:`copy('status', need_id='gd_guidl__component_classification')`
           - :need:`doc__lola_comp_class`
+
+Note: Name of the external component taken from `Readme <https://github.com/eclipse-score/communication/blob/main/README.md>`_
+where it is stated as LoLa/mw::com but we abbreviate it to LoLa (as mw::com is mainly the namespace/api name).
+
+Note2: Above links to communication repository are to the version as defined in reference integration.
 
 Module Safety Package
 =====================

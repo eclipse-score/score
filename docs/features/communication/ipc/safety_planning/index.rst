@@ -35,12 +35,12 @@ Additional to the tailoring in the SW platform project as defined in the :need:`
   which provides the feature level artefacts as linked below.
 
 - There is an overlap in two work products between the expectation formulated in the feature request,
-  which defines feature requirements and interfaces and the work products provided in `Lola IPC <https://github.com/eclipse-score/communication>`_.
-  Both versions are linked below. A comparison of these has to be performed and inconsistencies resolved as part of inspections - see <ticket tbd>
+  which defines feature requirements and interfaces and the work products provided in `Communication Repository <https://github.com/eclipse-score/communication>`_.
+  Both versions are linked below. A comparison of these has to be performed and inconsistencies resolved as part of inspections - see `ticket <https://github.com/eclipse-score/communication/issues/1490>`_
 
-- AoU provided by `Lola IPC <https://github.com/eclipse-score/communication>`_ are provided in a different format as needed by S-CORE documentation (e.g. the safety manual),
+- AoU in `Communication Repository <https://github.com/eclipse-score/communication>`_ are provided in a different format as needed by S-CORE documentation (e.g. the safety manual),
   so a copy of the AoU in docs_as-code format has to be provided.
-  Original and Copy are linked below. It need to be confirmed that those are equal as part of inspections - see <ticket tbd>
+  Original and Copy are linked below. It need to be confirmed that those are equal as part of inspections - see `ticket <https://github.com/eclipse-score/communication/issues/1490>`_
 
 Inter-process Communication Safety Work Products
 ================================================
@@ -62,24 +62,24 @@ Inter-process Communication Safety Work Products
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
       - :need:`doc__ipc_requirements`, :need:`doc__communication_requirements`
-        `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/feature_requirements/feature_requirements_ipc/requirements/feature_requirements/feature_requirements_ipc.html>`_
+        `<https://github.com/eclipse-score/communication/blob/main/score/mw/com/dependability/requirements/feature_requirements/feature_requirements_ipc.trlc>`_
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
       - :need:`doc__communication_aou`,
-        `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/assumptions_of_use/aous/aous.html>`_
+        `<https://github.com/eclipse-score/communication/blob/main/score/mw/com/dependability/safety_analysis/aou.trlc>`_
 
     * - :need:`wp__feature_arch`
       - :need:`gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
       - :need:`doc__communication_architecture`,
-        `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/static_design/overall.html>`_
+        `<https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/architectural_design/static_design>`_
 
     * - :need:`wp__feature_fmea`
       - :need:`gd_temp__feat_saf_fmea`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_fmea')`
-      - `<https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html>`_
+      - `<https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/safety_analysis>`_
 
     * - :need:`wp__feature_dfa`
       - :need:`gd_temp__feat_saf_dfa`
@@ -100,6 +100,8 @@ Inter-process Communication Safety Work Products
       - :need:`gd_guidl__verification_guide`
       - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
       - <Link to WP>
+
+Note: Above links to communication repository are to the version as defined in reference integration.
 
 Feature Safety Package
 ======================

@@ -17,7 +17,7 @@ Component Classification
 
 .. note:: Document header
 
-.. document:: lola Component Classification
+.. document:: LoLa Component Classification
    :id: doc__lola_comp_class
    :status: draft
    :version: 1
@@ -25,9 +25,9 @@ Component Classification
    :security: NO
    :realizes: wp__sw_component_class[version==1]
 
-| Classification of lola
+| Classification of LoLa
 |
-| `Lola IPC <https://github.com/eclipse-score/communication>`_ v0.5.0
+| `LoLa <https://github.com/eclipse-score/communication>`_ version is as stated in the current reference integration's release note.
 |
 | Additional documentation considered:
 | :need:`doc__com` and :need:`doc__com_ipc`
@@ -58,20 +58,19 @@ Step 1: Determine (P): the uncertainty of the Processes applied
         * - 2
           - Are requirements available?
           - PE
-          - See `lola trlc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/requirements>`_ available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
+          - See `LoLa trlc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/requirements>`_ available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
 
         * - 3
           - Are specifications for functionalities and properties available (architecture)?
           - PE
-          - See `lola arc <https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/architectural_design/software_architectural_design/static/index.html>`_
-            and `lola SW arc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/software_architectural_design>`_
+          - See `LoLa arc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/architectural_design/static_design>`_
+            and `LoLa SW arc <https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/software_architectural_design>`_
             available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
 
         * - 4
           - Are design specifications available?
           - PE
-          - `lola/design <https://github.com/eclipse-score/communication/tree/main/score/mw/com/design>`_
-            and `lola SW api <https://eclipse-score.github.io/communication/latest/generated/api_index.html>`_
+          - `LoLa/design <https://github.com/eclipse-score/communication/tree/main/score/mw/com/design>`_
             available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed
 
         * - 5
@@ -171,7 +170,7 @@ Step 3: Determine (CLAS_OUT): the classification outcome
 | 3     |  QR   | QR    | NQ    |
 +-------+-------+-------+-------+
 
-lola is classified as CLAS_OUT=QR
+LoLa is classified as CLAS_OUT=QR
 
 
 Step 4: Document all results and rationale for choosing (P) and (C) and (CLAS_OUT)
