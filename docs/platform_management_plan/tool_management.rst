@@ -22,8 +22,8 @@
    :realizes: wp__tlm_plan[version==1]
 
 
-Tool Management/ Tool Management Plan
--------------------------------------
+Tool Management / Tool Management Plan
+--------------------------------------
 
 This document implements parts of the :need:`wp__platform_mgmt`.
 
