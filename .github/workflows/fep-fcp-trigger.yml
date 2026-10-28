@@ -33,6 +33,6 @@ on:
 jobs:
   trigger:
     name: trigger
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - run: echo "Event ${{ github.event_name }} handed over to the FEP Final Comment Period workflow."
