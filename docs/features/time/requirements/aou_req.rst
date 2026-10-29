@@ -12,6 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Time Feature Assumption of Use Requirements
+###########################################
+
 .. document:: Time Assumption of Use Requirements
    :id: doc__feature_time_aou_reqs
    :status: draft
@@ -19,9 +22,6 @@
    :security: NO
    :safety: ASIL_B
    :realizes: wp__requirements_feat_aou[version==1]
-
-Time Feature Assumption of Use Requirements
-===========================================
 
 .. aou_req:: Vehicle time end-to-end integrity
    :id: aou_req__feature__veh_time_e2e_integrity
