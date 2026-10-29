@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -14,8 +14,17 @@
 
 .. _codegen_requirements:
 
-Requirements
-============
+Code Generation Requirements
+############################
+
+.. document:: Code Generation Requirements
+   :id: doc__code_generation_requirements
+   :status: draft
+   :version: 1
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat[version==1]
+   :tags: code_generation
 
 .. feat_req:: The system uses a human-readable definition language.
    :id: feat_req__code_generation__definitionlanguage
