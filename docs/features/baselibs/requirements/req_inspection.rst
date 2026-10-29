@@ -12,8 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Baselibs Requirements Inspection
+################################
 
-.. document:: Baselibs Requirements Inspection Checklist
+.. document:: Baselibs Requirements Inspection
    :id: doc__baselibs_req_inspection
    :status: valid
    :version: 3
