@@ -20,6 +20,3 @@ Certifiable Level
 These are the certifiable-supported Operating Systems for Eclipse S-CORE.
 
 See see :ref:`platform_assumptions` for the exact requirements for each level (Tier).
-
-
-

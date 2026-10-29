@@ -24,8 +24,8 @@
 
 .. _software_verification_plan:
 
-Software verification
-*********************
+Software Verification Plan
+**************************
 
 Purpose
 =======

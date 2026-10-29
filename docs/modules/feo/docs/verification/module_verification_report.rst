@@ -18,7 +18,7 @@
    :version: 1
    :security: NO
    :safety: ASIL_B
-   :realizes: wp__verification_module_ver_report[version==1]
+   :realizes: wp__verification_module_ver_report
    :tags: module_template
 
 FEO Module Verification Report
