@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 Lifecycle Architecture
-======================
+######################
 
 .. document:: Lifecycle Architecture
    :id: doc__lifecycle_architecture
@@ -34,8 +34,8 @@ Lifecycle Feature
    :version: 1
 
 
-Interfaces
-----------
+Logical Interfaces
+------------------
 
 **Lifecycle**
 

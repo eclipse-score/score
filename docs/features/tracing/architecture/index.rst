@@ -46,6 +46,7 @@ Logical Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__com__tracing[version==1]
 
    .. needarch::
       :scale: 50

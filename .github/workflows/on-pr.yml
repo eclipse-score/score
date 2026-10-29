@@ -31,7 +31,7 @@ jobs:
 
   lint-commits:
     name: check-commit-messages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout code
@@ -47,7 +47,7 @@ jobs:
 
   fep-fcp-tests:
     name: fep-fcp-tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
