@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="message_passing" href="../../message_passing/docs/index.html" />
-    <link rel="prev" title="DFA (Dependent Failure Analysis)" href="safety_analysis/dfa.html" />
+    <link rel="next" title="FEO Module" href="../../../feo/index.html" />
+    <link rel="prev" title="LoLa" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -559,20 +559,10 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Communication Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../configuration/docs/index.html">configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../frontent/docs/index.html">frontent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ipc_binding/docs/index.html">ipc_binding</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">LoLa</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Component Architecture</a></li>
-<li class="toctree-l3"><a class="reference internal" href="detailed_design/index.html">Detailed Design</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">Component Classification</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../mock_binding/docs/index.html">mock_binding</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
@@ -651,11 +641,11 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-286ed77d">
+<div class="need_container docutils container" id="SNCB-3402c2ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lola_comp_class">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">lola Component Classification</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">LoLa Component Classification</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -695,9 +685,9 @@
 </div>
 </div>
 <div class="line-block">
-<div class="line">Classification of lola</div>
+<div class="line">Classification of LoLa</div>
 <div class="line"><br /></div>
-<div class="line"><a class="reference external" href="https://github.com/eclipse-score/communication">Lola IPC</a> v0.1.1</div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/communication">LoLa</a> version is as stated in the current reference integration’s release note.</div>
 <div class="line"><br /></div>
 <div class="line">Additional documentation considered:</div>
 <div class="line"><a class="reference internal" href="../../../../features/communication/index.html#doc__com" title="doc__com"><em class="xref need">Communication (doc__com)</em></a> and <a class="reference internal" href="../../../../features/communication/ipc/index.html#doc__com_ipc" title="doc__com_ipc"><em class="xref need">Inter-process Communication (doc__com_ipc)</em></a></div>
@@ -712,7 +702,7 @@
 <div class="line">- NE: No Evidence</div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 92 </span><span class="caption-text">Determine (P)</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 95 </span><span class="caption-text">Determine (P)</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Id</p></th>
 <th class="head"><p>Indicator for applying process</p></th>
@@ -729,27 +719,31 @@
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>Are requirements available?</p></td>
 <td><p>PE</p></td>
-<td><p>See <a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/requirements">lola trlc</a> available but not according to S-CORE process - perform content centric inspection of component requirements and also checking matching of S-CORE and lola feature requirements</p></td>
+<td><p>See <a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/requirements">LoLa trlc</a> available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
 <td><p>Are specifications for functionalities and properties available (architecture)?</p></td>
-<td><p>HE</p></td>
-<td><p>Created using S-CORE process: <a class="reference internal" href="../../docs/index.html#mod__com_communication" title="mod__com_communication"><em class="xref need">Communication (mod__com_communication)</em></a></p></td>
+<td><p>PE</p></td>
+<td><p>See <a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/architectural_design/static_design">LoLa arc</a>
+and <a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/dependability/software_architectural_design">LoLa SW arc</a>
+available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
 <td><p>Are design specifications available?</p></td>
 <td><p>PE</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/design/README.md">lola/design</a> available but not according to S-CORE process - perform content centric inspection inclusive the matching of S-CORE feature architecture with lola design</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/design">LoLa/design</a>
+available but not inspected according to S-CORE process - check inspection checklist delta and re-perform if needed</p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
 <td><p>Are configuration specification and data available, if applicable?</p></td>
 <td><p>HE</p></td>
-<td><p>See <a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/design/configuration">lola/design/configuration</a></p></td>
+<td><p>Configuration is done by the user by json files, explained in <a class="reference external" href="https://eclipse-score.github.io/communication/latest/score/mw/com/doc/tutorial/README.html">tutorial</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>6</p></td>
 <td><p>Are verification measures including tests and reports available?</p></td>
 <td><p>PE</p></td>
-<td><p>Unit tests available and configured failure blocks the merge of any lola pull request, evidences links TBD, need to check for integration testing</p></td>
+<td><p>Unit and integration tests available and configured failure blocks the merge of any lola pull request, evidences links see <a class="reference external" href="https://eclipse-score.github.io/communication/latest/quality_reports.html">q-report</a> and <a class="reference external" href="https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/traceability_report/feature_requirements.html">feat_req test report</a> - need to find component test report
+Safety Analysis performed and documented in <a class="reference external" href="https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html">https://eclipse-score.github.io/communication/latest/docs/sphinx/mw_com_index/dependability_analysis/mw_com_dependability_analysis/safety_analysis.html</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -776,7 +770,7 @@
 <div class="line"><strong>Complexity measure for programming language: C++</strong></div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 93 </span><span class="caption-text">Determine (C) for C++</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 96 </span><span class="caption-text">Determine (C) for C++</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Id</p></th>
 <th class="head"><p>Indicator for high Complexity</p></th>
@@ -790,35 +784,31 @@
 <td><p>High amount of Lines of Code</p></td>
 <td><p>Lines of Code (without comments) (generated code is excluded)</p></td>
 <td><p>HM</p></td>
-<td><p>&lt;Number&gt;</p></td>
+<td><p>&gt;1000</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>Cyclomatic complexity</p></td>
 <td><p>Static Code Analysis tooling</p></td>
-<td><p>NH</p></td>
-<td><p>&lt;Number&gt;</p></td>
+<td><p>HM</p></td>
+<td><p>was determined in external project and did not block qualification</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><div class="line-block">
-<div class="line">Test exists / Coverage (Function, Line)</div>
-<div class="line">(maybe better: testability, but how to measure?)</div>
-</div>
-</td>
+<td><p>Test exists / Coverage (Function, Line)</p></td>
 <td><p>Existing Tests Coverage</p></td>
 <td><p>NH</p></td>
-<td><p>&lt;Number&gt;</p></td>
+<td><p>See <a class="reference external" href="https://eclipse-score.github.io/communication/latest/quality/coverage/index.html">coverage</a> - missing coverage gaps in mw/com to be resolved</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
 <td><p>High amount of public function interfaces</p></td>
 <td><p>Number of public function interfaces</p></td>
-<td><p>NH</p></td>
-<td><p>&lt;Number&gt;</p></td>
+<td><p>HM</p></td>
+<td><p>See <a class="reference external" href="https://eclipse-score.github.io/communication/latest/generated/api_index.html">https://eclipse-score.github.io/communication/latest/generated/api_index.html</a> - interface is comparable to AUTOSAR standard, check if safety analysis full covers interface in <a class="reference internal" href="../../docs/safety_mgt/module_safety_analysis_fdr.html#doc__communication_safety_analysis_fdr" title="doc__communication_safety_analysis_fdr"><em class="xref need">Communication Safety Analys... (doc__communication_safety_analysis_fdr)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
 <td><p>High amount of function parameters</p></td>
 <td><p>Number of parameters</p></td>
 <td><p>NH</p></td>
-<td><p>&lt;Number&gt;</p></td>
+<td><p>see above</p></td>
 </tr>
 </tbody>
 </table>
@@ -869,7 +859,7 @@
 </tbody>
 </table>
 </div>
-<p>lola is classified as CLAS_OUT=QR</p>
+<p>LoLa is classified as CLAS_OUT=QR</p>
 </section>
 <section id="step-4-document-all-results-and-rationale-for-choosing-p-and-c-and-clas-out">
 <h2>Step 4: Document all results and rationale for choosing (P) and (C) and (CLAS_OUT)<a class="headerlink" href="#step-4-document-all-results-and-rationale-for-choosing-p-and-c-and-clas-out" title="Link to this heading">#</a></h2>
@@ -897,20 +887,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="safety_analysis/dfa.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DFA (Dependent Failure Analysis)</p>
+        <p class="prev-next-title">LoLa</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../message_passing/docs/index.html"
+       href="../../../feo/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">message_passing</p>
+        <p class="prev-next-title">FEO Module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
