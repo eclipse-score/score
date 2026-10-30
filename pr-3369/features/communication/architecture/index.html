@@ -558,7 +558,7 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Baselibs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Communication Architecture</a></li>
@@ -641,6 +641,49 @@
                   
   <section id="communication-architecture">
 <span id="com-architecture"></span><h1>Communication Architecture<a class="headerlink" href="#communication-architecture" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-3863a093">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__communication_architecture">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Communication Architecture</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>2</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__feature_arch">wp__feature_arch</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__communication_architecture" title="doc__communication_architecture">doc__communication_architecture</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>An brief overview of communication is described <a class="reference internal" href="../index.html#com-abstract"><span class="std std-ref">here</span></a>.</p>
@@ -653,7 +696,7 @@
 <span id="com-static-architecture"></span><h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>As discussed in <a class="reference internal" href="../index.html#com-rationale"><span class="std std-ref">Rationale</span></a>, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).</p>
 <p>This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.</p>
-<div class="need_container docutils container" id="SNCB-e281bac4">
+<div class="need_container docutils container" id="SNCB-d0199fb2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__com_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -674,8 +717,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../../../modules/communication/configuration/docs/architecture/index.html#comp__com_configuration" title="feat__com_communication">comp__com_configuration</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#comp__com_frontend" title="feat__com_communication">comp__com_frontend</a>, <a class="reference internal" href="../../../modules/communication/ipc_binding/docs/architecture/index.html#comp__com_ipc_binding" title="feat__com_communication">comp__com_ipc_binding</a>, <a class="reference internal" href="../../../modules/communication/mock_binding/docs/architecture/index.html#comp__com_mock_binding" title="feat__com_communication">comp__com_mock_binding</a>, <a class="reference internal" href="../ipc/architecture/index.html#feat_arc_dyn__communication__ipc" title="feat__com_communication">feat_arc_dyn__communication__ipc</a>, <a class="reference internal" href="#feat_arc_sta__com__communication" title="feat__com_communication">feat_arc_sta__com__communication</a></span></span></div>
-<div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_consumer" title="feat__com_communication">feat_req__com__acl_for_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_producer" title="feat__com_communication">feat_req__com__acl_for_producer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_per_service_instance" title="feat__com_communication">feat_req__com__acl_per_service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_placement" title="feat__com_communication">feat_req__com__acl_placement</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__asil" title="feat__com_communication">feat_req__com__asil</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__async_support" title="feat__com_communication">feat_req__com__async_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__bi_directional_comm" title="feat__com_communication">feat_req__com__bi_directional_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__binding_agnostic_api" title="feat__com_communication">feat_req__com__binding_agnostic_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__config_notifications" title="feat__com_communication">feat_req__com__config_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__configurable_queues" title="feat__com_communication">feat_req__com__configurable_queues</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__consistent_data" title="feat__com_communication">feat_req__com__consistent_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_corruption" title="feat__com_communication">feat_req__com__data_corruption</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_driven_arch" title="feat__com_communication">feat_req__com__data_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_loss" title="feat__com_communication">feat_req__com__data_loss</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_notifications" title="feat__com_communication">feat_req__com__data_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_reordering" title="feat__com_communication">feat_req__com__data_reordering</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_repetition" title="feat__com_communication">feat_req__com__data_repetition</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__depl_config_runtime" title="feat__com_communication">feat_req__com__depl_config_runtime</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__event_type" title="feat__com_communication">feat_req__com__event_type</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat__com_communication">feat_req__com__interfaces</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_idioms" title="feat__com_communication">feat_req__com__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_infra" title="feat__com_communication">feat_req__com__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_access" title="feat__com_communication">feat_req__com__lock_free_access</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_queue" title="feat__com_communication">feat_req__com__lock_free_queue</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__method" title="feat__com_communication">feat_req__com__method</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_depl" title="feat__com_communication">feat_req__com__multi_binding_depl</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_support" title="feat__com_communication">feat_req__com__multi_binding_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_lang" title="feat__com_communication">feat_req__com__multi_lang</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__one_way_sharing" title="feat__com_communication">feat_req__com__one_way_sharing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_consumer" title="feat__com_communication">feat_req__com__producer_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_timestamps" title="feat__com_communication">feat_req__com__producer_timestamps</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__readonly_vm" title="feat__com_communication">feat_req__com__readonly_vm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__request_driven_arch" title="feat__com_communication">feat_req__com__request_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__safe_communication" title="feat__com_communication">feat_req__com__safe_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_discovery" title="feat__com_communication">feat_req__com__service_discovery</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance" title="feat__com_communication">feat_req__com__service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_granularity" title="feat__com_communication">feat_req__com__service_instance_granularity</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_names" title="feat__com_communication">feat_req__com__service_instance_names</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_location_transparency" title="feat__com_communication">feat_req__com__service_location_transparency</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__shared_memory" title="feat__com_communication">feat_req__com__shared_memory</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__signal" title="feat__com_communication">feat_req__com__signal</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__stateless_communication" title="feat__com_communication">feat_req__com__stateless_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__streamed_data" title="feat__com_communication">feat_req__com__streamed_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_fake_binding" title="feat__com_communication">feat_req__com__testability_fake_binding</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_mock_api" title="feat__com_communication">feat_req__com__testability_mock_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__time_based_arch" title="feat__com_communication">feat_req__com__time_based_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__tracing" title="feat__com_communication">feat_req__com__tracing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__versioning" title="feat__com_communication">feat_req__com__versioning</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__zero_copy" title="feat__com_communication">feat_req__com__zero_copy</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__availability" title="feat__com_communication">feat_req__ipc__availability</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__confidentiality" title="feat__com_communication">feat_req__ipc__confidentiality</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__integrity" title="feat__com_communication">feat_req__ipc__integrity</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__zero_copy" title="feat__com_communication">feat_req__ipc__zero_copy</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__e2e_plugin_ifc</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_specs" title="feat__com_communication">feat_req__some_ip_gateway__e2e_specs</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_sd_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_sd_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__stack_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__stack_plugin_ifc</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfied_by"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_consumer" title="feat__com_communication">feat_req__com__acl_for_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_for_producer" title="feat__com_communication">feat_req__com__acl_for_producer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_per_service_instance" title="feat__com_communication">feat_req__com__acl_per_service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__acl_placement" title="feat__com_communication">feat_req__com__acl_placement</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__asil" title="feat__com_communication">feat_req__com__asil</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__async_support" title="feat__com_communication">feat_req__com__async_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__bi_directional_comm" title="feat__com_communication">feat_req__com__bi_directional_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__binding_agnostic_api" title="feat__com_communication">feat_req__com__binding_agnostic_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__config_notifications" title="feat__com_communication">feat_req__com__config_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__configurable_queues" title="feat__com_communication">feat_req__com__configurable_queues</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__consistent_data" title="feat__com_communication">feat_req__com__consistent_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_corruption" title="feat__com_communication">feat_req__com__data_corruption</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_driven_arch" title="feat__com_communication">feat_req__com__data_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_loss" title="feat__com_communication">feat_req__com__data_loss</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_notifications" title="feat__com_communication">feat_req__com__data_notifications</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_reordering" title="feat__com_communication">feat_req__com__data_reordering</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__data_repetition" title="feat__com_communication">feat_req__com__data_repetition</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__depl_config_runtime" title="feat__com_communication">feat_req__com__depl_config_runtime</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__event_type" title="feat__com_communication">feat_req__com__event_type</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat__com_communication">feat_req__com__interfaces</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_idioms" title="feat__com_communication">feat_req__com__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lang_infra" title="feat__com_communication">feat_req__com__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_access" title="feat__com_communication">feat_req__com__lock_free_access</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__lock_free_queue" title="feat__com_communication">feat_req__com__lock_free_queue</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__method" title="feat__com_communication">feat_req__com__method</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_depl" title="feat__com_communication">feat_req__com__multi_binding_depl</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_binding_support" title="feat__com_communication">feat_req__com__multi_binding_support</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__multi_lang" title="feat__com_communication">feat_req__com__multi_lang</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__one_way_sharing" title="feat__com_communication">feat_req__com__one_way_sharing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_consumer" title="feat__com_communication">feat_req__com__producer_consumer</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__producer_timestamps" title="feat__com_communication">feat_req__com__producer_timestamps</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__readonly_vm" title="feat__com_communication">feat_req__com__readonly_vm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__request_driven_arch" title="feat__com_communication">feat_req__com__request_driven_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__safe_communication" title="feat__com_communication">feat_req__com__safe_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_discovery" title="feat__com_communication">feat_req__com__service_discovery</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance" title="feat__com_communication">feat_req__com__service_instance</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_granularity" title="feat__com_communication">feat_req__com__service_instance_granularity</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_instance_names" title="feat__com_communication">feat_req__com__service_instance_names</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__service_location_transparency" title="feat__com_communication">feat_req__com__service_location_transparency</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__shared_memory" title="feat__com_communication">feat_req__com__shared_memory</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__signal" title="feat__com_communication">feat_req__com__signal</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__stateless_communication" title="feat__com_communication">feat_req__com__stateless_communication</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__streamed_data" title="feat__com_communication">feat_req__com__streamed_data</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_fake_binding" title="feat__com_communication">feat_req__com__testability_fake_binding</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__testability_mock_api" title="feat__com_communication">feat_req__com__testability_mock_api</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__time_based_arch" title="feat__com_communication">feat_req__com__time_based_arch</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__tracing" title="feat__com_communication">feat_req__com__tracing</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__versioning" title="feat__com_communication">feat_req__com__versioning</a>, <a class="reference internal" href="../requirements/index.html#feat_req__com__zero_copy" title="feat__com_communication">feat_req__com__zero_copy</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__availability" title="feat__com_communication">feat_req__ipc__availability</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__confidentiality" title="feat__com_communication">feat_req__ipc__confidentiality</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__integrity" title="feat__com_communication">feat_req__ipc__integrity</a>, <a class="reference internal" href="../ipc/requirements/index.html#feat_req__ipc__zero_copy" title="feat__com_communication">feat_req__ipc__zero_copy</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__e2e_plugin_ifc</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__e2e_specs" title="feat__com_communication">feat_req__some_ip_gateway__e2e_specs</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__someip_sd_protocol" title="feat__com_communication">feat_req__some_ip_gateway__someip_sd_protocol</a>, <a class="reference internal" href="../some_ip_gateway/requirements/index.html#feat_req__some_ip_gateway__stack_plugin_ifc" title="feat__com_communication">feat_req__some_ip_gateway__stack_plugin_ifc</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="feat__com_communication">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
@@ -698,88 +740,10 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f1169a7b">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__com__communication">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Feature Architecture Communication</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
-</span></span></div>
-<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#feat__com_communication" title="feat_arc_sta__com__communication">feat__com_communication</a></span></span></div>
-<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat_arc_sta__com__communication">feat_req__com__interfaces</a></span></span></div>
-<div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="feat_arc_sta__com__communication">logic_arc_int__communication__user</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/architecture/index-0">
-<object data="../../../_images/plantuml-9b92ce60df67350e51fa98d5d82b47c191dc1b1a.svg" type="image/svg+xml" style="width:1086px;height:926px;background:#FFFFFF;"></object></p>
-</td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_arc_sta__com__communication" title="feat_arc_sta__com__communication">feat_arc_sta__com__communication</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature &amp; Feature Package Diagram</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>In the following sections we will look on the different architectural elements of the communication framework in more
-detail.</p>
-<section id="frontend">
-<h3>Frontend<a class="headerlink" href="#frontend" title="Link to this heading">#</a></h3>
-<p>The frontend is responsible of providing a stable public API to the user. In general, the communication framework (<cite>mw::com</cite>) follows the client-server, pub-sub and producer-consumer patterns.</p>
-<p>Following these patterns, the user interacts with different APIs depending on whether he is producer/server or
-consumer/client.</p>
-<p>A producer creates a <cite>Skeleton</cite> to communicate with consumers. Each consumer creates a <cite>Proxy</cite> to connect to a producer. Consumers can find available producers through a service discovery mechanism. This mechanism is tightly bound to the <cite>Proxy</cite>, to only discover producers offering a compatible implementation of a <cite>Skeleton</cite>.</p>
-<figure class="align-center" id="doc-communication-proxy-skeleton">
-<p class="plantuml">
-<object data="../../../_images/plantuml-6daca60880baae801bf871f62dd16b7e5503f560.svg" type="image/svg+xml" style="width:327px;height:278px;background:#FFFFFF;"></object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Communication through mw::com</span><a class="headerlink" href="#doc-communication-proxy-skeleton" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>In addition to these elements, a runtime singleton is used for background tasks to reduce resource consumption. This runtime is invisible to the user. This runtime is responsible for service discovery (explained in <a class="reference internal" href="../ipc/architecture/index.html#ipc-service-discovery"><span class="std std-ref">Service Discovery</span></a>), notification reception and other infrastructure tasks.</p>
-<p>Compatibility of <em>Skeleton</em> and <em>Proxy</em> is currently defined by them sharing the same communication interface. Additionally, versioning will be taken into account in the future (see <a class="reference internal" href="../ipc/roadmap.html#ipc-roadmap"><span class="std std-ref">IPC Roadmap</span></a>).</p>
-<p>The communication interface for now consists of events. Support for methods and signals will be added in the future
-(see <a class="reference internal" href="../ipc/roadmap.html#ipc-roadmap"><span class="std std-ref">IPC Roadmap</span></a>).</p>
-<p>Since S-CORE supports strongly typed programming languages, the API of <em>Skeleton</em> and <em>Proxy</em> is also strongly typed. Instead of a code generator, we utilize features like templates in C++ and macros in Rust to “generate” the necessary code at compile time.</p>
-<p>But there are some “niche” use cases, where the need to “regenerate” and recompile the <em>Proxy</em> can be detrimental.
-This is the case when:</p>
-<ul class="simple">
-<li><p>signatures are trivial and changes/differences between them are minimal</p></li>
-<li><p>the communicated data/payload gets handled very generically (loosely typed) anyhow</p></li>
-<li><p>the communicated data/payload has to get deep-inspected based on additional/separate type-information anyhow</p></li>
-</ul>
-<p>For these cases <em>mw::com</em> provides a <em>GenericProxy</em> that allows introspection of communication interfaces at runtime.</p>
-<p>While the frontend is based on a communication model, it is independent from any communication protocol. Therefore, it always forwards user requests to the binding(s) underneath. Which bindings to use is defined in a configuration file.</p>
-<p>A multi-binding approach is chosen, where API calls are mapped to a set of selected bindings.</p>
-</section>
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
-<p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-9e848414">
+<p>The public API for communication is defined as:</p>
+<div class="need_container docutils container" id="SNCB-f916ab60">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__communication__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -798,21 +762,20 @@ This is the case when:</p>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__communication__user">feat_req__com__interfaces</a></span></span></div>
-<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#comp__com_frontend" title="logic_arc_int__communication__user">comp__com_frontend</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orchestrator" title="logic_arc_int__communication__user">comp__orchestrator</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__communication__user">comp_arc_sta__orch__orchestrator</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__com__communication" title="logic_arc_int__communication__user">feat_arc_sta__com__communication</a></span></span></div>
 <div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#feat__com_communication" title="logic_arc_int__communication__user">feat__com_communication</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__createproxy" title="logic_arc_int__communication__user">logic_arc_int_op__com__createproxy</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__getnewsamples" title="logic_arc_int__communication__user">logic_arc_int_op__com__getnewsamples</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__initialize" title="logic_arc_int__communication__user">logic_arc_int_op__com__initialize</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__offer_service" title="logic_arc_int__communication__user">logic_arc_int_op__com__offer_service</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__send" title="logic_arc_int__communication__user">logic_arc_int_op__com__send</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__startfindserv" title="logic_arc_int__communication__user">logic_arc_int_op__com__startfindserv</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__subscribe" title="logic_arc_int__communication__user">logic_arc_int_op__com__subscribe</a>, <a class="reference internal" href="../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__update" title="logic_arc_int__communication__user">logic_arc_int_op__com__update</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__com__createproxy" title="logic_arc_int__communication__user">logic_arc_int_op__com__createproxy</a>, <a class="reference internal" href="#logic_arc_int_op__com__getnewsamples" title="logic_arc_int__communication__user">logic_arc_int_op__com__getnewsamples</a>, <a class="reference internal" href="#logic_arc_int_op__com__initialize" title="logic_arc_int__communication__user">logic_arc_int_op__com__initialize</a>, <a class="reference internal" href="#logic_arc_int_op__com__offer_service" title="logic_arc_int__communication__user">logic_arc_int_op__com__offer_service</a>, <a class="reference internal" href="#logic_arc_int_op__com__send" title="logic_arc_int__communication__user">logic_arc_int_op__com__send</a>, <a class="reference internal" href="#logic_arc_int_op__com__startfindserv" title="logic_arc_int__communication__user">logic_arc_int_op__com__startfindserv</a>, <a class="reference internal" href="#logic_arc_int_op__com__subscribe" title="logic_arc_int__communication__user">logic_arc_int_op__com__subscribe</a>, <a class="reference internal" href="#logic_arc_int_op__com__update" title="logic_arc_int__communication__user">logic_arc_int_op__com__update</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/architecture/index-1">
-<object data="../../../_images/plantuml-38c67f4cffdb90b9e34355c510b5d88aa3e3db47.svg" type="image/svg+xml" style="width:266px;height:199px;background:#FFFFFF;"></object></p>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/architecture/index-0">
+<object data="../../../_images/plantuml-93c1055665739394a76442d5af0896d8e9a409f4.svg" type="image/svg+xml" style="width:266px;height:199px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -829,16 +792,350 @@ This is the case when:</p>
 </table>
 </div>
 </div>
-</section>
-<section id="bindings">
-<h3>Bindings<a class="headerlink" href="#bindings" title="Link to this heading">#</a></h3>
-<p>The need for bindings was discussed in <a class="reference internal" href="../index.html#com-multi-binding-support"><span class="std std-ref">Multi-binding support</span></a>.
-Bindings reside beneath the frontend layer and accept the forwarded requests</p>
-<p>Currently, the available bindings are:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../ipc/index.html#communication-ipc"><span class="std std-ref">IPC (LoLa)</span></a></p></li>
-<li><p><a class="reference internal" href="../index.html#mock-binding"><span class="std std-ref">mock binding</span></a></p></li>
-</ul>
+<div class="need_container docutils container" id="SNCB-0fdc3657">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__initialize">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Initialize</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__initialize">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__initialize" title="logic_arc_int_op__com__initialize">logic_arc_int_op__com__initialize</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-b2bc284d">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__offer_service">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Offer Service</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__offer_service">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__offer_service" title="logic_arc_int_op__com__offer_service">logic_arc_int_op__com__offer_service</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-6053ca3c">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__update">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Update</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__update">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__update" title="logic_arc_int_op__com__update">logic_arc_int_op__com__update</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-694d03d8">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__send">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Send</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__send">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__send" title="logic_arc_int_op__com__send">logic_arc_int_op__com__send</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-94282a39">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__startfindserv">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">StartFindService</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__startfindserv">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__startfindserv" title="logic_arc_int_op__com__startfindserv">logic_arc_int_op__com__startfindserv</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-f2a37701">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__createproxy">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">CreateProxy</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__createproxy">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__createproxy" title="logic_arc_int_op__com__createproxy">logic_arc_int_op__com__createproxy</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-688b6b7c">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__subscribe">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Subscribe</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__subscribe">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__subscribe" title="logic_arc_int_op__com__subscribe">logic_arc_int_op__com__subscribe</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-965cf4af">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__getnewsamples">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">GetNewSamples</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="logic_arc_int_op__com__getnewsamples">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__com__getnewsamples" title="logic_arc_int_op__com__getnewsamples">logic_arc_int_op__com__getnewsamples</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -893,9 +1190,7 @@ Bindings reside beneath the frontend layer and accept the forwarded requests</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frontend">Frontend</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-description">Interface Description</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bindings">Bindings</a></li>
 </ul>
 </li>
 </ul>

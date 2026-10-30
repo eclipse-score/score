@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Feature Architecture &#8212; S-CORE  documentation</title>
+    <title>AI Platform Architecture &#8212; S-CORE  documentation</title>
   
   
   
@@ -558,12 +558,12 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">AI Platform</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Feature Architecture</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">AI Platform Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gen_ai/index.html">Gen AI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">AI Platform Requirements</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Baselibs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
@@ -621,7 +621,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">AI Platform</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Feature Architecture</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AI Platform Architecture</span></li>
   </ul>
 </nav>
 </div>
@@ -638,13 +638,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="feature-architecture">
-<h1>Feature Architecture<a class="headerlink" href="#feature-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-78def9d6">
+  <section id="ai-platform-architecture">
+<h1>AI Platform Architecture<a class="headerlink" href="#ai-platform-architecture" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-5ae2af69">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">AI-Platform Architecture</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">AI Platform Architecture</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -683,7 +683,9 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1ef2d4ef">
+<section id="ai-platform-feature">
+<h2>AI Platform Feature<a class="headerlink" href="#ai-platform-feature" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-0d9d98c3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -727,13 +729,14 @@
 </table>
 </div>
 </div>
-<section id="interfaces">
-<h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
+</section>
+<section id="logical-interfaces">
+<h2>Logical Interfaces<a class="headerlink" href="#logical-interfaces" title="Link to this heading">#</a></h2>
 <p><strong>Inference</strong></p>
 <p>The inference interface is the application-facing entry point of the AI Platform.
 It is intentionally narrow: it exposes the common denominator of the supported backends and omits vendor-specific
 options, accelerator selection and memory placement, which remain platform-internal.</p>
-<div class="need_container docutils container" id="SNCB-22e93c62">
+<div class="need_container docutils container" id="SNCB-6bf01a0e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__ai_platform__inference_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -780,7 +783,7 @@ options, accelerator selection and memory placement, which remain platform-inter
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6af39bf0">
+<div class="need_container docutils container" id="SNCB-3f247486">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__load">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -824,7 +827,7 @@ Input and output descriptors are fixed once the model is loaded.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cc563e6b">
+<div class="need_container docutils container" id="SNCB-4f97c8ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__describe">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -867,7 +870,7 @@ Input and output descriptors are fixed once the model is loaded.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e4331a88">
+<div class="need_container docutils container" id="SNCB-c32056f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__invoke">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -911,7 +914,7 @@ Exceeding the deadline is reported as an error instead of blocking the caller in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-76e8fadc">
+<div class="need_container docutils container" id="SNCB-f89afef2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__invoke_async">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -954,7 +957,7 @@ Exceeding the deadline is reported as an error instead of blocking the caller in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c71948c2">
+<div class="need_container docutils container" id="SNCB-fb78c463">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__cancel">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -997,7 +1000,7 @@ Exceeding the deadline is reported as an error instead of blocking the caller in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6d3213a9">
+<div class="need_container docutils container" id="SNCB-3c219e59">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__ai_platform__unload">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1142,7 +1145,8 @@ does not appear in application code.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-platform-feature">AI Platform Feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-interfaces">Logical Interfaces</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-sketch">Interface Sketch</a></li>
 </ul>
   </nav></div>
