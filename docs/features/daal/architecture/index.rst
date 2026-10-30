@@ -12,20 +12,23 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture
-====================
+Daal Architecture
+#################
 
 .. document:: Deterministic App Abstraction Layer Architecture
    :id: doc__daal_architecture
    :status: draft
    :version: 1
-   :safety: QM
+   :safety: ASIL_B
    :security: NO
    :realizes: wp__feature_arch[version==1]
+
+Daal Feature
+------------
 
 .. feat:: Deterministic App Abstraction Layer
    :id: feat__daal
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :status: valid
    :version: 1

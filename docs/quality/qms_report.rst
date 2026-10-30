@@ -13,10 +13,11 @@
    # *******************************************************************************
 
 
-Quality Report
-==============
+Platform Quality Report
+=======================
 
-.. document:: Quality Report
+
+.. document:: Platform Quality Report
    :id: doc__score_qms_report
    :status: draft
    :version: 1
@@ -246,20 +247,20 @@ Quality Management Generic work products
       - -
 
     * - :need:`wp__feature_arch`
-      - :need:`doc__frameworks_feo_feat_arch`
-      - :ndf:`copy('status', need_id='doc__frameworks_feo_feat_arch')`
+      - :need:`doc__feo_architecture`
+      - :ndf:`copy('status', need_id='doc__feo_architecture')`
 
     * - :need:`wp__feat_request`
-      - :need:`doc__frameworks_feo`
-      - :ndf:`copy('status', need_id='doc__frameworks_feo')`
+      - :need:`doc__feo`
+      - :ndf:`copy('status', need_id='doc__feo')`
 
     * - :need:`wp__requirements_feat`
-      - :need:`doc__frameworks_feo_feat_reqs`
-      - :ndf:`copy('status', need_id='doc__frameworks_feo_feat_reqs')`
+      - :need:`doc__feo_requirements`
+      - :ndf:`copy('status', need_id='doc__feo_requirements')`
 
     * - :need:`wp__fdr_reports`
-      - :need:`doc__req_inspection_frameworks_feo`
-      - :ndf:`copy('status', need_id='doc__req_inspection_frameworks_feo')`
+      - :need:`doc__req_inspection_feo`
+      - :ndf:`copy('status', need_id='doc__req_inspection_feo')`
 
     * - :need:`wp__feature_arch`
       - :need:`doc__lifecycle`

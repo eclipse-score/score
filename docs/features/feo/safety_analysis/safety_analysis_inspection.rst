@@ -12,8 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Feature Safety Analysis Inspection Checklist
-   :id: doc__saf_ana_inspec_frameworks_feo
+FEO Safety Analysis Inspection
+##############################
+
+.. document:: FEO Safety Analysis Inspection
+   :id: doc__saf_ana_inspec_feo
    :status: draft
    :version: 1
    :security: NO
@@ -21,8 +24,8 @@
    :tags: component_feo
    :realizes: wp__training_path[version==1]
 
-FEO Feature Safety Analysis Checklist
-=====================================
+FEO Safety Analysis Checklist
+=============================
 
    **Purpose**
    The purpose of this safety analysis (DFA and FMEA) checklist template is to collect the topics to be checked during verification of the safety analysis.

@@ -12,17 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Feature DFA
-   :id: doc__frameworks_feo_dfa
+FEO DFA
+#######
+
+.. document:: FEO DFA
+   :id: doc__feo_dfa
    :status: draft
    :version: 1
    :security: NO
    :safety: ASIL_B
-   :tags: frameworks_feo
+   :tags: feo
    :realizes: wp__feature_dfa[version==1]
 
-FEO Feature DFA
-===============
 
 For the DFA analysis where the failure initiators :need:`gd_guidl__dfa_failure_initiators` are used. The analysis is done before the platform DFA is done.
 Safety mechanisms that are used by many features are not considered here, but at the platform DFA. The analysis is only done for the needs of the FEO feature.
