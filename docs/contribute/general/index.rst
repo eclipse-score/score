@@ -20,6 +20,7 @@ General
 
    naming
    git
+   contribution_guide
    folder
    feature_flags
    contribution_attribution
