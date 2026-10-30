@@ -15,7 +15,7 @@
 .. doc_tool:: Doc-as-Code
    :id: doc_tool__doc_as_code
    :status: evaluated
-   :version: 3
+   :version: 4
    :tool_version: v8.1.2
    :tcl: LOW
    :safety_affected: YES
@@ -419,3 +419,8 @@ Architectural design
      — the ``docs()`` macro and its generated targets.
    * `Build commands <https://eclipse-score.github.io/docs-as-code/v8.1.2/reference/commands.html>`_
      — public and internal Bazel targets.
+
+Unresolved Tool Bugs
+~~~~~~~~~~~~~~~~~~~~
+
+`docs_as_code bug list <https://github.com/eclipse-score/docs-as-code/issues?q=is%3Aissue+state%3Aopen+type%3Abug>`_
