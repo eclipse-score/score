@@ -611,12 +611,40 @@ The script will wait for the user input to proceed to the next step and describe
 The user input can be judged as confirmation that the expected result is achieved.
 The final result will be `PASSED` or `FAILED`, based on the test executors confirmation.
 
+The results of the manual testing should be reconfirmed during subsequent verification cycles
+to ensure their continued validity especially for major release versions and to avoid regression issues.
+
+Verification of non-functional requirements
+-------------------------------------------
+
+Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by analysis.
+
+To verify such a non-functional or not feasibly testable requirement, the respective links for traceability need to be
+established as for any other automated test case. Therefore, the documentation for non-functional verification uses
+the same templates as any other automated or manual test and especially includes the Record Properties.
+
+The Record Properties for non-functional verification should be testtype `requirements-based` and derivation technique `requirement-analysis`.
+
+The non-functional verification requires a script to be provided which describes the analysis steps performed and their result.
+The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
+Within the review an approver confirms that automated or manual testing is not feasible for the specific analyzed requirement.
+
+In contrast to automated result comparison of an automated test case, the verification justification is logged for non-functional requirement.
+The documentation in form of a script will log a clear result so that it can be judged as confirmation that the expected result is achieved.
+The final result will be `PASSED` or `FAILED`, based on the test executors confirmation.
+
+The results of the non-functional verification activities should be reconfirmed during subsequent reviews or verification cycles
+to ensure their continued validity especially for major release versions and to avoid regression issues.
+
 Test selection and regression testing
 -------------------------------------
 
-All existing test cases should be executed within continuous integration pipelines to verify initially developed
+All existing automated test cases should be executed within continuous integration pipelines to verify initially developed
 components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
 automated tests get executed continuously covers the approach to identify regressions.
+
+Additionally, manual and non-functional verification activities should be carried out on regular basis,
+especially in preparation of major release versions to avoid regressions.
 
 Work products and traceability
 ------------------------------
