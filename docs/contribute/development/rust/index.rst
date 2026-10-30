@@ -25,4 +25,5 @@ project-specific guidance linked below.
 
    certification/index
    coding_guidelines
+   coding_rules/index
    rust_api_design
