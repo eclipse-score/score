@@ -253,8 +253,21 @@ This is the highest level of integration. This is the level where the S-CORE SW-
 
    If the system using the SW-platform has safety goals, the system integrator shall check for correctness and completeness of SW-platform testing and add verification where needed.
 
-   Note: The SW-platform integtion tests provided by S-CORE for :need:`aou_req__platform__testing` are for demonstration purpose only,
+   Note: The SW-platform integration tests provided by S-CORE for :need:`aou_req__platform__testing` are for demonstration purpose only,
    as described in the tailoring section of :need:`doc__score_platform_safety_plan` and thus do not claim correctness and completeness.
+
+.. aou_req:: Unit test execution across build configurations and target systems
+   :id: aou_req__platform__ut_execution_consistency
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :tags: user
+
+   If the system using the SW-platform has safety goals, the system integrator shall build and execute the relevant unit tests for every relevant build configuration and target system. At a minimum, the unit tests shall be executed on Linux both with and without code-coverage instrumentation, and on each relevant target system, such as QNX, without code-coverage instrumentation. The non-coverage builds shall use the compiler options permitted for the safety and security product.
+
+   Note: Code-coverage instrumentation requires compiler options that differ from the options recommended or permitted for the safety product. Consequently, the results of a coverage-instrumented build do not provide the same assurance as results from a build using the safety-permitted compiler options. The system integrator shall therefore treat the non-coverage execution on each relevant target system as a separate safety-relevant verification activity and shall ensure that the test results are equivalent across the coverage and non-coverage executions. Any difference shall be analyzed and resolved or documented in the system's verification and safety documentation.
 
 .. aou_req:: Integrator safety anomaly reporting
    :id: aou_req__platform__integration_safety_anomaly
