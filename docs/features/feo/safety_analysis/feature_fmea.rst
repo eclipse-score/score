@@ -12,17 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Feature FMEA
-   :id: doc__frameworks_feo_fmea
+FEO FMEA
+########
+
+.. document:: FEO FMEA
+   :id: doc__feo_fmea
    :status: draft
    :version: 1
    :security: NO
    :safety: ASIL_B
-   :tags: frameworks_feo
+   :tags: feo
    :realizes: wp__feature_fmea[version==1]
 
-FEO Feature FMEA
-================
 
 Failure Mode List
 -----------------

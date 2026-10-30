@@ -17,9 +17,9 @@ Deterministic App Abstraction Layer
 --------------------------------------
 .. document:: Deterministic App Abstraction Layer
    :id: doc__daal
-   :status: valid
+   :status: draft
    :version: 1
-   :safety: QM
+   :safety: ASIL_B
    :security: NO
    :tags: contribution_request, feature_request
    :realizes: wp__feat_request[version==1]

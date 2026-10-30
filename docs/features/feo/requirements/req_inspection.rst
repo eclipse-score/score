@@ -12,14 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+FEO Requirement Inspection
+##########################
 
-.. document:: FEO Feature Requirements Inspection Checklist
-   :id: doc__req_inspection_frameworks_feo
+.. document:: FEO Requirements Inspection
+   :id: doc__req_inspection_feo
    :status: draft
    :version: 2
    :security: NO
    :safety: ASIL_B
-   :tags: frameworks_feo
+   :tags: feo
    :realizes: wp__requirements_inspect[version==1]
 
 

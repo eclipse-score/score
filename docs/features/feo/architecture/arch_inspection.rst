@@ -12,17 +12,20 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Feature Architecture Inspection Checklist
-   :id: doc__arch_inspection_frameworks_feo
+FEO Architecture Inspection
+###########################
+
+.. document:: FEO Architecture Inspection
+   :id: doc__arch_inspection_feo
    :status: draft
    :version: 1
    :security: NO
    :safety: ASIL_B
-   :tags: frameworks_feo
+   :tags: feo
    :realizes: wp__sw_arch_verification[version==1]
 
-FEO Feature Architecture Inspection Checklist
-=============================================
+FEO Architecture Inspection Checklist
+=====================================
 
 Purpose
 -------

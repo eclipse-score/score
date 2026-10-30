@@ -12,20 +12,23 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Assumptions of Use Requirements
-   :id: doc__frameworks_feo_aou_reqs
+FEO Assumption of Use
+#####################
+
+.. document:: FEO Assumptions of Use
+   :id: doc__feo_aou_requirements
    :status: draft
    :version: 1
    :security: NO
    :safety: ASIL_B
    :realizes: wp__requirements_feat_aou[version==1]
 
-FEO Feature Assumption of Use Requirements
-==========================================
+FEO Assumption of Use Requirements
+==================================
 
 
 .. aou_req:: FEO something
-   :id: aou_req__feature_feo__something
+   :id: aou_req__feo__something
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -35,4 +38,4 @@ FEO Feature Assumption of Use Requirements
    Something shall be done.
 
 .. needextend:: c.this_doc() and is_external == False and "frameworks/feo/requirements" in docname
-   :+tags: frameworks_feo
+   :+tags: feo

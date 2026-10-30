@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Fixed execution order framework
-###############################
+Fixed Execution Order
+#####################
 
-.. document:: Fixed execution order framework
+.. document:: Fixed Execution Order
    :id: doc__frameworks_feo
    :status: valid
    :version: 1
@@ -28,15 +28,15 @@ Fixed execution order framework
 .. toctree::
    :hidden:
 
-   requirements/feature_req.rst
+   requirements/index.rst
    requirements/aou_req.rst
-   requirements/chklst_req_inspection.rst
-   architecture/feature_architecture
-   architecture/chklst_arch_inspection.rst
+   requirements/req_inspection.rst
+   architecture/index.rst
+   architecture/arch_inspection.rst
    safety_planning/index.rst
    safety_analysis/feature_fmea.rst
    safety_analysis/feature_dfa.rst
-   safety_analysis/chklst_safety_analysis_inspection.rst
+   safety_analysis/safety_analysis_inspection.rst
 
 Feature flag
 ============

@@ -12,9 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
-Feature Safety Work Products List
-=================================
+FEO Safety Work Products
+########################
 
 .. document:: FEO Safety Work Products
    :id: doc__feo_safety_wp
@@ -23,10 +22,10 @@ Feature Safety Work Products List
    :security: NO
    :safety: ASIL_B
    :realizes: wp__platform_safety_plan[version==1]
-   :tags: framework_feo
+   :tags: feo
 
 
-.. list-table:: FEO Feature Work Products
+.. list-table:: FEO Work Products
     :header-rows: 1
 
     * - Work product Id
@@ -37,47 +36,47 @@ Feature Safety Work Products List
     * - :need:`wp__feat_request`
       - :need:`gd_temp__change_feature_request`
       - :ndf:`copy('status', need_id='gd_temp__change_feature_request')`
-      - :need:`doc__frameworks_feo`
+      - :need:`doc__feo`
 
     * - :need:`wp__requirements_feat`
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
-      - :need:`doc__frameworks_feo_feat_reqs`
+      - :need:`doc__feo_requirements`
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-      - :need:`doc__frameworks_feo_aou_reqs`
+      - :need:`doc__feo_aou_requirements`
 
     * - :need:`wp__feature_arch`
       - :need:`gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
-      - :need:`doc__frameworks_feo_feat_arch`
+      - :need:`doc__feo_architecture`
 
     * - :need:`wp__feature_fmea`
       - :need:`gd_temp__feat_saf_fmea`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_fmea')`
-      - :need:`doc__frameworks_feo_fmea`
+      - :need:`doc__feo_fmea`
 
     * - :need:`wp__feature_dfa`
       - :need:`gd_temp__feat_saf_dfa`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_dfa')`
-      - :need:`doc__frameworks_feo_dfa`
+      - :need:`doc__feo_dfa`
 
     * - :need:`wp__fdr_reports` (Features's Safety Analyses & DFA)
       - :need:`gd_chklst__safety_analysis`
       - :ndf:`copy('status', need_id='gd_chklst__safety_analysis')`
-      - :need:`doc__saf_ana_inspec_frameworks_feo`
+      - :need:`doc__saf_ana_inspec_feo`
 
     * - :need:`wp__requirements_inspect`
       - :need:`gd_chklst__req_inspection`
       - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-      - :need:`doc__req_inspection_frameworks_feo`
+      - :need:`doc__req_inspection_feo`
 
     * - :need:`wp__sw_arch_verification`
       - :need:`gd_chklst__arch_inspection_checklist`
       - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-      - :need:`doc__arch_inspection_frameworks_feo`
+      - :need:`doc__arch_inspection_feo`
 
     * - :need:`wp__verification_feat_int_test`
       - :need:`gd_guidl__verification_guide`
