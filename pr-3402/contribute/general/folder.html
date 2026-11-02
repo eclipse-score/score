@@ -705,6 +705,18 @@ docs/                              -&gt; Documentation of the reference integrat
 ├── score_releases/                -&gt; [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">wp__platform_sw_release_note</a>]
 └── verification_report/           -&gt; Platform verification report (reporting all platform feature's verifications)
                                       [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
+feature_integration_tests/         -&gt; Feature integration tests executed in the reference integration.
+│                                     [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>]
+├── configs/                       -&gt; Configuration files for test execution
+├── itf/                           -&gt; Target-based tests using the Integration Test Framework
+├── test_cases/                    -&gt; Test orchestration, assertions, and shared fixtures
+│   └── tests/
+│       └── &lt;feature_name&gt;/        -&gt; Test cases grouped by the feature under verification
+└── test_scenarios/                -&gt; Executable scenarios invoked by the test cases
+    ├── cpp/
+    │   └── &lt;feature_name&gt;/        -&gt; C++ scenarios for the feature
+    └── rust/
+        └── &lt;feature_name&gt;/        -&gt; Rust scenarios for the feature
 images/                            -&gt; Concrete images for each target platform as Bazel modules.
                                       Each platform has its own folder named <code class="docutils literal notranslate"><span class="pre">platform_arch</span></code>,
                                       e.g. <code class="docutils literal notranslate"><span class="pre">qnx_aarch64</span></code>, <code class="docutils literal notranslate"><span class="pre">autosd_x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">ebclfsa_aarch64</span></code>,
@@ -724,6 +736,11 @@ showcases/                         -&gt; S-CORE wide showcases deployed into ima
 score_starter                      -&gt; Launcher script to select and run an integration scenario
 MODULE.bazel                       -&gt; Bazel module definition
 README.md                          -&gt; Entrypoint of the repository</pre>
+<p>Language and feature subfolders under <code class="docutils literal notranslate"><span class="pre">feature_integration_tests/</span></code> are only needed when used.
+Use the documented feature name consistently for test cases and scenarios, and keep shared fixtures
+at the nearest common parent. Feature integration tests verify feature requirements, whereas
+<code class="docutils literal notranslate"><span class="pre">platform_integration_tests/</span></code> verify stakeholder requirements; execution on hardware or QEMU
+alone does not determine the test level.</p>
 </section>
 <section id="module-folder-structure">
 <span id="id2"></span><h2>Module Folder Structure<a class="headerlink" href="#module-folder-structure" title="Link to this heading">#</a></h2>
