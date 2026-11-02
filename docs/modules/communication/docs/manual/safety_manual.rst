@@ -38,8 +38,9 @@ For the communication module the following safety related stakeholder requiremen
 
 The safe IPC communication interfaces supported are defined as:
 
-- event: :need:`feat_req__com__event_type`
-- method: :need:`feat_req__com__method`
+- event: :need:`feat_req__com__event_type_structure`
+- method: :need:`feat_req__com__method_structure`
+- field: :need:`feat_req__com__field_structure`
 
 Currently there is no safe inter-ECU communication supported.
 
