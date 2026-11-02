@@ -569,13 +569,13 @@ to ensure their continued validity especially for major release versions and to 
 Verification of non-functional requirements
 -------------------------------------------
 
-Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by analysis.
+Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by other manual verification methods, e.g. checklist based analysis.
 
 To verify such a non-functional or not feasibly testable requirement, the respective links for traceability need to be
-established as for any other automated test case. Therefore, the documentation for non-functional verification uses
-the same templates as any other automated or manual test and especially includes the Record Properties.
+established as for any other automated or manual test case. Therefore, the documentation for non-functional verification uses
+the same templates as automated or manual test and especially includes the Record Properties.
 
-The Record Properties for non-functional verification should be testtype `requirements-based` and derivation technique `requirement-analysis`.
+The Record Properties for non-functional verification is set to testtype `manual-requirement-verification`.
 
 The non-functional verification requires a script to be provided which describes the analysis steps performed and their result.
 The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
@@ -595,8 +595,11 @@ All existing automated test cases should be executed within continuous integrati
 components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
 automated tests get executed continuously covers the approach to identify regressions.
 
-Additionally, manual and non-functional verification activities should be carried out on regular basis,
-especially in preparation of major release versions to avoid regressions.
+Additionally, all manual verification activities verifying requirements or architectural elements shall be carried out at minimum for major version releases to avoid regressions.
+Their results shall be documented as part of the verification reports.
+Committers are responsible for ensuring that the manual and non-functional verification is still valid when performing a feature release.
+Remark: When the release baseline of a feature is intended to be used as a basis for later major version releases
+the pre-check of manual verification activities ease the later platform integration and verification process.
 
 Work products and traceability
 ------------------------------
