@@ -60,14 +60,16 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 #
 ###############################################################################
 bazel_dep(name = "score_tooling", version = "1.1.2")
-bazel_dep(name = "score_docs_as_code", version = "8.4.0")
-bazel_dep(name = "score_process_description", version = "2.1.2")
+bazel_dep(name = "score_docs_as_code", version = "8.6.0")
+bazel_dep(name = "score_process_description", version = "2.2.2")
 
 # TODO: Remove once https://github.com/eclipse-score/docs-as-code/pull/943 is released
 git_override(
     module_name = "score_docs_as_code",
+    commit = "f4f7880167cd6f33720d31d15322ec9586bc2cd8",
+    patch_strip = 1,
+    patches = ["//:docs_as_code_dec_rec.patch"],
     remote = "https://github.com/eclipse-score/docs-as-code.git",
-    commit = "716a81a482566f8095c146e1814427d6d053b4f7",
 )
 
 # Provide the tools from the devcontainer to Bazel

@@ -90,6 +90,20 @@ major version.
 
 For the release execution follow the steps described in :ref:`module_release_manual`.
 
+Release Verification and Approval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before a module or platform release is finalized, it is verified and approved by the
+:need:`rl__quality_manager` and the :need:`rl__project_lead` (:need:`wf__vy_ap_modrelease`,
+:need:`wf__vy_ap_pltrelease`). This confirms that the process conformance check
+(:need:`wp__qms_report`) has been performed and the :need:`wp__qms_plan` is up to date, as
+described in the Quantitative Quality Goals of the :need:`doc__platform_quality_plan`.
+
+This also confirms that the required Work Product Reviews (:need:`wf__exe_wp_review`) have been
+performed and passed, as documented in :need:`wp__verification_platform_ver_report` or
+:need:`wp__verification_module_ver_report`, and that work products are not left in draft or
+template state (see "Work Product Quality Goals" in :need:`doc__platform_quality_plan`).
+
 Identification
 ^^^^^^^^^^^^^^
 

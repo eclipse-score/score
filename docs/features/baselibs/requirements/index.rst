@@ -30,10 +30,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a utils library with general-purpose utility functionality, including Base64 encoding and decoding, scoped operations, string views, safe integer arithmetic, safe atomic operations, and defined program termination handling.
 
@@ -44,10 +43,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dev_experience__prog_languages[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide APIs for C++, Rust, or both, depending on the requirements of consuming platform components.
 
@@ -58,10 +56,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a JSON library with parsing functionality.
 
@@ -72,10 +69,9 @@ Baselibs Requirements
    :safety: QM
    :derived_from: stkh_req__functional_req__base_libraries[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a FlatBuffers library with serialization, read access, and structural verification of FlatBuffers data.
 
@@ -103,10 +99,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.
 
@@ -131,10 +126,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a container library offering additional container types not present in the ISO C++17 standard library.
 
@@ -158,10 +152,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide bit manipulation utilities for low-level operations on integral types.
 
@@ -172,12 +165,30 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
+
+.. feat_req:: Operating System Abstraction Layer
+   :id: feat_req__baselibs__osal
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :satisfied_by: feat__baselibs[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The base libraries shall provide C++ operating system abstraction libraries for POSIX,
+   C standard library, Linux-specific, and QNX-specific services.
+
+   .. note::
+      The operating system abstraction libraries provide both ASIL-B and QM functionality.
+      The separation is defined by the component requirements and implemented by the
+      corresponding libraries' Bazel targets.
 
 .. feat_req:: Memory Library
    :id: feat_req__baselibs__memory_library
@@ -186,10 +197,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a memory management library that includes utilities for shared memory operations, polymorphic memory resources, position-independent pointers, endianness conversion, and inter-process synchronization mechanisms.
 
@@ -200,10 +210,9 @@ Baselibs Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
    :satisfied_by: feat__baselibs[version==1]
-   :status: valid
+   :status: valid_inspected
    :version: 2
    :valid_from: v1.0.0
-   :tags: inspected
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 

@@ -632,3 +632,6 @@ Logging Requirements
    :valid_from: v2.0.0
 
    The logging :term:`framework` shall be classified according to the overall system's safety concept if logging information is part of the verification strategy.
+
+.. needextend:: "c.this_doc()"
+   :+tags: logging

@@ -149,6 +149,7 @@ The public API for the frontend is defined as:
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__orchestration__orch_code_api[version==1]
 
    .. needarch::
       :scale: 50
@@ -163,6 +164,7 @@ The public API for the frontend is defined as:
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__orchestration__orch_single_deploy[version==1]
 
 
    .. needarch::

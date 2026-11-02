@@ -19,7 +19,7 @@ Platform Safety Manual
 .. document:: Platform Safety Manual
    :id: doc__score_platform_safety_manual
    :status: draft
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: NO
    :realizes: wp__module_safety_manual[version==1]
@@ -64,7 +64,7 @@ Assumptions on the Environment
 
 Generally the assumption of the project platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module's safety concept.
 
-**<List here all the OS calls the project platform expects to be safe.>**
+**The platform repository does not add implementation, so the user has to check each of the module's safety manuals of the modules he incorporates in his SW platform to collect the full list of the OS functions required to be at least ASIL B qualified.**
 
 List of AoUs expected from the environment the platform runs on:
 
@@ -127,7 +127,7 @@ separate process and may remain QM.
 Safety Anomalies
 ----------------
 
-Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes <add link to release note>.
+Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_.
 
 References
 ----------
@@ -136,10 +136,8 @@ References
 
 `Baselibs Safety Manual <https://eclipse-score.github.io/baselibs/main/module/manuals/safety_manual.html>`_
 
-`IPC Safety Manual <https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html>`_
+`Communication Safety Manual <https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html>`_
 
-`FEO Safety Manual <https://eclipse-score.github.io/score/main/modules/feo/docs/manual/safety_manual.html>`_
+`Lifecycle Safety Manual <https://eclipse-score.github.io/lifecycle/main/module/manuals/safety_manual.html>`_
 
-`KVS Safety Manual <https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html>`_
-
-`Orchestrator Safety Manual <https://eclipse-score.github.io/score/main/modules/orchestrator/docs/manual/safety_manual.html>`_
+`Persistency Safety Manual <https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html>`_

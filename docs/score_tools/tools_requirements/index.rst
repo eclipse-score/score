@@ -92,7 +92,3 @@ List of all requirements for tools of S-CORE that are not defined or addressed t
     * - :need:`gd_req__problem_check_closing`
       - Problem Resolution closing check
       - GitHub issues will be used to verify all mandatory attributes before closing
-
-    * - :need:`gd_req__impl_dependency_analysis`
-      - Dependency Analysis
-      - SBOM will be used to support design inspection an safety analysis
