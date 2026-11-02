@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-3933d201">
+  <div class="need_container docutils container" id="SNCB-2d024132">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1294,11 +1294,11 @@ to ensure their continued validity especially for major release versions and to 
 </section>
 <section id="verification-of-non-functional-requirements">
 <h3>Verification of non-functional requirements<a class="headerlink" href="#verification-of-non-functional-requirements" title="Link to this heading">#</a></h3>
-<p>Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by analysis.</p>
+<p>Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by other manual verification methods, e.g. checklist based analysis.</p>
 <p>To verify such a non-functional or not feasibly testable requirement, the respective links for traceability need to be
-established as for any other automated test case. Therefore, the documentation for non-functional verification uses
-the same templates as any other automated or manual test and especially includes the Record Properties.</p>
-<p>The Record Properties for non-functional verification should be testtype <cite>requirements-based</cite> and derivation technique <cite>requirement-analysis</cite>.</p>
+established as for any other automated or manual test case. Therefore, the documentation for non-functional verification uses
+the same templates as automated or manual test and especially includes the Record Properties.</p>
+<p>The Record Properties for non-functional verification is set to testtype <cite>manual-requirement-verification</cite>.</p>
 <p>The non-functional verification requires a script to be provided which describes the analysis steps performed and their result.
 The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
 Within the review an approver confirms that automated or manual testing is not feasible for the specific analyzed requirement.</p>
@@ -1313,8 +1313,11 @@ to ensure their continued validity especially for major release versions and to 
 <p>All existing automated test cases should be executed within continuous integration pipelines to verify initially developed
 components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
 automated tests get executed continuously covers the approach to identify regressions.</p>
-<p>Additionally, manual and non-functional verification activities should be carried out on regular basis,
-especially in preparation of major release versions to avoid regressions.</p>
+<p>Additionally, all manual verification activities verifying requirements or architectural elements shall be carried out at minimum for major version releases to avoid regressions.
+Their results shall be documented as part of the verification reports.
+Committers are responsible for ensuring that the manual and non-functional verification is still valid when performing a feature release.
+Remark: When the release baseline of a feature is intended to be used as a basis for later major version releases
+the pre-check of manual verification activities ease the later platform integration and verification process.</p>
 </section>
 <section id="work-products-and-traceability">
 <h3>Work products and traceability<a class="headerlink" href="#work-products-and-traceability" title="Link to this heading">#</a></h3>
