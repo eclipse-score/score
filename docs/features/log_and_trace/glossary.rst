@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging Glossary
-################
+Log and Trace Glossary
+######################
 
 .. glossary::
 

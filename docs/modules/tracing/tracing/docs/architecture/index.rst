@@ -22,7 +22,7 @@ Tracing Component Architecture
    :status: valid
    :version: 1
    :implements: logic_arc_int__tracing__tracing[version==1]
-   :belongs_to: feat__tracing[version==1]
+   :belongs_to: feat__logtrace[version==1]
 
    .. needarch::
       :scale: 50

@@ -69,9 +69,17 @@ docs(
     source_dir = "docs",
 )
 
-# Exposed (without a nested BUILD file, to avoid excluding it from //:docs'
-# root-level glob) for cross-repo consumption by score_logging for trlc import.
+# Expose the requirements for cross-repository use without a nested BUILD file,
+# which would exclude them from //:docs' root-level glob.
 exports_files(
-    ["docs/features/log_and_trace/logging/requirements/index.rst"],
+    ["docs/features/log_and_trace/requirements/index.rst"],
+    visibility = ["//visibility:public"],
+)
+
+# Preserve the previously published file label after flattening Log and Trace.
+# Needs traceability is maintained separately through stable requirement IDs.
+alias(
+    name = "docs/features/log_and_trace/logging/requirements/index.rst",
+    actual = ":docs/features/log_and_trace/requirements/index.rst",
     visibility = ["//visibility:public"],
 )

@@ -12,22 +12,60 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _logtrace_architecture:
+.. _logging_architecture:
 .. _tracing_architecture:
 
-Tracing Architecture
-====================
+Log and Trace Architecture
+==========================
 
-.. feat:: Tracing
-   :id: feat__tracing
+.. document:: Log and Trace Architecture
+   :id: doc__logging_architecture
+   :status: valid
+   :version: 1
+   :safety: ASIL_B
    :security: YES
-   :safety: QM
+   :realizes: wp__feature_arch[version==1]
+
+.. feat:: Log and Trace
+   :id: feat__logtrace
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :uses: logic_arc_int__baselibs__json[version==1], logic_arc_int__baselibs__filesystem[version==1]
+
+Interfaces
+----------
+
+.. logic_arc_int:: Logging
+   :id: logic_arc_int__log_cpp__logging
+   :included_by: feat__logtrace
+   :security: YES
+   :safety: ASIL_B
    :status: valid
    :version: 1
 
 
+.. logic_arc_int:: Logging Rust
+   :id: logic_arc_int__log_rust__logging_rust
+   :included_by: feat__logtrace
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+
+.. logic_arc_int_op:: Log
+   :id: logic_arc_int_op__logging__log
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__log_cpp__logging
+
 .. logic_arc_int:: Tracing
    :id: logic_arc_int__tracing__tracing
-   :included_by: feat__tracing
+   :included_by: feat__logtrace
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -43,7 +81,7 @@ Tracing Architecture
 .. logic_arc_int_op:: Trace
    :id: logic_arc_int_op__tracing__trace
    :security: YES
-   :safety:  ASIL_B
+   :safety: ASIL_B
    :status: valid
    :version: 1
    :included_by: logic_arc_int__tracing__tracing
