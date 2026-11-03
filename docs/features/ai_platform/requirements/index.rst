@@ -14,8 +14,18 @@
 
 .. _ai_platform_requirements:
 
-Requirements
-============
+AI Platform Requirements
+########################
+
+.. document:: AI Platform Requirements
+   :id: doc__ai_platform_requirements
+   :status: draft
+   :version: 1
+   :safety: QM
+   :security: NO
+   :realizes: wp__requirements_feat[version==1]
+   :tags: ai-platform
+
 
 .. feat_req:: ML Execution
    :id: feat_req__ai_platform__workloads_execution
@@ -94,3 +104,42 @@ Requirements
    :valid_from: v2.0.0
 
    The platform shall select inference backends statically at build time to ensure deterministic runtime behavior.
+
+.. feat_req:: AI Agent Resource Budgets
+   :id: feat_req__ai_platform__agent_execution
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :derived_from: stkh_req__ai_platform__agent_execution[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall schedule AI workloads via the existing execution management mechanisms with configurable resource budgets per criticality domain.
+
+.. feat_req:: Model Artifact Lifecycle Management
+   :id: feat_req__ai_platform__model_lifecycle
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :derived_from: stkh_req__ai_platform__model_lifecycle[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall manage AI model artifacts with unique version identification and shall support update and rollback of model artifacts independently of the application software.
+
+.. feat_req:: AI Workload Metrics
+   :id: feat_req__ai_platform__observability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :derived_from: stkh_req__ai_platform__observability[version==1]
+   :satisfied_by: feat__ai_platform[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The platform shall report inference latency, memory consumption and inference errors of AI workloads via the existing logging and tracing mechanisms.

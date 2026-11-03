@@ -26,3 +26,4 @@ section in the navigation menu; select one to browse its decision records.
    infrastructure/index
    process/index
    integration/index
+   ai/index

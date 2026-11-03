@@ -202,7 +202,6 @@ release, as part of the Tool Verification Report.
      - :need:`doc_tool__clang`
      - YES
 
-
 2b Rust
 +++++++
 
@@ -569,7 +568,8 @@ release, as part of the Tool Verification Report.
      - YES
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__qcc`
-    - YES
+     - YES
+
    * - 5a-3
      - Clang
      - Host C++ compiler used for LLVM source-based coverage instrumentation and reporting workflows

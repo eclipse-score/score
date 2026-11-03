@@ -371,7 +371,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    Note1: Reasons for not needing program flow monitoring could be an OS scheduler with timing and execution guarantees.
    Or that in case of non/late execution of the application the safety integrity of the system is not affected.
 
-   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features_1`
+   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__health_management`
 
 Assumptions on Safety System
 ----------------------------
@@ -389,13 +389,13 @@ In this section assumptions are described which need to be fulfilled by the syst
 
    If the system using the SW-platform has safety goals, the system shall provide state-of-the art hardware safety mechanisms, namely
 
-   - :need:`stkh_req__dependability__safety_features_3`
-   - :need:`stkh_req__dependability__safety_features_4`
-   - :need:`stkh_req__dependability__safety_features_5`
-   - :need:`stkh_req__dependability__safety_features_6`
-   - :need:`stkh_req__dependability__safety_features_7`
-   - :need:`stkh_req__dependability__safety_features_8`
-   - :need:`stkh_req__dependability__safety_features_10`
+   - :need:`stkh_req__dependability__hw_self_test`
+   - :need:`stkh_req__dependability__safe_startup_reset`
+   - :need:`stkh_req__dependability__dma_protection`
+   - :need:`stkh_req__dependability__memory_protection`
+   - :need:`stkh_req__dependability__cache_protection`
+   - :need:`stkh_req__dependability__mem_error_correction`
+   - :need:`stkh_req__dependability__external_supervision`
 
    Note2: These safety mechanisms are mostly OS/Hypervisor/HW specific, so the system integrator can only expect S-CORE support for the reference OS/Hypervisor/HW combination.
 
@@ -410,7 +410,7 @@ In this section assumptions are described which need to be fulfilled by the syst
 
    If the system using the SW-platform has safety goals, the system shall provide an external health management element which is able to initiate a safe system state.
 
-   Note: This can be an "External Hardware Watchdog" and/or "Voltage Moditoring" (see :need:`stkh_req__dependability__safety_features_10`)
+   Note: This can be an "External Hardware Watchdog" and/or "Voltage Moditoring" (see :need:`stkh_req__dependability__external_supervision`)
 
 .. aou_req:: Process Isolation
    :id: aou_req__platform__process_isolation

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,16 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_frontent:
+AI
+==
 
-frontent
-########
-
-Component Documents
-===================
+This section contains AI-related design decisions and guidance for S-CORE.
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
+   :maxdepth: 1
+   :glob:
 
-   architecture/index
+   DR-*-ai*

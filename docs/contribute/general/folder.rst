@@ -96,6 +96,18 @@ cross-repository builds and detect integration issues early in the development c
     ├── score_releases/                -> [:need:`wp__platform_sw_release_note`]
     └── verification_report/           -> Platform verification report (reporting all platform feature's verifications)
                                           [:need:`wp__verification_platform_ver_report`]
+    feature_integration_tests/         -> Feature integration tests executed in the reference integration.
+    │                                     [:need:`wp__verification_feat_int_test`]
+    ├── configs/                       -> Configuration files for test execution
+    ├── itf/                           -> Target-based tests using the Integration Test Framework
+    ├── test_cases/                    -> Test orchestration, assertions, and shared fixtures
+    │   └── tests/
+    │       └── <feature_name>/        -> Test cases grouped by the feature under verification
+    └── test_scenarios/                -> Executable scenarios invoked by the test cases
+        ├── cpp/
+        │   └── <feature_name>/        -> C++ scenarios for the feature
+        └── rust/
+            └── <feature_name>/        -> Rust scenarios for the feature
     images/                            -> Concrete images for each target platform as Bazel modules.
                                           Each platform has its own folder named ``platform_arch``,
                                           e.g. ``qnx_aarch64``, ``autosd_x86_64``, ``ebclfsa_aarch64``,
@@ -116,12 +128,18 @@ cross-repository builds and detect integration issues early in the development c
     MODULE.bazel                       -> Bazel module definition
     README.md                          -> Entrypoint of the repository
 
+Language and feature subfolders under ``feature_integration_tests/`` are only needed when used.
+Use the documented feature name consistently for test cases and scenarios, and keep shared fixtures
+at the nearest common parent. Feature integration tests verify feature requirements, whereas
+``platform_integration_tests/`` verify stakeholder requirements; execution on hardware or QEMU
+alone does not determine the test level.
+
 .. _module_folder_structure:
 
 Module Folder Structure
 -----------------------
 
-The modules and components shall follow the folder structure which was presented. However if there are good reasons the structure can be adapted.
+The modules and components shall follow the folder structure which was presented.
 This is confirmed by :need:`dec_rec__platform__module_folder_structure`.
 
 For more details on the folder structure of a module see `module template repository <https://github.com/eclipse-score/module_template>`_ .

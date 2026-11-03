@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 Time Architecture
-=================
+#################
 
 .. document:: Time Architecture
    :id: doc__time_architecture
@@ -23,9 +23,15 @@ Time Architecture
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
+Time Feature
+------------
+
 .. feat:: Time
    :id: feat__time
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
+
+Logical Interfaces
+------------------

@@ -177,9 +177,14 @@ Resource and milestone planning is done as defined in the :doc:`project_manageme
 *Tools*
 
 The whole development and thus all work products are located in Github. The development is automated as much as possible and follows the defined processes.
-Github issues are used as planning tool as well as security information (weakness, vulnerability) reporting and managing tool.
+Github issues are used as planning tool as well as security information (weakness, vulnerability) managing tool.
 The issue types and issue types workflows are described in the platform management plan.
 For security relevant issues types a "security" label is used.
+
+Suspected vulnerabilities shall not be reported through public Github issues. Initial vulnerability
+reporting follows the project's `Security Policy <https://github.com/eclipse-score/.github/blob/main/SECURITY.md>`_
+and is only tracked via Github issues once triaged and, where applicable, coordinated for disclosure
+(see :need:`doc__platform_vulnerability_mgt_plan`).
 
 Reporting of vulnerabilities is supported here: `Eclipse general vulnerability tracker <https://gitlab.eclipse.org/security>`_.
 

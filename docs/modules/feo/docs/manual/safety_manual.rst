@@ -36,8 +36,8 @@ For FEO module the following safety related stakeholder requirements are assumed
 
 - :need:`stkh_req__app_architectures__support_time`
 - :need:`stkh_req__app_architectures__support_data`
-- :need:`stkh_req__dependability__safety_features_1`
-- :need:`stkh_req__dependability__safety_features_4`
+- :need:`stkh_req__dependability__health_management`
+- :need:`stkh_req__dependability__safe_startup_reset`
 
 Assumptions of Use
 ------------------
