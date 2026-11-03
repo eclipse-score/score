@@ -13,17 +13,17 @@
    # *******************************************************************************
 
 
-.. document:: Logging Requirements Inspection Checklist
-   :id: doc__logging_req_inspection
-   :status: draft
-   :version: 1
-   :safety: ASIL_B
-   :security: YES
-   :realizes: wp__requirements_inspect[version==1]
+.. document:: Log and Trace Requirements Inspection Checklist
+    :id: doc__log_and_trace_req_inspection
+    :status: draft
+    :version: 1
+    :safety: ASIL_B
+    :security: YES
+    :realizes: wp__requirements_inspect[version==1]
 
 
-Requirement Inspection Checklist
-================================
+Log and Trace Requirement Inspection Checklist
+==================================================
 
 Purpose
 -------
@@ -162,10 +162,9 @@ Note: If a Review ID is not applicable for your requirement, then state ""n/a" i
 The following requirements in "valid_inspected" state are in the scope of this inspection:
 
 .. needtable::
-   :filter: "logging" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and docname.startswith("features/log_and_trace/requirements/")
    :style: table
    :types: feat_req
-   :tags: logging
    :columns: id;status;tags
    :colwidths: 25,25,25
    :sort: title
@@ -173,10 +172,9 @@ The following requirements in "valid_inspected" state are in the scope of this i
 And also the following AoUs in "valid_inspected" state (for these please answer the questions above as if the AoUs are requirements, except question REQ_03_01):
 
 .. needtable::
-   :filter: "logging" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and docname.startswith("features/log_and_trace/requirements/")
    :style: table
    :types: aou_req
-   :tags: logging
    :columns: id;status;tags
    :colwidths: 25,25,25
    :sort: title

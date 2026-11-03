@@ -12,21 +12,23 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _log_and_trace_architecture:
 .. _logging_architecture:
+.. _tracing_architecture:
 
-Logging Architecture
-====================
+Log and Trace Architecture
+==========================
 
-.. document:: Logging Architecture
-   :id: doc__logging_architecture
+.. document:: Log and Trace Architecture
+   :id: doc__log_and_trace_architecture
    :status: valid
    :version: 1
    :safety: ASIL_B
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
-.. feat:: Logging
-   :id: feat__logging
+.. feat:: Log and Trace
+   :id: feat__log_and_trace
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -36,9 +38,9 @@ Logging Architecture
 Interfaces
 ----------
 
-.. logic_arc_int:: Logging C++
+.. logic_arc_int:: Logging
    :id: logic_arc_int__log_cpp__logging
-   :included_by: feat__logging
+   :included_by: feat__log_and_trace
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -53,7 +55,7 @@ Interfaces
 
 .. logic_arc_int:: Logging Rust
    :id: logic_arc_int__log_rust__logging_rust
-   :included_by: feat__logging
+   :included_by: feat__log_and_trace
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -72,3 +74,26 @@ Interfaces
    :status: valid
    :version: 1
    :included_by: logic_arc_int__log_cpp__logging
+
+.. logic_arc_int:: Tracing
+   :id: logic_arc_int__tracing__tracing
+   :included_by: feat__log_and_trace
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__com__tracing[version==1]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: Trace
+   :id: logic_arc_int_op__tracing__trace
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__tracing__tracing

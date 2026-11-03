@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging Glossary
-################
+Log and Trace Glossary
+######################
 
 .. glossary::
 
@@ -24,7 +24,7 @@ Logging Glossary
       Diagnostic Log and Trace
 
    framework
-      Framework is a structured and extensible foundation for developing specific types of functionality in this case, logging. It supplies a set of default behaviors and configurable options, allowing developers to tailor and extend its capabilities to meet their application and system need.
+      Framework is a structured and extensible foundation for developing specific types of functionality, in this case logging and tracing. It supplies a set of default behaviors and configurable options, allowing developers to tailor and extend its capabilities to meet their application and system need.
 
    platform
       Platform is the execution environment on which S-CORE runs. It includes, for example, hardware (HW), operating system (OS), ...
