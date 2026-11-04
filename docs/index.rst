@@ -322,7 +322,6 @@ Infrastructure and Tooling
    :hidden:
 
    introduction/index
-   modules/index
 
 .. raw:: html
 
