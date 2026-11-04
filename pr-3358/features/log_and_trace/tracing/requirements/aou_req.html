@@ -562,8 +562,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../daal/index.html">Deterministic App Abstraction Layer</a></li>
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">Fixed Execution Order</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Log and Trace</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../logging/index.html">Logging</a></li>
@@ -645,7 +653,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-c9386810">
+  <div class="need_container docutils container" id="SNCB-0ae1a346">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__tracing_aou_reqs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -690,11 +698,11 @@
 </div>
 <section id="tracing-feature-assumption-of-use">
 <h1>Tracing Feature Assumption of Use<a class="headerlink" href="#tracing-feature-assumption-of-use" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5d0d43f1">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__tracing__caller_logic_priority">
+<div class="need_container docutils container" id="SNCB-e5b192e9">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__tracing__caller_logic_precedence">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Caller Logic Priority Over Tracing</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Caller Logic precedence over Tracing</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -720,7 +728,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"><p>A trace client shall give its own functionality precedence over tracing. It shall not wait for tracing and shall continue when trace calls fail.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__tracing__caller_logic_priority" title="aou_req__tracing__caller_logic_priority">aou_req__tracing__caller_logic_priority</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__tracing__caller_logic_precedence" title="aou_req__tracing__caller_logic_precedence">aou_req__tracing__caller_logic_precedence</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -733,11 +741,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bead5c6a">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__tracing__data_contiguity">
+<div class="need_container docutils container" id="SNCB-bcfe5971">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__tracing__data_integrity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Trace Client Responsible for Data Contiguity</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Trace Client Responsible for Data Integrity</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -763,7 +771,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"><p>The trace client is responsible for the integrity of the data it hands over, from the trace call until the API signals completion.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__tracing__data_contiguity" title="aou_req__tracing__data_contiguity">aou_req__tracing__data_contiguity</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__tracing__data_integrity" title="aou_req__tracing__data_integrity">aou_req__tracing__data_integrity</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
