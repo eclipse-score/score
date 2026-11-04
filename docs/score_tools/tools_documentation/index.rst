@@ -22,7 +22,7 @@ Documentation Tools
    :filter: "tool_management" in tags and "tools_documentation" in tags and type == "doc_tool" and is_external == False
    :style: table
    :sort: status
-   :columns: id as "UID";title as "TITLE";version as "VERSION";status as "STATUS";tcl as "TCL";safety_affected as "SAFETY AFFECTED";security_affected as "SECURITY AFFECTED"
+   :columns: id as "UID";title as "TITLE";tool_version as "VERSION";status as "STATUS";tcl as "TCL";safety_affected as "SAFETY AFFECTED";security_affected as "SECURITY AFFECTED"
    :colwidths: 30,30,30,30,30,30,30
 
 .. toctree::
