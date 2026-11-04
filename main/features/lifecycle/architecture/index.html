@@ -562,8 +562,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../daal/index.html">Deterministic App Abstraction Layer</a></li>
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feo/index.html">Fixed Execution Order</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Lifecycle</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Lifecycle Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Lifecycle Requirements</a></li>
@@ -640,7 +648,7 @@
                   
   <section id="lifecycle-architecture">
 <h1>Lifecycle Architecture<a class="headerlink" href="#lifecycle-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-32371518">
+<div class="need_container docutils container" id="SNCB-22f5ffd4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,7 +693,7 @@
 </div>
 <section id="lifecycle-feature">
 <h2>Lifecycle Feature<a class="headerlink" href="#lifecycle-feature" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-09080d9a">
+<div class="need_container docutils container" id="SNCB-4dbe24eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -733,7 +741,7 @@
 <section id="logical-interfaces">
 <h2>Logical Interfaces<a class="headerlink" href="#logical-interfaces" title="Link to this heading">#</a></h2>
 <p><strong>Lifecycle</strong></p>
-<div class="need_container docutils container" id="SNCB-801ba9cd">
+<div class="need_container docutils container" id="SNCB-cd464443">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__lifecycle_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -783,7 +791,7 @@ It calls the Initialize() and Run() methods in sequence which need to be impleme
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-53c139ca">
+<div class="need_container docutils container" id="SNCB-57ec75fb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__initialize">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +846,7 @@ It calls the Initialize() and Run() methods in sequence which need to be impleme
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7475b831">
+<div class="need_container docutils container" id="SNCB-6f817edf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__run">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -893,7 +901,7 @@ It calls the Initialize() and Run() methods in sequence which need to be impleme
 </div>
 </div>
 <p><strong>Report Running</strong></p>
-<div class="need_container docutils container" id="SNCB-6296c6d7">
+<div class="need_container docutils container" id="SNCB-47441089">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__report_running_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -942,7 +950,7 @@ The interface only offers a simple function without the sourrounding framework o
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-79e9d737">
+<div class="need_container docutils container" id="SNCB-9c921336">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_running">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -998,7 +1006,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </div>
 </div>
 <p><strong>Alive</strong></p>
-<div class="need_container docutils container" id="SNCB-5cf80445">
+<div class="need_container docutils container" id="SNCB-62569929">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1046,7 +1054,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-306d5073">
+<div class="need_container docutils container" id="SNCB-951dd07d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_alive">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1100,7 +1108,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-00ad4efd">
+<div class="need_container docutils container" id="SNCB-ad1619f0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_failure">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1155,7 +1163,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </div>
 </div>
 <p><strong>Control</strong></p>
-<div class="need_container docutils container" id="SNCB-67cefb48">
+<div class="need_container docutils container" id="SNCB-c976dc83">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1203,7 +1211,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-246fea85">
+<div class="need_container docutils container" id="SNCB-71399166">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__activate_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1259,7 +1267,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-980002e2">
+<div class="need_container docutils container" id="SNCB-4c9f171e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__get_act_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1313,7 +1321,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-61915cd1">
+<div class="need_container docutils container" id="SNCB-a9a82bfc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__reg_callback">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1368,7 +1376,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </div>
 </div>
 <p><strong>Deadline</strong></p>
-<div class="need_container docutils container" id="SNCB-85d5382d">
+<div class="need_container docutils container" id="SNCB-a3f6f045">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__deadline_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1415,7 +1423,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5175b5f6">
+<div class="need_container docutils container" id="SNCB-be78ec3b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__min_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1458,7 +1466,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-20238c88">
+<div class="need_container docutils container" id="SNCB-0891fda0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__max_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1501,7 +1509,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f424f4c5">
+<div class="need_container docutils container" id="SNCB-4cf90ac5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_dl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1544,7 +1552,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4bdff263">
+<div class="need_container docutils container" id="SNCB-241125ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1587,7 +1595,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-23722879">
+<div class="need_container docutils container" id="SNCB-a74de38a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__end">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1630,7 +1638,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f92bc168">
+<div class="need_container docutils container" id="SNCB-e0fc82d3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__timer_expiry">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1673,7 +1681,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-14e08cd7">
+<div class="need_container docutils container" id="SNCB-d766aab2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1716,7 +1724,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a4527c32">
+<div class="need_container docutils container" id="SNCB-18f1c7cd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1759,7 +1767,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bb77c4eb">
+<div class="need_container docutils container" id="SNCB-92ee07d7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__check_cfg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1803,7 +1811,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </div>
 </div>
 <p><strong>Logical</strong></p>
-<div class="need_container docutils container" id="SNCB-ae73ad80">
+<div class="need_container docutils container" id="SNCB-0c9bd9d9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__logical_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1850,7 +1858,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-94265606">
+<div class="need_container docutils container" id="SNCB-efb7607f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__entry_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1893,7 +1901,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c584bd84">
+<div class="need_container docutils container" id="SNCB-f9ce6dd3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__exit_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1936,7 +1944,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f4e3da35">
+<div class="need_container docutils container" id="SNCB-300ad939">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__allowed_trans">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1979,7 +1987,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f0f76655">
+<div class="need_container docutils container" id="SNCB-5c119af2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_lg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2022,7 +2030,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e35eb039">
+<div class="need_container docutils container" id="SNCB-fb60e16d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__rec_checkpoint">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2065,7 +2073,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-46a58202">
+<div class="need_container docutils container" id="SNCB-fdd67c17">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2108,7 +2116,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ae5dd2bf">
+<div class="need_container docutils container" id="SNCB-6bb3a605">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2151,7 +2159,7 @@ Failure to report would eventually result in an activation timeout and forced te
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-231ad4ba">
+<div class="need_container docutils container" id="SNCB-965406e8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__verify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

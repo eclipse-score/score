@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Frameworks &#8212; S-CORE  documentation</title>
+    <title>Deterministic App Abstraction Layer &#8212; S-CORE  documentation</title>
   
   
   
@@ -62,7 +62,7 @@
     <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
     <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'features/frameworks/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/daal/index';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Fixed execution order framework" href="feo/index.html" />
-    <link rel="prev" title="Diagnostic and Fault Management Requirements" href="../diagnostics/requirements/index.html" />
+    <link rel="next" title="Daal Architecture" href="architecture/index.html" />
+    <link rel="prev" title="Configuration Model" href="../configuration/config_model/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -562,19 +562,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Frameworks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html">Fixed execution order framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="daal/index.html">Deterministic App Abstraction Layer</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Deterministic App Abstraction Layer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Daal Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Daal Requirements</a></li>
 </ul>
 </details></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feo/index.html">Fixed Execution Order</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../log_and_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
@@ -624,7 +625,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Frameworks</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Deterministic App Abstraction Layer</span></li>
   </ul>
 </nav>
 </div>
@@ -641,59 +642,107 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="frameworks">
-<h1>Frameworks<a class="headerlink" href="#frameworks" title="Link to this heading">#</a></h1>
+  <section id="deterministic-app-abstraction-layer">
+<h1>Deterministic App Abstraction Layer<a class="headerlink" href="#deterministic-app-abstraction-layer" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-e818927f">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__daal">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Deterministic App Abstraction Layer</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">contribution_request</span><span class="needs_spacer">, </span><span class="needs_data">feature_request</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__daal" title="doc__daal">doc__daal</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="feo/index.html">Fixed execution order framework</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#feature-flag">Feature flag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#abstract">Abstract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#applications">Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#activities">Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#application-activities">Application Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#service-activities">Service Activities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#communication">Communication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#process-thread-activity-mapping">Process/Thread/Activity Mapping</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="feo/index.html#static-mapping-of-activities-to-threads">Static mapping of activities to threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/index.html">Daal Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html#daal-feature">Daal Feature</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#lifecycle">Lifecycle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#scheduling">Scheduling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#executor-and-agents">Executor and Agents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#tracing">Tracing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#performance">Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#error-handling">Error Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feo/index.html#extended-features-for-s-core-v1-0">Extended features for S-CORE v1.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="feo/index.html#external-state">External state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feo/index.html#recording">Recording</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feo/index.html#reprocessing">Reprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feo/index.html#extended-error-handling">Extended Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Daal Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html#general">General</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html">Deterministic App Abstraction Layer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="daal/architecture/index.html">Feature Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="daal/requirements/index.html">Requirements</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="daal/requirements/index.html#general">General</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="daal/requirements/index.html#open-issues">Open Issues</a></li>
-<li class="toctree-l4"><a class="reference internal" href="daal/requirements/index.html#footnotes">Footnotes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#feature-flag">Feature flag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#abstract">Abstract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#motivation">Motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#rationale">Rationale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#backwards-compatibility">Backwards Compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#open-issues">Open Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="daal/index.html#footnotes">Footnotes</a></li>
 </ul>
 </div>
+</section>
+<section id="feature-flag">
+<h1>Feature flag<a class="headerlink" href="#feature-flag" title="Link to this heading">#</a></h1>
+<p>To activate this feature, use the following feature flag:</p>
+<p><code class="docutils literal notranslate"><span class="pre">experimental_daal</span></code></p>
+</section>
+<section id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
+<p>Provides an application abstraction layer and APIs for testing.
+Implements common code and several safety requirements.</p>
+</section>
+<section id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h1>
+<p>Currently there is no abstraction layer to make component tests independent from application frameworks like ‘Fixed Execution Order Framework’.
+With the abstraction layer you can test against different execution frameworks and in different environments (linux &amp; qnx).</p>
+</section>
+<section id="rationale">
+<h1>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h1>
+<p>The lifecycle states are designed like in usual execution frameworks to emulate the same behavior also in testing.
+Also error handling and health monitoring is part of the framework for emulation of all aspects.
+Different communication frameworks can be plugged in to use in testing.
+The idea is also to use the framework as a testing area for our future Autosar process.</p>
+</section>
+<section id="backwards-compatibility">
+<h1>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h1>
+<p>It can have impact in the Feo Framework because we need only one Lifecycle interface.</p>
+</section>
+<section id="open-issues">
+<h1>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h1>
+<p>[Any points that are still being decided/discussed.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While a CR is in draft, ideas can come up which warrant further discussion.
+Those ideas should be recorded so people know that they are being thought about but do not have a concrete resolution.
+This helps make sure all issues required for the CR to be ready for consideration are complete and reduces people duplicating prior discussion.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="footnotes">
+<h1>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h1>
+<p>[A collection of footnotes cited in the CR, and a place to list non-inline hyperlink targets.]</p>
 </section>
 
 
@@ -707,20 +756,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../diagnostics/requirements/index.html"
+       href="../configuration/config_model/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Diagnostic and Fault Management Requirements</p>
+        <p class="prev-next-title">Configuration Model</p>
       </div>
     </a>
     <a class="right-next"
-       href="feo/index.html"
+       href="architecture/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Fixed execution order framework</p>
+        <p class="prev-next-title">Daal Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -736,10 +785,30 @@
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Deterministic App Abstraction Layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-flag">Feature flag</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#open-issues">Open Issues</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/frameworks/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/daal/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
