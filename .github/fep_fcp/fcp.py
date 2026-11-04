@@ -193,6 +193,7 @@ class Ledger:
     closed_at: datetime | None = None
     tracking_issues: list[int] = field(default_factory=list)
     shepherds: list[str] = field(default_factory=list)
+    cancelled_by: str = ""
 
     def to_marker(self) -> str:
         data = asdict(self)
@@ -395,12 +396,14 @@ def _mentions(logins: list[str]) -> str:
     return ", ".join(f"@{login}" for login in logins) or "_no maintainers registered_"
 
 
-def _group_status(group: GroupResult, closed: bool) -> str:
+def _group_status(group: GroupResult, state: str) -> str:
     if group.status == "blocking":
         return f"🚫 changes requested by {', '.join(group.blocked_by)}"
     if group.status == "approved":
         return f"✅ approved by {', '.join(group.approved_by)}"
-    return "☑️ approved by silence" if closed else "⏳ no response yet"
+    if state in ("accepted", "rejected"):
+        return "☑️ approved by silence"
+    return "⏳ no response yet" if state == "open" else "– no response"
 
 
 def _dismissal_lines(evaluation: Evaluation) -> list[str]:
@@ -429,13 +432,13 @@ def _roles_line(ledger: Ledger, cfg: Config) -> str:
 def render_sticky(
     ledger: Ledger, evaluation: Evaluation, cfg: Config, now: datetime, reason: str = ""
 ) -> str:
-    closed = ledger.state != "open"
     headline = {
         "open": f"🟡 **Open**: closes **{_fmt(ledger.deadline)}** "
         f"({_duration(ledger.deadline - now)} left)",
         "accepted": f"✅ **Accepted**: FCP closed {_fmt(ledger.closed_at or now)}, {reason}",
         "rejected": f"🚫 **Rejected**: FCP closed {_fmt(ledger.closed_at or now)}, {reason}",
-        "cancelled": f"⏹️ **Cancelled**: the `{cfg.fcp_label}` label was removed before the FCP closed",
+        "cancelled": f"⏹️ **Cancelled** by {ledger.cancelled_by or 'removing the label'} on "
+        f"{_fmt(ledger.closed_at or now)}, before the FCP closed: nothing was decided",
     }[ledger.state]
     lines = [
         "## FEP Final Comment Period",
@@ -468,7 +471,7 @@ def render_sticky(
         ]
     lines += ["| Stakeholder group | Members | Status |", "|---|---|---|"]
     lines += [
-        f"| {g.name} | {_mentions(g.members)} | {_group_status(g, closed)} |"
+        f"| {g.name} | {_mentions(g.members)} | {_group_status(g, ledger.state)} |"
         for g in evaluation.groups
     ]
     lines.append("")
@@ -675,6 +678,34 @@ class Bot:
         comment.edit(body)
         return comment
 
+    def _is_chair(self, login: str | None) -> bool:
+        return bool(login) and login.lower() in {
+            c.lower() for c in self.cfg.chair_and_proxy
+        }
+
+    def _label_actor(self, pr: Any, action: str) -> str | None:
+        """Who last added (``labeled``) or removed (``unlabeled``) the FCP label."""
+        actor = None
+        for event in pr.get_issue_events():
+            label = (event.raw_data.get("label") or {}).get("name")
+            if event.event == action and label == self.cfg.fcp_label:
+                actor = event.actor.login if event.actor else None
+        return actor
+
+    def _chair_names(self) -> str:
+        return ", ".join(self.cfg.chair_and_proxy) or "none configured"
+
+    def _cancel(self, pr: Any, ledger: Ledger, by: str) -> None:
+        ledger.state = "cancelled"
+        ledger.closed_at = self.now
+        ledger.cancelled_by = by
+        for number in ledger.tracking_issues:
+            issue = self.repo.get_issue(number)
+            self._remove_label(issue)
+            issue.create_comment(
+                f"FEP Final Comment Period in #{pr.number} was cancelled by {by}."
+            )
+
     def _remove_label(self, issue: Any) -> None:
         try:
             issue.remove_from_labels(self.cfg.fcp_label)
@@ -699,7 +730,18 @@ class Bot:
 
         in_fcp = self.cfg.fcp_label in labels
         if in_fcp and (ledger is None or ledger.state in ("cancelled", "rejected")):
-            comment, ledger = self._start(pr, comment, labels)
+            actor = self._label_actor(pr, "labeled")
+            if self._is_chair(actor):
+                comment, ledger = self._start(pr, comment, labels)
+            else:
+                # Only the Architecture Community chair/proxy may start the FCP.
+                self._remove_label(pr)
+                pr.create_issue_comment(
+                    f"@{actor} only the Architecture Community chair or proxy ({self._chair_names()}) "
+                    f"can start the Final Comment Period, so the `{self.cfg.fcp_label}` label was "
+                    "removed again. Please ask them when the Shepherd considers the FEP ready."
+                )
+                in_fcp = False
         if ledger is None:
             self._status(
                 sha,
@@ -715,9 +757,18 @@ class Bot:
         reason = ""
 
         if ledger.state == "open" and not in_fcp:
-            ledger.state = "cancelled"
-            ledger.closed_at = self.now
-        elif ledger.state == "open" and self.now >= ledger.deadline:
+            actor = self._label_actor(pr, "unlabeled")
+            if self._is_chair(actor):
+                self._cancel(pr, ledger, actor)
+            else:
+                # Only the chair/proxy may cancel a running FCP: put the label back.
+                pr.add_to_labels(self.cfg.fcp_label)
+                pr.create_issue_comment(
+                    f"@{actor} only the Architecture Community chair or proxy ({self._chair_names()}) "
+                    f"can cancel the Final Comment Period, so the `{self.cfg.fcp_label}` label was "
+                    "added back."
+                )
+        if ledger.state == "open" and self.now >= ledger.deadline:
             ledger.state, reason = closing_state(evaluation, ledger, self.cfg)
             ledger.closed_at = self.now
             self._close(pr, ledger, evaluation, reason)
@@ -789,8 +840,33 @@ class Bot:
                 "Please update the status of this issue accordingly."
             )
 
+    def _cancel_command(self, pr: Any, author: str) -> None:
+        comment, ledger = self._sticky(pr)
+        if not self._is_chair(author):
+            pr.create_issue_comment(
+                f"@{author} only the Architecture Community chair or proxy "
+                f"({self._chair_names()}) can cancel the FCP."
+            )
+            return
+        if ledger is None or ledger.state != "open":
+            pr.create_issue_comment(
+                f"@{author} there is no open Final Comment Period to cancel."
+            )
+            return
+        self._cancel(pr, ledger, author)
+        self._remove_label(pr)
+        evaluation = self._evaluate(pr, ledger)
+        comment = self._publish(pr, comment, ledger, evaluation)
+        self._status(
+            pr.head.sha, *self._status_for(ledger, evaluation), comment.html_url
+        )
+
     def command(self, pr: Any, author: str, body: str) -> None:
-        if (body or "").strip().splitlines()[:1] != ["/fcp reset"]:
+        command = (body or "").strip().splitlines()[:1]
+        if command == ["/fcp cancel"]:
+            self._cancel_command(pr, author)
+            return
+        if command != ["/fcp reset"]:
             return
         comment, ledger = self._sticky(pr)
         if ledger is None or ledger.state != "open":
