@@ -12,8 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Requirements
-############
+Daal Requirements
+#################
+.. document:: Daal Requirements
+   :id: doc__daal_requirements
+   :status: draft
+   :version: 1
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat[version==1]
+   :tags: daal
 
 General
 ================================

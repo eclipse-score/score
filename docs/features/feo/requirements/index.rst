@@ -12,17 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Feature Requirements
-   :id: doc__frameworks_feo_feat_reqs
+FEO Requirements
+################
+
+
+.. document:: Feo Requirements
+   :id: doc__feo_requirements
    :status: valid
    :version: 1
    :security: NO
    :safety: ASIL_B
    :realizes: wp__requirements_feat[version==1]
-
-FEO Feature Requirements
-========================
-
 
 Definitions
 ===========

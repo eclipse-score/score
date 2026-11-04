@@ -12,17 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Feature Architecture
-   :id: doc__frameworks_feo_feat_arch
+FEO Architecture
+################
+.. document:: FEO Architecture
+   :id: doc__feo_architecture
    :status: valid
    :version: 1
    :security: NO
    :safety: ASIL_B
    :realizes: wp__feature_arch[version==1]
-
-
-FEO Feature Architecture
-========================
 
 Overview
 --------
