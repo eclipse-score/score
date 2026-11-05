@@ -25,6 +25,10 @@ extensions = [
     "score_sphinx_bundle",
 ]
 
+# Preserve the published logging and tracing requirement/interface namespaces
+# after consolidating their documentation under features/log_and_trace.
+required_in_id = ["logging", "tracing"]
+
 # Serve files from docs/_assets and load our own CSS overrides last so they win
 # over the styles shipped by the score_docs_as_code bundle.
 html_static_path = ["_assets"]

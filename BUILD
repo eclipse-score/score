@@ -71,6 +71,14 @@ docs(
 # Exposed (without a nested BUILD file, to avoid excluding it from //:docs'
 # root-level glob) for cross-repo consumption by score_logging for trlc import.
 exports_files(
-    ["docs/features/log_and_trace/logging/requirements/index.rst"],
+    ["docs/features/log_and_trace/requirements/index.rst"],
+    visibility = ["//visibility:public"],
+)
+
+# Preserve score_logging's existing import label after flattening Log and Trace.
+# The alias resolves to the moved file without retaining the old docs folders.
+alias(
+    name = "docs/features/log_and_trace/logging/requirements/index.rst",
+    actual = ":docs/features/log_and_trace/requirements/index.rst",
     visibility = ["//visibility:public"],
 )
