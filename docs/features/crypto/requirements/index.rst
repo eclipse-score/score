@@ -12,516 +12,525 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _security_crypto_requirements:
+.. _crypto_requirements:
 
-Security and Cryptography Requirements
-======================================
+Crypto Requirements
+###################
+
+.. document:: Crypto Requirements
+   :id: doc__crypto_requirements
+   :status: valid
+   :version: 1
+   :safety: QM
+   :security: YES
+   :realizes: wp__requirements_feat[version==1]
+   :tags: crypto
 
 Symmetric Encryption
 --------------------
 
 .. feat_req:: Symmetric Encryption and Decryption
-   :id: feat_req__sec_crypt__sym_symmetric_encrypt
+   :id: feat_req__crypto__sym_symmetric_encrypt
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide functionality for symmetric encryption and decryption.
+   The crypto component shall provide functionality for symmetric encryption and decryption.
 
 .. feat_req:: AES-CBC Support
-   :id: feat_req__sec_crypt__sym_symm_algo_aes_cbc
+   :id: feat_req__crypto__sym_symm_algo_aes_cbc
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the AES-CBC symmetric encryption algorithm.
+   The crypto component shall support the AES-CBC symmetric encryption algorithm.
 
 .. feat_req:: AES-GCM Support
-   :id: feat_req__sec_crypt__sym_sym_algo_aes_gcm
+   :id: feat_req__crypto__sym_sym_algo_aes_gcm
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the AES-GCM symmetric encryption algorithm.
+   The crypto component shall support the AES-GCM symmetric encryption algorithm.
 
 .. feat_req:: AES-CCM Support
-   :id: feat_req__sec_crypt__sym_sym_algo_aes_ccm
+   :id: feat_req__crypto__sym_sym_algo_aes_ccm
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the AES-CCM symmetric encryption algorithm.
+   The crypto component shall support the AES-CCM symmetric encryption algorithm.
 
 .. feat_req:: ChaCha20-Poly1305 Support
-   :id: feat_req__sec_crypt__sym_algo_chacha20
+   :id: feat_req__crypto__sym_algo_chacha20
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the ChaCha20-Poly1305 symmetric encryption algorithm.
+   The crypto component shall support the ChaCha20-Poly1305 symmetric encryption algorithm.
 
 Asymmetric Encryption
 ---------------------
 
 .. feat_req:: Asymmetric Encryption and Decryption
-   :id: feat_req__sec_crypt__asym_encryption
+   :id: feat_req__crypto__asym_encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide functionality for asymmetric encryption and decryption.
+   The crypto component shall provide functionality for asymmetric encryption and decryption.
 
 .. feat_req:: ECDH Support
-   :id: feat_req__sec_crypt__asym_algo_ecdh
+   :id: feat_req__crypto__asym_algo_ecdh
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the ECDH algorithm for key exchange.
+   The crypto component shall support the ECDH algorithm for key exchange.
 
 
 Digital Signatures
 ------------------
 
 .. feat_req:: Signature Creation
-   :id: feat_req__sec_crypt__sig_creation
+   :id: feat_req__crypto__sig_creation
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide functionality to create digital signatures.
+   The crypto component shall provide functionality to create digital signatures.
 
 .. feat_req:: Signature Verification
-   :id: feat_req__sec_crypt__sig_verification
+   :id: feat_req__crypto__sig_verification
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide functionality to verify digital signatures.
+   The crypto component shall provide functionality to verify digital signatures.
 
 .. feat_req:: ECDSA Support
-   :id: feat_req__sec_crypt__sig_algo_ecdsa
+   :id: feat_req__crypto__sig_algo_ecdsa
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the ECDSA algorithm for digital signatures.
+   The crypto component shall support the ECDSA algorithm for digital signatures.
 
 Message Authentication Code (MAC)
 ---------------------------------
 
 .. feat_req:: Message Authentication Code
-   :id: feat_req__sec_crypt__mac
+   :id: feat_req__crypto__mac
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide functionality for Message Authentication Codes (MAC) to
+   The crypto component shall provide functionality for Message Authentication Codes (MAC) to
    ensure message integrity and authenticity.
 
 Hashing
 -------
 
 .. feat_req:: Hashing Functionality
-   :id: feat_req__sec_crypt__hashing
+   :id: feat_req__crypto__hashing
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide hashing functionality.
+   The crypto component shall provide hashing functionality.
 
 .. feat_req:: SHA-2 Support
-   :id: feat_req__sec_crypt__hashing_algo_sha2
+   :id: feat_req__crypto__hashing_algo_sha2
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the SHA-2 hashing algorithm.
+   The crypto component shall support the SHA-2 hashing algorithm.
 
 .. feat_req:: SHA-3 Support
-   :id: feat_req__sec_crypt__hashing_algo_sha3
+   :id: feat_req__crypto__hashing_algo_sha3
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the SHA-3 hashing algorithm.
+   The crypto component shall support the SHA-3 hashing algorithm.
 
 
 Key Derivation Functions (KDF)
 ------------------------------
 
 .. feat_req:: Key Derivation
-   :id: feat_req__sec_crypt__kdf
+   :id: feat_req__crypto__kdf
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
    :derived_from: stkh_req__dependability__security_features[version==1]
 
-   The security component shall provide Key Derivation Functions (KDFs) to derive one or more
+   The crypto component shall provide Key Derivation Functions (KDFs) to derive one or more
    secret keys from a master key or password.
 
 Random Number Generation
 ------------------------
 
 .. feat_req:: Entropy Source
-   :id: feat_req__sec_crypt__rng
+   :id: feat_req__crypto__rng
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide a source of entropy for random number generation.
+   The crypto component shall provide a source of entropy for random number generation.
 
 .. feat_req:: ChaCha20Rng Support
-   :id: feat_req__sec_crypt__rng_algo_chacha20rng
+   :id: feat_req__crypto__rng_algo_chacha20rng
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall use the ChaCha20Rng algorithm for random number generation.
+   The crypto component shall use the ChaCha20Rng algorithm for random number generation.
 
 Certificate Management
 ----------------------
 
 .. feat_req:: Certificate Management
-   :id: feat_req__sec_crypt__cert_management
+   :id: feat_req__crypto__cert_management
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide functionality to manage a set of signed and verified
+   The crypto component shall provide functionality to manage a set of signed and verified
    (trusted) certificates.
 
 Key Management
 --------------
 
 .. feat_req:: Secure Key Generation
-   :id: feat_req__sec_crypt__key_generation
+   :id: feat_req__crypto__key_generation
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the secure generation of key material.
+   The crypto component shall support the secure generation of key material.
 
 .. feat_req:: Secure Key Import
-   :id: feat_req__sec_crypt__key_import
+   :id: feat_req__crypto__key_import
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the secure import of key material.
+   The crypto component shall support the secure import of key material.
 
 .. feat_req:: Secure Key Storage
-   :id: feat_req__sec_crypt__key_storage
+   :id: feat_req__crypto__key_storage
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the secure storage of key material.
+   The crypto component shall support the secure storage of key material.
 
 .. feat_req:: Secure Key Deletion
-   :id: feat_req__sec_crypt__key_deletion
+   :id: feat_req__crypto__key_deletion
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the secure deletion of key material.
+   The crypto component shall support the secure deletion of key material.
 
 .. feat_req:: API to allow selection of different algorithms
-   :id: feat_req__sec_crypt__flexible_api
+   :id: feat_req__crypto__flexible_api
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The API of the security component shall allow a selection of the available
+   The API of the crypto component shall allow a selection of the available
    algorithms based on their unique name.
 
 Non-Functional Requirements
 ---------------------------
 
  .. feat_req:: Performance benchmark tooling
-   :id: feat_req__sec_crypt__performance_tooling
+   :id: feat_req__crypto__performance_tooling
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
 
-   The security component shall contain a set of extendable benchmark tests to derive KPIs from
+   The crypto component shall contain a set of extendable benchmark tests to derive KPIs from
    running all it's cryptographic operations on different systems.
 
 .. feat_req:: Standardized Algorithm Naming
-   :id: feat_req__sec_crypt__algo_naming
+   :id: feat_req__crypto__algo_naming
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall use a uniform and unambiguous naming scheme for cryptographic
+   The crypto component shall use a uniform and unambiguous naming scheme for cryptographic
    algorithms.
 
 .. feat_req:: No Key Material Exposure
-   :id: feat_req__sec_crypt__no_key_exposure
+   :id: feat_req__crypto__no_key_exposure
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The API of the security component shall not reveal key material to its users.
+   The API of the crypto component shall not reveal key material to its users.
 
 .. feat_req:: Side-Channel Attack Mitigation
-   :id: feat_req__sec_crypt__side_channel_mitigation
+   :id: feat_req__crypto__side_channel_mitigation
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall be designed to mitigate side-channel and timing attacks.
+   The crypto component shall be designed to mitigate side-channel and timing attacks.
 
 .. feat_req:: API Lifecycle Management
-   :id: feat_req__sec_crypt__api_lifecycle
+   :id: feat_req__crypto__api_lifecycle
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component API shall provide clear mechanisms for initialization, context management
+   The crypto component API shall provide clear mechanisms for initialization, context management
     (request, reuse, release), and de-initialization of cryptographic resources.
 
 .. feat_req:: Structured Error Handling
-   :id: feat_req__sec_crypt__error_handling
+   :id: feat_req__crypto__error_handling
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide a structured and consistent mechanism for error reporting
+   The crypto component shall provide a structured and consistent mechanism for error reporting
    and logging.
 
 .. feat_req:: Security Concept
-   :id: feat_req__sec_crypt__security_concept
+   :id: feat_req__crypto__security_concept
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   A security concept shall be created for the security component, including security goals,
+   A security concept shall be created for the crypto component, including security goals,
    plausible attacks, critical failures, and countermeasures.
 
 .. feat_req:: Crypto Algorithm Update Strategy
-   :id: feat_req__sec_crypt__algo_updates
+   :id: feat_req__crypto__algo_updates
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall allow the updating of its cryptographic algorithms.
+   The crypto component shall allow the updating of its cryptographic algorithms.
 
 .. feat_req:: Reverse Engineering Protection
-   :id: feat_req__sec_crypt__reverse_eng_protection
+   :id: feat_req__crypto__reverse_eng_protection
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall withstand reverse engineering of its secrets.
+   The crypto component shall withstand reverse engineering of its secrets.
 
 .. feat_req:: Initial Production Key Handling
-   :id: feat_req__sec_crypt__production_keys
+   :id: feat_req__crypto__production_keys
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall consider the production scenario where initial production keys are
+   The crypto component shall consider the production scenario where initial production keys are
    brought into the system.
 
 .. feat_req:: Post-Quantum Readiness
-   :id: feat_req__sec_crypt__pqc_readiness
+   :id: feat_req__crypto__pqc_readiness
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall be designed to be ready for post-quantum cryptography.
+   The crypto component shall be designed to be ready for post-quantum cryptography.
 
 .. feat_req:: Hardware Acceleration Support
-   :id: feat_req__sec_crypt__hw_acceleration
+   :id: feat_req__crypto__hw_acceleration
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall be able to rely on hardware acceleration for cryptographic
+   The crypto component shall be able to rely on hardware acceleration for cryptographic
    operations.
 
 .. feat_req:: Software Fallback
-   :id: feat_req__sec_crypt__sw_fallback
+   :id: feat_req__crypto__sw_fallback
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -529,72 +538,72 @@ Non-Functional Requirements
    A software-only solution for cryptographic operations shall be available as a fallback.
 
 .. feat_req:: Trusted Time Source
-   :id: feat_req__sec_crypt__trusted_time
+   :id: feat_req__crypto__trusted_time
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall have access to a trusted real-world wall clock.
+   The crypto component shall have access to a trusted real-world wall clock.
 
 .. feat_req:: OS-Level Protection
-   :id: feat_req__sec_crypt__os_protection
+   :id: feat_req__crypto__os_protection
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall use system-level means (e.g., co-processor, HSM, TEE) to protect
+   The crypto component shall use system-level means (e.g., co-processor, HSM, TEE) to protect
    its memory and CPU from applications and the normal operating system.
 
 .. feat_req:: Access Control
-   :id: feat_req__sec_crypt__access_control
+   :id: feat_req__crypto__access_control
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support roles and capability rights management to enforce access
+   The crypto component shall support roles and capability rights management to enforce access
    control to cryptographic functions and key material.
 
 .. feat_req:: Intrusion Detection System (IDS) Integration
-   :id: feat_req__sec_crypt__ids_integration
+   :id: feat_req__crypto__ids_integration
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall provide a mechanism to report potential security anomalies or
-   threats to an Intrusion Detection System (IDS).
+   The crypto component shall detect and report any malicious activities or intrusions,
+   to enhance overall security posture and response capabilities.
 
 .. feat_req:: Denial-of-Service (DoS) Mitigation
-   :id: feat_req__sec_crypt__dos_mitigation
+   :id: feat_req__crypto__dos_mitigation
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall incorporate measures to mitigate the risk of Denial-of-Service
+   The crypto component shall incorporate measures to mitigate the risk of Denial-of-Service
    (DoS) attacks that could be caused by malicious messages creating exceptional computational
    load.
 
@@ -602,15 +611,15 @@ Secure Communication Protocols
 ------------------------------
 
 .. feat_req:: TLS Support
-   :id: feat_req__sec_crypt__tls_support
+   :id: feat_req__crypto__tls_support
    :reqtype: Functional
    :security: YES
    :safety: QM
    :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__security_crypto[version==1]
+   :satisfied_by: feat__crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The security component shall support the Transport Layer Security (TLS) 1.3 protocol for secure
+   The crypto component shall support the Transport Layer Security (TLS) 1.3 protocol for secure
    communication over Ethernet.
