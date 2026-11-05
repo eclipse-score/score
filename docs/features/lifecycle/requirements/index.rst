@@ -375,6 +375,20 @@ Logging
 Configuration file
 ------------------
 
+.. feat_req:: Verification of configuration files
+    :id: feat_req__lifecycle__config_file_verification
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :derived_from: stkh_req__functional_req__file_based[version==1]
+    :satisfied_by: feat__lifecycle[version==1]
+    :status: valid
+    :version: 1
+    :valid_from: v1.0.0
+
+    The :term:`Lifecycle Feature` shall support the verification of configuration files to ensure
+    their correctness and validity before being applied.
+
 .. feat_req:: Configuration file support
     :id: feat_req__lifecycle__config_file_support
     :reqtype: Functional
