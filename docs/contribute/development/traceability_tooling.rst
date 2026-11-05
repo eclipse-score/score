@@ -1,4 +1,4 @@
-.. 
+..
    # *******************************************************************************
    # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
@@ -28,13 +28,13 @@ This document describes tools or some functionality of them, that can be used re
 
 
 
-Link Requirements to Source Code 
+Link Requirements to Source Code
 ********************************
 
 This functionality provides the ability to link any requirement to any part of the source code.
 It is possible to link as many places of source code as are needed. All of them will show up in the requirement.
 
-All that is needed is to write the 'template string' that the program is looking for. 
+All that is needed is to write the 'template string' that the program is looking for.
 It is either `# req-Id: <your requirement>` or `# req-traceability: <your requirement>`
 If there is multiple requirements that need to be linked to this place in the source code, repeat the line for each one.
 
@@ -75,8 +75,8 @@ It skips all files that end with one of the following:
 The template string works regardless of the language.
 This means both following examples are valid and will work.
 
-.. code-block:: cpp 
-   
+.. code-block:: cpp
+
    // # req-Id: comp_req__containers_rust__fixed_vector
    int your_function() {
       ...
@@ -91,7 +91,7 @@ This means both following examples are valid and will work.
    }
 
 
-Here is how this would look rendered: 
+Here is how this would look rendered:
 
 .. image:: assets/example_rust_source_code_link.png
 
@@ -110,7 +110,7 @@ In rough terms the data flow looks as follows.
 Your testing framework produces XML files with pre-defined properties.
 These XML files are loaded and parsed. The test needs to get build details from the parsed data and link it to the requirements mentioned.
 
-You can now also do statistics on your tests. 
+You can now also do statistics on your tests.
 
 
 .. code-block:: rst
@@ -120,7 +120,7 @@ You can now also do statistics on your tests.
       :tags: TEST
       :columns: name as "testcase";result;fully_verifies;partially_verifies;test_type;derivation_technique;id as "link"
 
-   
+
    .. needpie:: Test Results
       :labels: passed, failed, skipped
       :colors: green, red, orange
@@ -138,4 +138,3 @@ Find More Information
 =====================
 
 If you need more information, you can read it all in the `Docs as Code Documentation <https://eclipse-score.github.io/docs-as-code/main/internals/extensions/source_code_linker.html>`_
-

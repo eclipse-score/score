@@ -178,15 +178,12 @@ The Prompting Interface is essential for ensuring that GenAI systems behave pred
 Context API
 -----------
 
-The Context API is a conceptual interface for managing task-level memory, dialogue state, and user preferences during LLM-based interactions.
-It provides structured access to:
+The Context API is the architectural boundary between GenAI-based agents and their context data. It provides structured read access to:
 
 - Short-term context: Current goal, location, dialogue state
 - Long-term context: Driver preferences, history, personalization
 
-This modular separation allows LLMs/agents to reason over abstract context without being tightly coupled to hardware interfaces.
-This modular separation allows LLMs and agents to reason over abstract context — such as goals, preferences, and session state —
-without direct coupling to low-level system interfaces like the file system or persistent storage.
+GenAI-based agents access context through this API and do not access file-system or persistence interfaces directly. The API request and response schema and the storage implementation are defined at component design.
 
 The Context API will also allow updates to long-term user context.
 

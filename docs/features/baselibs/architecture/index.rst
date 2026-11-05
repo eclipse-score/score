@@ -14,7 +14,7 @@
 .. _baselibs_architecture:
 
 Baselibs Architecture
-=====================
+#####################
 
 .. document:: Baselibs Architecture
    :id: doc__baselibs_architecture
@@ -24,6 +24,9 @@ Baselibs Architecture
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
+Baselibs Feature
+----------------
+
 .. feat:: Baselibs
    :id: feat__baselibs
    :security: YES
@@ -31,8 +34,8 @@ Baselibs Architecture
    :status: valid
    :version: 1
 
-Interfaces
-----------
+Logical Interfaces
+------------------
 
 .. logic_arc_int:: Bit Manipulation
    :id: logic_arc_int__baselibs__bit_manipulation

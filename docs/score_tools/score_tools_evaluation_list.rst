@@ -75,15 +75,15 @@ release, as part of the Tool Verification Report.
      - Latest (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of Doc-as-Code)
      - YES
    * - 1-3
      - sphinx-needs
      - Requirements tracking extension for Sphinx
      - T.B.D. (see [1]_)
-     - YES
+     - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of Doc-as-Code)
      - YES
    * - 1-4
      - PlantUML
@@ -91,7 +91,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of Doc-as-Code)
      - YES
    * - 1-5
      - Graphviz
@@ -99,7 +99,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of Doc-as-Code)
      - YES
    * - 1-6
      - sphinxcontrib.plantuml
@@ -107,25 +107,32 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of Doc-as-Code)
      - YES
    * - 1-7
      - TRLC
      - BMW Requirements Traceability Language and Compiler
      - 2.0.2 (see [1]_)
-     - YES
+     - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (only used in communication and configuration repos)
      - YES
    * - 1-8
      - LOBSTER
      - BMW Requirements traceability and documentation tool
      - T.B.D. (see [1]_)
-     - YES
+     - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (only used in communication and configuration repo)
      - YES
-
+   * - 1-9
+     - Mermaid
+     - Diagram generation
+     - T.B.D. (see [1]_)
+     - NO
+     - :need:`rl__infrastructure_tooling_community`
+     - N/A (part of Doc-as-Code)
+     - YES
 
 2 Static Analysis & Code Quality
 --------------------------------
@@ -160,7 +167,7 @@ release, as part of the Tool Verification Report.
      - 19.x (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - <link tbd>
      - YES
    * - 2a-3
      - clang-format
@@ -176,7 +183,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - <link tbd>
      - YES
    * - 2a-5
      - gcovr
@@ -184,9 +191,16 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - <link tbd>
      - YES
-
+   * - 2a-6
+     - llvmcov
+     - Code coverage tool
+     - T.B.D. (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - <link tbd>
+     - YES
 
 2b Rust
 +++++++
@@ -250,7 +264,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (python used as part of pytest)
      - YES
    * - 2c-2
      - pyright
@@ -258,7 +272,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (python used as part of pytest)
      - YES
    * - 2c-3
      - pylint
@@ -266,13 +280,13 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (python used as part of pytest)
      - YES
    * - 2c-4
      - pytest-cov
      - Python test coverage reporting
      - T.B.D. (see [1]_)
-     - NO
+     - NO (python used as part of pytest)
      - :need:`rl__infrastructure_tooling_community`
      - N/A
      - YES
@@ -282,7 +296,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (python used as part of pytest)
      - YES
 
 
@@ -307,7 +321,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of doc-as-code usage)
      - YES
    * - 2d-2
      - actionlint
@@ -315,7 +329,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of github usage)
      - YES
    * - 2d-3
      - starpls
@@ -323,7 +337,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel usage)
      - YES
    * - 2d-4
      - score_tooling
@@ -331,7 +345,7 @@ release, as part of the Tool Verification Report.
      - 1.0.4 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (no safety relevant function)
      - YES
    * - 2d-5
      - bazel-tools-cc
@@ -339,7 +353,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel usage)
      - YES
    * - 2d-6
      - gitlint
@@ -347,7 +361,7 @@ release, as part of the Tool Verification Report.
      - 0.19.1 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of github usage)
      - YES
 
 
@@ -422,7 +436,7 @@ release, as part of the Tool Verification Report.
      - 8.2.0.2 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-3
      - rules_python
@@ -430,7 +444,7 @@ release, as part of the Tool Verification Report.
      - 1.4.1 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-4
      - aspect_rules_py
@@ -438,7 +452,7 @@ release, as part of the Tool Verification Report.
      - 1.6.3 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-5
      - aspect_rules_lint
@@ -446,7 +460,7 @@ release, as part of the Tool Verification Report.
      - 1.5.3 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-6
      - rules_pkg
@@ -454,7 +468,7 @@ release, as part of the Tool Verification Report.
      - 1.1.0 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-7
      - rules_java
@@ -462,7 +476,7 @@ release, as part of the Tool Verification Report.
      - 8.15.1 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-8
      - rules_cc
@@ -470,7 +484,7 @@ release, as part of the Tool Verification Report.
      - 0.2.1 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-9
      - rules_rust
@@ -478,7 +492,7 @@ release, as part of the Tool Verification Report.
      - 0.63.0 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-10
      - score_toolchains_qnx
@@ -486,7 +500,7 @@ release, as part of the Tool Verification Report.
      - 0.5 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-11
      - score_toolchains_gcc
@@ -494,15 +508,15 @@ release, as part of the Tool Verification Report.
      - 0.5 (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
    * - 4-12
      - toolchains_llvm
      - LLVM toolchain rules for Bazel (host configuration, C++17 standard)
      - 1.4.0 (see [1]_)
-     - YES
+     - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - N/A
    * - 4-13
      - score_toolchains_rust
@@ -510,7 +524,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of bazel use)
      - YES
 
 5 Compiler
@@ -546,7 +560,7 @@ release, as part of the Tool Verification Report.
      - YES
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__qcc`
-     - N/A
+     - YES
 
 
 5b Rust Compiler
@@ -570,7 +584,7 @@ release, as part of the Tool Verification Report.
      - 1.90.0 (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - <link tbd>
      - YES
    * - 5b-2
      - Rust (standard)
@@ -578,7 +592,7 @@ release, as part of the Tool Verification Report.
      - 1.90.0 (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - <link tbd>
      - NO
 
 
@@ -601,9 +615,9 @@ release, as part of the Tool Verification Report.
      - Git
      - Version control system
      - 2.x (see [1]_)
-     - YES
+     - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A (part of github use)
      - YES
    * - 6-2
      - GitHub
@@ -619,7 +633,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - <link tbd>
      - YES
 
 
@@ -642,9 +656,9 @@ release, as part of the Tool Verification Report.
      - Eclipse Dash
      - License analysis tool
      - T.B.D. (see [1]_)
-     - YES
+     - NO
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - N/A(no safety function)
      - YES
 
 
