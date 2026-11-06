@@ -121,7 +121,20 @@ Branches are used as a means of parallel development. In the S-CORE project the 
 * main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
 * :term:`Release Branch` - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
-  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`doc_concept__rel_process`.
+  Release branches of the platform are named ``releases/v_<major>_<minor>`` (e.g. ``releases/v_0_9``).
+  A merge into a release branch is approved as follows:
+
+  * module release branch: by a :need:`Committer <rl__committer>` of the module, as for the main branch.
+  * platform release branch in ``reference_integration``: by at least one maintainer of each integrated
+    module, and no maintainer may have requested changes. The maintainers are taken from the module's
+    ``metadata.json`` in the `S-CORE Bazel registry <https://github.com/eclipse-score/bazel_registry>`_,
+    only committers of the module shall be listed there. The integrated modules and the approvals are
+    checked automatically by the
+    `check_release_approvals <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/check_release_approvals.yml>`_
+    workflow.
+
+  This approval does not replace the release approval by the :need:`Project Lead <rl__project_lead>`
+  and the :need:`Quality Manager <rl__quality_manager>` described in :need:`doc__platform_release_management_plan`.
 
 The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
 
