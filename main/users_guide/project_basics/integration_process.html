@@ -633,13 +633,21 @@
   <section id="integration-process">
 <span id="id1"></span><h1>Integration process<a class="headerlink" href="#integration-process" title="Link to this heading">#</a></h1>
 <p>The integration process is a core activity within Eclipse S-CORE and is still evolving as the project gathers experience.
-Several discussions and concepts have shaped the current approach.
-A detailed description is available in the following <a class="reference external" href="https://github.com/eclipse-score/score/pull/2747">decision record</a>.
-This chapter provide a high-level overview of how integration works in Eclipse S-CORE.</p>
-<img alt="release_integration_concept" class="align-center" src="../../_images/release_integration_concept.drawio.svg" />
+Its current scope was agreed in the decision record <a class="reference internal" href="../../design_decisions/integration/DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a>
+(<em>stable known good with module-scoped validation</em>).
+This chapter gives a high-level overview of how modules get from their own repository into an S-CORE release.
+A detailed step-by-step guide for module owners is available in the
+<a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html">integration process how-to</a>
+of the reference integration.</p>
+<img alt="Integration process from module development over module release and reference integration up to the S-CORE release" class="align-center" src="../../_images/release_integration_concept.drawio.svg" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="module-level">
+<h2>Module level<a class="headerlink" href="#module-level" title="Link to this heading">#</a></h2>
 <section id="compliance-with-the-eclipse-s-core-software-development-process">
-<h2>Compliance with the Eclipse S-CORE software development process<a class="headerlink" href="#compliance-with-the-eclipse-s-core-software-development-process" title="Link to this heading">#</a></h2>
-<p>All software modules - whether inside or outside the Eclipse S-CORE GitHub organization –
+<h3>Compliance with the Eclipse S-CORE software development process<a class="headerlink" href="#compliance-with-the-eclipse-s-core-software-development-process" title="Link to this heading">#</a></h3>
+<p>All software modules - whether inside or outside the Eclipse S-CORE GitHub organization -
 are encouraged to follow the Eclipse S-CORE development process strictly and to enforce it through CI/CD checks.
 This ensures that compliance is validated with every pull request.</p>
 <p>However, strict compliance cannot always be guaranteed. Reasons include:</p>
@@ -649,71 +657,107 @@ This ensures that compliance is validated with every pull request.</p>
 An immediate migration to the Eclipse S-CORE development process is not feasible.</p></li>
 </ul>
 <p>Therefore, it is acceptable (but not recommended) for software modules to follow their own
-software development process inside its repository.
-To make a module available for Eclipse S-CORE, a new version must first be added to the bazel registry first.</p>
-<p>This is where the S-CORE integration process applies.
-Before adding a module to the Eclipse S-CORE bazel registry, two conditions must be met:</p>
-<ul>
-<li><p><strong>Fulfillment of the “Integration Gate”</strong></p>
-<p>The integration gate is a mandatory set of checks that validates compliance with the Eclipse S-CORE software development process.
-Examples include:</p>
+software development process inside their repository. In this case, the missing evidence has to be provided
+before the module can become part of an S-CORE release.</p>
+</section>
+<section id="module-quality-gate">
+<h3>Module quality gate<a class="headerlink" href="#module-quality-gate" title="Link to this heading">#</a></h3>
+<p>Quality checks are executed as close as possible to their origin, i.e. in the module repository
+against the module’s own dependencies. Every pull request runs the module quality gate, typically
+based on the reusable <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">cicd-workflows</a>. Examples include:</p>
 <ul class="simple">
-<li><p>code compiles with gcc/qcc</p></li>
-<li><p>unit tests pass</p></li>
-<li><p>requirements and architecture are properly linked according to the metamodel</p></li>
+<li><p>the code compiles for the supported platforms (e.g. with GCC for Linux and QCC for QNX)</p></li>
+<li><p>unit tests and component integration tests pass</p></li>
+<li><p>static code analysis and coverage</p></li>
+<li><p>formatting, copyright and license checks</p></li>
+<li><p>requirements, architecture, detailed design and tests are properly linked according to the metamodel
+(checked during the documentation build)</p></li>
 </ul>
 <p>Module owners may need to update code or artefacts to meet these criteria.</p>
-</li>
-<li><p><strong>Review and Approval</strong></p>
-<p>After meeting integration gate requirements, a pull request to Eclipse S-CORE bazel registry repo can be created.
-This pull request is reviewed by safety, security and quality managers. Once all findings were resolved,
-the pull request is merged to the Eclipse S-CORE bazel registry, and the software module becomes officially
-available to the Eclipse S-CORE community.</p>
-</li>
-</ul>
+</section>
+<section id="module-release-and-s-core-bazel-registry">
+<h3>Module release and S-CORE Bazel registry<a class="headerlink" href="#module-release-and-s-core-bazel-registry" title="Link to this heading">#</a></h3>
+<p>Modules are released independently of each other. For a module release, the module committers create the module
+release note. Based on it, the module verification report and the QMS report, the release is verified by the release
+team and approved by the project lead and the quality manager, as defined in the release management process. The release is then published as a GitHub
+release (tag) in the module repository.</p>
+<p>To make a release available to the community, the module is registered in the
+<a class="reference external" href="https://github.com/eclipse-score/bazel_registry">S-CORE Bazel registry</a>. New GitHub releases of registered modules
+are detected automatically and added to the registry via a pull request. After this pull request is merged,
+every project can use the new version via <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>.</p>
+</section>
 </section>
 <section id="reference-integration">
 <h2>Reference Integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h2>
-<p>The first step, passing the integration gate, ensures Process compliance, but not compatibility with other modules.
-This is the purpose of the reference integration.</p>
-<p>The reference integration repository assembles all modules into reference images
+<p>Passing the module quality gate ensures process compliance, but not compatibility with other modules.
+This is the purpose of the <a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference integration</a>.</p>
+<p>The reference integration assembles all modules into reference images
 and executes feature integration tests. These tests ensure:</p>
 <ul class="simple">
 <li><p>correct implementation of feature requirements</p></li>
 <li><p>compatibility between dependent modules</p></li>
 <li><p>testability of features from an end-user perspective</p></li>
 </ul>
+<section id="stable-known-good">
+<h3>Stable known good<a class="headerlink" href="#stable-known-good" title="Link to this heading">#</a></h3>
+<p>The file <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/known_good.json">known_good.json</a> is the single
+source of truth for the modules which are part of the integration. Each module is pinned to an exact commit
+(<code class="docutils literal notranslate"><span class="pre">git_override</span></code>) or to a released version from the registry (<code class="docutils literal notranslate"><span class="pre">single_version_override</span></code>), never to a floating branch.
+The Bazel files of the reference integration are generated from this file, and CI checks that they are in sync.</p>
+<p>A new module version, toolchain or third-party dependency is integrated by updating <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>.
+This creates a new candidate which only becomes the new <em>stable known good</em> after it passed the validation described below.</p>
+</section>
 <section id="unified-dependency-handling">
 <h3>Unified Dependency Handling<a class="headerlink" href="#unified-dependency-handling" title="Link to this heading">#</a></h3>
-<p>Within Reference integration, all module dependencies are overwriten by the versions defined in the reference integration configuration.</p>
+<p>Within the reference integration, all module dependencies are overwritten by the versions defined in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>,
+because the overrides of the root module apply to the whole Bazel dependency graph.</p>
 <p>For example:
 If the reference integration specifies software module “A” in version 1.0,
-all software modules in that integration are built against “A” version 1.0 – regardless of their local dependency settings.
+all software modules in that integration are built against “A” version 1.0 - regardless of their local dependency settings.
 This ensures a consistent and unique state of all software module versions which are included
-in the same reference integration repository.</p>
+in the same reference integration.</p>
+</section>
+<section id="two-stage-validation">
+<h3>Two-stage validation<a class="headerlink" href="#two-stage-validation" title="Link to this heading">#</a></h3>
+<p>Every candidate is validated in two stages:</p>
+<ol class="arabic simple">
+<li><p><strong>Full-stack validation</strong> in the reference integration: all modules are built against each other for all
+reference images (Linux, QNX, Red Hat AutoSD, Elektrobit corbos Linux), feature and platform integration tests
+are executed, and the complete dependency set, incl. transitive dependencies, is resolved.</p></li>
+<li><p><strong>Module-scoped validation</strong>: the unit and component tests of each module are executed again, but against
+the dependency versions resolved in stage 1. This way, the module tests stay in their natural repository context
+while the exact dependency set of the integrated platform is verified.</p></li>
+</ol>
+<p>The results of both stages, e.g. test results, coverage and documentation, are consolidated into the reports of the reference integration.</p>
 </section>
 <section id="handling-of-incompatibilities">
 <h3>Handling of Incompatibilities<a class="headerlink" href="#handling-of-incompatibilities" title="Link to this heading">#</a></h3>
-<p>Introducing  a new version into the reference integration repository can cause incompatibilities
+<p>Introducing a new version into the reference integration can cause incompatibilities
 if other modules have not yet adapted to changes.
 Although proper planning and deprecation strategies help to avoid such issues, they cannot always be avoided.
-The <strong>Eclipse S-CORE integration team</strong> is in charge for solving such problems when they occurr</p>
+Because the reference integration regularly integrates the latest state of the modules, such problems are detected early.
+They have to be solved in the affected module repositories. Patches which are applied in the reference integration
+on top of a module are only a temporary workaround and the exception, not the rule.</p>
+</section>
 </section>
 <section id="release-of-reference-integration">
-<h3>Release of Reference Integration<a class="headerlink" href="#release-of-reference-integration" title="Link to this heading">#</a></h3>
-<p>Once: –</p>
+<h2>Release of Reference Integration<a class="headerlink" href="#release-of-reference-integration" title="Link to this heading">#</a></h2>
+<p>Once:</p>
 <ul class="simple">
 <li><p>all feature integration tests have passed, and</p></li>
 <li><p>other Eclipse S-CORE project metrics for the release cycle are fulfilled</p></li>
 </ul>
-<p>a new release of the reference integration repository is created. An official S-CORE release typically consists of:</p>
+<p>a new release of the reference integration is created. The release is prepared on a release branch, which has to be
+approved by the maintainers of all integrated modules. An official S-CORE release typically consists of:</p>
 <ul class="simple">
-<li><p>A <strong>release tag</strong> in the reference integration repository (freezing versions of all included software modules)</p></li>
-<li><p><strong>Release Notes</strong></p></li>
+<li><p>A <strong>release tag</strong> in the reference integration repository (freezing the versions of all included software modules)</p></li>
+<li><p><strong>Platform Release Notes</strong>, created and approved by the project lead circle</p></li>
+<li><p>the <strong>Platform Handbook</strong> and the <strong>Platform Verification Report</strong></p></li>
 <li><p><strong>Additional documents as required</strong></p></li>
 </ul>
-<p>This markst he complete and validated version of the Eclipse S-CORE platform for that release milestone.</p>
-</section>
+<p>This marks the complete and validated version of the Eclipse S-CORE platform for that release milestone.
+All releases are listed on the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/releases">releases page</a>
+of the reference integration; the release plan and roadmap are described in <a class="reference internal" href="../../score_releases/index.html#releases"><span class="std std-ref">Releases and Roadmap</span></a>.</p>
 </section>
 </section>
 
@@ -764,13 +808,20 @@ The <strong>Eclipse S-CORE integration team</strong> is in charge for solving su
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-with-the-eclipse-s-core-software-development-process">Compliance with the Eclipse S-CORE software development process</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference Integration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unified-dependency-handling">Unified Dependency Handling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-of-incompatibilities">Handling of Incompatibilities</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-of-reference-integration">Release of Reference Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-level">Module level</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-with-the-eclipse-s-core-software-development-process">Compliance with the Eclipse S-CORE software development process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-quality-gate">Module quality gate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-release-and-s-core-bazel-registry">Module release and S-CORE Bazel registry</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-known-good">Stable known good</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unified-dependency-handling">Unified Dependency Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-stage-validation">Two-stage validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-of-incompatibilities">Handling of Incompatibilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-of-reference-integration">Release of Reference Integration</a></li>
 </ul>
   </nav></div>
 

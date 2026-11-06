@@ -632,102 +632,123 @@
                   
   <section id="module-structure-overview">
 <h1>Module Structure Overview<a class="headerlink" href="#module-structure-overview" title="Link to this heading">#</a></h1>
-<p>As described in the <a class="reference internal" href="technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a> chapter, Eclipse S-CORE consists of multiple bazel modules,
+<p>As described in the <a class="reference internal" href="technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a> chapter, Eclipse S-CORE consists of multiple Bazel modules,
 typically stored in separate repositories. Most modules reside in the <a class="reference external" href="https://github.com/eclipse-score">Eclipse S-CORE GitHub organization</a>,
-while some originate from other Eclipse projects and are reused here. This chapter introduces
-the most important bazel modules and repositories in Eclipse S-CORE GitHub organization.</p>
-<img alt="Overview of the most important S-CORE modules an application should reference" class="align-center" src="../../_images/module_deps.drawio.svg" />
+while some originate from other projects and are reused here. This chapter introduces
+the most important Bazel modules and repositories in the Eclipse S-CORE GitHub organization.</p>
+<p>The picture below shows them grouped by their purpose. An application typically depends on one or more
+<strong>runtime modules</strong> (the target software). All other modules are used during development, e.g. to describe and verify
+requirements, to build the documentation, to check code quality or to provide compilers.
+The names in the boxes are the Bazel module names as used in <code class="docutils literal notranslate"><span class="pre">bazel_dep(name</span> <span class="pre">=</span> <span class="pre">...)</span></code>.</p>
+<img alt="Overview of the most important S-CORE Bazel modules, grouped by purpose" class="align-center" src="../../_images/module_deps.drawio.svg" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Every repository generates its HTML documentation from rst files.
+The link to the published documentation is shown in the <em>About</em> section of the repository on GitHub,
+as shown in the picture below.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/generated_doc_in_score_github.png"><img alt="Link to the generated documentation in the About section of a GitHub repository" class="align-center" src="../../_images/generated_doc_in_score_github.png" width="500" />
+</a>
 <section id="eclipse-s-core-platform">
 <h2>Eclipse S-CORE Platform<a class="headerlink" href="#eclipse-s-core-platform" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/score">eclipse-score/score</a></p>
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/score">eclipse-score/score</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_platform</span></code></p>
 <p>This is the central repository of the project. It contains:</p>
 <ul class="simple">
 <li><p>stakeholder requirements</p></li>
 <li><p>Assumptions of Use (AoUs) for potential users</p></li>
-<li><p>the list of platform features</p></li>
-<li><p>the high-level architecture</p></li>
+<li><p>the list of platform features, incl. feature requirements and feature architecture</p></li>
+<li><p>the high-level platform architecture</p></li>
 <li><p>the decomposition of the architecture into modules</p></li>
 <li><p>the definition of logical interfaces and module functionality</p></li>
+<li><p>the platform management plan and the design decisions</p></li>
 </ul>
+<p>Module repositories reference the feature requirements and architecture of this repository
+from their component requirements and architecture.</p>
 </section>
 <section id="process-description">
 <h2>Process Description<a class="headerlink" href="#process-description" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/process_description">eclipse-score/process_description</a></p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>We automatically generate for every repository html documentation from rst files.
-You can easily open it as shown at the picture below.</p>
-</div>
-<a class="reference internal image-reference" href="../../_images/generated_doc_in_score_github.png"><img alt="Generated Doc in GitHub" class="align-center" src="../../_images/generated_doc_in_score_github.png" width="500" />
-</a>
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/process_description">eclipse-score/process_description</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_process_description</span></code></p>
 <p>The process repository describes the Eclipse S-CORE software development process. It describes:</p>
 <ul class="simple">
 <li><p>the general concepts and principles of the Eclipse S-CORE software development process</p></li>
-<li><p>all process areas in detail</p></li>
-<li><p>how work products such as requirements and architecture must be specified</p></li>
-<li><p>PMP describes, how the processes are deployed within S-CORE <a class="reference external" href="https://eclipse-score.github.io/score/main/platform_management_plan/index.html">Project Management Plan</a></p></li>
+<li><p>all <a class="reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/index.html">process areas</a> in detail,
+from requirements engineering, architecture design and implementation over verification and safety and security analysis
+up to release, quality and tool management</p></li>
+<li><p>how work products such as requirements and architecture must be specified, incl. templates and checklists</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/process_areas.png"><img alt="Process areas" class="align-center" src="../../_images/process_areas.png" width="500" />
-</a>
+<p>How these processes are deployed within S-CORE is described in the <a class="reference internal" href="../../platform_management_plan/index.html#pmp"><span class="std std-ref">Platform Management Plan</span></a>.</p>
 </section>
-<section id="doc-as-code">
-<h2>Doc-as-Code<a class="headerlink" href="#doc-as-code" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a></p>
-<p>Doc-as-code repository provides the tooling around sphinx and sphinx-needs framework, including:</p>
+<section id="docs-as-code">
+<h2>Docs-as-Code<a class="headerlink" href="#docs-as-code" title="Link to this heading">#</a></h2>
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_docs_as_code</span></code></p>
+<p>The docs-as-code repository provides the tooling around the Sphinx and sphinx-needs framework, including:</p>
 <ul class="simple">
-<li><p>traceability between requirements, architecture, and tests</p></li>
-<li><p>linking process artefacts</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">docs</span></code> Bazel macro which provides targets such as <code class="docutils literal notranslate"><span class="pre">//:docs</span></code> and <code class="docutils literal notranslate"><span class="pre">//:live_preview</span></code> in every repository</p></li>
+<li><p>traceability between requirements, architecture, source code and tests</p></li>
+<li><p>linking of process artefacts across repositories</p></li>
 <li><p>checks that validate the Eclipse S-CORE metamodel, as defined in the process description</p></li>
 </ul>
-<p>The implementation status of tooling requirements is available in the
-<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html">Tool Requirements Overview</a>.</p>
+<p>The requirements for this tooling and their implementation status are available in the
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/index.html">docs-as-code requirements</a>.</p>
 </section>
 <section id="tooling">
 <h2>Tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a></p>
-<p>Tooling repository collects all supporting tools for the Eclipse S-CORE project, e.g., format checkers.</p>
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_tooling</span></code></p>
+<p>The tooling repository collects supporting tools for the Eclipse S-CORE project, which are provided as Bazel rules and macros,
+e.g. format and copyright checkers, the Eclipse Dash license check, Python linting and test utilities.</p>
 </section>
 <section id="development-environment">
 <h2>Development Environment<a class="headerlink" href="#development-environment" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/devcontainer">eclipse-score/devcontainer</a></p>
-<p>Provides a common <a class="reference external" href="https://containers.dev/">Dev Container</a> for Eclipse S-CORE development.
-Using the devcontainer is the recommended way to set up a fully configured development environment
-with all required tools, compilers, and VS Code extensions pre-installed.</p>
-<p>Clone the devcontainer repository and open it in VS Code with the
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/devcontainer">eclipse-score/devcontainer</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_devcontainer</span></code></p>
+<p>Provides the common <a class="reference external" href="https://containers.dev/">Dev Container</a> image for Eclipse S-CORE development.
+It contains all required tools, compilers and VS Code extensions in well-defined versions.</p>
+<p>The S-CORE repositories already reference this image in their <code class="docutils literal notranslate"><span class="pre">.devcontainer</span></code> folder. To get started, clone the repository
+you want to work on, open it in VS Code with the
 <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a>
-to get started in minutes.</p>
+and select <em>Reopen in Container</em>. See also <a class="reference internal" href="../../contribute/development/development_environment.html#setting-up-dev-env"><span class="std std-ref">setting up the development environment</span></a>.</p>
+</section>
+<section id="module-template">
+<h2>Module Template<a class="headerlink" href="#module-template" title="Link to this heading">#</a></h2>
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/module_template">eclipse-score/module_template</a></p>
+<p>A template repository for new C++ and Rust modules. It provides the standardized folder structure,
+Bazel configuration, documentation setup, CI/CD workflows and development environment configuration.
+Start from this template when creating a new module. The expected folder structure is described in
+<a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.</p>
 </section>
 <section id="code-quality-policies">
 <h2>Code Quality Policies<a class="headerlink" href="#code-quality-policies" title="Link to this heading">#</a></h2>
 <p><strong>Repositories:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies">eclipse-score/score_cpp_policies</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">eclipse-score/score_rust_policies</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies">eclipse-score/score_cpp_policies</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_cpp_policies</span></code></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">eclipse-score/score_rust_policies</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code></p></li>
 </ul>
-<p>These repositories provide centralised, version-controlled quality tool configurations:</p>
+<p>These repositories provide centralized, version-controlled quality tool configurations, so that all modules use the same rules:</p>
 <ul class="simple">
-<li><p><strong>score_cpp_policies</strong>: clang-tidy rules, sanitiser configurations, and safety-critical C++ guidelines.</p></li>
-<li><p><strong>score_rust_policies</strong>: Clippy linting rules and Rustfmt formatting configuration for Rust modules.</p></li>
+<li><p><strong>score_cpp_policies</strong>: sanitizer configurations (ASan, UBSan, LSan, TSan) and a common clang-tidy baseline.</p></li>
+<li><p><strong>score_rust_policies</strong>: Clippy configurations, a strict one for safety-critical code and a relaxed one for tooling and tests.</p></li>
 </ul>
-<p>All modules are expected to depend on the appropriate policy package and cannot override
-the shared rules without project-lead approval.</p>
 </section>
-<section id="toolchains-and-bazel-platform">
-<h2>Toolchains and bazel platform<a class="headerlink" href="#toolchains-and-bazel-platform" title="Link to this heading">#</a></h2>
+<section id="toolchains-and-bazel-platforms">
+<h2>Toolchains and Bazel platforms<a class="headerlink" href="#toolchains-and-bazel-platforms" title="Link to this heading">#</a></h2>
 <p><strong>Repositories:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">eclipse-score/bazel_cpp_toolchains</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">eclipse-score/toolchains_rust</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">eclipse-score/bazel_cpp_toolchains</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">eclipse-score/toolchains_rust</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/bazel_platforms">eclipse-score/bazel_platforms</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_bazel_platforms</span></code></p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> repository provides GCC-based C++ toolchains for all supported
-targets, including Linux host builds (GCC 12.2.0) and QNX SDP 8.0.0 cross-compilation, replacing
-the former separate <code class="docutils literal notranslate"><span class="pre">toolchains_gcc</span></code> and <code class="docutils literal notranslate"><span class="pre">toolchains_qnx</span></code> modules.
-The <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> repository provides pre-built
-<a class="reference external" href="https://ferrous-systems.com/ferrocene/">Ferrocene</a> toolchains for Rust, covering both Linux
-host and QNX cross-compilation targets.
-The <code class="docutils literal notranslate"><span class="pre">score_bazel_platforms</span></code> repository defines the platforms supported by Eclipse S-CORE
-(e.g., <code class="docutils literal notranslate"><span class="pre">x86_64-qnx-sdp_8.0.0-posix</span></code>), as shown in the following
+<p><code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> provides the configuration for the GCC-based C/C++ toolchains of all supported targets:
+Linux host builds, QNX SDP 8.0 cross-compilation, Red Hat AutoSD and Elektrobit corbos Linux for Safety Applications.
+It replaces the former, now archived, <code class="docutils literal notranslate"><span class="pre">toolchains_gcc</span></code> and <code class="docutils literal notranslate"><span class="pre">toolchains_qnx</span></code> modules.</p>
+<p><code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> provides pre-built <a class="reference external" href="https://ferrocene.dev/">Ferrocene</a> toolchains for Rust,
+covering Linux and QNX targets on x86_64 and aarch64, incl. coverage tooling.</p>
+<p><code class="docutils literal notranslate"><span class="pre">score_bazel_platforms</span></code> defines the platforms supported by Eclipse S-CORE
+(e.g., <code class="docutils literal notranslate"><span class="pre">x86_64-qnx-sdp_8.0.0-posix</span></code>), see its
 <a class="reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">BUILD</a> file.</p>
+<p>Third-party Rust crates are provided as a defined set via
+<a class="reference external" href="https://github.com/eclipse-score/score-crates">eclipse-score/score-crates</a> (Bazel module <code class="docutils literal notranslate"><span class="pre">score_crates</span></code>).</p>
 </section>
 <section id="ci-cd-automation">
 <h2>CI/CD Automation<a class="headerlink" href="#ci-cd-automation" title="Link to this heading">#</a></h2>
@@ -743,56 +764,72 @@ duplicating CI/CD logic, ensuring consistent quality gates and pipeline behaviou
 <section id="bazel-registry">
 <h2>Bazel Registry<a class="headerlink" href="#bazel-registry" title="Link to this heading">#</a></h2>
 <p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a></p>
-<p>Bazel registry is essential for publishing official releases of all Eclipse S-CORE bazel modules.
-It enables consistent and reliable module referencing across the entire project.</p>
+<p>The S-CORE Bazel registry is essential for publishing official releases of all Eclipse S-CORE Bazel modules.
+It does not host source code, but only the metadata of each module version.
+New GitHub releases of the registered modules are detected automatically and added to the registry via a pull request.
+The content of the registry can be browsed in the <a class="reference external" href="https://eclipse-score.github.io/bazel_registry_ui/">Bazel registry UI</a>.</p>
 </section>
 <section id="software-modules">
 <h2>Software Modules<a class="headerlink" href="#software-modules" title="Link to this heading">#</a></h2>
 <p><strong>Repository</strong> (example — baselibs): <a class="reference external" href="https://github.com/eclipse-score/baselibs">eclipse-score/baselibs</a></p>
-<p>Each software module is a bazel module stored in its own repository. Software modules typically include:</p>
+<p>Each software module is a Bazel module stored in its own repository. Software modules typically include:</p>
 <ul class="simple">
 <li><p>component requirements and architecture</p></li>
 <li><p>detailed design</p></li>
 <li><p>implementation</p></li>
-<li><p>unit- and component tests</p></li>
-<li><p>documentation</p></li>
+<li><p>unit and component integration tests</p></li>
+<li><p>documentation, incl. the safety and security work products of the module</p></li>
 </ul>
+<p>The runtime modules which are currently part of the reference integration are shown in the picture at the top of this page
+(e.g. <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>, <code class="docutils literal notranslate"><span class="pre">score_communication</span></code>, <code class="docutils literal notranslate"><span class="pre">score_logging</span></code>, <code class="docutils literal notranslate"><span class="pre">score_persistency</span></code>, <code class="docutils literal notranslate"><span class="pre">score_kyron</span></code>,
+<code class="docutils literal notranslate"><span class="pre">score_lifecycle</span></code>, <code class="docutils literal notranslate"><span class="pre">score_time</span></code> and <code class="docutils literal notranslate"><span class="pre">score_config_management</span></code>). The current list is maintained in
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/known_good.json">known_good.json</a> of the reference integration.
+New features are often started in <em>incubation</em> repositories (prefix <code class="docutils literal notranslate"><span class="pre">inc_</span></code>) before they become a regular module.</p>
 <p>Modules usually depend on other modules in the Eclipse S-CORE GitHub organization, especially on</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/score">eclipse-score/score</a> to reference feature requirements and architecture
 in the component requirements and architecture</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a> for the sphinx/sphinx-needs framework and tooling around it</p></li>
-<li><p><strong>toolchains</strong> modules for the compiler toolchains.</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a> for the Sphinx/sphinx-needs framework and tooling around it</p></li>
+<li><p><strong>toolchains</strong> modules for the compiler toolchains</p></li>
+<li><p>the <strong>policy</strong> modules for the code quality rules.</p></li>
 </ul>
 </section>
 <section id="reference-integration">
 <h2>Reference Integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h2>
 <p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/reference_integration">eclipse-score/reference_integration</a></p>
 <p>This repository is a key part of the Eclipse S-CORE project.
-All Eclipse S-CORE modules are integrated together to ensure, that they match to each other.
-It integrates all software modules into reference images (e.g., a qnx x86 image) to verify that:</p>
+All Eclipse S-CORE modules are integrated together to ensure that they fit to each other.
+The modules and their exact versions are defined in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>. The repository integrates all
+software modules into reference images to verify that:</p>
 <ul class="simple">
 <li><p>all module dependencies are consistent</p></li>
 <li><p>modules work correctly together</p></li>
 <li><p>feature requirements are fulfilled</p></li>
 </ul>
-<p>Feature integration tests are executed on these reference images to validate the complete platform.</p>
+<p>Reference images currently exist for Linux x86_64 (Docker), QNX 8.0 x86_64 and aarch64 (QEMU, Raspberry Pi),
+Red Hat AutoSD and Elektrobit corbos Linux for Safety Applications (aarch64).
+Feature integration tests are executed on these reference images to validate the complete platform.
+The repository also contains <em>showcases</em>, small example applications which demonstrate how to use the S-CORE modules,
+and builds the consolidated documentation of all integrated modules.
+More details are given in the <a class="reference internal" href="integration_process.html#integration-process"><span class="std std-ref">integration process</span></a> chapter.</p>
 </section>
 <section id="integration-testing-framework">
 <h2>Integration Testing Framework<a class="headerlink" href="#integration-testing-framework" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/itf">eclipse-score/itf</a></p>
-<p>The Integration Testing Framework (ITF) is the tool used to implement and execute
-Feature Integration Tests (FIT) on reference images.
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/itf">eclipse-score/itf</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_itf</span></code></p>
+<p>The Integration Testing Framework (ITF) is a pytest-based framework to implement and execute
+Feature Integration Tests (FIT). It runs tests on different targets, such as Docker containers,
+QEMU virtual machines and real hardware, and is integrated into Bazel via the <code class="docutils literal notranslate"><span class="pre">py_itf_test</span></code> macro.
 Module teams write FIT test cases using ITF to verify end-to-end feature behaviour across module boundaries.
-Documentation is available in the
-<a class="reference external" href="https://github.com/eclipse-score/itf">ITF README</a>.</p>
+Documentation is available in the <a class="reference external" href="https://eclipse-score.github.io/itf/">ITF documentation</a>.</p>
 </section>
 <section id="testing-tools">
 <h2>Testing Tools<a class="headerlink" href="#testing-tools" title="Link to this heading">#</a></h2>
-<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/testing_tools">eclipse-score/testing_tools</a></p>
-<p>Provides shared utilities and frameworks for Component Integration Tests (CIT).
-CIT tests verify the interaction between a module and its direct dependencies at the component level,
-without requiring a full reference image.</p>
+<p><strong>Repository:</strong> <a class="reference external" href="https://github.com/eclipse-score/testing_tools">eclipse-score/testing_tools</a> — <strong>Bazel module:</strong> <code class="docutils literal notranslate"><span class="pre">score_test_scenarios</span></code></p>
+<p>Provides shared utilities for test automation: Rust and C++ libraries to implement test scenarios and
+Python helpers to execute them and to evaluate their results and logs.
+They are used for Component Integration Tests (CIT), which verify the interaction between a module
+and its direct dependencies without requiring a full reference image, as well as for the
+feature integration tests in the reference integration.</p>
 </section>
 </section>
 
@@ -845,11 +882,12 @@ without requiring a full reference image.</p>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eclipse-s-core-platform">Eclipse S-CORE Platform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-description">Process Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-as-code">Doc-as-Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docs-as-code">Docs-as-Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling">Tooling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-environment">Development Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-template">Module Template</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality-policies">Code Quality Policies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-bazel-platform">Toolchains and bazel platform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-bazel-platforms">Toolchains and Bazel platforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-cd-automation">CI/CD Automation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-registry">Bazel Registry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-modules">Software Modules</a></li>

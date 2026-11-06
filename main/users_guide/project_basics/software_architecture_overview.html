@@ -632,18 +632,63 @@
                   
   <section id="software-architecture-overview">
 <h1>Software Architecture Overview<a class="headerlink" href="#software-architecture-overview" title="Link to this heading">#</a></h1>
-<p>Please note that the Eclipse S-CORE´s software architecture is continuously refined and will evolve in future releases.</p>
-<a class="reference internal image-reference" href="../../_images/architecture_0_6.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/architecture_0_6.drawio.svg" width="1000" />
+<p>The following picture shows the high-level architecture of the Eclipse S-CORE platform.
+It is the same picture as on the <a class="reference internal" href="../../architecture/index.html#platform-architecture"><span class="std std-ref">Platform Architecture</span></a> page, which is the
+single source of truth. The architecture is continuously refined and will evolve in future releases.</p>
+<a class="reference internal image-reference" href="../../_images/platform_architecture.drawio.svg"><img alt="Eclipse S-CORE platform architecture overview" class="align-center" src="../../_images/platform_architecture.drawio.svg" width="1000" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<section id="reading-the-picture">
+<h2>Reading the picture<a class="headerlink" href="#reading-the-picture" title="Link to this heading">#</a></h2>
+<p>The platform is organized in layers. From top to bottom:</p>
+<ul class="simple">
+<li><p><strong>Frameworks</strong> — domain-specific frameworks on which applications are built, e.g. for ADAS the
+<em>Fixed Execution Order (FEO)</em> framework and the <em>Deterministic App Abstraction Layer (DAAL)</em>,
+or the <em>AI Platform</em>. Applications and domain frameworks for other domains (e.g. telematics) are shown
+for context only.</p></li>
+<li><p><strong>Platform API</strong> — the native C++ and Rust APIs that applications use, e.g. for logging, persistency,
+time, lifecycle, communication, diagnostics and crypto.</p></li>
+<li><p><strong>Platform services</strong> — the implementations behind these APIs, grouped into <em>Base Services</em>
+(logging, tracing, persistency, time, software update), <em>Application Management</em> (lifecycle, health management),
+<em>Communication</em> (zero-copy IPC, SOME/IP and DDS gateways), <em>Diagnosis</em> and <em>Security</em>.</p></li>
+<li><p><strong>Common</strong> — functionality shared by all other parts, such as the base libraries (<em>baselibs</em>)
+and configuration management.</p></li>
+<li><p><strong>Operating System</strong> and <strong>Hypervisor / Hardware</strong> — S-CORE builds on existing POSIX-compliant operating
+systems (e.g. QNX, Linux) instead of developing its own. The expectations towards the operating system are
+described in the <a class="reference internal" href="../../modules/os/operating_systems/docs/index.html#comp-doc-os"><span class="std std-ref">OS module</span></a> and as assumptions of use in the
+<a class="reference internal" href="../../requirements/platform_assumptions/index.html"><span class="doc">platform assumptions</span></a>.</p></li>
+</ul>
+<p>The colors indicate the status of each building block: <em>in development</em>, <em>for future</em>, <em>not part of development</em>,
+<em>out of scope</em>, or <em>part of the operating system / hardware specific implementation</em>.
+The box on the right side shows that S-CORE can run next to a non-converged system, e.g. an IVI system with Android.</p>
+</section>
+<section id="from-features-to-modules">
+<h2>From features to modules<a class="headerlink" href="#from-features-to-modules" title="Link to this heading">#</a></h2>
+<p>The architecture is described on two levels, which you will find again in all S-CORE repositories:</p>
+<ul class="simple">
+<li><p>A <strong>Feature</strong> is a logical entity of the platform (e.g. <em>Persistency</em> or <em>Communication</em>).
+Feature requirements and the feature architecture are maintained in this repository,
+see <a class="reference internal" href="../../features/index.html#features"><span class="std std-ref">Platform Features</span></a>.</p></li>
+<li><p>A <strong>Module</strong> is the physically built and released unit that implements one or more features.
+Each module lives in its own repository and contains the component requirements, component architecture,
+detailed design, implementation and tests, see <a class="reference internal" href="../../modules/index.html#modules"><span class="std std-ref">Modules</span></a> and the
+<a class="reference internal" href="module_structure_overview.html"><span class="doc">module structure overview</span></a>.</p></li>
+</ul>
+<p>The relation between both levels is explained in the
+<a class="reference external" href="https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html">building blocks concept</a>
+of the process description.</p>
+</section>
+<section id="evolving-the-architecture">
+<h2>Evolving the architecture<a class="headerlink" href="#evolving-the-architecture" title="Link to this heading">#</a></h2>
 <p>Eclipse S-CORE has a <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/categories/architecture-community">software architecture community</a>
 <strong>responsible for maintaining and evolving the architecture</strong>.</p>
-<p>Structural changes and new functionality are proposed through a <strong>FEP</strong>.
+<p>Structural changes and new functionality are proposed through a <strong>Feature &amp; Enhancement Proposal (FEP)</strong>.
 All <strong>past feature requests</strong> are documented in the corresponding
 <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/4/views/1">Feature Requests / Modification</a> GitHub project.</p>
-<p><strong>Submitting a FEP</strong> is described in the <a class="reference internal" href="../../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">Feature &amp; Enhancement Proposal (FEP)</span></a>.
+<p><strong>Submitting a FEP</strong> is described in the <a class="reference internal" href="../../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">Feature &amp; Enhancement Proposal (FEP)</span></a> guideline.
+Larger architectural decisions are documented as decision records in the <a class="reference internal" href="../../design_decisions/index.html"><span class="doc">design decisions</span></a> section.
 Participation in the architecture process is encouraged.</p>
 <p>The <strong>software architecture community regularly organizes workshops</strong> where contributors can:</p>
 <ul class="simple">
@@ -652,6 +697,7 @@ Participation in the architecture process is encouraged.</p>
 <li><p>evaluate whether <strong>existing solutions</strong> from other projects can be adopted.</p></li>
 </ul>
 <p>These workshops are open for participation both online and onsite.</p>
+</section>
 </section>
 
 
@@ -692,6 +738,20 @@ Participation in the architecture process is encouraged.</p>
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-picture">Reading the picture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-features-to-modules">From features to modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolving-the-architecture">Evolving the architecture</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
