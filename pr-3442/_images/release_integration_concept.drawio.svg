@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1" width="820px" height="1080px" viewBox="0 0 820 1080"
+     content="&lt;mxfile host=&quot;draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;integration-process&quot; name=&quot;Integration Process&quot;&gt;&lt;mxGraphModel dx=&quot;820&quot; dy=&quot;1080&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; page=&quot;1&quot; pageWidth=&quot;820&quot; pageHeight=&quot;1080&quot; background=&quot;#F5F5F7&quot;&gt;&lt;root&gt;&lt;mxCell id=&quot;0&quot;/&gt;&lt;mxCell id=&quot;1&quot; parent=&quot;0&quot;/&gt;&lt;mxCell id=&quot;2&quot; value=&quot;Integration Process&quot; style=&quot;rounded=0;fillColor=#2A1E3F;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=18;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry width=&quot;820&quot; height=&quot;52&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;3&quot; value=&quot;Module level (module repository)&quot; style=&quot;text;align=left;fontStyle=3;fontSize=11;fontColor=#666666;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;60&quot; width=&quot;330&quot; height=&quot;24&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;4&quot; value=&quot;1. Module development&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#2F5DA8;swimlaneFillColor=#EAF0FA;strokeColor=#2F5DA8;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;88&quot; width=&quot;740&quot; height=&quot;82&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;5&quot; value=&quot;• Each module lives in its own repository and is developed on its main branch&amp;lt;br&amp;gt;• Requirements, architecture, detailed design and tests follow the S-CORE process (docs-as-code)&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;4&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;52&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;6&quot; value=&quot;2. Module quality gate (CI on every pull request)&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#2F5DA8;swimlaneFillColor=#EAF0FA;strokeColor=#2F5DA8;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;196&quot; width=&quot;740&quot; height=&quot;100&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;7&quot; value=&quot;• Reusable workflows from cicd-workflows: build and unit tests, format, copyright, license checks&amp;lt;br&amp;gt;• Static analysis (e.g. clang-tidy, Clippy, CodeQL) and coverage&amp;lt;br&amp;gt;• Component integration tests and documentation build incl. traceability checks&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;6&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;70&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;8&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;4&quot; target=&quot;6&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;9&quot; value=&quot;3. Module release&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#5D4037;swimlaneFillColor=#FFF8EC;strokeColor=#5D4037;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;322&quot; width=&quot;740&quot; height=&quot;100&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;10&quot; value=&quot;• Module release note, verification report and QMS report are created by the module committers&amp;lt;br&amp;gt;• Release is verified by the release team and approved by project lead and quality manager&amp;lt;br&amp;gt;• A GitHub release (tag) is published in the module repository&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;9&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;70&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;11&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;6&quot; target=&quot;9&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;12&quot; value=&quot;4. S-CORE Bazel registry&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#5D4037;swimlaneFillColor=#FFF8EC;strokeColor=#5D4037;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;448&quot; width=&quot;740&quot; height=&quot;82&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;13&quot; value=&quot;• New GitHub releases are detected automatically and proposed as pull request to bazel_registry&amp;lt;br&amp;gt;• After merge, the version can be consumed by everyone via bazel_dep&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;12&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;52&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;14&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;9&quot; target=&quot;12&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;15&quot; value=&quot;Integration level (reference_integration)&quot; style=&quot;text;align=left;fontStyle=3;fontSize=11;fontColor=#666666;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;556&quot; width=&quot;330&quot; height=&quot;24&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;16&quot; value=&quot;5. Update known_good.json&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#2E6B30;swimlaneFillColor=#EBF5EC;strokeColor=#2E6B30;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;584&quot; width=&quot;740&quot; height=&quot;82&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;17&quot; value=&quot;• Module is pinned to an exact commit (git_override) or a released version (single_version_override)&amp;lt;br&amp;gt;• Generated MODULE.bazel fragments and the lockfile are checked for consistency in CI&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;16&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;52&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;18&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;12&quot; target=&quot;16&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;19&quot; value=&quot;6. Stage 1: full-stack validation&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#2E6B30;swimlaneFillColor=#EBF5EC;strokeColor=#2E6B30;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;692&quot; width=&quot;740&quot; height=&quot;100&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;20&quot; value=&quot;• Build of all modules against each other for all reference images (Linux, QNX, AutoSD, EB corbos Linux)&amp;lt;br&amp;gt;• Feature and platform integration tests (ITF) on the reference images&amp;lt;br&amp;gt;• Resolution of the complete dependency set, incl. transitive dependencies&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;19&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;70&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;21&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;16&quot; target=&quot;19&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;22&quot; value=&quot;7. Stage 2: module-scoped validation&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#2E6B30;swimlaneFillColor=#EBF5EC;strokeColor=#2E6B30;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;818&quot; width=&quot;740&quot; height=&quot;82&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;23&quot; value=&quot;• Unit and component tests of each module are re-run against the dependency set resolved in stage 1&amp;lt;br&amp;gt;• Coverage, verification reports and documentation are consolidated&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;22&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;52&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;24&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;19&quot; target=&quot;22&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;25&quot; value=&quot;Platform release&quot; style=&quot;text;align=left;fontStyle=3;fontSize=11;fontColor=#666666;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;926&quot; width=&quot;330&quot; height=&quot;24&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;26&quot; value=&quot;8. S-CORE release&quot; style=&quot;swimlane;startSize=30;rounded=1;arcSize=2;fillColor=#2A1E3F;swimlaneFillColor=#EEEAF4;strokeColor=#2A1E3F;fontColor=#FFFFFF;fontStyle=1;fontSize=13;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry x=&quot;40&quot; y=&quot;954&quot; width=&quot;740&quot; height=&quot;100&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;27&quot; value=&quot;• Release branch in reference_integration, approved by the maintainers of all integrated modules&amp;lt;br&amp;gt;• Platform release note, platform handbook and platform verification report&amp;lt;br&amp;gt;• Release tag in reference_integration freezes the versions of all included modules&quot; style=&quot;text;html=1;align=left;verticalAlign=top;spacingLeft=12;fontSize=11;fontColor=#222222;whiteSpace=wrap;&quot; parent=&quot;26&quot; vertex=&quot;1&quot;&gt;&lt;mxGeometry y=&quot;30&quot; width=&quot;740&quot; height=&quot;70&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=&quot;28&quot; style=&quot;endArrow=block;endFill=1;strokeColor=#888888;strokeWidth=2;&quot; parent=&quot;1&quot; source=&quot;22&quot; target=&quot;26&quot; edge=&quot;1&quot;&gt;&lt;mxGeometry relative=&quot;1&quot; as=&quot;geometry&quot;/&gt;&lt;/mxCell&gt;&lt;/root&gt;&lt;/mxGraphModel&gt;&lt;/diagram&gt;&lt;/mxfile&gt;">
+
+  <rect x="0" y="0" width="820" height="1080" fill="#F5F5F7"/>
+
+  <rect x="0" y="0" width="820" height="52" fill="#2A1E3F"/>
+  <text x="410" y="33" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Integration Process</text>
+
+  <text x="40" y="76" font-family="Helvetica, Arial, sans-serif" font-size="11" font-style="italic" font-weight="bold" fill="#666666">Module level (module repository)</text>
+
+  <rect x="40" y="88" width="740" height="82" rx="6" fill="#EAF0FA" stroke="#2F5DA8" stroke-width="1.5"/>
+  <path d="M40 94 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#2F5DA8"/>
+  <text x="410" y="108" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">1. Module development</text>
+
+  <text x="56" y="137" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Each module lives in its own repository and is developed on its main branch</text>
+
+  <text x="56" y="155" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Requirements, architecture, detailed design and tests follow the S-CORE process (docs-as-code)</text>
+
+  <line x1="410" y1="170" x2="410" y2="188" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,187 416,187 410,195" fill="#888888"/>
+
+  <rect x="40" y="196" width="740" height="100" rx="6" fill="#EAF0FA" stroke="#2F5DA8" stroke-width="1.5"/>
+  <path d="M40 202 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#2F5DA8"/>
+  <text x="410" y="216" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">2. Module quality gate (CI on every pull request)</text>
+
+  <text x="56" y="245" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Reusable workflows from cicd-workflows: build and unit tests, format, copyright, license checks</text>
+
+  <text x="56" y="263" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Static analysis (e.g. clang-tidy, Clippy, CodeQL) and coverage</text>
+
+  <text x="56" y="281" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Component integration tests and documentation build incl. traceability checks</text>
+
+  <line x1="410" y1="296" x2="410" y2="314" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,313 416,313 410,321" fill="#888888"/>
+
+  <rect x="40" y="322" width="740" height="100" rx="6" fill="#FFF8EC" stroke="#5D4037" stroke-width="1.5"/>
+  <path d="M40 328 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#5D4037"/>
+  <text x="410" y="342" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">3. Module release</text>
+
+  <text x="56" y="371" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Module release note, verification report and QMS report are created by the module committers</text>
+
+  <text x="56" y="389" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Release is verified by the release team and approved by project lead and quality manager</text>
+
+  <text x="56" y="407" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• A GitHub release (tag) is published in the module repository</text>
+
+  <line x1="410" y1="422" x2="410" y2="440" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,439 416,439 410,447" fill="#888888"/>
+
+  <rect x="40" y="448" width="740" height="82" rx="6" fill="#FFF8EC" stroke="#5D4037" stroke-width="1.5"/>
+  <path d="M40 454 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#5D4037"/>
+  <text x="410" y="468" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">4. S-CORE Bazel registry</text>
+
+  <text x="56" y="497" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• New GitHub releases are detected automatically and proposed as pull request to bazel_registry</text>
+
+  <text x="56" y="515" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• After merge, the version can be consumed by everyone via bazel_dep</text>
+
+  <text x="40" y="572" font-family="Helvetica, Arial, sans-serif" font-size="11" font-style="italic" font-weight="bold" fill="#666666">Integration level (reference_integration)</text>
+
+  <line x1="410" y1="530" x2="410" y2="576" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,575 416,575 410,583" fill="#888888"/>
+
+  <rect x="40" y="584" width="740" height="82" rx="6" fill="#EBF5EC" stroke="#2E6B30" stroke-width="1.5"/>
+  <path d="M40 590 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#2E6B30"/>
+  <text x="410" y="604" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">5. Update known_good.json</text>
+
+  <text x="56" y="633" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Module is pinned to an exact commit (git_override) or a released version (single_version_override)</text>
+
+  <text x="56" y="651" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Generated MODULE.bazel fragments and the lockfile are checked for consistency in CI</text>
+
+  <line x1="410" y1="666" x2="410" y2="684" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,683 416,683 410,691" fill="#888888"/>
+
+  <rect x="40" y="692" width="740" height="100" rx="6" fill="#EBF5EC" stroke="#2E6B30" stroke-width="1.5"/>
+  <path d="M40 698 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#2E6B30"/>
+  <text x="410" y="712" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">6. Stage 1: full-stack validation</text>
+
+  <text x="56" y="741" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Build of all modules against each other for all reference images (Linux, QNX, AutoSD, EB corbos Linux)</text>
+
+  <text x="56" y="759" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Feature and platform integration tests (ITF) on the reference images</text>
+
+  <text x="56" y="777" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Resolution of the complete dependency set, incl. transitive dependencies</text>
+
+  <line x1="410" y1="792" x2="410" y2="810" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,809 416,809 410,817" fill="#888888"/>
+
+  <rect x="40" y="818" width="740" height="82" rx="6" fill="#EBF5EC" stroke="#2E6B30" stroke-width="1.5"/>
+  <path d="M40 824 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#2E6B30"/>
+  <text x="410" y="838" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">7. Stage 2: module-scoped validation</text>
+
+  <text x="56" y="867" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Unit and component tests of each module are re-run against the dependency set resolved in stage 1</text>
+
+  <text x="56" y="885" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Coverage, verification reports and documentation are consolidated</text>
+
+  <text x="40" y="942" font-family="Helvetica, Arial, sans-serif" font-size="11" font-style="italic" font-weight="bold" fill="#666666">Platform release</text>
+
+  <line x1="410" y1="900" x2="410" y2="946" stroke="#888888" stroke-width="2"/>
+  <polygon points="404,945 416,945 410,953" fill="#888888"/>
+
+  <rect x="40" y="954" width="740" height="100" rx="6" fill="#EEEAF4" stroke="#2A1E3F" stroke-width="1.5"/>
+  <path d="M40 960 a6 6 0 0 1 6 -6 h728 a6 6 0 0 1 6 6 v24 h-740 z" fill="#2A1E3F"/>
+  <text x="410" y="974" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">8. S-CORE release</text>
+
+  <text x="56" y="1003" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Release branch in reference_integration, approved by the maintainers of all integrated modules</text>
+
+  <text x="56" y="1021" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Platform release note, platform handbook and platform verification report</text>
+
+  <text x="56" y="1039" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#222222">• Release tag in reference_integration freezes the versions of all included modules</text>
+</svg>
