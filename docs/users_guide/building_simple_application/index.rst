@@ -18,9 +18,27 @@ Contribute own module
 =====================
 
 This guide walks you through contributing a new platform module to Eclipse S-CORE end-to-end.
-As a running example you will build a small demo application called
-`scrample <https://github.com/eclipse-score/scrample/tree/v0.1.2-simple-app>`_, which shows how
-to compose existing S-CORE platform modules into new functionality.
+As a running example it uses the **platform info service** and its client, the **platform info consumer**,
+from the `reference integration <https://github.com/eclipse-score/reference_integration>`_.
+The example shows how to compose existing S-CORE platform modules into new functionality:
+
+- The `platform info service <https://github.com/eclipse-score/reference_integration/tree/main/deploy/platform_info>`_
+  offers the mw::com service ``score/platform/info``. Its field ``platform_info`` reports the S-CORE version the
+  platform was built from, i.e. the version or commit of every module in ``known_good.json``,
+  sealed with a CRC32 checksum from ``baselibs``.
+- The `platform info consumer <https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/platform_info_consumer.cpp>`_
+  finds the service via mw::com service discovery, checks the CRC32 and compares the reported version with the
+  version it was built for. It runs as the showcase *Platform Version Check* and is verified by a platform integration test.
+
+Both use only two S-CORE modules, ``score_communication`` (mw::com) and ``score_baselibs`` (CRC32, argument handling),
+which makes the example small enough to follow, but complete: it covers the build, the documentation,
+the CI/CD workflows, the deployment onto the reference images and an automated test.
+
+.. note::
+
+   The example lives inside the reference integration (``deploy/platform_info`` and ``showcases/standalone``),
+   whereas your own module lives in its own repository. The steps are the same; where they differ, this guide
+   shows both. The example replaces the former ``scrample`` demo application.
 
 By the end of this section you will have:
 
