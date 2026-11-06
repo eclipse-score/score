@@ -34,6 +34,7 @@ Communication
 
    architecture/index
    requirements/index
+   requirements/req_inspection
    ipc/index
    some_ip_gateway/index
 
@@ -94,9 +95,9 @@ To provide a clearer picture we define which basic communication patterns the fr
 
 Based on this, the basic communication elements consist of:
 
-- :need:`Events <feat_req__com__event_type>`
-- :need:`Methods <feat_req__com__method>`
-- :need:`Signals <feat_req__com__signal>`
+- :need:`Events <feat_req__com__event_type_structure>`
+- :need:`Methods <feat_req__com__method_structure>`
+- :need:`Fields <feat_req__com__field_structure>`
 
 Since often communication regarding a specific feature consists of many of these elements, we allow grouping of them
 through :need:`communication interfaces <feat_req__com__interfaces>`.
