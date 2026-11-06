@@ -25,7 +25,8 @@ contact one of the Eclipse S-CORE Project Leads (listed at the official `Eclipse
 They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.
 
 The recommended communication channel to approach Eclipse S-CORE project leads is the
-`eclipse sdv slack channel <https://sdv.eclipse.org/get-engaged/>`_.
+`project lead circle Slack channel <https://sdvworkinggroup.slack.com/archives/C085F44D2CS>`_
+in the Eclipse SDV Slack workspace.
 
 .. note::
 
@@ -67,7 +68,7 @@ Add your repository definition next to the existing ones. Module repositories ar
 Then, create a PR in the `eclipse-score/.eclipsefdn <https://github.com/eclipse-score/.eclipsefdn>`_ repository. The PR must be approved by:
 
 - Eclipse S-CORE project lead
-- Eclipse Foundation Security Team
+- Eclipse Foundation Security Team, which is the code owner of the otterdog configuration
 
 .. tip::
 
@@ -243,9 +244,10 @@ and the CRC32 calculation and argument handling from ``score_baselibs``:
     :linenos:
 
     bazel_dep(name = "score_communication", version = "0.6.0")
-    bazel_dep(name = "score_baselibs", version = "0.2.17")
+    bazel_dep(name = "score_baselibs", version = "0.2.16")
 
 The available versions can be looked up in the `Bazel registry UI <https://eclipse-score.github.io/bazel_registry_ui/>`_.
+Choose versions that fit together: ``score_communication`` 0.6.0, for example, is built against ``score_baselibs`` 0.2.16.
 Bazel modules don't make transitive dependencies available to your code: list every module whose targets you use
 directly in your ``BUILD`` files.
 
@@ -335,9 +337,9 @@ A minimal example:
         "source_code": ["cpp"],    # Languages used: "cpp", "rust", or both
     }
 
-The ``asil_level`` is used by tooling to apply the appropriate quality and compliance checks.
-The ``source_code`` list determines which license file types are scanned by ``dash_license_checker``
-(e.g., ``Cargo.lock`` for Rust, ``requirements.txt`` for Python).
+The ``asil_level`` documents the safety level of the module.
+The ``source_code`` list is evaluated by ``dash_license_checker``: if no ``file_type`` is given,
+it determines which dependency file is scanned (e.g., ``Cargo.lock`` for Rust, ``requirements.txt`` for Python).
 
 .. tip::
     Start with ``"asil_level": "QM"`` during initial development.

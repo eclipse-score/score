@@ -32,7 +32,8 @@ the basic workflows:
    * - Workflow
      - Purpose
    * - ``on-pr.yml``
-     - Runs the pre-commit checks, e.g. formatting, on every pull request
+     - Runs the pre-commit checks on every pull request, e.g. whitespace, copyright and REUSE headers,
+       YAML formatting and the Bazel lockfile
    * - ``on-pr_target.yml``
      - Runs the license check with the Eclipse Dash license tool
    * - ``docs.yml`` / ``docs-publish.yml``
@@ -122,6 +123,9 @@ for QNX, the license handling:
 - Line 24: the QNX job uses secrets, which are gated by the GitHub environment ``workflow-approval``,
   e.g. for pull requests from forks.
 - Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
+  The QNX job also expects the credential helper script ``.github/tools/qnx_credential_helper.py``, which is not part
+  of the template; copy it e.g. from the `persistency <https://github.com/eclipse-score/persistency/tree/main/.github/tools>`_
+  repository or pass another path with the input ``credential-helper``.
 
 Once the workflow is merged into the repository, every new pull request automatically triggers the build,
 and its result is shown in the *Actions* tab of your repository and in the checks of the pull request.

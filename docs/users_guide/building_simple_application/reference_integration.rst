@@ -357,14 +357,8 @@ Patches must be in unified diff format and are applied with ``patch -p1``:
 
    git diff HEAD > patches/my_module/001-fix-visibility.patch
 
-Add a ``BUILD`` file in ``patches/my_module/`` that exports the patch files:
-
-.. code-block:: python
-
-   # patches/my_module/BUILD
-   exports_files(glob(["*.patch"]))
-
-Then reference them in ``known_good.json``:
+Add an empty ``BUILD`` file in ``patches/my_module/``, so that the patch files can be referenced by their
+Bazel label, and reference them in ``known_good.json``:
 
 .. code-block:: json
 
@@ -420,18 +414,9 @@ included in the repository root.
 
 3. **The S-CORE CLI starts automatically** inside the container.
    It scans all ``*.score.json`` files and presents a multi-select menu
-   of all available examples. The new showcase appears automatically:
+   of all available examples. The new showcase *Platform Version Check* appears automatically.
 
-   .. code-block:: text
-
-      Select examples to run:
-        [ ] Communication Sender Receiver Example
-        [ ] Kyron basic example
-        [ ] ...
-        [ ] Platform Version Check      <- new showcase
-        [ ] ...
-
-4. **Select the example** with ``Space``, confirm with ``Enter``.
+4. **Select the example** and confirm the selection.
    The CLI launches the selected example and streams its output to the terminal.
    For the platform version check, the expected output ends with:
 
