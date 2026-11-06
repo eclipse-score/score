@@ -89,6 +89,9 @@ Major version updates denote API incompatibility, so the modules in a platform r
 major version.
 
 For the release execution follow the steps described in :ref:`module_release_manual`.
+The platform release is prepared on a release branch of the
+`reference integration <https://github.com/eclipse-score/reference_integration>`_,
+see "Branches and Baselines" in :need:`doc__config_mgt_plan` for the approval of merges into it.
 
 Release Verification and Approval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
