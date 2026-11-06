@@ -19,8 +19,10 @@ DR-008-Int: S-CORE integration scope in reference_integration repository
    :id: dec_rec__int__scope_reference_integration
    :status: accepted
    :version: 1
+   :tracking: https://github.com/eclipse-score/score/issues/2977
    :context: Integration
    :decision: Option 4
+   :consequences: reference_integration maintains a stable known good set of pinned Module versions and runs a two-stage validation pipeline — integration-scoped checks on the full stack, then Module-scoped validation against the resolved dependency set. Quality checks stay close to the owning Module while the exact resolved dependency set is validated, keeping the Module dependency footprint minimal.
 
 Context / Problem
 -----------------

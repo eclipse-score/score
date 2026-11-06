@@ -21,6 +21,8 @@ DR-008-Infra: Generating documentation sources via Bazel
    :version: 1
    :context: Infrastructure
    :decision: Option M because of slight IDE usability edge over Option B
+   :tracking: https://github.com/eclipse-score/score/pull/2826
+   :consequences: Documentation sources are generated via Bazel, replacing the accumulating ad-hoc workarounds with a single generic mechanism. IDE tooling stays aligned with Sphinx because both read the same ubproject.toml, and the extension is a no-op when no sidecar is present.
 
 Context / Problem
 -----------------

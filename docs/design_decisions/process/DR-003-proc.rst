@@ -24,6 +24,8 @@ In each DR file, include the following sections:
    :version: 1
    :context: Processes
    :decision: Alternative C
+   :tracking: https://github.com/eclipse-score/score/pull/3194
+   :consequences: Module folders follow a standardized structure, giving contributors a predictable layout across all modules. The existing test folder and file naming differences are left as-is, since aligning them was judged to cost more than it would gain.
 
 Context
 -------

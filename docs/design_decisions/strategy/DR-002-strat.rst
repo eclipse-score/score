@@ -21,6 +21,8 @@ DR-002-Strat: Eclipse Project Structure for S-Core
    :version: 1
    :context: Strategy
    :decision: Option 1
+   :tracking: https://github.com/eclipse-score/score/pull/2926
+   :consequences: S-Core keeps its current Eclipse project structure, protecting the S-Core v1.0 release from the high risk of a repository restructure. New S-Core modules are treated as new Eclipse projects for initial Committer nomination, which the Eclipse Foundation and PMC must acknowledge.
 
 Context / Problem
 -----------------

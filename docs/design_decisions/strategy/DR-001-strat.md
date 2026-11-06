@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__strat__consistent_stack_vs_reference
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/pull/2560
 :context: Strategy
 :decision: S-CORE as consistent stack
+:consequences: S-CORE is delivered as a continuously consistent stack rather than independent modules, so modules must integrate and be tested together. This raises the bar for cross-module compatibility but gives downstream users a coherent platform.
 ```
 
 ---

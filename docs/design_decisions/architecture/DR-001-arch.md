@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__arch__rust_safety_critical
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/issues/2020
 :context: Architecture
 :decision: Rust is ready for use in ASIL-B safety-critical components
+:consequences: Modules may now adopt Rust for ASIL-B safety-critical code. The remaining qualification gaps (coverage, libcore/libstd extensions) must be closed via the identified commercial mitigation paths before certification.
 ```
 
 ---

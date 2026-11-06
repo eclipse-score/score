@@ -52,6 +52,7 @@ cli_helper(
 )
 
 exports_files([
+    "docs_as_code_dec_rec.patch",
     "MODULE.bazel",
     "BUILD",
 ])

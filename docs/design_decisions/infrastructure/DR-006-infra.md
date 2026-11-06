@@ -19,8 +19,10 @@ SPDX-License-Identifier: Apache-2.0
 :id: dec_rec__infra__clippy_rules_lint
 :status: accepted
 :version: 1
+:tracking: https://github.com/eclipse-score/score/issues/2966
 :context: Infrastructure
 :decision: Use rules_lint for Clippy in S-CORE modules
+:consequences: Rust modules run Clippy through rules_lint in the Bazel build, so linting is hermetic and consistent. Existing ad-hoc Clippy invocations are replaced by the rules_lint integration.
 ```
 
 ---
