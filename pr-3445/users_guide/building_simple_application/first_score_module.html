@@ -641,7 +641,8 @@ accepted the Eclipse Contributor Agreement (ECA), and linked your GitHub account
 contact one of the Eclipse S-CORE Project Leads (listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-CORE webpage</a>).
 They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.</p>
 <p>The recommended communication channel to approach Eclipse S-CORE project leads is the
-<a class="reference external" href="https://sdv.eclipse.org/get-engaged/">eclipse sdv slack channel</a>.</p>
+<a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C085F44D2CS">project lead circle Slack channel</a>
+in the Eclipse SDV Slack workspace.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You do not need an own repository to follow this guide: the running example, the platform info service and
@@ -678,7 +679,7 @@ newDependableElementRepo('inc_someip_gateway', subcategory = "incubation") {
 <p>Then, create a PR in the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
 <ul class="simple">
 <li><p>Eclipse S-CORE project lead</p></li>
-<li><p>Eclipse Foundation Security Team</p></li>
+<li><p>Eclipse Foundation Security Team, which is the code owner of the otterdog configuration</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -847,10 +848,11 @@ It is explained in the <a class="reference internal" href="building_source_code.
 <p>Finally, add the S-CORE modules your code uses. The platform info example uses mw::com from <code class="docutils literal notranslate"><span class="pre">score_communication</span></code>
 and the CRC32 calculation and argument handling from <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_communication"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.6.0"</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.17"</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.16"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The available versions can be looked up in the <a class="reference external" href="https://eclipse-score.github.io/bazel_registry_ui/">Bazel registry UI</a>.
+Choose versions that fit together: <code class="docutils literal notranslate"><span class="pre">score_communication</span></code> 0.6.0, for example, is built against <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> 0.2.16.
 Bazel modules don’t make transitive dependencies available to your code: list every module whose targets you use
 directly in your <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> files.</p>
 <div class="admonition tip">
@@ -925,9 +927,9 @@ This file declares project-level metadata that is consumed by shared Bazel macro
 <span class="linenos">4</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">asil_level</span></code> is used by tooling to apply the appropriate quality and compliance checks.
-The <code class="docutils literal notranslate"><span class="pre">source_code</span></code> list determines which license file types are scanned by <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>
-(e.g., <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for Rust, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for Python).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">asil_level</span></code> documents the safety level of the module.
+The <code class="docutils literal notranslate"><span class="pre">source_code</span></code> list is evaluated by <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>: if no <code class="docutils literal notranslate"><span class="pre">file_type</span></code> is given,
+it determines which dependency file is scanned (e.g., <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for Rust, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for Python).</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Start with <code class="docutils literal notranslate"><span class="pre">&quot;asil_level&quot;:</span> <span class="pre">&quot;QM&quot;</span></code> during initial development.

@@ -653,7 +653,8 @@ the basic workflows:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">on-pr.yml</span></code></p></td>
-<td><p>Runs the pre-commit checks, e.g. formatting, on every pull request</p></td>
+<td><p>Runs the pre-commit checks on every pull request, e.g. whitespace, copyright and REUSE headers,
+YAML formatting and the Bazel lockfile</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">on-pr_target.yml</span></code></p></td>
 <td><p>Runs the license check with the Eclipse Dash license tool</p></td>
@@ -743,7 +744,10 @@ for QNX, the license handling:</p>
 <li><p>Line 23: the build configuration from the <a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter.</p></li>
 <li><p>Line 24: the QNX job uses secrets, which are gated by the GitHub environment <code class="docutils literal notranslate"><span class="pre">workflow-approval</span></code>,
 e.g. for pull requests from forks.</p></li>
-<li><p>Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.</p></li>
+<li><p>Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
+The QNX job also expects the credential helper script <code class="docutils literal notranslate"><span class="pre">.github/tools/qnx_credential_helper.py</span></code>, which is not part
+of the template; copy it e.g. from the <a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/.github/tools">persistency</a>
+repository or pass another path with the input <code class="docutils literal notranslate"><span class="pre">credential-helper</span></code>.</p></li>
 </ul>
 <p>Once the workflow is merged into the repository, every new pull request automatically triggers the build,
 and its result is shown in the <em>Actions</em> tab of your repository and in the checks of the pull request.

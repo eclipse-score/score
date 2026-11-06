@@ -971,12 +971,8 @@ prefer fixing the issue in the module’s own repository.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff<span class="w"> </span>HEAD<span class="w"> </span>&gt;<span class="w"> </span>patches/my_module/001-fix-visibility.patch
 </pre></div>
 </div>
-<p>Add a <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file in <code class="docutils literal notranslate"><span class="pre">patches/my_module/</span></code> that exports the patch files:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># patches/my_module/BUILD</span>
-<span class="n">exports_files</span><span class="p">(</span><span class="n">glob</span><span class="p">([</span><span class="s2">"*.patch"</span><span class="p">]))</span>
-</pre></div>
-</div>
-<p>Then reference them in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>:</p>
+<p>Add an empty <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file in <code class="docutils literal notranslate"><span class="pre">patches/my_module/</span></code>, so that the patch files can be referenced by their
+Bazel label, and reference them in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"score_my_module"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"repo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/eclipse-score/my_module.git"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
@@ -1027,17 +1023,8 @@ under <code class="docutils literal notranslate"><span class="pre">images/</span
 </li>
 <li><p><strong>The S-CORE CLI starts automatically</strong> inside the container.
 It scans all <code class="docutils literal notranslate"><span class="pre">*.score.json</span></code> files and presents a multi-select menu
-of all available examples. The new showcase appears automatically:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Select examples to run:
-  [ ] Communication Sender Receiver Example
-  [ ] Kyron basic example
-  [ ] ...
-  [ ] Platform Version Check      &lt;- new showcase
-  [ ] ...
-</pre></div>
-</div>
-</li>
-<li><p><strong>Select the example</strong> with <code class="docutils literal notranslate"><span class="pre">Space</span></code>, confirm with <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.
+of all available examples. The new showcase <em>Platform Version Check</em> appears automatically.</p></li>
+<li><p><strong>Select the example</strong> and confirm the selection.
 The CLI launches the selected example and streams its output to the terminal.
 For the platform version check, the expected output ends with:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>platform_info_consumer: found the platform info service
