@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>First Eclipse S-CORE Module &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=415257cb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'users_guide/building_simple_application/first_score_module';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Documentation generation" href="doc_generation.html" />
+    <link rel="prev" title="Contribute own module" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_links.html">Useful Links</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User’s Guide</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contribute own module</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">First Eclipse S-CORE Module</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="first-eclipse-s-core-module">
+<h1>First Eclipse S-CORE Module<a class="headerlink" href="#first-eclipse-s-core-module" title="Link to this heading">#</a></h1>
+<p>Before starting, ensure you are an official contributor to the Eclipse S-CORE project.
+Otherwise, you will not have the required permissions. Instructions can be found in
+<a class="reference internal" href="../../contribute/general/contribution_attribution.html#contribution-attribution"><span class="std std-ref">Actions to ensure Proper Contribution Attribution in Eclipse S-CORE</span></a>.</p>
+<p>Once you have created an Eclipse account,
+accepted the Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse account,
+contact one of the Eclipse S-CORE Project Leads (listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-CORE webpage</a>).
+They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.</p>
+<p>The recommended communication channel to approach Eclipse S-CORE project leads is the
+<a class="reference external" href="https://sdv.eclipse.org/get-engaged/">eclipse sdv slack channel</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You do not need an own repository to follow this guide: the running example, the platform info service and
+its consumer, lives in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference integration</a>.
+The following sections describe what you need when you contribute your own module.</p>
+</div>
+<section id="creating-a-repository-for-your-module">
+<h2>Creating a Repository for Your Module<a class="headerlink" href="#creating-a-repository-for-your-module" title="Link to this heading">#</a></h2>
+<p>After becoming part of the Eclipse S-CORE GitHub organization, you can request a repository for your module.
+Repository creation follows Eclipse organizational rules.
+Most configuration is handled via <a class="reference external" href="https://otterdog.readthedocs.io/en/latest/">otterdog configuration</a> located in:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a></p></li>
+</ul>
+<p>Create a fork of this repository and modify the file:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a></p></li>
+</ul>
+<p>Add your repository definition next to the existing ones. Module repositories are declared with
+<code class="docutils literal notranslate"><span class="pre">newDependableElementRepo</span></code>; incubation repositories additionally set <code class="docutils literal notranslate"><span class="pre">subcategory</span> <span class="pre">=</span> <span class="pre">&quot;incubation&quot;</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>newDependableElementRepo('lifecycle') {
+  description: "Repository for the lifecycle feature",
+},
+
+<span class="hll">newDependableElementRepo('my_module') {
+</span><span class="hll">  description: "Repository for my module",
+</span><span class="hll">},
+</span>
+newDependableElementRepo('inc_someip_gateway', subcategory = "incubation") {
+  description: "Incubation repository for SOME/IP gateway feature",
+},
+</pre></div>
+</div>
+<p>Then, create a PR in the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
+<ul class="simple">
+<li><p>Eclipse S-CORE project lead</p></li>
+<li><p>Eclipse Foundation Security Team</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To speed up approval, mention both groups in your PR comment:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@eclipse-score/automotive-score-project-leads
+@eclipse-score/eclipsefdn-security
+
+Please approve.
+</pre></div>
+</div>
+</div>
+<section id="repository-layout">
+<h3>Repository Layout<a class="headerlink" href="#repository-layout" title="Link to this heading">#</a></h3>
+<p>Once merged, your new repository will appear in the Eclipse S-CORE GitHub organization repositories overview.</p>
+<p>New repositories are based on the <a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE module template</a>.
+Its <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> explains how to build and test the
+template; the expected folder structure is described in <a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.
+Below is an overview of the most relevant files and folders.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File / folder</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code></p></td>
+<td><p>CI/CD workflows, based on the reusable workflows of <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code></p></td>
+<td><p>Development container based on the common S-CORE devcontainer image</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.vscode/</span></code></p></td>
+<td><p>Recommended VS Code settings, extensions and snippets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></td>
+<td><p>Module documentation (rst), e.g. module, feature and component documents, release notes and verification report</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/</span></code></p></td>
+<td><p>Source code, unit tests and component integration tests, e.g. <code class="docutils literal notranslate"><span class="pre">score/component_example</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">examples/</span></code></p></td>
+<td><p>Examples and their documentation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.bazelrc</span></code>, <code class="docutils literal notranslate"><span class="pre">score.bazelrc/</span></code></p></td>
+<td><p>Bazel configuration incl. the S-CORE build configurations per target platform</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD</span></code></p></td>
+<td><p>Bazel module definition and top-level targets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code></p></td>
+<td><p>Project metadata used by shared Bazel macros</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>, <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code>, <code class="docutils literal notranslate"><span class="pre">REUSE.toml</span></code>, <code class="docutils literal notranslate"><span class="pre">LICENSES/</span></code></p></td>
+<td><p>License and copyright information</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="github-workflows">
+<h2>.github/workflows/<a class="headerlink" href="#github-workflows" title="Link to this heading">#</a></h2>
+<p>Contains the CI/CD workflows, e.g. pre-commit checks, license check and documentation build.
+They are described in the <a class="reference internal" href="cicd_workflows.html"><span class="doc">CI/CD workflows</span></a> chapter.</p>
+</section>
+<section id="devcontainer-and-vscode">
+<h2>.devcontainer and .vscode<a class="headerlink" href="#devcontainer-and-vscode" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> references the common <a class="reference external" href="https://github.com/eclipse-score/devcontainer">S-CORE devcontainer</a> image,
+which contains all required tools pre-installed. Open the repository with the
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">VS Code Dev Containers extension</a>
+and select <em>Reopen in Container</em> to skip manual toolchain setup entirely.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.vscode/</span></code> provides the Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements
+and architecture in
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets">.vscode/restructuredtext.code-snippets</a>.</p>
+</section>
+<section id="docs">
+<h2>docs<a class="headerlink" href="#docs" title="Link to this heading">#</a></h2>
+<p>Place all module documentation here in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">rst format</a>.
+The <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter shows how it is built.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We try to describe the most <a class="reference internal" href="../../contribute/contribution_request/index.html#contribute-contribution-guideline"><span class="std std-ref">common workflows</span></a>
+for developers. It is worth checking them.</p>
+</div>
+</section>
+<section id="score">
+<h2>score/<a class="headerlink" href="#score" title="Link to this heading">#</a></h2>
+<p>Source files, unit tests and component integration tests of the module, one folder per component,
+e.g. <code class="docutils literal notranslate"><span class="pre">score/&lt;component_name&gt;/</span></code>. Feature integration tests of the module are placed in <code class="docutils literal notranslate"><span class="pre">score/tests/</span></code>.
+The folder determines the test level, see <a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.</p>
+</section>
+<section id="bazelrc">
+<h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
+<p>Defines the Bazel configuration of the module. Important entries in the
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.bazelrc">.bazelrc</a> file include:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span>common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+</span><span class="hll"><span class="linenos">2</span>common --registry=https://bcr.bazel.build
+</span><span class="linenos">3</span>
+<span class="linenos">4</span># Import toolchain bazelrc file
+<span class="hll"><span class="linenos">5</span>try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
+</span></pre></div>
+</div>
+<ul class="simple">
+<li><p>Line 1 points to the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">Eclipse S-CORE Bazel registry</a>,
+where all official versions of Eclipse S-CORE modules are published.</p></li>
+<li><p>Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.</p></li>
+<li><p>Line 5 imports the S-CORE build configurations, e.g. <code class="docutils literal notranslate"><span class="pre">--config=score-linux-x86_64</span></code> or <code class="docutils literal notranslate"><span class="pre">--config=score-qnx-x86_64</span></code>.
+They select the target platform and the matching toolchains and are explained in the
+<a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter.</p></li>
+</ul>
+<p>This means, once we reference a dependency in our module,
+Bazel will search for it in one of these two registries.</p>
+</section>
+<section id="module-bazel">
+<h2>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h2>
+<p>This file turns your repository into a Bazel module.
+The template starts with a minimal module declaration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_module_template"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Rename the module and replace <em>score_module_template</em> by your module name.
+According to Eclipse S-CORE’s naming convention, all module names must start with the <em>score_</em> prefix,
+e.g. <em>score_my_module</em>. The version is not maintained in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>: it is taken from the release tag
+(<code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code>, following <a class="reference external" href="https://semver.org/">semantic versioning</a>) when the release is added to the
+Bazel registry. Only after your module was published in the Eclipse S-CORE Bazel registry, other modules can access it.</p>
+<p>Next, the template declares dependencies to modules that are publicly available in the Bazel Central Registry,
+e.g. for unit test execution with GoogleTest:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Add GoogleTest dependency</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"googletest"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.17.0.bcr.2"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># Rust rules for Bazel</span>
+<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.70.0"</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1"># C/C++ rules for Bazel</span>
+<span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_cc"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.18"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then follow the dependencies to Eclipse S-CORE modules that are used during development:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># tooling</span>
+<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tooling"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.3.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># docs-as-code</span>
+<span class="linenos"> 5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"8.6.0"</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_process_description"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"2.2.1"</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># Provide the tools from the devcontainer to Bazel</span>
+<span class="linenos"> 9</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_devcontainer"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.11.4"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_cpp_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.2"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>score_tooling</strong>: enables tooling checks such as copyright, formatting and license verification.</p></li>
+<li><p><strong>score_docs_as_code</strong> and <strong>score_process_description</strong>: enable documentation builds with Sphinx and sphinx-needs
+and the references to the process description.</p></li>
+<li><p><strong>score_devcontainer</strong>: makes the tools of the devcontainer available to Bazel.</p></li>
+<li><p><strong>score_cpp_policies</strong>: provides the shared C++ quality rules, e.g. compiler warnings, sanitizers and clang-tidy.
+For Rust code, <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> provides the shared Clippy configuration.</p></li>
+</ul>
+<p>The last part of the template, marked <em>S-CORE Toolchains (DO NOT MODIFY)</em>, registers the S-CORE toolchains
+from <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> and <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> for all supported target platforms.
+It is explained in the <a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter.</p>
+<p>Finally, add the S-CORE modules your code uses. The platform info example uses mw::com from <code class="docutils literal notranslate"><span class="pre">score_communication</span></code>
+and the CRC32 calculation and argument handling from <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_communication"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.6.0"</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.17"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The available versions can be looked up in the <a class="reference external" href="https://eclipse-score.github.io/bazel_registry_ui/">Bazel registry UI</a>.
+Bazel modules don’t make transitive dependencies available to your code: list every module whose targets you use
+directly in your <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> files.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Working across multiple modules and repositories can be challenging. Use the following approach during development:</p>
+<ul class="simple">
+<li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#git_override">git_override()</a>
+if you want to use a version of another module that is currently not officially available in the Bazel registry.</p></li>
+<li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#local_path_override">local_path_override()</a>
+if you want to use your local version of the module, e.g. during active development.</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">--override_module=&lt;module&gt;=&lt;path&gt;</span></code> to try out a local checkout without changing <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="build">
+<h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
+<p>The Bazel <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/BUILD">BUILD</a> file
+contains the main Bazel targets on the top level of the module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_docs_as_code//:docs.bzl"</span><span class="p">,</span> <span class="s2">"docs"</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_tooling//:defs.bzl"</span><span class="p">,</span> <span class="s2">"copyright_checker"</span><span class="p">,</span> <span class="s2">"dash_license_checker"</span><span class="p">,</span> <span class="s2">"setup_starpls"</span><span class="p">,</span> <span class="s2">"use_format_targets"</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">"//:project_config.bzl"</span><span class="p">,</span> <span class="s2">"PROJECT_CONFIG"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First, we load Bazel rules and macros implemented in the Eclipse S-CORE context from the modules
+that we’ve defined as dependencies in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file, e.g. <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">copyright_checker</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"copyright"</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 4</span>        <span class="s2">"score"</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">"//:BUILD"</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">"//:MODULE.bazel"</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">],</span>
+<span class="linenos"> 8</span>    <span class="n">config</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:config"</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">template</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:templates"</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos">11</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">dash_license_checker</span><span class="p">(</span>
+<span class="linenos">14</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">"//examples:cargo_lock"</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
+<span class="linenos">16</span>    <span class="n">project_config</span> <span class="o">=</span> <span class="n">PROJECT_CONFIG</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos">18</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="c1"># Add target for formatting checks</span>
+<span class="linenos">21</span><span class="n">use_format_targets</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Second, we define the targets for the copyright check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:copyright.check</span></code>), the license check
+with the Eclipse Dash license tool and the formatting check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">test</span> <span class="pre">//:format.check</span></code>),
+based on Bazel rules implemented in the <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a> module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">docs</span><span class="p">(</span>
+<span class="linenos">2</span>    <span class="n">project</span> <span class="o">=</span> <span class="s2">"Module Template Project"</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">project_url</span> <span class="o">=</span> <span class="s2">"https://eclipse-score.github.io/module_template/"</span><span class="p">,</span>
+<span class="linenos">4</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">"docs"</span><span class="p">,</span>
+<span class="linenos">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, the <em>docs</em> macro creates all documentation targets for the rst files located in the
+<code class="docutils literal notranslate"><span class="pre">docs</span></code> folder and all its subfolders.
+This functionality is implemented in <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>
+and described in the <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter.</p>
+</section>
+<section id="project-config-bzl">
+<h2>project_config.bzl<a class="headerlink" href="#project-config-bzl" title="Link to this heading">#</a></h2>
+<p>Every Eclipse S-CORE module provides a <code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code> file in its root directory.
+This file declares project-level metadata that is consumed by shared Bazel macros such as <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>.</p>
+<p>A minimal example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">PROJECT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="s2">"asil_level"</span><span class="p">:</span> <span class="s2">"QM"</span><span class="p">,</span>        <span class="c1"># Safety level: "QM", "ASIL-A", "ASIL-B", "ASIL-C", "ASIL-D"</span>
+<span class="linenos">3</span>    <span class="s2">"source_code"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"cpp"</span><span class="p">],</span>    <span class="c1"># Languages used: "cpp", "rust", or both</span>
+<span class="linenos">4</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">asil_level</span></code> is used by tooling to apply the appropriate quality and compliance checks.
+The <code class="docutils literal notranslate"><span class="pre">source_code</span></code> list determines which license file types are scanned by <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>
+(e.g., <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for Rust, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for Python).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Start with <code class="docutils literal notranslate"><span class="pre">&quot;asil_level&quot;:</span> <span class="pre">&quot;QM&quot;</span></code> during initial development.
+The level can be raised once the module’s safety concept is established.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contribute own module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="doc_generation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documentation generation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-repository-for-your-module">Creating a Repository for Your Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-layout">Repository Layout</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-workflows">.github/workflows/</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#devcontainer-and-vscode">.devcontainer and .vscode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docs">docs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score">score/</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazelrc">.bazelrc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-bazel">MODULE.bazel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/users_guide/building_simple_application/first_score_module.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
