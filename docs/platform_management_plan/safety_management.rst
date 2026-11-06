@@ -473,10 +473,11 @@ Link to project planning: `Platform safety work product issue for V1.0 <https://
 
 Platform Management Plan - Feature Work Product Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tbd: https://github.com/eclipse-score/score/issues/3439
 
 `Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/features/safety_planning/index.html>`__
 
-:need:`doc__com_ipc_safety_wp`
+.. :need:`doc__com_ipc_safety_wp`
 
 `Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/features/lifecycle/safety_planning/index.html>`__
 
