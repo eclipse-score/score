@@ -113,7 +113,7 @@ The SMon component integrates with three **platform-provided services** via requ
 > ⚠️ SMon does **not** mandate a specific implementation of any of these services.
 > They are integration points to be fulfilled by the platform adopter.
 
-![SMon Integration Context Diagram](DR-010-arch/_assets/context_diagram.png)
+![SMon Combined Diagram](DR-010-arch/_assets/combined_view.png)
 
 ---
 
