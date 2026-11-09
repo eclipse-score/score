@@ -605,7 +605,7 @@ Log and Trace Requirements
 
    The logging :term:`framework` shall ensure that only authorized users can access log files.
 
-.. feat_req:: Safety - ASIL Level Support
+.. feat_req:: Safety - Freedom from Interference
    :id: feat_req__logging__asil_support
    :reqtype: Non-Functional
    :security: NO
@@ -616,11 +616,11 @@ Log and Trace Requirements
    :version: 1
    :valid_from: v1.0.0
 
-   The logging :term:`framework` shall support the ASIL level of the user function to ensure compliance with the safety requirements of the application.
+   The logging :term:`framework` shall maintain freedom from interference with calling ASIL B applications.
 
-   Additional Information: Freedom from interfernce must be guaranteed with regard to the calling components.
+   Additional Information: The ASIL B scope concerns freedom from interference, not the safety integrity of logging output.
 
-.. feat_req:: Safety - System Classification
+.. feat_req:: Safety - Log Output Classification
    :id: feat_req__logging__system_class
    :reqtype: Non-Functional
    :security: NO
@@ -631,7 +631,7 @@ Log and Trace Requirements
    :version: 1
    :valid_from: v2.0.0
 
-   The logging :term:`framework` shall be classified according to the overall system's safety concept if logging information is part of the verification strategy.
+   Logging output shall be classified as QM. No safety decision shall be based on logging output.
 
 .. needextend:: "c.this_doc()"
    :+tags: logging
