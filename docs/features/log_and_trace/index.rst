@@ -72,9 +72,9 @@ Security Impact
 Safety Impact
 =============
 
-- The interface should support the ASIL level of the user function.
-- Dependent on the Safety concept of the over all system, the logging should be classified accordingly.
-   That could be the case if the logging information are part of the verification strategy..
+- Logging output is QM only and must not be used as the basis for safety decisions.
+- The ASIL B scope of the logging framework concerns freedom from interference
+   with the calling application, not the safety integrity of the log output.
 
 License Impact
 ==============
