@@ -33,9 +33,12 @@ Introduction
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
 
-The S-CORE Docs-as-Code tool (Bazel module ``score_docs_as_code``) builds HTML
-documentation from RST/Markdown sources — process description, requirements, and
-traceability — and validates content against the S-CORE metamodel.
+The S-CORE Docs-as-Code tool (Bazel module ``score_docs_as_code``)
+
+* builds HTML documentation from RST/Markdown sources — e.g. process description and all work products
+* enables navigation between work products documentation according to their (bi-directional) traceability
+* validates content against the S-CORE metamodel (e.g. setting of attributes and links)
+* implements the :need:`wp__requirements_proc_tool` defined as part of the S-CORE processes / metamodel
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
