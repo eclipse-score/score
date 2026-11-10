@@ -54,6 +54,14 @@ following problems arise:
   upper-bound thresholds per metric and automatically trigger graduated responses
   (warn → report error → record DTC) when those thresholds are breached.
 
+* **OS-specific code mixed into monitoring logic:** Components that need the same OS data
+  re-implement the OS calls ad hoc per metric, leading to duplicated, inconsistent code that
+  cannot be unit tested without the target OS.
+
+* **No contract between reading and exposing a metric:** Without a stable boundary between
+  "how a metric is read" and "how it is exposed", every additional OS or metric forces
+  changes in all consumers.
+
 .. note::
    S-CORE currently provides no standardized middleware component that addresses periodic,
    system-level health monitoring with configurable thresholds, fault reporting integration,
@@ -82,6 +90,9 @@ The System Monitor (SMon) feature shall:
    so that platform adopters can bind their own backend implementations.
 #. Be **fully configurable at runtime** via an external configuration file, without requiring
    recompilation.
+#. Separate **OS-specific data acquisition (drivers)** from **OS-independent read API (sensors)**,
+so new metrics and target platforms can be added without changing consumers.
+#. Make all monitoring logic **unit-testable on a development host** with mocked drivers.
 
 2.2 Out of Scope
 ================
@@ -147,6 +158,11 @@ The following items are explicitly **out of scope** for this feature request:
    * - SMON-MEM-003
      - The system monitor shall calculate the **volatile memory load per configured application
        group**.
+   * - SMON-MEM-004
+     - The system monitor shall provide the **total and available system memory** in bytes.
+   * - SMON-MEM-005
+     - The system monitor shall provide **per-process memory usage** as USS, RSS, PSS, and
+       virtual memory size, where supported by the target OS.
 
 3.3 Threshold & Alerting Needs
 ================================
@@ -268,7 +284,7 @@ The SMon component sits between the **OS runtime** (from which it reads raw metr
    These three integration points are **required interfaces** that must be fulfilled by the
    platform adopter. SMon does not mandate a specific implementation of any of them.
 
-.. figure::_assets/context_diagram.png
+.. figure:: _assets/context_diagram.png
    :alt: SMon Integration Context Diagram
    :align: center
 
@@ -298,6 +314,3 @@ natural extensions of the proposed monitoring framework:
    * - **Live telemetry streaming**
      - Streaming real-time metrics over a network transport to external visualization tools or
        IDE dashboards.
-   * - **Cross-platform unit test coverage**
-     - Enabling platform-specific monitor logic to be verified on a Linux development host via
-       OS-call mocking, without requiring access to a QNX target.

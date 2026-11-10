@@ -6,8 +6,8 @@
 :id: dec_rec__arch__introduce_smon_middleware
 :status: proposed
 :version: 1
-:tracking:
-:context: S-CORE lacks a common, portable, and configurable system monitoring component for observing CPU and memory resource usage on automotive ECUs across Linux and QNX. Applications currently have no standardized S-CORE mechanism for collecting system-, CPU-core-, process-, and application-level resource metrics and detecting configurable resource threshold violations.
+:tracking: https://github.com/eclipse-score/score/issues/3340
+:context: S-CORE lacks a common, portable, and configurable system monitoring component for observing CPU and memory resource usage on automotive ECUs across Linux and QNX. Applications currently have no standardized S-CORE mechanism for collecting system-, CPU-core-, process-, and application-level resource metrics and detecting configurable resource threshold violations. Where such metrics are collected today, OS-specific calls are implemented ad hoc per metric and mixed into the consuming logic, which duplicates code, prevents host-based unit testing, and makes porting to another OS expensive.
 :decision: Introduce System Monitoring (SMon) as an S-CORE middleware component that periodically collects CPU and memory metrics at system, CPU-core, process, and application level, evaluates configurable monitoring thresholds, and provides the collected monitoring information to S-CORE applications and external diagnostic or visualization tools through defined interfaces.
 ```
 
@@ -67,6 +67,8 @@ fragmentation, inconsistency, and missed faults across vehicle programs.
 - [ ] Overall volatile memory load (as a percentage)
 - [ ] Volatile memory load per running application (process)
 - [ ] Volatile memory load per configured application group
+- [ ] Total and available system memory
+- [ ] Per-process memory as USS, RSS, PSS, and VM (where supported by the OS)
 
 ### Threshold & Alerting
 
@@ -153,6 +155,6 @@ future extensions:
 
 ## Related Links
 
-- Feature request document: `docs/features/system_monitoring/README.rst`
-- Context diagram: `docs/features/system_monitoring/assets/context_diagram.png`
-- Requested by: Valeo
+- Feature request document: `docs/design_decisions/architecture/DR-010-arch/README.rst`
+- Combined diagram: `docs/design_decisions/architecture/DR-010-arch/_assets/combined_view.png`
+- Requested by: Valeo / BMW
