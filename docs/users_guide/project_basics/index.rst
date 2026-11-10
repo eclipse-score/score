@@ -21,13 +21,13 @@ Before diving into code or contribution workflows, read through these pages
 to understand how the platform is structured and what drives its design:
 
 - **Technologies** — the toolchain and infrastructure that power S-CORE, from
-  build system to documentation and CI/CD.
+  build system and development environment to documentation, CI/CD and testing.
 - **Software Architecture** — the high-level decomposition of the platform into
-  features and modules, and the principles behind it.
-- **Module Structure** — how an individual S-CORE module is laid out on disk,
-  what each folder contains, and the conventions every module follows.
-- **Integration Process** — how modules are continuously built, tested, and
-  assembled into the reference integration.
+  layers, features and modules, and how the architecture evolves.
+- **Module Structure** — the most important repositories and Bazel modules of S-CORE,
+  what each of them provides and how they depend on each other.
+- **Integration Process** — how modules are released, continuously built, tested
+  and assembled into the reference integration and finally into an S-CORE release.
 
 .. toctree::
    :maxdepth: 1

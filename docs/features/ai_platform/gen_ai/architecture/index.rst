@@ -25,7 +25,7 @@ Feature Architecture
 
 .. feat:: Gen-AI
    :id: feat__gen_ai
-   :security: NO
-   :safety: QM
+   :security: YES
+   :safety: ASIL_B
    :status: valid
    :version: 1

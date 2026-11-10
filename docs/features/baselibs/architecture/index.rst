@@ -14,7 +14,7 @@
 .. _baselibs_architecture:
 
 Baselibs Architecture
-=====================
+#####################
 
 .. document:: Baselibs Architecture
    :id: doc__baselibs_architecture
@@ -24,6 +24,9 @@ Baselibs Architecture
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
+Baselibs Feature
+----------------
+
 .. feat:: Baselibs
    :id: feat__baselibs
    :security: YES
@@ -31,8 +34,8 @@ Baselibs Architecture
    :status: valid
    :version: 1
 
-Interfaces
-----------
+Logical Interfaces
+------------------
 
 .. logic_arc_int:: Bit Manipulation
    :id: logic_arc_int__baselibs__bit_manipulation
@@ -41,6 +44,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__bitmanipulation[version==2]
 
 .. logic_arc_int:: Bit Mask Operator
    :id: logic_arc_int__baselibs__bit_mask_operator
@@ -49,6 +53,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__bitmanipulation[version==2]
 
 .. logic_arc_int:: IJson
    :id: logic_arc_int__baselibs__json
@@ -57,6 +62,7 @@ Interfaces
    :safety:  ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__json_library[version==2]
 
 .. logic_arc_int:: Memory Shared
    :id: logic_arc_int__baselibs__memory_shared
@@ -65,6 +71,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__memory_library[version==2]
 
 .. logic_arc_int:: Result
    :id: logic_arc_int__baselibs__result
@@ -73,6 +80,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__result_library[version==2]
 
 .. logic_arc_int:: Dynamic Array
    :id: logic_arc_int__baselibs__dynamic_array
@@ -81,6 +89,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__containers_library[version==2]
 
 .. logic_arc_int:: Intrusive List
    :id: logic_arc_int__baselibs__intrusive_list
@@ -89,6 +98,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__containers_library[version==2]
 
 .. logic_arc_int:: FlatBuffers
    :id: logic_arc_int__baselibs__flatbuffers
@@ -105,6 +115,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__filesystem_library[version==2]
 
 The Operating System Abstraction Layer (OSAL) interfaces group services into general,
 Linux-specific, and QNX-specific service families. The service operations below represent
@@ -203,6 +214,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
 
 .. logic_arc_int:: Scoped Operation
    :id: logic_arc_int__baselibs__utils_scoped_op
@@ -211,6 +223,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
 
 .. logic_arc_int:: Promise
    :id: logic_arc_int__baselibs__promise
@@ -219,6 +232,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Future
    :id: logic_arc_int__baselibs__future
@@ -227,6 +241,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Shared Future
    :id: logic_arc_int__baselibs__shared_future
@@ -235,6 +250,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Executor
    :id: logic_arc_int__baselibs__executor
@@ -243,6 +259,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Task
    :id: logic_arc_int__baselibs__task
@@ -251,6 +268,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Task Result
    :id: logic_arc_int__baselibs__task_result
@@ -259,6 +277,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Synchronized Queue
    :id: logic_arc_int__baselibs__synchronized_queue
@@ -267,6 +286,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Condition Variable
    :id: logic_arc_int__baselibs__condition_variable
@@ -275,6 +295,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__concurrency_library[version==2]
 
 .. logic_arc_int:: Aborts Upon Exception
    :id: logic_arc_int__baselibs__aborts_upon_ex
@@ -283,6 +304,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__panic_free_development[version==2]
 
 .. logic_arc_int:: Coverage Termination Handler
    :id: logic_arc_int__baselibs__coverage_termination
@@ -291,6 +313,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__panic_free_development[version==2]
 
 .. logic_arc_int:: Safe Math
    :id: logic_arc_int__baselibs__safemath
@@ -299,6 +322,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
 
 .. logic_arc_int:: Safe Atomics
    :id: logic_arc_int__baselibs__safeatomics
@@ -307,6 +331,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
 
 .. logic_arc_int:: Scoped Function
    :id: logic_arc_int__baselibs__scoped_function
@@ -315,6 +340,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
 
 .. logic_arc_int:: String View
    :id: logic_arc_int__baselibs__string_view
@@ -323,6 +349,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
 
 .. logic_arc_int:: Static Reflection
    :id: logic_arc_int__baselibs__static_reflection
@@ -331,6 +358,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__static_reflection_library[version==1]
 
 .. logic_arc_int:: Generic Serialization
    :id: logic_arc_int__baselibs__generic_serial
@@ -339,6 +367,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__static_reflection_library[version==1]
 
 .. logic_arc_int:: Logging Serialization
    :id: logic_arc_int__baselibs__log_serial
@@ -347,6 +376,7 @@ of individual functions is defined at component level, independently of this gro
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__static_reflection_library[version==1]
 
 .. needextend:: "c.this_doc()"
    :+tags: baselibs

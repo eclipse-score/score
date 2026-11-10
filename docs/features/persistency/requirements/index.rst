@@ -496,6 +496,20 @@ Persistency Requirements
 
    The Persistency shall support concurrent access to key-value pairs from multiple threads within the same process.
 
+.. feat_req:: Bounded execution time
+   :id: feat_req__persistency__bounded_execution
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__dependability__error_report_timing[version==1]
+   :satisfied_by: feat__persistency[version==1]
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The Persistency shall return from each call of its API, with a result or an error, within a bounded execution time
+   for the configured maximum storage size and the configured maximum number of snapshots.
+
 .. feat_req:: Versioning
    :id: feat_req__persistency__versioning
    :reqtype: Functional

@@ -112,7 +112,7 @@ Education and Skills:
 - Dipl.-Ing. (FH) Electrical Engineering - certificate
 - MSc Electrical Engineering - certificate
 - Requirements manager, ISO 9001 reference project leader, CMMI appraisal process participant - letter of confirmation from employers
-- Various quality related presentation at international conferences 
+- Various quality related presentation at international conferences
   (e.g. TÜV safe.tech, DKE Tagung Funktionale Sicherheit, exida Automotive Symposium, Open Source Summit Safety Critical Track, Hood REConf) - https://www.linkedin.com/in/philipp-ahmann/details/publications/
 - Technical Steering Committee Chair for the Linux Foundation ELISA project.
 
