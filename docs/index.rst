@@ -277,7 +277,6 @@ Infrastructure and Tooling
 
       | :doc:`features/index`
       | :doc:`requirements/index`
-      | :doc:`modules/index`
       | :doc:`score_releases/index`
 
    .. grid-item::
@@ -322,7 +321,7 @@ Infrastructure and Tooling
    :hidden:
 
    introduction/index
-   modules/index
+
 
 .. raw:: html
 

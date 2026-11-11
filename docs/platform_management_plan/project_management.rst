@@ -693,7 +693,8 @@ A *Component Request* represents an independent work package used to describe mo
 *Component Request* work packages can be linked to other work packages, but they must not be treated as parent work packages. They shall be discussed with
 :ref:`Architecture Community <pmp_pm_arc>` and the issues are owned by a Team and are part of the Team`s main repository..
 
-`About Components <https://eclipse-score.github.io/score/main/modules/index.html>`_
+https://github.com/eclipse-score/score/issues/3439
+.. tbd: `About Components <https://eclipse-score.github.io/score/main/modules/index.html>`_
 
 `Component Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml>`_
 
@@ -707,7 +708,8 @@ Planning Issues
 
 A *Product Increment* represents the highest level in the work package hierarchy and
 cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
-labels have to be used. One *Product Increment* is the planning element for a version of a :ref:`Module <modules>`.
+labels have to be used. One *Product Increment* is the planning element for a version of a tbd
+
 A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* are owned by
 :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 

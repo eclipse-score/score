@@ -33,7 +33,7 @@ Inter-process Communication
    :hidden:
 
    requirements/index
-   safety_planning/index
+
 
 Feature flag
 ============
