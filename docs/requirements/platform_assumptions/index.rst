@@ -294,7 +294,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
 
    If the system using the SW-platform has safety goals, the system integrator shall
    perform the following safety related confirmation measures on the S-CORE platform,
-   because those are tailored out in :need:`doc__score_platform_safety_plan`)
+   because those are tailored out in :need:`doc__score_platform_safety_plan`:
 
    * safety assessment
    * confirmation review (using as input :need:`wp__fdr_reports` on platform and module levels)
