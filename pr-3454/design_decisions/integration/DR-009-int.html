@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-009-Int: Public module interfaces and derived Bazel visibility &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=415257cb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/integration/DR-009-int';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="AI" href="../ai/index.html" />
+    <link rel="prev" title="DR-008-Int: S-CORE integration scope in reference_integration repository" href="DR-008-int.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../strategy/index.html">Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process/index.html">Process</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DR-008-int.html">DR-008-Int: S-CORE integration scope in reference_integration repository</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">DR-009-Int: Public module interfaces and derived Bazel visibility</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">AI</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Decision Records</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Integration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-009-Int: Public module interfaces and derived Bazel visibility</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dr-009-int-public-module-interfaces-and-derived-bazel-visibility">
+<h1>DR-009-Int: Public module interfaces and derived Bazel visibility<a class="headerlink" href="#dr-009-int-public-module-interfaces-and-derived-bazel-visibility" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2026-11-11</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-1d96727f">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__int__module_interface_visibility">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Public module interfaces and derived Bazel visibility</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Integration</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option 4 - Interfaces needed to build, configure and integrate target software are Public; module documentation, quality artefacts and the Feature Integration Test harness are Integration-accessible interfaces created in the module context of DR-008-int; development tools are Private</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__int__module_interface_visibility" title="dec_rec__int__module_interface_visibility">dec_rec__int__module_interface_visibility</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="context-problem">
+<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>S-CORE modules are consumed in two ways:</p>
+<ol class="arabic simple">
+<li><p><strong>Module → module</strong>: A module depends on another module with a regular <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>.
+The consumer can only use targets with matching Bazel
+<a class="reference external" href="https://bazel.build/concepts/visibility">visibility</a>. Each dependency of those targets
+must also resolve in the consumer’s context. The consumer never sees a <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>
+or <code class="docutils literal notranslate"><span class="pre">use_extension</span></code> that the provider marks with <code class="docutils literal notranslate"><span class="pre">dev_dependency</span> <span class="pre">=</span> <span class="pre">True</span></code>.</p></li>
+<li><p><strong>reference_integration → module</strong>: <code class="docutils literal notranslate"><span class="pre">reference_integration</span></code> consumes modules like any other
+module, as in (1). In addition, <a class="reference internal" href="DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a> lets it run
+module verification in the module’s own context. For that verification, reference_integration
+does not need public visibility or non-dev dependencies.</p></li>
+</ol>
+<p>Visibility and <code class="docutils literal notranslate"><span class="pre">dev_dependency</span></code> are two separate Bazel settings, but they depend on each other:</p>
+<ul class="simple">
+<li><p>If a target is <strong>public</strong>, consumers can build it. All its <code class="docutils literal notranslate"><span class="pre">deps</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">load()</span></code>
+statements must therefore come from <strong>non-dev</strong> dependencies.
+Toolchains are an exception: they are registered by the root module. The C++ and Rust toolchain
+modules are therefore dev dependencies, and the consumer provides the toolchains.</p></li>
+<li><p>If a target is <strong>private</strong>, it can use dev-only tooling freely, but consumers cannot reach it.</p></li>
+</ul>
+<p>So the set of public interfaces decides which supporting tool modules must be non-dev dependencies.
+There is a trade-off:</p>
+<ul class="simple">
+<li><p><strong>Many public interfaces</strong> add tooling to the dependency graph of every consumer.
+Examples are documentation, test, image and analysis tooling. This tooling is not meant for the
+embedded target, but it takes part in version resolution together with the target software.
+Tooling and target software may depend on the same module, and Minimal Version Selection then selects
+one version for both. If the required versions are incompatible, the root module must resolve the
+conflict with <code class="docutils literal notranslate"><span class="pre">single_version_override</span></code> or <code class="docutils literal notranslate"><span class="pre">multiple_version_override</span></code>.</p></li>
+<li><p><strong>Few public interfaces</strong> prevent consumers from using interfaces they need, for example mocks of a
+dependency in their own unit tests or examples in showcases.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">multiple_version_override</span></code> allows several versions of a module to coexist, including different
+major versions, for example 2.2.0 for target software and 3.0.0 for tooling. Bazel selects the version
+per dependent module, not per build invocation. A build that reaches both dependency paths therefore
+uses both versions. The override is only effective in the root module, so every integrator must maintain it.
+Keeping tooling interfaces out of the public interfaces keeps the dependency paths of tooling and target
+software separate and avoids most of these overrides.</p>
+<p>Tool modules, for example documentation or integration test tooling, are released independently of the
+target software modules:</p>
+<ul class="simple">
+<li><p>As <strong>non-dev</strong> dependencies, a tool update in one module is enforced on all downstream modules by
+Minimal Version Selection. Incompatible tool versions must be resolved with overrides in every root module.</p></li>
+<li><p>As <strong>dev</strong> dependencies, the tool version is resolved in the module context. reference_integration pins
+the versions of the tools it declares when it builds a module in the module context
+(<a class="reference internal" href="DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a>). Deviations are resolved there, if needed with
+<code class="docutils literal notranslate"><span class="pre">multiple_version_override</span></code>, and not in every consumer.</p></li>
+</ul>
+<p>S-CORE covers tools and processes as well as target software. A dev dependency does not hide a tool:
+it is declared in the module’s <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> and used whenever the module is built in its module context.
+reference_integration is the place where target software, tools and processes of all modules come together
+for a release, with one set of tool versions. Modules that use the same tools as reference_integration can
+reuse the tool qualification done for this tool set.</p>
+<p>This decision record defines the general categories of module interfaces and the recommended Bazel
+visibility for each. A module can derive its <code class="docutils literal notranslate"><span class="pre">dev_dependency</span></code> setting from it.</p>
+<section id="goals-and-requirements">
+<h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Minimal target dependency graph:</strong> A consumer of a target software module only receives dependencies
+that are needed to build, configure and integrate target software.</p></li>
+<li><p><strong>Usable interfaces:</strong> Interfaces that consumers need are usable across modules without patches.</p></li>
+<li><p><strong>Releasable combination:</strong> reference_integration can create all quality artefacts needed to release
+a combination of modules.</p></li>
+<li><p><strong>Consistent tool set:</strong> The tools used to create the release artefacts are defined in one place,
+with one set of versions for a release.</p></li>
+<li><p><strong>Derivable rule:</strong> A module owner can derive <code class="docutils literal notranslate"><span class="pre">dev_dependency</span></code> for each <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> and
+<code class="docutils literal notranslate"><span class="pre">use_extension</span></code> from the visibility of its targets.</p></li>
+<li><p><strong>Compatible with DR-008-int:</strong> Module verification that reference_integration runs does not
+require public interfaces (see <a class="reference internal" href="DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="visibility-levels">
+<h2>Visibility Levels<a class="headerlink" href="#visibility-levels" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 94 </span><span class="caption-text">Visibility levels</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 16.0%" />
+<col style="width: 36.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Level</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Reachable by</p></th>
+<th class="head"><p>Required dependencies</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Public</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">//visibility:public</span></code></p></td>
+<td><p>All consumers</p></td>
+<td><p>Non-dev</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Integration-accessible</strong></p></td>
+<td><p>Private visibility. Built and executed in the module context, where the module is built in its own
+repository with its dev dependencies: by the module’s own CI, and by reference_integration through
+the tooling of <a class="reference internal" href="DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a> to create the quality artefacts
+of a releasable combination of modules.</p></td>
+<td><p>The module itself, reference_integration in the module context</p></td>
+<td><p>Dev</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Private</strong></p></td>
+<td><p>Private visibility. Only used during development of the module, no release artefacts.</p></td>
+<td><p>The module itself</p></td>
+<td><p>Dev</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="interface-categories">
+<h2>Interface Categories<a class="headerlink" href="#interface-categories" title="Link to this heading">#</a></h2>
+<p>The table lists all interface categories with the recommended visibility level.
+The comment rates the recommended level against the alternatives:
+<code class="docutils literal notranslate"><span class="pre">+</span></code> benefit, <code class="docutils literal notranslate"><span class="pre">-</span></code> drawback.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 95 </span><span class="caption-text">Interface categories and recommended visibility</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 7.0%" />
+<col style="width: 20.0%" />
+<col style="width: 13.0%" />
+<col style="width: 28.0%" />
+<col style="width: 32.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Interface</p></th>
+<th class="head"><p>Visibility</p></th>
+<th class="head"><p>Typical targets</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>I-1</p></td>
+<td><p>Library (API)</p></td>
+<td><p>Public</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cc_library</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_library</span></code> forming the module API</p></td>
+<td><div class="line-block">
+<div class="line">Mandatory.</div>
+<div class="line">Implementation details stay Private.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>I-2</p></td>
+<td><p>Daemon / application binary</p></td>
+<td><p>Public</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cc_binary</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_binary</span></code> deployed on the target</p></td>
+<td><p>Mandatory.</p></td>
+</tr>
+<tr class="row-even"><td><p>I-3</p></td>
+<td><p>Build rules, code and configuration generators, configuration schemas</p></td>
+<td><p>Public</p></td>
+<td><p>Starlark rules and macros (<code class="docutils literal notranslate"><span class="pre">.bzl</span></code>), generator tools invoked by users, <code class="docutils literal notranslate"><span class="pre">exports_files</span></code> or
+<code class="docutils literal notranslate"><span class="pre">filegroup</span></code> of configuration schemas</p></td>
+<td><div class="line-block">
+<div class="line">Mandatory.</div>
+<div class="line">Generator runtimes are non-dev; keep them separate from dev tool setup.</div>
+<div class="line">Runtime configuration files are not public on their own. They are provided together with I-6 or I-9a.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>I-4</p></td>
+<td><p>Build configuration flags</p></td>
+<td><p>Public / Private</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool_flag</span></code>, <code class="docutils literal notranslate"><span class="pre">string_flag</span></code>, <code class="docutils literal notranslate"><span class="pre">label_flag</span></code></p></td>
+<td><div class="line-block">
+<div class="line">Public for integration variants.</div>
+<div class="line">Private for development flags.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Integrators select variants without patches.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> Each public flag is a supported variant.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>I-5</p></td>
+<td><p>Test doubles (mocks, fakes, stubs) for provided interfaces</p></td>
+<td><p>Public</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">testonly</span></code> <code class="docutils literal notranslate"><span class="pre">cc_library</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_library</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Consumers reuse test doubles maintained with the API.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> The unit test framework (e.g. <code class="docutils literal notranslate"><span class="pre">googletest</span></code>) becomes a non-dev dependency.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>I-6</p></td>
+<td><p>Examples and showcase applications, including their runtime configuration files</p></td>
+<td><p>Public</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cc_binary</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_binary</span></code> demonstrating the module, <code class="docutils literal notranslate"><span class="pre">exports_files</span></code> of their configuration</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Integrators may reuse examples in showcases.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> Examples must only use non-dev dependencies.</div>
+<div class="line">A companion module is a good fit: the example then references and uses the module exactly
+as a user does.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>I-7</p></td>
+<td><p>(Platform) Stakeholder and feature requirements, architecture, Assumptions of Use</p></td>
+<td><p>Public</p></td>
+<td><p>Needs data of the platform and process documentation modules</p></td>
+<td><div class="line-block">
+<div class="line">Provided by documentation modules, not by target software modules.</div>
+<div class="line">Target software modules use them as dev dependency.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>I-8</p></td>
+<td><p>(Module) Component requirements, architecture, Assumptions of Use</p></td>
+<td><p>Integration-accessible</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docs</span></code>, <code class="docutils literal notranslate"><span class="pre">docs_bundle</span></code> and their needs data</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Documentation tooling stays dev; modules may use their own tooling to create the documentation.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Promotes the use of reference_integration tooling which is intended for full qualification of module combinations.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> A module cannot link to the needs of another target software module in its own documentation build.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>I-9a</p></td>
+<td><p>Test applications, including their runtime configuration (Feature Integration Tests)</p></td>
+<td><p>Public</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">testonly</span></code> <code class="docutils literal notranslate"><span class="pre">cc_binary</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_binary</span></code> test applications. <code class="docutils literal notranslate"><span class="pre">cc_test</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_test</span></code> test applications with pass criteria.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">exports_files</span></code> configuration files which are coupled to the implementation of the test applications.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Integrators may reuse test applications with their own test harness.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> Test application may pull in further non-dev dependencies.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>I-9b</p></td>
+<td><p>Feature Integration Test harness</p></td>
+<td><p>Integration-accessible</p></td>
+<td><p>Test rules, test environments, image creation and image test tooling (e.g. <code class="docutils literal notranslate"><span class="pre">score_itf</span></code>, <code class="docutils literal notranslate"><span class="pre">score_rules_imagefs</span></code>)</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Tooling beyond the standard S-CORE tools does not affect the consumer graph.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Promotes the use of reference_integration tooling which is intended for full qualification of module combinations.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> Other users than the reference_integration need to provide their own test harness.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>I-10</p></td>
+<td><p>Module quality artefacts</p></td>
+<td><p>Integration-accessible</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cc_test</span></code>, <code class="docutils literal notranslate"><span class="pre">rust_test</span></code>, <code class="docutils literal notranslate"><span class="pre">py_test</span></code>, component integration tests, unit tests and their harness,
+coverage reports, static code analysis results (for example CodeQL), traceability checks</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Test, coverage and analysis tooling do not affect the consumer graph.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Promotes the use of reference_integration tooling which is intended for full qualification of module combinations.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-</span></code> Modules releases are limited to their own quality artefacts. Combination of dependency versions are not fully qualifable in the module context.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>I-11</p></td>
+<td><p>SBOM, license scan, software composition analysis</p></td>
+<td><p>Integration-accessible</p></td>
+<td><p>SBOM generation, dependency license and vulnerability scans</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> SBOM and scan tooling do not affect the consumer graph.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>I-12</p></td>
+<td><p>Development tools</p></td>
+<td><p>Private</p></td>
+<td><p>Linters (e.g. <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code>, <code class="docutils literal notranslate"><span class="pre">rust-clippy</span></code>), formatters (e.g. <code class="docutils literal notranslate"><span class="pre">clang-format</span></code>), copyright header checks,
+compiler warning policies (toolchain settings), IDE support, language servers, live preview</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Clean consumer graph.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">+</span></code> Not rerun by reference_integration, results are not release relevant.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="companion-modules">
+<h3>Companion modules<a class="headerlink" href="#companion-modules" title="Link to this heading">#</a></h3>
+<p>This decision record does not decide whether modules use companion modules. The visibility level is the
+decision. A companion module is an optional implementation hint for Public interfaces that need
+non-target dependencies.</p>
+<p>A companion module is a second Bazel module in the same repository, in a subdirectory with its own
+<code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>, named for example <code class="docutils literal notranslate"><span class="pre">score_baselibs_examples</span></code>. It could be released from the same tag
+with the same version as the main module and depends on it with a regular <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>. Consumers that only
+use it for testing declare it as a dev dependency. Its non-dev dependencies then stay out of the main
+module’s dependency graph.</p>
+<ul class="simple">
+<li><p><strong>Candidates:</strong> I-5 and I-6 are a good fit, see the interface categories table.</p></li>
+<li><p><strong>Feasibility:</strong> Bazel registries support several modules from one repository and release. The
+<code class="docutils literal notranslate"><span class="pre">source.json</span></code> of a module version can set <code class="docutils literal notranslate"><span class="pre">strip_prefix</span></code> to a subdirectory, as used by the Bazel
+Central Registry for <code class="docutils literal notranslate"><span class="pre">rules_python</span></code> and <code class="docutils literal notranslate"><span class="pre">rules_python_gazelle_plugin</span></code>. The S-CORE Bazel registry
+tooling currently expects <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> at the repository root and would need an extension.</p></li>
+<li><p><strong>Releases:</strong> Companion modules are not released today. Releasing them would require a registry entry
+per companion module and a release process that keeps the versions of both modules identical.
+Bazel does not enforce this: Minimal Version Selection only guarantees that the main module is at
+least the version required by the companion module.</p></li>
+</ul>
+</section>
+</section>
+<section id="options-considered">
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<p>All options keep I-1 to I-6, I-7 and I-9a <strong>Public</strong> and I-12 <strong>Private</strong>. They differ in which interfaces
+required for generating the release quality artefacts are made <strong>Private</strong> (<strong>Integration-accessible</strong>).</p>
+<section id="option-1-all-release-relevant-artefacts-public">
+<h3>Option 1: All release relevant artefacts public<a class="headerlink" href="#option-1-all-release-relevant-artefacts-public" title="Link to this heading">#</a></h3>
+<p>Everything that is relevant for the release is Public, including the Feature Integration
+Test harness (I-9b), module documentation (I-8), module quality artefacts (I-10) and SBOM (I-11).
+There is no Integration-accessible level.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> Every consumer can create all release artefacts of a module without additional tooling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> Minimal Version Selection aligns tool versions across all modules automatically</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> Test, coverage, analysis, SBOM, documentation and Feature Integration Test tooling become non-dev
+dependencies of every target software module, including module-specific test add-ons</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> A tool update in one module is enforced on all downstream modules</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> Contradicts <a class="reference internal" href="DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a></p></li>
+</ul>
+</section>
+<section id="option-2-module-quality-artefacts-i-10-i-11-private">
+<h3>Option 2: Module quality artefacts (I-10, I-11) private<a class="headerlink" href="#option-2-module-quality-artefacts-i-10-i-11-private" title="Link to this heading">#</a></h3>
+<p>Module quality artefacts and SBOM (I-10, I-11) are Integration-accessible. The Feature Integration Test harness
+(I-9b) and module documentation (I-8) stay Public.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> Coverage, static analysis and SBOM tooling stay dev</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> Every consumer can run the Feature Integration Tests of a module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> A module’s own documentation build can link to the needs of other target software modules</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> Because tests can be executed from outside the module, every test add-on used by the Feature
+Integration Tests becomes a non-dev dependency. This is not limited to the standard S-CORE test tools.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> Test harness, image and documentation tooling updates are enforced on all downstream modules</p></li>
+</ul>
+</section>
+<section id="option-3-module-quality-artefacts-and-test-harness-i-9b-i-10-i-11-private">
+<h3>Option 3: Module quality artefacts and test harness (I-9b, I-10, I-11) private<a class="headerlink" href="#option-3-module-quality-artefacts-and-test-harness-i-9b-i-10-i-11-private" title="Link to this heading">#</a></h3>
+<p>As Option 2, and the Feature Integration Test harness (I-9b) is Integration-accessible as well.
+Module documentation (I-8) stays Public.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> No test tooling and no module-specific test add-on enters the consumer graph</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> A module’s own documentation build can link to the needs of other target software modules</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> Documentation tooling updates are enforced on all downstream modules</p></li>
+</ul>
+</section>
+<section id="option-4-documentation-module-quality-artefacts-and-test-harness-i-8-i-9b-i-10-i-11-private">
+<h3>Option 4: Documentation, module quality artefacts and test harness (I-8, I-9b, I-10, I-11) private<a class="headerlink" href="#option-4-documentation-module-quality-artefacts-and-test-harness-i-8-i-9b-i-10-i-11-private" title="Link to this heading">#</a></h3>
+<p>As Option 3, and module documentation (I-8) is Integration-accessible as well. This matches the interface
+categories table.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> The consumer graph contains target dependencies, generator runtimes and test libraries only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> All tools used for release artefacts are aligned in reference_integration. Tool updates and
+deviations are handled there and not in every consumer (<code class="docutils literal notranslate"><span class="pre">multiple_version_override</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> Modules can adopt tool updates independently. They become effective for the release when
+reference_integration adopts them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> A module’s own documentation build is limited toresolve links to platform needs (I-7).</p></li>
+</ul>
+<p>Other alternatives were discarded:</p>
+<ul class="simple">
+<li><p><strong>Consumer-side patches</strong> (<code class="docutils literal notranslate"><span class="pre">single_version_override</span></code> with patches): Every consumer maintains its
+own visibility changes. This does not scale and hides the interface definition from the module owner.</p></li>
+</ul>
+</section>
+</section>
+<section id="comparison">
+<h2>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 96 </span><span class="caption-text">Options comparison</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 32.0%" />
+<col style="width: 17.0%" />
+<col style="width: 17.0%" />
+<col style="width: 17.0%" />
+<col style="width: 17.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Criterion</p></th>
+<th class="head"><p>Option 1</p></th>
+<th class="head"><p>Option 2</p></th>
+<th class="head"><p>Option 3</p></th>
+<th class="head"><p>Option 4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tooling in the consumer dependency graph</p></td>
+<td><p>Documentation, test harness, test, analysis and SBOM tooling</p></td>
+<td><p>Documentation, test harness and image tooling</p></td>
+<td><p>Documentation tooling</p></td>
+<td><p>Generator runtimes and partly test libraries (I-5, I-9a) only</p></td>
+</tr>
+<tr class="row-odd"><td><p>Module-specific test add-ons in the consumer dependency graph</p></td>
+<td><p>Yes</p></td>
+<td><p>Likely</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Risk of version conflicts between tooling and target software</p></td>
+<td><p>High</p></td>
+<td><p>Medium</p></td>
+<td><p>Medium</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr class="row-odd"><td><p>Where tool version updates and deviations are resolved</p></td>
+<td><p>Every module</p></td>
+<td><p>Every module (test harness, documentation)</p></td>
+<td><p>Every module (documentation)</p></td>
+<td><p>reference_integration</p></td>
+</tr>
+<tr class="row-even"><td><p>Conflicts with existing module setups</p></td>
+<td><p>High</p></td>
+<td><p>Medium</p></td>
+<td><p>Medium</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cross-module documentation links in a module’s own documentation build</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No, only from module to platform needs (I-7)</p></td>
+</tr>
+<tr class="row-even"><td><p>Effort in reference_integration</p></td>
+<td><p>Low</p></td>
+<td><p>Medium</p></td>
+<td><p>Medium</p></td>
+<td><p>Medium</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="decision">
+<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<p><strong>Option 4</strong> is recommended. <strong>Option 3</strong> is the alternative if links to the needs of other target software
+modules must be resolved in each module’s own documentation build.</p>
+<section id="derived-dev-dependency-rule">
+<h3>Derived dev_dependency rule<a class="headerlink" href="#derived-dev-dependency-rule" title="Link to this heading">#</a></h3>
+<p>For each <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> and <code class="docutils literal notranslate"><span class="pre">use_extension</span></code> in a <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file:</p>
+<ol class="arabic simple">
+<li><p>If a <strong>Public</strong> target needs the dependency through <code class="docutils literal notranslate"><span class="pre">deps</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code> or <code class="docutils literal notranslate"><span class="pre">load()</span></code>,
+the dependency is <strong>non-dev</strong>.</p></li>
+<li><p>Otherwise, it is <code class="docutils literal notranslate"><span class="pre">dev_dependency</span> <span class="pre">=</span> <span class="pre">True</span></code>. This covers all dependencies of <strong>Integration-accessible</strong>
+and <strong>Private</strong> targets.</p></li>
+<li><p>Toolchain modules (for example C++ and Rust toolchains) are always <code class="docutils literal notranslate"><span class="pre">dev_dependency</span> <span class="pre">=</span> <span class="pre">True</span></code>.</p></li>
+<li><p>Non-dev dependencies are limited to target dependencies, <code class="docutils literal notranslate"><span class="pre">rules_cc</span></code>, <code class="docutils literal notranslate"><span class="pre">rules_rust</span></code>, <code class="docutils literal notranslate"><span class="pre">platforms</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bazel_skylib</span></code>, generator runtimes (I-3) and test libraries for I-5 and I-9a.
+Any other non-dev dependency must be justified in the module documentation.</p></li>
+<li><p>If a companion module is used, rules 1 to 4 apply to each module separately.</p></li>
+</ol>
+<p>As a result, documentation, test framework, coverage, analysis, SBOM, development tool and toolchain
+modules are dev dependencies, for example <code class="docutils literal notranslate"><span class="pre">score_docs_as_code</span></code>, <code class="docutils literal notranslate"><span class="pre">score_tooling</span></code>, <code class="docutils literal notranslate"><span class="pre">score_itf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">score_coverage</span></code> and <code class="docutils literal notranslate"><span class="pre">aspect_rules_lint</span></code>.</p>
+</section>
+</section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Modules review their targets against the interface categories, set the default visibility to private
+and set <code class="docutils literal notranslate"><span class="pre">dev_dependency</span></code> according to the derived rule.</p></li>
+<li><p>reference_integration creates the release artefacts of all Integration-accessible interfaces
+(I-8, I-9b, I-10, I-11), partly through the tooling of <a class="reference internal" href="DR-008-int.html#dec_rec__int__scope_reference_integration" title="dec_rec__int__scope_reference_integration"><em class="xref need">Integration scope in refere... (dec_rec__int__scope_reference_integration)</em></a>.
+Development tools (I-12) are not rerun.</p></li>
+<li><p>reference_integration defines the tool versions used for release validation and propagates applicable
+version constraints into module-context builds. Deviations are resolved centrally, using version
+overrides, including <code class="docutils literal notranslate"><span class="pre">multiple_version_override</span></code> where needed. Module-local development versions
+may differ.</p></li>
+<li><p>The documentation path for cross-module linking is discarded. Module documentation links only to
+platform needs (I-7), not to the needs of other target software modules. The existing module-context
+build and publication of dependable-element documentation remain unchanged. The main documentation
+build in reference_integration currently consumes module <code class="docutils literal notranslate"><span class="pre">docs_bundle</span></code> targets as Bazel dependencies;
+making these targets Private requires adapting that consumption path.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-008-int.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-008-Int: S-CORE integration scope in reference_integration repository</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ai/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visibility-levels">Visibility Levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-categories">Interface Categories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#companion-modules">Companion modules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-all-release-relevant-artefacts-public">Option 1: All release relevant artefacts public</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-module-quality-artefacts-i-10-i-11-private">Option 2: Module quality artefacts (I-10, I-11) private</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-module-quality-artefacts-and-test-harness-i-9b-i-10-i-11-private">Option 3: Module quality artefacts and test harness (I-9b, I-10, I-11) private</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-4-documentation-module-quality-artefacts-and-test-harness-i-8-i-9b-i-10-i-11-private">Option 4: Documentation, module quality artefacts and test harness (I-8, I-9b, I-10, I-11) private</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derived-dev-dependency-rule">Derived dev_dependency rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/integration/DR-009-int.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
