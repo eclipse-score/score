@@ -141,4 +141,4 @@ Module Folder Structure
 
 The modules and components shall follow a defined folder structure, which is maintained in the `module template repository <https://eclipse-score.github.io/module_template/main/template>`_ .
 
-Th folder structure is confirmed by :need:`dec_rec__platform__module_folder_structure`.
+The folder structure is confirmed by :need:`dec_rec__platform__module_folder_structure`.
