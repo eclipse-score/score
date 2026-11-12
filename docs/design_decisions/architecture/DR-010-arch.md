@@ -1,19 +1,21 @@
-# DR-010-SMon: Introduce System Monitoring (SMon) middleware component for automotive ECUs
+# DR-010-Arch: Introduce System Monitoring (SMon) Middleware Component
 
-- **Date:** 2026-10-09
+- **Date:**
 
 ```{dec_rec} Introduce System Monitoring (SMon) middleware
 :id: dec_rec__arch__introduce_smon_middleware
 :status: proposed
+:context: Architecture
+:decision:
 :version: 1
 :tracking: https://github.com/eclipse-score/score/issues/3340
-:context: S-CORE lacks a common, portable, and configurable system monitoring component for observing CPU and memory resource usage on automotive ECUs across Linux and QNX. Applications currently have no standardized S-CORE mechanism for collecting system-, CPU-core-, process-, and application-level resource metrics and detecting configurable resource threshold violations. Where such metrics are collected today, OS-specific calls are implemented ad hoc per metric and mixed into the consuming logic, which duplicates code, prevents host-based unit testing, and makes porting to another OS expensive.
-:decision: Introduce System Monitoring (SMon) as an S-CORE middleware component that periodically collects CPU and memory metrics at system, CPU-core, process, and application level, evaluates configurable monitoring thresholds, and provides the collected monitoring information to S-CORE applications and external diagnostic or visualization tools through defined interfaces.
+:affects: doc__SYSTEM_MONITORING_requirements
+:consequences: Introduces a portable SMon middleware component with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.
 ```
 
 ---
 
-## Summary
+## Context
 
 This feature request proposes introducing **System Monitoring (SMon)** as a reusable
 S-CORE middleware component for monitoring CPU and volatile memory
@@ -22,20 +24,6 @@ resource utilization on automotive ECUs running Linux or QNX.
 SMon provides periodic resource measurements, configurable threshold
 evaluation, and standardized integration interfaces for error
 reporting, diagnostic fault recording, and logging.
-
-## Detailed Feature Requirements
-
-Detailed requirements are documented separately:
-
-```{toctree}
-:maxdepth: 1
-
-DR-010-arch/README
-```
-
----
-
-## Context & Motivation
 
 On a Domain Controller ECU, multiple applications share CPU and memory resources simultaneously.
 There is currently no standardized S-CORE middleware component that:
@@ -51,9 +39,14 @@ There is currently no standardized S-CORE middleware component that:
 Without such a component, each project team implements ad-hoc monitoring logic, leading to
 fragmentation, inconsistency, and missed faults across vehicle programs.
 
----
+### Detailed Feature Requirements
 
-## Requested Capabilities
+Detailed requirements are documented separately in the feature requirements tree:
+
+- Feature entry point: [System Monitoring](../../features/system_monitoring/index.rst)
+- Requirements specification: [System Monitoring Requirements](../../features/system_monitoring/requirements/index.rst)
+
+### Requested Capabilities
 
 ### CPU Monitoring
 
@@ -100,9 +93,7 @@ fragmentation, inconsistency, and missed faults across vehicle programs.
 - [ ] Portable between Linux and QNX via a platform abstraction boundary
 - [ ] Robust against processes or threads appearing/disappearing during an active scan
 
----
-
-## Integration Context
+### Integration Context
 
 The SMon component integrates with three **platform-provided services** via required interfaces:
 
@@ -117,9 +108,7 @@ The SMon component integrates with three **platform-provided services** via requ
 
 ![SMon Combined Diagram](DR-010-arch/_assets/combined_view.png)
 
----
-
-## Anticipated Future Extensions
+### Anticipated Future Extensions
 
 The following items are **out of scope** for this initial request but identified as natural
 future extensions:
@@ -133,28 +122,37 @@ future extensions:
 
 ---
 
-## Stakeholders
-
-| Role         | Party                                    |
-|--------------|------------------------------------------|
-| **Requester**| Valeo                                    |
-| **Platforms**| Linux, QNX                               |
-| **Domain**   | Platform Services / Health & Diagnostics |
+## Decision
 
 ---
 
-## Acceptance Criteria
+## Consequences
 
-- [ ] All needs and requirements reviewed and accepted by the S-CORE community
-- [ ] Required interface contracts (`IErrorReporter`, `IDTCRecorder`, `ILogger`) defined and
-      agreed upon by the community
-- [ ] Platform portability scope (Linux + QNX) acknowledged and accepted
-- [ ] A follow-up implementation issue is created and linked to this request
+- **Standardized Monitoring:** Eliminates duplicated and ad-hoc watchdog code across application teams by providing a shared, consistent middleware solution.
+- **Cross-Platform Portability:** Decouples platform-specific drivers (Linux/QNX) from sensors and monitoring business logic, enabling reuse across ECU variants.
+- **Platform Decoupling:** S-CORE remains independent of specific diagnostic, error aggregation, or logging backends through defined required interfaces.
+- **Host-Based Verification:** Hardware-independent driver abstraction enables unit testing on host machines without physical hardware or target OS installations.
+- **Implementation Scope:** Requires maintaining OS drivers for both Linux and QNX, defining runtime configuration parsing, and maintaining integration test harnesses.
+
+---
+
+## Alternatives Considered
+
+---
+
+## Justification for the Decision
+
+Introducing SMon as a middleware component addresses the growing complexity of multi-application
+Domain Controller ECUs. It centralizes resource observation, prevents silent resource exhaustion,
+and standardizes fault escalation across different vehicle programs and operating systems,
+fulfilling requirements from platform adopters Valeo and BMW.
 
 ---
 
 ## Related Links
 
-- Feature request document: `docs/design_decisions/architecture/DR-010-arch/README.rst`
-- Combined diagram: `docs/design_decisions/architecture/DR-010-arch/_assets/combined_view.png`
-- Requested by: Valeo / BMW
+- Feature request document: `docs/features/system_monitoring/index.rst`
+- Feature requirements: `docs/features/system_monitoring/requirements/index.rst`
+- Combined diagram: `docs/features/system_monitoring/_assets/combined_view.png`
+- Tracking issue: <https://github.com/eclipse-score/score/issues/3340>
+- Requested by: Valeo, BMW
