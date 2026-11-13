@@ -12,19 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Security and Cryptography Architecture
-======================================
+Crypto Architecture
+###################
 
-.. document:: Security & Crypto Architecture
-   :id: doc__security_crypto_architecture
+.. document:: Crypto Architecture
+   :id: doc__crypto_architecture
    :status: draft
    :version: 1
    :safety: QM
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
-.. feat:: Security & Crypto
-   :id: feat__security_crypto
+Crypto Feature
+--------------
+
+.. feat:: Crypto
+   :id: feat__crypto
    :security: YES
    :safety: QM
    :status: valid
