@@ -181,7 +181,7 @@ Interfaces
 
 .. comp:: Design
    :id: comp__orch_design_impl
-   :status: valid
+   :status: invalid
    :version: 1
    :safety: ASIL_B
    :security: NO
@@ -190,7 +190,7 @@ Interfaces
 
 .. comp:: Deployment
    :id: comp__orch_deployment_impl
-   :status: valid
+   :status: invalid
    :version: 1
    :safety: ASIL_B
    :security: NO
