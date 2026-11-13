@@ -63,7 +63,7 @@ The public API for communication is defined as:
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__com__interfaces[version==1]
+   :fulfils: feat_req__com__interfaces[version==2]
    :tags: communication
 
    .. needarch::
