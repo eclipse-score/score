@@ -104,7 +104,7 @@ Logical Interfaces
    :id: logic_arc_int__baselibs__flatbuffers
    :included_by: feat__baselibs
    :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :status: valid
    :version: 1
 
