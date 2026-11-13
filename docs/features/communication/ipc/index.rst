@@ -32,11 +32,7 @@ Inter-process Communication
    :titlesonly:
    :hidden:
 
-   architecture/index
    requirements/index
-   roadmap
-   safety_analysis/dfa
-   safety_analysis/fmea
    safety_planning/index
 
 Feature flag
@@ -77,19 +73,12 @@ The basic idea of the ipc binding concept is to use two main operating system fa
 #. Shared Memory: Shall be used for the heavy lifting of data exchange
 #. Message Passing: Shall be used as notification mechanism
 
-A more detailed description is provided in the architecture chapter :ref:`ipc_architecture`
-
 .. _ipc_specification:
 
 Specification
 =============
 
 For IPC also the specification of communication applies: :ref:`com_specification`
-
-Architecture
-------------
-
-The architecure of communication is diplayed :ref:`here<ipc_architecture>`
 
 Requirements
 ------------

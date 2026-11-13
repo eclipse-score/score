@@ -17,7 +17,7 @@
 AI Platform
 ###########
 
-.. document:: AI-Platform
+.. document:: AI Platform
    :id: doc__ai_platform
    :status: draft
    :version: 1

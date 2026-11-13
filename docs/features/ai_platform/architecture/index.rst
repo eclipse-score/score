@@ -12,16 +12,19 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture
-====================
+AI Platform Architecture
+########################
 
-.. document:: AI-Platform Architecture
+.. document:: AI Platform Architecture
    :id: doc__ai_platform_architecture
    :status: draft
    :version: 1
    :safety: ASIL_B
    :security: NO
    :realizes: wp__feature_arch[version==1]
+
+AI Platform Feature
+-------------------
 
 .. feat:: AI-Platform
    :id: feat__ai_platform
@@ -31,8 +34,8 @@ Feature Architecture
    :version: 1
 
 
-Interfaces
-----------
+Logical Interfaces
+------------------
 
 **Inference**
 

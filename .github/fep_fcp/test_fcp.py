@@ -62,14 +62,36 @@ class FakeIssue:
 
 
 class FakePR(FakeIssue):
-    def __init__(self, labels: list[str], body: str = "Tracking: #42"):
-        super().__init__(1, labels, is_pr=True)
+    def __init__(
+        self, labels: list[str], body: str = "Tracking: #42", labeled_by: str = "chair"
+    ):
+        super().__init__(1, [], is_pr=True)
         self.body = body
         self.state = "open"
         self.head = SimpleNamespace(sha="abc123")
         self.issue_comments: list[FakeComment] = []
-        self.reviews: list[SimpleNamespace] = []
         self.issue_events: list[SimpleNamespace] = []
+        self.reviews: list[SimpleNamespace] = []
+        for name in labels:
+            self.add_to_labels(name, by=labeled_by)
+
+    def _label_event(self, action: str, name: str, by: str) -> None:
+        self.issue_events.append(
+            SimpleNamespace(
+                event=action,
+                actor=SimpleNamespace(login=by),
+                created_at=T0,
+                raw_data={"label": {"name": name}},
+            )
+        )
+
+    def add_to_labels(self, name: str, by: str = BOT) -> None:
+        super().add_to_labels(name)
+        self._label_event("labeled", name, by)
+
+    def remove_from_labels(self, name: str, by: str = BOT) -> None:
+        super().remove_from_labels(name)
+        self._label_event("unlabeled", name, by)
 
     def get_issue_comments(self) -> list[FakeComment]:
         return self.issue_comments
@@ -411,9 +433,9 @@ def test_removing_label_cancels_and_readding_restarts(
     pr: FakePR, repo: FakeRepo
 ) -> None:
     run(pr, repo, T0)
-    pr.remove_from_labels("fep:fcp")
+    pr.remove_from_labels("fep:fcp", by="chair")
     assert run(pr, repo, T0 + timedelta(days=1)).state == "cancelled"
-    pr.add_to_labels("fep:fcp")
+    pr.add_to_labels("fep:fcp", by="chair")
     ledger = run(pr, repo, T0 + timedelta(days=2))
     assert ledger.state == "open" and ledger.start == T0 + timedelta(days=2)
     assert "Superseded" in pr.issue_comments[0].body
@@ -452,3 +474,56 @@ def test_pull_request_lookup_for_fork_review_event() -> None:
         fcp._pull_request(repo, {"HEAD_SHA": "zzz", "HEAD_BRANCH": "proposal"}) is other
     )
     assert fcp._pull_request(repo, {"HEAD_SHA": "zzz", "HEAD_BRANCH": "nope"}) is None
+
+
+def test_only_chair_or_proxy_can_start_the_fcp(repo: FakeRepo) -> None:
+    pr = FakePR(["fep", "fep:fcp"], labeled_by="someone")
+    assert run(pr, repo, T0) is None
+    assert "fep:fcp" not in {label.name for label in pr.labels}
+    assert "@someone only the Architecture Community chair or proxy (chair)" in (
+        pr.issue_comments[-1].body
+    )
+    assert repo.statuses[-1]["state"] == "pending"
+    assert "fep:fcp" not in {label.name for label in repo.issues[42].labels}
+
+    pr.add_to_labels("fep:fcp", by="chair")
+    assert run(pr, repo, T0 + timedelta(hours=1)).state == "open"
+
+
+def test_only_chair_or_proxy_can_cancel_by_removing_the_label(
+    pr: FakePR, repo: FakeRepo
+) -> None:
+    run(pr, repo, T0)
+    pr.remove_from_labels("fep:fcp", by="someone")
+    assert run(pr, repo, T0 + timedelta(days=1)).state == "open"
+    assert "fep:fcp" in {label.name for label in pr.labels}
+    assert "can cancel the Final Comment Period" in pr.issue_comments[-1].body
+
+    pr.remove_from_labels("fep:fcp", by="chair")
+    ledger = run(pr, repo, T0 + timedelta(days=2))
+    assert ledger.state == "cancelled" and ledger.cancelled_by == "chair"
+    assert "fep:fcp" not in {label.name for label in repo.issues[42].labels}
+    assert "cancelled by chair" in repo.issues[42].comments[-1]
+
+
+def test_cancel_command(pr: FakePR, repo: FakeRepo) -> None:
+    run(pr, repo, T0)
+    bot = fcp.Bot(repo, CFG, T0 + timedelta(days=1), fake_fetch)
+
+    bot.command(pr, "shepherd", "/fcp cancel")
+    assert (
+        "only the Architecture Community chair or proxy" in pr.issue_comments[-1].body
+    )
+    assert bot._sticky(pr)[1].state == "open"
+
+    bot.command(pr, "chair", "/fcp cancel\nnot ready yet")
+    ledger = bot._sticky(pr)[1]
+    assert ledger.state == "cancelled" and ledger.cancelled_by == "chair"
+    assert "fep:fcp" not in {label.name for label in pr.labels}
+    assert repo.statuses[-1]["description"] == "Final Comment Period cancelled"
+    sticky = pr.issue_comments[0].body
+    assert "Cancelled** by chair" in sticky
+    assert "approved by silence" not in sticky
+
+    bot.command(pr, "chair", "/fcp cancel")
+    assert "no open Final Comment Period to cancel" in pr.issue_comments[-1].body

@@ -24,8 +24,8 @@
 
 .. _software_verification_plan:
 
-Software verification
-*********************
+Software Verification Plan
+**************************
 
 Purpose
 =======
@@ -260,23 +260,23 @@ requirements allowed for their level:
 
 Tests outside these paths are considered unit-level tests.
 
-.. list-table:: Software verification methods (TestType)
+.. list-table:: Software verification methods (and TestTypes)
    :header-rows: 1
    :align: center
 
-   * - Methods
+   * - Methods (and TestTypes)
      - Identifier
-     - Applicable on level
-     - Applicable for QM / ASIL B
+     - Applicable* on level
+     - Applicable* for QM / ASIL B
    * - Static Code Analysis
      - static-code-analysis
      - 1 Unit/Component
      - QM & ASIL B
-   * - Structural Statement Coverage (Code coverage)
+   * - Structural Statement Coverage - Code coverage
      - structural-statement-coverage
      - 1 Unit/Component
      - QM & ASIL B
-   * - Structural Branch Coverage (Code coverage)
+   * - Structural Branch Coverage - Code coverage
      - structural-branch-coverage
      - 1 Unit/Component
      - QM & ASIL B
@@ -288,19 +288,28 @@ Tests outside these paths are considered unit-level tests.
      - inspection
      - 1 Unit/Component, 2 Feature Integration, -
      - ASIL B
+   * - Manual verification (for non-testable artifacts)
+     - manual-requirement-verification
+     - All levels (1, 2, 3)
+     - QM & ASIL B
    * - Interface Test
-     - interface-test
+     - interface-test (Testtype)
      - 1 Unit/Component, 2 Feature Integration
      - QM & ASIL B
    * - Requirements-based Test
-     - requirements-based
+     - requirements-based (Testtype)
      - 1 Component, 2 Feature Integration, 3 Platform
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
-     - resource-usage
+     - resource-usage (Testtype)
      - 2 Feature Integration
      - QM & ASIL B
 
+
+.. note::
+
+   \* Applicable means that the verification methods must be used for the respective safety level and testing level indicated.
+   In case a verification method is not used for a certain safety level or testing level, it must be justified in the documentation.
 
 For QM software some of the methods may be executed with less rigor compared to safety-critical elements.
 These may be interface testing or resource usage evaluation, in case there is an argument for
@@ -342,10 +351,10 @@ Test Derivation Methods
    :header-rows: 1
    :align: center
 
-   * - Methods
+   * - Derivation methods
      - Identifier
-     - Applicable on level
-     - Applicable for QM / ASIL B
+     - Applicable* on level
+     - Applicable* for QM / ASIL B
    * - Analysis of Requirements
      - requirements-analysis
      - All levels (1, 2, 3)
@@ -362,8 +371,16 @@ Test Derivation Methods
      - fuzz-testing
      - 1 Unit/Component, 2 Feature Integration
      - QM, ASIL B
+   * - Audit or assessment (for ``manual-requirement-verification``)
+     - audit-assessment-inspection
+     - All levels (1, 2, 3)
+     - QM, ASIL B
 
 The ``fuzz-testing`` should especially be taken into account to increase security of the software.
+
+.. note::
+   \* Applicable means that the derivation techniques must be used for the respective safety level and testing level indicated.
+   In case a derivation technique is not considered for a certain safety level or testing level, it must be justified in the documentation.
 
 For non-safety-critical(QM) software parts, you can generally reduce the rigor of the
 testing approaches, but cannot omit them completely. It may be possible to reduce the
@@ -510,6 +527,54 @@ Remaining Medium severity findings are reviewed and justified by documented risk
 
 Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
 
+Rule sets
+"""""""""
+
+The following rule sets are the minimum to be applied by every module. Modules may add further rules or tools
+(e.g. ``clang-tidy``), but may not remove rules without a documented deviation.
+
+.. list-table:: Static code analysis rule sets and severity classification
+   :header-rows: 1
+   :widths: 10,30,30,30
+
+   * - Language
+     - Tool and rule set
+     - Critical / High
+     - Medium and below
+   * - C++
+     - GitHub CodeQL with the query pack ``codeql/misra-cpp-coding-standards`` (MISRA C++:2023,
+       see :need:`doc__cpp_coding_guidelines` and :need:`doc__cpp_code_analysis`)
+     - Violations of MISRA rules of category *Mandatory* or *Required*
+     - Violations of MISRA rules of category *Advisory*
+   * - C++
+     - GitHub CodeQL default code scanning suite (``c-cpp``)
+     - Alerts with a ``security-severity`` of 9.0 or higher (Critical) and 7.0 to 8.9 (High)
+     - All other alerts
+   * - Rust
+     - Clippy with the S-CORE lint profiles of ``score_rust_policies`` (``strict`` for safety-critical,
+       ``relaxed`` for QM software) and ``rustc`` warnings, see :need:`doc__rust_coding_guidelines`
+     - Lints configured as ``deny`` in the applicable profile
+     - Lints configured as ``warn`` (counted under "Freedom from compiler warnings & errors")
+   * - Rust
+     - GitHub CodeQL default code scanning suite (``rust``)
+     - Alerts with a ``security-severity`` of 9.0 or higher (Critical) and 7.0 to 8.9 (High)
+     - All other alerts
+
+Further improvements are foreseen to extend the checks to match demands of safety-critical software development.
+Rules which are considered to be added (after evaluation) are:
+
+    - codeql/cpp-queries:codeql-suites/cpp-code-scanning.qls
+    - codeql/cert-cpp-coding-standards:codeql-suites/cert-cpp-l1.qls
+    - codeql/cert-c-coding-standards:codeql-suites/cert-c-l1.qls
+
+The static code analysis is executed for every module at least on each change of the main branch and before
+each release. The results (SARIF) of the release state are kept as release artifacts and summarized in the
+module verification report. A finding that is not fixed is justified in the source code at the finding location,
+as described in :need:`doc__cpp_code_analysis`, and is listed in the module verification report.
+
+Deviation
+"""""""""
+
 Any deviation of the coverage percentage value is documented as part of the module documentation.
 A rationale for the deviation needs to be provided for an official release.
 
@@ -563,12 +628,43 @@ The script will wait for the user input to proceed to the next step and describe
 The user input can be judged as confirmation that the expected result is achieved.
 The final result will be `PASSED` or `FAILED`, based on the test executors confirmation.
 
+The results of the manual testing should be reconfirmed during subsequent verification cycles
+to ensure their continued validity especially for major release versions and to avoid regression issues.
+
+Verification of non-functional requirements
+-------------------------------------------
+
+Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by other manual verification methods, e.g. checklist based analysis.
+
+To verify such a non-functional or not feasibly testable requirement, the respective links for traceability need to be
+established as for any other automated or manual test case. Therefore, the documentation for non-functional verification uses
+the same templates as automated or manual test and especially includes the Record Properties.
+
+The Record Properties for non-functional verification is set to testtype `manual-requirement-verification`.
+
+The non-functional verification requires a script to be provided which describes the analysis steps performed and their result.
+The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
+Within the review an approver confirms that automated or manual testing is not feasible for the specific analyzed requirement.
+
+In contrast to automated result comparison of an automated test case, the verification justification is logged for non-functional requirement.
+The documentation in form of a script will log a clear result so that it can be judged as confirmation that the expected result is achieved.
+The final result will be `PASSED` or `FAILED`, based on the test executors confirmation.
+
+The results of the non-functional verification activities should be reconfirmed during subsequent reviews or verification cycles
+to ensure their continued validity especially for major release versions and to avoid regression issues.
+
 Test selection and regression testing
 -------------------------------------
 
-All existing test cases should be executed within continuous integration pipelines to verify initially developed
+All existing automated test cases should be executed within continuous integration pipelines to verify initially developed
 components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
 automated tests get executed continuously covers the approach to identify regressions.
+
+Additionally, all manual verification activities verifying requirements or architectural elements shall be carried out at minimum for major version releases to avoid regressions.
+Their results shall be documented as part of the verification reports.
+Committers are responsible for ensuring that the manual and non-functional verification is still valid when performing a feature release.
+Remark: When the release baseline of a feature is intended to be used as a basis for later major version releases
+the pre-check of manual verification activities ease the later platform integration and verification process.
 
 Work products and traceability
 ------------------------------
@@ -645,10 +741,10 @@ components, documentation, and automated tests.
 The software components of the project written in C++ are unit tested with the help of
 `GoogleTest <https://google.github.io/googletest/>`__.
 
-.. rubric:: gcov/gcovr
+.. rubric:: Code Coverage (llvm-cov/llvm-profdata)
 
-For C++ code the structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
-`gcovr <https://github.com/gcovr/gcovr>`__ - gcov is part of the GNU compiler collection (gcc).
+For C++ code the structural coverage reached by unit testing in the project is evaluated by the llvm-cov/llvm-profdata tool chain
+`llvm-cov <https://llvm.org/docs/CommandGuide/llvm-cov.html>`__ and `llvm-profdata <https://llvm.org/docs/CommandGuide/llvm-profdata.html>`__ are part of the LLVM toolchain.
 
 The C++ unit test tooling supports several coverage metrics:
 
@@ -656,7 +752,7 @@ The C++ unit test tooling supports several coverage metrics:
 - "branch" - used in S-CORE for the ``structural-branch-coverage`` method
 - "function" - used in S-CORE for the ``structural-function-coverage`` as additional supporting coverage value for further analysis.
 
-Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferrocene.
+Note: Rust coverage evidence in S-CORE is primarily generated via Rust/Ferrocene tooling. llvm-cov/llvm-profdata may be used in dedicated host-based LLVM workflows, but this is not the default Rust coverage reporting path.
 
 
 .. rubric:: Integration Testing Framework (ITF)

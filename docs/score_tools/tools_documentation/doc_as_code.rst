@@ -15,7 +15,7 @@
 .. doc_tool:: Doc-as-Code
    :id: doc_tool__doc_as_code
    :status: evaluated
-   :version: 3
+   :version: 4
    :tool_version: v8.1.2
    :tcl: LOW
    :safety_affected: YES
@@ -33,9 +33,12 @@ Introduction
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
 
-The S-CORE Docs-as-Code tool (Bazel module ``score_docs_as_code``) builds HTML
-documentation from RST/Markdown sources — process description, requirements, and
-traceability — and validates content against the S-CORE metamodel.
+The S-CORE Docs-as-Code tool (Bazel module ``score_docs_as_code``)
+
+* builds HTML documentation from RST/Markdown sources — e.g. process description and all work products
+* enables navigation between work products documentation according to their (bi-directional) traceability
+* validates content against the S-CORE metamodel (e.g. setting of attributes and links)
+* implements the :need:`wp__requirements_proc_tool` defined as part of the S-CORE processes / metamodel
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
@@ -419,3 +422,8 @@ Architectural design
      — the ``docs()`` macro and its generated targets.
    * `Build commands <https://eclipse-score.github.io/docs-as-code/v8.1.2/reference/commands.html>`_
      — public and internal Bazel targets.
+
+Unresolved Tool Bugs
+~~~~~~~~~~~~~~~~~~~~
+
+`docs_as_code bug list <https://github.com/eclipse-score/docs-as-code/issues?q=is%3Aissue+state%3Aopen+type%3Abug>`_

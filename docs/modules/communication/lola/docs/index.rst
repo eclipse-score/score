@@ -27,14 +27,9 @@ LoLa
    :realizes: wp__cmpt_request[version==1]
 
 
-As the component implements the complete feature :need:`doc__com_ipc`, there is currently nothing to add here.
+As the component implements the complete feature :need:`doc__com` including :need:`doc__com_ipc`, there is currently nothing to add here.
 
 .. toctree::
    :hidden:
 
-   requirements/index.rst
-   architecture/index.rst
-   detailed_design/index.rst
-   safety_analysis/fmea.rst
-   safety_analysis/dfa.rst
    component_classification.rst

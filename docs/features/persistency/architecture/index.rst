@@ -43,7 +43,7 @@ Logical Interfaces
    :included_by: feat__persistency
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__async_api[version==1]
+   :fulfils: feat_req__persistency__async_api[version==1],feat_req__persistency__bounded_execution[version==1]
    :status: valid
    :version: 1
 

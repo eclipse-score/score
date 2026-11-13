@@ -50,7 +50,7 @@ Mandatory scope: https://github.com/orgs/eclipse-score/projects/34/views/8
 
 ## Mandatory Scope
 
-### ✅ Code formatting 
+### ✅ Code formatting
 Bazel integration + CI/CD integration ready and rolled out in few Rust repositories that ensures code is aligned by same S-CORE wide configuration
 
 - Verification report (https://eclipse-score.github.io/score/main/score_tools/tools_static_analysis_code_quality/clippy.html#doc_tool__clippy)
@@ -65,7 +65,7 @@ Bazel integration + CI/CD integration ready and rolled out in few Rust repositor
 Bazel integration + CI/CD integration ready and rolled out in few Rust repositories
 
 - Using build in Rust test framework for writing and running TC
-- Tool for coverage calculation used from Ferrocene 
+- Tool for coverage calculation used from Ferrocene
     - Ferrocene provided offer for tool qualification  - ✅  offer available at https://github.com/eclipse-score/score/issues/2020
 
 ### 📈 Certified `libcore` and `libstd` subset
