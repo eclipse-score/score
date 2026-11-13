@@ -18,8 +18,8 @@ Tracing Component Architecture
 .. comp:: Tracing
    :id: comp__tracing
    :security: YES
-   :safety: QM
-   :status: valid
+   :safety: ASIL_B
+   :status: invalid
    :version: 1
    :implements: logic_arc_int__tracing__tracing[version==1]
    :belongs_to: feat__tracing[version==1]
