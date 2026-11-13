@@ -19,7 +19,7 @@ libc Component Architecture
    :id: comp__os_libc
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
    :implements: logic_arc_int__os__fcntl[version==1], logic_arc_int__os__stat[version==1], logic_arc_int__os__mman[version==1], logic_arc_int__os__unistd[version==1]
    :belongs_to: feat__os[version==1]
@@ -35,7 +35,7 @@ libc Component Architecture
    :included_by: feat__os
    :security: YES
    :safety:  ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    File Control
@@ -75,7 +75,7 @@ libc Component Architecture
    :included_by: feat__os
    :security: YES
    :safety:  ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    Memory Mapping
@@ -107,7 +107,7 @@ libc Component Architecture
    :included_by: feat__os
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    .. needarch::
@@ -169,7 +169,7 @@ libc Component Architecture
    :included_by: feat__os
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    .. needarch::
