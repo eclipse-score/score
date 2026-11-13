@@ -34,7 +34,7 @@ Defining a Bazel Documentation Target
 -----------------------------------------
 To generate HTML documentation from *.rst* files, S-CORE provides the ``docs`` Bazel macro.
 In the top-level `BUILD <https://github.com/eclipse-score/module_template/blob/main/BUILD>`_ file of your module,
-you should already find:
+you find a call of this macro. Without the bundles explained below, it looks like this:
 
 .. code-block:: python
     :linenos:
@@ -57,8 +57,10 @@ The most important parameters are:
   With both set, no own ``conf.py`` is needed; all S-CORE Sphinx extensions and the metamodel checks are configured
   by *docs-as-code*. Replace the template values by the name and URL of your module.
 - ``external_needs``: documentation of other modules whose sphinx-needs objects you want to reference, e.g.
-  ``"@score_process_description//:needs_json"`` for the process description or ``"@score_platform//:needs_json"``
-  for the feature requirements and architecture of the S-CORE platform.
+  ``"@score_process_description//:docs"`` for the process description or ``"@score_platform//:docs"``
+  for the feature requirements and architecture of the S-CORE platform. The module must also be declared with
+  ``bazel_dep`` in ``MODULE.bazel``. See
+  `Reference Other Modules <https://eclipse-score.github.io/docs-as-code/main/how-to/other_modules.html>`_ for details.
 - ``bundles``: further documentation bundles which are mounted into your documentation, e.g. the documentation
   of each component in ``score/<component_name>``. The template mounts ``//score/component_example:docs``
   and ``//examples:docs`` this way.

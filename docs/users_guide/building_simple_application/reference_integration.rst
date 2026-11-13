@@ -39,7 +39,7 @@ Keeping this state in a dedicated JSON file instead of directly in Bazel's
   in one place and machine-readable. Tooling such as CI pipelines, workspace
   generators, and the Bazel module generator all consume the same data.
   The running example uses it as well: the platform info service reports exactly
-  the module versions listed in ``known_good.json``.
+  the versions of the ``target_sw`` modules listed in ``known_good.json``.
 
 * **Separation of concerns.** ``known_good.json`` is the *what* (which commit
   of which module), while the generated ``.MODULE.bazel`` file is the *how*
@@ -232,12 +232,17 @@ on the target. The platform info service is deployed like this
 
    pkg_files(
        name = "platform_info_service_configs",
-       srcs = ["etc/mw_com_config.json"],
+       srcs = [
+           "etc/logging.json",
+           "etc/mw_com_config.json",
+       ],
        attributes = pkg_attributes(mode = "0644"),
        prefix = "usr/bin/platform_info/etc",
        strip_prefix = strip_prefix.files_only(),
    )
 
+The binary is placed as ``/usr/bin/platform_info/platform_info_service``, its mw::com and mw::log configuration
+in ``/usr/bin/platform_info/etc``.
 Both targets are added to the aggregate ``platform_bundle`` in
 `deploy/BUILD <https://github.com/eclipse-score/reference_integration/blob/main/deploy/BUILD>`_,
 which every image consumes. Modules that ship only libraries, e.g. ``score_communication``, have nothing to deploy.
@@ -249,7 +254,7 @@ S-CORE CLI by adding files under ``showcases/standalone/``.
 
 ``showcases/standalone/platform_info.score.json`` -- describes the examples
 shown in the interactive CLI menu. The *Platform Version Check* starts the deployed service,
-runs the consumer against it and returns the exit code of the consumer:
+runs the consumer against it with its own logging configuration and returns the exit code of the consumer:
 
 .. code-block:: json
 
@@ -262,7 +267,7 @@ runs the consumer against it and returns the exit code of the consumer:
                    "path": "/bin/sh",
                    "args": [
                        "-c",
-                       "cd /usr/bin/platform_info || exit 1; ./platform_info_service >/dev/null 2>&1 & provider=$!; /showcases/bin/platform_info_consumer --service_instance_manifest /usr/bin/platform_info/etc/mw_com_config.json; rc=$?; kill $provider; wait $provider; exit $rc"
+                       "cd /usr/bin/platform_info || exit 1; ./platform_info_service >/dev/null 2>&1 & provider=$!; MW_LOG_CONFIG_FILE=/showcases/data/platform_info/etc/logging.json /showcases/bin/platform_info_consumer --service_instance_manifest /usr/bin/platform_info/etc/mw_com_config.json; rc=$?; kill $provider; wait $provider; exit $rc"
                    ],
                    "env": {}
                }
@@ -271,7 +276,8 @@ runs the consumer against it and returns the exit code of the consumer:
    ]
 
 ``showcases/standalone/BUILD`` -- add a ``score_pkg_bundle`` entry that
-bundles the binary and the JSON config file:
+bundles the binary, the JSON config file and the logging configuration of the consumer,
+which ends up as ``/showcases/data/platform_info/etc/logging.json``:
 
 .. code-block:: python
 
@@ -279,6 +285,9 @@ bundles the binary and the JSON config file:
        name = "platform_info",
        bins = ["//showcases/standalone:platform_info_consumer"],
        config_data = ["//showcases/standalone:platform_info.score.json"],
+       custom_layout = {
+           "//showcases/standalone/configs:platform_info_consumer.json": "etc/logging.json",
+       },
        package_dir = "standalone",
    )
 
@@ -286,7 +295,8 @@ For a binary of an integrated module, reference it with its module label instead
 e.g. ``bins = ["@score_my_module//score/examples:my_example"]``.
 
 ``showcases/BUILD`` -- reference the new ``_pkg_files`` target in the
-top-level ``showcases`` bundle so it ends up in every image:
+top-level ``showcases`` bundle and in the ``showcases_bundle`` file group, which the QNX images consume,
+so it ends up in every image:
 
 .. code-block:: python
 
@@ -295,11 +305,21 @@ top-level ``showcases`` bundle so it ends up in every image:
        bins = ["//showcases/cli"],
        other_package_files = [
            "//showcases/standalone:comm_pkg_files",
-           "//showcases/standalone:kyron_pkg_files",
            ...
            "//showcases/standalone:platform_info_pkg_files",   # added
        ],
        package_dir = "showcases",
+   )
+
+   pkg_filegroup(
+       name = "showcases_bundle",
+       srcs = [
+           ":showcases_pkg_files",
+           ...
+           "//showcases/standalone:platform_info_pkg_files",   # added
+       ],
+       prefix = "showcases",
+       visibility = ["//visibility:public"],
    )
 
 The CLI auto-detects all ``*.score.json`` files at runtime, so no further
@@ -341,6 +361,13 @@ and runs with:
 
 How the test is linked to the requirement it verifies is described in the
 :doc:`documentation generation <doc_generation>` chapter.
+
+.. note::
+
+   The service and the consumer are also part of the showcase *S-CORE Platform Run*
+   (`showcases/platform_run <https://github.com/eclipse-score/reference_integration/tree/main/showcases/platform_run>`_).
+   There, the launch manager starts the service as platform daemon and checks that the consumer exits successfully,
+   and the platform integration test ``platform_run`` collects and checks the DLT logs, see :doc:`collecting logs <collecting_logs>`.
 
 Optional -- Add Bazel patches
 ------------------------------

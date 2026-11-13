@@ -17,9 +17,9 @@
 Building source code
 =====================
 
-The running example consists of a small C++ service and its client. Both are built on two S-CORE modules:
-mw::com from ``score_communication`` for the inter-process communication and the CRC32 calculation
-from ``score_baselibs``. The sources are located in the
+The running example consists of a small C++ service and its client. Both are built on three S-CORE modules:
+mw::com from ``score_communication`` for the inter-process communication, the CRC32 calculation
+from ``score_baselibs`` and mw::log from ``score_logging`` for logging. The sources are located in the
 `reference integration <https://github.com/eclipse-score/reference_integration>`_:
 
 .. list-table::
@@ -38,13 +38,18 @@ from ``score_baselibs``. The sources are located in the
      - The service (provider)
    * - `deploy/platform_info/etc/mw_com_config.json <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/mw_com_config.json>`_
      - mw::com configuration of the service
+   * - `deploy/platform_info/etc/logging.json <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/logging.json>`_
+     - mw::log configuration of the service
+   * - `deploy/platform_info/platform_info_test.cpp <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/platform_info_test.cpp>`_,
+       `gen_platform_info_test.py <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/gen_platform_info_test.py>`_
+     - Unit tests of the version check and of the header generator
    * - `showcases/standalone/platform_info_consumer.cpp <https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/platform_info_consumer.cpp>`_
      - The client (consumer)
 
 Service interface
 -----------------
 An mw::com service is described by a C++ interface template. The platform info service has a single *field*,
-``platform_info``, i.e. a value that the service sets and that clients can read and subscribe to:
+``platform_info``, i.e. a value that the service sets and that clients subscribe to (``WithNotifier``):
 
 .. code-block:: cpp
     :linenos:
@@ -80,13 +85,14 @@ The same interface yields both sides of the communication: the *skeleton* is use
 the *proxy* is used by the client to access it. Because mw::com exchanges the data via shared memory,
 ``PlatformInfo`` only contains fixed-size types.
 
-The service implementation is short: it creates the skeleton for the instance specifier ``score/platform/info``,
-publishes the value and offers the service until it is stopped:
+The service implementation is short: it creates a logger, creates the skeleton for the instance specifier
+``score/platform/info``, publishes the value and offers the service until it is stopped:
 
 .. code-block:: cpp
     :linenos:
 
     score::mw::com::runtime::InitializeRuntime(score::string_manipulation::GetArguments(argc, argv));
+    auto& logger = score::mw::log::CreateLogger("PINF", "platform info");
 
     auto instance_specifier = score::mw::com::InstanceSpecifier::Create(std::string{kInstanceSpecifier});
     auto skeleton = PlatformInfoSkeleton::Create(std::move(instance_specifier).value());
@@ -94,6 +100,8 @@ publishes the value and offers the service until it is stopped:
     const auto platform_info = MakePlatformInfo();
     skeleton->platform_info_.Update(platform_info);
     skeleton->OfferService();
+    logger.LogInfo() << "platform_info_service: offering " + std::string{kInstanceSpecifier} + " for S-CORE " +
+                            ToString(platform_info);
 
 The client does the opposite: it searches the service via service discovery, creates a proxy,
 subscribes to the field and checks the received value:
@@ -115,6 +123,8 @@ subscribes to the field and checks the received value:
     const auto differences = score::platform::info::Compare(score::platform::info::MakePlatformInfo(), info.value());
 
 The snippets omit the error handling and the timeouts; see the source files for the complete implementation.
+Both programs log via the mw::log logger with the context id ``PINF``. How these logs are configured and collected
+is described in the :doc:`collecting logs <collecting_logs>` chapter.
 
 mw::com configuration
 ---------------------
@@ -142,8 +152,9 @@ into the binaries, but defined in the mw::com configuration
       }
     ]
 
-mw::com reads ``./etc/mw_com_config.json`` relative to the working directory, or the file passed with
-``--service_instance_manifest`` (short ``-s``). Service and client use the same file, so they agree on the service definition.
+mw::com reads ``./etc/mw_com_config.json`` relative to the working directory, or the file passed with the
+command line option ``--service_instance_manifest``. Service and client use the same file, so they agree on the
+service definition.
 
 Bazel targets
 -------------
@@ -152,7 +163,7 @@ The Bazel targets of the service are defined in
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 4, 20, 21, 30, 31
+    :emphasize-lines: 4, 20, 21, 25, 30, 41
 
     # The S-CORE module versions the platform is built from, as compile-time constants.
     genrule(
@@ -178,6 +189,15 @@ The Bazel targets of the service are defined in
         ],
     )
 
+    cc_test(
+        name = "platform_info_test",
+        srcs = ["platform_info_test.cpp"],
+        deps = [
+            ":platform_info_interface",
+            "@googletest//:gtest_main",
+        ],
+    )
+
     cc_binary(
         name = "platform_info_service",
         srcs = ["platform_info_service.cpp"],
@@ -185,6 +205,7 @@ The Bazel targets of the service are defined in
             ":platform_info_interface",
             "@score_baselibs//score/string_manipulation/arguments",
             "@score_communication//score/mw/com",
+            "@score_logging//score/mw/log",
         ],
     )
 
@@ -194,8 +215,10 @@ The Bazel targets of the service are defined in
 - The `cc_library <https://bazel.build/reference/be/c-cpp#cc_library>`_ ``platform_info_interface`` contains
   the shared interface. Its dependencies reference targets of other Bazel modules with the ``@<module>//<package>:<target>``
   syntax, here mw::com and the CRC32 calculation.
+- The `cc_test <https://bazel.build/reference/be/c-cpp#cc_test>`_ ``platform_info_test`` contains the unit tests of the
+  library, written with GoogleTest.
 - The `cc_binary <https://bazel.build/reference/be/c-cpp#cc_binary>`_ ``platform_info_service`` produces the
-  executable of the service.
+  executable of the service. It additionally depends on mw::log from ``score_logging``.
 
 The consumer is defined in the same way in
 `showcases/standalone/BUILD <https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/BUILD>`_
@@ -211,6 +234,7 @@ and depends on the shared interface library:
             "//deploy/platform_info:platform_info_interface",
             "@score_baselibs//score/string_manipulation/arguments",
             "@score_communication//score/mw/com",
+            "@score_logging//score/mw/log",
         ],
     )
 
@@ -274,8 +298,11 @@ within the configuration of the root module.
 
 .. tip::
     The CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
-    the QNX compiler locally, you must acquire a QNX 8.x "free for non commercial use" license and install QNX 8.x SDP
-    as described in the `QNX & QEMU set-up tutorial <https://github.com/eclipse-score/reference_integration/blob/main/runners/qemu_x86_64/README.md>`_.
+    the QNX compiler locally, you need a QNX license, e.g. the free community license *QNX Everywhere*, installed at
+    ``/opt/score_qnx/license/licenses``, and access to the QNX SDP download. The setup is described in the
+    `QNX integration guide <https://github.com/eclipse-score/bazel_cpp_toolchains/blob/main/docs/qnx_integration.md>`_
+    of ``score_bazel_cpp_toolchains``. Running the QNX images in QEMU additionally needs the host setup described in the
+    `QNX QEMU runner README <https://github.com/eclipse-score/reference_integration/blob/main/runners/qemu_x86_64/README.md>`_.
 
 Building the binaries
 ---------------------
@@ -309,7 +336,8 @@ After a successful build, the binaries can be found in the build folder:
 Running the example
 -------------------
 The Linux binaries can be started directly on the host. mw::com needs the directory for its service discovery,
-the service is started in the background and the consumer gets the deployed mw::com configuration:
+the service is started in the background in its directory, so that it finds its configuration in ``etc/``,
+and the consumer gets the deployed mw::com configuration and its own logging configuration:
 
 .. code-block:: bash
     :linenos:
@@ -317,23 +345,36 @@ the service is started in the background and the consumer gets the deployed mw::
     mkdir -p /tmp/mw_com_lola/service_discovery
     cd deploy/platform_info
     ../../bazel-bin/deploy/platform_info/platform_info_service &
-    ../../bazel-bin/showcases/standalone/platform_info_consumer --service_instance_manifest etc/mw_com_config.json
+    MW_LOG_CONFIG_FILE=../../showcases/standalone/configs/platform_info_consumer.json \
+      ../../bazel-bin/showcases/standalone/platform_info_consumer --service_instance_manifest etc/mw_com_config.json
     kill %1
 
 The service logs the S-CORE version it reports, and the consumer confirms that it found the service and that the
-versions match:
+versions match. The output looks like this (shortened):
 
 .. code-block:: text
 
-    platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z
-      score_baselibs ee40fece5abacb28ea641b448446a04175038b17
+    ... ECU1 PINS PINF log info verbose 1 platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z
+      score_baselibs 41f5a4c92163dc1f597116094ed34881ddee7fa3
       ...
-    platform_info_consumer: found the platform info service
-    platform_info_consumer: platform runs S-CORE known_good 2026-08-28T09:19:12Z
+    ... ECU1 PINC PINF log info verbose 1 platform_info_consumer: found the platform info service
+    ... ECU1 PINC PINF log info verbose 1 platform_info_consumer: platform runs S-CORE known_good 2026-08-28T09:19:12Z
       ...
-    platform_info_consumer: S-CORE version check passed (8 modules match)
+    ... ECU1 PINC PINF log info verbose 1 platform_info_consumer: S-CORE version check passed (8 modules match)
+
+``PINS`` and ``PINC`` are the application ids of service and consumer, ``PINF`` is the context id of their messages.
+Further lines, e.g. messages with the context id ``lola`` from mw::com or status output of the logging client such as
+``TryOpenClientConnection``, can be ignored here; the :doc:`collecting logs <collecting_logs>` chapter explains the logging.
 
 If the service is not running, or reports a different S-CORE version, the consumer exits with ``1`` and names the reason,
 e.g. the module whose version differs.
+
+Running the unit tests
+----------------------
+The unit tests of the version check and of the header generator run on the host:
+
+.. code-block:: bash
+
+    bazel test --config=linux-x86_64 //deploy/platform_info:platform_info_test //deploy/platform_info:gen_platform_info_test
 
 Now it is time to make sure that every change is built and tested automatically.
