@@ -12,19 +12,21 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Persistency Requirements Inspection Checklist
-#############################################
 
 .. document:: Persistency Requirements Inspection Checklist
-  :id: doc__feature_persistency_requirements_chklst
-  :status: valid
-  :version: 1
-  :safety: ASIL_B
-  :security: NO
-  :tags: persistency
-  :realizes: wp__requirements_inspect[version==1]
+   :id: doc__feature_persistency_requirements_chklst
+   :status: draft
+   :version: 2
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_inspect[version==1]
+   :tags: persistency
 
-**Purpose**
+Persistency Requirement Inspection Checklist
+============================================
+
+Purpose
+-------
 
 The purpose of this requirement inspection checklist is to collect the topics to be checked during requirements inspection.
 
@@ -152,3 +154,9 @@ And also the following AoUs in "valid_inspected" state (for these please answer 
    :columns: id;status;tags
    :colwidths: 25,25,25
    :sort: title
+
+.. note::
+
+   The feature level AoUs of the Persistency (``aou_req__persistency__*``) are maintained in the persistency module
+   (``docs/features/persistency/safety_analysis/aou_requirements.rst``) and are therefore not listed in the table above.
+   They are inspected together with the component requirements in ``doc__kvs_req_inspection``.
