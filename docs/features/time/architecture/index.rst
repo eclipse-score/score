@@ -12,19 +12,89 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Time Architecture
-#################
+Architecture
+############
 
 .. document:: Time Architecture
    :id: doc__time_architecture
-   :status: draft
+   :status: valid
    :version: 1
    :safety: ASIL_B
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
-Time Feature
+Overview
+--------
+
+The Time feature (:term:`score::time`) provides applications with a uniform way to read
+time from several distinct :term:`clock domains <clock domain>`. The domain is selected explicitly by the
+application, which keeps the interface consistent across domains while preventing accidental
+mixing of incompatible :term:`TimePoint` types.
+
+The architecture distinguishes three time bases (:term:`clock domains <clock domain>`), each exposed through its
+own clock interface:
+
+* **Vehicle Time** — the network-synchronized (:term:`gPTP`) vehicle-wide time base,
+   carrying a :term:`Vehicle Time status` qualifier. It is exposed through the
+   :term:`Vehicle Clock`, which — because the time base depends on external synchronization — also
+   offers initialization, availability checks and event subscription in addition to reading the time.
+* **Local Time** — the local, non-synchronized time bases (steady, system and high-resolution).
+   They are exposed through the :term:`Local Clock`, need no initialization and are always
+   available.
+* **Absolute Time** — an external absolute time base (e.g. :term:`UTC` from GPS), carrying an
+   :term:`Absolute Time status` qualifier that reflects both accuracy and security. It is exposed
+   through the :term:`Absolute Clock`.
+
+Because each :term:`clock domain` is independent and exposed through its own logical interface,
+the architecture is open to future time bases (for example a further synchronized or secure
+domain): a new domain is added as an additional interface without changing the existing ones.
+
+Description
+-----------
+
+Uniform clock access
+********************
+
+All clock domains are exposed through a common, domain-agnostic interface so that
+applications use the same operations regardless of which time base they read. Reading the
+time returns a :term:`Snapshot` that bundles the :term:`TimePoint` with the domain's status
+concept (:term:`Vehicle Time status` for the vehicle clock, :term:`Absolute Time status` for the
+absolute clock; the local clocks carry no status), so callers can read the time and judge its
+quality in a single call.
+
+Rationale Behind Architecture Decomposition
+*******************************************
+
+The feature is decomposed along its **time bases**. Each :term:`clock domain` is an independent
+time base with its own epoch, progression semantics, :term:`TimePoint` type and status concept.
+The domains are logically and functionally independent: an application selects one explicitly,
+and time values of different domains are distinct, incompatible types that cannot be mixed.
+
+Independence does not imply isolation. A time base may build on or use another — for example a
+synchronized domain interpolates between synchronization updates on top of a local monotonic base,
+and the :term:`System Clock` is kept aligned to :term:`Absolute Time` through the OS
+``CLOCK_REALTIME`` — but such relationships are internal and do not couple the interfaces the
+domains expose.
+
+The synchronized time bases (Vehicle Clock and Absolute Clock) additionally rely on an external
+time reference and on validation of the received time. They *may* share a common supporting
+component for obtaining and validating that time, but such reuse is an implementation choice, not
+an architectural constraint: each synchronized domain could equally be served on its own.
+
+Accordingly the feature exposes one application-facing clock interface per group of time bases:
+the Vehicle Clock, the Absolute Clock, and the Local Clock. The local, non-synchronized clocks
+(steady, system and high-resolution) are grouped behind a single interface because they share the
+same minimal operation surface (a single time read); they remain distinct domains, differing only
+in their semantics, which is captured in a domain table rather than in separate architectural
+elements.
+
+Requirements
 ------------
+
+The Feature requirements are described in the :doc:`requirements index <../requirements/index>`.
+
+Feature Overview
+----------------
 
 .. feat:: Time
    :id: feat__time
@@ -33,5 +103,237 @@ Time Feature
    :status: valid
    :version: 1
 
-Logical Interfaces
-------------------
+.. note::
+
+   This document defines the feature-level logical interfaces. The static and dynamic feature views
+   and the component-level detailed architecture belong in the ``time`` module
+   (see the `time module repository <https://github.com/eclipse-score/time>`_).
+   Alignment of the module architecture with the current feature requirements and logical interfaces
+   is pending.
+
+Time Bases
+----------
+
+The interfaces below distinguish application-facing clock access from external synchronization.
+Synchronization operations describe logical data or protocol exchanges, not additional callable
+methods on the clock interfaces. Internal publication and retrieval of the latest state are not
+external synchronization interfaces.
+
+Vehicle Time
+************
+
+The Vehicle Clock exposes the network-synchronized vehicle time. Because it depends on external
+synchronization, it additionally offers subscription to synchronization events, on top of reading the time.
+
+Logical Interface
+^^^^^^^^^^^^^^^^^
+
+.. logic_arc_int:: Vehicle Clock
+   :id: logic_arc_int__time__vehicle_clock
+   :included_by: feat__time
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__time__vehicle_time_time_api[version==2], feat_req__time__vehicle_time_time_pt_qual[version==3], feat_req__time__vehicle_time_ctrl_flow[version==2], feat_req__time__veh_status_sync[version==1], feat_req__time__veh_status_timeout[version==2], feat_req__time__veh_status_leap_fut[version==3], feat_req__time__veh_status_leap_past[version==3], feat_req__time__veh_snapshot_cons[version==1], feat_req__time__veh_tpq_default[version==1]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: now
+   :id: logic_arc_int_op__time__vehicle_now
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__vehicle_clock
+
+   Returns the current vehicle-time :term:`Snapshot` (:term:`TimePoint` plus :term:`Vehicle Time status`).
+
+.. logic_arc_int_op:: subscribe
+   :id: logic_arc_int_op__time__vehicle_subscribe
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__vehicle_clock
+
+   Registers a callback that is notified on vehicle-time synchronization events.
+
+.. logic_arc_int_op:: unsubscribe
+   :id: logic_arc_int_op__time__vehicle_unsubscribe
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__vehicle_clock
+
+   Removes a previously registered synchronization-event callback.
+
+Synchronization Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This logical interface connects the external :term:`gPTP` network to the Time feature on the
+configured slave port and domain. It covers received synchronization information and bidirectional
+peer delay exchanges. Protocol behavior, including the feature-specific exceptions, is defined by
+the synchronization and peer delay requirements.
+
+.. logic_arc_int:: Vehicle Time Synchronization
+   :id: logic_arc_int__time__vehicle_sync
+   :included_by: feat__time
+   :security: NO
+   :safety: QM
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__time__vehicle_time_sync[version==2], feat_req__time__veh_gptp_slave[version==2], feat_req__time__veh_pdelay_requester[version==1], feat_req__time__veh_pdelay_responder[version==1]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: Receive synchronization information
+   :id: logic_arc_int_op__time__vehicle_sync_receive
+   :security: NO
+   :safety: QM
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__vehicle_sync
+
+   Receives Sync and Follow_Up messages on the configured :term:`gPTP` slave port for synchronization
+   of the :term:`Vehicle Time` on the configured domain.
+
+.. logic_arc_int_op:: Exchange peer delay messages
+   :id: logic_arc_int_op__time__veh_pdelay_exchange
+   :security: NO
+   :safety: QM
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__vehicle_sync
+
+   Exchanges peer delay messages as requester and responder on the configured :term:`gPTP` slave port.
+
+Local Time
+**********
+
+The Local Clock groups the local, non-synchronized time bases, provided directly by the
+operating system clocks. All variants expose a single ``now`` operation returning a
+:term:`Snapshot`; they require no initialization and are always available. The concrete domains
+are:
+
+.. list-table:: Local Clock domains
+   :header-rows: 1
+   :widths: 30,70
+
+   * - Domain
+     - Semantics
+   * - :term:`High-Resolution Steady Clock`
+     - Monotonic, nanosecond-resolution, lowest-overhead clock. Fulfils the high-precision clock API.
+   * - :term:`Steady Clock`
+     - Monotonic, never adjusted. Preferred for elapsed-time and timeouts. Fulfils the monotonic clock API.
+   * - :term:`System Clock`
+     - Wall-clock (UTC-based) OS ``CLOCK_REALTIME``, may jump or be adjusted. Used for calendar
+       timestamps. Kept aligned to :term:`Absolute Time` by :term:`score::time`, so POSIX/C++
+       system-clock consumers obtain the absolute time as QM data.
+
+Logical Interface
+^^^^^^^^^^^^^^^^^
+
+.. logic_arc_int:: Local Clock
+   :id: logic_arc_int__time__local_clock
+   :included_by: feat__time
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__time__high_res_clock_api[version==1], feat_req__time__monotonic_clock_api[version==2], feat_req__time__sys_clock_step[version==1], feat_req__time__sys_clock_min_acc[version==1], feat_req__time__sys_clock_min_sec[version==1]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: now
+   :id: logic_arc_int_op__time__local_now
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__local_clock
+
+   Returns the current :term:`Snapshot` (a :term:`TimePoint`) of the selected local clock domain.
+
+Absolute Time
+*************
+
+The Absolute Clock exposes an external absolute time source (e.g. UTC from GPS). Its
+:term:`Absolute Time status` carries both an :term:`accuracy qualifier` and a
+:term:`security qualifier`.
+
+Logical Interface
+^^^^^^^^^^^^^^^^^
+
+.. logic_arc_int:: Absolute Clock
+   :id: logic_arc_int__time__absolute_clock
+   :included_by: feat__time
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__time__abs_base_api[version==2], feat_req__time__abs_acc_qual[version==3], feat_req__time__abs_sec_qual[version==3], feat_req__time__abs_ctrl_flow[version==1], feat_req__time__abs_delay_comp[version==2], feat_req__time__abs_advance[version==2], feat_req__time__abs_acc_from_sample[version==1], feat_req__time__abs_sec_from_sample[version==1]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: now
+   :id: logic_arc_int_op__time__absolute_now
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__absolute_clock
+
+   Returns the current :term:`Snapshot` (:term:`TimePoint` with :term:`Absolute Time status`).
+
+Sample Input Interface
+^^^^^^^^^^^^^^^^^^^^^^
+
+The feature receives :term:`Absolute Time samples <Absolute Time sample>` independently of application
+``Now()`` calls. This logical input defines the external sample contract, not retrieval of previously
+published state. Component decomposition, transport and internal state retrieval are module-level design
+concerns; the input is not an additional operation on the Absolute Clock.
+
+.. logic_arc_int:: Absolute Time Sample Input
+   :id: logic_arc_int__time__absolute_sample_input
+   :included_by: feat__time
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__time__abs_sync[version==2]
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: Receive Absolute Time sample
+   :id: logic_arc_int_op__time__abs_sample_receive
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :included_by: logic_arc_int__time__absolute_sample_input
+
+   Receives one :term:`Absolute Time sample`, including its source time, :term:`Delay Tag`,
+   :term:`accuracy qualifier` and :term:`security qualifier`, for synchronization of the :term:`Absolute Time`.
+   The Delay Tag is input to internal compensation, not part of the application-facing :term:`Snapshot`.
