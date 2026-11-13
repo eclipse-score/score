@@ -105,7 +105,7 @@ Logical Interfaces
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
 .. logic_arc_int:: Filesystem
@@ -130,7 +130,7 @@ of individual functions is defined at component level, independently of this gro
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    Provides C++ abstractions of POSIX and C standard library services shared by Linux and QNX.
@@ -188,7 +188,7 @@ of individual functions is defined at component level, independently of this gro
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    Provides C++ abstractions of QNX-specific services. These services complement the general OSAL
