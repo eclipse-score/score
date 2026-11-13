@@ -566,8 +566,16 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../daal/index.html">Deterministic App Abstraction Layer</a></li>
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feo/index.html">Fixed Execution Order</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../log_and_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
@@ -639,7 +647,7 @@
                   
   <section id="code-generation-requirements">
 <span id="codegen-requirements"></span><h1>Code Generation Requirements<a class="headerlink" href="#code-generation-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-581c32c6">
+<div class="need_container docutils container" id="SNCB-365c8242">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__code_generation_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -683,7 +691,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7ca05d83">
+<div class="need_container docutils container" id="SNCB-17ea3b3b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__definitionlanguage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -731,7 +739,7 @@ system should prefer YAML over JSON due to its simpler syntax.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6c0b90fe">
+<div class="need_container docutils container" id="SNCB-75f1f6d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__initialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -778,7 +786,7 @@ permanently if they fail to initialize.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5a5cb7d5">
+<div class="need_container docutils container" id="SNCB-dacbd571">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__deinitialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -825,7 +833,7 @@ called only once during their lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0f611422">
+<div class="need_container docutils container" id="SNCB-0c82e751">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__nomultithreading">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -873,7 +881,7 @@ dynamically spawn and join or detach worker threads.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ab00bc74">
+<div class="need_container docutils container" id="SNCB-991c8576">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -920,7 +928,7 @@ libraries completely inside the standard interface functions. Software Compute U
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-66061699">
+<div class="need_container docutils container" id="SNCB-ea6da29c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -969,7 +977,7 @@ lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8ab7664b">
+<div class="need_container docutils container" id="SNCB-03998f41">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1019,7 +1027,7 @@ duplication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d68f0f2c">
+<div class="need_container docutils container" id="SNCB-fc4db296">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1068,7 +1076,7 @@ the Archetype.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-19c54641">
+<div class="need_container docutils container" id="SNCB-7d3a52c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

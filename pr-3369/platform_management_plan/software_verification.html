@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-d559d952">
+  <div class="need_container docutils container" id="SNCB-eda39ec7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -846,7 +846,7 @@ method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique
 requirement links are defined below. The method tables in this section also include verification activities which
 are not supported as test metadata values.</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id3">
-<caption><span class="caption-number">Table 77 </span><span class="caption-text">Tool-supported test metadata</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 83 </span><span class="caption-text">Tool-supported test metadata</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Identifier</p></th>
@@ -894,7 +894,7 @@ are not supported as test metadata values.</p>
 in <a class="reference internal" href="../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">Module Folder Structure</span></a> and <a class="reference internal" href="../contribute/general/folder.html#reference-integration-folder-structure"><span class="std std-ref">Reference Integration Repository Folder Structure</span></a>. Test cases shall link to
 requirements allowed for their level:</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id4">
-<caption><span class="caption-number">Table 78 </span><span class="caption-text">Test level and allowed requirement links</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 84 </span><span class="caption-text">Test level and allowed requirement links</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Path contains</p></th>
 <th class="head"><p>Test level</p></th>
@@ -923,12 +923,12 @@ requirements allowed for their level:</p>
 </div>
 <p>Tests outside these paths are considered unit-level tests.</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id5">
-<caption><span class="caption-number">Table 79 </span><span class="caption-text">Software verification methods (TestType)</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 85 </span><span class="caption-text">Software verification methods (and TestTypes)</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>Methods</p></th>
+<tr class="row-odd"><th class="head"><p>Methods (and TestTypes)</p></th>
 <th class="head"><p>Identifier</p></th>
-<th class="head"><p>Applicable on level</p></th>
-<th class="head"><p>Applicable for QM / ASIL B</p></th>
+<th class="head"><p>Applicable* on level</p></th>
+<th class="head"><p>Applicable* for QM / ASIL B</p></th>
 </tr>
 </thead>
 <tbody>
@@ -937,12 +937,12 @@ requirements allowed for their level:</p>
 <td><p>1 Unit/Component</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
-<tr class="row-odd"><td><p>Structural Statement Coverage (Code coverage)</p></td>
+<tr class="row-odd"><td><p>Structural Statement Coverage - Code coverage</p></td>
 <td><p>structural-statement-coverage</p></td>
 <td><p>1 Unit/Component</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
-<tr class="row-even"><td><p>Structural Branch Coverage (Code coverage)</p></td>
+<tr class="row-even"><td><p>Structural Branch Coverage - Code coverage</p></td>
 <td><p>structural-branch-coverage</p></td>
 <td><p>1 Unit/Component</p></td>
 <td><p>QM &amp; ASIL B</p></td>
@@ -957,23 +957,33 @@ requirements allowed for their level:</p>
 <td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
 <td><p>ASIL B</p></td>
 </tr>
-<tr class="row-odd"><td><p>Interface Test</p></td>
-<td><p>interface-test</p></td>
+<tr class="row-odd"><td><p>Manual verification (for non-testable artifacts)</p></td>
+<td><p>manual-requirement-verification</p></td>
+<td><p>All levels (1, 2, 3)</p></td>
+<td><p>QM &amp; ASIL B</p></td>
+</tr>
+<tr class="row-even"><td><p>Interface Test</p></td>
+<td><p>interface-test (Testtype)</p></td>
 <td><p>1 Unit/Component, 2 Feature Integration</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
-<tr class="row-even"><td><p>Requirements-based Test</p></td>
-<td><p>requirements-based</p></td>
+<tr class="row-odd"><td><p>Requirements-based Test</p></td>
+<td><p>requirements-based (Testtype)</p></td>
 <td><p>1 Component, 2 Feature Integration, 3 Platform</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
-<tr class="row-odd"><td><p>Resource Usage Evaluation (only on reference environment)</p></td>
-<td><p>resource-usage</p></td>
+<tr class="row-even"><td><p>Resource Usage Evaluation (only on reference environment)</p></td>
+<td><p>resource-usage (Testtype)</p></td>
 <td><p>2 Feature Integration</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>* Applicable means that the verification methods must be used for the respective safety level and testing level indicated.
+In case a verification method is not used for a certain safety level or testing level, it must be justified in the documentation.</p>
 </div>
 <p>For QM software some of the methods may be executed with less rigor compared to safety-critical elements.
 These may be interface testing or resource usage evaluation, in case there is an argument for
@@ -1008,12 +1018,12 @@ at higher levels:</p>
 <section id="test-derivation-methods">
 <h4>Test Derivation Methods<a class="headerlink" href="#test-derivation-methods" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id6">
-<caption><span class="caption-number">Table 80 </span><span class="caption-text">Test case derivation methods (DerivationTechnique)</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 86 </span><span class="caption-text">Test case derivation methods (DerivationTechnique)</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>Methods</p></th>
+<tr class="row-odd"><th class="head"><p>Derivation methods</p></th>
 <th class="head"><p>Identifier</p></th>
-<th class="head"><p>Applicable on level</p></th>
-<th class="head"><p>Applicable for QM / ASIL B</p></th>
+<th class="head"><p>Applicable* on level</p></th>
+<th class="head"><p>Applicable* for QM / ASIL B</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1037,10 +1047,20 @@ at higher levels:</p>
 <td><p>1 Unit/Component, 2 Feature Integration</p></td>
 <td><p>QM, ASIL B</p></td>
 </tr>
+<tr class="row-even"><td><p>Audit or assessment (for <code class="docutils literal notranslate"><span class="pre">manual-requirement-verification</span></code>)</p></td>
+<td><p>audit-assessment-inspection</p></td>
+<td><p>All levels (1, 2, 3)</p></td>
+<td><p>QM, ASIL B</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">fuzz-testing</span></code> should especially be taken into account to increase security of the software.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>* Applicable means that the derivation techniques must be used for the respective safety level and testing level indicated.
+In case a derivation technique is not considered for a certain safety level or testing level, it must be justified in the documentation.</p>
+</div>
 <p>For non-safety-critical(QM) software parts, you can generally reduce the rigor of the
 testing approaches, but cannot omit them completely. It may be possible to reduce the
 number of boundary-values tested based on a risk assessment and focus on impactful boundaries.
@@ -1063,7 +1083,7 @@ indicated by <code class="docutils literal notranslate"><span class="pre">explor
 <p>The quality criteria of the software verification activities are defined at the following table. The defined goals are
 to be reached with every contribution.</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="id7">
-<caption><span class="caption-number">Table 81 </span><span class="caption-text">Quality criteria and respective goals</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 87 </span><span class="caption-text">Quality criteria and respective goals</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>#</p></th>
 <th class="head"><p>Criterion</p></th>
@@ -1183,8 +1203,70 @@ For safety‑critical software, the objective is a 100% closure rate of any Crit
 For safety‑critical software, the quality target is zero open findings classified as Critical or High.</p>
 <p>Remaining Medium severity findings are reviewed and justified by documented risk acceptance.</p>
 <p>Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.</p>
+<section id="rule-sets">
+<h5>Rule sets<a class="headerlink" href="#rule-sets" title="Link to this heading">#</a></h5>
+<p>The following rule sets are the minimum to be applied by every module. Modules may add further rules or tools
+(e.g. <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code>), but may not remove rules without a documented deviation.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id8">
+<caption><span class="caption-number">Table 88 </span><span class="caption-text">Static code analysis rule sets and severity classification</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Language</p></th>
+<th class="head"><p>Tool and rule set</p></th>
+<th class="head"><p>Critical / High</p></th>
+<th class="head"><p>Medium and below</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>C++</p></td>
+<td><p>GitHub CodeQL with the query pack <code class="docutils literal notranslate"><span class="pre">codeql/misra-cpp-coding-standards</span></code> (MISRA C++:2023,
+see <a class="reference internal" href="../contribute/development/cpp/coding_guidelines.html#doc__cpp_coding_guidelines" title="doc__cpp_coding_guidelines"><em class="xref need">Coding Guidelines C++ (doc__cpp_coding_guidelines)</em></a> and <a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp_code_analysis" title="doc__cpp_code_analysis"><em class="xref need">Static Code Analysis C++ (doc__cpp_code_analysis)</em></a>)</p></td>
+<td><p>Violations of MISRA rules of category <em>Mandatory</em> or <em>Required</em></p></td>
+<td><p>Violations of MISRA rules of category <em>Advisory</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>C++</p></td>
+<td><p>GitHub CodeQL default code scanning suite (<code class="docutils literal notranslate"><span class="pre">c-cpp</span></code>)</p></td>
+<td><p>Alerts with a <code class="docutils literal notranslate"><span class="pre">security-severity</span></code> of 9.0 or higher (Critical) and 7.0 to 8.9 (High)</p></td>
+<td><p>All other alerts</p></td>
+</tr>
+<tr class="row-even"><td><p>Rust</p></td>
+<td><p>Clippy with the S-CORE lint profiles of <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> (<code class="docutils literal notranslate"><span class="pre">strict</span></code> for safety-critical,
+<code class="docutils literal notranslate"><span class="pre">relaxed</span></code> for QM software) and <code class="docutils literal notranslate"><span class="pre">rustc</span></code> warnings, see <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a></p></td>
+<td><p>Lints configured as <code class="docutils literal notranslate"><span class="pre">deny</span></code> in the applicable profile</p></td>
+<td><p>Lints configured as <code class="docutils literal notranslate"><span class="pre">warn</span></code> (counted under “Freedom from compiler warnings &amp; errors”)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rust</p></td>
+<td><p>GitHub CodeQL default code scanning suite (<code class="docutils literal notranslate"><span class="pre">rust</span></code>)</p></td>
+<td><p>Alerts with a <code class="docutils literal notranslate"><span class="pre">security-severity</span></code> of 9.0 or higher (Critical) and 7.0 to 8.9 (High)</p></td>
+<td><p>All other alerts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Further improvements are foreseen to extend the checks to match demands of safety-critical software development.
+Rules which are considered to be added (after evaluation) are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>codeql/cpp-queries:codeql-suites/cpp-code-scanning.qls</p></li>
+<li><p>codeql/cert-cpp-coding-standards:codeql-suites/cert-cpp-l1.qls</p></li>
+<li><p>codeql/cert-c-coding-standards:codeql-suites/cert-c-l1.qls</p></li>
+</ul>
+</div></blockquote>
+<p>The static code analysis is executed for every module at least on each change of the main branch and before
+each release. The results (SARIF) of the release state are kept as release artifacts and summarized in the
+module verification report. A finding that is not fixed is justified in the source code at the finding location,
+as described in <a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp_code_analysis" title="doc__cpp_code_analysis"><em class="xref need">Static Code Analysis C++ (doc__cpp_code_analysis)</em></a>, and is listed in the module verification report.</p>
+</section>
+<section id="deviation">
+<h5>Deviation<a class="headerlink" href="#deviation" title="Link to this heading">#</a></h5>
 <p>Any deviation of the coverage percentage value is documented as part of the module documentation.
 A rationale for the deviation needs to be provided for an official release.</p>
+</section>
 </section>
 </section>
 <section id="test-development">
@@ -1226,13 +1308,36 @@ Within the review an approver confirms that automation is not feasible for the s
 The script will wait for the user input to proceed to the next step and describe the expected result after each step.
 The user input can be judged as confirmation that the expected result is achieved.
 The final result will be <cite>PASSED</cite> or <cite>FAILED</cite>, based on the test executors confirmation.</p>
+<p>The results of the manual testing should be reconfirmed during subsequent verification cycles
+to ensure their continued validity especially for major release versions and to avoid regression issues.</p>
 </section>
+</section>
+<section id="verification-of-non-functional-requirements">
+<h3>Verification of non-functional requirements<a class="headerlink" href="#verification-of-non-functional-requirements" title="Link to this heading">#</a></h3>
+<p>Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by other manual verification methods, e.g. checklist based analysis.</p>
+<p>To verify such a non-functional or not feasibly testable requirement, the respective links for traceability need to be
+established as for any other automated or manual test case. Therefore, the documentation for non-functional verification uses
+the same templates as automated or manual test and especially includes the Record Properties.</p>
+<p>The Record Properties for non-functional verification is set to testtype <cite>manual-requirement-verification</cite>.</p>
+<p>The non-functional verification requires a script to be provided which describes the analysis steps performed and their result.
+The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
+Within the review an approver confirms that automated or manual testing is not feasible for the specific analyzed requirement.</p>
+<p>In contrast to automated result comparison of an automated test case, the verification justification is logged for non-functional requirement.
+The documentation in form of a script will log a clear result so that it can be judged as confirmation that the expected result is achieved.
+The final result will be <cite>PASSED</cite> or <cite>FAILED</cite>, based on the test executors confirmation.</p>
+<p>The results of the non-functional verification activities should be reconfirmed during subsequent reviews or verification cycles
+to ensure their continued validity especially for major release versions and to avoid regression issues.</p>
 </section>
 <section id="test-selection-and-regression-testing">
 <h3>Test selection and regression testing<a class="headerlink" href="#test-selection-and-regression-testing" title="Link to this heading">#</a></h3>
-<p>All existing test cases should be executed within continuous integration pipelines to verify initially developed
+<p>All existing automated test cases should be executed within continuous integration pipelines to verify initially developed
 components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
 automated tests get executed continuously covers the approach to identify regressions.</p>
+<p>Additionally, all manual verification activities verifying requirements or architectural elements shall be carried out at minimum for major version releases to avoid regressions.
+Their results shall be documented as part of the verification reports.
+Committers are responsible for ensuring that the manual and non-functional verification is still valid when performing a feature release.
+Remark: When the release baseline of a feature is intended to be used as a basis for later major version releases
+the pre-check of manual verification activities ease the later platform integration and verification process.</p>
 </section>
 <section id="work-products-and-traceability">
 <h3>Work products and traceability<a class="headerlink" href="#work-products-and-traceability" title="Link to this heading">#</a></h3>
@@ -1295,16 +1400,16 @@ components, documentation, and automated tests.</p>
 <p class="rubric">GoogleTest (gtest)</p>
 <p>The software components of the project written in C++ are unit tested with the help of
 <a class="reference external" href="https://google.github.io/googletest/">GoogleTest</a>.</p>
-<p class="rubric">gcov/gcovr</p>
-<p>For C++ code the structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
-<a class="reference external" href="https://github.com/gcovr/gcovr">gcovr</a> - gcov is part of the GNU compiler collection (gcc).</p>
+<p class="rubric">Code Coverage (llvm-cov/llvm-profdata)</p>
+<p>For C++ code the structural coverage reached by unit testing in the project is evaluated by the llvm-cov/llvm-profdata tool chain
+<a class="reference external" href="https://llvm.org/docs/CommandGuide/llvm-cov.html">llvm-cov</a> and <a class="reference external" href="https://llvm.org/docs/CommandGuide/llvm-profdata.html">llvm-profdata</a> are part of the LLVM toolchain.</p>
 <p>The C++ unit test tooling supports several coverage metrics:</p>
 <ul class="simple">
 <li><p>“line” - used in S-CORE for the <code class="docutils literal notranslate"><span class="pre">structural-statement-coverage</span></code> method</p></li>
 <li><p>“branch” - used in S-CORE for the <code class="docutils literal notranslate"><span class="pre">structural-branch-coverage</span></code> method</p></li>
 <li><p>“function” - used in S-CORE for the <code class="docutils literal notranslate"><span class="pre">structural-function-coverage</span></code> as additional supporting coverage value for further analysis.</p></li>
 </ul>
-<p>Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferrocene.</p>
+<p>Note: Rust coverage evidence in S-CORE is primarily generated via Rust/Ferrocene tooling. llvm-cov/llvm-profdata may be used in dedicated host-based LLVM workflows, but this is not the default Rust coverage reporting path.</p>
 <p class="rubric">Integration Testing Framework (ITF)</p>
 <p>The integration of software components can be verified with the help of the ITF. It allows the definition and execution
 of test based on <a class="reference external" href="https://pytest.org">pytest</a>.</p>
@@ -1418,7 +1523,11 @@ This includes physical maintenance as well as virtual access.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage-of-architectural-design">Coverage of architectural design</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage-of-software-requirements-specifications">Coverage of software requirements specifications</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-amount-of-executed-and-passed-tests">Relative amount of executed and passed tests</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#static-code-analysis">Static code analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#static-code-analysis">Static code analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-sets">Rule sets</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#deviation">Deviation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-development">Test development</a><ul class="nav section-nav flex-column">
@@ -1430,6 +1539,7 @@ This includes physical maintenance as well as virtual access.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-test-execution">Manual test execution</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-non-functional-requirements">Verification of non-functional requirements</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-selection-and-regression-testing">Test selection and regression testing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-products-and-traceability">Work products and traceability</a></li>
 </ul>

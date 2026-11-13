@@ -631,7 +631,7 @@
                   
   <section id="feature-enhancement-proposal-fep">
 <h1>Feature &amp; Enhancement Proposal (FEP)<a class="headerlink" href="#feature-enhancement-proposal-fep" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-08902dc4">
+<div class="need_container docutils container" id="SNCB-6ff649a7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feature_request_guideline">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -716,7 +716,9 @@ a board or filtered view is built on.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fep:needs-shepherd</span></code> is applied to the tracking Issue while no Shepherd is confirmed, and removed
 once one is.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code> is applied to the FEP PR only while it is in its Final Comment Period. Adding it starts
-the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both once the FCP closes.</p>
+the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both once the FCP closes.
+Only the Architecture Community chair or proxy may add or remove it: the bot removes the label again
+if anybody else adds it, and adds it back if anybody else removes it during the FCP.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fep:breaking-change</span></code> is applied to the FEP PR of a Breaking Change FEP (see <a class="reference internal" href="#breaking-change-feps-additional-requirements">Breaking Change FEPs -
 Additional Requirements</a>), so that the FCP bot requires the explicit approval quorum.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fep:incubating</span></code> is applied to the tracking Issue while an incubator repository for the FEP is
@@ -802,6 +804,8 @@ Community quorum. The result is posted to the PR and the tracking Issue, and rep
 <code class="docutils literal notranslate"><span class="pre">fep/fcp</span></code> commit status.</p></li>
 <li><p><strong>Reset</strong>: the Shepherd or the chair/proxy comments <code class="docutils literal notranslate"><span class="pre">/fcp</span> <span class="pre">reset</span></code> on the FEP PR to restart the
 14 days once, which notifies all stakeholders again.</p></li>
+<li><p><strong>Cancel</strong>: the chair/proxy comments <code class="docutils literal notranslate"><span class="pre">/fcp</span> <span class="pre">cancel</span></code> on the FEP PR (or removes the <code class="docutils literal notranslate"><span class="pre">fep:fcp</span></code>
+label) to stop the FCP without a decision, e.g. when it was started too early.</p></li>
 </ul>
 <p><strong>Phase 3 - Decision</strong> (status: <code class="docutils literal notranslate"><span class="pre">Accepted</span></code> | <code class="docutils literal notranslate"><span class="pre">Rejected</span></code> | <code class="docutils literal notranslate"><span class="pre">Withdrawn</span></code>)</p>
 <p>If the FCP closed cleanly, the FEP PR is merged and recorded as a Decision Record. If the FCP closed

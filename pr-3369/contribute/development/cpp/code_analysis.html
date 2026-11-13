@@ -644,7 +644,7 @@
                   
   <section id="code-analysis-c">
 <h1>Code Analysis C++<a class="headerlink" href="#code-analysis-c" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-affb2ece">
+<div class="need_container docutils container" id="SNCB-1310771f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__cpp_code_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -700,7 +700,7 @@
 <h2>Dynamic Code Analysis<a class="headerlink" href="#dynamic-code-analysis" title="Link to this heading">#</a></h2>
 <p>A dynamic code analysis is not explicitly required by any S-CORE related standards. However to provide a sufficient good SW quality following tools should be used to catch most common errors:</p>
 <p class="plantuml" id="needuml-contribute/development/cpp/code_analysis-1">
-<object data="../../../_images/plantuml-3e55695fb9b4327141d3ecc34c8d93a23cf7ed34.svg" type="image/svg+xml" style="width:311px;height:337px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-3e55695fb9b4327141d3ecc34c8d93a23cf7ed34.svg" type="image/svg+xml" style="width:311px;height:338px;background:#FFFFFF;"></object></p>
 <p>Following sections provide a short overview of the most important features of each applied tool:</p>
 <section id="memcheck">
 <h3>Memcheck<a class="headerlink" href="#memcheck" title="Link to this heading">#</a></h3>
@@ -734,16 +734,73 @@
 <p>If both tools are combined at runtime memory leaks and the corresponding address can be investigated.</p>
 </section>
 </section>
-<section id="coverage">
-<h2>Coverage<a class="headerlink" href="#coverage" title="Link to this heading">#</a></h2>
-<p>As required by the verification guideline coverage needs to be calculated for the code which is used in the project. Therefore two approaches should be available:</p>
+<section id="code-coverage">
+<h2>Code Coverage<a class="headerlink" href="#code-coverage" title="Link to this heading">#</a></h2>
+<p>The pipeline-based implementation of code coverage tools is maintained in the <a class="reference external" href="https://github.com/eclipse-score/coverage_tool">coverage_tool repository</a>. It provides a Bazel module for collecting coverage data, generating reports and enforcing coverage thresholds in CI. The pipeline uses LLVM source-based coverage on Linux and also provides backend for QNX target tests. See the <a class="reference external" href="https://eclipse-score.github.io/coverage_tool">coverage_tool documentation</a> for adoption guidance, command references and details about its architecture and verification.</p>
+<section id="host-baseline">
+<h3>Host baseline<a class="headerlink" href="#host-baseline" title="Link to this heading">#</a></h3>
+<p>As required by the verification guideline code coverage needs to be calculated for the code which is used in the project. The basis of the code-coverage analysis is always the host system (Linux) using LLVM’s source-based coverage with clang and <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>. This method is also used for the reporting.</p>
+<p>In Bazel-based development, this does not imply that every build uses the same compiler configuration. Normal host builds may use the default host compiler/toolchain, while coverage builds select a dedicated host configuration with LLVM source-based instrumentation enabled. The resulting raw profiles are merged with <code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> and evaluated with <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p>
+<p>The structural coverage metrics to be achieved and their ASIL-dependent recommendation (statement coverage, branch coverage and MC/DC as per ISO 26262-6:2018, Table 9) as well as the completion criteria are defined by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a>. The concrete coverage percentage goals are listed in the quality criteria of the <a class="reference internal" href="../../../platform_management_plan/software_verification.html#doc__verification_plan" title="doc__verification_plan"><em class="xref need">Software Verification Plan (doc__verification_plan)</em></a>. In practice, the line coverage reported by the LLVM tooling is used as the statement-coverage metric. Where the required coverage cannot be achieved by unit testing improvement, a rationale shall be provided and documented for the uncovered code, independent of whether the coverage is obtained on the host or on the target (ISO 26262-6:2018, 9.4.5).</p>
+<p>Structural coverage on the target, in contrast to the host baseline, may be provided either by S-CORE (for example for a reference target) or by the integrator or distributor for the target on which the S-CORE software is integrated. Target structural coverage is needed to identify uncovered target-specific code paths, including those that could exhibit undefined behaviour on the target. Evidence for the absence of undefined behaviour itself is provided by the dynamic analysis tools (e.g. UBSAN) together with the target execution, not by structural coverage alone.</p>
+<p>LLVM’s source-based coverage is preferred over <code class="docutils literal notranslate"><span class="pre">gcov</span></code>-based coverage for the following reasons:</p>
 <ul class="simple">
-<li><p>As a quick solution it is possible to calculate the coverage on the host via gcc.</p></li>
-<li><p>But for a more accurate statement coverage can also be calculated with the qcc compiler with the appropriate libraries and POSIX interfaces. This method will also be used for the reporting.</p></li>
+<li><p><strong>Precision with templates, generics and modern C++:</strong> legacy GCC line-based coverage <code class="docutils literal notranslate"><span class="pre">gcov</span></code> is line-oriented, so with heavy templating, inlining and macros the mapping is coarse and multiple template instantiations collapse onto the same lines, producing imprecise or misleading results. LLVM’s source-based coverage is region- and instantiation-based and therefore significantly more accurate for modern C++.</p></li>
+<li><p><strong>MC/DC support:</strong> LLVM/clang supports MC/DC natively (<code class="docutils literal notranslate"><span class="pre">-fcoverage-mcdc</span></code>). Per ISO 26262-6:2018, Table 9, MC/DC is highly recommended only for ASIL D and recommended for ASIL A to C, while branch coverage is the highly recommended metric for ASIL B and C.</p></li>
 </ul>
+<p>The coverage measurement tools themselves (on the host the LLVM <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>/<code class="docutils literal notranslate"><span class="pre">llvm-profdata</span></code> chain, on the target the tools of the chosen approach below) are subject to tool evaluation and, where applicable, tool qualification according to ISO 26262-8:2018, Clause 11.</p>
 <p>To enable this, following tools are used:</p>
 <p class="plantuml" id="needuml-contribute/development/cpp/code_analysis-2">
-<object data="../../../_images/plantuml-7c3203bcf035816b204d6aac93bbaa6383ebbc26.svg" type="image/svg+xml" style="width:137px;height:337px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-0b7427b3021b8aba2ca46b5eaeb4711d2e1d5da5.svg" type="image/svg+xml" style="width:201px;height:338px;background:#FFFFFF;"></object></p>
+<p>The structural coverage for the target used for integration, including target-specific code paths, has to be rationalized separately, as described in <a class="reference internal" href="#target-coverage-rationalization">Target coverage rationalization</a>. Target execution tests and target structural-coverage results are separate verification evidence and shall not be treated as interchangeable.</p>
+</section>
+<section id="target-coverage-rationalization">
+<h3>Target coverage rationalization<a class="headerlink" href="#target-coverage-rationalization" title="Link to this heading">#</a></h3>
+<p>The host result described above is the baseline of the coverage analysis. For the target system, the coverage of the source code that actually runs on the target has to be rationalized on top of this baseline. Depending on how much the source code deviates between host and target and on the effort and availability of a solution for the target, a module or project may choose one of the following four approaches:</p>
+<ol class="arabic simple">
+<li><p><strong>Similarity argument (with or without manual review):</strong> the host coverage result is reused for the target based on the argument that the source code executed on the target is equivalent to the source code covered on the host.</p></li>
+<li><p><strong>Code coverage on the target with clang/llvm:</strong> structural coverage is measured directly on the target using clang and <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>, i.e. the same source-based coverage method as on the host.</p></li>
+<li><p><strong>Code coverage on the target with qcc + llvm-cov:</strong> structural coverage is measured on the target using the QNX compiler <code class="docutils literal notranslate"><span class="pre">qcc</span></code> importing and analyzing the host coverage data together with <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code>.</p></li>
+<li><p><strong>Code coverage on the target with qcc + gcov:</strong> structural coverage is measured on the target using the QNX compiler <code class="docutils literal notranslate"><span class="pre">qcc</span></code> together with <code class="docutils literal notranslate"><span class="pre">gcov</span></code>.</p></li>
+</ol>
+<p>The selection of the approach depends on the source-code deviation between host and target and on the effort and availability of the respective target solution:</p>
+<ul class="simple">
+<li><p>If there is no source-code deviation between host and target, approach 1 (similarity argument) can be chosen. Even in this case an equivalence justification shall be documented, because compiler and target differences (e.g. optimization, inlining, integer widths, alignment, library implementations) can affect the executed code independently of the source (ISO 26262-6:2018, 9.4.6 / 11.4.8).</p></li>
+<li><p>If there are only few local deviations (e.g. guarded by <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">__QNX__</span></code>), approach 1 with manual review and documentation of these specific locations shall be chosen.</p></li>
+<li><p>For larger deviations (different code paths or implementations between host and target, e.g. whole files compiled only for the target such as QNX-only files, or host-only code such as mocks), approach 2, 3 or 4 should be chosen for the target-specific code, provided the respective solution is available for the target system. Host-only code (e.g. mocks or emulation) is excluded from the safety-relevant coverage baseline. These three approaches differ only in the effort for tool evaluation/qualification, the tool quality, and the effort for infrastructure and workflow implementation.</p></li>
+</ul>
+<p>Regardless of the chosen approach, differences between the host and target compilers and coverage tools can introduce side effects in the reported coverage output. Typical effects are: branches or regions that appear or disappear because of compiler-specific optimization, inlining or dead-code elimination; a different source-line-to-region mapping (e.g. <code class="docutils literal notranslate"><span class="pre">gcov</span></code> line-based versus <code class="docutils literal notranslate"><span class="pre">llvm-cov</span></code> region-based counting) leading to differing coverage percentages for the same source; additional or missing branches introduced by the instrumentation itself or by different standard-library implementations; and diverging results for template instantiations or target-specific <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> code paths. As a consequence, the same source can report different structural coverage depending on the compiler and coverage tool used. The validity of the code-coverage result is therefore rationalized by executing the unit tests with and without code-coverage instrumentation and across the relevant build configurations and target systems, and by demonstrating that the results are equivalent. This execution shall be performed as required by <a class="reference internal" href="../../../requirements/platform_assumptions/index.html#aou_req__platform__ut_execution_consistency" title="aou_req__platform__ut_execution_consistency"><em class="xref need">Unit test execution across ... (aou_req__platform__ut_execution_consistency)</em></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Identifying platform-specific code (in particular whole files compiled only for one platform) should not rely on manually searching for <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> guards. A reliable approach is a build-set comparison: the set of source files compiled for the host is diffed against the set compiled for the target (e.g. via <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">aquery</span></code>/<code class="docutils literal notranslate"><span class="pre">cquery</span></code> per platform configuration or per-configuration <code class="docutils literal notranslate"><span class="pre">compile_commands.json</span></code>); files present only in the target build are flagged as target-only. Within-file conditional regions can be detected by comparing the preprocessed output or the coverage region data of the two configurations. This build-set comparison and a corresponding reviewed exclusion list might become a requirement towards the infrastructure tooling to make the delta between the host baseline and the target code base visible and enforceable in CI.</p>
+<p>For example, the set of source files that participate in a build can be extracted per platform configuration with <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">aquery</span></code> and then diffed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List the source inputs of all C++ compile actions for the host configuration.</span>
+bazel<span class="w"> </span>aquery<span class="w"> </span>--output<span class="o">=</span>jsonproto<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--platforms<span class="o">=</span>//path/to/platforms:x86_64_linux<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">'mnemonic("CppCompile", deps(//path/to:target))'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.artifacts[].execPath'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span>&gt;<span class="w"> </span>host_sources.txt
+
+<span class="c1"># Same for the target configuration.</span>
+bazel<span class="w"> </span>aquery<span class="w"> </span>--output<span class="o">=</span>jsonproto<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--platforms<span class="o">=</span>//path/to/platforms:qnx_aarch64<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">'mnemonic("CppCompile", deps(//path/to:target))'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.artifacts[].execPath'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span>&gt;<span class="w"> </span>target_sources.txt
+
+<span class="c1"># Files compiled only for the target (candidates for target-specific coverage).</span>
+comm<span class="w"> </span>-13<span class="w"> </span>host_sources.txt<span class="w"> </span>target_sources.txt
+
+<span class="c1"># Files compiled only for the host (e.g. mocks, excluded from the safety baseline).</span>
+comm<span class="w"> </span>-23<span class="w"> </span>host_sources.txt<span class="w"> </span>target_sources.txt
+</pre></div>
+</div>
+<p>Within-file conditional regions can be compared by preprocessing the same source with both toolchains and diffing the result:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>clang<span class="w"> </span>-E<span class="w"> </span>-P<span class="w"> </span>path/to/file.cpp<span class="w"> </span>&gt;<span class="w"> </span>host_preprocessed.cpp
+qcc<span class="w">  </span>-E<span class="w"> </span>-P<span class="w"> </span>path/to/file.cpp<span class="w"> </span>&gt;<span class="w"> </span>target_preprocessed.cpp
+diff<span class="w"> </span>host_preprocessed.cpp<span class="w"> </span>target_preprocessed.cpp
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -802,7 +859,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adress-leak-sanitizer-asan-lsan">Adress/ Leak Sanitizer (ASAN/LSAN)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage">Coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-coverage">Code Coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-baseline">Host baseline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-coverage-rationalization">Target coverage rationalization</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
