@@ -105,8 +105,9 @@ Logical Interfaces
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
-   :status: invalid
+   :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__flatbuffers_library[version==2]
 
 .. logic_arc_int:: Filesystem
    :id: logic_arc_int__baselibs__filesystem
