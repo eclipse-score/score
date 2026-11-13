@@ -564,6 +564,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -637,20 +638,24 @@ The example shows how to compose existing S-CORE platform modules into new funct
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/deploy/platform_info">platform info service</a>
 offers the mw::com service <code class="docutils literal notranslate"><span class="pre">score/platform/info</span></code>. Its field <code class="docutils literal notranslate"><span class="pre">platform_info</span></code> reports the S-CORE version the
-platform was built from, i.e. the version or commit of every module in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>,
+platform was built from, i.e. the version or commit of every <code class="docutils literal notranslate"><span class="pre">target_sw</span></code> module in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>,
 sealed with a CRC32 checksum from <code class="docutils literal notranslate"><span class="pre">baselibs</span></code>.</p></li>
 <li><p>The <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/platform_info_consumer.cpp">platform info consumer</a>
 finds the service via mw::com service discovery, checks the CRC32 and compares the reported version with the
 version it was built for. It runs as the showcase <em>Platform Version Check</em> and is verified by a platform integration test.</p></li>
+<li><p>In the showcase <em>S-CORE Platform Run</em>, the launch manager of <code class="docutils literal notranslate"><span class="pre">score_lifecycle</span></code> starts the service as a platform
+daemon and the consumer as one of the test applications. All of them log via mw::log, and the logs are collected
+as DLT and analyzed by a platform integration test.</p></li>
 </ul>
-<p>Both use only two S-CORE modules, <code class="docutils literal notranslate"><span class="pre">score_communication</span></code> (mw::com) and <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> (CRC32, argument handling),
-which makes the example small enough to follow, but complete: it covers the build, the documentation,
-the CI/CD workflows, the deployment onto the reference images and an automated test.</p>
+<p>Service and consumer use three S-CORE modules: <code class="docutils literal notranslate"><span class="pre">score_communication</span></code> (mw::com), <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>
+(CRC32, argument handling) and <code class="docutils literal notranslate"><span class="pre">score_logging</span></code> (mw::log). This makes the example small enough to follow, but complete:
+it covers the build, the documentation, the CI/CD workflows, the deployment onto the reference images,
+automated tests and the collection of logs.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The example lives inside the reference integration (<code class="docutils literal notranslate"><span class="pre">deploy/platform_info</span></code> and <code class="docutils literal notranslate"><span class="pre">showcases/standalone</span></code>),
-whereas your own module lives in its own repository. The steps are the same; where they differ, this guide
-shows both. The example replaces the former <code class="docutils literal notranslate"><span class="pre">scrample</span></code> demo application.</p>
+<p>The example lives inside the reference integration (<code class="docutils literal notranslate"><span class="pre">deploy/platform_info</span></code>, <code class="docutils literal notranslate"><span class="pre">showcases/standalone</span></code> and
+<code class="docutils literal notranslate"><span class="pre">showcases/platform_run</span></code>), whereas your own module lives in its own repository. The steps are the same;
+where they differ, this guide shows both. The example replaces the former <code class="docutils literal notranslate"><span class="pre">scrample</span></code> demo application.</p>
 </div>
 <p>By the end of this section you will have:</p>
 <ul class="simple">
@@ -659,6 +664,7 @@ shows both. The example replaces the former <code class="docutils literal notran
 <li><p>Built the module with Bazel and verified it compiles cleanly.</p></li>
 <li><p>Wired up CI/CD workflows so every change is automatically validated.</p></li>
 <li><p>Plugged the module into the reference integration so it becomes part of the platform.</p></li>
+<li><p>Collected and analyzed the logs of your application, on the console and as DLT.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 <ul>
@@ -667,6 +673,7 @@ shows both. The example replaces the former <code class="docutils literal notran
 <li class="toctree-l1"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </div>
 </section>

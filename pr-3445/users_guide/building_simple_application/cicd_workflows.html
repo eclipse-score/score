@@ -564,6 +564,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">CI/CD Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -635,7 +636,7 @@
 <h1>CI/CD Workflows<a class="headerlink" href="#ci-cd-workflows" title="Link to this heading">#</a></h1>
 <p>After successfully building the binaries, we need to ensure that future changes do not break the build.
 In Eclipse S-CORE, this is done by <a class="reference external" href="https://docs.github.com/en/actions">GitHub Actions</a> workflows which run on every
-pull request. Instead of implementing the workflow logic in every repository, the workflows call the reusable workflows
+pull request. Instead of implementing the workflow logic in every repository, most workflows call the reusable workflows
 from <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">eclipse-score/cicd-workflows</a>.</p>
 <section id="workflows-of-a-module-repository">
 <h2>Workflows of a module repository<a class="headerlink" href="#workflows-of-a-module-repository" title="Link to this heading">#</a></h2>
@@ -742,8 +743,8 @@ for QNX, the license handling:</p>
 <li><p>Lines 8 and 14: the job <code class="docutils literal notranslate"><span class="pre">linux</span></code> builds and runs all tests for Linux x86_64 with the same Bazel command you use locally.</p></li>
 <li><p>Line 16: the job <code class="docutils literal notranslate"><span class="pre">qnx</span></code> cross-compiles the code with the QNX toolchain.</p></li>
 <li><p>Line 23: the build configuration from the <a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter.</p></li>
-<li><p>Line 24: the QNX job uses secrets, which are gated by the GitHub environment <code class="docutils literal notranslate"><span class="pre">workflow-approval</span></code>,
-e.g. for pull requests from forks.</p></li>
+<li><p>Line 24: the QNX job runs in the GitHub environment <code class="docutils literal notranslate"><span class="pre">workflow-approval</span></code>. It is created for every module repository
+and requires the approval of an S-CORE committer before the job gets access to the QNX secrets.</p></li>
 <li><p>Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
 The QNX job also expects the credential helper script <code class="docutils literal notranslate"><span class="pre">.github/tools/qnx_credential_helper.py</span></code>, which is not part
 of the template; copy it e.g. from the <a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/.github/tools">persistency</a>
@@ -777,11 +778,12 @@ on every pull request:</p>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_and_docs.yml">test_and_docs.yml</a></p></td>
 <td><p>Runs the platform integration tests (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">test</span> <span class="pre">--config=linux-x86_64</span> <span class="pre">//platform_integration_tests:pit</span></code>),
 incl. <code class="docutils literal notranslate"><span class="pre">test_platform_version</span></code> which starts the <em>Platform Version Check</em> on the Linux image,
+uploads the DLT logs of the platform run as artifact <code class="docutils literal notranslate"><span class="pre">platform-run-dlt-&lt;commit&gt;</span></code>
 and builds the documentation with the test results</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">build_and_test_linux_target.yml</span></code></p></td>
-<td><p>Unpacks the release archives (platform and showcases) into plain Ubuntu and Debian containers
-and runs all showcases there</p></td>
+<td><p>Unpacks the release archives (platform and showcases) into plain Ubuntu and Debian containers,
+runs all showcases there and requires <code class="docutils literal notranslate"><span class="pre">S-CORE</span> <span class="pre">platform</span> <span class="pre">run:</span> <span class="pre">PASSED</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">known_good_correct.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">bzlmod-lock.yml</span></code></p></td>
 <td><p>Check that <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>, the generated Bazel files and the lockfile are consistent</p></td>

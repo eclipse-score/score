@@ -564,6 +564,7 @@
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -633,9 +634,9 @@
                   
   <section id="building-source-code">
 <span id="id1"></span><h1>Building source code<a class="headerlink" href="#building-source-code" title="Link to this heading">#</a></h1>
-<p>The running example consists of a small C++ service and its client. Both are built on two S-CORE modules:
-mw::com from <code class="docutils literal notranslate"><span class="pre">score_communication</span></code> for the inter-process communication and the CRC32 calculation
-from <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>. The sources are located in the
+<p>The running example consists of a small C++ service and its client. Both are built on three S-CORE modules:
+mw::com from <code class="docutils literal notranslate"><span class="pre">score_communication</span></code> for the inter-process communication, the CRC32 calculation
+from <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> and mw::log from <code class="docutils literal notranslate"><span class="pre">score_logging</span></code> for logging. The sources are located in the
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference integration</a>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -663,6 +664,13 @@ from <code class="docutils literal notranslate"><span class="pre">score_baselibs
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/mw_com_config.json">deploy/platform_info/etc/mw_com_config.json</a></p></td>
 <td><p>mw::com configuration of the service</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/logging.json">deploy/platform_info/etc/logging.json</a></p></td>
+<td><p>mw::log configuration of the service</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/platform_info_test.cpp">deploy/platform_info/platform_info_test.cpp</a>,
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/gen_platform_info_test.py">gen_platform_info_test.py</a></p></td>
+<td><p>Unit tests of the version check and of the header generator</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/platform_info_consumer.cpp">showcases/standalone/platform_info_consumer.cpp</a></p></td>
 <td><p>The client (consumer)</p></td>
 </tr>
@@ -672,7 +680,7 @@ from <code class="docutils literal notranslate"><span class="pre">score_baselibs
 <section id="service-interface">
 <h2>Service interface<a class="headerlink" href="#service-interface" title="Link to this heading">#</a></h2>
 <p>An mw::com service is described by a C++ interface template. The platform info service has a single <em>field</em>,
-<code class="docutils literal notranslate"><span class="pre">platform_info</span></code>, i.e. a value that the service sets and that clients can read and subscribe to:</p>
+<code class="docutils literal notranslate"><span class="pre">platform_info</span></code>, i.e. a value that the service sets and that clients subscribe to (<code class="docutils literal notranslate"><span class="pre">WithNotifier</span></code>):</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Fixed-size, zero-terminated strings: the value lives in shared memory.</span>
 <span class="linenos"> 2</span><span class="k">struct</span><span class="w"> </span><span class="nc">ModuleVersion</span>
 <span class="linenos"> 3</span><span class="p">{</span>
@@ -704,16 +712,19 @@ from <code class="docutils literal notranslate"><span class="pre">score_baselibs
 <p>The same interface yields both sides of the communication: the <em>skeleton</em> is used by the service to provide the field,
 the <em>proxy</em> is used by the client to access it. Because mw::com exchanges the data via shared memory,
 <code class="docutils literal notranslate"><span class="pre">PlatformInfo</span></code> only contains fixed-size types.</p>
-<p>The service implementation is short: it creates the skeleton for the instance specifier <code class="docutils literal notranslate"><span class="pre">score/platform/info</span></code>,
-publishes the value and offers the service until it is stopped:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">score</span><span class="o">::</span><span class="n">mw</span><span class="o">::</span><span class="n">com</span><span class="o">::</span><span class="n">runtime</span><span class="o">::</span><span class="n">InitializeRuntime</span><span class="p">(</span><span class="n">score</span><span class="o">::</span><span class="n">string_manipulation</span><span class="o">::</span><span class="n">GetArguments</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">));</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">auto</span><span class="w"> </span><span class="n">instance_specifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="o">::</span><span class="n">mw</span><span class="o">::</span><span class="n">com</span><span class="o">::</span><span class="n">InstanceSpecifier</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">kInstanceSpecifier</span><span class="p">});</span>
-<span class="linenos">4</span><span class="k">auto</span><span class="w"> </span><span class="n">skeleton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PlatformInfoSkeleton</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">instance_specifier</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">platform_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakePlatformInfo</span><span class="p">();</span>
-<span class="linenos">7</span><span class="n">skeleton</span><span class="o">-&gt;</span><span class="n">platform_info_</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">platform_info</span><span class="p">);</span>
-<span class="linenos">8</span><span class="n">skeleton</span><span class="o">-&gt;</span><span class="n">OfferService</span><span class="p">();</span>
+<p>The service implementation is short: it creates a logger, creates the skeleton for the instance specifier
+<code class="docutils literal notranslate"><span class="pre">score/platform/info</span></code>, publishes the value and offers the service until it is stopped:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">score</span><span class="o">::</span><span class="n">mw</span><span class="o">::</span><span class="n">com</span><span class="o">::</span><span class="n">runtime</span><span class="o">::</span><span class="n">InitializeRuntime</span><span class="p">(</span><span class="n">score</span><span class="o">::</span><span class="n">string_manipulation</span><span class="o">::</span><span class="n">GetArguments</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">));</span>
+<span class="linenos"> 2</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="o">::</span><span class="n">mw</span><span class="o">::</span><span class="n">log</span><span class="o">::</span><span class="n">CreateLogger</span><span class="p">(</span><span class="s">"PINF"</span><span class="p">,</span><span class="w"> </span><span class="s">"platform info"</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">auto</span><span class="w"> </span><span class="n">instance_specifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="o">::</span><span class="n">mw</span><span class="o">::</span><span class="n">com</span><span class="o">::</span><span class="n">InstanceSpecifier</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">kInstanceSpecifier</span><span class="p">});</span>
+<span class="linenos"> 5</span><span class="k">auto</span><span class="w"> </span><span class="n">skeleton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PlatformInfoSkeleton</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">instance_specifier</span><span class="p">).</span><span class="n">value</span><span class="p">());</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">platform_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakePlatformInfo</span><span class="p">();</span>
+<span class="linenos"> 8</span><span class="n">skeleton</span><span class="o">-&gt;</span><span class="n">platform_info_</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">platform_info</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="n">skeleton</span><span class="o">-&gt;</span><span class="n">OfferService</span><span class="p">();</span>
+<span class="linenos">10</span><span class="n">logger</span><span class="p">.</span><span class="n">LogInfo</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"platform_info_service: offering "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">kInstanceSpecifier</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" for S-CORE "</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">11</span><span class="w">                        </span><span class="n">ToString</span><span class="p">(</span><span class="n">platform_info</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The client does the opposite: it searches the service via service discovery, creates a proxy,
@@ -732,7 +743,9 @@ subscribes to the field and checks the received value:</p>
 <span class="linenos">12</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">differences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="o">::</span><span class="n">platform</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">Compare</span><span class="p">(</span><span class="n">score</span><span class="o">::</span><span class="n">platform</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">MakePlatformInfo</span><span class="p">(),</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>The snippets omit the error handling and the timeouts; see the source files for the complete implementation.</p>
+<p>The snippets omit the error handling and the timeouts; see the source files for the complete implementation.
+Both programs log via the mw::log logger with the context id <code class="docutils literal notranslate"><span class="pre">PINF</span></code>. How these logs are configured and collected
+is described in the <a class="reference internal" href="collecting_logs.html"><span class="doc">collecting logs</span></a> chapter.</p>
 </section>
 <section id="mw-com-configuration">
 <h2>mw::com configuration<a class="headerlink" href="#mw-com-configuration" title="Link to this heading">#</a></h2>
@@ -757,8 +770,9 @@ into the binaries, but defined in the mw::com configuration
 <span class="linenos">16</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>mw::com reads <code class="docutils literal notranslate"><span class="pre">./etc/mw_com_config.json</span></code> relative to the working directory, or the file passed with
-<code class="docutils literal notranslate"><span class="pre">--service_instance_manifest</span></code> (short <code class="docutils literal notranslate"><span class="pre">-s</span></code>). Service and client use the same file, so they agree on the service definition.</p>
+<p>mw::com reads <code class="docutils literal notranslate"><span class="pre">./etc/mw_com_config.json</span></code> relative to the working directory, or the file passed with the
+command line option <code class="docutils literal notranslate"><span class="pre">--service_instance_manifest</span></code>. Service and client use the same file, so they agree on the
+service definition.</p>
 </section>
 <section id="bazel-targets">
 <h2>Bazel targets<a class="headerlink" href="#bazel-targets" title="Link to this heading">#</a></h2>
@@ -788,15 +802,25 @@ into the binaries, but defined in the mw::com configuration
 </span><span class="linenos">22</span>    <span class="p">],</span>
 <span class="linenos">23</span><span class="p">)</span>
 <span class="linenos">24</span>
-<span class="linenos">25</span><span class="n">cc_binary</span><span class="p">(</span>
-<span class="linenos">26</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info_service"</span><span class="p">,</span>
-<span class="linenos">27</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"platform_info_service.cpp"</span><span class="p">],</span>
+<span class="hll"><span class="linenos">25</span><span class="n">cc_test</span><span class="p">(</span>
+</span><span class="linenos">26</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info_test"</span><span class="p">,</span>
+<span class="linenos">27</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"platform_info_test.cpp"</span><span class="p">],</span>
 <span class="linenos">28</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos">29</span>        <span class="s2">":platform_info_interface"</span><span class="p">,</span>
-<span class="hll"><span class="linenos">30</span>        <span class="s2">"@score_baselibs//score/string_manipulation/arguments"</span><span class="p">,</span>
-</span><span class="hll"><span class="linenos">31</span>        <span class="s2">"@score_communication//score/mw/com"</span><span class="p">,</span>
-</span><span class="linenos">32</span>    <span class="p">],</span>
-<span class="linenos">33</span><span class="p">)</span>
+<span class="hll"><span class="linenos">30</span>        <span class="s2">"@googletest//:gtest_main"</span><span class="p">,</span>
+</span><span class="linenos">31</span>    <span class="p">],</span>
+<span class="linenos">32</span><span class="p">)</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="n">cc_binary</span><span class="p">(</span>
+<span class="linenos">35</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info_service"</span><span class="p">,</span>
+<span class="linenos">36</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"platform_info_service.cpp"</span><span class="p">],</span>
+<span class="linenos">37</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">38</span>        <span class="s2">":platform_info_interface"</span><span class="p">,</span>
+<span class="linenos">39</span>        <span class="s2">"@score_baselibs//score/string_manipulation/arguments"</span><span class="p">,</span>
+<span class="linenos">40</span>        <span class="s2">"@score_communication//score/mw/com"</span><span class="p">,</span>
+<span class="hll"><span class="linenos">41</span>        <span class="s2">"@score_logging//score/mw/log"</span><span class="p">,</span>
+</span><span class="linenos">42</span>    <span class="p">],</span>
+<span class="linenos">43</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -806,21 +830,24 @@ so service and consumer always carry the versions they were built from.</p></li>
 <li><p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">cc_library</a> <code class="docutils literal notranslate"><span class="pre">platform_info_interface</span></code> contains
 the shared interface. Its dependencies reference targets of other Bazel modules with the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;module&gt;//&lt;package&gt;:&lt;target&gt;</span></code>
 syntax, here mw::com and the CRC32 calculation.</p></li>
+<li><p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_test">cc_test</a> <code class="docutils literal notranslate"><span class="pre">platform_info_test</span></code> contains the unit tests of the
+library, written with GoogleTest.</p></li>
 <li><p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">cc_binary</a> <code class="docutils literal notranslate"><span class="pre">platform_info_service</span></code> produces the
-executable of the service.</p></li>
+executable of the service. It additionally depends on mw::log from <code class="docutils literal notranslate"><span class="pre">score_logging</span></code>.</p></li>
 </ul>
 <p>The consumer is defined in the same way in
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/BUILD">showcases/standalone/BUILD</a>
 and depends on the shared interface library:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">cc_binary</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info_consumer"</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"platform_info_consumer.cpp"</span><span class="p">],</span>
-<span class="linenos">4</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">5</span>        <span class="s2">"//deploy/platform_info:platform_info_interface"</span><span class="p">,</span>
-<span class="linenos">6</span>        <span class="s2">"@score_baselibs//score/string_manipulation/arguments"</span><span class="p">,</span>
-<span class="linenos">7</span>        <span class="s2">"@score_communication//score/mw/com"</span><span class="p">,</span>
-<span class="linenos">8</span>    <span class="p">],</span>
-<span class="linenos">9</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_binary</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info_consumer"</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"platform_info_consumer.cpp"</span><span class="p">],</span>
+<span class="linenos"> 4</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 5</span>        <span class="s2">"//deploy/platform_info:platform_info_interface"</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">"@score_baselibs//score/string_manipulation/arguments"</span><span class="p">,</span>
+<span class="linenos"> 7</span>        <span class="s2">"@score_communication//score/mw/com"</span><span class="p">,</span>
+<span class="linenos"> 8</span>        <span class="s2">"@score_logging//score/mw/log"</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="p">],</span>
+<span class="linenos">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -875,8 +902,11 @@ within the configuration of the root module.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
-the QNX compiler locally, you must acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
-as described in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/runners/qemu_x86_64/README.md">QNX &amp; QEMU set-up tutorial</a>.</p>
+the QNX compiler locally, you need a QNX license, e.g. the free community license <em>QNX Everywhere</em>, installed at
+<code class="docutils literal notranslate"><span class="pre">/opt/score_qnx/license/licenses</span></code>, and access to the QNX SDP download. The setup is described in the
+<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains/blob/main/docs/qnx_integration.md">QNX integration guide</a>
+of <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code>. Running the QNX images in QEMU additionally needs the host setup described in the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/runners/qemu_x86_64/README.md">QNX QEMU runner README</a>.</p>
 </div>
 </section>
 <section id="building-the-binaries">
@@ -901,27 +931,39 @@ as described in the <a class="reference external" href="https://github.com/eclip
 <section id="running-the-example">
 <h2>Running the example<a class="headerlink" href="#running-the-example" title="Link to this heading">#</a></h2>
 <p>The Linux binaries can be started directly on the host. mw::com needs the directory for its service discovery,
-the service is started in the background and the consumer gets the deployed mw::com configuration:</p>
+the service is started in the background in its directory, so that it finds its configuration in <code class="docutils literal notranslate"><span class="pre">etc/</span></code>,
+and the consumer gets the deployed mw::com configuration and its own logging configuration:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/mw_com_lola/service_discovery
 <span class="linenos">2</span><span class="nb">cd</span><span class="w"> </span>deploy/platform_info
 <span class="linenos">3</span>../../bazel-bin/deploy/platform_info/platform_info_service<span class="w"> </span><span class="p">&amp;</span>
-<span class="linenos">4</span>../../bazel-bin/showcases/standalone/platform_info_consumer<span class="w"> </span>--service_instance_manifest<span class="w"> </span>etc/mw_com_config.json
-<span class="linenos">5</span><span class="nb">kill</span><span class="w"> </span>%1
+<span class="linenos">4</span><span class="nv">MW_LOG_CONFIG_FILE</span><span class="o">=</span>../../showcases/standalone/configs/platform_info_consumer.json<span class="w"> </span><span class="se">\</span>
+<span class="linenos">5</span><span class="w">  </span>../../bazel-bin/showcases/standalone/platform_info_consumer<span class="w"> </span>--service_instance_manifest<span class="w"> </span>etc/mw_com_config.json
+<span class="linenos">6</span><span class="nb">kill</span><span class="w"> </span>%1
 </pre></div>
 </div>
 <p>The service logs the S-CORE version it reports, and the consumer confirms that it found the service and that the
-versions match:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z
-  score_baselibs ee40fece5abacb28ea641b448446a04175038b17
+versions match. The output looks like this (shortened):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>... ECU1 PINS PINF log info verbose 1 platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z
+  score_baselibs 41f5a4c92163dc1f597116094ed34881ddee7fa3
   ...
-platform_info_consumer: found the platform info service
-platform_info_consumer: platform runs S-CORE known_good 2026-08-28T09:19:12Z
+... ECU1 PINC PINF log info verbose 1 platform_info_consumer: found the platform info service
+... ECU1 PINC PINF log info verbose 1 platform_info_consumer: platform runs S-CORE known_good 2026-08-28T09:19:12Z
   ...
-platform_info_consumer: S-CORE version check passed (8 modules match)
+... ECU1 PINC PINF log info verbose 1 platform_info_consumer: S-CORE version check passed (8 modules match)
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">PINS</span></code> and <code class="docutils literal notranslate"><span class="pre">PINC</span></code> are the application ids of service and consumer, <code class="docutils literal notranslate"><span class="pre">PINF</span></code> is the context id of their messages.
+Further lines, e.g. messages with the context id <code class="docutils literal notranslate"><span class="pre">lola</span></code> from mw::com or status output of the logging client such as
+<code class="docutils literal notranslate"><span class="pre">TryOpenClientConnection</span></code>, can be ignored here; the <a class="reference internal" href="collecting_logs.html"><span class="doc">collecting logs</span></a> chapter explains the logging.</p>
 <p>If the service is not running, or reports a different S-CORE version, the consumer exits with <code class="docutils literal notranslate"><span class="pre">1</span></code> and names the reason,
 e.g. the module whose version differs.</p>
+</section>
+<section id="running-the-unit-tests">
+<h2>Running the unit tests<a class="headerlink" href="#running-the-unit-tests" title="Link to this heading">#</a></h2>
+<p>The unit tests of the version check and of the header generator run on the host:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bazel<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--config<span class="o">=</span>linux-x86_64<span class="w"> </span>//deploy/platform_info:platform_info_test<span class="w"> </span>//deploy/platform_info:gen_platform_info_test
+</pre></div>
+</div>
 <p>Now it is time to make sure that every change is built and tested automatically.</p>
 </section>
 </section>
@@ -979,6 +1021,7 @@ e.g. the module whose version differs.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-platforms">Toolchains and platforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-binaries">Building the binaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-example">Running the example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-unit-tests">Running the unit tests</a></li>
 </ul>
   </nav></div>
 

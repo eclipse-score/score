@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="What’s Next?" href="../whats_next/index.html" />
+    <link rel="next" title="Collecting logs" href="collecting_logs.html" />
     <link rel="prev" title="CI/CD Workflows" href="cicd_workflows.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -564,6 +564,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -654,7 +655,7 @@ integration metadata (test exclusions, language info, Bazel patches) are
 in one place and machine-readable. Tooling such as CI pipelines, workspace
 generators, and the Bazel module generator all consume the same data.
 The running example uses it as well: the platform info service reports exactly
-the module versions listed in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>.</p></li>
+the versions of the <code class="docutils literal notranslate"><span class="pre">target_sw</span></code> modules listed in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>.</p></li>
 <li><p><strong>Separation of concerns.</strong> <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code> is the <em>what</em> (which commit
 of which module), while the generated <code class="docutils literal notranslate"><span class="pre">.MODULE.bazel</span></code> file is the <em>how</em>
 (the Bazel-specific syntax). Keeping them separate avoids manual errors
@@ -863,14 +864,19 @@ on the target. The platform info service is deployed like this
 
 <span class="n">pkg_files</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info_service_configs"</span><span class="p">,</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"etc/mw_com_config.json"</span><span class="p">],</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">"etc/logging.json"</span><span class="p">,</span>
+        <span class="s2">"etc/mw_com_config.json"</span><span class="p">,</span>
+    <span class="p">],</span>
     <span class="n">attributes</span> <span class="o">=</span> <span class="n">pkg_attributes</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">"0644"</span><span class="p">),</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s2">"usr/bin/platform_info/etc"</span><span class="p">,</span>
     <span class="n">strip_prefix</span> <span class="o">=</span> <span class="n">strip_prefix</span><span class="o">.</span><span class="n">files_only</span><span class="p">(),</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Both targets are added to the aggregate <code class="docutils literal notranslate"><span class="pre">platform_bundle</span></code> in
+<p>The binary is placed as <code class="docutils literal notranslate"><span class="pre">/usr/bin/platform_info/platform_info_service</span></code>, its mw::com and mw::log configuration
+in <code class="docutils literal notranslate"><span class="pre">/usr/bin/platform_info/etc</span></code>.
+Both targets are added to the aggregate <code class="docutils literal notranslate"><span class="pre">platform_bundle</span></code> in
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/BUILD">deploy/BUILD</a>,
 which every image consumes. Modules that ship only libraries, e.g. <code class="docutils literal notranslate"><span class="pre">score_communication</span></code>, have nothing to deploy.</p>
 </section>
@@ -880,7 +886,7 @@ which every image consumes. Modules that ship only libraries, e.g. <code class="
 S-CORE CLI by adding files under <code class="docutils literal notranslate"><span class="pre">showcases/standalone/</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">showcases/standalone/platform_info.score.json</span></code> – describes the examples
 shown in the interactive CLI menu. The <em>Platform Version Check</em> starts the deployed service,
-runs the consumer against it and returns the exit code of the consumer:</p>
+runs the consumer against it with its own logging configuration and returns the exit code of the consumer:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Platform Version Check"</span><span class="p">,</span>
@@ -890,7 +896,7 @@ runs the consumer against it and returns the exit code of the consumer:</p>
 <span class="w">                </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bin/sh"</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="s2">"-c"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">"cd /usr/bin/platform_info || exit 1; ./platform_info_service &gt;/dev/null 2&gt;&amp;1 &amp; provider=$!; /showcases/bin/platform_info_consumer --service_instance_manifest /usr/bin/platform_info/etc/mw_com_config.json; rc=$?; kill $provider; wait $provider; exit $rc"</span>
+<span class="w">                    </span><span class="s2">"cd /usr/bin/platform_info || exit 1; ./platform_info_service &gt;/dev/null 2&gt;&amp;1 &amp; provider=$!; MW_LOG_CONFIG_FILE=/showcases/data/platform_info/etc/logging.json /showcases/bin/platform_info_consumer --service_instance_manifest /usr/bin/platform_info/etc/mw_com_config.json; rc=$?; kill $provider; wait $provider; exit $rc"</span>
 <span class="w">                </span><span class="p">],</span>
 <span class="w">                </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">            </span><span class="p">}</span>
@@ -900,11 +906,15 @@ runs the consumer against it and returns the exit code of the consumer:</p>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">showcases/standalone/BUILD</span></code> – add a <code class="docutils literal notranslate"><span class="pre">score_pkg_bundle</span></code> entry that
-bundles the binary and the JSON config file:</p>
+bundles the binary, the JSON config file and the logging configuration of the consumer,
+which ends up as <code class="docutils literal notranslate"><span class="pre">/showcases/data/platform_info/etc/logging.json</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score_pkg_bundle</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">"platform_info"</span><span class="p">,</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//showcases/standalone:platform_info_consumer"</span><span class="p">],</span>
     <span class="n">config_data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//showcases/standalone:platform_info.score.json"</span><span class="p">],</span>
+    <span class="n">custom_layout</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"//showcases/standalone/configs:platform_info_consumer.json"</span><span class="p">:</span> <span class="s2">"etc/logging.json"</span><span class="p">,</span>
+    <span class="p">},</span>
     <span class="n">package_dir</span> <span class="o">=</span> <span class="s2">"standalone"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -912,17 +922,28 @@ bundles the binary and the JSON config file:</p>
 <p>For a binary of an integrated module, reference it with its module label instead,
 e.g. <code class="docutils literal notranslate"><span class="pre">bins</span> <span class="pre">=</span> <span class="pre">[&quot;&#64;score_my_module//score/examples:my_example&quot;]</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">showcases/BUILD</span></code> – reference the new <code class="docutils literal notranslate"><span class="pre">_pkg_files</span></code> target in the
-top-level <code class="docutils literal notranslate"><span class="pre">showcases</span></code> bundle so it ends up in every image:</p>
+top-level <code class="docutils literal notranslate"><span class="pre">showcases</span></code> bundle and in the <code class="docutils literal notranslate"><span class="pre">showcases_bundle</span></code> file group, which the QNX images consume,
+so it ends up in every image:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score_pkg_bundle</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">"showcases"</span><span class="p">,</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//showcases/cli"</span><span class="p">],</span>
     <span class="n">other_package_files</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">"//showcases/standalone:comm_pkg_files"</span><span class="p">,</span>
-        <span class="s2">"//showcases/standalone:kyron_pkg_files"</span><span class="p">,</span>
         <span class="o">...</span>
         <span class="s2">"//showcases/standalone:platform_info_pkg_files"</span><span class="p">,</span>   <span class="c1"># added</span>
     <span class="p">],</span>
     <span class="n">package_dir</span> <span class="o">=</span> <span class="s2">"showcases"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pkg_filegroup</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"showcases_bundle"</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">":showcases_pkg_files"</span><span class="p">,</span>
+        <span class="o">...</span>
+        <span class="s2">"//showcases/standalone:platform_info_pkg_files"</span><span class="p">,</span>   <span class="c1"># added</span>
+    <span class="p">],</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s2">"showcases"</span><span class="p">,</span>
+    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -958,6 +979,13 @@ and runs with:</p>
 </div>
 <p>How the test is linked to the requirement it verifies is described in the
 <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The service and the consumer are also part of the showcase <em>S-CORE Platform Run</em>
+(<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/showcases/platform_run">showcases/platform_run</a>).
+There, the launch manager starts the service as platform daemon and checks that the consumer exits successfully,
+and the platform integration test <code class="docutils literal notranslate"><span class="pre">platform_run</span></code> collects and checks the DLT logs, see <a class="reference internal" href="collecting_logs.html"><span class="doc">collecting logs</span></a>.</p>
+</div>
 </section>
 </section>
 <section id="optional-add-bazel-patches">
@@ -1059,11 +1087,11 @@ platform_info_consumer: S-CORE version check passed (8 modules match)
       </div>
     </a>
     <a class="right-next"
-       href="../whats_next/index.html"
+       href="collecting_logs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What’s Next?</p>
+        <p class="prev-next-title">Collecting logs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

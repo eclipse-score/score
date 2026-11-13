@@ -564,6 +564,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -662,7 +663,9 @@ Most configuration is handled via <a class="reference external" href="https://ot
 <li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a></p></li>
 </ul>
 <p>Add your repository definition next to the existing ones. Module repositories are declared with
-<code class="docutils literal notranslate"><span class="pre">newDependableElementRepo</span></code>; incubation repositories additionally set <code class="docutils literal notranslate"><span class="pre">subcategory</span> <span class="pre">=</span> <span class="pre">&quot;incubation&quot;</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">newDependableElementRepo</span></code>: it creates the repository from the module template, enables GitHub Pages for the
+documentation and sets up the GitHub environment for the QNX builds. Incubation repositories additionally set
+<code class="docutils literal notranslate"><span class="pre">subcategory</span> <span class="pre">=</span> <span class="pre">&quot;incubation&quot;</span></code>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>newDependableElementRepo('lifecycle') {
   description: "Repository for the lifecycle feature",
 },
@@ -808,7 +811,8 @@ The template starts with a minimal module declaration:</p>
 According to Eclipse S-CORE’s naming convention, all module names must start with the <em>score_</em> prefix,
 e.g. <em>score_my_module</em>. The version is not maintained in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>: it is taken from the release tag
 (<code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code>, following <a class="reference external" href="https://semver.org/">semantic versioning</a>) when the release is added to the
-Bazel registry. Only after your module was published in the Eclipse S-CORE Bazel registry, other modules can access it.</p>
+Bazel registry. Other modules can depend on a released version of your module with <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> only after it was
+published in the Eclipse S-CORE Bazel registry; before that, they need a <code class="docutils literal notranslate"><span class="pre">git_override</span></code>.</p>
 <p>Next, the template declares dependencies to modules that are publicly available in the Bazel Central Registry,
 e.g. for unit test execution with GoogleTest:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Add GoogleTest dependency</span>
@@ -821,16 +825,16 @@ e.g. for unit test execution with GoogleTest:</p>
 <span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_cc"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.18"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then follow the dependencies to Eclipse S-CORE modules that are used during development:</p>
+<p>Then follow the dependencies to Eclipse S-CORE modules that are used during development (excerpt):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># tooling</span>
 <span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tooling"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.3.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="c1"># docs-as-code</span>
-<span class="linenos"> 5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"8.6.0"</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"8.7.0"</span><span class="p">)</span>
 <span class="linenos"> 6</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_process_description"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"2.2.1"</span><span class="p">)</span>
 <span class="linenos"> 7</span>
 <span class="linenos"> 8</span><span class="c1"># Provide the tools from the devcontainer to Bazel</span>
-<span class="linenos"> 9</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_devcontainer"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.11.4"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_devcontainer"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.12.0"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="linenos">10</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_cpp_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.2"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -845,14 +849,20 @@ For Rust code, <code class="docutils literal notranslate"><span class="pre">scor
 <p>The last part of the template, marked <em>S-CORE Toolchains (DO NOT MODIFY)</em>, registers the S-CORE toolchains
 from <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> and <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> for all supported target platforms.
 It is explained in the <a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter.</p>
-<p>Finally, add the S-CORE modules your code uses. The platform info example uses mw::com from <code class="docutils literal notranslate"><span class="pre">score_communication</span></code>
-and the CRC32 calculation and argument handling from <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>:</p>
+<p>Finally, add the S-CORE modules your code uses. The platform info example uses mw::com from <code class="docutils literal notranslate"><span class="pre">score_communication</span></code>,
+the CRC32 calculation and argument handling from <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> and mw::log from <code class="docutils literal notranslate"><span class="pre">score_logging</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_communication"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.6.0"</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.16"</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.17"</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_logging"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.6"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The available versions can be looked up in the <a class="reference external" href="https://eclipse-score.github.io/bazel_registry_ui/">Bazel registry UI</a>.
-Choose versions that fit together: <code class="docutils literal notranslate"><span class="pre">score_communication</span></code> 0.6.0, for example, is built against <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> 0.2.16.
+Choose versions that fit to each other and to the toolchains of your module: the versions above work with
+<code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> 1.0.5, which the template uses at the time of writing. Check the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>
+of a module version in the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry/tree/main/modules">registry</a>
+to see which versions it depends on.
+If Bazel reports <em>“the root module requires module version X, but got Y in the resolved dependency graph”</em>,
+another module needs a newer version of this dependency; update the version in your <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> accordingly.
 Bazel modules don’t make transitive dependencies available to your code: list every module whose targets you use
 directly in your <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> files.</p>
 <div class="admonition tip">
@@ -863,7 +873,8 @@ directly in your <code class="docutils literal notranslate"><span class="pre">BU
 if you want to use a version of another module that is currently not officially available in the Bazel registry.</p></li>
 <li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#local_path_override">local_path_override()</a>
 if you want to use your local version of the module, e.g. during active development.</p></li>
-<li><p>use <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">--override_module=&lt;module&gt;=&lt;path&gt;</span></code> to try out a local checkout without changing <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>.</p></li>
+<li><p>use the command line option <code class="docutils literal notranslate"><span class="pre">--override_module=&lt;module&gt;=&lt;path&gt;</span></code> (e.g. with <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>) to try out a local
+checkout without changing <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>.</p></li>
 </ul>
 </div>
 </section>

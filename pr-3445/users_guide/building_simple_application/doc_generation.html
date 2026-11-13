@@ -564,6 +564,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collecting_logs.html">Collecting logs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -650,7 +651,7 @@ describes in detail how documentation is created and built. Here, we focus on a 
 <h2>Defining a Bazel Documentation Target<a class="headerlink" href="#defining-a-bazel-documentation-target" title="Link to this heading">#</a></h2>
 <p>To generate HTML documentation from <em>.rst</em> files, S-CORE provides the <code class="docutils literal notranslate"><span class="pre">docs</span></code> Bazel macro.
 In the top-level <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/BUILD">BUILD</a> file of your module,
-you should already find:</p>
+you find a call of this macro. Without the bundles explained below, it looks like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_docs_as_code//:docs.bzl"</span><span class="p">,</span> <span class="s2">"docs"</span><span class="p">)</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="n">docs</span><span class="p">(</span>
@@ -670,8 +671,10 @@ starting from <code class="docutils literal notranslate"><span class="pre">index
 With both set, no own <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> is needed; all S-CORE Sphinx extensions and the metamodel checks are configured
 by <em>docs-as-code</em>. Replace the template values by the name and URL of your module.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">external_needs</span></code>: documentation of other modules whose sphinx-needs objects you want to reference, e.g.
-<code class="docutils literal notranslate"><span class="pre">&quot;&#64;score_process_description//:needs_json&quot;</span></code> for the process description or <code class="docutils literal notranslate"><span class="pre">&quot;&#64;score_platform//:needs_json&quot;</span></code>
-for the feature requirements and architecture of the S-CORE platform.</p></li>
+<code class="docutils literal notranslate"><span class="pre">&quot;&#64;score_process_description//:docs&quot;</span></code> for the process description or <code class="docutils literal notranslate"><span class="pre">&quot;&#64;score_platform//:docs&quot;</span></code>
+for the feature requirements and architecture of the S-CORE platform. The module must also be declared with
+<code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>. See
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/how-to/other_modules.html">Reference Other Modules</a> for details.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bundles</span></code>: further documentation bundles which are mounted into your documentation, e.g. the documentation
 of each component in <code class="docutils literal notranslate"><span class="pre">score/&lt;component_name&gt;</span></code>. The template mounts <code class="docutils literal notranslate"><span class="pre">//score/component_example:docs</span></code>
 and <code class="docutils literal notranslate"><span class="pre">//examples:docs</span></code> this way.</p></li>

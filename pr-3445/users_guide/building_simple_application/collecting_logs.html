@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Collecting logs &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=415257cb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=82a1844f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=8048e6ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'users_guide/building_simple_application/collecting_logs';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="What’s Next?" href="../whats_next/index.html" />
+    <link rel="prev" title="How to Integrate a New Module into the Reference Integration" href="reference_integration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
+    Platform Architecture
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Platform Features and Logical Interfaces
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Platform Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
+    Quality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Collecting logs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_links.html">Useful Links</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User’s Guide</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contribute own module</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Collecting logs</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="collecting-logs">
+<span id="id1"></span><h1>Collecting logs<a class="headerlink" href="#collecting-logs" title="Link to this heading">#</a></h1>
+<p>S-CORE applications log via <strong>mw::log</strong> from the <a class="reference external" href="https://github.com/eclipse-score/logging">logging</a> module
+(<code class="docutils literal notranslate"><span class="pre">score_logging</span></code>). This chapter shows how the platform info service and its consumer log, how the logging is
+configured and how the logs are collected: on the console and as <strong>DLT</strong> (Diagnostic Log and Trace), the log format
+which is used in the automotive domain.</p>
+<section id="logging-in-the-code">
+<h2>Logging in the code<a class="headerlink" href="#logging-in-the-code" title="Link to this heading">#</a></h2>
+<p>The service creates a logger for its context and writes log messages with a log level:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"score/mw/log/logger.h"</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="o">::</span><span class="n">mw</span><span class="o">::</span><span class="n">log</span><span class="o">::</span><span class="n">CreateLogger</span><span class="p">(</span><span class="s">"PINF"</span><span class="p">,</span><span class="w"> </span><span class="s">"platform info"</span><span class="p">);</span>
+<span class="linenos">4</span><span class="n">logger</span><span class="p">.</span><span class="n">LogInfo</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"platform_info_service: offering "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">kInstanceSpecifier</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" for S-CORE "</span><span class="w"> </span><span class="o">+</span>
+<span class="linenos">5</span><span class="w">                        </span><span class="n">ToString</span><span class="p">(</span><span class="n">platform_info</span><span class="p">);</span>
+<span class="linenos">6</span><span class="n">logger</span><span class="p">.</span><span class="n">LogError</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"platform_info_service: cannot offer service: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">offered</span><span class="p">.</span><span class="n">error</span><span class="p">().</span><span class="n">Message</span><span class="p">()};</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">PINF</span></code> is the <em>context id</em> of the messages. Together with the <em>application id</em> from the configuration below,
+it identifies the source of each message. The Bazel target needs the dependency <code class="docutils literal notranslate"><span class="pre">&#64;score_logging//score/mw/log</span></code>.</p>
+</section>
+<section id="logging-configuration">
+<h2>Logging configuration<a class="headerlink" href="#logging-configuration" title="Link to this heading">#</a></h2>
+<p>Which messages are written where is configured per process in a JSON file. The service uses
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/logging.json">deploy/platform_info/etc/logging.json</a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PINS"</span><span class="p">,</span>
+<span class="linenos">3</span><span class="w">    </span><span class="nt">"appDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Platform info service"</span><span class="p">,</span>
+<span class="linenos">4</span><span class="w">    </span><span class="nt">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kInfo"</span><span class="p">,</span>
+<span class="linenos">5</span><span class="w">    </span><span class="nt">"logLevelThresholdConsole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kInfo"</span><span class="p">,</span>
+<span class="linenos">6</span><span class="w">    </span><span class="nt">"logMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kConsole|kRemote"</span>
+<span class="linenos">7</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entry</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">appId</span></code></p></td>
+<td><p>Application id of the process in the logs (up to four characters), <code class="docutils literal notranslate"><span class="pre">PINS</span></code> for the service and <code class="docutils literal notranslate"><span class="pre">PINC</span></code> for the consumer</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logLevel</span></code></p></td>
+<td><p>Lowest log level that is logged, e.g. <code class="docutils literal notranslate"><span class="pre">kInfo</span></code>; <code class="docutils literal notranslate"><span class="pre">kDebug</span></code> and <code class="docutils literal notranslate"><span class="pre">kVerbose</span></code> add more details</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logLevelThresholdConsole</span></code></p></td>
+<td><p>Lowest log level that is written to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logMode</span></code></p></td>
+<td><p>Where the logs go: <code class="docutils literal notranslate"><span class="pre">kConsole</span></code> to the console, <code class="docutils literal notranslate"><span class="pre">kRemote</span></code> as DLT via the datarouter, <code class="docutils literal notranslate"><span class="pre">kFile</span></code> to a file</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>mw::log uses the file given in the environment variable <code class="docutils literal notranslate"><span class="pre">MW_LOG_CONFIG_FILE</span></code>. If it is not set, mw::log takes the first
+existing file of <code class="docutils literal notranslate"><span class="pre">../etc/logging.json</span></code> relative to the directory of the executable, <code class="docutils literal notranslate"><span class="pre">etc/logging.json</span></code> and
+<code class="docutils literal notranslate"><span class="pre">logging.json</span></code> in the working directory. In addition, an optional ECU-wide file <code class="docutils literal notranslate"><span class="pre">/etc/ecu_logging_config.json</span></code>
+is read. The service is started in <code class="docutils literal notranslate"><span class="pre">/usr/bin/platform_info</span></code> on the target and finds <code class="docutils literal notranslate"><span class="pre">etc/logging.json</span></code> there;
+the consumer gets its configuration via <code class="docutils literal notranslate"><span class="pre">MW_LOG_CONFIG_FILE</span></code>. Without it, the consumer would pick up the
+<code class="docutils literal notranslate"><span class="pre">etc/logging.json</span></code> of the service when started in the same directory, and log with the application id <code class="docutils literal notranslate"><span class="pre">PINS</span></code>.</p>
+</section>
+<section id="console-logs">
+<h2>Console logs<a class="headerlink" href="#console-logs" title="Link to this heading">#</a></h2>
+<p>With <code class="docutils literal notranslate"><span class="pre">kConsole</span></code>, the messages are printed to the console of the process, e.g. when the service is started
+as described in the <a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2026/11/13 13:22:11.6131644 818992094 000 ECU1 PINS PINF log info verbose 1 platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z
+</pre></div>
+</div>
+<p>Each line contains the time stamp, the ECU id (<code class="docutils literal notranslate"><span class="pre">ECU1</span></code>), the application id (<code class="docutils literal notranslate"><span class="pre">PINS</span></code>), the context id (<code class="docutils literal notranslate"><span class="pre">PINF</span></code>)
+and the log level (<code class="docutils literal notranslate"><span class="pre">info</span></code>), followed by the message. Messages of the S-CORE modules used by the application appear
+with their own context ids, e.g. <code class="docutils literal notranslate"><span class="pre">lola</span></code> for mw::com.</p>
+</section>
+<section id="dlt-logs-and-the-datarouter">
+<h2>DLT logs and the datarouter<a class="headerlink" href="#dlt-logs-and-the-datarouter" title="Link to this heading">#</a></h2>
+<p>With <code class="docutils literal notranslate"><span class="pre">kRemote</span></code>, the processes hand their messages to the <strong>datarouter</strong>, the logging daemon of <code class="docutils literal notranslate"><span class="pre">score_logging</span></code>.
+The datarouter collects the messages of all processes on the target and sends them as DLT messages via UDP multicast
+to <code class="docutils literal notranslate"><span class="pre">239.255.42.99</span></code>, port <code class="docutils literal notranslate"><span class="pre">3490</span></code>. The channels are configured in its
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/deploy/logging/etc/log-channels.json">log-channels.json</a>.
+On the reference images, the datarouter is deployed under <code class="docutils literal notranslate"><span class="pre">/usr/bin/datarouter</span></code>, next to the platform info service.
+If no datarouter runs, the DLT output is dropped; the console output remains.</p>
+<p>To collect the DLT logs of the platform info service on your Linux machine, run the following commands in the
+reference integration:</p>
+<ol class="arabic">
+<li><p>Build the datarouter and <code class="docutils literal notranslate"><span class="pre">dlt-receive</span></code>. <code class="docutils literal notranslate"><span class="pre">dlt-receive</span></code> from the
+<a class="reference external" href="https://github.com/COVESA/dlt-daemon">COVESA dlt-daemon</a> project is provided by the Integration Testing Framework,
+with an extension for UDP multicast:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>linux-x86_64<span class="w"> </span>@score_logging//score/datarouter<span class="w"> </span>@score_itf//third_party/dlt:dlt-receive
+</pre></div>
+</div>
+</li>
+<li><p>Start <code class="docutils literal notranslate"><span class="pre">dlt-receive</span></code> and store the received messages in a file. <code class="docutils literal notranslate"><span class="pre">--net-if</span></code> is the IP address of the network
+interface of your machine, e.g. as shown by <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-I</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bazel-bin/external/score_itf++_repo_rules+dlt_daemon/dlt-receive<span class="w"> </span>-o<span class="w"> </span>/tmp/platform_info.dlt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--udp<span class="w"> </span>--net-if<span class="w"> </span>&lt;your<span class="w"> </span>IP<span class="w"> </span>address&gt;<span class="w"> </span>--port<span class="w"> </span><span class="m">3490</span><span class="w"> </span>--mcast-ip<span class="w"> </span><span class="m">239</span>.255.42.99<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Start the datarouter in the directory that contains its configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>deploy/logging<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>../../bazel-bin/external/score_logging+/score/datarouter/datarouter<span class="w"> </span>--no_adaptive_runtime<span class="w"> </span><span class="p">&amp;</span><span class="o">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Start the service and the consumer as described in the <a class="reference internal" href="building_source_code.html"><span class="doc">building source code</span></a> chapter.
+Then stop the datarouter and <code class="docutils literal notranslate"><span class="pre">dlt-receive</span></code>, e.g. with <code class="docutils literal notranslate"><span class="pre">pkill</span> <span class="pre">datarouter</span></code> and <code class="docutils literal notranslate"><span class="pre">pkill</span> <span class="pre">dlt-receive</span></code>.</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">/tmp/platform_info.dlt</span></code> in a DLT viewer, e.g. <a class="reference external" href="https://github.com/COVESA/dlt-viewer">dlt-viewer</a>,
+and filter for the application ids <code class="docutils literal notranslate"><span class="pre">PINS</span></code> and <code class="docutils literal notranslate"><span class="pre">PINC</span></code>. Besides the messages of the datarouter itself
+(application id <code class="docutils literal notranslate"><span class="pre">DR</span></code>), the recording contains, for example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SCPP PINS PINF platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z ...
+SCPP PINC PINF platform_info_consumer: found the platform info service
+SCPP PINC PINF platform_info_consumer: S-CORE version check passed (8 modules match)
+SCPP PINS PINF platform_info_service: stopped
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SCPP</span></code> is the ECU id which the datarouter sets for its DLT channels in <code class="docutils literal notranslate"><span class="pre">log-channels.json</span></code>.</p>
+</li>
+</ol>
+<p>Other tools, e.g. Wireshark or Chipmunk, and the setup of the network interfaces are described in the
+<a class="reference external" href="https://github.com/eclipse-score/logging/blob/main/score/datarouter/doc/guideline/dlt_capture_demo.md">DLT capture guide</a>
+of the logging module.</p>
+</section>
+<section id="logs-collected-by-the-platform-integration-test">
+<h2>Logs collected by the platform integration test<a class="headerlink" href="#logs-collected-by-the-platform-integration-test" title="Link to this heading">#</a></h2>
+<p>In the reference integration, the logs are also collected automatically. The platform integration test
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/platform_integration_tests/platform_run/test_platform_run.py">test_platform_run.py</a>
+runs the showcase <em>S-CORE Platform Run</em> on the Linux image, in which the launch manager starts the datarouter,
+the platform info service and then the consumer. While the showcase runs, the test records all DLT messages on the host
+and checks, for example, that the consumer reported the successful version check:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">"PINC"</span><span class="p">,</span> <span class="s2">"PINF"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"platform_info_consumer: S-CORE version check passed"</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>The recording is stored as <code class="docutils literal notranslate"><span class="pre">platform_run.dlt</span></code> in the undeclared test outputs
+(<code class="docutils literal notranslate"><span class="pre">bazel-testlogs/platform_integration_tests/platform_run/platform_run/test.outputs/</span></code>, packed into
+<code class="docutils literal notranslate"><span class="pre">outputs.zip</span></code> unless Bazel runs with <code class="docutils literal notranslate"><span class="pre">--nozip_undeclared_test_outputs</span></code>). In CI, it is uploaded as
+artifact <code class="docutils literal notranslate"><span class="pre">platform-run-dlt-&lt;commit&gt;</span></code> of the workflow
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_and_docs.yml">test_and_docs.yml</a>,
+so you can download and open the logs of every pull request in a DLT viewer.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="reference_integration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How to Integrate a New Module into the Reference Integration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../whats_next/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">What’s Next?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-in-the-code">Logging in the code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-configuration">Logging configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#console-logs">Console logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dlt-logs-and-the-datarouter">DLT logs and the datarouter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-collected-by-the-platform-integration-test">Logs collected by the platform integration test</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/users_guide/building_simple_application/collecting_logs.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
