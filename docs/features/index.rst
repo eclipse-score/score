@@ -28,11 +28,10 @@ For further explanation see the `Building blocks concept <https://eclipse-score.
 
 The following features are defined:
 
+.. The bundle mounts populate this toctree during the documentation build.
+
 .. toctree::
    :maxdepth: 1
-   :glob:
-
-   */index
 
 Feature List
 ------------
