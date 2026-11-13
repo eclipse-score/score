@@ -48,7 +48,9 @@ Create a fork of this repository and modify the file:
 - `otterdog/eclipse-score.jsonnet <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
 
 Add your repository definition next to the existing ones. Module repositories are declared with
-``newDependableElementRepo``; incubation repositories additionally set ``subcategory = "incubation"``:
+``newDependableElementRepo``: it creates the repository from the module template, enables GitHub Pages for the
+documentation and sets up the GitHub environment for the QNX builds. Incubation repositories additionally set
+``subcategory = "incubation"``:
 
 .. code-block:: text
     :emphasize-lines: 5, 6, 7
@@ -193,7 +195,8 @@ Rename the module and replace *score_module_template* by your module name.
 According to Eclipse S-CORE's naming convention, all module names must start with the *score\_* prefix,
 e.g. *score_my_module*. The version is not maintained in ``MODULE.bazel``: it is taken from the release tag
 (``vX.Y.Z``, following `semantic versioning <https://semver.org/>`_) when the release is added to the
-Bazel registry. Only after your module was published in the Eclipse S-CORE Bazel registry, other modules can access it.
+Bazel registry. Other modules can depend on a released version of your module with ``bazel_dep`` only after it was
+published in the Eclipse S-CORE Bazel registry; before that, they need a ``git_override``.
 
 Next, the template declares dependencies to modules that are publicly available in the Bazel Central Registry,
 e.g. for unit test execution with GoogleTest:
@@ -210,7 +213,7 @@ e.g. for unit test execution with GoogleTest:
     # C/C++ rules for Bazel
     bazel_dep(name = "rules_cc", version = "0.2.18")
 
-Then follow the dependencies to Eclipse S-CORE modules that are used during development:
+Then follow the dependencies to Eclipse S-CORE modules that are used during development (excerpt):
 
 .. code-block:: python
     :linenos:
@@ -219,11 +222,11 @@ Then follow the dependencies to Eclipse S-CORE modules that are used during deve
     bazel_dep(name = "score_tooling", version = "1.3.1", dev_dependency = True)
 
     # docs-as-code
-    bazel_dep(name = "score_docs_as_code", version = "8.6.0")
+    bazel_dep(name = "score_docs_as_code", version = "8.7.0")
     bazel_dep(name = "score_process_description", version = "2.2.1")
 
     # Provide the tools from the devcontainer to Bazel
-    bazel_dep(name = "score_devcontainer", version = "1.11.4", dev_dependency = True)
+    bazel_dep(name = "score_devcontainer", version = "1.12.0", dev_dependency = True)
     bazel_dep(name = "score_cpp_policies", version = "0.1.2", dev_dependency = True)
 
 - **score_tooling**: enables tooling checks such as copyright, formatting and license verification.
@@ -237,17 +240,23 @@ The last part of the template, marked *S-CORE Toolchains (DO NOT MODIFY)*, regis
 from ``score_bazel_cpp_toolchains`` and ``score_toolchains_rust`` for all supported target platforms.
 It is explained in the :doc:`building source code <building_source_code>` chapter.
 
-Finally, add the S-CORE modules your code uses. The platform info example uses mw::com from ``score_communication``
-and the CRC32 calculation and argument handling from ``score_baselibs``:
+Finally, add the S-CORE modules your code uses. The platform info example uses mw::com from ``score_communication``,
+the CRC32 calculation and argument handling from ``score_baselibs`` and mw::log from ``score_logging``:
 
 .. code-block:: python
     :linenos:
 
     bazel_dep(name = "score_communication", version = "0.6.0")
-    bazel_dep(name = "score_baselibs", version = "0.2.16")
+    bazel_dep(name = "score_baselibs", version = "0.2.17")
+    bazel_dep(name = "score_logging", version = "0.2.6")
 
 The available versions can be looked up in the `Bazel registry UI <https://eclipse-score.github.io/bazel_registry_ui/>`_.
-Choose versions that fit together: ``score_communication`` 0.6.0, for example, is built against ``score_baselibs`` 0.2.16.
+Choose versions that fit to each other and to the toolchains of your module: the versions above work with
+``score_bazel_cpp_toolchains`` 1.0.5, which the template uses at the time of writing. Check the ``MODULE.bazel``
+of a module version in the `registry <https://github.com/eclipse-score/bazel_registry/tree/main/modules>`_
+to see which versions it depends on.
+If Bazel reports *"the root module requires module version X, but got Y in the resolved dependency graph"*,
+another module needs a newer version of this dependency; update the version in your ``MODULE.bazel`` accordingly.
 Bazel modules don't make transitive dependencies available to your code: list every module whose targets you use
 directly in your ``BUILD`` files.
 
@@ -260,7 +269,8 @@ directly in your ``BUILD`` files.
     - use `local_path_override()  <https://bazel.build/rules/lib/globals/module#local_path_override>`_
       if you want to use your local version of the module, e.g. during active development.
 
-    - use ``bazel run --override_module=<module>=<path>`` to try out a local checkout without changing ``MODULE.bazel``.
+    - use the command line option ``--override_module=<module>=<path>`` (e.g. with ``bazel build``) to try out a local
+      checkout without changing ``MODULE.bazel``.
 
 
 BUILD

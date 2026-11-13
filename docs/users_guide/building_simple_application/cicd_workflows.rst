@@ -17,7 +17,7 @@ CI/CD Workflows
 
 After successfully building the binaries, we need to ensure that future changes do not break the build.
 In Eclipse S-CORE, this is done by `GitHub Actions <https://docs.github.com/en/actions>`_ workflows which run on every
-pull request. Instead of implementing the workflow logic in every repository, the workflows call the reusable workflows
+pull request. Instead of implementing the workflow logic in every repository, most workflows call the reusable workflows
 from `eclipse-score/cicd-workflows <https://github.com/eclipse-score/cicd-workflows>`_.
 
 Workflows of a module repository
@@ -120,8 +120,8 @@ for QNX, the license handling:
 - Lines 8 and 14: the job ``linux`` builds and runs all tests for Linux x86_64 with the same Bazel command you use locally.
 - Line 16: the job ``qnx`` cross-compiles the code with the QNX toolchain.
 - Line 23: the build configuration from the :doc:`building source code <building_source_code>` chapter.
-- Line 24: the QNX job uses secrets, which are gated by the GitHub environment ``workflow-approval``,
-  e.g. for pull requests from forks.
+- Line 24: the QNX job runs in the GitHub environment ``workflow-approval``. It is created for every module repository
+  and requires the approval of an S-CORE committer before the job gets access to the QNX secrets.
 - Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
   The QNX job also expects the credential helper script ``.github/tools/qnx_credential_helper.py``, which is not part
   of the template; copy it e.g. from the `persistency <https://github.com/eclipse-score/persistency/tree/main/.github/tools>`_
@@ -149,10 +149,11 @@ on every pull request:
    * - `test_and_docs.yml <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_and_docs.yml>`_
      - Runs the platform integration tests (``bazel test --config=linux-x86_64 //platform_integration_tests:pit``),
        incl. ``test_platform_version`` which starts the *Platform Version Check* on the Linux image,
+       uploads the DLT logs of the platform run as artifact ``platform-run-dlt-<commit>``
        and builds the documentation with the test results
    * - ``build_and_test_linux_target.yml``
-     - Unpacks the release archives (platform and showcases) into plain Ubuntu and Debian containers
-       and runs all showcases there
+     - Unpacks the release archives (platform and showcases) into plain Ubuntu and Debian containers,
+       runs all showcases there and requires ``S-CORE platform run: PASSED``
    * - ``known_good_correct.yml``, ``bzlmod-lock.yml``
      - Check that ``known_good.json``, the generated Bazel files and the lockfile are consistent
 
