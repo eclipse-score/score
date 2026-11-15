@@ -212,7 +212,7 @@ Quality Management Generic work products
 
     * - :need:`wp__document_mgt_plan`
       - :ref:`project_documents_list`
-      - :ndf:`copy('status', need_id='doc__documentation_mgt_plan')`
+      - :ndf:`copy('status', need_id='doc__platform_documentation_mgt_plan')`
 
     * - :need:`wp__feature_arch`
       - :need:`doc__baselibs_architecture`

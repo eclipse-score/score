@@ -72,7 +72,7 @@ documents, which are identified through their document header as defined in
 :need:`gd_temp__documentation`.
 
 The complete list of project documents is maintained in
-:need:`doc__documentation_mgt_plan`.
+:need:`doc__platform_documentation_mgt_plan`.
 
 Sphinx-Needs IDs are checked for uniqueness according to
 :need:`gd_req__configuration_uid`. Sphinx-Needs is also used to maintain the
@@ -214,7 +214,7 @@ used to communicate their maturity and configuration status to stakeholders.
 
 The primary overview is the project document list, which contains the planned
 documents and their current status. The document list is maintained in the
-Documentation Management Plan :need:`doc__documentation_mgt_plan`, which is
+Documentation Management Plan :need:`doc__platform_documentation_mgt_plan`, which is
 part of the Platform Management Plan as defined in
 :need:`gd_guidl__documentation`.
 
