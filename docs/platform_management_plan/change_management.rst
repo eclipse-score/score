@@ -61,11 +61,11 @@ Change Management Scope
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Change management applies to the work products and configuration items identified
-in the :need:`Configuration Management Plan <doc__config_mgt_plan>`.
+in the :need:`PF Configuration Management Plan <doc__platform_config_mgt_plan>`.
 
 It applies throughout the complete lifecycle of these work products and
 configuration items, as defined in the Lifecycle section of
-:need:`doc__config_mgt_plan`.
+:need:`doc__platform_config_mgt_plan`.
 
 This lifecycle scope is independent of the Expected Implementation Version or
 Milestone assigned to an individual Change Request according to
