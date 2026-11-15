@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Change Management Plan
-   :id: doc__platform_change_management_plan
+.. document:: PF Change Management Plan
+   :id: doc__change_management_plan
    :status: valid
    :version: 3
    :safety: ASIL_B
