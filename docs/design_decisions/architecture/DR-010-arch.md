@@ -6,11 +6,11 @@
 :id: dec_rec__arch__introduce_smon_middleware
 :status: proposed
 :context: Architecture
-:decision:
+:decision: Introduces a portable SMon middleware component with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.
 :version: 1
 :tracking: https://github.com/eclipse-score/score/issues/3340
-:affects: doc__SYSTEM_MONITORING_requirements
-:consequences: Introduces a portable SMon middleware component with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.
+:affects: doc__smon
+:consequences: S-CORE project will get a new feature team and extra code to maintain
 ```
 
 ---
@@ -43,8 +43,8 @@ fragmentation, inconsistency, and missed faults across vehicle programs.
 
 Detailed requirements are documented separately in the feature requirements tree:
 
-- Feature entry point: [System Monitoring](../../features/system_monitoring/index.rst)
-- Requirements specification: [System Monitoring Requirements](../../features/system_monitoring/requirements/index.rst)
+- Feature entry point: [System Monitoring](../../features/smon/index.rst)
+- Requirements specification: [System Monitoring Requirements](../../features/smon/requirements/index.rst)
 
 ### Requested Capabilities
 
@@ -106,7 +106,7 @@ The SMon component integrates with three **platform-provided services** via requ
 > ⚠️ SMon does **not** mandate a specific implementation of any of these services.
 > They are integration points to be fulfilled by the platform adopter.
 
-![SMon Combined Diagram](DR-010-arch/_assets/combined_view.png)
+![SMon Combined Diagram](../../features/smon/_assets/combined_view.png)
 
 ### Anticipated Future Extensions
 
@@ -124,10 +124,6 @@ future extensions:
 
 ## Decision
 
----
-
-## Consequences
-
 - **Standardized Monitoring:** Eliminates duplicated and ad-hoc watchdog code across application teams by providing a shared, consistent middleware solution.
 - **Cross-Platform Portability:** Decouples platform-specific drivers (Linux/QNX) from sensors and monitoring business logic, enabling reuse across ECU variants.
 - **Platform Decoupling:** S-CORE remains independent of specific diagnostic, error aggregation, or logging backends through defined required interfaces.
@@ -136,7 +132,15 @@ future extensions:
 
 ---
 
+## Consequences
+
+S-CORE gains another component that must be developed, integrated, deployed, tested, and maintained, including platform-specific support for Linux and QNX. It will also require a new Feature team.
+
+---
+
 ## Alternatives Considered
+
+no alternatives were identified at this point in time.
 
 ---
 

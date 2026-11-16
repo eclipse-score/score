@@ -14,23 +14,24 @@
 
 .. _system_monitoring_feature:
 
-Feature Request: System Monitoring (SMon)
-########################
+System Monitoring
+#################
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 0
+.. document:: System Monitoring
+   :id: doc__smon
+   :status: valid
+   :version: 1
+   :safety: ASIL_B
+   :security: NO
+   :realizes: wp__feat_request[version==1]
+   :tags: feature_request, system_monitoring
 
-   * - **Feature ID**
-     - SCORE-SMON
-   * - **Requested by**
-     - Valeo, BMW
-   * - **Domain**
-     - Platform Services / Health Monitoring
-   * - **Status**
-     - Proposed
-   * - **Target Platforms**
-     - Linux, QNX
+.. feat:: System Monitoring
+   :id: feat__smon
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
 
 .. toctree::
    :maxdepth: 1
@@ -125,7 +126,7 @@ The following items are explicitly **out of scope** for this feature request:
 
 ----
 
-************************
+***********************
 3. Integration Context
 ***********************
 
