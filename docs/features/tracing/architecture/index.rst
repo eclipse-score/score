@@ -21,7 +21,7 @@ Tracing Architecture
    :id: doc__tracing_architecture
    :status: draft
    :version: 1
-   :safety: ASIL_B
+   :safety: QM
    :security: YES
    :realizes: wp__feature_arch[version==1]
 
@@ -32,7 +32,7 @@ Tracing Feature
 .. feat:: Tracing
    :id: feat__tracing
    :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :status: valid
    :version: 1
 
