@@ -647,8 +647,8 @@
 <p>This is optional guidance for repository maintainers, not a project-wide requirement.
 Maintainers can choose another setup when its trade-offs suit their repository better.
 The alternatives below explain those trade-offs.</p>
-<section id="recommended-approach">
-<h2>Recommended approach<a class="headerlink" href="#recommended-approach" title="Link to this heading">#</a></h2>
+<section id="how-to-recommended-setup">
+<h2>How-to: Recommended setup<a class="headerlink" href="#how-to-recommended-setup" title="Link to this heading">#</a></h2>
 <p>Use GitHub’s native merge queue with optional label-enabled checks on PRs:</p>
 <ul class="simple">
 <li><p>Run fast checks on PRs and again in the queue.</p></li>
@@ -658,9 +658,6 @@ The alternatives below explain those trade-offs.</p>
 <p>The queue validates the combined state of the latest default branch, the PR, and PRs ahead of it.
 Optional early checks let contributors investigate expensive-check failures before queueing again.
 Labels only control PR checks; the corresponding checks always run in the queue.</p>
-</section>
-<section id="set-up-the-repository">
-<h2>Set up the repository<a class="headerlink" href="#set-up-the-repository" title="Link to this heading">#</a></h2>
 <section id="configure-workflow-triggers-and-optional-checks">
 <h3>1. Configure workflow triggers and optional checks<a class="headerlink" href="#configure-workflow-triggers-and-optional-checks" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
@@ -671,28 +668,17 @@ Check out and validate the merge-group revision, rather than the PR head, in que
 <li><p>For optional early checks, include <code class="docutils literal notranslate"><span class="pre">labeled</span></code> and <code class="docutils literal notranslate"><span class="pre">unlabeled</span></code> PR events so label changes update the checks.
 Select these jobs by PR label, but always select them for merge-group events.</p></li>
 <li><p>Handle access to secrets explicitly.
-Labels do not replace any necessary environment approval for fork PRs.
-The shared <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/qnx-build.yml">QNX workflow</a>
-shows how approval logic can distinguish fork PRs from reviewed changes in the merge queue.</p></li>
+Labels do not replace any necessary environment approval for fork PRs.</p></li>
 </ol>
-<p>The shared <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/bazel.yml">Bazel workflow</a>
-leaves event and label selection to its caller, has no environment-approval job, and rejects <code class="docutils literal notranslate"><span class="pre">pull_request_target</span></code>.
-Its QNX support therefore does not replace the gated QNX workflow for early secret-dependent checks on fork PRs.
-For that path, use a workflow with explicit approval and access to the required secrets, such as the QNX workflow above.</p>
-<p>For examples of label-enabled checks, see <a class="reference external" href="https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci.yml">inc_someip_gateway’s CI</a>
-(<code class="docutils literal notranslate"><span class="pre">test-cross</span></code> for cross-compilation) and its
-<a class="reference external" href="https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci_pull_request_target.yml">PR-target workflow</a>
-(<code class="docutils literal notranslate"><span class="pre">test-qnx</span></code> for QNX builds).
-<code class="docutils literal notranslate"><span class="pre">devcontainer</span></code> uses <code class="docutils literal notranslate"><span class="pre">test-consumer</span></code> for consumer tests.
-Checks can also run automatically on internal PRs, with labels needed only for fork PRs, as in <code class="docutils literal notranslate"><span class="pre">communication</span></code>.
-Internal PRs use branches in the same repository; fork PRs use branches in a fork.</p>
+<p>For early QNX checks on fork PRs, use an execution path with explicit approval and access to the required secrets.
+The shared Bazel workflow does not currently provide that path; see
+<a class="reference internal" href="#workflow-context-and-fork-support">workflow context and fork support</a> for the available QNX workflow and its limitations.</p>
 </section>
 <section id="aggregate-results-in-a-collector-check">
 <h3>2. Aggregate results in a collector check<a class="headerlink" href="#aggregate-results-in-a-collector-check" title="Link to this heading">#</a></h3>
 <p>We recommend a collector job, such as <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">mergeable</span></code>, as the required check.
 The workflow lists the jobs it depends on and aggregates their results.
-This keeps changes to the list of required jobs within the repository, without changing the organization configuration each time a job is added or renamed.
-Examples include <code class="docutils literal notranslate"><span class="pre">build/overall-result</span></code> in <code class="docutils literal notranslate"><span class="pre">devcontainer</span></code> and <code class="docutils literal notranslate"><span class="pre">ci/can_merge</span></code> in <code class="docutils literal notranslate"><span class="pre">inc_someip_gateway</span></code>.</p>
+This keeps changes to the list of required jobs within the repository, without changing the organization configuration each time a job is added or renamed.</p>
 <p>The collector needs to run even after dependencies fail or are skipped, reject failures and cancellations,
 and accept skipped checks only when they are intentionally optional for that event.
 A check omitted intentionally on PRs still needs to execute successfully in the queue before the collector passes there.</p>
@@ -738,33 +724,94 @@ caching and reliability improvements remain separate work.</p>
 </section>
 <section id="alternatives-and-trade-offs">
 <h2>Alternatives and trade-offs<a class="headerlink" href="#alternatives-and-trade-offs" title="Link to this heading">#</a></h2>
-<p>Alternatives change when expensive checks run, whether PRs use a queue, or how required checks are configured.
-These choices are independent: a repository can use different timing for different checks,
-and either a collector or individual required checks with any merge strategy.</p>
-<section id="queue-with-expensive-checks-on-every-pr">
-<h3>Queue with expensive checks on every PR<a class="headerlink" href="#queue-with-expensive-checks-on-every-pr" title="Link to this heading">#</a></h3>
+<p>The how-to above describes the recommended setup.
+This chapter compares other choices: when expensive checks run, how contributors request early checks,
+which workflow context executes them, and how merging is enforced.
+These choices can be combined independently.</p>
+<section id="when-to-run-expensive-checks">
+<h3>When to run expensive checks<a class="headerlink" href="#when-to-run-expensive-checks" title="Link to this heading">#</a></h3>
+<section id="optional-early-checks-recommended">
+<h4>Optional early checks (recommended)<a class="headerlink" href="#optional-early-checks-recommended" title="Link to this heading">#</a></h4>
+<p>Run fast checks on PRs and again in the queue; always run expensive checks in the queue.
+Allow contributors to investigate expensive-check failures before another queue run by requesting an early check.
+This saves CI resources compared with running expensive checks on every PR update, but requires an explicit way to request them.
+The how-to uses labels; manual dispatch is another option, described below.</p>
+</section>
+<section id="expensive-checks-on-every-pr">
+<h4>Expensive checks on every PR<a class="headerlink" href="#expensive-checks-on-every-pr" title="Link to this heading">#</a></h4>
 <p>Run expensive checks on every PR and again in the queue, with manual approval where needed for access to secrets.
 Examples include <code class="docutils literal notranslate"><span class="pre">baselibs</span></code>, <code class="docutils literal notranslate"><span class="pre">inc_ecu_model</span></code>, <code class="docutils literal notranslate"><span class="pre">logging</span></code>, and <code class="docutils literal notranslate"><span class="pre">tooling</span></code>.</p>
 <p>This gives early feedback without labels, but uses more CI resources than the recommended setup and can require more manual approvals.
 It can be preferable when the checks are affordable and their feedback is useful on most PR updates.</p>
 </section>
-<section id="queue-with-early-expensive-checks-on-internal-prs">
-<h3>Queue with early expensive checks on internal PRs<a class="headerlink" href="#queue-with-early-expensive-checks-on-internal-prs" title="Link to this heading">#</a></h3>
+<section id="early-expensive-checks-on-internal-prs">
+<h4>Early expensive checks on internal PRs<a class="headerlink" href="#early-expensive-checks-on-internal-prs" title="Link to this heading">#</a></h4>
 <p>Run selected expensive checks on internal PRs and in the queue, but skip them on fork PRs.
+Internal PRs use branches in the same repository; fork PRs use branches in a fork.
 For example, <code class="docutils literal notranslate"><span class="pre">itf</span></code> and <code class="docutils literal notranslate"><span class="pre">qnx_unit_tests</span></code> run secret-dependent QNX checks on internal PRs after environment approval.</p>
 <p>This avoids label handling, but fork contributors cannot request early checks to investigate a queue failure.
 They need another queue run to test a fix for those checks.
-It can suit repositories that want a simple policy for secret-dependent checks and accept later feedback on fork PRs.</p>
+It can suit repositories that accept later feedback on fork PRs.</p>
 </section>
-<section id="queue-with-expensive-checks-only-in-the-queue">
-<h3>Queue with expensive checks only in the queue<a class="headerlink" href="#queue-with-expensive-checks-only-in-the-queue" title="Link to this heading">#</a></h3>
+<section id="expensive-checks-only-in-the-queue">
+<h4>Expensive checks only in the queue<a class="headerlink" href="#expensive-checks-only-in-the-queue" title="Link to this heading">#</a></h4>
 <p>Run fast checks on PRs and again in the queue, but defer selected expensive checks entirely to the queue.</p>
 <p>This needs no label or PR-origin conditions, but every investigation of an expensive-check failure requires queue runs.
-Compared with the recommended setup, contributors cannot get targeted feedback on their PR before queueing again.
 It can suit checks that rarely fail and for which maintaining an early-feedback path is not worthwhile.</p>
 </section>
+</section>
+<section id="how-to-request-early-checks">
+<h3>How to request early checks<a class="headerlink" href="#how-to-request-early-checks" title="Link to this heading">#</a></h3>
+<section id="pr-labels-recommended">
+<h4>PR labels (recommended)<a class="headerlink" href="#pr-labels-recommended" title="Link to this heading">#</a></h4>
+<p>Labels select optional checks within the PR workflow and keep their results alongside other PR checks.
+PR authors without permission to apply labels need a maintainer to set them.
+Labels do not themselves grant access to secrets or provide approval for executing fork code.</p>
+<p>For examples of label-enabled checks, see <a class="reference external" href="https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci.yml">inc_someip_gateway’s CI</a>
+(<code class="docutils literal notranslate"><span class="pre">test-cross</span></code> for cross-compilation) and its
+<a class="reference external" href="https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci_pull_request_target.yml">PR-target workflow</a>
+(<code class="docutils literal notranslate"><span class="pre">test-qnx</span></code> for QNX builds).
+<code class="docutils literal notranslate"><span class="pre">devcontainer</span></code> uses <code class="docutils literal notranslate"><span class="pre">test-consumer</span></code> for consumer tests.
+Checks can also run automatically on internal PRs, with labels needed only for fork PRs, as in <code class="docutils literal notranslate"><span class="pre">communication</span></code>.</p>
+</section>
+<section id="manual-dispatch">
+<h4>Manual dispatch<a class="headerlink" href="#manual-dispatch" title="Link to this heading">#</a></h4>
+<p>Offer a caller workflow with <code class="docutils literal notranslate"><span class="pre">workflow_dispatch</span></code> that invokes the shared Bazel workflow.
+A maintainer can select an internal feature or release branch and start expensive checks when needed.
+This avoids label conditions, but each early run requires someone with write access to start it.
+See <a class="reference external" href="https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow">GitHub’s instructions for manual workflow runs</a>.</p>
+<p>The workflow must be available on the default branch for manual dispatch.
+Selecting another branch runs that branch’s workflow version and revision, so a release branch can retain its own CI configuration.
+See <a class="reference external" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch">GitHub’s dispatch event reference</a>.</p>
+<p>A dispatch run is a separate workflow run, rather than part of the PR workflow’s collector.
+Use it for early feedback; required queue checks must still validate the merge-group revision before merging.
+Dispatch in a fork does not grant access to upstream secrets; supporting fork QNX checks still needs the execution path described below.</p>
+</section>
+</section>
+<section id="workflow-context-and-fork-support">
+<h3>Workflow context and fork support<a class="headerlink" href="#workflow-context-and-fork-support" title="Link to this heading">#</a></h3>
+<p>Keep the workflow definition separate from the code revision it checks out.
+With <code class="docutils literal notranslate"><span class="pre">pull_request_target</span></code>, GitHub uses the default-branch context even for PRs targeting a release branch.
+Checking out the PR revision changes the build input, but does not select the release branch’s workflow definition.
+As a result, default-branch workflow changes can become incompatible with release-branch builds.
+See <a class="reference external" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target">GitHub’s event reference</a>.</p>
+<p>Dispatch can select an internal branch’s workflow definition as well as its code revision.
+This makes it useful for release branches whose build setup has diverged from the default branch.
+For a fork PR, an upstream dispatch needs an explicit way to select and check out the reviewed fork revision;
+the branch selector alone does not provide that path.</p>
+<p>The shared <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/qnx-build.yml">QNX workflow</a>
+provides an environment-approval job for fork PRs triggered through <code class="docutils literal notranslate"><span class="pre">pull_request_target</span></code>.
+Its approval logic distinguishes those runs from internal PRs and merge-queue runs.
+Approval must apply to the exact revision that is executed.</p>
+<p>The shared <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/bazel.yml">Bazel workflow</a>
+leaves event and label selection to its caller, has no environment-approval job, and rejects <code class="docutils literal notranslate"><span class="pre">pull_request_target</span></code>.
+It also has no repository or revision inputs for checking out fork code from an upstream dispatch.
+Its QNX support therefore does not yet replace the gated QNX workflow for early secret-dependent checks on fork PRs.</p>
+</section>
+<section id="merge-strategy-and-required-checks">
+<h3>Merge strategy and required checks<a class="headerlink" href="#merge-strategy-and-required-checks" title="Link to this heading">#</a></h3>
 <section id="direct-merges-with-an-up-to-date-requirement">
-<h3>Direct merges with an up-to-date requirement<a class="headerlink" href="#direct-merges-with-an-up-to-date-requirement" title="Link to this heading">#</a></h3>
+<h4>Direct merges with an up-to-date requirement<a class="headerlink" href="#direct-merges-with-an-up-to-date-requirement" title="Link to this heading">#</a></h4>
 <p>Require the PR branch to be up to date with the base branch and require all necessary checks, including expensive checks, before merging.
 This can provide the required validation without a queue.</p>
 <p>Compared with the recommended setup, contributors repeatedly update their branches and rerun checks after other merges.
@@ -772,7 +819,7 @@ Maintainers coordinate merges and handle any required approvals for secret-depen
 This can be a reasonable choice for a repository with few merges, where repeated updates are rare.</p>
 </section>
 <section id="direct-merges-without-an-up-to-date-requirement">
-<h3>Direct merges without an up-to-date requirement<a class="headerlink" href="#direct-merges-without-an-up-to-date-requirement" title="Link to this heading">#</a></h3>
+<h4>Direct merges without an up-to-date requirement<a class="headerlink" href="#direct-merges-without-an-up-to-date-requirement" title="Link to this heading">#</a></h4>
 <p>Merge PRs without requiring an up-to-date branch; any configured required checks still need to pass.
 Repositories without required validation checks also fall into this configuration.
 PR authors do not need to update their branch after other PRs merge, unless there are merge conflicts.</p>
@@ -781,13 +828,15 @@ Independently passing PRs can break the default branch when combined, leaving ma
 Choose this only if the repository deliberately accepts that integration risk.</p>
 </section>
 <section id="individual-required-checks-instead-of-a-collector">
-<h3>Individual required checks instead of a collector<a class="headerlink" href="#individual-required-checks-instead-of-a-collector" title="Link to this heading">#</a></h3>
+<h4>Individual required checks instead of a collector<a class="headerlink" href="#individual-required-checks-instead-of-a-collector" title="Link to this heading">#</a></h4>
 <p>List each required check in <code class="docutils literal notranslate"><span class="pre">.eclipsefdn</span></code>, as done for <code class="docutils literal notranslate"><span class="pre">communication</span></code>.
 This avoids collector logic and makes the required jobs explicit in the organization configuration.
 However, adding or renaming a required check also needs a change there, rather than only in the repository workflow.
 This is a reasonable alternative when the check list is small and stable, or an existing setup already works well.</p>
-<p>Choosing a collector or individual checks is independent of the merge strategy and the timing of expensive checks.
-In either arrangement, verify both PR and merge-group behavior, including skipped jobs.</p>
+<p>Collector examples include <code class="docutils literal notranslate"><span class="pre">build/overall-result</span></code> in <code class="docutils literal notranslate"><span class="pre">devcontainer</span></code> and <code class="docutils literal notranslate"><span class="pre">ci/can_merge</span></code> in <code class="docutils literal notranslate"><span class="pre">inc_someip_gateway</span></code>.
+Choosing a collector or individual checks is independent of the merge strategy and the timing of expensive checks.
+In either arrangement, verify the configured required checks, including intentionally skipped jobs.</p>
+</section>
 </section>
 </section>
 <section id="status-quo">
@@ -886,8 +935,7 @@ Enabling a queue or requiring an up-to-date branch does not by itself make build
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-approach">Recommended approach</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-repository">Set up the repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-recommended-setup">How-to: Recommended setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-workflow-triggers-and-optional-checks">1. Configure workflow triggers and optional checks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-results-in-a-collector-check">2. Aggregate results in a collector check</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#require-the-queue-and-collector-in-branch-protection">3. Require the queue and collector in branch protection</a></li>
@@ -896,12 +944,25 @@ Enabling a queue or requiring an up-to-date branch does not by itself make build
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-and-trade-offs">Alternatives and trade-offs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-with-expensive-checks-on-every-pr">Queue with expensive checks on every PR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-with-early-expensive-checks-on-internal-prs">Queue with early expensive checks on internal PRs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-with-expensive-checks-only-in-the-queue">Queue with expensive checks only in the queue</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-merges-with-an-up-to-date-requirement">Direct merges with an up-to-date requirement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-merges-without-an-up-to-date-requirement">Direct merges without an up-to-date requirement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-required-checks-instead-of-a-collector">Individual required checks instead of a collector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-run-expensive-checks">When to run expensive checks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-early-checks-recommended">Optional early checks (recommended)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-checks-on-every-pr">Expensive checks on every PR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#early-expensive-checks-on-internal-prs">Early expensive checks on internal PRs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expensive-checks-only-in-the-queue">Expensive checks only in the queue</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-request-early-checks">How to request early checks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pr-labels-recommended">PR labels (recommended)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-dispatch">Manual dispatch</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-context-and-fork-support">Workflow context and fork support</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-strategy-and-required-checks">Merge strategy and required checks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-merges-with-an-up-to-date-requirement">Direct merges with an up-to-date requirement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-merges-without-an-up-to-date-requirement">Direct merges without an up-to-date requirement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-required-checks-instead-of-a-collector">Individual required checks instead of a collector</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status-quo">Status quo</a></li>
