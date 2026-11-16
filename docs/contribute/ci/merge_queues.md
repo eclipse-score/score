@@ -32,14 +32,13 @@ Labels only control PR checks; the corresponding checks always run in the queue.
 
 ## Setup checklist
 
-* [Configure workflow triggers and optional checks](#merge-queue-workflows)
-* [Aggregate results in a collector check](#merge-queue-collector)
-* [Require the queue and collector in branch protection](#merge-queue-branch-protection)
-* [Verify merge-blocking behavior](#merge-queue-verification)
-* [Document labels and failure recovery](#merge-queue-contributor-workflow)
+1. [Configure workflow triggers and optional checks](#configure-workflow-triggers-and-optional-checks)
+2. [Aggregate results in a collector check](#aggregate-results-in-a-collector-check)
+3. [Require the queue and collector in branch protection](#require-the-queue-and-collector-in-branch-protection)
+4. [Verify merge-blocking behavior](#verify-merge-blocking-behavior)
+5. [Document labels and failure recovery](#document-labels-and-failure-recovery)
 
-(merge-queue-workflows)=
-## 1. Configure workflow triggers and optional checks
+## Configure workflow triggers and optional checks
 
 1. Identify the checks that should block a merge, including build, test, and any necessary expensive checks.
    A workflow running on PRs or merge groups does not by itself make its result mandatory.
@@ -54,8 +53,7 @@ For early QNX checks on fork PRs, use an execution path with explicit approval a
 The shared Bazel workflow does not currently provide that path; see
 [workflow context and fork support](merge_queue_alternatives.md#workflow-context-and-fork-support) for the available QNX workflow and its limitations.
 
-(merge-queue-collector)=
-## 2. Aggregate results in a collector check
+## Aggregate results in a collector check
 
 We recommend a collector job, such as `PR mergeable`, as the required check.
 The workflow lists the jobs it depends on and aggregates their results.
@@ -70,8 +68,7 @@ Do not skip an entire required workflow through event or path filters: its check
 GitHub accepts conditionally skipped jobs as successful, so listing a check as required does not by itself ensure that it runs.
 See [GitHub's guidance on skipped required checks](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks).
 
-(merge-queue-branch-protection)=
-## 3. Require the queue and collector in branch protection
+## Require the queue and collector in branch protection
 
 In [.eclipsefdn's Otterdog configuration](https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet):
 
@@ -83,8 +80,7 @@ In [.eclipsefdn's Otterdog configuration](https://github.com/eclipse-score/.ecli
 A queue without required validation checks does not enforce build or test results.
 Likewise, a collector that exists in a workflow but is absent from the required-check list does not block a merge.
 
-(merge-queue-verification)=
-## 4. Verify merge-blocking behavior
+## Verify merge-blocking behavior
 
 Before relying on the setup, verify that:
 
@@ -96,8 +92,7 @@ Before relying on the setup, verify that:
 GitHub's [merge queue documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
 describes the event and required-check configuration.
 
-(merge-queue-contributor-workflow)=
-## 5. Document labels and failure recovery
+## Document labels and failure recovery
 
 Explain which labels enable early checks and how to recover from a failed queue run.
 PR authors without permission to apply labels need a maintainer to set them.
