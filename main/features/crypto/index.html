@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Security &amp; Cryptography &#8212; S-CORE  documentation</title>
+    <title>Crypto &#8212; S-CORE  documentation</title>
   
   
   
@@ -62,7 +62,7 @@
     <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
     <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'features/security_crypto/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/crypto/index';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Security and Cryptography Architecture" href="architecture/index.html" />
-    <link rel="prev" title="Persistency Requirements Inspection Checklist" href="../persistency/requirements/chklst_req_inspection.html" />
+    <link rel="next" title="Crypto Architecture" href="architecture/index.html" />
+    <link rel="prev" title="Configuration Model" href="../configuration/config_model/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -562,6 +562,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Crypto</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Crypto Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Crypto Requirements</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../daal/index.html">Deterministic App Abstraction Layer</a></li>
 
 
@@ -576,11 +581,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../log_and_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
-<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Security &amp; Cryptography</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Security and Cryptography Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Security and Cryptography Requirements</a></li>
-</ul>
-</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Time</a></li>
 </ul>
 </div>
@@ -625,7 +625,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Security &amp; Cryptography</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Crypto</span></li>
   </ul>
 </nav>
 </div>
@@ -642,13 +642,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="security-cryptography">
-<h1>Security &amp; Cryptography<a class="headerlink" href="#security-cryptography" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c41a46fc">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__security_crypto_feat_reqs">
+  <section id="crypto">
+<h1>Crypto<a class="headerlink" href="#crypto" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-a78cc07e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__crypto">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Security &amp; Crpyto Feature Requirements</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Crpyto</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -663,7 +663,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">crypto</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
 </span></div>
@@ -674,7 +675,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__security_crypto_feat_reqs" title="doc__security_crypto_feat_reqs">doc__security_crypto_feat_reqs</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__crypto" title="doc__crypto">doc__crypto</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -879,12 +880,12 @@ quantum-encryption-standards&gt;</cite>:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../persistency/requirements/chklst_req_inspection.html"
+       href="../configuration/config_model/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Persistency Requirements Inspection Checklist</p>
+        <p class="prev-next-title">Configuration Model</p>
       </div>
     </a>
     <a class="right-next"
@@ -892,7 +893,7 @@ quantum-encryption-standards&gt;</cite>:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Security and Cryptography Architecture</p>
+        <p class="prev-next-title">Crypto Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -945,7 +946,7 @@ quantum-encryption-standards&gt;</cite>:</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/security_crypto/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/crypto/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
