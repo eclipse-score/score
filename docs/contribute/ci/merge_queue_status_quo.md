@@ -13,15 +13,23 @@
 
 # Merge queue status quo
 
-Configured default-branch setups as of 2026-11-15, covering 48 repositories with at least one non-bot commit
-on their default branch in the preceding 30 days
-([organization configuration](https://github.com/eclipse-score/.eclipsefdn/blob/a7ed6c57933c53fecf3c944c5ebcba16fb142d6c/otterdog/eclipse-score.jsonnet)):
+This snapshot covers **48 active repositories** as of **2026-11-15**.
+It includes repositories with at least one non-bot commit on their default branch in the preceding 30 days.
+Source: [organization configuration](https://github.com/eclipse-score/.eclipsefdn/blob/a7ed6c57933c53fecf3c944c5ebcba16fb142d6c/otterdog/eclipse-score.jsonnet).
 
-The columns use the same features as the [alternatives](merge_queue_alternatives.md) and show their observed combinations.
-For configuration instructions, follow the [recommended setup](merge_queues.md).
-Rows group repositories only where the displayed features match.
-Early-check policies describe the selected expensive jobs inspected in the audit; other jobs may use different policies.
-"Not assessed" does not mean that the repository has no early checks.
+For configuration instructions, use the [how-to](merge_queues.md).
+For the meaning and trade-offs of each feature, [compare alternatives](merge_queue_alternatives.md).
+
+## Reading the table
+
+Each row is an observed combination of the same features used in the alternatives.
+Repositories with matching features are grouped; long groups are split into shorter rows for readability.
+
+* **Early expensive checks** describes the selected expensive jobs. Other jobs may use different policies; **Not assessed** does not mean that no early checks exist.
+* **Collector** and **Individual checks** describe the required-check mechanism, not proof that every intended job is covered.
+* **None** means that no validation checks are required, regardless of queue or up-to-date settings.
+
+## Repository configurations
 
 | Repositories | Merge queue | Up-to-date requirement | Early expensive checks | Required validation checks |
 | --- | --- | --- | --- | --- |
@@ -32,12 +40,15 @@ Early-check policies describe the selected expensive jobs inspected in the audit
 | `lifecycle` | Enabled | Yes | Automatic on every PR | Collector |
 | `persistency` | Enabled | No | Not assessed | None |
 | `kyron`, `reference_integration` | Disabled | Yes | Not assessed | None |
-| `.github`, `bazel_cpp_toolchains`, `bazel_platforms`, `bazel_registry`, `bazel_registry_ui`, `cicd-actions`, `cicd-workflows`, `config_management`, `contributor_training`, `coverage_tool`, `dash-license-scan`, `dev_playground`, `docs-as-code`, `eclipse-score-website`, `eclipse-score-website-preview`, `inc_diagnostics`, `inc_security_crypto`, `infrastructure`, `mcp-servers`, `module_template`, `openssl`, `os_autosd`, `os_images`, `process_description`, `qnx_sdp`, `qnx_sdp_pkg`, `rules_imagefs`, `sbom-tool`, `score`, `score-crates`, `score_cpp_policies`, `score_rust_policies`, `testing_tools`, `tools` | Disabled | No | Not assessed | None |
+| `.github`, `bazel_cpp_toolchains`, `bazel_platforms`, `bazel_registry`, `bazel_registry_ui` | Disabled | No | Not assessed | None |
+| `cicd-actions`, `cicd-workflows`, `config_management`, `contributor_training`, `coverage_tool` | Disabled | No | Not assessed | None |
+| `dash-license-scan`, `dev_playground`, `docs-as-code`, `eclipse-score-website`, `eclipse-score-website-preview` | Disabled | No | Not assessed | None |
+| `inc_diagnostics`, `inc_security_crypto`, `infrastructure`, `mcp-servers`, `module_template` | Disabled | No | Not assessed | None |
+| `openssl`, `os_autosd`, `os_images`, `process_description`, `qnx_sdp` | Disabled | No | Not assessed | None |
+| `qnx_sdp_pkg`, `rules_imagefs`, `sbom-tool`, `score`, `score-crates` | Disabled | No | Not assessed | None |
+| `score_cpp_policies`, `score_rust_policies`, `testing_tools`, `tools` | Disabled | No | Not assessed | None |
 
-"Collector" and "Individual checks" describe the configured required-check mechanism, not proof that every intended job is covered.
-"None" means that no validation checks are required, regardless of queue or up-to-date settings.
-
-Two additional gaps are worth noting:
+## Known gaps
 
 * `lifecycle`'s required collector does not include its separate QNX jobs.
 * `time` has a QNX queue collector in its workflow, but that collector is not listed as a required check.

@@ -13,9 +13,12 @@
 
 # Merge queue alternatives and trade-offs
 
-The [recommended setup](merge_queues.md) combines the choices below.
-Use this page to compare their trade-offs; the [status quo](merge_queue_status_quo.md) shows existing repository configurations.
-Each row describes a feature of a setup, not a separate, mutually exclusive configuration.
+Use this page to choose a configuration for your repository.
+For setup instructions, follow the [how-to](merge_queues.md); for existing configurations, see the [status quo](merge_queue_status_quo.md).
+
+## Decisions at a glance
+
+Each row is one decision. A repository combines choices across rows, and individual jobs can use different early-check policies.
 
 | Feature | Recommendation | Other choices |
 | --- | --- | --- |
@@ -24,101 +27,89 @@ Each row describes a feature of a setup, not a separate, mutually exclusive conf
 | Early expensive checks | On demand via PR labels | Automatic on all or internal PRs, manual dispatch, or no early checks |
 | Required validation checks | Collector | Individual required checks |
 
-Early checks can use different policies for different jobs and PR origins.
-For example, `communication` combines automatic internal checks, label-enabled fork checks, and individual required checks.
-`lifecycle` combines a queue with an up-to-date requirement.
-Not every combination currently supports fork code with secrets; see [workflow context and fork support](#workflow-context-and-fork-support).
-Missing required validation checks are a gap in enforcement, regardless of the other choices.
+For example:
+
+* `communication` runs selected checks automatically on internal PRs, enables them by label for fork PRs, and requires individual checks.
+* `lifecycle` uses both a queue and an up-to-date requirement.
+
+Missing required validation checks leave a gap in enforcement regardless of these choices.
+For combinations involving fork code and secrets, also check [workflow context and fork support](#workflow-context-and-fork-support).
 
 ## Merge queue
 
-Use a merge queue to validate the combined state before merging, as described in the [how-to](merge_queues.md).
-Direct merges avoid queue configuration, but need another way to validate integration with other changes,
-or leave maintainers to repair failures after merging.
-The up-to-date requirement below determines this trade-off for direct merges.
+**Recommended: use a queue.** It validates the combined state before merging, as described in the [how-to](merge_queues.md).
+
+**Alternative: merge directly.** This avoids queue configuration, but integration still needs validation.
+An up-to-date requirement can provide it; without either mechanism, maintainers may need to repair failures after merging.
 
 ## Up-to-date requirement
 
-### Require an up-to-date PR branch
+### With a queue: omit the additional requirement (recommended)
 
-Require the PR branch to be up to date with the base branch and require all necessary checks, including expensive checks, before merging.
-This can provide the required validation without a queue.
+The queue already validates changes against the latest base branch.
+Prefer the queue over an additional up-to-date requirement.
+Review legacy protections as well as rulesets when configuring it.
 
-Compared with the recommended setup, contributors repeatedly update their branches and rerun checks after other merges.
-Maintainers coordinate merges and handle any required approvals for secret-dependent PR checks.
-This can be a reasonable choice for a repository with few merges, where repeated updates are rare.
+### Without a queue: require an up-to-date PR branch
 
-### No additional up-to-date requirement (recommended with a queue)
+Require an up-to-date PR branch and all necessary checks, including expensive checks, before merging.
+This can provide integration validation without a queue.
 
-With a queue, omit an additional up-to-date requirement: the queue validates the combined state.
-Without a queue, PRs can merge without updating their branch after other merges, unless there are conflicts;
-any configured required checks still need to pass.
+The cost is repeated work: after other PRs merge, contributors update their branches and rerun checks.
+Maintainers coordinate merges and handle any approvals needed for secret-dependent PR checks.
+This can suit repositories with few merges, where repeated updates are rare.
 
-Without either a queue or an up-to-date requirement, the combined state is not validated before merging.
-Independently passing PRs can break the default branch when combined, leaving maintainers to investigate and repair it.
-For direct merges, choose this only if the repository deliberately accepts that integration risk.
+### Without either mechanism: accept the integration risk
+
+Without a queue or an up-to-date requirement, authors need to update their branches only to resolve conflicts.
+Any configured required checks still need to pass, but the latest combined state is not validated before merging.
+Independently passing PRs can therefore break the default branch when combined.
+Choose this only if the repository accepts that maintainers may need to investigate and repair those failures.
 
 ## Early expensive checks
 
-The following timing choices assume a merge queue.
-Choose when selected expensive checks run before the queue and, for on-demand checks, how they are requested.
-All required expensive checks still need to run in the queue.
+The timing choices below assume a merge queue: fast checks run on PRs and again in the queue,
+and all required expensive checks run in the queue.
+Choose a policy for each expensive check, then choose how to request any optional early runs.
 
-### Optional early checks (recommended)
+### Choose when checks run
 
-Run fast checks on PRs and again in the queue; always run expensive checks in the queue.
-Allow contributors to investigate expensive-check failures before another queue run by requesting an early check.
-This saves CI resources compared with running expensive checks on every PR update, but requires an explicit way to request them.
-The how-to uses labels; manual dispatch is another option, described below.
+| Early-check policy | Benefit | Trade-off |
+| --- | --- | --- |
+| **On demand (recommended)** | Contributors can investigate expensive-check failures before another queue run; fewer runs than checking every PR update. | Needs an explicit request through labels or dispatch. |
+| **Every PR** | Early feedback on every update, without label handling. | More CI usage and potentially more approvals for access to secrets. Best suited to affordable checks whose feedback is usually useful. |
+| **Internal PRs only** | No label handling for checks restricted to same-repository branches. | Fork contributors must use queue runs to investigate failures and test fixes. |
+| **Queue only** | No early-run request or PR-origin conditions to maintain. | Every investigation needs queue runs. Best suited to checks that rarely fail. |
 
-### Expensive checks on every PR
-
-Run expensive checks on every PR and again in the queue, with manual approval where needed for access to secrets.
-Examples include `baselibs`, `inc_ecu_model`, `logging`, and `tooling`.
-
-This gives early feedback without labels, but uses more CI resources than the recommended setup and can require more manual approvals.
-It can be preferable when the checks are affordable and their feedback is useful on most PR updates.
-
-### Early expensive checks on internal PRs
-
-Run selected expensive checks on internal PRs and in the queue, but skip them on fork PRs.
 Internal PRs use branches in the same repository; fork PRs use branches in a fork.
-For example, `itf` and `qnx_unit_tests` run secret-dependent QNX checks on internal PRs after environment approval.
+Examples of automatic checks include `baselibs`, `inc_ecu_model`, `logging`, and `tooling` on all PRs,
+and secret-dependent QNX checks in `itf` and `qnx_unit_tests` on internal PRs after environment approval.
+For checks on all PRs, provide manual approval wherever access to secrets requires it.
 
-This avoids label handling, but fork contributors cannot request early checks to investigate a queue failure.
-They need another queue run to test a fix for those checks.
-It can suit repositories that accept later feedback on fork PRs.
+### Choose how to request optional checks
 
-### Expensive checks only in the queue
-
-Run fast checks on PRs and again in the queue, but defer selected expensive checks entirely to the queue.
-
-This needs no label or PR-origin conditions, but every investigation of an expensive-check failure requires queue runs.
-It can suit checks that rarely fail and for which maintaining an early-feedback path is not worthwhile.
-
-### Request early checks with PR labels (recommended)
+#### PR labels (recommended)
 
 Labels select optional checks within the PR workflow and keep their results alongside other PR checks.
 PR authors without permission to apply labels need a maintainer to set them.
 Labels do not themselves grant access to secrets or provide approval for executing fork code.
 
-For examples of label-enabled checks, see [inc_someip_gateway's CI](https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci.yml)
-(`test-cross` for cross-compilation) and its
-[PR-target workflow](https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci_pull_request_target.yml)
-(`test-qnx` for QNX builds).
-`devcontainer` uses `test-consumer` for consumer tests.
-Checks can also run automatically on internal PRs, with labels needed only for fork PRs, as in `communication`.
+Examples:
 
-### Request early checks with manual dispatch
+* `inc_someip_gateway` uses `test-cross` for cross-compilation in its [CI workflow](https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci.yml) and `test-qnx` for QNX builds in its [PR-target workflow](https://github.com/eclipse-score/inc_someip_gateway/blob/main/.github/workflows/ci_pull_request_target.yml).
+* `devcontainer` uses `test-consumer` for consumer tests.
+* `communication` runs selected checks automatically on internal PRs and uses labels for fork PRs.
+
+#### Manual dispatch
 
 Offer a caller workflow with `workflow_dispatch` that invokes the shared Bazel workflow.
 A maintainer can select an internal feature or release branch and start expensive checks when needed.
 This avoids label conditions, but each early run requires someone with write access to start it.
 See [GitHub's instructions for manual workflow runs](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow).
 
-The workflow must be available on the default branch for manual dispatch.
-Selecting another branch runs that branch's workflow version and revision, so a release branch can retain its own CI configuration.
-See [GitHub's dispatch event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch).
+The caller workflow must be available on the default branch for manual dispatch.
+For how branch selection affects release builds, see [workflow context and fork support](#workflow-context-and-fork-support)
+and [GitHub's dispatch event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch).
 
 A dispatch run is a separate workflow run, rather than part of the PR workflow's collector.
 Use it for early feedback; required queue checks must still validate the merge-group revision before merging.
@@ -126,39 +117,39 @@ Dispatch in a fork does not grant access to upstream secrets; supporting fork QN
 
 ### Workflow context and fork support
 
-Keep the workflow definition separate from the code revision it checks out.
-With `pull_request_target`, GitHub uses the default-branch context even for PRs targeting a release branch.
-Checking out the PR revision changes the build input, but does not select the release branch's workflow definition.
-As a result, default-branch workflow changes can become incompatible with release-branch builds.
-See [GitHub's event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target).
+Distinguish the **workflow definition** from the **code revision it checks out**:
 
-Dispatch can select an internal branch's workflow definition as well as its code revision.
-This makes it useful for release branches whose build setup has diverged from the default branch.
-For a fork PR, an upstream dispatch needs an explicit way to select and check out the reviewed fork revision;
-the branch selector alone does not provide that path.
+| Trigger | Workflow context | Consequence for release branches |
+| --- | --- | --- |
+| `pull_request_target` | Default branch, even for PRs targeting a release branch. | Checking out release-branch or PR code does not select its workflow definition; default-branch workflow changes can become incompatible with that code. |
+| `workflow_dispatch` | The selected internal branch's workflow version and revision. | A release branch can retain its own build setup after diverging from the default branch. |
 
-The shared [QNX workflow](https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/qnx-build.yml)
-provides an environment-approval job for fork PRs triggered through `pull_request_target`.
-Its approval logic distinguishes those runs from internal PRs and merge-queue runs.
+See GitHub's references for [PR-target events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target)
+and [dispatch events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch).
+
+For a fork PR, an upstream dispatch needs an explicit way to select and check out the reviewed fork revision.
+The branch selector alone does not provide that path, and dispatch in a fork does not grant upstream secrets.
 Approval must apply to the exact revision that is executed.
 
-The shared [Bazel workflow](https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/bazel.yml)
-leaves event and label selection to its caller, has no environment-approval job, and rejects `pull_request_target`.
-It also has no repository or revision inputs for checking out fork code from an upstream dispatch.
-Its QNX support therefore does not yet replace the gated QNX workflow for early secret-dependent checks on fork PRs.
+The shared workflows currently differ:
+
+* [QNX workflow](https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/qnx-build.yml): provides an environment-approval job for fork PRs triggered through `pull_request_target`, distinguishing them from internal PRs and merge-queue runs.
+* [Bazel workflow](https://github.com/eclipse-score/cicd-workflows/blob/main/.github/workflows/bazel.yml): leaves event and label selection to the caller, has no environment-approval job, and rejects `pull_request_target`. It also has no repository or revision inputs for an upstream dispatch to check out fork code.
+
+The shared Bazel workflow therefore does not yet replace the gated QNX workflow for early secret-dependent checks on fork PRs.
 
 ## Required validation checks
 
 Require either a collector or individual checks to enforce validation results.
 Enabling a queue or an up-to-date requirement does not make checks mandatory by itself.
 
-### Individual required checks instead of a collector
+| Mechanism | Where required jobs are listed | Trade-off |
+| --- | --- | --- |
+| **Collector (recommended)** | The workflow lists its dependencies; `.eclipsefdn` requires the stable collector name. | Jobs can be added or renamed within the repository, but the collector needs to handle failures and intentional skips correctly. |
+| **Individual checks** | `.eclipsefdn` lists each required check. | No collector logic, and the organization configuration names the checks explicitly; adding or renaming one also requires a change there. |
 
-List each required check in `.eclipsefdn`, as done for `communication`.
-This avoids collector logic and makes the required jobs explicit in the organization configuration.
-However, adding or renaming a required check also needs a change there, rather than only in the repository workflow.
-This is a reasonable alternative when the check list is small and stable, or an existing setup already works well.
-
+Individual checks can suit a small, stable check list or an existing setup that works well, as in `communication`.
 Collector examples include `build/overall-result` in `devcontainer` and `ci/can_merge` in `inc_someip_gateway`.
-Choosing a collector or individual checks is independent of the merge strategy and the timing of expensive checks.
-In either arrangement, verify the configured required checks, including intentionally skipped jobs.
+
+Either mechanism can be combined with any merge strategy or early-check policy.
+Verify that the configured required checks cover the intended jobs and handle intentional skips correctly.
