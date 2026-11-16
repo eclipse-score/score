@@ -96,12 +96,55 @@ caching and reliability improvements remain separate work.
 
 ## Alternatives and trade-offs
 
-The how-to above describes the recommended setup.
-This chapter compares other choices: when expensive checks run, how contributors request early checks,
-which workflow context executes them, and how merging is enforced.
-These choices can be combined independently.
+The how-to combines the recommended choices below.
+Each row describes a feature of a setup, not a separate, mutually exclusive configuration.
 
-### When to run expensive checks
+| Feature | Recommendation | Other choices |
+| --- | --- | --- |
+| Merge queue | Enabled | Direct merges |
+| Up-to-date requirement | No additional requirement | Require an up-to-date PR branch |
+| Early expensive checks | On demand via PR labels | Automatic on all or internal PRs, manual dispatch, or no early checks |
+| Required validation checks | Collector | Individual required checks |
+
+Early checks can use different policies for different jobs and PR origins.
+For example, `communication` combines automatic internal checks, label-enabled fork checks, and individual required checks.
+`lifecycle` combines a queue with an up-to-date requirement.
+Not every combination currently supports fork code with secrets; see [workflow context and fork support](#workflow-context-and-fork-support).
+Missing required validation checks are a gap in enforcement, regardless of the other choices.
+
+### Merge queue
+
+Use a merge queue to validate the combined state before merging, as described in the how-to.
+Direct merges avoid queue configuration, but need another way to validate integration with other changes,
+or leave maintainers to repair failures after merging.
+The up-to-date requirement below determines this trade-off for direct merges.
+
+### Up-to-date requirement
+
+#### Require an up-to-date PR branch
+
+Require the PR branch to be up to date with the base branch and require all necessary checks, including expensive checks, before merging.
+This can provide the required validation without a queue.
+
+Compared with the recommended setup, contributors repeatedly update their branches and rerun checks after other merges.
+Maintainers coordinate merges and handle any required approvals for secret-dependent PR checks.
+This can be a reasonable choice for a repository with few merges, where repeated updates are rare.
+
+#### No additional up-to-date requirement (recommended with a queue)
+
+With a queue, omit an additional up-to-date requirement: the queue validates the combined state.
+Without a queue, PRs can merge without updating their branch after other merges, unless there are conflicts;
+any configured required checks still need to pass.
+
+Without either a queue or an up-to-date requirement, the combined state is not validated before merging.
+Independently passing PRs can break the default branch when combined, leaving maintainers to investigate and repair it.
+For direct merges, choose this only if the repository deliberately accepts that integration risk.
+
+### Early expensive checks
+
+The following timing choices assume a merge queue.
+Choose when selected expensive checks run before the queue and, for on-demand checks, how they are requested.
+All required expensive checks still need to run in the queue.
 
 #### Optional early checks (recommended)
 
@@ -135,9 +178,7 @@ Run fast checks on PRs and again in the queue, but defer selected expensive chec
 This needs no label or PR-origin conditions, but every investigation of an expensive-check failure requires queue runs.
 It can suit checks that rarely fail and for which maintaining an early-feedback path is not worthwhile.
 
-### How to request early checks
-
-#### PR labels (recommended)
+#### Request early checks with PR labels (recommended)
 
 Labels select optional checks within the PR workflow and keep their results alongside other PR checks.
 PR authors without permission to apply labels need a maintainer to set them.
@@ -150,8 +191,7 @@ For examples of label-enabled checks, see [inc_someip_gateway's CI](https://gith
 `devcontainer` uses `test-consumer` for consumer tests.
 Checks can also run automatically on internal PRs, with labels needed only for fork PRs, as in `communication`.
 
-
-#### Manual dispatch
+#### Request early checks with manual dispatch
 
 Offer a caller workflow with `workflow_dispatch` that invokes the shared Bazel workflow.
 A maintainer can select an internal feature or release branch and start expensive checks when needed.
@@ -166,7 +206,7 @@ A dispatch run is a separate workflow run, rather than part of the PR workflow's
 Use it for early feedback; required queue checks must still validate the merge-group revision before merging.
 Dispatch in a fork does not grant access to upstream secrets; supporting fork QNX checks still needs the execution path described below.
 
-### Workflow context and fork support
+#### Workflow context and fork support
 
 Keep the workflow definition separate from the code revision it checks out.
 With `pull_request_target`, GitHub uses the default-branch context even for PRs targeting a release branch.
@@ -189,26 +229,10 @@ leaves event and label selection to its caller, has no environment-approval job,
 It also has no repository or revision inputs for checking out fork code from an upstream dispatch.
 Its QNX support therefore does not yet replace the gated QNX workflow for early secret-dependent checks on fork PRs.
 
-### Merge strategy and required checks
+### Required validation checks
 
-#### Direct merges with an up-to-date requirement
-
-Require the PR branch to be up to date with the base branch and require all necessary checks, including expensive checks, before merging.
-This can provide the required validation without a queue.
-
-Compared with the recommended setup, contributors repeatedly update their branches and rerun checks after other merges.
-Maintainers coordinate merges and handle any required approvals for secret-dependent PR checks.
-This can be a reasonable choice for a repository with few merges, where repeated updates are rare.
-
-#### Direct merges without an up-to-date requirement
-
-Merge PRs without requiring an up-to-date branch; any configured required checks still need to pass.
-Repositories without required validation checks also fall into this configuration.
-PR authors do not need to update their branch after other PRs merge, unless there are merge conflicts.
-
-Compared with the recommended setup, this leaves the combined state unvalidated before merging.
-Independently passing PRs can break the default branch when combined, leaving maintainers to investigate and repair it.
-Choose this only if the repository deliberately accepts that integration risk.
+Require either a collector or individual checks to enforce validation results.
+Enabling a queue or an up-to-date requirement does not make checks mandatory by itself.
 
 #### Individual required checks instead of a collector
 
@@ -227,19 +251,24 @@ Configured default-branch setups as of 2026-11-15, covering 48 repositories with
 on their default branch in the preceding 30 days
 ([organization configuration](https://github.com/eclipse-score/.eclipsefdn/blob/a7ed6c57933c53fecf3c944c5ebcba16fb142d6c/otterdog/eclipse-score.jsonnet)):
 
-| Configuration | Repositories |
-| --- | --- |
-| Queue with label-enabled early checks (recommended) | `communication`, `devcontainer`, `inc_someip_gateway` |
-| Queue with expensive checks on every PR | `baselibs`, `inc_ecu_model`, `logging`, `time`, `tooling` |
-| Queue with early expensive checks on internal PRs | `itf`, `qnx_unit_tests` |
-| Queue with expensive checks only in the queue | None |
-| Direct merges with an up-to-date requirement | `kyron`, `reference_integration` |
-| Direct merges without an up-to-date requirement | `.github`, `bazel_cpp_toolchains`, `bazel_platforms`, `bazel_registry`, `bazel_registry_ui`, `cicd-actions`, `cicd-workflows`, `config_management`, `contributor_training`, `coverage_tool`, `dash-license-scan`, `dev_playground`, `docs-as-code`, `eclipse-score-website`, `eclipse-score-website-preview`, `inc_diagnostics`, `inc_security_crypto`, `infrastructure`, `mcp-servers`, `module_template`, `openssl`, `os_autosd`, `os_images`, `process_description`, `qnx_sdp`, `qnx_sdp_pkg`, `rules_imagefs`, `sbom-tool`, `score`, `score-crates`, `score_cpp_policies`, `score_rust_policies`, `testing_tools`, `tools` |
-| Queue with expensive checks on every PR and an up-to-date requirement | `lifecycle` |
-| Queue without required validation checks | `persistency` |
+The columns use the same features as the alternatives above and show their observed combinations.
+Rows group repositories only where the displayed features match.
+Early-check policies describe the selected expensive jobs inspected in the audit; other jobs may use different policies.
+"Not assessed" does not mean that the repository has no early checks.
 
-The repositories listed under either direct-merge setup or "Queue without required validation checks" have no required validation checks configured.
-Enabling a queue or requiring an up-to-date branch does not by itself make build and test results mandatory.
+| Repositories | Merge queue | Up-to-date requirement | Early expensive checks | Required validation checks |
+| --- | --- | --- | --- | --- |
+| `devcontainer`, `inc_someip_gateway` | Enabled | No | PR labels | Collector |
+| `communication` | Enabled | No | Automatic internally; PR labels for forks | Individual checks |
+| `baselibs`, `inc_ecu_model`, `logging`, `time`, `tooling` | Enabled | No | Automatic on every PR | Individual checks |
+| `itf`, `qnx_unit_tests` | Enabled | No | Automatic internally; skipped for forks | Individual checks |
+| `lifecycle` | Enabled | Yes | Automatic on every PR | Collector |
+| `persistency` | Enabled | No | Not assessed | None |
+| `kyron`, `reference_integration` | Disabled | Yes | Not assessed | None |
+| `.github`, `bazel_cpp_toolchains`, `bazel_platforms`, `bazel_registry`, `bazel_registry_ui`, `cicd-actions`, `cicd-workflows`, `config_management`, `contributor_training`, `coverage_tool`, `dash-license-scan`, `dev_playground`, `docs-as-code`, `eclipse-score-website`, `eclipse-score-website-preview`, `inc_diagnostics`, `inc_security_crypto`, `infrastructure`, `mcp-servers`, `module_template`, `openssl`, `os_autosd`, `os_images`, `process_description`, `qnx_sdp`, `qnx_sdp_pkg`, `rules_imagefs`, `sbom-tool`, `score`, `score-crates`, `score_cpp_policies`, `score_rust_policies`, `testing_tools`, `tools` | Disabled | No | Not assessed | None |
+
+"Collector" and "Individual checks" describe the configured required-check mechanism, not proof that every intended job is covered.
+"None" means that no validation checks are required, regardless of queue or up-to-date settings.
 
 Two additional gaps are worth noting:
 
