@@ -666,16 +666,16 @@ Labels only control PR checks; the corresponding checks always run in the queue.
 </section>
 <section id="setup-checklist">
 <h2>Setup checklist<a class="headerlink" href="#setup-checklist" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#merge-queue-workflows">Configure workflow triggers and optional checks</a></p></li>
-<li><p><a class="reference internal" href="#merge-queue-collector">Aggregate results in a collector check</a></p></li>
-<li><p><a class="reference internal" href="#merge-queue-branch-protection">Require the queue and collector in branch protection</a></p></li>
-<li><p><a class="reference internal" href="#merge-queue-verification">Verify merge-blocking behavior</a></p></li>
-<li><p><a class="reference internal" href="#merge-queue-contributor-workflow">Document labels and failure recovery</a></p></li>
-</ul>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#configure-workflow-triggers-and-optional-checks">Configure workflow triggers and optional checks</a></p></li>
+<li><p><a class="reference internal" href="#aggregate-results-in-a-collector-check">Aggregate results in a collector check</a></p></li>
+<li><p><a class="reference internal" href="#require-the-queue-and-collector-in-branch-protection">Require the queue and collector in branch protection</a></p></li>
+<li><p><a class="reference internal" href="#verify-merge-blocking-behavior">Verify merge-blocking behavior</a></p></li>
+<li><p><a class="reference internal" href="#document-labels-and-failure-recovery">Document labels and failure recovery</a></p></li>
+</ol>
 </section>
 <section id="configure-workflow-triggers-and-optional-checks">
-<span id="merge-queue-workflows"></span><h2>1. Configure workflow triggers and optional checks<a class="headerlink" href="#configure-workflow-triggers-and-optional-checks" title="Link to this heading">#</a></h2>
+<h2>Configure workflow triggers and optional checks<a class="headerlink" href="#configure-workflow-triggers-and-optional-checks" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Identify the checks that should block a merge, including build, test, and any necessary expensive checks.
 A workflow running on PRs or merge groups does not by itself make its result mandatory.</p></li>
@@ -691,7 +691,7 @@ The shared Bazel workflow does not currently provide that path; see
 <a class="reference internal" href="merge_queue_alternatives.html#workflow-context-and-fork-support"><span class="std std-ref">workflow context and fork support</span></a> for the available QNX workflow and its limitations.</p>
 </section>
 <section id="aggregate-results-in-a-collector-check">
-<span id="merge-queue-collector"></span><h2>2. Aggregate results in a collector check<a class="headerlink" href="#aggregate-results-in-a-collector-check" title="Link to this heading">#</a></h2>
+<h2>Aggregate results in a collector check<a class="headerlink" href="#aggregate-results-in-a-collector-check" title="Link to this heading">#</a></h2>
 <p>We recommend a collector job, such as <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">mergeable</span></code>, as the required check.
 The workflow lists the jobs it depends on and aggregates their results.
 This keeps changes to the list of required jobs within the repository, without changing the organization configuration each time a job is added or renamed.</p>
@@ -704,7 +704,7 @@ GitHub accepts conditionally skipped jobs as successful, so listing a check as r
 See <a class="reference external" href="https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks">GitHub’s guidance on skipped required checks</a>.</p>
 </section>
 <section id="require-the-queue-and-collector-in-branch-protection">
-<span id="merge-queue-branch-protection"></span><h2>3. Require the queue and collector in branch protection<a class="headerlink" href="#require-the-queue-and-collector-in-branch-protection" title="Link to this heading">#</a></h2>
+<h2>Require the queue and collector in branch protection<a class="headerlink" href="#require-the-queue-and-collector-in-branch-protection" title="Link to this heading">#</a></h2>
 <p>In <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">.eclipsefdn’s Otterdog configuration</a>:</p>
 <ul class="simple">
 <li><p>Configure <code class="docutils literal notranslate"><span class="pre">required_merge_queue</span></code> for the repository’s default branch.</p></li>
@@ -716,7 +716,7 @@ Prefer the queue over an additional strict up-to-date requirement: the queue alr
 Likewise, a collector that exists in a workflow but is absent from the required-check list does not block a merge.</p>
 </section>
 <section id="verify-merge-blocking-behavior">
-<span id="merge-queue-verification"></span><h2>4. Verify merge-blocking behavior<a class="headerlink" href="#verify-merge-blocking-behavior" title="Link to this heading">#</a></h2>
+<h2>Verify merge-blocking behavior<a class="headerlink" href="#verify-merge-blocking-behavior" title="Link to this heading">#</a></h2>
 <p>Before relying on the setup, verify that:</p>
 <ul class="simple">
 <li><p>A successful PR can enter the queue and merge after a successful queue run.</p></li>
@@ -728,7 +728,7 @@ Likewise, a collector that exists in a workflow but is absent from the required-
 describes the event and required-check configuration.</p>
 </section>
 <section id="document-labels-and-failure-recovery">
-<span id="merge-queue-contributor-workflow"></span><h2>5. Document labels and failure recovery<a class="headerlink" href="#document-labels-and-failure-recovery" title="Link to this heading">#</a></h2>
+<h2>Document labels and failure recovery<a class="headerlink" href="#document-labels-and-failure-recovery" title="Link to this heading">#</a></h2>
 <p>Explain which labels enable early checks and how to recover from a failed queue run.
 PR authors without permission to apply labels need a maintainer to set them.
 After investigating a failure and testing a fix on the PR, queue the PR again for validation against the latest combined state.
@@ -797,11 +797,11 @@ caching and reliability improvements remain separate work.</p>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-recommended-setup">How-to: Recommended setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-checklist">Setup checklist</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-workflow-triggers-and-optional-checks">1. Configure workflow triggers and optional checks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-results-in-a-collector-check">2. Aggregate results in a collector check</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#require-the-queue-and-collector-in-branch-protection">3. Require the queue and collector in branch protection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-merge-blocking-behavior">4. Verify merge-blocking behavior</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-labels-and-failure-recovery">5. Document labels and failure recovery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-workflow-triggers-and-optional-checks">Configure workflow triggers and optional checks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-results-in-a-collector-check">Aggregate results in a collector check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#require-the-queue-and-collector-in-branch-protection">Require the queue and collector in branch protection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-merge-blocking-behavior">Verify merge-blocking behavior</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-labels-and-failure-recovery">Document labels and failure recovery</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
 </ul>
   </nav></div>
