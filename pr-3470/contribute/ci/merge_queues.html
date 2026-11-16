@@ -648,18 +648,35 @@
 ----------------------------------------------------------------------------- -->
 <section id="merge-queue-guidance-for-maintainers">
 <h1>Merge queue guidance for maintainers<a class="headerlink" href="#merge-queue-guidance-for-maintainers" title="Link to this heading">#</a></h1>
-<p>This is optional guidance for repository maintainers, not a project-wide requirement.
-Maintainers can choose another setup when its trade-offs suit their repository better.
-For other setups, <a class="reference internal" href="merge_queue_alternatives.html"><span class="std std-doc">compare alternatives</span></a>.
-To see existing combinations, <a class="reference internal" href="merge_queue_status_quo.html"><span class="std std-doc">explore current repository setups</span></a>.</p>
-<section id="how-to-recommended-setup">
-<h2>How-to: Recommended setup<a class="headerlink" href="#how-to-recommended-setup" title="Link to this heading">#</a></h2>
-<p>Use GitHub’s native merge queue with optional label-enabled checks on PRs:</p>
+<p>Use this guide to configure automatic checks before merging changes.
+This guidance is optional. Maintainers can choose another configuration for their repository.</p>
 <ul class="simple">
-<li><p>Run fast checks on PRs and again in the queue.</p></li>
-<li><p>Run expensive checks, such as QNX builds, in the queue; allow labels to enable them earlier on a PR.</p></li>
-<li><p>Require a stable collector check that aggregates the results needed for merging.</p></li>
+<li><p>To choose a different setup, <a class="reference internal" href="merge_queue_alternatives.html"><span class="std std-doc">compare alternatives</span></a>.</p></li>
+<li><p>To inspect existing setups, see the <a class="reference internal" href="merge_queue_status_quo.html"><span class="std std-doc">repository status quo</span></a>.</p></li>
 </ul>
+<section id="recommended-setup">
+<h2>Recommended setup<a class="headerlink" href="#recommended-setup" title="Link to this heading">#</a></h2>
+<p>Use GitHub’s native merge queue, with labels to request early expensive checks:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Checks</p></th>
+<th class="head"><p>On a PR</p></th>
+<th class="head"><p>In the merge queue</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fast checks</p></td>
+<td><p>Run automatically</p></td>
+<td><p>Always run</p></td>
+</tr>
+<tr class="row-odd"><td><p>Expensive checks, such as QNX builds</p></td>
+<td><p>Run when enabled by a label</p></td>
+<td><p>Always run</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Require a stable collector check that aggregates the results needed for merging.</p>
 <p>The queue validates the combined state of the latest default branch, the PR, and PRs ahead of it.
 Optional early checks let contributors investigate expensive-check failures before queueing again.
 Labels only control PR checks; the corresponding checks always run in the queue.</p>
@@ -693,15 +710,22 @@ The shared Bazel workflow does not currently provide that path; see
 <section id="aggregate-results-in-a-collector-check">
 <h2>Aggregate results in a collector check<a class="headerlink" href="#aggregate-results-in-a-collector-check" title="Link to this heading">#</a></h2>
 <p>We recommend a collector job, such as <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">mergeable</span></code>, as the required check.
-The workflow lists the jobs it depends on and aggregates their results.
-This keeps changes to the list of required jobs within the repository, without changing the organization configuration each time a job is added or renamed.</p>
-<p>The collector needs to run even after dependencies fail or are skipped, reject failures and cancellations,
-and accept skipped checks only when they are intentionally optional for that event.
-A check omitted intentionally on PRs still needs to execute successfully in the queue before the collector passes there.</p>
+Make the collector depend on every job needed for merging and evaluate their results.
+Keep this dependency list in the repository workflow, so adding or renaming a job does not also require an organization-configuration change.</p>
+<p>Configure the collector to:</p>
+<ul class="simple">
+<li><p>Run even when dependencies fail or are skipped.</p></li>
+<li><p>Reject failures and cancellations.</p></li>
+<li><p>Accept skipped jobs only when they are intentionally optional for that event.</p></li>
+<li><p>Require expensive checks to run successfully in the queue, even when they were optional on the PR.</p></li>
+</ul>
 <p>Report the required check under the same name on PRs and merge groups.
-Do not skip an entire required workflow through event or path filters: its check can remain pending and block merging.
-GitHub accepts conditionally skipped jobs as successful, so listing a check as required does not by itself ensure that it runs.
-See <a class="reference external" href="https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks">GitHub’s guidance on skipped required checks</a>.</p>
+Two kinds of skipping need particular care:</p>
+<ul class="simple">
+<li><p><strong>Workflow filters:</strong> event or path filters can skip an entire required workflow, leaving its check pending and blocking a merge.</p></li>
+<li><p><strong>Job conditions:</strong> GitHub treats conditionally skipped jobs as successful. Listing a job as required does not ensure that it runs; account for intentional skips in the collector.</p></li>
+</ul>
+<p>See <a class="reference external" href="https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks">GitHub’s guidance on skipped required checks</a>.</p>
 </section>
 <section id="require-the-queue-and-collector-in-branch-protection">
 <h2>Require the queue and collector in branch protection<a class="headerlink" href="#require-the-queue-and-collector-in-branch-protection" title="Link to this heading">#</a></h2>
@@ -729,10 +753,12 @@ describes the event and required-check configuration.</p>
 </section>
 <section id="document-labels-and-failure-recovery">
 <h2>Document labels and failure recovery<a class="headerlink" href="#document-labels-and-failure-recovery" title="Link to this heading">#</a></h2>
-<p>Explain which labels enable early checks and how to recover from a failed queue run.
-PR authors without permission to apply labels need a maintainer to set them.
-After investigating a failure and testing a fix on the PR, queue the PR again for validation against the latest combined state.
-Early PR checks do not replace this final queue run.</p>
+<p>Document the two actions PR authors need:</p>
+<ul class="simple">
+<li><p><strong>Request early checks:</strong> list the available labels and explain how to ask a maintainer to apply them when the author lacks permission.</p></li>
+<li><p><strong>Recover from a queue failure:</strong> investigate the failure, test the fix on the PR, and queue the PR again to validate the latest combined state.</p></li>
+</ul>
+<p>Early PR checks do not replace the final queue run.</p>
 <p>Maintainers remain responsible for ongoing CI maintenance and for repairing a broken default branch.
 Merge queues reduce the risk of integration failures, but do not fix flaky SDK downloads or tests;
 caching and reliability improvements remain separate work.</p>
@@ -795,7 +821,7 @@ caching and reliability improvements remain separate work.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-recommended-setup">How-to: Recommended setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-setup">Recommended setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-checklist">Setup checklist</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-workflow-triggers-and-optional-checks">Configure workflow triggers and optional checks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-results-in-a-collector-check">Aggregate results in a collector check</a></li>

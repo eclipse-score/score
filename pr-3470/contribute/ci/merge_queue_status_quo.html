@@ -651,14 +651,23 @@
 ----------------------------------------------------------------------------- -->
 <section id="merge-queue-status-quo">
 <h1>Merge queue status quo<a class="headerlink" href="#merge-queue-status-quo" title="Link to this heading">#</a></h1>
-<p>Configured default-branch setups as of 2026-11-15, covering 48 repositories with at least one non-bot commit
-on their default branch in the preceding 30 days
-(<a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/a7ed6c57933c53fecf3c944c5ebcba16fb142d6c/otterdog/eclipse-score.jsonnet">organization configuration</a>):</p>
-<p>The columns use the same features as the <a class="reference internal" href="merge_queue_alternatives.html"><span class="std std-doc">alternatives</span></a> and show their observed combinations.
-For configuration instructions, follow the <a class="reference internal" href="merge_queues.html"><span class="std std-doc">recommended setup</span></a>.
-Rows group repositories only where the displayed features match.
-Early-check policies describe the selected expensive jobs inspected in the audit; other jobs may use different policies.
-“Not assessed” does not mean that the repository has no early checks.</p>
+<p>This snapshot covers <strong>48 active repositories</strong> as of <strong>2026-11-15</strong>.
+It includes repositories with at least one non-bot commit on their default branch in the preceding 30 days.
+Source: <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/a7ed6c57933c53fecf3c944c5ebcba16fb142d6c/otterdog/eclipse-score.jsonnet">organization configuration</a>.</p>
+<p>For configuration instructions, use the <a class="reference internal" href="merge_queues.html"><span class="std std-doc">how-to</span></a>.
+For the meaning and trade-offs of each feature, <a class="reference internal" href="merge_queue_alternatives.html"><span class="std std-doc">compare alternatives</span></a>.</p>
+<section id="reading-the-table">
+<h2>Reading the table<a class="headerlink" href="#reading-the-table" title="Link to this heading">#</a></h2>
+<p>Each row is an observed combination of the same features used in the alternatives.
+Repositories with matching features are grouped; long groups are split into shorter rows for readability.</p>
+<ul class="simple">
+<li><p><strong>Early expensive checks</strong> describes the selected expensive jobs. Other jobs may use different policies; <strong>Not assessed</strong> does not mean that no early checks exist.</p></li>
+<li><p><strong>Collector</strong> and <strong>Individual checks</strong> describe the required-check mechanism, not proof that every intended job is covered.</p></li>
+<li><p><strong>None</strong> means that no validation checks are required, regardless of queue or up-to-date settings.</p></li>
+</ul>
+</section>
+<section id="repository-configurations">
+<h2>Repository configurations<a class="headerlink" href="#repository-configurations" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Repositories</p></th>
@@ -711,7 +720,43 @@ Early-check policies describe the selected expensive jobs inspected in the audit
 <td><p>Not assessed</p></td>
 <td><p>None</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.github</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_cpp_toolchains</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_platforms</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_registry</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_registry_ui</span></code>, <code class="docutils literal notranslate"><span class="pre">cicd-actions</span></code>, <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code>, <code class="docutils literal notranslate"><span class="pre">config_management</span></code>, <code class="docutils literal notranslate"><span class="pre">contributor_training</span></code>, <code class="docutils literal notranslate"><span class="pre">coverage_tool</span></code>, <code class="docutils literal notranslate"><span class="pre">dash-license-scan</span></code>, <code class="docutils literal notranslate"><span class="pre">dev_playground</span></code>, <code class="docutils literal notranslate"><span class="pre">docs-as-code</span></code>, <code class="docutils literal notranslate"><span class="pre">eclipse-score-website</span></code>, <code class="docutils literal notranslate"><span class="pre">eclipse-score-website-preview</span></code>, <code class="docutils literal notranslate"><span class="pre">inc_diagnostics</span></code>, <code class="docutils literal notranslate"><span class="pre">inc_security_crypto</span></code>, <code class="docutils literal notranslate"><span class="pre">infrastructure</span></code>, <code class="docutils literal notranslate"><span class="pre">mcp-servers</span></code>, <code class="docutils literal notranslate"><span class="pre">module_template</span></code>, <code class="docutils literal notranslate"><span class="pre">openssl</span></code>, <code class="docutils literal notranslate"><span class="pre">os_autosd</span></code>, <code class="docutils literal notranslate"><span class="pre">os_images</span></code>, <code class="docutils literal notranslate"><span class="pre">process_description</span></code>, <code class="docutils literal notranslate"><span class="pre">qnx_sdp</span></code>, <code class="docutils literal notranslate"><span class="pre">qnx_sdp_pkg</span></code>, <code class="docutils literal notranslate"><span class="pre">rules_imagefs</span></code>, <code class="docutils literal notranslate"><span class="pre">sbom-tool</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code>, <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>, <code class="docutils literal notranslate"><span class="pre">score_cpp_policies</span></code>, <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>, <code class="docutils literal notranslate"><span class="pre">testing_tools</span></code>, <code class="docutils literal notranslate"><span class="pre">tools</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.github</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_cpp_toolchains</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_platforms</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_registry</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel_registry_ui</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>No</p></td>
+<td><p>Not assessed</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cicd-actions</span></code>, <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code>, <code class="docutils literal notranslate"><span class="pre">config_management</span></code>, <code class="docutils literal notranslate"><span class="pre">contributor_training</span></code>, <code class="docutils literal notranslate"><span class="pre">coverage_tool</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>No</p></td>
+<td><p>Not assessed</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dash-license-scan</span></code>, <code class="docutils literal notranslate"><span class="pre">dev_playground</span></code>, <code class="docutils literal notranslate"><span class="pre">docs-as-code</span></code>, <code class="docutils literal notranslate"><span class="pre">eclipse-score-website</span></code>, <code class="docutils literal notranslate"><span class="pre">eclipse-score-website-preview</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>No</p></td>
+<td><p>Not assessed</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inc_diagnostics</span></code>, <code class="docutils literal notranslate"><span class="pre">inc_security_crypto</span></code>, <code class="docutils literal notranslate"><span class="pre">infrastructure</span></code>, <code class="docutils literal notranslate"><span class="pre">mcp-servers</span></code>, <code class="docutils literal notranslate"><span class="pre">module_template</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>No</p></td>
+<td><p>Not assessed</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">openssl</span></code>, <code class="docutils literal notranslate"><span class="pre">os_autosd</span></code>, <code class="docutils literal notranslate"><span class="pre">os_images</span></code>, <code class="docutils literal notranslate"><span class="pre">process_description</span></code>, <code class="docutils literal notranslate"><span class="pre">qnx_sdp</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>No</p></td>
+<td><p>Not assessed</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qnx_sdp_pkg</span></code>, <code class="docutils literal notranslate"><span class="pre">rules_imagefs</span></code>, <code class="docutils literal notranslate"><span class="pre">sbom-tool</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code>, <code class="docutils literal notranslate"><span class="pre">score-crates</span></code></p></td>
+<td><p>Disabled</p></td>
+<td><p>No</p></td>
+<td><p>Not assessed</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score_cpp_policies</span></code>, <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>, <code class="docutils literal notranslate"><span class="pre">testing_tools</span></code>, <code class="docutils literal notranslate"><span class="pre">tools</span></code></p></td>
 <td><p>Disabled</p></td>
 <td><p>No</p></td>
 <td><p>Not assessed</p></td>
@@ -720,13 +765,14 @@ Early-check policies describe the selected expensive jobs inspected in the audit
 </tbody>
 </table>
 </div>
-<p>“Collector” and “Individual checks” describe the configured required-check mechanism, not proof that every intended job is covered.
-“None” means that no validation checks are required, regardless of queue or up-to-date settings.</p>
-<p>Two additional gaps are worth noting:</p>
+</section>
+<section id="known-gaps">
+<h2>Known gaps<a class="headerlink" href="#known-gaps" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lifecycle</span></code>’s required collector does not include its separate QNX jobs.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> has a QNX queue collector in its workflow, but that collector is not listed as a required check.</p></li>
 </ul>
+</section>
 </section>
 
 
@@ -767,6 +813,20 @@ Early-check policies describe the selected expensive jobs inspected in the audit
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-table">Reading the table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-configurations">Repository configurations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-gaps">Known gaps</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
