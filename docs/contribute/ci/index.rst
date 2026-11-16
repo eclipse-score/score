@@ -18,4 +18,5 @@ CI
 .. toctree::
    :maxdepth: 1
 
+   merge_queues
    publishing-gh-pages
