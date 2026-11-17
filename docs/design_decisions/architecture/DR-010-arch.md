@@ -26,6 +26,26 @@
 
 ---
 
+## Summary
+
+- **Today:** SOME/IP and DDS support is split over three repositories. Forwarding
+  and the service model exist twice, `socom` duplicates `mw::com`, and a prototype
+  bypasses both.
+- **Target:** applications use `mw::com` only. Same-host traffic uses LoLa. Remote
+  traffic uses a SOME/IP or DDS binding, which lives in its protocol's repository
+  and is built into the application or into `gatewayd`. Each protocol has one
+  daemon per host that holds the wire protocol. Forwarding exists once, in
+  `communication`. `socom` is retired.
+- **Decided by this record:** the target picture (D1 to D7), who owns what
+  (Responsibilities) and the order of work (Implementation Plan).
+- **Not decided here:** the SOME/IP stack for `someipd` (lg-someip or opensomeip,
+  Q1) and the io-sock fast path (Q2). The measurements in Evidence Required decide
+  them.
+- **Safety boundary:** QM daemons and the io-sock path never sit in an ASIL data
+  path. `gatewayd` and ASIL bindings run in ASIL-B processes.
+
+---
+
 ## Context / Problem
 
 S-CORE applications use `mw::com` as their service-oriented API. LoLa provides
@@ -170,12 +190,12 @@ ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
 | DDS protocol: `ddsd`, DDS binding, DDS integration | DDS FT, to be created | DDS repository, to be decided | The DDS protocol path end to end | The binding interface |
 | Serializer implementations for each service type | To be assigned | To be decided | Generated or hand-written payload serializers | The serializer plugin API |
 | External stacks: lg-someip, opensomeip, Cyclone DDS | Owner of the daemon that uses them | Dependency, not a repository of S-CORE | Version pinning, licence review, updates | Anything else |
-| Performance evidence (T1 to T8) | SOME/IP FT for the protocol path; Communication FT for `mw::com`-level figures | Both | The test plan results | — |
+| Performance evidence (T1 to T8) | SOME/IP FT for the protocol path; Communication FT for `mw::com`-level figures | Both | The results of tests T1 to T8 | — |
 | Decision records | Architecture Community, with the leads of the affected feature teams | `eclipse-score/score` | The records | — |
 
 ### Rules for a new binding
 
-1. A new binding is a new protocol family, or it is not a new binding. Stack
+1. A binding is added per protocol family, never per stack variant. Stack
    variants of an existing protocol are integrated in its daemon.
 2. A new protocol gets one owner (a feature team), one repository, and a
    binding that passes the binding conformance tests from `communication`.
@@ -226,7 +246,8 @@ follow-up records (stack choice, fast path, serializer location, DDS daemon
 repository). The record supersedes DR-001 in `inc_someip_gateway`.
 Exit: decision records accepted.
 
-**Phase 1 — Evidence.** Run the verification tests (T1 to T8, below) for lg-someip
+**Phase 1 — Evidence.** Run the verification tests (T1 to T8, defined in Evidence
+Required) for lg-someip
 and opensomeip, each hosted inside `someipd`, on the same hardware, and the
 fast-path test T5.
 Exit: results published; Q1 and Q2 decided from them.
@@ -279,7 +300,7 @@ a transport plugin, never in an ASIL data path.
 | Two teams own parts of one path (`communication` and `inc_someip_gateway`) | Interfaces fixed in Phase 2 before implementation |
 | Benchmark numbers come from the stack proponent | Phase 1 measures on our hardware |
 
-### Not part of the plan
+### Not part of the target
 
 - A kernel module in an ASIL data path.
 - An `mw::com` runtime inside a kernel module or the io-sock process.
@@ -301,6 +322,19 @@ has been reproduced on our hardware.
 
 Q2 depends on Q1: the fast path must beat the daemon path of the stack that is
 chosen.
+
+### Verification tests
+
+| Test | Covers | Measured by |
+|---|---|---|
+| T1 | TC8 conformance of each candidate | `tests/tc8_conformance` |
+| T2 | Multi-application host: port sharing, SD visibility, fan-out | Functional test, run set R5 |
+| T3 | Target performance of the candidates | Run matrix R1 to R4 |
+| T4 | Gateway path with E2E checked on the ASIL side | `tests/integration_test` |
+| T5 | Fast path against the daemon path | Run sets R1 and R2, variant A against B or C |
+| T6 | Fault injection on the QM/ASIL boundary: stack process killed, corrupted payloads, flooding | Fault-injection test, to be built |
+| T7 | Sanitizer runs (ASan, UBSan, TSan) of each candidate stack | Sanitizer build of each candidate |
+| T8 | Build and maintenance: QNX SDP build, dependencies, licence obligations | Build and licence review |
 
 ### What exists
 
@@ -400,7 +434,7 @@ spread (min and max).
 3. If the difference is below 10 % on all of these, the tie is decided by the
    qualification path and the maintenance cost. The proponent describes
    opensomeip as pre-1.0 with safety alignment ongoing and not certified, and
-   describes lg-someip as qualified for its AUTOSAR variant only. The record
+   reports a qualification for the AUTOSAR variant of lg-someip only. The record
    makes no compliance claim for either.
 
 **Q2 — io-sock fast path**
@@ -498,7 +532,7 @@ Dispositions:
 | `gatewayd` | `score/gatewayd` | Rework | Uses the shared forwarding path; no forwarding code of its own; ASIL-B host (D4) |
 | E2E in `gatewayd` | not implemented (comments only) | New | Implemented in `gatewayd` (Phase 4) |
 | `someipd` | `score/someipd` | Rework | Offers the daemon service interface; stack behind an interface (D5) |
-| SOME/IP stack in `someipd` | `@vsomeip` (`score/someipd` BUILD) | Replace | Replaced by the chosen stack, lg-someip or opensomeip (follow-up 1); vsomeip is out of the candidate set
+| SOME/IP stack in `someipd` | `@vsomeip` (`score/someipd` BUILD) | Replace | Replaced by the chosen stack, lg-someip or opensomeip (follow-up 1); vsomeip is out of the candidate set |
 | `socom` | `score/socom` (about 34 files, mocks, tests, docs) | Retire | Removed once generic methods exist in `mw::com` (D3) |
 | `gateway_ipc_binding` | `score/gateway_ipc_binding` (about 22 files) | Replace | Forwarding moves to communication; per-service logic replaced by the daemon service interface (D2) |
 | `bridged_services` | `score/bridged_services` | Rework | Bridge configuration taken from the `mw::com` deployment |
@@ -577,8 +611,8 @@ applications directly. Rejected.
 native DDS peers, policy and access control, and ASIL-side E2E placement need an
 ASIL-B host. Rejected as the whole answer; kept as the default path (D1).
 
-**A separate SOME/IP daemon per application** (the daemon-less stack used in
-the opensomeip comparison). This gives the lowest latency for small messages,
+**A stack per application, without a host daemon** (the opensomeip library as
+used in the proponent's comparison). This gives the lowest latency for small messages,
 but each application then holds its own SD, ports and event fan-out, and port
 sharing across services is not provided. Rejected for the host-wide
 coordination the target needs; the measured latency gain is recorded as an
@@ -611,10 +645,9 @@ linking is chosen (P5, rule 4).
 The target puts each concern in one place. The wire protocol and the network
 stack are in the daemon, which is QM. The binding interface is in `communication`,
 which is the `mw::com` repository and holds no network stack; the bindings sit in
-their protocol repositories. The ASIL-B logic
-is in `gatewayd`. A QM stack and an ASIL-B consumer therefore never share a
-process, which is the freedom-from-interference boundary the feature
-requirements already require.
+their protocol repositories. The ASIL-B logic is in `gatewayd`. A QM stack and an
+ASIL-B consumer therefore never share a process, which is the
+freedom-from-interference boundary the feature requirements already require.
 
 It removes the two duplicated mechanisms that the repositories currently
 implement: forwarding and the service model. Each of these is already provided
@@ -651,7 +684,7 @@ Work products that change:
 Follow-up records that are needed:
 
 1. SOME/IP stack for `someipd`, and the location of the stack source.
-2. io-sock fast path (after the measurements in the plan).
+2. io-sock fast path (after the measurements in Evidence Required).
 3. Serializer implementation location, shared with DDS.
 4. Repository for the DDS daemon.
 
@@ -659,14 +692,15 @@ Open work that must be re-scoped: `inc_someip_gateway#358` (the migration
 sequence, which keeps a reduced `socom`) and the open `socom` PRs #322, #409,
 #417 and #421. Their scope should follow this record once it is accepted.
 
-Verification: the plan's tests T1 to T8 apply, in particular TC8 conformance,
-the multi-application host test, and fault injection on the QM/ASIL boundary.
+Verification: tests T1 to T8 (defined in Evidence Required) apply, in particular
+TC8 conformance (T1), the multi-application host test (T2) and fault injection on
+the QM/ASIL boundary (T6).
 
 ## Rejected Ideas
 
 - A kernel module in an ASIL data path. Rejected: it is not a safety mechanism
   and it places `mw::com` in a QM system process.
-- A separate SOME/IP daemon per application. Rejected for the reasons in
+- A stack per application without a host daemon. Rejected for the reasons in
   Alternatives Considered.
 - A new gateway repository for SOME/IP. Rejected: the gateway stays in
   `inc_someip_gateway` and the shared parts move to `communication`.
