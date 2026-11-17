@@ -21,7 +21,7 @@
 :version: 1
 :tracking: TBD
 :context: SOME/IP and DDS support is split across three repositories with two gateway forwarding paths, a socom layer that duplicates mw::com, and a prototype that bypasses both. S-CORE needs one target picture for the communication stack.
-:decision: Applications use mw::com only. Same-host communication uses LoLa. Remote communication uses SOME/IP or DDS bindings shipped in communication, placed in the application or in gatewayd. One stack daemon per protocol per host holds the wire protocol. Forwarding exists once, in communication. socom is retired in favour of mw::com services.
+:decision: Applications use mw::com only. Same-host communication uses LoLa. Remote communication uses SOME/IP or DDS bindings, each implemented in the repository of its protocol owner against the binding interface in communication, placed in the application or in gatewayd. One stack daemon per protocol per host holds the wire protocol. Forwarding exists once, in communication. socom is retired in favour of mw::com services.
 ```
 
 ---
@@ -79,8 +79,9 @@ this record as `_assets/DR-010-arch-target_component.puml`.
 
 **D1 — `mw::com` first.** Applications use the `mw::com` API only. Applications
 on the same host communicate through the LoLa binding. Applications on another
-ECU communicate through a SOME/IP or DDS binding. The binding runs either in the
-application (direct placement) or in `gatewayd` (gateway placement).
+ECU communicate through a SOME/IP or DDS binding. The binding is implemented in
+the repository of its protocol owner (see Responsibilities) and runs either in
+the application (direct placement) or in `gatewayd` (gateway placement).
 
 **D2 — One forwarding path.** Forwarding between a local `mw::com` service and a
 remote binding is implemented once, in `communication`, generalised from the
@@ -98,9 +99,8 @@ control. `gatewayd` contains no forwarding code of its own.
 
 **D5 — One stack daemon per protocol per host.** `someipd` holds the SOME/IP
 protocol and service discovery. `ddsd` holds the DDS participant and DDS
-transport. Protocol logic lives only in these daemons. The bindings in
-`communication` talk to a daemon through the daemon service interface and never
-link a protocol stack.
+transport. Protocol logic lives only in these daemons. The bindings talk to a
+daemon through the daemon service interface and never link a protocol stack.
 
 **D6 — The serializer is a shared plugin.** A serializer plugin interface per
 service type is used by all bindings and by `gatewayd`. A null serializer passes
@@ -123,6 +123,87 @@ The choice of SOME/IP stack for `someipd` (vsomeip, which is the current
 default, or lg-someip) is not decided here. It is decided on the measurements
 in the Evidence Required section. The location of the stack source (dependency
 or in-tree) is decided with it.
+
+## Responsibilities
+
+### Principles
+
+**P1 — The core and the contract live in `communication`.** `communication` holds
+the `mw::com` API, the LoLa binding, the binding interface (SPI) with binding
+registration, the forwarding API, the serializer plugin API and the definition
+of the daemon service interface. It holds no protocol implementation and no
+protocol daemon.
+
+**P2 — One repository per protocol family, not per binding or per stack.** The
+number of bindings grows with the number of protocols (SOME/IP, DDS, and any
+future protocol), not with the number of stack variants. Stack variants
+(vsomeip, lg-someip, opensomeip, Cyclone DDS) sit behind a daemon (D5) and never
+add a binding. This keeps the number of repositories and bindings bounded.
+
+**P3 — The owner of a protocol owns its binding, daemon and tests.** The protocol
+owner maintains the binding, the daemon, the stack integration, the protocol
+conformance tests and the safety analysis of the protocol path.
+
+**P4 — Shared interfaces change through a FEP.** The binding interface, the
+daemon service interface, the serializer plugin API and the forwarding API are
+shared across feature teams. A change to any of them is cross-team and requires
+a FEP with a Shepherd and a final comment period, as defined in DR-002-Proc.
+
+**P5 — Dependencies point one way.** A binding depends only on the interfaces
+published by `communication`. `communication` never depends on a protocol
+repository. A protocol repository never depends on another protocol repository.
+
+**P6 — ASIL-B logic runs only where the safety concept places it.** `gatewayd`
+and ASIL-classified bindings run in ASIL-B processes. A QM daemon never links
+ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
+
+### Ownership
+
+| Area | Owner | Repository | Owns | Does not own |
+|---|---|---|---|---|
+| `mw::com` core, LoLa binding, binding interface, binding registration, forwarding API, serializer plugin API, daemon service interface definition | Communication FT | `eclipse-score/communication` | The interfaces and their conformance tests | Protocol logic, daemons, stacks |
+| SOME/IP protocol: `someipd`, SOME/IP binding, stack integration, TC8 conformance | SOME/IP gateway FT | `eclipse-score/inc_someip_gateway` (repository may change, see open points) | The SOME/IP protocol path end to end | The binding interface |
+| `gatewayd` (ASIL-B host): E2E, policy, access control, configuration | SOME/IP gateway FT | `eclipse-score/inc_someip_gateway` | ASIL-B processing of routes | Forwarding logic (in `communication`) |
+| DDS protocol: `ddsd`, DDS binding, DDS integration | DDS FT, to be created | DDS repository, to be decided | The DDS protocol path end to end | The binding interface |
+| Serializer implementations for each service type | To be assigned | To be decided | Generated or hand-written payload serializers | The serializer plugin API |
+| External stacks: vsomeip, lg-someip, opensomeip, Cyclone DDS | Owner of the daemon that uses them | Dependency, not a repository of S-CORE | Version pinning, licence review, updates | Anything else |
+| Performance evidence (T1 to T8) | SOME/IP FT for the protocol path; Communication FT for `mw::com`-level figures | Both | The test plan results | — |
+| Decision records | Architecture Community, with the leads of the affected feature teams | `eclipse-score/score` | The records | — |
+
+### Rules for a new binding
+
+1. A new binding is a new protocol family, or it is not a new binding. Stack
+   variants of an existing protocol are integrated in its daemon.
+2. A new protocol gets one owner (a feature team), one repository, and a
+   binding that passes the binding conformance tests from `communication`.
+3. The repository is created through a FEP, because it is a platform-level
+   change.
+4. The binding is registered through the binding interface. Registration must not
+   require a change to the `mw::com` core (see the binding selection row in the
+   inventory; today it does).
+
+### Future feature team structure
+
+- **Now:** two feature teams: Communication (core and interfaces) and the
+  SOME/IP gateway (protocol path, `gatewayd`).
+- **Next:** a DDS feature team owning the DDS repository, the DDS binding and
+  `ddsd`. Until it exists, the DDS feature request authors coordinate the DDS
+  work, and the DDS binding stays out of `communication`.
+- **Rule:** one feature team per protocol family, plus the core team. The number
+  of feature teams therefore grows with protocols, not with bindings or stacks.
+
+### Open points
+
+- Owner and repository of the DDS protocol path.
+- Repository of the SOME/IP protocol path: the incubation repository
+  `inc_someip_gateway`, or a repository of its own after promotion.
+- Owner of serializer implementations, and their relation to the code generation
+  feature.
+- Whether binding registration is decided at build time or at runtime. Runtime
+  loading of binaries raises questions for the QNX safety manual and is not
+  assumed here.
+- How a binding proves conformance to the binding interface: a test suite in
+  `communication` that each protocol repository runs in its own CI.
 
 ## Implementation Plan
 
@@ -383,7 +464,7 @@ Dispositions:
 | Component | Current location | Disposition | Target location and note |
 |---|---|---|---|
 | LoLa binding | `score/mw/com/impl/bindings/lola` | Stay | Same-host zero-copy path (D1) |
-| SOME/IP binding (stub) | `score/mw/com/impl/bindings/someip` | Rework | Stays in communication; gets a transport through the daemon service interface (D1, D5) |
+| SOME/IP binding (stub) | `score/mw/com/impl/bindings/someip` | Move | Moves to the SOME/IP protocol repository; gets a transport through the daemon service interface (D1, D5). The binding interface stays in communication |
 | Binding selection | `score/mw/com/impl/binding_type.h`, `plumbing/binding_runtime_factory.cpp` | Rework | Bindings registered without a core change |
 | LoLa gateway (inter-domain) | `score/mw/com/gateway/gateway_application` | Rework | Generalised into the shared forwarding path (D2) |
 | Gateway transport interface and factory | `score/mw/com/gateway/transport_layer` | Stay | Basis for the forwarding transport; hypervisor transports stay with the LoLa gateway |
@@ -392,7 +473,7 @@ Dispositions:
 | Serializer plugin and null serializer | `inc_someip_gateway/score/serializer` | Move | To communication as a shared plugin (D6) |
 | Daemon service interface | none | New | `mw::com` services between a binding and a stack daemon (D3) |
 | Shared forwarding | partly in the LoLa gateway and in `gateway_ipc_binding` | New | One path in communication (D2) |
-| DDS binding | none | New | Shared library in communication (DR-009, Option B) |
+| DDS binding | none | New | In the DDS protocol repository, against the binding interface in communication (DR-009, Option B) |
 
 ### Gateway (`eclipse-score/inc_someip_gateway`)
 
@@ -492,11 +573,28 @@ module runs the LoLa runtime inside a QM system process, has no E2E, cannot be
 unloaded, and its benefit has been measured only against its own user-space
 stand-in on QEMU. It remains an optional transport (D7).
 
+**All bindings in `communication`.** This keeps the code close to the `mw::com`
+core, but every protocol and every later addition enlarges the core repository,
+its ownership and its release cycle, and the core team would become responsible
+for protocols it does not own. Rejected; the binding interface stays in
+`communication` and the bindings move to their protocol repositories (P1, P2).
+
+**One repository per binding.** This keeps each binding small, but it multiplies
+repositories without a matching change in ownership, and it does not reduce the
+work on the shared interfaces. Rejected; one repository per protocol family is
+used instead (P2).
+
+**Runtime loading of binding libraries.** This would allow new bindings without a
+build change in `communication`. It raises questions about dynamic loading in the
+QNX safety concept and is not needed while the number of protocol families is
+small. Deferred; see the open point on registration.
+
 ## Rationale
 
 The target puts each concern in one place. The wire protocol and the network
-stack are in the daemon, which is QM. The binding code is in `communication`,
-which is the `mw::com` repository and holds no network stack. The ASIL-B logic
+stack are in the daemon, which is QM. The binding interface is in `communication`,
+which is the `mw::com` repository and holds no network stack; the bindings sit in
+their protocol repositories. The ASIL-B logic
 is in `gatewayd`. A QM stack and an ASIL-B consumer therefore never share a
 process, which is the freedom-from-interference boundary the feature
 requirements already require.
@@ -524,14 +622,14 @@ Work products that change:
 | Forwarding | `communication` | One path, generalised from the LoLa gateway |
 | Serializer plugin interface | `communication` | Shared by all bindings and `gatewayd` |
 | Daemon service interface | `communication` | `mw::com` services, replacing the `socom` contract |
-| SOME/IP binding | `communication` | Gets a transport through the daemon service interface |
+| SOME/IP binding | SOME/IP protocol repository (`inc_someip_gateway`) | Moved from `communication`; gets a transport through the daemon service interface |
 | `someipd` | `inc_someip_gateway` | Offers the daemon service interface; uses the chosen stack |
 | `gatewayd` | `inc_someip_gateway` | E2E protection implemented; no forwarding code of its own |
 | `socom` | `inc_someip_gateway` | Retired |
 | `gateway_ipc_binding` forwarding | `inc_someip_gateway` | Replaced by the shared forwarding path |
 | DR-001 | `inc_someip_gateway` | Status changed to superseded by this record |
 | Prototype | `communication` | Moved into the target components or removed |
-| DDS daemon | DDS repository (to be decided) | `ddsd` with the DDS binding in `communication` |
+| DDS daemon and DDS binding | DDS repository (to be decided) | `ddsd` and the DDS binding, against the binding interface in `communication` |
 
 Follow-up records that are needed:
 
