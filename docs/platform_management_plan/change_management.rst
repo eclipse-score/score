@@ -95,8 +95,8 @@ Change Request Infrastructure and Types
 
 .. note::
 
-   Relevant parts of these templates are included in the GitHub ISSUE templates
-   **Feature Request** and **Component Request**.
+   Relevant parts of the change management templates are incorporated into the
+   GitHub ISSUE templates **Feature Request** and **Component Request**.
 
    Use **Feature Request** for a new feature or a modification of an existing
    feature. Use **Component Request** for a new component or a modification of
@@ -161,7 +161,6 @@ tool requirements:
 The FEP Track
 ~~~~~~~~~~~~~
 
-
 * **Feature:** always follows the FEP Track.
 * **Feature Modification:** follows the FEP Track if the change has major impact,
   for example if it affects the platform or other Feature Teams. Changes limited
@@ -172,12 +171,12 @@ The FEP Track
 Whether a Feature Modification constitutes a major change cannot be determined
 solely by a fixed set of criteria. The responsible
 :need:`Committer <rl__committer>` evaluates the impact in the context of the
-change when it is proposed.
+proposed change.
 
 A change initially considered major may be excluded from the FEP Track by
 community agreement if the additional governance process is not considered
 necessary. Conversely, a proposed modification may be moved to the FEP Track
-when its impact is subsequently determined to be major.
+if its impact is subsequently determined to be major.
 
 The baseline definition of a change is provided by the `Key Concept`_ in
 ``process_description``.
@@ -192,7 +191,7 @@ the FEP Track.
 
 The FEP mechanism is not inherently restricted to a particular Change Request
 type. Its current application to Features and major Feature Modifications defines
-the present S-CORE process. Applying it to additional `Change Request types`_`
+the current S-CORE process. Applying it to additional `Change Request Types`_
 requires an explicit process decision.
 
 FEP tracking ISSUE statuses refine the generic Change Request status model:
@@ -229,6 +228,7 @@ FEP tracking ISSUE statuses refine the generic Change Request status model:
 
 Change Request Attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The attributes required by :need:`gd_req__change_attr_uid` are represented in
 the Change Request infrastructure as follows.
 
@@ -282,11 +282,12 @@ GitHub.
 
 The starting configuration is the state of the ``main`` branch, or the
 applicable baseline, when the Change Request is created. Where applicable, this
-state can be identified by the base commit of the associated PR. It is distinct
+state can be identified by the base commit of an associated PR. It is distinct
 from the Expected Implementation Version, which defines the target release for
 the requested change.
 
 Additional implementation information may be maintained in associated PRs.
+
 
 :need:`[[title]] <gd_req__change_attr_impact_safety>` and
 
@@ -310,7 +311,7 @@ for example ``QM`` or ``ASIL_B``.
 :need:`[[title]] <gd_req__change_attr_affected_wp>`
    Initially affected work products are recorded in the Expected Changes of Work
    Products section of the ISSUE. Additional affected work products identified
-   during analysis or implementation are recorded in the associated PRs or
+   during analysis or implementation are recorded in associated PRs or 
    linked ISSUEs.
 
 :need:`[[title]] <gd_req__change_attr_milestone>`
@@ -363,7 +364,8 @@ used.
 
 For a modification, the affected existing work products shall be updated.
 
-Where applicable, :need:`Impact Analysis Template <gd_temp__change_impact_analysis>`
+Where applicable, the
+:need:`Impact Analysis Template <gd_temp__change_impact_analysis>` 
 shall be completed.
 
 At least one implementation PR shall be linked to an accepted Change Request
@@ -433,15 +435,15 @@ implementation items shall be linked to the Change Request ISSUE to maintain
 traceability and enable progress monitoring.
 
 Implementation continues until the required activities have been completed and
-the associated ISSUEs and PRs have been closed or merged as applicable.
+the associated ISSUEs and PRs have been closed or merged, as applicable.
 
 Once implementation and verification are complete, the Projects status is set
 to ``Done`` to initiate the final closure review by the
 :need:`Committer <rl__committer>`.
 
 If the Change Request is rejected or abandoned during implementation, the
-decision shall be documented and the ISSUE closed using the applicable rejected
-state.
+decision shall be documented and the ISSUE shall be closed using the applicable
+rejection state.
 
 
 4. Close the Change Request
@@ -457,8 +459,8 @@ The review confirms, as applicable, that:
 * required PRs are merged;
 * affected work products have been updated;
 * required verification activities have been completed successfully;
-* the verification results provide sufficient evidence that the change has
-  achieved its intended purpose; and
+* verification results provide sufficient evidence that the change has achieved
+  its intended purpose; and
 * required traceability is complete.
 
 :need:`gd_chklst__change_cr_review` provides additional closure criteria.
