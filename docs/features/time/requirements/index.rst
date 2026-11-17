@@ -16,7 +16,7 @@ Time Requirements
 #################
 
 .. document:: Time Requirements
-   :id: doc__time_requirements
+   :id: doc__feature_time_requirements
    :status: draft
    :version: 1
    :safety: ASIL_B
