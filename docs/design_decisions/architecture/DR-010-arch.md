@@ -120,9 +120,244 @@ The following are not part of the target:
 - a new gateway repository.
 
 The choice of SOME/IP stack for `someipd` (vsomeip, which is the current
-default, or lg-someip) is not decided here. It is decided on measurements
-described in the plan that accompanies this record. The location of the stack
-source (dependency or in-tree) is decided with it.
+default, or lg-someip) is not decided here. It is decided on the measurements
+in the Evidence Required section. The location of the stack source (dependency
+or in-tree) is decided with it.
+
+## Implementation Plan
+
+The work follows six phases. Each phase ends with an exit check, and a later
+phase does not start until the earlier exit check is met.
+
+**Phase 0 — Decide.** The Architecture Community accepts this record and the
+follow-up records (stack choice, fast path, serializer location, DDS daemon
+repository). The record supersedes DR-001 in `inc_someip_gateway`.
+Exit: decision records accepted.
+
+**Phase 1 — Evidence.** Run the verification tests (T1 to T8, below) for vsomeip
+and lg-someip on the same hardware, and the fast-path test T5.
+Exit: results published; Q1 and Q2 decided from them.
+
+**Phase 2 — Foundation in `communication`.** Bindings registered without a
+change to the `mw::com` core; generic methods in `mw::com`
+(`communication#767`); forwarding generalised from the LoLa gateway; the
+serializer plugin interface; the daemon service interface as `mw::com`
+services. Exit: a test binding is added without changing the `mw::com` core,
+and forwarding passes its tests with one transport.
+
+**Phase 3 — SOME/IP path.** `someipd` runs on the chosen stack and offers the
+daemon service interface. The SOME/IP binding uses it as transport.
+`gateway_ipc_binding` forwarding is replaced by the shared path. `socom` is
+removed once methods work on `mw::com`. Exit: the gateway integration tests and
+TC8 pass on the new path.
+
+**Phase 4 — Gateway safety and direct placement.** E2E protection implemented
+in `gatewayd`. Direct placement: the same E2E check runs in the application's
+binding for ASIL applications. Safety review of the QM/ASIL boundary and of the
+daemon interface. Exit: safety review passed; fault-injection test T6 passed.
+
+**Phase 5 — DDS.** `ddsd` and the DDS binding, using the same daemon service
+interface and serializer. Exit: a native DDS peer interoperates with an `mw::com`
+application through the gateway.
+
+**Phase 6 — Optional fast path.** Only if Q2 is positive. Lives in `someipd` as
+a transport plugin, never in an ASIL data path.
+
+### Dependencies
+
+- Binding registration in `mw::com` (Phase 2): needed before a new binding can
+  be added without a core change.
+- Generic methods in `mw::com` (`communication#767`, no timeline): needed before
+  `socom` can be removed.
+- Decision on the repository for the stack source and the DDS daemon: needed in
+  Phase 0.
+- Safety evidence for lg-someip: the certified variant is LG's AUTOSAR variant,
+  not the open-sourced code (Phase 4).
+
+### Risks
+
+| Risk | Mitigation |
+|---|---|
+| Generic methods in `mw::com` take longer | Keep `socom` for methods only until they land; do not block events on it |
+| lg-someip open-source code is not safety-qualified | Qualification plan in Phase 4; keep vsomeip as fallback until then |
+| Defects found late in the open-sourced stack (undefined behaviour and framing bugs were fixed after its public release) | Sanitizer runs in Phase 1 (T7) |
+| Two teams own parts of one path (`communication` and `inc_someip_gateway`) | Interfaces fixed in Phase 2 before implementation |
+| Benchmark numbers come from the stack proponent | Phase 1 measures on our hardware |
+
+### Not part of the plan
+
+- A kernel module in an ASIL data path.
+- An `mw::com` runtime inside a kernel module or the io-sock process.
+- A second SOME/IP daemon.
+- A new gateway repository.
+- Changes to application code for SOME/IP or DDS.
+
+## Evidence Required
+
+Two decisions depend on measurements: Q1, the stack for `someipd`, and Q2, the
+io-sock fast path. The LG slides are hypotheses to check, not evidence: they
+measure opensomeip without SD and daemon on Raspberry Pi 4, and nothing in them
+has been reproduced on our hardware.
+
+| ID | Question | Decides |
+|---|---|---|
+| Q1 | Which stack runs in `someipd`: vsomeip, lg-someip, or opensomeip? | Follow-up record 1 |
+| Q2 | Is the io-sock fast path worth a second data path next to the daemon? | Decision D7 |
+
+Q2 depends on Q1: the fast path must beat the daemon path of the stack that is
+chosen.
+
+### What exists
+
+The benchmark harness in `communication/experimental/someip_sd/benchmark`
+already measures:
+
+- **Round trip** over the io-sock path: `someip_bench_lola`, with the reflector
+  on lg-someip. Output per run: p50, p90, p99, p999, loss and duplicates.
+- **Mixed load** from a realistic event mix (`someip_event_workload.csv`):
+  `someip_load_lola` and `someip_load_peer`, with `LOAD_RESULT` and `CPU_RESULT`
+  and `load_report.py --compare` for two runs.
+- **Vector reference:** the same workload on the image's Vector ara::com stack
+  (`--stack vector`).
+- **Hardware scripts:** `run_hw_load.sh` runs the whole flow on IPNext hardware,
+  with `--stack iosock` or `--stack vector`.
+
+What does not exist: a benchmarked side for vsomeip, for lg-someip as a daemon
+path, or for opensomeip. The wire contract (`bench_protocol.h`) is independent of
+the stack, so these are new applications with the same options and output
+format.
+
+### Fairness problems to fix first
+
+1. **Polling.** The module polls every ~10 ms, so its latency is dominated by
+   polling (p50 about 17 ms on QEMU). A daemon path with event-driven wake-ups
+   would look worse for a reason that is not the architecture. Fix:
+   event-driven wake-ups (the `iosock_wakeup_spike` is the starting point) before
+   the Q2 runs. If that is not possible in time, report the polling penalty
+   separately and do not decide Q2 from latency.
+2. **Zero-copy threshold.** TX copies payloads up to 2 KB; above that the mbuf
+   keeps the LoLa sample until the driver frees it. Report 16 B and 1400 B
+   separately.
+3. **Peer.** The round-trip reflector is lg-someip for every candidate. The peer
+   stays fixed for all candidates, and the results say so.
+4. **Unloadable module.** The io-sock module cannot be unloaded. Restart io-sock
+   or the target before each io-sock variant, and never run two bundles in one
+   boot.
+5. **CPU definition.** CPU per event or request is the CPU of all target
+   processes on the path (module, daemon, application), divided by the number of
+   events. The same definition is used for every candidate. The sampler needs
+   root and read access to `/proc/<pid>/as` of io-sock.
+6. **Environment.** Same hardware, CPU governor `performance`, same SD settings
+   and ports, same payloads, same workload file. QEMU results are functional
+   checks only.
+
+### Candidates
+
+| Variant | Path measured | Status | Used for |
+|---|---|---|---|
+| A. io-sock | app → LoLa → io-sock module → network | exists | Q2 |
+| B. lg-someip daemon | app → lgsomeip API → someip-daemon → network | to build | Q1, Q2 |
+| C. vsomeip daemon | app → vsomeip API → routingmanagerd → network | to build | Q1, Q2 |
+| D. opensomeip library | app → opensomeip → network, no daemon | to build | reference only |
+| E. Vector ara::com | app → ara::com → someipd_posix → network | exists | reference only |
+
+Variant D has no host-wide coordination, so it cannot be the `someipd` stack
+(test T2). It is a reference for small messages only.
+
+### Build list
+
+1. Fairness fix for variant A (item 1 above), or the reporting rule for it.
+2. Three benchmark applications B, C and D. Each reads the same options as
+   `someip_bench_lola`, uses the same wire contract and output format, and
+   reuses `gen_load_workload.py` for the mixed load.
+3. One QNX target bundle per variant (Bazel), with the stack's configuration.
+   The vsomeip build is available from this repository (`@vsomeip`).
+4. Extend `run_hw_load.sh` with `--stack vsomeip`, `--stack lgsomeip` and
+   `--stack opensomeip`, with the same arguments for every stack.
+5. Calibration: run the same variant twice under the same setup. The two results
+   must agree within the spread of the repetitions; otherwise the setup is not
+   comparable.
+
+### Run matrix
+
+Each cell is run five times, with the variant order rotated between repetitions.
+The target is restarted between variants. Results are reported as median and
+spread (min and max).
+
+| Run set | Scenario | Variants | Measure |
+|---|---|---|---|
+| R1 | Round trip, 16 B and 1400 B, 100 Hz, 300 pings | A, B, C, D, E | p50, p99, loss |
+| R2 | Mixed load, scales 0.25, 0.5, 1.0 | A, B, C, E | CPU per event, delivery, latency per class |
+| R3 | Fan-out: 1, 2 and 8 subscribers on the target, 1 KB events | A, B, C, D | CPU per event, bytes on link |
+| R4 | Footprint: peak RSS per process, stripped size | A, B, C, D | MB, KB |
+| R5 | Multi-application host: three applications offer and consume on one host | B, C, D | Functional only: port sharing, SD visibility, fan-out (test T2) |
+
+### Decision rules (proposals, to be confirmed by the Communication FT)
+
+**Q1 — stack for `someipd`**
+
+1. Eligibility, all required: TC8 conformance not worse than vsomeip (T1); host
+   coordination passes (R5); no open undefined-behaviour or memory findings in
+   sanitizer runs (T7).
+2. Among eligible stacks, choose the lower p99 round-trip time at 16 B and 1400 B
+   (R1), and the lower CPU per event in R2 at scale 1.0.
+3. If the difference is below 10 % on all of these, keep vsomeip, the current
+   default, and record the tie. Maintenance cost and safety evidence then decide.
+
+**Q2 — io-sock fast path**
+
+Accept the fast path only if, compared with the daemon path of the stack chosen
+in Q1 (B or C):
+
+- p99 round-trip time improves by at least 20 % at 16 B and at 1400 B (R1), and
+- CPU per event improves by at least 20 % in R2 at scales 0.5 and 1.0, and
+- both improvements are larger than the spread of the repetitions, and
+- the latency comparison was made with event-driven wake-ups (item 1 above).
+
+If any condition fails, the fast path is dropped (D7).
+
+### Commands
+
+Existing, on QEMU (functional check only):
+
+```sh
+bazel test --config=qnx_x86_64 //experimental/someip_sd/benchmark:someip_bench_dual_qemu_test \
+    --test_output=all --nocache_test_results
+```
+
+Existing, on IPNext hardware:
+
+```sh
+./run_hw_load.sh --stack iosock      # variant A
+./run_hw_load.sh --stack vector      # variant E
+```
+
+Compare two runs:
+
+```sh
+python3 load_report.py --compare <A target results.txt> <A peer results.txt> \
+    <B target results.txt> <B peer results.txt>
+```
+
+Variants B, C and D follow once their bundles and `--stack` options exist.
+
+### Outputs and versions
+
+- Raw results per variant, repetition and run set, in one directory per run.
+- A table per decision: median, spread, and the decision rule applied.
+- Versions of every component: this repository's commit, the lg-someip commit
+  `d09656e`, the vsomeip version, the opensomeip version, the Vector image and the
+  QNX SDP version.
+- Results are attached to the follow-up records for Q1 and Q2.
+
+### Risks and open points
+
+- The io-sock module cannot be unloaded, so each io-sock variant needs a restart,
+  which makes the runs slow.
+- The secpol rules for io-sock hosting LoLa are not defined yet. The secpol
+  violations printed by `run_target.sh` must be empty before the measurements
+  count.
+- Owners and dates are not set here. The Communication FT assigns them.
 
 ## Component Inventory
 
