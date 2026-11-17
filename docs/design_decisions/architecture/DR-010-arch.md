@@ -252,8 +252,9 @@ a transport plugin, never in an ASIL data path.
   `socom` can be removed.
 - Decision on the repository for the stack source and the DDS daemon: needed in
   Phase 0.
-- Safety evidence for lg-someip: the certified variant is LG's AUTOSAR variant,
-  not the open-sourced code (Phase 4).
+- Safety evidence for lg-someip: LG reports a qualification for its AUTOSAR
+  variant, not for the open-sourced code (Phase 4). The record makes no
+  compliance claim for any stack.
 
 ### Risks
 
@@ -298,8 +299,11 @@ already measures:
 - **Mixed load** from a realistic event mix (`someip_event_workload.csv`):
   `someip_load_lola` and `someip_load_peer`, with `LOAD_RESULT` and `CPU_RESULT`
   and `load_report.py --compare` for two runs.
-- **Vector reference:** the same workload on the image's Vector ara::com stack
-  (`--stack vector`).
+- **Commercial reference:** the same workload on the reference image's AUTOSAR
+  Adaptive stack (Vector, `--stack vector`). This stack is commercial and not
+  open source. Its figures may be reported as measurements of that stack. This
+  record makes no statement of AUTOSAR compliance for it, and no statement that
+  it is compliant.
 - **Hardware scripts:** `run_hw_load.sh` runs the whole flow on IPNext hardware,
   with `--stack iosock` or `--stack vector`.
 
@@ -332,7 +336,11 @@ format.
    and ports, same payloads, same workload file. QEMU results are functional
    checks only.
 
-### Candidates
+### Variants measured
+
+Candidates for `someipd` are B (lg-someip) and C (vsomeip). Variant D is a
+reference only, because it has no daemon. Variant E is a commercial reference
+stack and is never a candidate for `someipd`; it is not open source.
 
 | Variant | Path measured | Status | Used for |
 |---|---|---|---|
@@ -340,7 +348,7 @@ format.
 | B. lg-someip daemon | app → lgsomeip API → someip-daemon → network | to build | Q1, Q2 |
 | C. vsomeip daemon | app → vsomeip API → routingmanagerd → network | to build | Q1, Q2 |
 | D. opensomeip library | app → opensomeip → network, no daemon | to build | reference only |
-| E. Vector ara::com | app → ara::com → someipd_posix → network | exists | reference only |
+| E. Commercial AUTOSAR Adaptive stack (Vector), reference | app → ara::com → someipd_posix → network | exists | reference only; not open source; no compliance claim |
 
 Variant D has no host-wide coordination, so it cannot be the `someipd` stack
 (test T2). It is a reference for small messages only.
@@ -410,7 +418,7 @@ Existing, on IPNext hardware:
 
 ```sh
 ./run_hw_load.sh --stack iosock      # variant A
-./run_hw_load.sh --stack vector      # variant E
+./run_hw_load.sh --stack vector      # variant E, commercial reference
 ```
 
 Compare two runs:
@@ -427,8 +435,8 @@ Variants B, C and D follow once their bundles and `--stack` options exist.
 - Raw results per variant, repetition and run set, in one directory per run.
 - A table per decision: median, spread, and the decision rule applied.
 - Versions of every component: this repository's commit, the lg-someip commit
-  `d09656e`, the vsomeip version, the opensomeip version, the Vector image and the
-  QNX SDP version.
+  `d09656e`, the vsomeip version, the opensomeip version, the reference image
+  (commercial AUTOSAR Adaptive stack) and the QNX SDP version.
 - Results are attached to the follow-up records for Q1 and Q2.
 
 ### Risks and open points
