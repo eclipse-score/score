@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -27,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -47,10 +46,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
@@ -65,7 +64,7 @@
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'users_guide/building_simple_application/first_score_module';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -77,6 +76,7 @@
     <link rel="next" title="Documentation generation" href="doc_generation.html" />
     <link rel="prev" title="Contribute own module" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
   
@@ -126,7 +126,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -278,7 +278,7 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -289,15 +289,15 @@
         <div class="navbar-item">
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
     <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
     <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
     <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -343,7 +343,7 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
  <i class="fa-solid fa-magnifying-glass"></i>
  <span class="search-button__default-text">Search</span>
  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -352,7 +352,7 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -492,15 +492,15 @@
           <div class="navbar-item">
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
     <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
     <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
     <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -544,7 +544,7 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
   <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
   </svg>
@@ -559,7 +559,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">First Eclipse S-CORE Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
@@ -655,14 +655,14 @@ Most configuration is handled via <a class="reference external" href="https://ot
 <li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a></p></li>
 </ul>
 <p>Add your repository definition, e.g.:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">&#39;logging&#39;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Repository for logging framework&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">'logging'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s2">"Repository for logging framework"</span><span class="p">,</span>
 <span class="p">},</span>
-<span class="hll"><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">&#39;scrample&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">    <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Repository for example component&quot;</span><span class="p">,</span>
+<span class="hll"><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">'scrample'</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">    <span class="n">description</span><span class="p">:</span> <span class="s2">"Repository for example component"</span><span class="p">,</span>
 </span><span class="hll"><span class="p">},</span>
-</span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">&#39;inc_abi_compatible_datatypes&#39;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Incubation repository for ABI compatible data types feature&quot;</span><span class="p">,</span>
+</span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">'inc_abi_compatible_datatypes'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s2">"Incubation repository for ABI compatible data types feature"</span><span class="p">,</span>
 <span class="p">},</span>
 </pre></div>
 </div>
@@ -758,8 +758,8 @@ bazel will start searching it in one of these two locations.</p>
 <p>This file turns your repository into a bazel module.</p>
 <p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a> initial content:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;cpp_rust_template_repository&quot;</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"cpp_rust_template_repository"</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.0"</span><span class="p">,</span>
 <span class="linenos">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -768,62 +768,62 @@ Please be aware, that only after our module was published in the Eclipse S-CORE 
 <p>Rename the module and replace <em>cpp_rust_template_repository</em> by your module name, in our case <em>score_scrample</em>.
 Use <a class="reference external" href="https://semver.org/">semantic versioning</a> for the module version, starting at <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_scrample"</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.0"</span><span class="p">,</span>
 <span class="linenos">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Please be aware, according to Eclipse S-CORE´s naming convention all module names must start with <em>score_</em> prefix.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;rules_python&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.4.1&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_python"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.4.1"</span><span class="p">)</span>
 <span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.12&quot;</span>
+<span class="linenos"> 3</span><span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">"3.12"</span>
 <span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="n">python</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@rules_python//python/extensions:python.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">python</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">"@rules_python//python/extensions:python.bzl"</span><span class="p">,</span> <span class="s2">"python"</span><span class="p">)</span>
 <span class="linenos"> 6</span><span class="n">python</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
 <span class="linenos"> 7</span>    <span class="n">is_default</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="linenos"> 8</span>    <span class="n">python_version</span> <span class="o">=</span> <span class="n">PYTHON_VERSION</span><span class="p">,</span>
 <span class="linenos"> 9</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;python_versions&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="s2">"python_versions"</span><span class="p">)</span>
 <span class="linenos">11</span>
 <span class="linenos">12</span><span class="c1"># Add GoogleTest dependency</span>
-<span class="linenos">13</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;googletest&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.17.0&quot;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"googletest"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.17.0"</span><span class="p">)</span>
 <span class="linenos">14</span>
 <span class="linenos">15</span><span class="c1"># Rust rules for Bazel</span>
-<span class="linenos">16</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;rules_rust&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.63.0&quot;</span><span class="p">)</span>
+<span class="linenos">16</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.63.0"</span><span class="p">)</span>
 <span class="linenos">17</span>
 <span class="linenos">18</span><span class="c1"># C/C++ rules for Bazel</span>
-<span class="linenos">19</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;rules_cc&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.2.1&quot;</span><span class="p">)</span>
+<span class="linenos">19</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_cc"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.1"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In the code snippet above, we declare dependencies to modules, that are publicly available in common bazel registry, e.g.
 for unit test execution with gtest.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)</span>
-<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_bazel_cpp_toolchains&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.5.1&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_bazel_cpp_toolchains"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.5.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_bazel_cpp_toolchains//extensions:gcc.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;gcc&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">"@score_bazel_cpp_toolchains//extensions:gcc.bzl"</span><span class="p">,</span> <span class="s2">"gcc"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="linenos"> 5</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos"> 6</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_gcc_x86_64_toolchain&quot;</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"linux"</span><span class="p">,</span>
 <span class="linenos"> 9</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">10</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;12.2.0&quot;</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
 <span class="linenos">11</span><span class="p">)</span>
 <span class="linenos">12</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos">13</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_qcc_x86_64_toolchain&quot;</span><span class="p">,</span>
-<span class="linenos">14</span>    <span class="n">sdp_version</span> <span class="o">=</span> <span class="s2">&quot;8.0.0&quot;</span><span class="p">,</span>
-<span class="linenos">15</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
-<span class="linenos">16</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">&quot;qnx&quot;</span><span class="p">,</span>
+<span class="linenos">13</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_qcc_x86_64_toolchain"</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">sdp_version</span> <span class="o">=</span> <span class="s2">"8.0.0"</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"qnx"</span><span class="p">,</span>
 <span class="linenos">17</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;12.2.0&quot;</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
 <span class="linenos">19</span><span class="p">)</span>
 <span class="linenos">20</span><span class="n">use_repo</span><span class="p">(</span>
 <span class="linenos">21</span>    <span class="n">gcc</span><span class="p">,</span>
-<span class="linenos">22</span>    <span class="s2">&quot;score_gcc_x86_64_toolchain&quot;</span><span class="p">,</span>
-<span class="linenos">23</span>    <span class="s2">&quot;score_qcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">22</span>    <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
+<span class="linenos">23</span>    <span class="s2">"score_qcc_x86_64_toolchain"</span><span class="p">,</span>
 <span class="linenos">24</span><span class="p">)</span>
 <span class="linenos">25</span>
 <span class="linenos">26</span><span class="c1"># Ferrocene Rust toolchains (QNX cross-compilation support)</span>
-<span class="linenos">27</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_rust&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.9.1&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">27</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_toolchains_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.9.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here we add C++ and Rust toolchains using <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> and <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code>.
@@ -831,13 +831,13 @@ These provide GCC 12.2.0 for Linux host builds, QCC (QNX SDP 8.0.0) for QNX cros
 and Ferrocene toolchains for Rust (including QNX support).
 In upcoming chapters, we will talk about this in more detail.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># tooling</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_tooling&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.1.2&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tooling"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.1.2"</span><span class="p">)</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span><span class="c1"># docs-as-code</span>
-<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;4.0.3&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"4.0.3"</span><span class="p">)</span>
 <span class="linenos">6</span>
 <span class="linenos">7</span><span class="c1"># Rust linting and formatting policies</span>
-<span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_rust_policies&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.3&quot;</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_rust_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.0.3"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, we add dependencies to Eclipse S-CORE native modules:</p>
@@ -862,38 +862,38 @@ if you want to use your local version of the module, e.g. during active developm
 <h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
 <p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/BUILD">BUILD</a> file
 contains main bazel targets on the top level of the scrample project:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_tooling//:defs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;dash_license_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;setup_starpls&quot;</span><span class="p">,</span> <span class="s2">&quot;use_format_targets&quot;</span><span class="p">)</span>
-<span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;//:project_config.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;PROJECT_CONFIG&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_docs_as_code//:docs.bzl"</span><span class="p">,</span> <span class="s2">"docs"</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_tooling//:defs.bzl"</span><span class="p">,</span> <span class="s2">"copyright_checker"</span><span class="p">,</span> <span class="s2">"dash_license_checker"</span><span class="p">,</span> <span class="s2">"setup_starpls"</span><span class="p">,</span> <span class="s2">"use_format_targets"</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">"//:project_config.bzl"</span><span class="p">,</span> <span class="s2">"PROJECT_CONFIG"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>First, we load bazel rules and macros, implemented in Eclipse S-CORE context from the modules,
 that we’ve defined as dependencies in the MODULE.bazel file, e.g. <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">copyright_checker</span><span class="p">(</span>
-<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span>
+<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"copyright"</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 4</span>        <span class="s2">&quot;src_cpp&quot;</span><span class="p">,</span>
-<span class="linenos"> 5</span>        <span class="s2">&quot;tests&quot;</span><span class="p">,</span>
-<span class="linenos"> 6</span>        <span class="s2">&quot;//:BUILD&quot;</span><span class="p">,</span>
-<span class="linenos"> 7</span>        <span class="s2">&quot;//:MODULE.bazel&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>        <span class="s2">"src_cpp"</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">"tests"</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">"//:BUILD"</span><span class="p">,</span>
+<span class="linenos"> 7</span>        <span class="s2">"//:MODULE.bazel"</span><span class="p">,</span>
 <span class="linenos"> 8</span>    <span class="p">],</span>
-<span class="linenos"> 9</span>    <span class="n">config</span> <span class="o">=</span> <span class="s2">&quot;@score_tooling//cr_checker/resources:config&quot;</span><span class="p">,</span>
-<span class="linenos">10</span>    <span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;@score_tooling//cr_checker/resources:templates&quot;</span><span class="p">,</span>
-<span class="linenos">11</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
+<span class="linenos"> 9</span>    <span class="n">config</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:config"</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">template</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:templates"</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
 <span class="linenos">12</span><span class="p">)</span>
 <span class="linenos">13</span>
 <span class="linenos">14</span><span class="n">dash_license_checker</span><span class="p">(</span>
-<span class="linenos">15</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">&quot;//examples:cargo_lock&quot;</span><span class="p">,</span>
-<span class="linenos">16</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
+<span class="linenos">15</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">"//examples:cargo_lock"</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
 <span class="linenos">17</span>    <span class="n">project_config</span> <span class="o">=</span> <span class="n">PROJECT_CONFIG</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
+<span class="linenos">18</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
 <span class="linenos">19</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Second, we define bazel targets for <em>copyright_checker</em> and <em>dash_license_checker</em>,
 based on bazel rules implemented and imported from <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a> module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">docs</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span>
+<span class="linenos">2</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">"docs"</span><span class="p">,</span>
 <span class="linenos">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -907,8 +907,8 @@ This functionality is implemented in <a class="reference external" href="https:/
 This file declares project-level metadata that is consumed by shared Bazel macros such as <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>.</p>
 <p>A minimal example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">PROJECT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-<span class="linenos">2</span>    <span class="s2">&quot;asil_level&quot;</span><span class="p">:</span> <span class="s2">&quot;QM&quot;</span><span class="p">,</span>        <span class="c1"># Safety level: &quot;QM&quot;, &quot;ASIL-A&quot;, &quot;ASIL-B&quot;, &quot;ASIL-C&quot;, &quot;ASIL-D&quot;</span>
-<span class="linenos">3</span>    <span class="s2">&quot;source_code&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cpp&quot;</span><span class="p">],</span>    <span class="c1"># Languages used: &quot;cpp&quot;, &quot;rust&quot;, or both</span>
+<span class="linenos">2</span>    <span class="s2">"asil_level"</span><span class="p">:</span> <span class="s2">"QM"</span><span class="p">,</span>        <span class="c1"># Safety level: "QM", "ASIL-A", "ASIL-B", "ASIL-C", "ASIL-D"</span>
+<span class="linenos">3</span>    <span class="s2">"source_code"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"cpp"</span><span class="p">],</span>    <span class="c1"># Languages used: "cpp", "rust", or both</span>
 <span class="linenos">4</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1015,8 +1015,8 @@ The level can be raised once the module’s safety concept is established.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1026,8 +1026,7 @@ The level can be raised once the module’s safety concept is established.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
-    <br/>
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
   </p>
 </div>
       
@@ -1040,7 +1039,7 @@ The level can be raised once the module’s safety concept is established.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>
