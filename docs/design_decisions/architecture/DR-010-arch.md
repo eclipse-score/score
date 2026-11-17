@@ -151,7 +151,10 @@ a FEP with a Shepherd and a final comment period, as defined in DR-002-Proc.
 
 **P5 — Dependencies point one way.** A binding depends only on the interfaces
 published by `communication`. `communication` never depends on a protocol
-repository. A protocol repository never depends on another protocol repository.
+repository and lists no binding as a dependency. A protocol repository never
+depends on another protocol repository. A binding is a build-time dependency of
+the binary that uses it (an application, `gatewayd` or a test), not of
+`communication`.
 
 **P6 — ASIL-B logic runs only where the safety concept places it.** `gatewayd`
 and ASIL-classified bindings run in ASIL-B processes. A QM daemon never links
@@ -178,9 +181,11 @@ ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
    binding that passes the binding conformance tests from `communication`.
 3. The repository is created through a FEP, because it is a platform-level
    change.
-4. The binding is registered through the binding interface. Registration must not
-   require a change to the `mw::com` core (see the binding selection row in the
-   inventory; today it does).
+4. The binding is linked into the binary that uses it at build time, and it is
+   registered through the binding interface when that binary starts. Registration
+   must not require a change to the `mw::com` core. Today the binding type is a
+   closed enum and the runtime factory is a fixed list (see the binding selection
+   row in the inventory); Phase 2 changes both into a registry.
 
 ### Future feature team structure
 
@@ -199,9 +204,10 @@ ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
   `inc_someip_gateway`, or a repository of its own after promotion.
 - Owner of serializer implementations, and their relation to the code generation
   feature.
-- Whether binding registration is decided at build time or at runtime. Runtime
-  loading of binaries raises questions for the QNX safety manual and is not
-  assumed here.
+- Where the SOME/IP binding is built. It is needed by the gateway and, for direct
+  placement, by applications. If it is part of the `inc_someip_gateway`
+  repository, applications depend on the gateway repository; a package of its own
+  avoids that.
 - How a binding proves conformance to the binding interface: a test suite in
   `communication` that each protocol repository runs in its own CI.
 
@@ -592,7 +598,7 @@ used instead (P2).
 **Runtime loading of binding libraries.** This would allow new bindings without a
 build change in `communication`. It raises questions about dynamic loading in the
 QNX safety concept and is not needed while the number of protocol families is
-small. Deferred; see the open point on registration.
+small. Deferred. Build-time linking is chosen (P5, rule 4).
 
 ## Rationale
 
