@@ -124,6 +124,98 @@ default, or lg-someip) is not decided here. It is decided on measurements
 described in the plan that accompanies this record. The location of the stack
 source (dependency or in-tree) is decided with it.
 
+## Component Inventory
+
+Every component found while preparing this record, with its current location,
+its disposition and its target location. Sub-components of a listed directory
+share its disposition unless listed separately.
+
+Dispositions:
+
+- **Stay**: kept as it is.
+- **Rework**: kept, changed as described in Decision.
+- **Move**: kept, moved to another repository or directory.
+- **Replace**: removed and replaced by a new component.
+- **Retire**: removed once its replacement exists (see D3).
+- **Drop**: deleted; not carried forward.
+- **Optional**: kept only if the stated condition is met.
+- **Open**: depends on a decision in Follow-up records.
+- **New**: does not exist yet.
+- **External**: third-party dependency, not owned by S-CORE.
+
+### Communication (`eclipse-score/communication`)
+
+| Component | Current location | Disposition | Target location and note |
+|---|---|---|---|
+| LoLa binding | `score/mw/com/impl/bindings/lola` | Stay | Same-host zero-copy path (D1) |
+| SOME/IP binding (stub) | `score/mw/com/impl/bindings/someip` | Rework | Stays in communication; gets a transport through the daemon service interface (D1, D5) |
+| Binding selection | `score/mw/com/impl/binding_type.h`, `plumbing/binding_runtime_factory.cpp` | Rework | Bindings registered without a core change |
+| LoLa gateway (inter-domain) | `score/mw/com/gateway/gateway_application` | Rework | Generalised into the shared forwarding path (D2) |
+| Gateway transport interface and factory | `score/mw/com/gateway/transport_layer` | Stay | Basis for the forwarding transport; hypervisor transports stay with the LoLa gateway |
+| Gateway README | `score/mw/com/gateway/README.md` | Rework | Updated for the shared forwarding path |
+| `error_serializer` | `score/mw/com/impl` | Stay | Not affected |
+| Serializer plugin and null serializer | `inc_someip_gateway/score/serializer` | Move | To communication as a shared plugin (D6) |
+| Daemon service interface | none | New | `mw::com` services between a binding and a stack daemon (D3) |
+| Shared forwarding | partly in the LoLa gateway and in `gateway_ipc_binding` | New | One path in communication (D2) |
+| DDS binding | none | New | Shared library in communication (DR-009, Option B) |
+
+### Gateway (`eclipse-score/inc_someip_gateway`)
+
+| Component | Current location | Disposition | Target location and note |
+|---|---|---|---|
+| `gatewayd` | `score/gatewayd` | Rework | Uses the shared forwarding path; no forwarding code of its own; ASIL-B host (D4) |
+| E2E in `gatewayd` | not implemented (comments only) | New | Implemented in `gatewayd` (Phase 4) |
+| `someipd` | `score/someipd` | Rework | Offers the daemon service interface; stack behind an interface (D5) |
+| SOME/IP stack in `someipd` | `@vsomeip` (`score/someipd` BUILD) | Open | Stack decision (follow-up 1) |
+| `socom` | `score/socom` (about 34 files, mocks, tests, docs) | Retire | Removed once generic methods exist in `mw::com` (D3) |
+| `gateway_ipc_binding` | `score/gateway_ipc_binding` (about 22 files) | Replace | Forwarding moves to communication; per-service logic replaced by the daemon service interface (D2) |
+| `bridged_services` | `score/bridged_services` | Rework | Bridge configuration taken from the `mw::com` deployment |
+| SOME/IP constants and types | `score/someip` | Stay | Used by the daemon |
+| Gateway configuration schema | `score/config` | Stay | Gateway configuration |
+| Deployment | `deployment/` | Stay | Packaging |
+| Integration tests | `tests/integration_test` | Stay | Adapted to the new path |
+| TC8 conformance tests | `tests/tc8_conformance` | Stay | Verification T1 |
+| Benchmarks | `tests/benchmarks` | Stay | Verification T3 and T5 |
+| Component requirements `socom.rst` | `docs/requirements/component` | Retire | With `socom` |
+| Component requirements `gateway_ipc_binding.rst` | `docs/requirements/component` | Replace | Requirements for the shared forwarding path |
+| DR-001 (socom as abstraction) | `docs/architecture/dec_someip_api_abstraction.rst` | Rework | Status changed to superseded by this record |
+| DR-002 (`mw::com` as IPC) | `docs/architecture/dec_ipc_implementation.rst` | Stay | Consistent with this record |
+| Migration sequence PR `#358` | open PR | Replace | Withdrawn or re-scoped to this record |
+| `socom` work PRs `#322`, `#409`, `#417`, `#421` | open PRs | Drop | Stopped once this record is accepted |
+| Feature integration test PR `#439` | open PR | Stay | Adapted to the new path |
+| opensomeip opt-in PR `#435` | open PR | Open | Depends on the stack decision; not merged as a switch |
+
+### Prototype (`communication/experimental/someip_sd`)
+
+| Component | Current location | Disposition | Target location and note |
+|---|---|---|---|
+| SD-only daemon (`SdFacade`, `SdOnlyRouter`) | `daemon/` | Drop | SD moves into `someipd` (D5) |
+| Daemon protocol `sd_protocol.h` | `protocol/` | Drop | Replaced by the daemon service interface |
+| Event module protocol `event_module_protocol.h` | `protocol/` | Drop | Replaced by the transport interface inside `someipd` |
+| SD client library | `client/` | Drop | Replaced by bindings |
+| POSIX event module (user-space stand-in) | `event_module/` | Drop | Not needed in the target |
+| io-sock kernel module | `iosock_event_module/` | Optional | Transport plugin of `someipd` only if test T5 shows a material gain (D7); otherwise dropped |
+| io-sock feasibility spike | `iosock_poc/` | Drop | Findings recorded in this record |
+| io-sock wake-up spike | `iosock_wakeup_spike/` | Drop | Findings recorded in this record |
+| Benchmark harness | `benchmark/` | Move | `tests/benchmarks` in the gateway repository |
+| Dual-QEMU integration test | `test/` | Move | `tests/integration_test` in the gateway repository |
+| Prototype diagrams and notes | `doc/`, `README.md` | Drop | Target diagram kept in this record |
+| lg-someip third-party files and http_archive | `third_party/lg_someip`, `MODULE.bazel` | Open | Follows the stack decision (follow-up 1) |
+
+### Other repositories, documents and proposals
+
+| Component | Current location | Disposition | Target location and note |
+|---|---|---|---|
+| lg-someip in-tree proposal | communication PR `#1498` | Open | Follows the stack decision (follow-up 1) |
+| lg-someip contribution proposal | score issue `#2807` | Open | Input to the stack decision |
+| LIBERSOM (opensomeip) proposal | score issue `#3456` | Open | Input to the stack decision |
+| TC8 and SOME/IP test suite proposal | score issue `#3464` | Open | Input to the verification plan |
+| DDS daemon `ddsd` | none | New | DDS repository, to be decided (follow-up 4) |
+| Cyclone DDS | external | External | Stack used by `ddsd` |
+| DR-009 (DDS communication) | `score/docs/design_decisions/architecture` | Stay | Consistent with this record |
+| DDS feature request | score PR `#2997` (fork) | Rework | Aligned with the daemon, binding and serializer decisions here |
+| SOME/IP gateway feature page | `score/docs/features/communication/some_ip_gateway` | Rework | Refers to this record |
+
 ## Backwards Compatibility
 
 The SOME/IP gateway has no released product. The SOME/IP gateway feature
