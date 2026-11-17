@@ -19,7 +19,6 @@
 :id: dec_rec__arch__target_someip_dds_on_mwcom
 :status: proposed
 :version: 1
-:tracking: TBD
 :context: SOME/IP and DDS support is split across three repositories with two gateway forwarding paths, a socom layer that duplicates mw::com, and a prototype that bypasses both. S-CORE needs one target picture for the communication stack.
 :decision: Applications use mw::com only. Same-host communication uses LoLa. Remote communication uses SOME/IP or DDS bindings, each implemented in the repository of its protocol owner against the binding interface in communication, placed in the application or in gatewayd. One stack daemon per protocol per host holds the wire protocol. Forwarding exists once, in communication. socom is retired in favour of mw::com services.
 ```
