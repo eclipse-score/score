@@ -541,6 +541,8 @@ Dispositions:
 | LoLa gateway (inter-domain) | `score/mw/com/gateway/gateway_application` | Rework | Generalised into the shared forwarding path (D2) |
 | Gateway transport interface and factory | `score/mw/com/gateway/transport_layer` | Stay | Basis for the forwarding transport; hypervisor transports stay with the LoLa gateway |
 | Gateway README | `score/mw/com/gateway/README.md` | Rework | Updated for the shared forwarding path |
+| Generalised gateway design | `score/mw/com/dependability/software_architectural_design/generalized_gateway` | Rework | Updated to describe the shared forwarding path |
+| Component documentation | `score/mw/com/impl/bindings/someip` and related docs | Rework | Follows the moves above |
 | `error_serializer` | `score/mw/com/impl` | Stay | Not affected |
 | Serializer plugin API | `inc_someip_gateway/score/serializer` | Move | The plugin interface moves to communication (D6) |
 | Serializer implementations, including the null serializer | `inc_someip_gateway/score/serializer` | Open | Location decided by follow-up 3 (D6) |
@@ -565,6 +567,9 @@ Dispositions:
 | Integration tests | `tests/integration_test` | Stay | Adapted to the new path |
 | TC8 conformance tests | `tests/tc8_conformance` | Stay | Verification T1 |
 | Benchmarks | `tests/benchmarks` | Stay | Verification T3 and T5 |
+| Feature and component requirements (gateway) | `docs/requirements/feature`, `docs/requirements/component` | Rework | Aligned with this record; requirements of `socom` and `gateway_ipc_binding` as below |
+| CI workflows | `.github/workflows` | Rework | Build and test jobs follow the new layout; QNX jobs follow the benchmark and TC8 runs |
+| Component documentation | `score/*/docs` (`gatewayd`, `someipd`, `serializer`, `socom`, `gateway_ipc_binding`) | Rework | Follows the rows above; `socom` documentation is removed with `socom` |
 | Component requirements `socom.rst` | `docs/requirements/component` | Retire | With `socom` |
 | Component requirements `gateway_ipc_binding.rst` | `docs/requirements/component` | Replace | Requirements for the shared forwarding path |
 | DR-001 (socom as abstraction) | `docs/architecture/dec_someip_api_abstraction.rst` | Rework | Status changed to superseded by this record |
