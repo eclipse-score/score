@@ -99,6 +99,8 @@ The next diagram shows the concept in a distributed view to highlight components
 .. image:: _assets/score-diagnostics-distributed.drawio.svg
    :alt: Diagnostic stack component architecture
 
+Both diagrams show the full stack. The part in scope for S-CORE v1.0 is shown in `In scope components (v1.0)`_.
+
 In scope components (full stack)
 --------------------------------
 
@@ -208,6 +210,13 @@ The following components are in scope for S-CORE v1.0.
 - SOVD Server (one binary with the SOVD Gateway by default)
 - SOVD Client
 - Classic Diagnostic Adapter
+
+.. image:: _assets/score-diagnostics-v1.0.drawio.svg
+   :alt: Diagnostic stack in S-CORE v1.0
+
+The SOVD Client finds the SOVD Gateway via mDNS and sends SOVD requests over HTTP. The SOVD Gateway forwards
+requests for classic ECUs to the Classic Diagnostic Adapter over a Unix domain socket. The Classic Diagnostic Adapter
+translates them to UDS, using the ECU descriptions in MDD files converted from ODX, and reaches the ECUs over DoIP.
 
 The following components are not part of S-CORE v1.0: Fault Library, Diagnostic Fault Manager, Diagnostic DB,
 Service App and UDS2SOVD Proxy. Faults and data of S-CORE applications and platform components are therefore not
