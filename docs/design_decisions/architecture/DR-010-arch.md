@@ -129,8 +129,8 @@ or in-tree) is decided with it.
 ### Principles
 
 **P1 — The core and the contract live in `communication`.** `communication` holds
-the `mw::com` API, the LoLa binding, the binding interface (SPI) with binding
-registration, the forwarding API, the serializer plugin API and the definition
+the `mw::com` API, the LoLa binding, the binding interface (SPI), the build-time
+binding table, the forwarding API, the serializer plugin API and the definition
 of the daemon service interface. It holds no protocol implementation and no
 protocol daemon.
 
@@ -164,7 +164,7 @@ ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
 
 | Area | Owner | Repository | Owns | Does not own |
 |---|---|---|---|---|
-| `mw::com` core, LoLa binding, binding interface, binding registration, forwarding API, serializer plugin API, daemon service interface definition | Communication FT | `eclipse-score/communication` | The interfaces and their conformance tests | Protocol logic, daemons, stacks |
+| `mw::com` core, LoLa binding, binding interface, build-time binding table, forwarding API, serializer plugin API, daemon service interface definition | Communication FT | `eclipse-score/communication` | The interfaces and their conformance tests | Protocol logic, daemons, stacks |
 | SOME/IP protocol: `someipd`, SOME/IP binding, stack integration, TC8 conformance | SOME/IP gateway FT | `eclipse-score/inc_someip_gateway` (repository may change, see open points) | The SOME/IP protocol path end to end | The binding interface |
 | `gatewayd` (ASIL-B host): E2E, policy, access control, configuration | SOME/IP gateway FT | `eclipse-score/inc_someip_gateway` | ASIL-B processing of routes | Forwarding logic (in `communication`) |
 | DDS protocol: `ddsd`, DDS binding, DDS integration | DDS FT, to be created | DDS repository, to be decided | The DDS protocol path end to end | The binding interface |
@@ -181,11 +181,16 @@ ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
    binding that passes the binding conformance tests from `communication`.
 3. The repository is created through a FEP, because it is a platform-level
    change.
-4. The binding is linked into the binary that uses it at build time, and it is
-   registered through the binding interface when that binary starts. Registration
-   must not require a change to the `mw::com` core. Today the binding type is a
-   closed enum and the runtime factory is a fixed list (see the binding selection
-   row in the inventory); Phase 2 changes both into a registry.
+4. The set of bindings in a binary is fixed at build time. The binding is linked
+   into the binary that uses it, and a generated table lists the bindings that
+   binary contains. At startup, the binding runtimes are created only for bindings
+   in that table, selected by the deployment configuration. Adding a binding
+   needs no change to the `mw::com` core. Nothing is registered, loaded or
+   allocated for a binding after startup (allocation is allowed at startup and
+   shutdown only, as agreed in the SOME/IP gateway meeting minutes of 2026-03-31). Today
+   the binding type is a closed enum and the runtime factory a fixed list (see the
+   binding selection row in the inventory); Phase 2 replaces both with the
+   build-time table.
 
 ### Future feature team structure
 
@@ -226,8 +231,8 @@ and opensomeip, each hosted inside `someipd`, on the same hardware, and the
 fast-path test T5.
 Exit: results published; Q1 and Q2 decided from them.
 
-**Phase 2 — Foundation in `communication`.** Bindings registered without a
-change to the `mw::com` core; generic methods in `mw::com`
+**Phase 2 — Foundation in `communication`.** A build-time binding table, so that
+a binding can be added without a change to the `mw::com` core; generic methods in `mw::com`
 (`communication#767`); forwarding generalised from the LoLa gateway; the
 serializer plugin interface; the daemon service interface as `mw::com`
 services. Exit: a test binding is added without changing the `mw::com` core,
@@ -253,8 +258,8 @@ a transport plugin, never in an ASIL data path.
 
 ### Dependencies
 
-- Binding registration in `mw::com` (Phase 2): needed before a new binding can
-  be added without a core change.
+- Build-time binding table in `mw::com` (Phase 2): needed before a new binding
+  can be added without a core change.
 - Generic methods in `mw::com` (`communication#767`, no timeline): needed before
   `socom` can be removed.
 - Decision on the repository for the stack source and the DDS daemon: needed in
@@ -476,7 +481,7 @@ Dispositions:
 |---|---|---|---|
 | LoLa binding | `score/mw/com/impl/bindings/lola` | Stay | Same-host zero-copy path (D1) |
 | SOME/IP binding (stub) | `score/mw/com/impl/bindings/someip` | Move | Moves to the SOME/IP protocol repository; gets a transport through the daemon service interface (D1, D5). The binding interface stays in communication |
-| Binding selection | `score/mw/com/impl/binding_type.h`, `plumbing/binding_runtime_factory.cpp` | Rework | Bindings registered without a core change |
+| Binding selection | `score/mw/com/impl/binding_type.h`, `plumbing/binding_runtime_factory.cpp` | Rework | Bindings listed in a build-time table; no core change to add one |
 | LoLa gateway (inter-domain) | `score/mw/com/gateway/gateway_application` | Rework | Generalised into the shared forwarding path (D2) |
 | Gateway transport interface and factory | `score/mw/com/gateway/transport_layer` | Stay | Basis for the forwarding transport; hypervisor transports stay with the LoLa gateway |
 | Gateway README | `score/mw/com/gateway/README.md` | Rework | Updated for the shared forwarding path |
@@ -554,7 +559,7 @@ repository and is not an application-facing API: `socom` appears only in
 Applications are not affected. They continue to use `mw::com`, and their
 deployment configuration changes only when a SOME/IP or DDS route is added.
 
-In `communication`, the changes are additive: binding registration without a
+In `communication`, the changes are additive: a build-time binding table without a
 core change, generic methods, and a shared forwarding path. The existing LoLa
 gateway keeps its behaviour and is generalised rather than replaced.
 
@@ -595,10 +600,11 @@ repositories without a matching change in ownership, and it does not reduce the
 work on the shared interfaces. Rejected; one repository per protocol family is
 used instead (P2).
 
-**Runtime loading of binding libraries.** This would allow new bindings without a
-build change in `communication`. It raises questions about dynamic loading in the
-QNX safety concept and is not needed while the number of protocol families is
-small. Deferred. Build-time linking is chosen (P5, rule 4).
+**Runtime loading or registration of binding libraries.** This would allow new
+bindings without a build change. It raises questions about dynamic loading in the
+QNX safety concept, and registration after startup conflicts with the rule that
+allocation happens only at startup and shutdown. Rejected for ASIL. Build-time
+linking is chosen (P5, rule 4).
 
 ## Rationale
 
@@ -628,7 +634,7 @@ Work products that change:
 
 | Work product | Repository | Change |
 |---|---|---|
-| Binding registration | `communication` | Bindings can be registered without a change to the `mw::com` core |
+| Build-time binding table | `communication` | Bindings are added without a change to the `mw::com` core; nothing is registered after startup |
 | Generic methods | `communication` | Required before `socom` is removed (`communication#767`) |
 | Forwarding | `communication` | One path, generalised from the LoLa gateway |
 | Serializer plugin interface | `communication` | Shared by all bindings and `gatewayd` |
