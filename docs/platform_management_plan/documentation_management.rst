@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -27,38 +27,45 @@ PF Documentation Management Plan
 Purpose
 -------
 
-The S-CORE Documentation Management Plan defines how documents are managed throughout the S-CORE project. It establishes a consistent approach for identifying, maintaining, reviewing,
-approving, and versioning project documentation.
+The S-CORE Documentation Management Plan defines how documents are managed
+throughout the project lifecycle. It establishes a consistent approach to
+identifying, maintaining, reviewing, approving, and versioning project
+documentation.
 
-Objectives and scope
+
+Objectives and Scope
 --------------------
 
 This plan defines:
 
-* the documents managed by the S-CORE project,
-* the attributes used to describe and classify these documents,
-* the lifecycle of documents, and
-* the rules for reviewing and approving documents.
+* the documents managed by the S-CORE project;
+* the attributes used to identify and classify these documents;
+* the document lifecycle;
+* the rules for reviewing and approving documents; and
+* the mechanisms for maintaining the document inventory.
 
-The plan applies to documents that are managed as general documentation work
-products. Work products with their own dedicated information models, such as
-requirements or architecture elements, are managed according to their
-respective definitions and processes.
+This plan applies to work products managed as general documents. Work products
+with dedicated information models, such as requirements or architecture
+elements, are managed according to their applicable definitions and processes.
 
 Documentation Approach
 ----------------------
+
 S-CORE work products are represented in different ways depending on their
-purpose and required structure.
+purpose, content, and required structure.
 
-Some work products have dedicated information models. For example,
-requirements and architecture elements have specific attributes and
-relationships defined for their respective work-product types.
+Some work products have dedicated information models. For example, requirements
+and architecture elements have specific attributes and relationships defined
+for their respective work-product types.
 
-Other work products are managed as general documents. Examples include plans
-that are part of the Program Management Plan and verification reports.
+Other work products are managed as general documents. These include, for
+example, plans that form part of the Platform Management Plan and verification
+reports.
 
 This Documentation Management Plan primarily defines the management of these
-general documents.
+general documents. It also provides the document inventory for all documents
+included in the platform documentation build, including documents that contain
+work products with dedicated information models.
 
 Document Attributes
 -------------------
@@ -67,87 +74,98 @@ Each document is described by a defined set of attributes.
 
 The following attributes are maintained as part of the document definition:
 
-* **Title**: Name of the document. Mandatory.
-* **Unique ID**: Unique identifier derived according to the naming convention
-  for the document title. Mandatory.
-* **Safety**: Indicates the ASIL level supported by the document. Mandatory.
-* **Status**: Indicates the current lifecycle state of the document. Mandatory.
-* **Tags**: Additional classification used to group and filter documents.
-  Optional.
+* **Title:** identifies the document by name. Mandatory.
+* **Unique ID:** uniquely identifies the document according to the applicable
+  naming convention. Mandatory.
+* **Version:** identifies the version of the document definition. Mandatory.
+* **Safety:** indicates the safety classification applicable to the document.
+  Mandatory.
+* **Security:** indicates whether the document is security-relevant. Mandatory.
+* **Status:** indicates the current lifecycle state of the document. Mandatory.
+* **Tags:** provide additional classification for grouping and filtering
+  documents. Optional.
 
-The Documentation Management Plan is itself managed as a document. Its
-definition in the header of this file therefore provides an example of a
-document definition, see :need:`doc__platform_documentation_mgt_plan`.
+The Documentation Management Plan is itself managed as a document. The document
+definition in the header of this file therefore provides an example. See
+:need:`doc__platform_documentation_mgt_plan`.
+
 
 Automatically Derived Attributes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Additional attributes are automatically documented in GitHub:
+Additional information is recorded through Git and GitHub:
 
-* **Author**: Identifies the contributor to the document.
-* **Approver**: The CODEOWNER who performed the relevant GitHub review and
+* **Author:** the contributor who created or modified the document content.
+* **Approver:** the CODEOWNER who performed the applicable GitHub review and
   approved the change.
-* **Reviewer**: Any additional reviewer who participated in the GitHub review
-  without acting as CODEOWNER.
+* **Reviewer:** any additional reviewer who participated in the GitHub review
+  without acting as the approving CODEOWNER.
 
-These attributes do not need to be maintained manually in the document.
+This information is derived from the Git history and Pull Request review records
+and does not need to be maintained manually in the document definition.
 
 Document Lifecycle
 ------------------
 
 S-CORE documents have two lifecycle states:
 
-* **Draft**: The document is under development and is not yet considered
+* **Draft:** the document is under development and is not yet considered
   complete. Existing content may already have been reviewed and may be
-  applicable.
-* **Valid**: The document is complete, reviewed, and approved.
+  applicable within its documented scope.
+* **Valid:** the document is complete, reviewed, and approved for its intended
+  use.
 
-A document may transition from **Valid** back to **Draft** when further
-development is required.
+A document may transition from **Valid** back to **Draft** when changes requiring
+further development or review are introduced.
 
 For example, a verification report may have status **Valid** for a completed
-release. When development of the next release begins and the report is updated,
-its status may return to **Draft** until the updated report has been completed
-and approved.
+release. When the report is updated for a subsequent release, its status may
+return to **Draft** until the updated content has been completed, reviewed, and
+approved.
 
 Documents that are no longer applicable are removed from the active project
-documentation rather than being assigned a separate invalid lifecycle state.
+documentation rather than being assigned a separate lifecycle state.
 
-Removed documents remain available through the Git history. This preserves
-traceability and allows previous document versions to be inspected or recovered
-when required, for example to understand historical design decisions or to
+Removed documents and their previous versions remain available through the Git
+history and, where applicable, through release baselines. This preserves
+traceability and allows historical document versions to be inspected or
+recovered when required, for example to understand previous decisions or to
 provide audit evidence.
 
 
 Document Review and Approval
 ----------------------------
 
-Each document is reviewed according to the review requirements defined for the
-corresponding work-product type in the applicable process description.
+Each document shall be reviewed according to the review requirements defined
+for the corresponding work-product type in the applicable process description.
 
-Depending on the work-product type, dedicated review checklists may apply.
+Where defined for the work-product type, the applicable review checklist shall
+be used.
 
-Regardless of whether a dedicated checklist exists, the review is performed
-through a GitHub pull-request review. At least one CODEOWNER who is not the
-author of the document shall review and approve the document.
+The review and approval are performed through a GitHub Pull Request. At least
+one CODEOWNER who is not an author of the reviewed changes shall review and
+approve the document.
 
-The GitHub review therefore provides the approval evidence for the document.
+The GitHub Pull Request review record provides the approval evidence for the
+document. Where an applicable review checklist requires additional evidence,
+that evidence shall be recorded or referenced by the Pull Request.
 
 
 Documentation Build
 -------------------
 
-All documentation work products, including both specifically modelled work
-products and general documents, are included in the documentation build.
+All documentation work products, including both work products with dedicated
+information models and general documents, are included in the documentation
+build.
 
-For every pull request, the documentation build represents the latest version
-of the work products contained in that pull request. This allows documentation
+For each Pull Request, the documentation build represents the version of the
+work products resulting from the proposed changes. This allows documentation
 changes to be reviewed together with the corresponding project changes.
 
 Document versioning and change history are managed using Git and GitHub in the
-same way as for other project work products. The applicable versioning and
-configuration-management rules are defined in the Configuration Management
-Plan.
+same manner as for other project work products. The applicable versioning,
+baselining, and configuration-management rules are defined in
+:need:`doc__platform_config_mgt_plan`.
 
 
 Planning and Tracking
@@ -156,22 +174,23 @@ Planning and Tracking
 The schedule for creating or updating documents is outside the scope of this
 Documentation Management Plan.
 
-As defined in the Project Management Plan, the corresponding work is planned
-and tracked using GitHub issues.
+The corresponding activities are planned and tracked through GitHub ISSUEs as
+defined in the applicable Project Management Plan.
 
 
 Document Inventory
 ------------------
 
-The following table provide the inventory of documents included in the
+The following tables provide the inventory of documents included in the
 documentation build.
 
-The S-CORE documentation is organized into several folders as defined in
+The S-CORE documentation is organized into folders as defined in
 :ref:`platform_folder_structure`. Each folder represents a specific aspect of
-the project.
+the project or a defined documentation scope.
 
-The table is generated automatically from the document definitions contained
-in the respective documentation build.
+The inventory is generated automatically from the document definitions included
+in the documentation build. Consequently, only documents available to the
+corresponding build configuration are included.
 
 
 .. _project_documents_list:
@@ -179,10 +198,12 @@ in the respective documentation build.
 Platform Documents List
 ~~~~~~~~~~~~~~~~~~~~~~~
 
+The following table lists all documents included in the documentation build.
+
 .. needtable::
    :style: table
    :types: document
-   :columns: title;id;version;status;Safety;Security
+   :columns: title;id;version;status;safety;security
    :sort: title
 
    results = []
@@ -192,7 +213,10 @@ Platform Documents List
            results.append(need)
 
 
-.. note:: The following tables are kept as legacy for the time beeing and will soonish removed with having pmp chapter updated completely
+.. note::
+
+   The following folder-based tables are retained temporarily for compatibility
+   with the current Platform Management Plan structure. They will be removed after the Platform Management Plan has been fully updated.
 
 
 docs
