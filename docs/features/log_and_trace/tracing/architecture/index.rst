@@ -32,7 +32,10 @@ Tracing Architecture
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__com__tracing[version==1]
+   :fulfils:
+      feat_req__com__tracing[version==1],
+      feat_req__logging__asil_support[version==1],
+      feat_req__logging__log_sinks_network[version==1]
 
    .. needarch::
       :scale: 50
