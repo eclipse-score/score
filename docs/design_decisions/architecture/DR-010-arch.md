@@ -119,8 +119,8 @@ The following are not part of the target:
 - a second SOME/IP daemon, or a second SOME/IP stack in applications;
 - a new gateway repository.
 
-The choice of SOME/IP stack for `someipd` (vsomeip, which is the current
-default, or lg-someip) is not decided here. It is decided on the measurements
+The choice of SOME/IP stack for `someipd` (lg-someip, or opensomeip hosted inside
+`someipd`) is not decided here. It is decided on the measurements
 in the Evidence Required section. The location of the stack source (dependency
 or in-tree) is decided with it.
 
@@ -137,7 +137,7 @@ protocol daemon.
 **P2 — One repository per protocol family, not per binding or per stack.** The
 number of bindings grows with the number of protocols (SOME/IP, DDS, and any
 future protocol), not with the number of stack variants. Stack variants
-(vsomeip, lg-someip, opensomeip, Cyclone DDS) sit behind a daemon (D5) and never
+(lg-someip, opensomeip, Cyclone DDS) sit behind a daemon (D5) and never
 add a binding. This keeps the number of repositories and bindings bounded.
 
 **P3 — The owner of a protocol owns its binding, daemon and tests.** The protocol
@@ -166,7 +166,7 @@ ASIL-B code, and an ASIL-B process never links a protocol stack (D5).
 | `gatewayd` (ASIL-B host): E2E, policy, access control, configuration | SOME/IP gateway FT | `eclipse-score/inc_someip_gateway` | ASIL-B processing of routes | Forwarding logic (in `communication`) |
 | DDS protocol: `ddsd`, DDS binding, DDS integration | DDS FT, to be created | DDS repository, to be decided | The DDS protocol path end to end | The binding interface |
 | Serializer implementations for each service type | To be assigned | To be decided | Generated or hand-written payload serializers | The serializer plugin API |
-| External stacks: vsomeip, lg-someip, opensomeip, Cyclone DDS | Owner of the daemon that uses them | Dependency, not a repository of S-CORE | Version pinning, licence review, updates | Anything else |
+| External stacks: lg-someip, opensomeip, Cyclone DDS | Owner of the daemon that uses them | Dependency, not a repository of S-CORE | Version pinning, licence review, updates | Anything else |
 | Performance evidence (T1 to T8) | SOME/IP FT for the protocol path; Communication FT for `mw::com`-level figures | Both | The test plan results | — |
 | Decision records | Architecture Community, with the leads of the affected feature teams | `eclipse-score/score` | The records | — |
 
@@ -215,8 +215,9 @@ follow-up records (stack choice, fast path, serializer location, DDS daemon
 repository). The record supersedes DR-001 in `inc_someip_gateway`.
 Exit: decision records accepted.
 
-**Phase 1 — Evidence.** Run the verification tests (T1 to T8, below) for vsomeip
-and lg-someip on the same hardware, and the fast-path test T5.
+**Phase 1 — Evidence.** Run the verification tests (T1 to T8, below) for lg-someip
+and opensomeip, each hosted inside `someipd`, on the same hardware, and the
+fast-path test T5.
 Exit: results published; Q1 and Q2 decided from them.
 
 **Phase 2 — Foundation in `communication`.** Bindings registered without a
@@ -261,7 +262,8 @@ a transport plugin, never in an ASIL data path.
 | Risk | Mitigation |
 |---|---|
 | Generic methods in `mw::com` take longer | Keep `socom` for methods only until they land; do not block events on it |
-| lg-someip open-source code is not safety-qualified | Qualification plan in Phase 4; keep vsomeip as fallback until then |
+| lg-someip open-source code is not safety-qualified | Qualification plan in Phase 4; keep both candidates under evaluation until the qualification path of the chosen stack is known |
+| opensomeip gaps (port sharing, SD for several applications, event fan-out) must be closed inside `someipd` | Estimate the work in `someipd` before Q1 is decided; the gaps are the proponent's list, not ours |
 | Defects found late in the open-sourced stack (undefined behaviour and framing bugs were fixed after its public release) | Sanitizer runs in Phase 1 (T7) |
 | Two teams own parts of one path (`communication` and `inc_someip_gateway`) | Interfaces fixed in Phase 2 before implementation |
 | Benchmark numbers come from the stack proponent | Phase 1 measures on our hardware |
@@ -283,7 +285,7 @@ has been reproduced on our hardware.
 
 | ID | Question | Decides |
 |---|---|---|
-| Q1 | Which stack runs in `someipd`: vsomeip, lg-someip, or opensomeip? | Follow-up record 1 |
+| Q1 | Which stack runs in `someipd`: lg-someip or opensomeip? | Follow-up record 1 |
 | Q2 | Is the io-sock fast path worth a second data path next to the daemon? | Decision D7 |
 
 Q2 depends on Q1: the fast path must beat the daemon path of the stack that is
@@ -307,8 +309,8 @@ already measures:
 - **Hardware scripts:** `run_hw_load.sh` runs the whole flow on IPNext hardware,
   with `--stack iosock` or `--stack vector`.
 
-What does not exist: a benchmarked side for vsomeip, for lg-someip as a daemon
-path, or for opensomeip. The wire contract (`bench_protocol.h`) is independent of
+What does not exist: a benchmarked side for lg-someip inside `someipd`, or for
+opensomeip inside `someipd`. The wire contract (`bench_protocol.h`) is independent of
 the stack, so these are new applications with the same options and output
 format.
 
@@ -338,31 +340,32 @@ format.
 
 ### Variants measured
 
-Candidates for `someipd` are B (lg-someip) and C (vsomeip). Variant D is a
-reference only, because it has no daemon. Variant E is a commercial reference
-stack and is never a candidate for `someipd`; it is not open source.
+The candidates for `someipd` are B (lg-someip) and C (opensomeip). Both run
+inside `someipd`, behind the same daemon interface and the same host coordinator,
+so they are measured on the same path. Variant D (opensomeip as a library in each
+application, without a daemon) is an optional reference for the best case that
+the stack proponent reports for small messages; it is not a candidate, because it
+has no host-wide coordination (test T2). Variant E is a commercial reference stack,
+not open source, and never a candidate.
 
 | Variant | Path measured | Status | Used for |
 |---|---|---|---|
 | A. io-sock | app → LoLa → io-sock module → network | exists | Q2 |
-| B. lg-someip daemon | app → lgsomeip API → someip-daemon → network | to build | Q1, Q2 |
-| C. vsomeip daemon | app → vsomeip API → routingmanagerd → network | to build | Q1, Q2 |
-| D. opensomeip library | app → opensomeip → network, no daemon | to build | reference only |
+| B. lg-someip in `someipd` | app → binding → `someipd` (lg-someip) → network | to build | Q1, Q2 |
+| C. opensomeip in `someipd` | app → binding → `someipd` (opensomeip, from PR `#435`) → network | to build | Q1, Q2 |
+| D. opensomeip library, no daemon (optional reference) | app → opensomeip → network | to build, optional | reference only |
 | E. Commercial AUTOSAR Adaptive stack (Vector), reference | app → ara::com → someipd_posix → network | exists | reference only; not open source; no compliance claim |
-
-Variant D has no host-wide coordination, so it cannot be the `someipd` stack
-(test T2). It is a reference for small messages only.
 
 ### Build list
 
 1. Fairness fix for variant A (item 1 above), or the reporting rule for it.
-2. Three benchmark applications B, C and D. Each reads the same options as
-   `someip_bench_lola`, uses the same wire contract and output format, and
-   reuses `gen_load_workload.py` for the mixed load.
-3. One QNX target bundle per variant (Bazel), with the stack's configuration.
-   The vsomeip build is available from this repository (`@vsomeip`).
-4. Extend `run_hw_load.sh` with `--stack vsomeip`, `--stack lgsomeip` and
-   `--stack opensomeip`, with the same arguments for every stack.
+2. Two benchmark applications, B and C, that run through `someipd`, and the
+   optional reference D. Each reads the same options as `someip_bench_lola`, uses
+   the same wire contract and output format, and reuses `gen_load_workload.py`
+   for the mixed load.
+3. One QNX target bundle per stack (Bazel), with the stack's configuration.
+4. Extend `run_hw_load.sh` with `--stack lgsomeip` and `--stack opensomeip`, with
+   the same arguments for both.
 5. Calibration: run the same variant twice under the same setup. The two results
    must agree within the spread of the repetitions; otherwise the setup is not
    comparable.
@@ -379,19 +382,22 @@ spread (min and max).
 | R2 | Mixed load, scales 0.25, 0.5, 1.0 | A, B, C, E | CPU per event, delivery, latency per class |
 | R3 | Fan-out: 1, 2 and 8 subscribers on the target, 1 KB events | A, B, C, D | CPU per event, bytes on link |
 | R4 | Footprint: peak RSS per process, stripped size | A, B, C, D | MB, KB |
-| R5 | Multi-application host: three applications offer and consume on one host | B, C, D | Functional only: port sharing, SD visibility, fan-out (test T2) |
+| R5 | Multi-application host: three applications offer and consume on one host | B, C | Functional only: port sharing, SD visibility, fan-out (test T2) |
 
 ### Decision rules (proposals, to be confirmed by the Communication FT)
 
 **Q1 — stack for `someipd`**
 
-1. Eligibility, all required: TC8 conformance not worse than vsomeip (T1); host
-   coordination passes (R5); no open undefined-behaviour or memory findings in
-   sanitizer runs (T7).
+1. Eligibility, all required: TC8 conformance (T1) reported for each candidate and
+   accepted by the Communication FT; host coordination passes (R5); no open
+   undefined-behaviour or memory findings in sanitizer runs (T7).
 2. Among eligible stacks, choose the lower p99 round-trip time at 16 B and 1400 B
    (R1), and the lower CPU per event in R2 at scale 1.0.
-3. If the difference is below 10 % on all of these, keep vsomeip, the current
-   default, and record the tie. Maintenance cost and safety evidence then decide.
+3. If the difference is below 10 % on all of these, the tie is decided by the
+   qualification path and the maintenance cost. The proponent describes
+   opensomeip as pre-1.0 with safety alignment ongoing and not certified, and
+   describes lg-someip as qualified for its AUTOSAR variant only. The record
+   makes no compliance claim for either.
 
 **Q2 — io-sock fast path**
 
@@ -435,7 +441,7 @@ Variants B, C and D follow once their bundles and `--stack` options exist.
 - Raw results per variant, repetition and run set, in one directory per run.
 - A table per decision: median, spread, and the decision rule applied.
 - Versions of every component: this repository's commit, the lg-someip commit
-  `d09656e`, the vsomeip version, the opensomeip version, the reference image
+  `d09656e`, the opensomeip version or commit (PR `#435`), the reference image
   (commercial AUTOSAR Adaptive stack) and the QNX SDP version.
 - Results are attached to the follow-up records for Q1 and Q2.
 
@@ -490,7 +496,7 @@ Dispositions:
 | `gatewayd` | `score/gatewayd` | Rework | Uses the shared forwarding path; no forwarding code of its own; ASIL-B host (D4) |
 | E2E in `gatewayd` | not implemented (comments only) | New | Implemented in `gatewayd` (Phase 4) |
 | `someipd` | `score/someipd` | Rework | Offers the daemon service interface; stack behind an interface (D5) |
-| SOME/IP stack in `someipd` | `@vsomeip` (`score/someipd` BUILD) | Open | Stack decision (follow-up 1) |
+| SOME/IP stack in `someipd` | `@vsomeip` (`score/someipd` BUILD) | Replace | Replaced by the chosen stack, lg-someip or opensomeip (follow-up 1); vsomeip is out of the candidate set
 | `socom` | `score/socom` (about 34 files, mocks, tests, docs) | Retire | Removed once generic methods exist in `mw::com` (D3) |
 | `gateway_ipc_binding` | `score/gateway_ipc_binding` (about 22 files) | Replace | Forwarding moves to communication; per-service logic replaced by the daemon service interface (D2) |
 | `bridged_services` | `score/bridged_services` | Rework | Bridge configuration taken from the `mw::com` deployment |
@@ -507,7 +513,7 @@ Dispositions:
 | Migration sequence PR `#358` | open PR | Replace | Withdrawn or re-scoped to this record |
 | `socom` work PRs `#322`, `#409`, `#417`, `#421` | open PRs | Drop | Stopped once this record is accepted |
 | Feature integration test PR `#439` | open PR | Stay | Adapted to the new path |
-| opensomeip opt-in PR `#435` | open PR | Open | Depends on the stack decision; not merged as a switch |
+| opensomeip in-process PR `#435` | open PR | Rework | Basis of candidate C; rebuilt behind the stack interface, not merged as a build switch |
 
 ### Prototype (`communication/experimental/someip_sd`)
 
