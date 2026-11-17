@@ -301,13 +301,8 @@ already measures:
 - **Mixed load** from a realistic event mix (`someip_event_workload.csv`):
   `someip_load_lola` and `someip_load_peer`, with `LOAD_RESULT` and `CPU_RESULT`
   and `load_report.py --compare` for two runs.
-- **Commercial reference:** the same workload on the reference image's AUTOSAR
-  Adaptive stack (Vector, `--stack vector`). This stack is commercial and not
-  open source. Its figures may be reported as measurements of that stack. This
-  record makes no statement of AUTOSAR compliance for it, and no statement that
-  it is compliant.
 - **Hardware scripts:** `run_hw_load.sh` runs the whole flow on IPNext hardware,
-  with `--stack iosock` or `--stack vector`.
+  with `--stack iosock`.
 
 What does not exist: a benchmarked side for lg-someip inside `someipd`, or for
 opensomeip inside `someipd`. The wire contract (`bench_protocol.h`) is independent of
@@ -345,8 +340,7 @@ inside `someipd`, behind the same daemon interface and the same host coordinator
 so they are measured on the same path. Variant D (opensomeip as a library in each
 application, without a daemon) is an optional reference for the best case that
 the stack proponent reports for small messages; it is not a candidate, because it
-has no host-wide coordination (test T2). Variant E is a commercial reference stack,
-not open source, and never a candidate.
+has no host-wide coordination (test T2).
 
 | Variant | Path measured | Status | Used for |
 |---|---|---|---|
@@ -354,7 +348,6 @@ not open source, and never a candidate.
 | B. lg-someip in `someipd` | app → binding → `someipd` (lg-someip) → network | to build | Q1, Q2 |
 | C. opensomeip in `someipd` | app → binding → `someipd` (opensomeip, from PR `#435`) → network | to build | Q1, Q2 |
 | D. opensomeip library, no daemon (optional reference) | app → opensomeip → network | to build, optional | reference only |
-| E. Commercial AUTOSAR Adaptive stack (Vector), reference | app → ara::com → someipd_posix → network | exists | reference only; not open source; no compliance claim |
 
 ### Build list
 
@@ -378,8 +371,8 @@ spread (min and max).
 
 | Run set | Scenario | Variants | Measure |
 |---|---|---|---|
-| R1 | Round trip, 16 B and 1400 B, 100 Hz, 300 pings | A, B, C, D, E | p50, p99, loss |
-| R2 | Mixed load, scales 0.25, 0.5, 1.0 | A, B, C, E | CPU per event, delivery, latency per class |
+| R1 | Round trip, 16 B and 1400 B, 100 Hz, 300 pings | A, B, C, D | p50, p99, loss |
+| R2 | Mixed load, scales 0.25, 0.5, 1.0 | A, B, C | CPU per event, delivery, latency per class |
 | R3 | Fan-out: 1, 2 and 8 subscribers on the target, 1 KB events | A, B, C, D | CPU per event, bytes on link |
 | R4 | Footprint: peak RSS per process, stripped size | A, B, C, D | MB, KB |
 | R5 | Multi-application host: three applications offer and consume on one host | B, C | Functional only: port sharing, SD visibility, fan-out (test T2) |
@@ -424,7 +417,6 @@ Existing, on IPNext hardware:
 
 ```sh
 ./run_hw_load.sh --stack iosock      # variant A
-./run_hw_load.sh --stack vector      # variant E, commercial reference
 ```
 
 Compare two runs:
@@ -441,8 +433,7 @@ Variants B, C and D follow once their bundles and `--stack` options exist.
 - Raw results per variant, repetition and run set, in one directory per run.
 - A table per decision: median, spread, and the decision rule applied.
 - Versions of every component: this repository's commit, the lg-someip commit
-  `d09656e`, the opensomeip version or commit (PR `#435`), the reference image
-  (commercial AUTOSAR Adaptive stack) and the QNX SDP version.
+  `d09656e`, the opensomeip version or commit (PR `#435`) and the QNX SDP version.
 - Results are attached to the follow-up records for Q1 and Q2.
 
 ### Risks and open points
