@@ -17,7 +17,7 @@
 
 ```{dec_rec} Target architecture for SOME/IP and DDS on mw::com
 :id: dec_rec__arch__target_someip_dds_on_mwcom
-:status: draft
+:status: proposed
 :version: 1
 :tracking: TBD
 :context: SOME/IP and DDS support is split across three repositories with two gateway forwarding paths, a socom layer that duplicates mw::com, and a prototype that bypasses both. S-CORE needs one target picture for the communication stack.
