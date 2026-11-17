@@ -46,6 +46,28 @@
 
 ---
 
+## Glossary
+
+| Term | Meaning in this record |
+|---|---|
+| `mw::com` | S-CORE's service-oriented communication API, in the `communication` repository |
+| LoLa | The `mw::com` binding for zero-copy shared memory on one host |
+| Binding | The part of `mw::com` that moves data for one transport or protocol (LoLa, SOME/IP, DDS) |
+| Binding interface (SPI) | The interface every binding implements, owned by `communication` |
+| Daemon service interface | The `mw::com` services between a binding and a stack daemon |
+| SOME/IP | Automotive service protocol over IP networks; SD is its service discovery |
+| DDS | Data Distribution Service, a data-centric publish/subscribe standard |
+| `someipd`, `ddsd` | Stack daemons, one per protocol per host, holding the wire protocol |
+| `gatewayd` | The gateway process on the ASIL-B side; hosts bindings for applications that cannot use `mw::com` directly |
+| QM, ASIL-B | Safety levels: QM is no safety requirement, ASIL-B is a safety requirement of the automotive standard ISO 26262 |
+| E2E | End-to-end protection of a message (counter, CRC, identifier) checked by the receiver |
+| io-sock | The QNX network stack process into which the prototype's kernel module is loaded |
+| socom | The gateway's current service layer, retired by this record |
+| TC8 | The SOME/IP conformance test suite that the gateway runs |
+| Direct placement | The binding runs inside the application |
+| Gateway placement | The binding runs inside `gatewayd` |
+| FEP, FCP, Shepherd | The feature proposal process: an author's proposal, a 10-day final comment period, and the Architecture Community member who guides it (DR-002-Proc) |
+
 ## Context / Problem
 
 S-CORE applications use `mw::com` as their service-oriented API. LoLa provides
@@ -243,7 +265,7 @@ phase does not start until the earlier exit check is met.
 
 **Phase 0 — Decide.** The Architecture Community accepts this record and the
 follow-up records (stack choice, fast path, serializer location, DDS daemon
-repository). The record supersedes DR-001 in `inc_someip_gateway`.
+repository, SOME/IP binding location, conformance test suite). The record supersedes DR-001 in `inc_someip_gateway`.
 Exit: decision records accepted.
 
 **Phase 1 — Evidence.** Run the verification tests (T1 to T8, defined in Evidence
@@ -262,8 +284,8 @@ and forwarding passes its tests with one transport.
 **Phase 3 — SOME/IP path.** `someipd` runs on the chosen stack and offers the
 daemon service interface. The SOME/IP binding uses it as transport.
 `gateway_ipc_binding` forwarding is replaced by the shared path. `socom` is
-removed once methods work on `mw::com`. Exit: the gateway integration tests and
-TC8 pass on the new path.
+removed once methods work on `mw::com`. Exit: the gateway path with E2E (T4) and
+TC8 conformance (T1) pass on the new path.
 
 **Phase 4 — Gateway safety and direct placement.** E2E protection implemented
 in `gatewayd`. Direct placement: the same E2E check runs in the application's
@@ -520,7 +542,8 @@ Dispositions:
 | Gateway transport interface and factory | `score/mw/com/gateway/transport_layer` | Stay | Basis for the forwarding transport; hypervisor transports stay with the LoLa gateway |
 | Gateway README | `score/mw/com/gateway/README.md` | Rework | Updated for the shared forwarding path |
 | `error_serializer` | `score/mw/com/impl` | Stay | Not affected |
-| Serializer plugin and null serializer | `inc_someip_gateway/score/serializer` | Move | To communication as a shared plugin (D6) |
+| Serializer plugin API | `inc_someip_gateway/score/serializer` | Move | The plugin interface moves to communication (D6) |
+| Serializer implementations, including the null serializer | `inc_someip_gateway/score/serializer` | Open | Location decided by follow-up 3 (D6) |
 | Daemon service interface | none | New | `mw::com` services between a binding and a stack daemon (D3) |
 | Shared forwarding | partly in the LoLa gateway and in `gateway_ipc_binding` | New | One path in communication (D2) |
 | DDS binding | none | New | In the DDS protocol repository, against the binding interface in communication (DR-009, Option B) |
@@ -686,7 +709,9 @@ Follow-up records that are needed:
 1. SOME/IP stack for `someipd`, and the location of the stack source.
 2. io-sock fast path (after the measurements in Evidence Required).
 3. Serializer implementation location, shared with DDS.
-4. Repository for the DDS daemon.
+4. Repository for the DDS daemon, and the owner of the DDS protocol path.
+5. Location of the SOME/IP binding, and of the SOME/IP protocol repository.
+6. Owner and location of the binding conformance test suite.
 
 Open work that must be re-scoped: `inc_someip_gateway#358` (the migration
 sequence, which keeps a reduced `socom`) and the open `socom` PRs #322, #409,
@@ -704,3 +729,20 @@ the QM/ASIL boundary (T6).
   Alternatives Considered.
 - A new gateway repository for SOME/IP. Rejected: the gateway stays in
   `inc_someip_gateway` and the shared parts move to `communication`.
+
+## References
+
+- DR-009, DDS communication: `docs/design_decisions/architecture/DR-009-arch.md`
+- DR-002-Proc, the FEP process: `docs/design_decisions/process/DR-002-proc.md`
+- SOME/IP gateway feature page: https://eclipse-score.github.io/score/main/features/communication/some_ip_gateway/index.html
+- DR-001 and DR-002 of the gateway: `inc_someip_gateway/docs/architecture/dec_someip_api_abstraction.rst` and `dec_ipc_implementation.rst`
+- Gateway design discussion: https://github.com/orgs/eclipse-score/discussions/1984
+- Communication FT discussion (stack comparison): https://github.com/orgs/eclipse-score/discussions/3365
+- Stack contribution call: https://github.com/eclipse-score/score/issues/2787 (LG proposal `#2807`, LIBERSOM `#3456`, TC8 suite `#3464`)
+- DDS gateway: https://github.com/eclipse-score/score/issues/2726, feature request PR https://github.com/eclipse-score/score/pull/2997
+- lg-someip in `communication`: https://github.com/eclipse-score/communication/pull/1498
+- Generic methods in `mw::com`: https://github.com/eclipse-score/communication/issues/767
+- opensomeip in `inc_someip_gateway`: https://github.com/eclipse-score/inc_someip_gateway/pull/435
+- Migration sequence: https://github.com/eclipse-score/inc_someip_gateway/pull/358
+- LG measurement slides, attached to discussion `#3365`: `lg-someip-for-S-CORE_v0.3_26102026.pdf` (proponent's data, not reproduced here)
+- Prototype and benchmark: `communication/experimental/someip_sd`
