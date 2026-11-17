@@ -1,0 +1,106 @@
+@startuml alternative_component
+title Target picture: mw::com first, one forwarding path, one daemon contract\nGrouped by owning repository
+
+left to right direction
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam component {
+  BackgroundColor<<ASIL-B>> #FFE6E6
+  BackgroundColor<<QM>> #E6F0FF
+  BackgroundColor<<external>> #F2F2F2
+  BackgroundColor<<open>> #FFF8DC
+  BackgroundColor<<retired>> #D9D9D9
+}
+
+package "Application repos (integrator)" as APPS {
+  component "Application A\n(mw::com API)" as AppA
+  component "Application B\n(mw::com API)" as AppB
+}
+
+package "eclipse-score/communication (mw::com and shared bindings)" as COM {
+  component "LoLa binding\n(zero-copy, same host)" as Lola
+  component "SOME/IP binding\n(shared library)" as SomeBind
+  component "DDS binding\n(shared library)" as DdsBind
+  component "Serializer plugin\n(shared, per service type)" as Ser
+  component "Forwarding\n(generic proxy, transport,\nskeleton; from mw::com gateway)" as Fwd
+  component "Daemon service IF\n(mw::com services)" as DIF
+}
+
+package "eclipse-score/inc_someip_gateway" as GWR {
+  component "gatewayd\n(ASIL-B: E2E, policy, ACL, config;\nno forwarding code of its own)" as GW <<ASIL-B>>
+  component "socom\n(retired, replaced by Daemon service IF)" as Socom <<retired>>
+  component "someipd\n(stack daemon, one per host)" as SomeIPD <<QM>> {
+    component "SOME/IP-SD and protocol\n(behind Daemon service IF)" as Proto <<QM>>
+    component "Transport plugin\n(sockets)" as Sock <<QM>>
+    component "Transport plugin\n(io-sock fast path, optional)" as Fast <<QM>>
+  }
+}
+
+package "DDS repo (open decision)" as DDSR {
+  component "ddsd\n(DDS Communication Daemon, one per host)" as DDSD <<QM>> {
+    component "DDS integration\n(behind DDS IF)" as DDSI <<QM>>
+  }
+}
+
+package "External dependencies" as EXT {
+  component "vsomeip 3.7.6\n(current default)" as VS <<external>>
+  component "lg-someip\n(proposed: dependency of someipd,\nlocation open)" as LG <<open>>
+  component "io-sock (QNX)" as IOS <<external>>
+  component "Cyclone DDS" as CYC <<external>>
+}
+
+cloud "Vehicle network" as Net
+
+AppA --> Lola : same host
+AppA --> SomeBind : direct placement
+Lola --> AppB : same host
+
+GW --> Fwd : forwards events
+Fwd --> Lola : local side
+Fwd --> SomeBind : remote side
+Fwd --> DdsBind : remote side (DDS)
+Fwd --> Ser : payload
+SomeBind --> Ser : payload
+DdsBind --> Ser : payload
+
+SomeBind --> DIF : daemon contract
+DdsBind --> DIF : daemon contract
+DIF --> SomeIPD : daemon contract
+DIF --> DDSD : same contract
+
+Socom ..> DIF : replaced by
+
+Proto ..> VS : links (current)
+Proto ..> LG : links (proposed)
+Proto --> Sock : transport IF
+Proto ..> Fast : optional, per route
+Fast ..> IOS : kernel sockets
+DDSI ..> CYC : links
+
+Sock --> Net
+Fast --> Net
+DDSI --> Net
+
+note bottom of COM
+  D1 mw::com first: same host = LoLa,
+     other ECU = shared SOME/IP or DDS binding,
+     placed in the app or in gatewayd.
+  D2 One forwarding path, not one per gateway.
+  D3 Daemon contract on mw::com; socom retired
+     once mw::com has generic methods
+     (communication#767).
+  D6 Serializer is a shared plugin.
+end note
+
+note bottom of GWR
+  D4 gatewayd is used only for apps that cannot use
+     mw::com directly, and for central E2E and policy.
+  D5 One protocol daemon per protocol per host.
+     Protocol logic only in someipd.
+  D7 io-sock fast path stays optional until measured.
+end note
+
+note bottom of APPS
+  Specs and decisions: eclipse-score/score (no code).
+end note
+@enduml
