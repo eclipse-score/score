@@ -562,6 +562,7 @@
 <li class="toctree-l1"><a class="reference internal" href="code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto/index.html">Crypto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daal/index.html">Deterministic App Abstraction Layer</a></li>
 
 
@@ -576,7 +577,6 @@
 <li class="toctree-l1"><a class="reference internal" href="log_and_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persistency/index.html">Persistency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time/index.html">Time</a></li>
 </ul>
 </div>
@@ -651,6 +651,7 @@ the operations provided by the feature to other features and the operations requ
 <li class="toctree-l1"><a class="reference internal" href="code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto/index.html">Crypto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daal/index.html">Deterministic App Abstraction Layer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daal/index.html#feature-flag">Feature flag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="daal/index.html#abstract">Abstract</a></li>
@@ -665,7 +666,6 @@ the operations provided by the feature to other features and the operations requ
 <li class="toctree-l1"><a class="reference internal" href="log_and_trace/index.html">Log and Trace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persistency/index.html">Persistency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time/index.html">Time</a></li>
 </ul>
 </div>
@@ -712,54 +712,54 @@ the operations provided by the feature to other features and the operations requ
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="daal/architecture/index.html#feat__daal">feat__daal</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="crypto/architecture/index.html#feat__crypto">feat__crypto</a></p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_safety"><p>QM</p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="daal/architecture/index.html#feat__daal">feat__daal</a></p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="diagnostics/architecture/index.html#feat__diagnostics">feat__diagnostics</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="diagnostics/architecture/index.html#feat__diagnostics">feat__diagnostics</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>QM</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="feo/architecture/index.html#feat__feo">feat__feo</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="feo/architecture/index.html#feat__feo">feat__feo</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="ai_platform/gen_ai/architecture/index.html#feat__gen_ai">feat__gen_ai</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="ai_platform/gen_ai/architecture/index.html#feat__gen_ai">feat__gen_ai</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="lifecycle/architecture/index.html#feat__lifecycle">feat__lifecycle</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="lifecycle/architecture/index.html#feat__lifecycle">feat__lifecycle</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="log_and_trace/logging/architecture/index.html#feat__logging">feat__logging</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="log_and_trace/logging/architecture/index.html#feat__logging">feat__logging</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="orchestration/architecture/index.html#feat__orchestration">feat__orchestration</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="orchestration/architecture/index.html#feat__orchestration">feat__orchestration</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../modules/os/docs/index.html#feat__os">feat__os</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../modules/os/docs/index.html#feat__os">feat__os</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
-<td class="needs_status"><p>valid</p></td>
+<td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="persistency/architecture/index.html#feat__persistency">feat__persistency</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="persistency/architecture/index.html#feat__persistency">feat__persistency</a></p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
-<td class="needs_status"><p>valid</p></td>
-</tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="security_crypto/architecture/index.html#feat__security_crypto">feat__security_crypto</a></p></td>
-<td class="needs_security"><p>YES</p></td>
-<td class="needs_safety"><p>QM</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="time/architecture/index.html#feat__time">feat__time</a></p></td>
