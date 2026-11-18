@@ -639,7 +639,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-8ed538b4">
+  <div class="need_container docutils container" id="SNCB-b81f472f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_change_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -739,8 +739,8 @@ or more associated GitHub Pull Requests.</p>
 <h3>Change Request Infrastructure and Types<a class="headerlink" href="#change-request-infrastructure-and-types" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Relevant parts of these templates are included in the GitHub ISSUE templates
-<strong>Feature Request</strong> and <strong>Component Request</strong>.</p>
+<p>Relevant parts of the change management templates are incorporated into the
+GitHub ISSUE templates <strong>Feature Request</strong> and <strong>Component Request</strong>.</p>
 <p>Use <strong>Feature Request</strong> for a new feature or a modification of an existing
 feature. Use <strong>Component Request</strong> for a new component or a modification of
 an existing component.</p>
@@ -818,11 +818,11 @@ to the responsible Feature Team’s domain may follow the standard workflow.</p>
 <p>Whether a Feature Modification constitutes a major change cannot be determined
 solely by a fixed set of criteria. The responsible
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> evaluates the impact in the context of the
-change when it is proposed.</p>
+proposed change.</p>
 <p>A change initially considered major may be excluded from the FEP Track by
 community agreement if the additional governance process is not considered
 necessary. Conversely, a proposed modification may be moved to the FEP Track
-when its impact is subsequently determined to be major.</p>
+if its impact is subsequently determined to be major.</p>
 <p>The baseline definition of a change is provided by the <a class="reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/change_management/change_management_concept.html#key-concept">Key Concept</a> in
 <code class="docutils literal notranslate"><span class="pre">process_description</span></code>.</p>
 <p>Component and Component Modification Change Requests do not require a Shepherd
@@ -832,7 +832,7 @@ Creating such a Decision Record does not by itself place the Change Request on
 the FEP Track.</p>
 <p>The FEP mechanism is not inherently restricted to a particular Change Request
 type. Its current application to Features and major Feature Modifications defines
-the present S-CORE process. Applying it to additional <cite>Change Request types`_</cite>
+the current S-CORE process. Applying it to additional <a class="reference internal" href="#change-request-types">Change Request Types</a>
 requires an explicit process decision.</p>
 <p>FEP tracking ISSUE statuses refine the generic Change Request status model:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4">
@@ -949,7 +949,7 @@ and Impact Analysis templates.</p>
 GitHub.</p>
 <p>The starting configuration is the state of the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, or the
 applicable baseline, when the Change Request is created. Where applicable, this
-state can be identified by the base commit of the associated PR. It is distinct
+state can be identified by the base commit of an associated PR. It is distinct
 from the Expected Implementation Version, which defines the target release for
 the requested change.</p>
 <p>Additional implementation information may be maintained in associated PRs.</p>
@@ -972,7 +972,7 @@ Change Request label.</p>
 </dd>
 <dt><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_affected_wp">gd_req__change_attr_affected_wp</a></dt><dd><p>Initially affected work products are recorded in the Expected Changes of Work
 Products section of the ISSUE. Additional affected work products identified
-during analysis or implementation are recorded in the associated PRs or
+during analysis or implementation are recorded in associated PRs or
 linked ISSUEs.</p>
 </dd>
 <dt><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_milestone">gd_req__change_attr_milestone</a></dt><dd><p>The planned target release is recorded as the Expected Implementation Version.
@@ -1012,7 +1012,8 @@ PRs.</p>
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_component_template.html#gd_temp__change_component_request">gd_temp__change_component_request</a> template shall be
 used.</p>
 <p>For a modification, the affected existing work products shall be updated.</p>
-<p>Where applicable, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_impact_analysis_template.html#gd_temp__change_impact_analysis">gd_temp__change_impact_analysis</a>
+<p>Where applicable, the
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_impact_analysis_template.html#gd_temp__change_impact_analysis">gd_temp__change_impact_analysis</a>
 shall be completed.</p>
 <p>At least one implementation PR shall be linked to an accepted Change Request
 before its implementation can be completed.</p>
@@ -1067,13 +1068,13 @@ implement and verify the change.</p>
 implementation items shall be linked to the Change Request ISSUE to maintain
 traceability and enable progress monitoring.</p>
 <p>Implementation continues until the required activities have been completed and
-the associated ISSUEs and PRs have been closed or merged as applicable.</p>
+the associated ISSUEs and PRs have been closed or merged, as applicable.</p>
 <p>Once implementation and verification are complete, the Projects status is set
 to <code class="docutils literal notranslate"><span class="pre">Done</span></code> to initiate the final closure review by the
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a>.</p>
 <p>If the Change Request is rejected or abandoned during implementation, the
-decision shall be documented and the ISSUE closed using the applicable rejected
-state.</p>
+decision shall be documented and the ISSUE shall be closed using the applicable
+rejection state.</p>
 </section>
 <section id="close-the-change-request">
 <h4>4. Close the Change Request<a class="headerlink" href="#close-the-change-request" title="Link to this heading">#</a></h4>
@@ -1086,8 +1087,8 @@ the accepted Change Request has been completely implemented and verified.</p>
 <li><p>required PRs are merged;</p></li>
 <li><p>affected work products have been updated;</p></li>
 <li><p>required verification activities have been completed successfully;</p></li>
-<li><p>the verification results provide sufficient evidence that the change has
-achieved its intended purpose; and</p></li>
+<li><p>verification results provide sufficient evidence that the change has achieved
+its intended purpose; and</p></li>
 <li><p>required traceability is complete.</p></li>
 </ul>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_checklist.html#gd_chklst__change_cr_review">gd_chklst__change_cr_review</a> provides additional closure criteria.
