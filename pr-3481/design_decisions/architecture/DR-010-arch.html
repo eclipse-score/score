@@ -650,7 +650,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-11-17</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-9d3cede9">
+<div class="need_container docutils container" id="SNCB-b26df8d4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__target_someip_dds_on_mwcom">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -816,10 +816,12 @@ cannot be unloaded.</p></li>
 processing is planned. The gap is not a missing gateway; it is that the
 gateway duplicates forwarding and a service model that <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> already
 provides, and that the stack and binding boundaries are not defined.</p>
-<p>Methods are not covered by the current <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> generic proxy and skeleton
-(events only). <code class="docutils literal notranslate"><span class="pre">socom</span></code> is the only layer in the gateway that supports methods
-today, and generic methods in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> are not scheduled
-(<code class="docutils literal notranslate"><span class="pre">eclipse-score/communication#767</span></code>).</p>
+<p>The generic <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> proxy and skeleton carry events and fields only; they have
+no method API. <code class="docutils literal notranslate"><span class="pre">socom</span></code> has a method API, but the SOME/IP path does not use it:
+<code class="docutils literal notranslate"><span class="pre">someipd</span></code> (<code class="docutils literal notranslate"><span class="pre">remote_network_service.cpp</span></code>) and <code class="docutils literal notranslate"><span class="pre">gatewayd</span></code> (<code class="docutils literal notranslate"><span class="pre">local_service_instance.cpp</span></code>)
+both implement <code class="docutils literal notranslate"><span class="pre">on_method_call</span></code> as a handler that returns no invocation, and
+<code class="docutils literal notranslate"><span class="pre">gateway_ipc_binding</span></code> forwards no method calls. Methods are therefore not part of
+the SOME/IP path today.</p>
 </section>
 <section id="decision">
 <h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
@@ -837,8 +839,11 @@ remote binding is implemented once, in <code class="docutils literal notranslate
 existing LoLa gateway. The forwarding code in <code class="docutils literal notranslate"><span class="pre">gateway_ipc_binding</span></code> is retired.</p>
 <p><strong>D3 — <code class="docutils literal notranslate"><span class="pre">socom</span></code> is retired.</strong> The daemon contract between a binding and a stack
 daemon is defined as <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> services (the daemon service interface). <code class="docutils literal notranslate"><span class="pre">socom</span></code>
-is removed once <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> provides generic methods. Until then, methods are the
-only blocking item.</p>
+is removed once the daemon service interface and the SOME/IP event path run on
+<code class="docutils literal notranslate"><span class="pre">mw::com</span></code>, including a SOME/IP header followed by the payload in one generic event
+slot (see Dependencies). Methods are not a precondition, because the SOME/IP path
+does not use them. Method support in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> is added later, with its own
+requirement and issue.</p>
 <p><strong>D4 — <code class="docutils literal notranslate"><span class="pre">gatewayd</span></code> has a narrow role.</strong> <code class="docutils literal notranslate"><span class="pre">gatewayd</span></code> is used for applications that
 cannot use <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> directly (legacy LoLa applications, native DDS peers) and
 for functions that need an ASIL-B host: E2E protection, policy and access
@@ -1026,15 +1031,15 @@ and opensomeip, each hosted inside <code class="docutils literal notranslate"><s
 fast-path test T5.
 Exit: results published; Q1 and Q2 decided from them.</p>
 <p><strong>Phase 2 — Foundation in <code class="docutils literal notranslate"><span class="pre">communication</span></code>.</strong> A build-time binding table, so that
-a binding can be added without a change to the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> core; generic methods in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>
-(<code class="docutils literal notranslate"><span class="pre">communication#767</span></code>); forwarding generalised from the LoLa gateway; the
-serializer plugin interface; the daemon service interface as <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>
-services. Exit: a test binding is added without changing the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> core,
-and forwarding passes its tests with one transport.</p>
+a binding can be added without a change to the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> core; forwarding
+generalised from the LoLa gateway; the serializer plugin interface; the daemon
+service interface as <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> services; and the header-plus-payload spike (see
+Dependencies). Exit: a test binding is added without changing the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> core,
+forwarding passes its tests with one transport, and the spike passes.</p>
 <p><strong>Phase 3 — SOME/IP path.</strong> <code class="docutils literal notranslate"><span class="pre">someipd</span></code> runs on the chosen stack and offers the
 daemon service interface. The SOME/IP binding uses it as transport.
 <code class="docutils literal notranslate"><span class="pre">gateway_ipc_binding</span></code> forwarding is replaced by the shared path. <code class="docutils literal notranslate"><span class="pre">socom</span></code> is
-removed once methods work on <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>. Exit: the gateway path with E2E (T4) and
+removed once the SOME/IP path runs on the daemon service interface. Exit: the gateway path with E2E (T4) and
 TC8 conformance (T1) pass on the new path.</p>
 <p><strong>Phase 4 — Gateway safety and direct placement.</strong> E2E protection implemented
 in <code class="docutils literal notranslate"><span class="pre">gatewayd</span></code>. Direct placement: the same E2E check runs in the application’s
@@ -1050,8 +1055,14 @@ a transport plugin, never in an ASIL data path.</p>
 <ul class="simple">
 <li><p>Build-time binding table in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> (Phase 2): needed before a new binding
 can be added without a core change.</p></li>
-<li><p>Generic methods in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> (<code class="docutils literal notranslate"><span class="pre">communication#767</span></code>, no timeline): needed before
-<code class="docutils literal notranslate"><span class="pre">socom</span></code> can be removed.</p></li>
+<li><p>Header and payload in one generic event slot: the generic event API gives a
+writable slot of fixed size per event (<code class="docutils literal notranslate"><span class="pre">GenericSkeletonEvent::Allocate</span></code>), so a
+SOME/IP header followed by the payload fits, with the length encoded in the bytes.
+This is not yet tested with the gateway’s header layout. A spike in Phase 2 must
+pass before <code class="docutils literal notranslate"><span class="pre">socom</span></code> can be removed.</p></li>
+<li><p>Generic methods are not a dependency. No issue in <code class="docutils literal notranslate"><span class="pre">communication</span></code> tracks them
+(<code class="docutils literal notranslate"><span class="pre">communication#767</span></code> is about nested method calls inside callbacks and does not
+cover generic methods).</p></li>
 <li><p>Decision on the repository for the stack source and the DDS daemon: needed in
 Phase 0.</p></li>
 <li><p>Safety evidence for lg-someip: LG reports a qualification for its AUTOSAR
@@ -1068,8 +1079,8 @@ compliance claim for any stack.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Generic methods in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> take longer</p></td>
-<td><p>Keep <code class="docutils literal notranslate"><span class="pre">socom</span></code> for methods only until they land; do not block events on it</p></td>
+<tr class="row-even"><td><p>The header-plus-payload spike fails</p></td>
+<td><p>Keep <code class="docutils literal notranslate"><span class="pre">socom</span></code>’s payload type for the gateway until a <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> layout is found; do not block events on methods</p></td>
 </tr>
 <tr class="row-odd"><td><p>lg-someip open-source code is not safety-qualified</p></td>
 <td><p>Qualification plan in Phase 4; keep both candidates under evaluation until the qualification path of the chosen stack is known</p></td>
@@ -1521,7 +1532,7 @@ share its disposition unless listed separately.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">socom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">score/socom</span></code> (about 34 files, mocks, tests, docs)</p></td>
 <td><p>Retire</p></td>
-<td><p>Removed once generic methods exist in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> (D3)</p></td>
+<td><p>Removed once the SOME/IP path runs on the daemon service interface and the event path is verified in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> (D3)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gateway_ipc_binding</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">score/gateway_ipc_binding</span></code> (about 22 files)</p></td>
@@ -1768,7 +1779,8 @@ repository and is not an application-facing API: <code class="docutils literal n
 <p>Applications are not affected. They continue to use <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>, and their
 deployment configuration changes only when a SOME/IP or DDS route is added.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">communication</span></code>, the changes are additive: a build-time binding table without a
-core change, generic methods, and a shared forwarding path. The existing LoLa
+core change, a shared forwarding path, and the daemon service interface. Methods are
+not part of this record. The existing LoLa
 gateway keeps its behaviour and is generalised rather than replaced.</p>
 </section>
 <section id="alternatives-considered">
@@ -1840,9 +1852,9 @@ numbers that have not yet been measured on target hardware.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">communication</span></code></p></td>
 <td><p>Bindings are added without a change to the <code class="docutils literal notranslate"><span class="pre">mw::com</span></code> core; nothing is registered after startup</p></td>
 </tr>
-<tr class="row-odd"><td><p>Generic methods</p></td>
+<tr class="row-odd"><td><p>Generic event path</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">communication</span></code></p></td>
-<td><p>Required before <code class="docutils literal notranslate"><span class="pre">socom</span></code> is removed (<code class="docutils literal notranslate"><span class="pre">communication#767</span></code>)</p></td>
+<td><p>Verified to carry a SOME/IP header and payload in one slot (Phase 2 spike); required before <code class="docutils literal notranslate"><span class="pre">socom</span></code> is removed</p></td>
 </tr>
 <tr class="row-even"><td><p>Forwarding</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">communication</span></code></p></td>
@@ -1930,7 +1942,6 @@ Alternatives Considered.</p></li>
 <li><p>Stack contribution call: https://github.com/eclipse-score/score/issues/2787 (LG proposal <code class="docutils literal notranslate"><span class="pre">#2807</span></code>, LIBERSOM <code class="docutils literal notranslate"><span class="pre">#3456</span></code>, TC8 suite <code class="docutils literal notranslate"><span class="pre">#3464</span></code>)</p></li>
 <li><p>DDS gateway: https://github.com/eclipse-score/score/issues/2726, feature request PR https://github.com/eclipse-score/score/pull/2997</p></li>
 <li><p>lg-someip in <code class="docutils literal notranslate"><span class="pre">communication</span></code>: https://github.com/eclipse-score/communication/pull/1498</p></li>
-<li><p>Generic methods in <code class="docutils literal notranslate"><span class="pre">mw::com</span></code>: https://github.com/eclipse-score/communication/issues/767</p></li>
 <li><p>opensomeip in <code class="docutils literal notranslate"><span class="pre">inc_someip_gateway</span></code>: https://github.com/eclipse-score/inc_someip_gateway/pull/435</p></li>
 <li><p>Migration sequence: https://github.com/eclipse-score/inc_someip_gateway/pull/358</p></li>
 <li><p>LG measurement slides, attached to discussion <code class="docutils literal notranslate"><span class="pre">#3365</span></code>: <code class="docutils literal notranslate"><span class="pre">lg-someip-for-S-CORE_v0.3_26102026.pdf</span></code> (proponent’s data, not reproduced here)</p></li>
