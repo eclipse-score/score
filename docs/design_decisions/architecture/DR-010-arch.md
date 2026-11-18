@@ -1,4 +1,4 @@
-# DR-010-Arch: Introduce System Monitoring (SMon) Middleware Component
+# DR-010-Arch: Introduce System Monitoring (SMon) Middleware Feature
 
 - **Date:**
 
@@ -6,7 +6,7 @@
 :id: dec_rec__arch__introduce_smon_middleware
 :status: proposed
 :context: Architecture
-:decision: Introduces a portable SMon middleware component with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.
+:decision: Introduces a portable SMon middleware feature with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.
 :version: 1
 :tracking: https://github.com/eclipse-score/score/issues/3340
 :affects: doc__smon
@@ -18,7 +18,7 @@
 ## Context
 
 This feature request proposes introducing **System Monitoring (SMon)** as a reusable
-S-CORE middleware component for monitoring CPU and volatile memory
+S-CORE middleware feature for monitoring CPU and volatile memory
 resource utilization on automotive ECUs running Linux or QNX.
 
 SMon provides periodic resource measurements, configurable threshold
@@ -26,7 +26,7 @@ evaluation, and standardized integration interfaces for error
 reporting, diagnostic fault recording, and logging.
 
 On a Domain Controller ECU, multiple applications share CPU and memory resources simultaneously.
-There is currently no standardized S-CORE middleware component that:
+There is currently no standardized S-CORE middleware feature that:
 
 - Periodically measures CPU and memory load at the **system, core, process, and
   application-group** level
@@ -36,7 +36,7 @@ There is currently no standardized S-CORE middleware component that:
 - Exposes **well-defined required interfaces** for error reporting, DTC recording, and logging —
   fully decoupled from any specific backend implementation
 
-Without such a component, each project team implements ad-hoc monitoring logic, leading to
+Without such a feature, each project team implements ad-hoc monitoring logic, leading to
 fragmentation, inconsistency, and missed faults across vehicle programs.
 
 ### Detailed Feature Requirements
@@ -95,7 +95,7 @@ Detailed requirements are documented separately in the feature requirements tree
 
 ### Integration Context
 
-The SMon component integrates with three **platform-provided services** via required interfaces:
+The SMon feature integrates with three **platform-provided services** via required interfaces:
 
 | External Service             | Role                                                                 |
 |------------------------------|----------------------------------------------------------------------|
@@ -134,7 +134,7 @@ future extensions:
 
 ## Consequences
 
-S-CORE gains another component that must be developed, integrated, deployed, tested, and maintained, including platform-specific support for Linux and QNX. It will also require a new Feature team.
+S-CORE gains another feature that must be developed, integrated, deployed, tested, and maintained, including platform-specific support for Linux and QNX. It will also require a new Feature team.
 
 ---
 
@@ -146,7 +146,7 @@ no alternatives were identified at this point in time.
 
 ## Justification for the Decision
 
-Introducing SMon as a middleware component addresses the growing complexity of multi-application
+Introducing SMon as a middleware feature addresses the growing complexity of multi-application
 Domain Controller ECUs. It centralizes resource observation, prevents silent resource exhaustion,
 and standardizes fault escalation across different vehicle programs and operating systems,
 fulfilling requirements from platform adopters Valeo and BMW.

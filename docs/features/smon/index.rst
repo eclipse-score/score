@@ -83,7 +83,7 @@ following problems arise:
   changes in all consumers.
 
 .. note::
-   S-CORE currently provides no standardized middleware component that addresses periodic,
+   S-CORE currently provides no standardized middleware feature that addresses periodic,
    system-level health monitoring with configurable thresholds, fault reporting integration,
    and cross-platform portability for automotive ECUs.
 
@@ -130,7 +130,7 @@ The following items are explicitly **out of scope** for this feature request:
 3. Integration Context
 ***********************
 
-The SMon component sits between the **OS runtime** (from which it reads raw metrics) and three
+The SMon feature sits between the **OS runtime** (from which it reads raw metrics) and three
 **platform-provided services** to which it reports:
 
 .. list-table::
@@ -154,7 +154,7 @@ The SMon component sits between the **OS runtime** (from which it reads raw metr
    :alt: SMon Integration Combined Diagram
    :align: center
 
-   *Figure 1 — High-level functional context of the SMon component within the ECU software stack.*
+   *Figure 1 — High-level functional context of the SMon feature within the ECU software stack.*
 
 ----
 
