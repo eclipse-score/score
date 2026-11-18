@@ -231,7 +231,7 @@ used to communicate their maturity and configuration status to stakeholders.
 
 The primary overview for documents is the project document list, which contains
 the planned documents and their current status. The document list is maintained
-in the Documentation Management Plan :need:`doc__documentation_mgt_plan`, which
+in the Documentation Management Plan :need:`doc__platform_documentation_mgt_plan`, which
 is part of the Platform Management Plan as defined in
 :need:`gd_guidl__documentation`.
 
