@@ -105,10 +105,12 @@ processing is planned. The gap is not a missing gateway; it is that the
 gateway duplicates forwarding and a service model that `mw::com` already
 provides, and that the stack and binding boundaries are not defined.
 
-Methods are not covered by the current `mw::com` generic proxy and skeleton
-(events only). `socom` is the only layer in the gateway that supports methods
-today, and generic methods in `mw::com` are not scheduled
-(`eclipse-score/communication#767`).
+The generic `mw::com` proxy and skeleton carry events and fields only; they have
+no method API. `socom` has a method API, but the SOME/IP path does not use it:
+`someipd` (`remote_network_service.cpp`) and `gatewayd` (`local_service_instance.cpp`)
+both implement `on_method_call` as a handler that returns no invocation, and
+`gateway_ipc_binding` forwards no method calls. Methods are therefore not part of
+the SOME/IP path today.
 
 ## Decision
 
@@ -130,8 +132,11 @@ existing LoLa gateway. The forwarding code in `gateway_ipc_binding` is retired.
 
 **D3 — `socom` is retired.** The daemon contract between a binding and a stack
 daemon is defined as `mw::com` services (the daemon service interface). `socom`
-is removed once `mw::com` provides generic methods. Until then, methods are the
-only blocking item.
+is removed once the daemon service interface and the SOME/IP event path run on
+`mw::com`, including a SOME/IP header followed by the payload in one generic event
+slot (see Dependencies). Methods are not a precondition, because the SOME/IP path
+does not use them. Method support in `mw::com` is added later, with its own
+requirement and issue.
 
 **D4 — `gatewayd` has a narrow role.** `gatewayd` is used for applications that
 cannot use `mw::com` directly (legacy LoLa applications, native DDS peers) and
@@ -274,16 +279,16 @@ fast-path test T5.
 Exit: results published; Q1 and Q2 decided from them.
 
 **Phase 2 — Foundation in `communication`.** A build-time binding table, so that
-a binding can be added without a change to the `mw::com` core; generic methods in `mw::com`
-(`communication#767`); forwarding generalised from the LoLa gateway; the
-serializer plugin interface; the daemon service interface as `mw::com`
-services. Exit: a test binding is added without changing the `mw::com` core,
-and forwarding passes its tests with one transport.
+a binding can be added without a change to the `mw::com` core; forwarding
+generalised from the LoLa gateway; the serializer plugin interface; the daemon
+service interface as `mw::com` services; and the header-plus-payload spike (see
+Dependencies). Exit: a test binding is added without changing the `mw::com` core,
+forwarding passes its tests with one transport, and the spike passes.
 
 **Phase 3 — SOME/IP path.** `someipd` runs on the chosen stack and offers the
 daemon service interface. The SOME/IP binding uses it as transport.
 `gateway_ipc_binding` forwarding is replaced by the shared path. `socom` is
-removed once methods work on `mw::com`. Exit: the gateway path with E2E (T4) and
+removed once the SOME/IP path runs on the daemon service interface. Exit: the gateway path with E2E (T4) and
 TC8 conformance (T1) pass on the new path.
 
 **Phase 4 — Gateway safety and direct placement.** E2E protection implemented
@@ -302,8 +307,14 @@ a transport plugin, never in an ASIL data path.
 
 - Build-time binding table in `mw::com` (Phase 2): needed before a new binding
   can be added without a core change.
-- Generic methods in `mw::com` (`communication#767`, no timeline): needed before
-  `socom` can be removed.
+- Header and payload in one generic event slot: the generic event API gives a
+  writable slot of fixed size per event (`GenericSkeletonEvent::Allocate`), so a
+  SOME/IP header followed by the payload fits, with the length encoded in the bytes.
+  This is not yet tested with the gateway's header layout. A spike in Phase 2 must
+  pass before `socom` can be removed.
+- Generic methods are not a dependency. No issue in `communication` tracks them
+  (`communication#767` is about nested method calls inside callbacks and does not
+  cover generic methods).
 - Decision on the repository for the stack source and the DDS daemon: needed in
   Phase 0.
 - Safety evidence for lg-someip: LG reports a qualification for its AUTOSAR
@@ -314,7 +325,7 @@ a transport plugin, never in an ASIL data path.
 
 | Risk | Mitigation |
 |---|---|
-| Generic methods in `mw::com` take longer | Keep `socom` for methods only until they land; do not block events on it |
+| The header-plus-payload spike fails | Keep `socom`'s payload type for the gateway until a `mw::com` layout is found; do not block events on methods |
 | lg-someip open-source code is not safety-qualified | Qualification plan in Phase 4; keep both candidates under evaluation until the qualification path of the chosen stack is known |
 | opensomeip gaps (port sharing, SD for several applications, event fan-out) must be closed inside `someipd` | Estimate the work in `someipd` before Q1 is decided; the gaps are the proponent's list, not ours |
 | Defects found late in the open-sourced stack (undefined behaviour and framing bugs were fixed after its public release) | Sanitizer runs in Phase 1 (T7) |
@@ -557,7 +568,7 @@ Dispositions:
 | E2E in `gatewayd` | not implemented (comments only) | New | Implemented in `gatewayd` (Phase 4) |
 | `someipd` | `score/someipd` | Rework | Offers the daemon service interface; stack behind an interface (D5) |
 | SOME/IP stack in `someipd` | `@vsomeip` (`score/someipd` BUILD) | Replace | Replaced by the chosen stack, lg-someip or opensomeip (follow-up 1); vsomeip is out of the candidate set |
-| `socom` | `score/socom` (about 34 files, mocks, tests, docs) | Retire | Removed once generic methods exist in `mw::com` (D3) |
+| `socom` | `score/socom` (about 34 files, mocks, tests, docs) | Retire | Removed once the SOME/IP path runs on the daemon service interface and the event path is verified in `mw::com` (D3) |
 | `gateway_ipc_binding` | `score/gateway_ipc_binding` (about 22 files) | Replace | Forwarding moves to communication; per-service logic replaced by the daemon service interface (D2) |
 | `bridged_services` | `score/bridged_services` | Rework | Bridge configuration taken from the `mw::com` deployment |
 | SOME/IP constants and types | `score/someip` | Stay | Used by the daemon |
@@ -621,7 +632,8 @@ Applications are not affected. They continue to use `mw::com`, and their
 deployment configuration changes only when a SOME/IP or DDS route is added.
 
 In `communication`, the changes are additive: a build-time binding table without a
-core change, generic methods, and a shared forwarding path. The existing LoLa
+core change, a shared forwarding path, and the daemon service interface. Methods are
+not part of this record. The existing LoLa
 gateway keeps its behaviour and is generalised rather than replaced.
 
 ## Alternatives Considered
@@ -695,7 +707,7 @@ Work products that change:
 | Work product | Repository | Change |
 |---|---|---|
 | Build-time binding table | `communication` | Bindings are added without a change to the `mw::com` core; nothing is registered after startup |
-| Generic methods | `communication` | Required before `socom` is removed (`communication#767`) |
+| Generic event path | `communication` | Verified to carry a SOME/IP header and payload in one slot (Phase 2 spike); required before `socom` is removed |
 | Forwarding | `communication` | One path, generalised from the LoLa gateway |
 | Serializer plugin interface | `communication` | Shared by all bindings and `gatewayd` |
 | Daemon service interface | `communication` | `mw::com` services, replacing the `socom` contract |
@@ -745,7 +757,6 @@ the QM/ASIL boundary (T6).
 - Stack contribution call: https://github.com/eclipse-score/score/issues/2787 (LG proposal `#2807`, LIBERSOM `#3456`, TC8 suite `#3464`)
 - DDS gateway: https://github.com/eclipse-score/score/issues/2726, feature request PR https://github.com/eclipse-score/score/pull/2997
 - lg-someip in `communication`: https://github.com/eclipse-score/communication/pull/1498
-- Generic methods in `mw::com`: https://github.com/eclipse-score/communication/issues/767
 - opensomeip in `inc_someip_gateway`: https://github.com/eclipse-score/inc_someip_gateway/pull/435
 - Migration sequence: https://github.com/eclipse-score/inc_someip_gateway/pull/358
 - LG measurement slides, attached to discussion `#3365`: `lg-someip-for-S-CORE_v0.3_26102026.pdf` (proponent's data, not reproduced here)
