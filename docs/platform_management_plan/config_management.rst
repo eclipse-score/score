@@ -122,6 +122,8 @@ Branches are used as a means of parallel development. In the S-CORE project the 
 * :term:`Release Branch` - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
   Release branches of the platform are named ``releases/v_<major>_<minor>`` (e.g. ``releases/v_0_9``).
+  All patch releases of a minor version are prepared on the same release branch, the full
+  semantic version ``v<major>.<minor>.<patch>`` (e.g. ``v0.9.0``, ``v0.9.1``) is given by the baseline tag (see below).
   A merge into a release branch is approved as follows:
 
   * module release branch: by a :need:`Committer <rl__committer>` of the module, as for the main branch.
