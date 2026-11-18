@@ -676,8 +676,8 @@ Verify with <code class="docutils literal notranslate"><span class="pre">ls</spa
 </section>
 <section id="running-the-tests">
 <h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Link to this heading">#</a></h2>
-<p>Look up the QNX configs in the repository’s <code class="docutils literal notranslate"><span class="pre">.bazelrc</span></code> (<code class="docutils literal notranslate"><span class="pre">score-qnx-x86_64</span></code> / <code class="docutils literal notranslate"><span class="pre">score-qnx-aarch64</span></code>;
-older names <code class="docutils literal notranslate"><span class="pre">x86_64-qnx</span></code> / <code class="docutils literal notranslate"><span class="pre">arm64-qnx</span></code>). Tests are only executed in QEMU if the config runs them
+<p>Look up the QNX configs in the repository’s <code class="docutils literal notranslate"><span class="pre">.bazelrc</span></code> (<code class="docutils literal notranslate"><span class="pre">score-qnx-x86_64</span></code> / <code class="docutils literal notranslate"><span class="pre">score-qnx-aarch64</span></code>)
+Tests are only executed in QEMU if the config runs them
 through <code class="docutils literal notranslate"><span class="pre">score_qnx_unit_tests</span></code>.</p>
 <p><strong>Recommended:</strong> set this once in the repository’s <code class="docutils literal notranslate"><span class="pre">.bazelrc</span></code> so that every developer and CI job gets it
 (requires <code class="docutils literal notranslate"><span class="pre">bazel_dep(name</span> <span class="pre">=</span> <span class="pre">&quot;score_qnx_unit_tests&quot;,</span> <span class="pre">...,</span> <span class="pre">dev_dependency</span> <span class="pre">=</span> <span class="pre">True)</span></code> in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>):</p>
