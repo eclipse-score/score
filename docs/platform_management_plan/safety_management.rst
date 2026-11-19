@@ -455,6 +455,11 @@ Functional Safety Specific SW Platform Work Products
       - `Audit findings <https://github.com/eclipse-score/process_description/issues/518>`_
       - intermediate
 
+    * - :need:`wp__requirements_inspect`
+      - :ndf:`copy('status', need_id='wf__monitor_verify_requirements')`
+      - :need:`doc__stakeholder_req_inspection_asil`
+      - :ndf:`copy('status', need_id='doc__stakeholder_req_inspection_asil')`
+
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
       - :need:`doc__score_platform_dfa`

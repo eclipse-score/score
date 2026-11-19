@@ -108,7 +108,7 @@ Functional requirements
    :security: NO
    :safety: ASIL_B
    :rationale: Key/Value storage is a standard way to structure file based non-volatile memory access.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -121,7 +121,7 @@ Functional requirements
    :security: NO
    :safety: ASIL_B
    :rationale: Configuration files may hold safety relevant information.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -134,7 +134,7 @@ Functional requirements
    :security: NO
    :safety: ASIL_B
    :rationale: Safe systems require computations to be done in safe environments.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -268,7 +268,7 @@ Safety
    :security: NO
    :safety: ASIL_B
    :rationale: The SW-platform shall be usable by safety relevant applications.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -281,7 +281,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: Safety applications may have systematical errors which lead to violations in the control flow.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -294,7 +294,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: ECU external communication is using QM rated SW and HW which may currupt messages.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -307,7 +307,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: The processing HW used by the SW platform may have errors affecting computing, data and control flow.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -322,7 +322,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: During startup and shutdown specific errors may occurr (e.g. inintialization errors due to insufficient resources).
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -335,7 +335,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: DMA function usually grants also QM HW direct access to memory.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -350,7 +350,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: ASIL SW components memory may be corrupted by QM SW components if those are located on the the same physical memory.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -365,7 +365,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: ASIL SW components memory may be corrupted by QM SW components if those are located on the the same physical memory.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -380,7 +380,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: HW errors may occurr on the memory (e.g. bitflips caused by radiation)
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -408,7 +408,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: The SW platform may run on malfunctioning HW (e.g. by undervoltage) which prevents from own error detection and recovery.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -423,7 +423,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: It is expected that the SW platform is used in systems in having engineering (development) modes and field (customer) modes, where engineering modes may allow functionality which is unsafe.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -454,7 +454,7 @@ Safety
    :security: NO
    :safety: ASIL_B
    :rationale: A safe state definition is a common expectation of safety integrity standards.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -476,7 +476,7 @@ Safety
    :security: NO
    :safety: ASIL_B
    :rationale: It is assumed that there is a need to know how much time is allowed between the ocurrence of an error and the reporting, so we define a feasible time span.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -509,7 +509,7 @@ Safety
    :security: YES
    :safety: ASIL_B
    :rationale: Not all POSIX operating systems provide protection of POSIX processes from timing errors (e.g. delayed execution, deadlocks)
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -662,7 +662,7 @@ interaction)** — each emphasize different operational priorities.
    :security: NO
    :safety: ASIL_B
    :rationale: tbd - potentially above explanation
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -847,7 +847,7 @@ Communication
    :security: NO
    :safety: ASIL_B
    :rationale: Distributed safe systems often require communication to be safe.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -944,7 +944,7 @@ Time
    :security: NO
    :safety: ASIL_B
    :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -998,7 +998,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :security: NO
    :safety: ASIL_B
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1017,7 +1017,7 @@ Note (allowing tracebility as long as safety analysis is not available):
    :security: NO
    :safety: ASIL_B
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1443,7 +1443,7 @@ Developer experience
    :security: NO
    :safety: ASIL_B
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
