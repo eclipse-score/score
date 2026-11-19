@@ -72,36 +72,71 @@ Communication Requirements
    :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__communication__safe[version==1], stkh_req__app_architectures__support_request[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
    A communication interface consists of a combination of any number of the following elements:
 
-   - Event-Types
+   - Events
    - Methods
-   - Signals
+   - Fields
 
-.. feat_req:: Event Type
-   :id: feat_req__com__event_type
+.. feat_req:: Event Type Structure
+   :id: feat_req__com__event_type_structure
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_time[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
-   An event-type is part of a communication interface and has:
+   An event-type shall be a named element of a communication interface with an associated data type.
 
-   - a name
-   - a data type
+.. feat_req:: Event Access
+   :id: feat_req__com__event_type_access
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_time[version==1]
+   :satisfied_by: feat__com_communication[version==1]
+   :status: valid
+   :version: 2
+   :valid_from: v1.0.0
 
-   The producer can assign a value to it.
-   Consumers can subscribe to value-changed events of the element or poll unseen, cached events.
+   An event-type shall allow its producer to assign a value and its consumers to either subscribe to value-changed events or poll unseen, cached events.
 
-.. feat_req:: Method
-   :id: feat_req__com__method
+.. feat_req:: Method Structure
+   :id: feat_req__com__method_structure
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1], stkh_req__communication__safe[version==1]
+   :satisfied_by: feat__com_communication[version==1]
+   :status: valid
+   :version: 2
+   :valid_from: v1.0.0
+
+   A method shall be defined by a name, a specified application routine with a given set of parameters, and a return type.
+
+.. feat_req:: Method Invocation
+   :id: feat_req__com__method_invocation
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1], stkh_req__communication__safe[version==1]
+   :satisfied_by: feat__com_communication[version==1]
+   :status: valid
+   :version: 2
+   :valid_from: v1.0.0
+
+   When a communication partner calls a method with the required parameters, the method shall invoke
+   its application routine with those parameters, return the result to the caller,
+   and support both synchronous and asynchronous invocation.
+
+.. feat_req:: Field Structure
+   :id: feat_req__com__field_structure
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -111,42 +146,21 @@ Communication Requirements
    :version: 1
    :valid_from: v1.0.0
 
-   A method is part of a communication interface and has:
+   A field shall be defined by a name, a data type, and dedicated getter and setter methods.
 
-   - a name
-   - a specified application routine with a given set of parameters and a return type
-
-   When a communication partner issues a call to the method with the required parameters:
-
-   #. it shall invoke the application routine with the provided parameters, and
-   #. return its result to the communication partner
-
-   A method call shall be possible both synchronously and asynchronously.
-
-.. feat_req:: Signal
-   :id: feat_req__com__signal
+.. feat_req:: Field Invocation
+   :id: feat_req__com__field_invocation
    :reqtype: Functional
    :security: NO
-   :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1]
+   :safety: ASIL_B
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   A signal is part of a communication interface and has:
-
-   - a name
-
-   A client can trigger the signal.
-   The service instance offering the trigger can:
-
-   - wait for the signal to be triggered
-   - check if the signal was triggered
-
-   .. note::
-      Signals can not transport data. They are meant to be fast synchronization mechanism with low setup cost. Thus, depending on the location of the communication partners primitives like Linux Signals or QNX Pulses or Hypervisor Signalling APIs may be chosen.
-
+   A field shall allow its producer to assign a value, and shall allow its consumers to subscribe
+   to value-changed notifications, poll unseen cached values, or retrieve and update the value via its getter and setter methods.
 
 .. feat_req:: Producer-Consumer Pattern
    :id: feat_req__com__producer_consumer
@@ -169,13 +183,10 @@ Communication Requirements
    :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
-   Multiple service instances shall be able to offer the same interface.
-
-   .. note::
-      A communication interface that is offered to consumers is called a service instance.
+   The communication framework shall support offering multiple service instances for the same interface.
 
 .. feat_req:: Service Instance Names
    :id: feat_req__com__service_instance_names
@@ -185,15 +196,10 @@ Communication Requirements
    :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
-   A service instance is offered under one or more unique names by which it can be discovered.
-   Names follow a POSIX path style.
-
-   .. note::
-      The resolution from a service instance name to the protocol-specific identifier is handled by the service
-      discovery.
+   A service instance shall be offered and discoverable under one unique name.
 
 .. feat_req:: Versioning
    :id: feat_req__com__versioning
@@ -202,9 +208,8 @@ Communication Requirements
    :safety: ASIL_B
    :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
-   :status: valid
+   :status: invalid
    :version: 1
-   :valid_from: v1.0.0
 
    The communication framework shall support versioning of service instances:
 
@@ -225,7 +230,7 @@ Communication Requirements
    :version: 1
    :valid_from: v1.0.0
 
-   The interface to access service instances is agnostic to the binding used to communicate with the service.
+   The interface to access service instances shall be agnostic to the binding used to communicate with the service.
 
    .. note::
       Deployment information may require manual changes based on where the service is located.
@@ -271,13 +276,10 @@ Communication Requirements
    :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
-   The communication framework shall provide service discovery to find available services during runtime. Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).
-
-   .. note::
-      The service discovery may be restricted/impacted by availability of deployment information.
+   The communication framework shall provide service discovery that considers version compatibility to find available services during runtime.
 
 
 Mixed-Criticality safety systems
@@ -521,8 +523,6 @@ Cross-VM Extensions
    :status: valid
    :version: 1
    :valid_from: v1.0.0
-
-
 
    The consumer (VM) shall have read-only access to the shared data.
 

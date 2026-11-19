@@ -139,7 +139,7 @@ Logical Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__com__interfaces[version==1]
+   :fulfils: feat_req__lifecycle__hm_checkpoint[version==1]
 
    The alive interface allows the application to periodically report its liveness to the Launch Manager or escalate failures.
 
@@ -190,7 +190,7 @@ Logical Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__com__interfaces[version==1]
+   :fulfils: feat_req__lifecycle__control_commands[version==1]
 
    The Control interface is used by a State Manager application to control which components shall be active at any given time through the activation run targets.
 
@@ -261,7 +261,7 @@ Logical Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__com__interfaces[version==1]
+   :fulfils: feat_req__lifecycle__hm_deadline[version==1]
 
    .. needarch::
       :scale: 50
@@ -350,7 +350,7 @@ Logical Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
-   :fulfils: feat_req__com__interfaces[version==1]
+   :fulfils: feat_req__lifecycle__hm_logical[version==1]
 
    .. needarch::
       :scale: 50
