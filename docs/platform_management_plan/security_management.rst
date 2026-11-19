@@ -95,6 +95,9 @@ Because these are in responsibility of the system integrator: :need:`std_wp__iso
 Summary: :need:`wp__tailoring_work_products` links to all the work products which are tailored out in the platform security plan,
 to be able to demonstrate completeness in `REPLACE_external_standards`
 
+The external security audit and the external formal security review are tailored out for the current increment.
+They are planned before the ML 3 assessment. The security verification for ML 2 is performed as internal inspection by a security manager, documented with the security FDR checklists.
+
 
 Approach
 ++++++++
