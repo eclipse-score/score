@@ -45,7 +45,7 @@ Note that the "supplier" AoUs were created with an OS supplier in mind but are r
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: environment
 
@@ -69,7 +69,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall provide a contact point for integration assistance.
@@ -79,7 +79,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall provide an integration manual.
@@ -89,7 +89,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall provide a bug reporting interface.
@@ -110,7 +110,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall provide tools for Bazel to be able to build the S-CORE SW-platform with the external SW element
@@ -121,7 +121,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall fix bugs reported in a predictable manner.
@@ -133,7 +133,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -149,7 +149,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -165,7 +165,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -178,7 +178,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall provide Assumptions of (safe) Use for the external SW element.
@@ -190,7 +190,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall provide a list of safe external SW element functions.
@@ -200,7 +200,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
 
    The supplier shall perform safety anomaly reporting on critical bugs in the external SW element.
@@ -212,7 +212,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -230,7 +230,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -247,7 +247,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -261,7 +261,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -274,7 +274,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -288,7 +288,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -310,7 +310,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -324,7 +324,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -339,7 +339,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -353,7 +353,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -367,7 +367,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -378,7 +378,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: user
 
@@ -399,7 +399,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: environment
 
@@ -420,7 +420,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: environment
 
@@ -433,7 +433,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: environment
 
@@ -445,7 +445,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: environment
 
@@ -470,7 +470,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :tags: environment
 
