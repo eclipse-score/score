@@ -24,4 +24,5 @@ The following stakeholder functional and non-functional requirements and platfor
 .. toctree::
 
    stakeholder/index
+   stakeholder/chklst_req_inspection_qm
    platform_assumptions/index
