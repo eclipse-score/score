@@ -926,109 +926,119 @@ Communication
 Time
 ----
 
-.. stkh_req:: Vehicle Time base Synchronization
+.. stkh_req:: Vehicle Time
    :id: stkh_req__time__vehicle_time_sync
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables the system to compare in-vehicle events chronologically.
+   :rationale: Enables applications to correlate their data with a common vehicle-internal time reference and to compare in-vehicle events chronologically.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide a framework to synchronize its local vehicle clock representation to a Time Master within the vehicle.
+   The SW-platform shall provide to applications a common vehicle time base synchronized to a time master within the vehicle.
 
-.. stkh_req:: Vehicle Time base API
-   :id: stkh_req__time__vehicle_time_api
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
-   :status: valid
-   :version: 1
-   :valid_from: v1.0.0
-
-   The SW-platform shall provide access to the synchronized vehicle time.
-   Access shall be free from interferences for the consuming components.
-
-Note (providing tracebility as long as safety analysis is not available):
-   :need:`stkh_req__time__vehicle_time_api` requires backing by :need:`aou_req__platform__veh_time_e2e_integrity`
-   to guarantee end-to-end data integrity.
-
-.. stkh_req:: Synchronize the HW clock with Vehicle Time
-   :id: stkh_req__time__hw_clock_sync
+.. stkh_req:: Vehicle Time status
+   :id: stkh_req__time__vehicle_time_status
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
+   :rationale: Applications have to know whether the vehicle time is synchronized, has timed out or has leaped, to decide whether they can use it (e.g. to time-stamp their data or to determine the age of received data) and to report a loss of synchronization (e.g. as a diagnostic trouble code).
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The SW-platform shall provide to applications the synchronization status of the vehicle time base.
+
+.. stkh_req:: Vehicle Time synchronization data
+   :id: stkh_req__time__vehicle_time_sync_data
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Project-specific diagnostics (e.g. a diagnostic job) and an independent validation of the vehicle time (e.g. Safe Car Time) evaluate the data of each synchronization of the vehicle time base, which only the SW-platform can observe, also to explain a change of its synchronization status.
    :status: valid
    :version: 1
    :valid_from: v2.0.0
 
-   The SW-platform shall synchronize the local HW clock to vehicle time.
+   The SW-platform shall provide to applications the synchronization data of the vehicle time base.
 
-.. stkh_req:: Time Synchronization with external sources
+.. stkh_req:: Safe Vehicle Time
+   :id: stkh_req__time__safe_vehicle_time
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Safety-relevant functions time-stamp safety-relevant data with the vehicle time (e.g. for sensor data fusion), so the vehicle time has to meet the ASIL of these data.
+   :status: valid
+   :version: 2
+   :valid_from: v1.0.0
+
+   The SW-platform shall provide to applications the vehicle time with ASIL-B integrity.
+
+   Note: ASIL-B integrity means that a vehicle time that cannot be used for ASIL-B data is indicated as such to the applications; it does not mean that the vehicle time is always correct.
+
+.. stkh_req:: Absolute Time
    :id: stkh_req__time__absolute_time_sync
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, to add a UTC-timestamp to a data set, etc.
+   :rationale: Enables applications to correlate their data with an absolute vehicle-external time reference (e.g. to validate a certificate with temporal validity or to add a UTC timestamp). Applications and libraries that read the system time of the operating system need it as well, e.g. crypto libraries that check the validity period of certificates.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide a framework to synchronize its local absolute clock representation to an external-to-vehicle absolute time base (e.g. UTC).
+   The SW-platform shall provide to applications an absolute time base synchronized to an external-to-vehicle absolute time source (e.g. UTC).
 
-.. stkh_req:: Absolute time base API
-   :id: stkh_req__time__absolute_time_api
+.. stkh_req:: Absolute Time accuracy
+   :id: stkh_req__time__absolute_time_accuracy
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
+   :rationale: Applications that add a UTC timestamp to their data or check a temporal validity have to know how accurate the absolute time is, to decide whether it is accurate enough for their purpose.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
-   Access shall be free from interferences for the consuming components.
+   The SW-platform shall provide to applications the accuracy of the absolute time base.
 
-.. stkh_req:: Local High Resolution Clock API
-   :id: stkh_req__time__high_res_clock_api
+.. stkh_req:: Absolute Time trustworthiness
+   :id: stkh_req__time__absolute_time_trust
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Applications that validate certificates or tokens with a temporal validity have to know whether the absolute time can be trusted, because a manipulated absolute time can make an expired certificate appear valid.
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The SW-platform shall provide to applications the trustworthiness of the absolute time base.
+
+.. stkh_req:: High-resolution Time
+   :id: stkh_req__time__high_res_time
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
-   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
+   :safety: QM
+   :rationale: Enables applications to perform time-sensitive operations and event scheduling with a high-resolution time reference.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to the current high resolution clock from the system time provider in nanoseconds.
-   Access shall be free from interferences for the consuming components.
+   The SW-platform shall provide to applications a high-resolution time with nanosecond resolution.
 
-   Note: to which clock the high resolution clock is mapped, depends on the system design.
+   Note: to which clock the high-resolution time is mapped depends on the system design.
 
-Note (allowing tracebility as long as safety analysis is not available):
-   :need:`stkh_req__time__high_res_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
-   to guarantee FFI and clock data integrity on OS and HW level.
-
-.. stkh_req:: Local Monotonic Clock API
-   :id: stkh_req__time__monotonic_clock_api
+.. stkh_req:: Monotonic Time
+   :id: stkh_req__time__monotonic_time
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
-   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
+   :safety: QM
+   :rationale: Enables applications to measure elapsed time reliably, unaffected by any time adjustment in the system.
    :status: valid
-   :version: 1
+   :version: 2
    :valid_from: v1.0.0
 
-   The SW-platform shall provide access to the current monotonic clock from the system time provider.
-   Access shall be free from interferences for the consuming components.
+   The SW-platform shall provide to applications a monotonic time that is changed only by the passage of time.
 
-   Note: to which clock the monotonic clock is mapped, depends on the system design.
-
-Note (allowing tracebility as long as safety analysis is not available):
-   :need:`stkh_req__time__monotonic_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
-   to guarantee FFI and clock data integrity on OS and HW level.
+   Note: no interface, no time synchronization and no other time base sets this time or adjusts its rate. To which clock the monotonic time is mapped depends on the system design.
 
 
 AI SW-platform
