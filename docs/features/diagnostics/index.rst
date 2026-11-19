@@ -99,6 +99,8 @@ The next diagram shows the concept in a distributed view to highlight components
 .. image:: _assets/score-diagnostics-distributed.drawio.svg
    :alt: Diagnostic stack component architecture
 
+Both diagrams show the full stack. The part in scope for S-CORE v1.0 is shown in `In scope components (v1.0)`_.
+
 In scope components (full stack)
 --------------------------------
 
@@ -188,21 +190,41 @@ UDS2SOVD Proxy
 In scope components (v1.0)
 --------------------------
 
-The following use-cases are considered in scope of this feature request for S-CORE v1.0.
+S-CORE v1.0 follows the OpenSOVD MVP scope: an SOVD client reaches classic UDS ECUs
+through the SOVD Gateway and the Classic Diagnostic Adapter.
 
-- Read DTCs through the SOVD API.
-- Report new faults from platform and app components via the Fault API and handle them in the DFM.
-- Clear DTCs over SOVD.
-- Reach an UDS ECU through the Classic Diagnostic Adapter, at least for read/clear DTC paths.
-- A sample Diagnostic service can be triggered via SOVD (Diagnostic service = a function which can be triggered via SOVD).
-- OPTIONAL: Retrieve ECU- and app-level metadata (HW revision, SW version) via SOVD.
-- OPTIONAL: Read/write component configuration through SOVD, backed by the S-CORE configuration service.
+The following use cases of ISO 17978-2 are in scope for S-CORE v1.0, for classic UDS ECUs through the SOVD Gateway.
 
-The following components are considered in scope of this feature request for S-CORE v1.0.
+- UC01 Discover SOVD server(s): find the SOVD server via mDNS/DNS-SD (ISO 17978-3 §5.11) and read the supported SOVD versions (§7.4).
+- UC02 Discover entities: list the classic ECUs (§7.6).
+- UC03 Authenticate and authorize SOVD clients: reject requests without a token.
+  The integration with S-CORE Security & Cryptography is planned after v1.0.
+- UC04 Read fault(s) and/or its details from an entity: read the DTCs of a classic ECU, filtered by status, and the details of one DTC.
+- UC05 Delete fault(s) of an entity: clear all DTCs or one DTC of a classic ECU.
+- UC06 Read data resources: read the identification data of a classic ECU (e.g. HW revision, SW version).
+- UC08 Control operations: start, observe and stop a routine of a classic ECU, and reset the ECU.
 
-- All componenets are in scope for v1.0 but with limited functionality to support the use-cases described above.
+The following components are in scope for S-CORE v1.0.
 
-Further information can be found here: https://github.com/eclipse-opensovd/opensovd/blob/main/docs/design/mvp.md
+- SOVD Gateway
+- SOVD Server (one binary with the SOVD Gateway by default)
+- SOVD Client
+- Classic Diagnostic Adapter
+
+.. image:: _assets/score-diagnostics-v1.0.drawio.svg
+   :alt: Diagnostic stack in S-CORE v1.0
+
+The SOVD Client finds the SOVD Gateway via mDNS and sends SOVD requests over HTTP. The SOVD Gateway forwards
+requests for classic ECUs to the Classic Diagnostic Adapter over a Unix domain socket. The Classic Diagnostic Adapter
+translates them to UDS, using the ECU descriptions in MDD files converted from ODX, and reaches the ECUs over DoIP.
+
+The following components are not part of S-CORE v1.0: Fault Library, Diagnostic Fault Manager, Diagnostic DB,
+Service App and UDS2SOVD Proxy. Faults and data of S-CORE applications and platform components are therefore not
+available through SOVD in v1.0.
+
+The v1.0 use cases and the work to ship them are tracked in `diagnostics#66 <https://github.com/eclipse-score/diagnostics/issues/66>`__,
+the scope after v1.0 in `diagnostics#67 <https://github.com/eclipse-score/diagnostics/issues/67>`__.
+Further information can be found in the `OpenSOVD MVP <https://github.com/eclipse-opensovd/opensovd/blob/main/docs/design/mvp.md>`__.
 
 Out of scope components
 -----------------------
@@ -336,10 +358,20 @@ Open Issues
 - Is the fault lib the source for faults to be acted upon by Health and Lifecycle Management?
 - List regulatory requirements for certain faults/DTCs - e.g. emission relevant faults
 - Provide recommended transition/migration scenario for UDS based components moving to SOVD
-- Decide if SOVD communication inside the ECU uses IP based communication or an alternative such as UDS (Unix Domain Sockets)
 - Decide on a common concept for Service Validation. How are Services Validated and where (Server vs. Service)?
 - For Service Validation: How do Services access the state of the ECU and the state of certain apps?
 - Add concept of how to interact with ECU State Management
+
+Decided
+-------
+
+- SOVD communication inside the ECU (v1.0): the SOVD Gateway reaches the Classic Diagnostic Adapter
+  over a Unix domain socket, with local-only access protected by filesystem permissions.
+  The external link from a tester to the SOVD Gateway stays HTTP over TCP/IP.
+  Diagnostic components that do not use SOVD communicate via S-CORE::COM
+  (:need:`feat_req__diagnostics__internal_com`).
+  See `opensovd#108 <https://github.com/eclipse-opensovd/opensovd/issues/108>`__
+  and `opensovd-core#254 <https://github.com/eclipse-opensovd/opensovd-core/issues/254>`__.
 
 
 Footnotes

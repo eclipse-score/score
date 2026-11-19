@@ -55,7 +55,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The system shall provide configuration management for SOVD components, including protocol parameters and security settings.
 
@@ -68,7 +68,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The SOVD server shall integrate with the S-CORE Configuration Manager to support runtime access and modification of configuration data.
 
@@ -81,7 +81,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The SOVD server shall enforce access control and validate client credentials.
 
@@ -133,7 +133,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The diagnostic system shall include a base service application (AKA routine) that is triggered by the SOVD Server and used to derive custom service applications.
 
@@ -146,7 +146,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The diagnostic system shall provide a plug-in mechanism to include OEM-specific features.
 
@@ -159,7 +159,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The system shall include a fault reporting library that provides an interface for applications and platform components to report diagnostic faults including metadata.
 
@@ -172,7 +172,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The fault library shall provide the ability to define faults via a component fault catalog for the scope of the respective parent component.
 
@@ -185,7 +185,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The fault library shall support configurable error debouncing.
 
@@ -198,7 +198,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The system shall include a central diagnostic fault manager that aggregates data from fault libraries, provides DTC status to the SOVD server, and interfaces with a persistent diagnostic database.
 
@@ -211,7 +211,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The Diagnostic Fault Manager shall be configureable via the aggregated fault catalog derived from all fault libraries in the system.
 
@@ -224,7 +224,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The system shall include a diagnostic database to store DTCs, occurrence counts, and associated metadata for fault events.
 
@@ -237,7 +237,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The diagnostic database shall store all diagnostic data persistently.
 
@@ -246,7 +246,7 @@ Diagnostic and Fault Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__diagnostics__uds_ecus[version==1]
+   :derived_from: stkh_req__diagnostics__uds_ecus[version==1], stkh_req__diagnostics__dtc_read_sovd[version==1]
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
@@ -276,7 +276,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The system shall include a proxy to translate UDS diagnostic requests to SOVD protocol requests.
 
@@ -289,7 +289,7 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.5.0
+   :valid_from: v2.0.0
 
    The UDS2SOVD proxy shall support configuration via standardized ODX files to define which SOVD services are exposed via the UDS interface.
 
@@ -302,6 +302,6 @@ Diagnostic and Fault Management
    :satisfied_by: feat__diagnostics[version==1]
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    All internal communication between diagnostic components that do not use UDS or SOVD protocols shall be implemented using the S-CORE::COM middleware.

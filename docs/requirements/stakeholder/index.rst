@@ -1239,7 +1239,7 @@ Diagnostics and Fault Management
    :rationale: Enables applications and components to report faults in a structured, reusable, and system-wide accessible manner.
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The SW-platform shall support a reusable fault reporting infrastructure that enables applications and SW-platform components to report, persist, and manage diagnostic fault information.
 
@@ -1263,7 +1263,7 @@ Diagnostics and Fault Management
    :rationale: Enables OEMs and developers to implement system-specific or project-specific routines for diagnostic control and testing.
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The SW-platform shall support extensibility mechanisms that allow integration of custom diagnostic services and routines via the SOVD interface.
 
@@ -1275,7 +1275,7 @@ Diagnostics and Fault Management
    :rationale: Ensures continued usability of existing test infrastructure, avoiding costly replacement of legacy tools and ensuring fulfillment of legal requirements.
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The SW-platform shall provide compatibility with UDS-based testers by offering a proxy to translate UDS requests into SOVD-compatible actions.
 
@@ -1311,7 +1311,7 @@ Diagnostics and Fault Management
    :rationale: Diagnostic access allows deep system introspection and manipulation, which must be protected against unauthorized use.
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The SW-platform shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
