@@ -96,7 +96,10 @@ Summary: :need:`wp__tailoring_work_products` links to all the work products whic
 to be able to demonstrate completeness in `REPLACE_external_standards`
 
 The external security audit and the external formal security review are tailored out for the current increment.
+The external security audit and the external formal security review are tailored out for the current increment.
 They are planned before the ML 3 assessment. The security verification for ML 2 is performed as internal inspection by a security manager, documented with the security FDR checklists.
+
+The cybersecurity case (ISO/SAE 21434 clause 6.4.7) is not provided by the platform security package, as the platform is developed out of context. The decision not to perform a cybersecurity assessment (clause 6.4.8) before the ML 3 assessment rests on the same rationale. Both rationales are pending confirmation by the security manager and review as required by clause 6.4.3.
 
 
 Approach
