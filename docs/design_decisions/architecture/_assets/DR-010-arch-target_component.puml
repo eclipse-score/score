@@ -1,0 +1,121 @@
+@startuml DR-010-arch-target_component
+title Target picture: mw::com first, one forwarding path, one daemon service interface\nGrouped by owning repository
+
+left to right direction
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam component {
+  BackgroundColor<<ASIL-B>> #FFE6E6
+  BackgroundColor<<QM>> #E6F0FF
+  BackgroundColor<<external>> #F2F2F2
+  BackgroundColor<<open>> #FFF8DC
+  BackgroundColor<<retired>> #D9D9D9
+}
+
+package "Application repos (integrator)" as APPS {
+  component "Application A\n(mw::com API)" as AppA
+  component "Application B\n(mw::com API)" as AppB
+}
+
+package "eclipse-score/communication (mw::com core and interfaces)" as COM {
+  component "LoLa binding\n(zero-copy, same host)" as Lola
+  component "Binding interface (SPI)\nand build-time binding table" as Spi
+  component "Serializer plugin API\n(implementations: open)" as SerApi
+  component "Forwarding\n(generic proxy, transport,\nskeleton; from mw::com gateway)" as Fwd
+  component "Daemon service IF\n(mw::com services)" as DIF
+}
+
+package "eclipse-score/inc_someip_gateway (SOME/IP protocol repository)" as GWR {
+  component "SOME/IP binding\n(library; package location open)" as SomeBind
+  component "gatewayd\n(ASIL-B: E2E, policy, ACL, config;\nno forwarding code of its own)" as GW <<ASIL-B>>
+  component "socom\n(retired, replaced by Daemon service IF)" as Socom <<retired>>
+  component "someipd\n(stack daemon, one per host)" as SomeIPD <<QM>> {
+    component "SOME/IP-SD and protocol\n(behind Daemon service IF)" as Proto <<QM>>
+    component "Transport plugin\n(sockets)" as Sock <<QM>>
+    component "Transport plugin\n(io-sock fast path, optional)" as Fast <<QM>>
+  }
+}
+
+package "DDS repo (open decision)" as DDSR {
+  component "DDS binding\n(library)" as DdsBind
+  component "ddsd\n(DDS Communication Daemon, one per host)" as DDSD <<QM>> {
+    component "DDS integration\n(behind DDS IF)" as DDSI <<QM>>
+  }
+}
+
+package "External and candidate stacks" as EXT {
+  component "lg-someip\n(candidate for someipd;\nlocation open)" as LG <<open>>
+  component "opensomeip\n(candidate for someipd,\nPR #435)" as OSI <<open>>
+  component "io-sock (QNX)" as IOS <<external>>
+  component "Cyclone DDS" as CYC <<external>>
+}
+
+cloud "Vehicle network" as Net
+
+AppA --> Lola : same host
+AppA --> SomeBind : direct placement
+Lola --> AppB : same host
+
+Lola ..|> Spi
+SomeBind ..|> Spi
+DdsBind ..|> Spi
+
+GW --> Fwd : forwards events
+Fwd --> Lola : local side
+Fwd --> SomeBind : remote side
+Fwd --> DdsBind : remote side (DDS)
+GW --> SerApi : payload
+SomeBind --> SerApi : payload
+DdsBind --> SerApi : payload
+
+SomeBind --> DIF : daemon service IF
+DdsBind --> DIF : daemon service IF
+DIF --> SomeIPD : daemon service IF
+DIF --> DDSD : daemon service IF
+
+Socom ..> DIF : replaced by
+
+Proto ..> LG : links (candidate)
+Proto ..> OSI : links (candidate)
+Proto --> Sock : transport IF
+Proto ..> Fast : optional, per route
+Fast ..> IOS : kernel sockets
+DDSI ..> CYC : links
+
+Sock --> Net
+Fast --> Net
+DDSI --> Net
+
+note bottom of COM
+  D1 mw::com first. Same host: LoLa.
+     Other ECU: a SOME/IP or DDS binding from
+     its protocol repository, placed in the app
+     or in gatewayd.
+  D2 One forwarding path, here.
+  D3 Daemon service IF on mw::com; socom retired
+     once the SOME/IP event path runs on mw::com
+     (methods not a precondition).
+  D6 Serializer plugin API here.
+end note
+
+note bottom of GWR
+  D4 gatewayd only for apps that cannot use mw::com
+     directly, and for central E2E and policy.
+  D5 One protocol daemon per protocol per host.
+     Protocol logic only in the daemon.
+  D7 io-sock fast path optional until measured.
+  P6 ASIL-B processes never link a protocol stack.
+end note
+
+note bottom of EXT
+  Stack choice is decided by the Q1 measurements.
+  Build-time dependency of someipd only.
+end note
+
+note bottom of APPS
+  Bindings are build-time dependencies of the
+  binary that uses them (P5). Nothing is
+  registered or loaded after startup.
+  Specs and decisions: eclipse-score/score.
+end note
+@enduml
