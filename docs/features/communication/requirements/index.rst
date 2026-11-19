@@ -693,8 +693,8 @@ Tracing
    :id: feat_req__com__tracing
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
-   :derived_from: stkh_req__dev_experience__tracing_of_comm[version==1], stkh_req__communication__safe[version==1]
+   :safety: QM
+   :derived_from: stkh_req__dev_experience__tracing_of_comm[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
