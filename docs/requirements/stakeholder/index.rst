@@ -34,7 +34,7 @@ Overall goals
    :security: NO
    :safety: QM
    :rationale: This is a usability constraint needed for long maintenance support
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -49,7 +49,7 @@ Overall goals
     :security: NO
     :safety: QM
     :rationale: To enable cooperation with other cooperation partners.
-    :status: valid
+    :status: valid_inspected
     :version: 1
     :valid_from: v1.0.0
 
@@ -61,7 +61,7 @@ Overall goals
     :security: NO
     :safety: QM
     :rationale: tbd
-    :status: valid
+    :status: valid_inspected
     :version: 1
     :valid_from: v1.0.0
 
@@ -96,7 +96,7 @@ Functional requirements
    :security: NO
    :safety: QM
    :rationale: File based configuration allows changes without rebuilding the software.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -146,7 +146,7 @@ Functional requirements
    :security: YES
    :safety: QM
    :rationale: Common libraries reduce duplication, improve consistency and quality across components.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -172,7 +172,7 @@ Functional requirements
    :security: NO
    :safety: QM
    :rationale: Applications typically need to store data across power cycles.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -185,7 +185,7 @@ Functional requirements
    :security: NO
    :safety: QM
    :rationale: This allows portability of SW-platform on POSIX compliant operating systems.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -527,7 +527,7 @@ Safety
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -543,7 +543,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -553,7 +553,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -563,7 +563,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -573,7 +573,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -583,7 +583,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -593,7 +593,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: invalid
    :version: 1
    :valid_from: v1.0.0
 
@@ -603,7 +603,7 @@ Security
    :security: YES
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -677,7 +677,7 @@ interaction)** — each emphasize different operational priorities.
    :security: NO
    :safety: QM
    :rationale: tbd - potentially above explanation
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -689,7 +689,7 @@ interaction)** — each emphasize different operational priorities.
    :security: NO
    :safety: QM
    :rationale: tbd - potentially above explanation
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -706,7 +706,7 @@ Execution model
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -731,7 +731,7 @@ Execution model
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -785,7 +785,7 @@ Communication
    :security: NO
    :safety: QM
    :rationale: Application software typically consists of multiple processes which need to interact.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -797,7 +797,7 @@ Communication
    :security: NO
    :safety: QM
    :rationale: ABI compatiblity ensures that the same memory location is correctly interpreted by different programming languages.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -809,7 +809,7 @@ Communication
    :security: NO
    :safety: QM
    :rationale: Application software typically maps software building blocks into the same process.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -834,7 +834,7 @@ Communication
    :security: NO
    :safety: QM
    :rationale: ECUs need to interact with each other. There are multiple protocols today and more to come in the future.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -873,7 +873,7 @@ Communication
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -932,7 +932,7 @@ Time
    :security: NO
    :safety: QM
    :rationale: Enables the system to compare in-vehicle events chronologically.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -973,7 +973,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :security: YES
    :safety: QM
    :rationale: Enables the system to validate a certificate or token with temporal validity conditions, to add a UTC-timestamp to a data set, etc.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -985,7 +985,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :security: YES
    :safety: QM
    :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1225,7 +1225,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Enables modern, scalable diagnostics using a standard REST-based protocol to improve integration, interoperability, and maintainability.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1237,7 +1237,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Enables applications and components to report faults in a structured, reusable, and system-wide accessible manner.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1249,7 +1249,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Enables reading of Diagnostic Trouble Codes (DTCs) from the ECU for various use-cases like production or maintenance.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1261,7 +1261,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Enables OEMs and developers to implement system-specific or project-specific routines for diagnostic control and testing.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1273,7 +1273,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Ensures continued usability of existing test infrastructure, avoiding costly replacement of legacy tools and ensuring fulfillment of legal requirements.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1285,7 +1285,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Ensures continued operability of ECUs that are not SOVD-capable.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1297,7 +1297,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Enables the system to operate in modern, distributed vehicle architectures where diagnostics span multiple ECUs and subsystems.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1309,7 +1309,7 @@ Diagnostics and Fault Management
    :security: YES
    :safety: QM
    :rationale: Diagnostic access allows deep system introspection and manipulation, which must be protected against unauthorized use.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1485,7 +1485,7 @@ Developer experience
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1498,7 +1498,7 @@ Developer experience
    :security: NO
    :safety: QM
    :rationale: Enables unit, component and integration testing for both SW-platform related and non-platform related applications.
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1511,7 +1511,7 @@ Developer experience
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1541,7 +1541,7 @@ Developer experience
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
@@ -1560,7 +1560,7 @@ Developer experience
    :security: NO
    :safety: QM
    :rationale: tbd
-   :status: valid
+   :status: valid_inspected
    :version: 1
    :valid_from: v1.0.0
 
