@@ -179,7 +179,6 @@ To actually use the registered toolchains, we also need to configure them in the
     common --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_unknown_linux_gnu
 
     common --@score_baselibs//score/memory/shared/flags:use_typedshmd=False
-    common --@score_baselibs//score/mw/log/flags:KRemote_Logging=False
 
     build:_common --@score_baselibs//score/json:base_library=nlohmann
     build:_common --cxxopt=-Wno-error=mismatched-new-delete
