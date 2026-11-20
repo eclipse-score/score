@@ -176,12 +176,12 @@ The template is a working example, not an empty skeleton. Adapt the following pa
    * - Where
      - What to change
    * - ``MODULE.bazel``
-     - The module name ``score_module_template``, see `MODULE.bazel`_ below
+     - The module name ``score_module_template``, see :ref:`MODULE.bazel <first_module_module_bazel>` below
    * - ``score/component_example/``
      - Rename the folder, the Bazel targets, the include paths and the C++ namespace to your component,
        or use it as a pattern for a new component
    * - ``BUILD``
-     - ``project``, ``project_url`` and the ``bundles`` of the ``docs`` macro, see `BUILD`_ below
+     - ``project``, ``project_url`` and the ``bundles`` of the ``docs`` macro, see :ref:`BUILD <first_module_build>` below
    * - ``project_config.bzl``
      - The safety level and the languages of your module, see `project_config.bzl`_ below
    * - ``docs/`` and ``score/<component>/docs/``
@@ -217,6 +217,8 @@ Defines the Bazel configuration of the module. Important entries in the
 This means, once we reference a dependency in our module,
 Bazel will search for it in one of these two registries.
 
+
+.. _first_module_module_bazel:
 
 MODULE.bazel
 -------------
@@ -301,6 +303,8 @@ directly in your ``BUILD`` files.
     - use the command line option ``--override_module=<module>=<path>`` (e.g. with ``bazel build``) to try out a local
       checkout without changing ``MODULE.bazel``.
 
+
+.. _first_module_build:
 
 BUILD
 -----
