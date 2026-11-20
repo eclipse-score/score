@@ -207,12 +207,12 @@ Quality Management Generic work products
       - :ndf:`copy('status', need_id='doc__platform_change_management_plan')`
 
     * - :need:`wp__config_mgt_plan`
-      - :need:`doc__config_mgt_plan`
-      - :ndf:`copy('status', need_id='doc__config_mgt_plan')`
+      - :need:`doc__platform_config_mgt_plan`
+      - :ndf:`copy('status', need_id='doc__platform_config_mgt_plan')`
 
     * - :need:`wp__document_mgt_plan`
       - :ref:`project_documents_list`
-      - :ndf:`copy('status', need_id='doc__documentation_mgt_plan')`
+      - :ndf:`copy('status', need_id='doc__platform_documentation_mgt_plan')`
 
     * - :need:`wp__feature_arch`
       - :need:`doc__baselibs_architecture`

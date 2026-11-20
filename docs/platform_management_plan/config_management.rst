@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,175 +12,272 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Configuration Management Plan
-   :id: doc__config_mgt_plan
+.. document:: PF Configuration Management Plan
+   :id: doc__platform_config_mgt_plan
    :status: draft
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
    :realizes: wp__config_mgt_plan[version==1]
 
-Config management / Configuration Management Plan
--------------------------------------------------
+PF Configuration Management Plan
+================================
 
 Purpose
-+++++++
+-------
 
-The Configuration Management Plan defines how the integrity of all work products
-and other project relevant artifacts can be reached and maintained.
-
+The Configuration Management Plan defines how the integrity, consistency, and
+traceability of project-relevant work products and other configuration items
+are established and maintained throughout the project lifecycle.
 
 Objectives and scope
-++++++++++++++++++++
+--------------------
 
-Goal of this plan is to describe
+The objective of this plan is to define:
 
-* how all configuration items in the project are identified
-* the infrastructure to store the configuration items
-* how to make all configuration items available to all concerned parties
-* where to find which configuration item
-* how to retrieve specific versions of a configuration item
-* how to modify a configuration item and how to control this
-* how to create and store versions of configuration items
-* how to manage baselines
-* how to backup and recover (including long term storage)
-* how to report the configuration status
+* how configuration items are identified;
+* where configuration items are stored;
+* how configuration items are made available to relevant stakeholders;
+* how configuration items can be located;
+* how specific versions of configuration items can be retrieved;
+* how modifications to configuration items are controlled;
+* how versions of configuration items are created and stored;
+* how baselines are established and managed;
+* how backup, recovery, and long-term storage are handled; and
+* how configuration status is monitored and reported.
 
-note: for definition of :term:`Configuration Item` check :need:`doc_concept__configuration_process`
-
+For the definition of :term:`Configuration Item`, see
+:need:`doc_concept__configuration_process`.
 
 Approach
-++++++++
+--------
 
-The steps below describe how configuration identification, retrieval, modification, branches and baselines, backup and recovery are organized.
+Configuration management in S-CORE covers the identification, storage,
+retrieval, modification control, versioning, branching, and baselining of
+configuration items, as well as backup, recovery, and configuration status
+reporting.
 
 
 Lifecycle
-^^^^^^^^^
+~~~~~~~~~
 
-The configuration management of the S-CORE project is in place during the complete development lifecycle.
-I.e. in Concept Phase, Development Phase and Maintenance.
+Configuration management applies throughout the complete S-CORE development
+lifecycle, including the Concept, Development, and Maintenance phases.
+
+Configuration items remain subject to configuration management for as long as
+they are maintained or required as project evidence.
 
 
 Identification and Properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each work product is identified by its sphinx-needs Id, this includes documents identified as such (by the document header as defined in :need:`gd_temp__documentation`).
-The complete list of project documents is defined in the :need:`doc__documentation_mgt_plan`.
-Ids are checked for uniqueness, see :need:`gd_req__configuration_uid`.
-sphinx-needs is also used to document the work products properties/attributes defined in the process area descriptions.
-The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
-GitHub repositories are the realization of the Delivery Containers as described in :need:`doc_concept__general_building_blocks`.
-There is one `platform repository <https://GitHub.com/eclipse-score/score/>`_ and one repository for each set of Dependable elements
-one :need:`Delivery Team <rl__delivery_team>` is responsible for.
+Each work product is identified by its Sphinx-Needs ID. This also applies to
+documents, which are identified through their document header as defined in
+:need:`gd_temp__documentation`.
 
-In S-CORE every repository shall have only one MODULE.bazel file which defines its version and dependencies.
-Exceptions from this may be needed for testing reasons only.
+The complete list of project documents is maintained in
+:need:`doc__platform_documentation_mgt_plan`.
 
-For other artefacts these are either
+Sphinx-Needs IDs are checked for uniqueness according to
+:need:`gd_req__configuration_uid`. Sphinx-Needs is also used to maintain the
+properties and attributes of work products as defined by the applicable
+process area descriptions.
 
-- files - are identified by their path/filename (and configured also in GitHub)
-- precompiled tools/binaries - bazel build configuration identifies those by their hash (see MODULE.bazel).
-- (external) tools/binaries to be built in S-CORE CI - bazel build configuration identifies those by their version.
+Work products are stored in text or source-code files within GitHub
+repositories. Files are identified by their repository-relative path and
+filename.
+
+GitHub repositories realize the Delivery Containers described in
+:need:`doc_concept__general_building_blocks`. S-CORE consists of the
+`platform repository <https://GitHub.com/eclipse-score/score/>`_ and additional
+repositories containing sets of Dependable Elements for which a
+:need:`Delivery Team <rl__delivery_team>` is responsible.
+
+Each S-CORE repository shall contain a single ``MODULE.bazel`` file defining
+its version and dependencies. Additional ``MODULE.bazel`` files are permitted
+only where required for testing purposes.
+
+Other configuration items are identified as follows:
+
+* **Files:** identified by their repository-relative path and filename and
+  maintained under version control in GitHub.
+* **Precompiled tools and binaries:** identified by the Bazel build
+  configuration, including integrity information such as a hash, where
+  applicable.
+* **External tools and binaries built by the S-CORE CI:** identified by the
+  version defined in the Bazel build configuration.
 
 
 Retrieval
-^^^^^^^^^
+~~~~~~~~~
 
-Work products and files can be retrieved from GitHub repositories by everybody according to the Eclipse Foundation guidelines.
-Their content is defined in the process/workproducts and process_area/<area_name>/workproducts files.
-To find the location of the work products, the :ref:`platform_folder_structure` can be used.
-To show the content of a certain version of a file the GitHub "History" function can be used which shows all commits
-into this file and these commits show the change history (which is also available via "Blame" function for every line of the files).
-Also baselines (which are sets of files) can be shown via GitHub by switching to a "tag" created to mark the baseline versions.
-These baselines are used to build the release, i.e. the documentation, code and verification reports for this tag.
-For release versioning rules check the respective section of release guideline.
+Work products and files are stored in GitHub repositories and can be retrieved
+in accordance with the applicable Eclipse Foundation access and contribution
+rules.
 
-For other artifacts: these are pulled into S-CORE integration repository by forking to be handled as above.
+The applicable work products are defined by the corresponding process and
+process-area work-product descriptions. Their locations within the project
+structure can be determined using :ref:`platform_folder_structure`.
 
+Git provides access to version-controlled states of a file. In GitHub, the
+``History`` view can be used to inspect the commits affecting a file, while
+the ``Blame`` view provides line-level information about the commits in which
+content was introduced or modified.
+
+Baselines can be retrieved through Git tags. A tag identifies a defined
+repository state associated with a specific baseline and is used as the basis
+for producing release artifacts such as documentation, software, and
+verification reports.
+
+Release versioning follows the rules defined in the applicable release
+guidelines and in :need:`doc__platform_release_management_plan`.
+
+External artifacts required by S-CORE shall be integrated using a controlled
+and reproducible mechanism. Their source, version, and, where applicable,
+integrity information shall be recorded in the corresponding build
+configuration.
 
 Control and Modification
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Files or new work products contained in them are created in local branches by the :need:`Contributor <rl__contributor>`
-and shared for review and incorporation into the main branch via GitHub pull-requests,
-which are after their acceptance merged by the :need:`Committer <rl__committer>`. The same applies for changes in existing configuration items.
-All modifications (differences between before and after) are documented in the pull-requests and are the main input to the pull-request reviews.
-See also :need:`doc__platform_change_management_plan`.
+New work products and modifications to existing configuration items are
+prepared by a :need:`Contributor <rl__contributor>` on a development branch.
 
-For tool/binaries modifications (version changes) are controlled by the bazel build files. These build files, like other files, are also maintained in GitHub.
+Changes are submitted through GitHub Pull Requests for review and integration
+into the main branch. After successful review and fulfillment of the applicable
+merge criteria, the change is merged by a :need:`Committer <rl__committer>`.
+
+The Pull Request records the proposed modifications and provides the primary
+basis for review and approval of the implementation.
+
+Changes subject to formal Change Management shall additionally follow the
+process defined in :need:`doc__platform_change_management_plan`. The associated
+Change Request and Pull Requests provide traceability between the requested
+change and the modified configuration items.
+
+Changes to tools and binary dependencies, including version updates, are
+controlled through the Bazel build configuration. These configuration files
+are themselves version-controlled and subject to the same GitHub-based change
+and review process.
 
 
 Branches and Baselines
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
-Branches are used as a means of parallel development. In the S-CORE project the following types of branches will be used:
+Branches support parallel and controlled development. S-CORE uses the following
+branch types:
 
-* local branches - created from "remote" branches, in these the development of the contributors takes place, no restriction on naming.
-* main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
-* :term:`Release Branch` - a "remote" branch derived from main branch which is used to prepare a release,
-  no functional code changes are allowed, only bug fixes and verification based improvements.
-  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`doc_concept__rel_process`.
+* **Development branches:** created from a remote branch and used by Contributors
+  to prepare changes. No project-wide naming convention is imposed unless
+  otherwise specified.
+* **Main branch:** the remote ``main`` branch containing the latest integrated
+  changes that have passed the applicable CI checks and review process.
+* **:term:`Release Branch`:** a remote branch derived from ``main`` and used to
+  prepare a release. Functional development is not permitted on a release
+  branch; changes are restricted to bug fixes and improvements resulting from
+  verification activities. Merges into a release branch require approval by
+  a :need:`rl__project_lead`. Release branch naming follows
+  :need:`doc_concept__rel_process`.
 
-The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
+A remote branch resides in the GitHub repository and is distinguished from a
+developer's local branches.
 
-In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline (per repository) for these
-(and not multiple ones for each of the work products types which are maintained in separate tools).
-Baseline tags are created by using the GitHub "tag" function. The tag name shall correspond to
-the release branch name the tag is created, adding patch version and pre-release tag.
-See also :need:`doc__platform_release_management_plan`.
+S-CORE configuration items maintained in GitHub are baselined at repository
+level. A repository baseline identifies a consistent state of the configuration
+items contained in that repository.
 
-As described in "Identification and Properties" above, there are several repositories.
-Baselines are created individually in these repositories, even a different version schema could be adopted.
-In case of dependent repositories, the repository dependent upon on has to be base-lined first, to be available
-to refer to this baseline when integrating it. That means that for example a platform baseline also
-documents the versions (baselines) of the delivery containers/repositories the platform consists of.
-This can then also be seen in the platform release note.
+Baselines are established using Git tags. The tag name shall follow the release
+versioning scheme and identify the applicable release, patch version, and,
+where applicable, pre-release version.
 
-Every change in the release branch is also taken over into the main branch. The Delivery Team
-can decide how to ensure this (e.g. by development in main and cherry-pick to release branch).
+For further information, see :need:`doc__platform_release_management_plan`.
 
+As described in `Identification and Properties`_, S-CORE consists of multiple
+repositories. Baselines are therefore established individually for each
+repository. Repositories may use different versioning schemes where
+appropriate.
+
+Where repositories depend on one another, the providing repository shall be
+baselined before the consuming repository. The consuming repository records
+the version or baseline of its dependencies. Consequently, a platform baseline
+also identifies the versions of the Delivery Containers from which the platform
+is composed. These versions are also reported in the platform release notes.
+
+Changes made on a release branch that are also applicable to continued
+development shall be incorporated into ``main``. The responsible Delivery Team
+defines the appropriate mechanism, for example by implementing the change on
+``main`` and cherry-picking it to the release branch, or by propagating an
+approved release-branch change back to ``main``.
 
 Backup and Recovery
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
-Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`gd_req__config_workproducts_storage`
+The primary project repositories are hosted using infrastructure provided by
+the Eclipse Foundation.
+
+Repository availability, backup, and recovery are supported by the applicable
+Eclipse Foundation hosting infrastructure and services.
+
+Additional measures for long-term retention of configuration items are defined
+in :need:`gd_req__config_workproducts_storage`.
 
 
 Status and Reporting
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
-Work products defined in our processes have "status" attributes. These are used to communicate to all the stakeholders.
-The main communication means is a document list containing all documents including their status.
-This list is part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
-as defined in :need:`gd_guidl__documentation`.
-Completeness of the configuration items (within a baseline) is checked at least for every release
-against the list of planned documents, which is also part of the Documentation Management Plan.
+Work products defined by the S-CORE processes have status attributes that are
+used to communicate their maturity and configuration status to stakeholders.
 
-Note that work products consisting of several elements (documented as needs) will be collected in one file
-which will form a document (e.g. there will be a document (doc__*) "feature xy requirements" and in it all the feature's requirements(feat_req__*)).
-This applies to requirements, architecture, detailed design and safety analysis.
-The files containing the source code and test code are not part of documents as above,
-their status is implicitly "valid", as these are subject to code and test review before every merge.
+The primary overview for documents is the project document list, which contains
+the planned documents and their current status. The document list is maintained
+in the Documentation Management Plan :need:`doc__platform_documentation_mgt_plan`, which
+is part of the Platform Management Plan as defined in
+:need:`gd_guidl__documentation`.
 
-Also the used tools status and version is reported within a "tool list" which may be part of
-the Documentation Management Plan or referenced from it (and also need to be checked for completeness).
+At least for every release, the completeness of the applicable configuration
+baseline is checked against the list of planned documents maintained in the
+Documentation Management Plan.
+
+Work products that consist of multiple Sphinx-Needs elements are collected
+into a corresponding document. For example, a feature requirements document
+(``doc__*``) contains the associated feature requirements (``feat_req__*``).
+The same principle applies to requirements, architecture, detailed design, and
+safety analysis work products.
+
+Source-code and test-code files are not represented as documents in this
+sense. Their controlled state is established through version control and the
+applicable review, verification, and CI checks required before integration.
+
+The configuration status and versions of applicable tools are reported through
+a tool list. The tool list may be maintained within the Documentation
+Management Plan or referenced from it and shall also be subject to completeness
+checks.
 
 
 Configuration Management Tooling
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Almost all requirements of the standards towards configuration management can be covered by
-standard versioning tooling of the Eclipse Foundation and of the S-CORE project
-("Docs-as-Code" identification of work products).
-The respective tools used in the project are:
+S-CORE implements configuration management primarily through the standard
+version-control infrastructure provided by the Eclipse Foundation together
+with the project's Docs-as-Code and build infrastructure.
 
-* versioning tool: GitHub
-* "Docs-as-Code" tool: sphinx-needs
-* CI build tool: Bazel
+The principal configuration management tools are:
 
-Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and base-lining).
+* **Version control and collaboration:** Git and GitHub
+* **Docs-as-Code and work-product identification:** Sphinx-Needs
+* **Build and dependency management:** Bazel
 
-Note 2: A "Docs-as-Code" tool is used to identify, attribute and link parts of text files and generate human and machine readable documentation.
+Git and GitHub provide storage, versioning, retrieval, modification control,
+branching, change history, and baselining of configuration items.
+
+Sphinx-Needs provides identification, attributes, relationships, and
+traceability for work products represented within the project documentation.
+
+Bazel provides reproducible build and dependency configuration and identifies
+the versions of tools, binaries, and repository dependencies used to produce
+S-CORE artifacts.
+
+Together, these tools support the configuration identification, control,
+traceability, retrieval, baselining, and status-reporting mechanisms defined by
+this plan.
