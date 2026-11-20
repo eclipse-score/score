@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Change Management Plan
+.. document:: PF Change Management Plan
    :id: doc__platform_change_management_plan
    :status: valid
-   :version: 3
+   :version: 4
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
@@ -23,243 +23,230 @@
 
 .. _change_mgmt_plan:
 
-Change Management / Change Management Plan
-------------------------------------------
+PF Change Management Plan
+=========================
 
-This document implements parts of the :need:`wp__platform_mgmt`.
+This document implements the applicable parts of :need:`wp__platform_mgmt`.
+
 
 Purpose
-+++++++
-The purpose of the Change Management Plan is to guide the execution of the
-Change Requests of a project including their creation, analysis, implementation, closure and
-control. Where a change is defined as an introduction of a new feature/component or modification of
-an existing feature/component.
+-------
+
+The Change Management Plan defines how Change Requests are created, analyzed,
+approved, implemented, monitored, and closed within S-CORE.
+
+A Change Request represents the introduction of a new feature or component, or
+a modification to the scope of an existing feature or component.
 
 
 Objectives and Scope
-++++++++++++++++++++
+--------------------
 
 Change Management Goals
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
-* Change Requests are recorded and identified.
-* Change Requests are analyzed, affected work products are identified, and the impact is estimated.
-* Change Requests are approved before implementation.
-* Change Requests are implemented and monitored.
-* Change Requests are tracked until closure and communicated to affected parties.
-* Change Requests and affected work products are bidirectionally traced.
+The objectives of change management are to ensure that:
+
+* Change Requests are recorded and uniquely identified.
+* Change Requests are analyzed before implementation, including identification
+  of affected work products and assessment of the expected impact.
+* Change Requests are approved before implementation begins.
+* Approved Change Requests are implemented and their progress is monitored.
+* Change Requests are tracked through closure and their status is communicated
+  to affected parties.
+* Change Requests and affected work products are bidirectionally traceable.
+
 
 Change Management Scope
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Change management applies to the work products and configuration items identified in the
-:need:`Configuration Management Plan <doc__config_mgt_plan>`.
+Change management applies to the work products and configuration items identified
+in the :need:`Configuration Management Plan <doc__config_mgt_plan>`.
 
-Change management applies to these work products and items for their complete lifecycle,
-as defined in :need:`doc__config_mgt_plan` ("Lifecycle"). This is independent of the
-Expected Implementation Version/Milestone of an individual Change Request
-(:need:`gd_req__change_attr_milestone`), which only states the deadline for that request.
+It applies throughout the complete lifecycle of these work products and
+configuration items, as defined in the Lifecycle section of
+:need:`doc__config_mgt_plan`.
+
+This lifecycle scope is independent of the Expected Implementation Version or
+Milestone assigned to an individual Change Request according to
+:need:`gd_req__change_attr_milestone`. The Expected Implementation Version
+defines the target release for implementing the Change Request; it does not
+limit the applicability of change management.
 
 Approach
-++++++++
+--------
 
 Change Request Execution
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Contributions in general to the **S-CORE** project are described here
-(compare :need:`doc__contr_guideline`).
+General contribution rules for S-CORE are defined in
+:need:`doc__contr_guideline`.
 
-A Change Request is a specific contribution, and it is the **ONLY** way to contribute new
-features/components or to modify the scope of existing features/components in the **S-CORE**
-project.
+A Change Request is the controlled mechanism for introducing new features or
+components, or for modifying the scope of existing features or components in
+S-CORE.
+
+Each Change Request is recorded as a GitHub Issue and implemented through one
+or more associated GitHub Pull Requests.
 
 Change Request Infrastructure and Types
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:need:`GitHub Issues (ISSUE) <doc__issue_guideline>` are used for managing Change Requests.
-The tool is used to create, analyze, implement and monitor Change Requests within **S-CORE**.
-
-:need:`GitHub Pull Requests (PR) <doc__pull_request_guideline>` are used for the documentation and
-implementation of Change Requests. The tool is used to document, implement and verify Change
-Requests within **S-CORE**.
-
-The next figure gives an overview, how Change Requests are realized in **S-CORE**. An ISSUE and PR
-is used to create a Change Request including required attributes as defined in
-:need:`gd_req__change_attr_uid`.
-
-.. figure:: _assets/score_change_request_overview_simple.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Change Request Simple Overview
-
-  Change Request Simple Overview
-
-Therefore the :need:`Feature Request Template <gd_temp__change_feature_request>` or the
-:need:`Component Request Template <gd_temp__change_component_request>` shall be used.
-In addition the :need:`Impact Analysis Template <gd_temp__change_impact_analysis>` should be
-used, if applicable.
-
-The Impact Analysis Template covers the affected element, its interfaces and connected elements,
-the change type, work products affected versus those requiring modification, parties and
-responsibilities for distributed development, safety impact, and the
-implementation/verification schedule.
 
 .. note::
-  Parts of these templates are automatically included in the ISSUE templates
-  **Feature Request** and **Component Request**. Use ISSUE **Feature Request** to request a new
-  feature or a modification of an existing feature, and ISSUE **Component Request** to request a
-  new component or a modification of an existing component in **S-CORE**.
 
-  .. figure:: _assets/score_change_request_issue_templates.drawio.svg
-    :width: 100%
-    :align: center
-    :alt: Feature Request and Component Request ISSUE templates
+   Relevant parts of the change management templates are incorporated into the
+   GitHub ISSUE templates **Feature Request** and **Component Request**.
 
-    Feature Request and Component Request ISSUE templates
+   Use **Feature Request** for a new feature or a modification of an existing
+   feature. Use **Component Request** for a new component or a modification of
+   an existing component.
 
-The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
-Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE
-created for the Change Request.
+   .. figure:: _assets/score_change_request_issue_templates.drawio.svg
+      :width: 100%
+      :align: center
+      :alt: Feature Request and Component Request ISSUE templates
+
+      Feature Request and Component Request ISSUE templates
+
+A Change Request ISSUE may reference other ISSUEs or SUB-ISSUEs to decompose and
+manage more complex changes.
+
+Implementation of an accepted Change Request requires at least one PR linked to
+the corresponding Change Request ISSUE.
 
 .. figure:: _assets/score_change_request_overview_complex.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Change Request Overview
+   :width: 100%
+   :align: center
+   :alt: Change Request Overview
 
-  Change Request Overview
+   Change Request Overview
 
-Changes are clustered in the following types:
+Change Requests are classified into the following types:
+
+.. _Change Request Types:
 
 .. list-table:: Change Request Types
    :header-rows: 1
-   :widths: 15,85,15
+   :widths: 20,55,25
 
    * - Type
      - Description
      - Infrastructure
    * - Feature
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new feature
-     - ISSUE of type ``Feature Request`` with label ``feature_request``
+     - Introduction of a new feature and its associated work products.
+     - ISSUE of type ``Feature Request`` with label ``feature_request``.
    * - Feature Modification
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
-     - ISSUE of type ``Feature Request`` with label ``feature_modification``
+     - Modification of the scope of an existing feature or its associated work products.
+     - ISSUE of type ``Feature Request`` with label ``feature_modification``.
    * - Component
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new component
-     - ISSUE of type ``Component Request`` with label ``component_request``
+     - Introduction of a new component and its associated work products.
+     - ISSUE of type ``Component Request`` with label ``component_request``.
    * - Component Modification
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
-     - ISSUE of type ``Component Request`` with label ``component_modification``
+     - Modification of the scope of an existing component or its associated work products.
+     - ISSUE of type ``Component Request`` with label ``component_modification``.
 
-The ISSUE type is set automatically by the selected ISSUE template. The label distinguishes a new
-feature/component from a modification of an existing one and is set by the
-:need:`Contributor <rl__contributor>` or the reviewing :need:`Committer <rl__committer>`.
+The ISSUE type is determined by the selected ISSUE template. The label
+distinguishes a new feature or component from a modification of an existing
+one. It is assigned by the :need:`Contributor <rl__contributor>` or corrected
+during review by a :need:`Committer <rl__committer>`.
 
-
-Change Request Traceability Impact Analysis requires the following tools:
+Change Request traceability and impact analysis are supported by the following
+tool requirements:
 
 :need:`[[title]] <gd_req__change_tool_impact_analysis>`
-
 
 .. _fep_track:
 
 The FEP Track
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
-Change Requests generally follow the four-step
-:ref:`Change Request Workflow <change_mgmt_workflow>` below. For most changes, **Analyze** means a
-:need:`Committer <rl__committer>` reviews the ISSUE/PR and documents the accept/reject decision
-directly there.
+* **Feature:** always follows the FEP Track.
+* **Feature Modification:** follows the FEP Track if the change has major impact,
+  for example if it affects the platform or other Feature Teams. Changes limited
+  to the responsible Feature Team's domain may follow the standard workflow.
+* **Component:** follows the standard Change Request workflow.
+* **Component Modification:** follows the standard Change Request workflow.
 
-Some changes carry enough governance weight that the decision is worth persisting, and the
-community needs a structured way to reach agreement before implementation starts, rather than
-relying on a single Committer's review. For these, **Analyze** is specialized into the **FEP
-Track**: a Shepherd sponsors the proposal, a time-boxed Final Comment Period
-(silence-as-approval) fosters quick decision making instead of open-ended review, and the outcome
-is recorded as a Decision Record rather than only documented in the ISSUE. Create, Implement, and
-Close are unaffected; only the Analyze step changes shape. See the
-:ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>` for the full mechanics
-(roles, phases, template).
+Whether a Feature Modification constitutes a major change cannot be determined
+solely by a fixed set of criteria. The responsible
+:need:`Committer <rl__committer>` evaluates the impact in the context of the
+proposed change.
 
-Today, the following Change Requests are routed onto this track:
+A change initially considered major may be excluded from the FEP Track by
+community agreement if the additional governance process is not considered
+necessary. Conversely, a proposed modification may be moved to the FEP Track
+if its impact is subsequently determined to be major.
 
-**Feature** change requests always go through the FEP Track.
-
-**Feature Modification** change requests go through the FEP Track when the change has major
-impact, e.g. affecting the platform or other Feature Teams. Feature Teams retain authority over
-modifications limited to their own domain.
-
-A clean, exhaustive definition of "major impact" is not achievable up front; see the `Key
-Concept`_ in ``process_description`` for the baseline definition of a change. Classifying a Feature
-Modification as "major" within that baseline is a judgment call made by the responsible
-:need:`Committer <rl__committer>` at the time the change is proposed, including changes proposed
-directly as a PR without a prior FEP. A change can be waived from the FEP Track by community
-agreement if it is judged not to warrant it, or pulled into the FEP Track after the fact if a
-:need:`Committer <rl__committer>` judges it major.
+The baseline definition of a change is provided by the `Key Concept`_ in
+``process_description``.
 
 .. _Key Concept: https://eclipse-score.github.io/process_description/main/process_areas/change_management/change_management_concept.html#key-concept
 
-**Component** and **Component Modification** change requests go through the standard Analyze step;
-they are not routed onto the FEP Track, so neither a Shepherd nor a Final Comment Period is
-required. The responsible team may still choose to record the change as a Decision Record for a
-persisted rationale — that choice does not by itself trigger the FEP Track, since a Shepherd and
-Final Comment Period are specific to Feature and major Feature Modification CRs. Either way, an
-ISSUE is required; the only open question is whether the substantive discussion is captured
-directly in the ISSUE or in a Decision Record referenced from it.
+Component and Component Modification Change Requests do not require a Shepherd
+or Final Comment Period. The responsible team may nevertheless create a
+Decision Record if a persistent record of the rationale is considered valuable.
+Creating such a Decision Record does not by itself place the Change Request on
+the FEP Track.
 
-The FEP mechanism itself is not inherently tied to CR type; Feature and major Feature Modification
-are its first applied case. Extending the FEP Track to other CR types would be a separate decision,
-not implied by this document.
+The FEP mechanism is not inherently restricted to a particular Change Request
+type. Its current application to Features and major Feature Modifications defines
+the current S-CORE process. Applying it to additional `Change Request Types`_
+requires an explicit process decision.
 
-FEP tracking-Issue statuses are a refinement of the generic Change Status mapping described below
-under Change Request Attributes, not a competing one:
+FEP tracking ISSUE statuses refine the generic Change Request status model:
 
 .. list-table:: FEP Status Mapping
    :header-rows: 1
    :widths: 30,20,50
 
-   * - FEP tracking Issue status
+   * - FEP tracking ISSUE status
      - Generic Change status
-     - Notes
+     - Meaning
    * - ``Draft - Needs Shepherd``
      - open
-     - Refines "open": PR exists, no Shepherd confirmed yet.
+     - Proposal exists, but no Shepherd has been confirmed.
    * - ``Draft - Shepherded``
      - open
-     - Refines "open": Shepherd confirmed, proposal being shaped.
+     - A Shepherd has been confirmed and the proposal is being prepared.
    * - ``Under Review``
      - in review
-     - The Final Comment Period.
+     - The proposal is in the Final Comment Period.
    * - ``Accepted``
      - in implementation
-     - FEP merged and recorded as a Decision Record.
+     - The FEP has been accepted and recorded as a Decision Record.
    * - ``Rejected`` / ``Withdrawn``
      - rejected
-     - FCP closed with unresolved objections, or the author withdrew.
+     - The proposal was rejected or withdrawn.
    * - ``Implementing``
      - in implementation
-     - Tracking issue stays open; may carry child Task issues.
+     - Implementation is ongoing and may be represented by linked or child ISSUEs.
    * - ``Implemented``
      - closed
-     - Implementation merged; tracking issue closes.
+     - The planned implementation has been completed.
 
 
 Change Request Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`gd_req__change_attr_uid` are implemented as follows:
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:need:`[[title]] <gd_req__change_attr_uid>` is identical to the ISSUE number.
+The attributes required by :need:`gd_req__change_attr_uid` are represented in
+the Change Request infrastructure as follows.
 
-:need:`[[title]] <gd_req__change_attr_status>` is defined by the combination of the ISSUE
-state, the state in the Projects dashboard view and the PR status.
+:need:`[[title]] <gd_req__change_attr_uid>`
+   The Change Request identifier is the GitHub ISSUE number.
+
+:need:`[[title]] <gd_req__change_attr_status>`
+   The Change Request status is derived from the ISSUE state, the Projects
+   dashboard status, and the status of the associated PRs.
 
 .. list-table:: Change Status
    :header-rows: 1
-   :widths: 15,85,15,15
+   :widths: 20,25,30,25
 
-   * - Status
-     - Issue status
-     - Projects dashboard status
-     - Linked PR status
+   * - Change Status
+     - ISSUE State
+     - Projects Status
+     - Linked PR Status
    * - open
      - ``Open``
      - ``No Status``
@@ -278,174 +265,215 @@ state, the state in the Projects dashboard view and the PR status.
      - ``Merged``
    * - rejected
      - ``Closed as not planned``
-     - na
-     - na
+     - n/a
+     - n/a
 
-:need:`[[title]] <gd_req__change_attr_title>` is identical to the ISSUE title.
+:need:`[[title]] <gd_req__change_attr_title>`
+   The Change Request title is the GitHub ISSUE title.
 
-:need:`[[title]] <gd_req__change_attr_impact_description>` is initially provided in the
-Feature/Component Request / Modification Description and Impact analysis parts of the ISSUE.
-Further detailed analysis results are part of the linked PR, provided as part of the
-Feature/Component Request templates and the Impact Analysis Template.
+:need:`[[title]] <gd_req__change_attr_impact_description>`
+   The initial impact description is recorded in the Feature/Component Request
+   description and impact-analysis sections of the ISSUE. Detailed analysis may
+   subsequently be documented in associated PRs using the applicable request
+   and Impact Analysis templates.
 
-The request date is the ISSUE creation date, recorded automatically by the Issue Tracking
-System. The starting release version is the main branch state (or applicable baseline)
-at the time the Change Request is created, identifiable via the base commit of the linked PR;
-this is distinct from the Expected Implementation Version, which identifies the target release.
+The request date is the ISSUE creation date and is recorded automatically by
+GitHub.
 
-Further information about detailed implementation can be provided in the linked PR.
+The starting configuration is the state of the ``main`` branch, or the
+applicable baseline, when the Change Request is created. Where applicable, this
+state can be identified by the base commit of an associated PR. It is distinct
+from the Expected Implementation Version, which defines the target release for
+the requested change.
 
-:need:`[[title]] <gd_req__change_attr_impact_safety>`,
-:need:`[[title]] <gd_req__change_attr_impact_security>` are provided in the Safety or
-Security relevance part of the ISSUE.
+Additional implementation information may be maintained in associated PRs.
 
-Select ``none``, ``Safety relevant``, ``Security relevant`` or a combination of the latter two.
-If ``none`` is selected, Quality is relevant only.
 
-Use the Expected required ASIL classification part of the ISSUE to document the ASIL level
-concerned, i.e. ``QM`` or ``ASIL_B``.
+:need:`[[title]] <gd_req__change_attr_impact_safety>` and
 
-:need:`[[title]] <gd_req__change_attr_types>` is provided by the ISSUE type (``Feature Request``
-or ``Component Request``) and the label (see Change Request Types above), further in the linked
-PR for feature or component request.
+:need:`[[title]] <gd_req__change_attr_impact_security>`
+   Safety and security relevance are recorded in the corresponding sections of
+   the ISSUE.
 
-:need:`[[title]] <gd_req__change_attr_affected_wp>` is initially provided in the
-Expected Changes of work products part of the ISSUE. Further detailed affected work products are
-part of the linked PR or other ISSUEs.
+The applicable classification shall be selected as ``none``,
+``Safety relevant``, ``Security relevant``, or a combination of safety and
+security relevance. If ``none`` is selected, the change is considered
+Quality-relevant only.
 
-:need:`[[title]] <gd_req__change_attr_milestone>` is provided in the Expected Implementation
-Version (Release) part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
+The expected ASIL classification is recorded in the corresponding ISSUE field,
+for example ``QM`` or ``ASIL_B``.
 
-For an accepted Change Request, who implements it is recorded via the Assignees part of the
-ISSUE and/or the assignees of linked implementation PRs/Issues, considering the interfaces
-involved.
+:need:`[[title]] <gd_req__change_attr_types>`
+   The Change Request type is represented by the ISSUE template
+   (``Feature Request`` or ``Component Request``) together with the corresponding
+   Change Request label.
 
+:need:`[[title]] <gd_req__change_attr_affected_wp>`
+   Initially affected work products are recorded in the Expected Changes of Work
+   Products section of the ISSUE. Additional affected work products identified
+   during analysis or implementation are recorded in associated PRs or 
+   linked ISSUEs.
+
+:need:`[[title]] <gd_req__change_attr_milestone>`
+   The planned target release is recorded as the Expected Implementation Version.
+   A GitHub Milestone may additionally be assigned.
+
+For an accepted Change Request, implementation responsibility is recorded
+through the assignees of the Change Request ISSUE and/or its linked
+implementation ISSUEs and PRs.
 
 .. _change_mgmt_workflow:
 
 Change Request Workflow
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
-In general, every Change Request follows the following steps:
+Every Change Request follows four principal steps:
 
-(color is referring to the following figure: Change Request Simple Workflow Overview)
+#. **Create** the Change Request.
+#. **Analyze** and decide on the Change Request.
+#. **Implement** the accepted Change Request and track its realization.
+#. **Close** the Change Request after successful completion.
 
-* 1. Create the Change Request (grey color)
-* 2. Analyze the Change Request (blue color)
-* 3. Initiate the implementation of the Change Request and track it to closure (yellow color)
-* 4. Close Change Request (purple color)
+The colors used for these steps correspond to the Change Request Simple Workflow
+Overview shown below.
 
-:need:`gd_guidl__change_change_request` can give additional help.
+:need:`gd_guidl__change_change_request` provides additional guidance.
 
-**To 1. Create the Change Request:**
 
-An ISSUE is the **ONLY** way to create and manage a Change Request in **S-CORE**.
-A PR is the **ONLY** way to document and implement a Change Request in **S-CORE**,
-thus an ISSUE must be linked at least to one or more PRs.
+1. Create the Change Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The figure below shows the workflow for the simplest case of a Change Request.
+A Change Request shall be created as a GitHub ISSUE using the **Feature Request**
+or **Component Request** ISSUE template.
 
-An ISSUE is created from the ISSUE template **Feature Request** or **Component Request**, which sets
-the type ``Feature Request`` or ``Component Request``, in status ``Open``. The label according to
-the Change Request type is added (see Change Request Types above).
-The title of the ISSUE reflects the potential change. Further fill out the provided template
-content accordingly.
+The selected template establishes the appropriate ISSUE type. The corresponding
+Change Request label defined under `Change Request Types`_ shall then be assigned.
 
-The description of the ISSUE may give a brief description and impact analysis of the requested
-change. The details are part of the Feature/Component Request and Impact Analysis provided by a PR,
-which is linked to the ISSUE in status ``Draft`` or ``Open``.
+The ISSUE title shall summarize the proposed change, and the template shall be
+completed with the available information about the request, expected impact,
+affected work products, and intended target release.
 
-For a new Feature/Component Request the provided templates :need:`Feature Request<gd_temp__change_feature_request>`,
-or :need:`Component Request<gd_temp__change_component_request>` must be used. For a
-modification of an existing Feature/Component, update the existing work products.
-Further add here the :need:`Impact Analysis Template <gd_temp__change_impact_analysis>`
-and fill it out accordingly, if applicable.
+Detailed Feature or Component Request information and, where applicable, the
+Impact Analysis are maintained as part of the Change Request and its associated
+PRs.
 
-The description of the ISSUE may give a brief description of the affected work products and also
-details about the intended realization for the change.
-The linked PR in status ``Draft``, which contains the Feature/Component Requests, may contain also
-more details about the affected work products or realization and verification proposals.
+For a new feature or component, the applicable
+:need:`Feature Request <gd_temp__change_feature_request>` or
+:need:`Component Request <gd_temp__change_component_request>` template shall be
+used.
 
-Planning is done by setting the **Expected Implementation Version**. Optionally the Milestone of
-the ISSUE can be set.
+For a modification, the affected existing work products shall be updated.
 
-Change request status: ``open`` is implemented as ISSUE status ``Open`` and Projects status
-``No Status``. The linked PR status is either ``Draft`` or ``Open``.
+Where applicable, the
+:need:`Impact Analysis Template <gd_temp__change_impact_analysis>` 
+shall be completed.
 
-To trigger the next step: Change request status: ``in review``
-keep the ISSUE status ``Open`` and set the Projects status ``Todo``.
+At least one implementation PR shall be linked to an accepted Change Request
+before its implementation can be completed.
 
-To reject the change request: Change request status: ``rejected``
-set the ISSUE status to ``Closed as not planned``.
+Planning is recorded through the **Expected Implementation Version**. A GitHub
+Milestone may additionally be assigned.
 
+The initial Change Request status is ``open``:
+
+* ISSUE state: ``Open``
+* Projects status: ``No Status``
+* Associated PR: ``Draft`` or ``Open``, if already available
+
+To initiate review, the Change Request transitions to ``in review`` by keeping
+the ISSUE ``Open`` and setting its Projects status to ``Todo``.
+
+A Change Request that is rejected is closed using ``Closed as not planned``.
 
 .. figure:: _assets/score_change_request_workflow_simple.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Change Request Simple Workflow Overview
+   :width: 100%
+   :align: center
+   :alt: Change Request Simple Workflow Overview
 
-  Change Request Simple Workflow Overview
+   Change Request Simple Workflow Overview
+
+2. Analyze the Change Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Change Request is analyzed to determine its completeness, impact,
+feasibility, affected work products, required implementation and verification
+activities, and relevant safety or security implications.
+
+For Change Requests following the standard workflow, a
+:need:`Committer <rl__committer>` reviews the Change Request. Identified issues
+are resolved by the :need:`Contributor <rl__contributor>`, and the analysis
+results are documented in the ISSUE and/or associated PRs.
+
+While additional information or review is required, the Change Request remains
+``in review`` with ISSUE state ``Open`` and Projects status ``Todo``.
+
+For Change Requests routed through the :ref:`FEP Track <fep_track>`, the
+analysis and decision process defined by
+:ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>` replaces
+the standard analysis process.
+
+The decision to accept or reject the Change Request shall be documented.
+Where safety or security relevance is applicable, the corresponding experts
+shall review the classification and impact.
+
+:need:`gd_chklst__change_cr_review` provides the applicable review criteria.
+
+An accepted Change Request transitions to ``in implementation`` by keeping the
+ISSUE ``Open`` and setting its Projects status to ``In Progress``.
+
+A rejected Change Request is closed as ``Closed as not planned``.
+
+3. Implement and Track the Change Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For an accepted Change Request, the
+:need:`Contributor <rl__contributor>` initiates the activities required to
+implement and verify the change.
+
+Implementation may be decomposed into additional ISSUEs and PRs. All such
+implementation items shall be linked to the Change Request ISSUE to maintain
+traceability and enable progress monitoring.
+
+Implementation continues until the required activities have been completed and
+the associated ISSUEs and PRs have been closed or merged, as applicable.
+
+Once implementation and verification are complete, the Projects status is set
+to ``Done`` to initiate the final closure review by the
+:need:`Committer <rl__committer>`.
+
+If the Change Request is rejected or abandoned during implementation, the
+decision shall be documented and the ISSUE shall be closed using the applicable
+rejection state.
 
 
-**To 2. Analyze the Change Request:**
+4. Close the Change Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Change Request is reviewed and analyzed from the :need:`Committer <rl__committer>` and the
-review results are resolved by the :need:`Contributor <rl__contributor>`. The results
-are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
-related ISSUE is kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
+The :need:`Committer <rl__committer>` performs the final review to confirm that
+the accepted Change Request has been completely implemented and verified.
 
-For Change Requests routed onto the :ref:`FEP Track <fep_track>`, this step is performed as
-described in the :ref:`FEP Guide <feature_request_guideline>` instead: a Shepherd, not a
-single Committer, guides the analysis, and review ends in the time-boxed Final Comment Period
-rather than in an open-ended ``in review`` state.
+The review confirms, as applicable, that:
 
-If the information is sufficient and it is decided to implement the change request, the
-ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
+* required implementation activities have been completed;
+* associated ISSUEs are closed;
+* required PRs are merged;
+* affected work products have been updated;
+* required verification activities have been completed successfully;
+* verification results provide sufficient evidence that the change has achieved
+  its intended purpose; and
+* required traceability is complete.
 
-The decision, if the change request is accepted or rejected must be documented. Safety/Security
-experts must confirm or deny, if safety/security relevance is set correctly.
+:need:`gd_chklst__change_cr_review` provides additional closure criteria.
+The affected realization work products are reviewed according to their
+applicable review checklists.
 
-:need:`gd_chklst__change_cr_review` can help to verify whether the information is complete.
+If all closure criteria are fulfilled, the ISSUE is set to ``Closed``.
 
-Otherwise, if the change requested is not accepted, the change request is rejected. To reject the
-Change Request: Change Request status: ``rejected`` set the ISSUE status to ``Closed as not planned``.
-
-
-**To 3. Initiate the implementation of the Change Request and track it to closure:**
-
-:need:`Contributor <rl__contributor>` starts all required activities to implement the
-change request. These may include further planning activities by creating ISSUEs and required PRs.
-All additional ISSUEs or PRs created to implement are linked to the Change Request ISSUE to enable
-monitoring of the activities.
-
-All activities defined are tracked until closure, means that all linked ISSUEs or PRs are closed or
-merged, respectively.
-
-If all are closed or merged :need:`Contributor <rl__contributor>` sets Projects status to
-``Done`` to trigger the final review from the :need:`Committer <rl__committer>` to close
-the Change Request.
-
-The Change Request may also rejected in this phase, then the ISSUE status is set to
-``Closed as not planned``.
-
-
-**To 4. Close Change Request :**
-
-:need:`Committer <rl__committer>` checks finally if the change request is completely
-implemented. In this case all linked ISSUEs or PRs are closed or merged, respectively.
-
-Especially the verification measures must be checked for their effectiveness and the argumentation
-is convincing.
-
-:need:`gd_chklst__change_cr_review` can help to verify whether it can be closed.
-The realization parts of the Change Request are reviewed according the checklists of the affected
-work products. Verification of the realization parts must be successful.
-
-If this is the case the ISSUE status is set to ``Closed``, otherwise the Projects status is set
-back to ``In Progress``.
+If further implementation or verification is required, the ISSUE remains open
+and the Projects status is returned to ``In Progress``.
 
 
 Change Management SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-not applicable
+Not applicable.
