@@ -1,5 +1,7 @@
 html {
     --pst-font-size-base: 17px;
+    --pst-font-family-base: "Manrope", "Aptos", "Segoe UI", sans-serif;
+    --pst-font-family-heading: "Manrope", "Aptos", "Segoe UI", sans-serif;
 }
 
 .underline {
@@ -14,48 +16,70 @@ html {
 
 /* Version Switcher Button */
 button.btn.version-switcher__button {
-    color: #FFF;
+    color: var(--pst-color-text-base);
 }
 
 /* Version Switcher Menu */
 .version-switcher__menu a.list-group-item {
-    color: #FFF;
+    color: var(--pst-color-text-base);
 }
 
 html[data-theme="light"] {
-    /* Search Box background color. */
-    --bs-btn-hover-bg: #a382c5;
-    /* Menu svg items */
-    --pst-color-muted: #FFF;
-    /* Text color within cards (same background as page header) */
-    --sd-color-card-text: #a382c5;
-    /* Link color + menu items on hover color */
-    --pst-color-primary: #7c4daa;
-    /* Page Header */
-    --pst-color-secondary: #2D1942;
-    --pst-color-accent: #9DE0AD;
-    --pst-color-target: #E5FCC2;
-    --pst-color-on-surface: #594F4F;
-    --pst-color-on-background: var(--pst-color-secondary);
-    --pst-color-text-muted: #FFFFFF;
-    --pst-color-table-row-zebra-high-bg: #e6e7e8;
-    --pst-color-table-row-hover-bg: var(--pst-color-secondary); /*#d7d6d6;*/
+    --bs-btn-hover-bg: #e4edf6;
+    --pst-color-primary: #b84a00;
+    --pst-color-secondary: #ffffff;
+    --pst-color-accent: #b84a00;
+    --pst-color-target: #fff0e4;
+    --pst-color-background: #f3f7fb;
+    --pst-color-surface: #ffffff;
+    --pst-color-on-surface: #3e5268;
+    --pst-color-on-background: #ffffff;
+    --pst-color-text-base: #3e5268;
+    --pst-color-heading: #18385e;
+    --pst-heading-color: #18385e;
+    --pst-color-text-muted: #52657a;
+    --pst-color-muted: #52657a;
+    --pst-color-link: #005b99;
+    --pst-color-link-higher-contrast: #005b99;
+    --pst-color-link-hover: #004b7d;
+    --pst-color-inline-code: #005b99;
+    --pst-color-table-row-zebra-high-bg: #eaf0f6;
+    --pst-color-table-row-hover-bg: #e4edf6;
+    --pst-color-border: #d6e0ea;
+    --score-color-active: #e4edf6;
+    --score-nav-color: #234a78;
+    --score-nav-active-color: #005b99;
+    --score-nav-active-bg: #eaf3fa;
+    --sd-color-card-text: #3e5268;
 }
 
 html[data-theme="dark"] {
-    /* Link color */
-    --pst-color-primary: #FFFFFF;
-    /* Link color on hover */
-    --pst-color-link-hover: #FFFFFF;
-    /* Page Header */
-    --pst-color-secondary: #2D1942;
-    --pst-color-accent: #9DE0AD;
-    --pst-color-target: #E5FCC2;
-    --pst-color-on-surface: #594F4F;
-    --pst-color-on-background: var(--pst-color-secondary);
-    --pst-color-text-muted: #FFFFFF;
-    --pst-color-table-row-zebra-high-bg: #20242b;
-    --pst-color-table-row-hover-bg: var(--pst-color-secondary); /*#30353e;*/
+    --bs-btn-hover-bg: #293849;
+    --pst-color-primary: #ff9b54;
+    --pst-color-secondary: #1c242e;
+    --pst-color-accent: #ff9b54;
+    --pst-color-target: #45362c;
+    --pst-color-background: #151a21;
+    --pst-color-surface: #1c242e;
+    --pst-color-on-surface: #c7d3df;
+    --pst-color-on-background: #1c242e;
+    --pst-color-text-base: #c7d3df;
+    --pst-color-heading: #edf4fa;
+    --pst-heading-color: #edf4fa;
+    --pst-color-text-muted: #a5b5c5;
+    --pst-color-muted: #a5b5c5;
+    --pst-color-link: #80cfff;
+    --pst-color-link-higher-contrast: #80cfff;
+    --pst-color-link-hover: #b5e4ff;
+    --pst-color-inline-code: #80cfff;
+    --pst-color-table-row-zebra-high-bg: #202b37;
+    --pst-color-table-row-hover-bg: #293849;
+    --pst-color-border: #354351;
+    --score-color-active: #293849;
+    --score-nav-color: #c7d3df;
+    --score-nav-active-color: #ff9b54;
+    --score-nav-active-bg: #293849;
+    --sd-color-card-text: #c7d3df;
 }
 
 /* Content area size */
@@ -74,7 +98,7 @@ html[data-theme="dark"] {
 
 
 .search-button-field {
-    color: var(--pst-color-primary);
+    color: var(--pst-color-text-base);
 }
 html .pst-navbar-icon:hover {
     border-bottom: max(3px,.1875rem,.12em) solid var(--pst-color-primary) !important;
@@ -82,21 +106,63 @@ html .pst-navbar-icon:hover {
   }
 
 .bd-header ul.navbar-nav > li.nav-item.current > .nav-link {
-    color: var(--pst-color-text-muted) !important;
-    font-weight: 900 !important;
+    background-color: var(--score-nav-active-bg);
+    border-bottom: 0;
+    box-shadow: inset 0 -3px var(--pst-color-accent);
+    color: var(--score-nav-active-color) !important;
+    font-weight: 700 !important;
 }
 
-.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
-    color: var(--pst-color-primary);
+.bd-header .navbar-header-items__center {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+.bd-header {
+    padding-top: 24px;
 }
 
 ul.navbar-nav li a {
-    color: var(--pst-color-primary);
+    color: var(--score-nav-color);
 }
 
-.bd-search input.form-control::placeholder,
+.bd-header ul.bd-navbar-elements {
+    column-gap: 24px;
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14.4px;
+    font-weight: 700 !important;
+    line-height: normal;
+    min-height: 42px;
+    padding: 0 10px;
+    border-radius: 5px;
+    box-shadow: inset 0 -3px transparent;
+    color: var(--score-nav-color) !important;
+    text-decoration: none;
+    transition: background-color 140ms ease, box-shadow 140ms ease, color 140ms ease;
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover,
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:focus-visible {
+    color: var(--score-nav-color) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+}
+
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link:hover,
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link:focus-visible {
+    color: var(--score-nav-active-color) !important;
+}
+
 .bd-search input.form-control {
-    color: var(--pst-color-primary) !important;
+    color: var(--pst-color-text-base) !important;
+}
+
+.bd-search input.form-control::placeholder {
+    color: var(--pst-color-text-muted) !important;
 }
 
 /* Right sidebar */
@@ -108,6 +174,10 @@ ul.navbar-nav li a {
 {
     color: var(--pst-color-text-muted);
     font-weight: 900;
+}
+.navbar-brand img {
+    max-height: 44px;
+    max-width: 180px;
 }
 .navbar-brand:hover, .navbar-brand:visited:hover {
     text-decoration: none;
@@ -147,15 +217,14 @@ blockquote {
     color: var(--pst-color-text-base);
 }
 
-/* Override text-muted for content-area elements that need readable text on light backgrounds.
-   --pst-color-text-muted is set to #FFF for the dark header, but these sit on the page body. */
+/* Keep muted captions readable on the light page surface. */
 html[data-theme="light"] table caption,
 html[data-theme="light"] figure figcaption {
     color: var(--pst-color-text-base);
 }
 
 .admonition, div.admonition {
-    background-color: rgba(0,0,0,0.1);
+    background-color: var(--pst-color-surface);
 }
 
 /* Left sidebar fix, to hide scrollbar if not needed */
@@ -187,6 +256,23 @@ html[data-theme="light"] figure figcaption {
 .bd-sidebar-primary,
 .bd-sidebar-secondary {
     padding: 0.5rem 0.2rem 0.2rem;
+    background-color: var(--pst-color-surface);
+    border-color: var(--pst-color-border);
+}
+
+.bd-header::before {
+    background: linear-gradient(90deg, #0078c8 0%, #d96621 52%, #e96812 100%);
+    content: "";
+    height: 3px;
+    inset: 24px 0 auto;
+    pointer-events: none;
+    position: absolute;
+}
+
+nav.bd-links li.current > a {
+    background-color: var(--score-color-active);
+    border-left: 3px solid var(--pst-color-accent);
+    color: var(--pst-color-accent);
 }
 
 .bd-sidebar-primary li.has-children > details > summary .toctree-toggle {
