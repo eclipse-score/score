@@ -17,48 +17,37 @@
 Contribute own module
 =====================
 
-This guide walks you through contributing a new platform module to Eclipse S-CORE end-to-end.
-As a running example it uses the **platform info service** and its client, the **platform info consumer**,
-from the `reference integration <https://github.com/eclipse-score/reference_integration>`_.
-The example shows how to compose existing S-CORE platform modules into new functionality:
+This guide walks you through contributing a new module to Eclipse S-CORE.
+Every new module repository is created from the
+`Eclipse S-CORE module template <https://github.com/eclipse-score/module_template>`_, so the guide follows the template
+step by step and explains what it already provides and how to adapt it to your module.
 
-- The `platform info service <https://github.com/eclipse-score/reference_integration/tree/main/deploy/platform_info>`_
-  offers the mw::com service ``score/platform/info``. Its field ``platform_info`` reports the S-CORE version the
-  platform was built from, i.e. the version or commit of every ``target_sw`` module in ``known_good.json``,
-  sealed with a CRC32 checksum from ``baselibs``.
-- The `platform info consumer <https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/platform_info_consumer.cpp>`_
-  finds the service via mw::com service discovery, checks the CRC32 and compares the reported version with the
-  version it was built for. It runs as the showcase *Platform Version Check* and is verified by a platform integration test.
-- In the showcase *S-CORE Platform Run*, the launch manager of ``score_lifecycle`` starts the service as a platform
-  daemon and the consumer as one of the test applications. All of them log via mw::log, and the logs are collected
-  as DLT and analyzed by a platform integration test.
+As a running example it uses the component ``component_example`` of the template
+(`score/component_example <https://github.com/eclipse-score/module_template/tree/main/score/component_example>`_):
+a small C++ library which returns a greeting, e.g. ``Hello, World!``. The code is deliberately simple, so that you
+can focus on what makes an S-CORE module: the structure of the repository, the build with Bazel, the tests on the
+different test levels, the documentation of requirements and architecture and the traceability between them.
 
-Service and consumer use three S-CORE modules: ``score_communication`` (mw::com), ``score_baselibs``
-(CRC32, argument handling) and ``score_logging`` (mw::log). This makes the example small enough to follow, but complete:
-it covers the build, the documentation, the CI/CD workflows, the deployment onto the reference images,
-automated tests and the collection of logs.
+You don't need your own repository to follow the guide. Clone the template and try every step there:
 
-.. note::
+.. code-block:: bash
 
-   The example lives inside the reference integration (``deploy/platform_info``, ``showcases/standalone`` and
-   ``showcases/platform_run``), whereas your own module lives in its own repository. The steps are the same;
-   where they differ, this guide shows both. The example replaces the former ``scrample`` demo application.
+   git clone https://github.com/eclipse-score/module_template.git
+   cd module_template
 
-By the end of this section you will have:
+Open the folder in the S-CORE devcontainer (see :ref:`setting_up_dev_env`), then all required tools are available.
 
-- Created a properly structured S-CORE module from scratch.
-- Generated documentation from source and integrated it into the platform docs.
-- Built the module with Bazel and verified it compiles cleanly.
-- Wired up CI/CD workflows so every change is automatically validated.
-- Plugged the module into the reference integration so it becomes part of the platform.
-- Collected and analyzed the logs of your application, on the console and as DLT.
+By the end of this section you will:
+
+- know how to request a module repository and what the template contains,
+- build the module and run its unit, component integration and feature integration tests,
+- document requirements and architecture and trace them to code and tests in the generated documentation,
+- know the CI/CD workflows that check every pull request.
 
 .. toctree::
    :maxdepth: 1
 
    first_score_module.rst
-   doc_generation.rst
    building_source_code.rst
+   doc_generation.rst
    cicd_workflows.rst
-   reference_integration.rst
-   collecting_logs.rst

@@ -14,13 +14,12 @@
 
 .. _building_source_code:
 
-Building source code
-=====================
+Build and test
+==============
 
-The running example consists of a small C++ service and its client. Both are built on three S-CORE modules:
-mw::com from ``score_communication`` for the inter-process communication, the CRC32 calculation
-from ``score_baselibs`` and mw::log from ``score_logging`` for logging. The sources are located in the
-`reference integration <https://github.com/eclipse-score/reference_integration>`_:
+The running example is the component ``component_example`` of the module template. It consists of the following files
+in `score/component_example <https://github.com/eclipse-score/module_template/tree/main/score/component_example>`_
+and `score/tests <https://github.com/eclipse-score/module_template/tree/main/score/tests>`_:
 
 .. list-table::
    :header-rows: 1
@@ -28,215 +27,158 @@ from ``score_baselibs`` and mw::log from ``score_logging`` for logging. The sour
 
    * - File
      - Content
-   * - `deploy/platform_info/platform_info.h <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/platform_info.h>`_
-     - Service interface and version check, shared by service and consumer
-   * - `deploy/platform_info/platform_info.cpp <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/platform_info.cpp>`_
-     - Creation, CRC32 check and comparison of the reported S-CORE version
-   * - `deploy/platform_info/gen_platform_info.py <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/gen_platform_info.py>`_
-     - Generates a C++ header with the module versions from ``known_good.json``
-   * - `deploy/platform_info/platform_info_service.cpp <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/platform_info_service.cpp>`_
-     - The service (provider)
-   * - `deploy/platform_info/etc/mw_com_config.json <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/mw_com_config.json>`_
-     - mw::com configuration of the service
-   * - `deploy/platform_info/etc/logging.json <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/logging.json>`_
-     - mw::log configuration of the service
-   * - `deploy/platform_info/platform_info_test.cpp <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/platform_info_test.cpp>`_,
-       `gen_platform_info_test.py <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/gen_platform_info_test.py>`_
-     - Unit tests of the version check and of the header generator
-   * - `showcases/standalone/platform_info_consumer.cpp <https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/platform_info_consumer.cpp>`_
-     - The client (consumer)
+   * - ``score/component_example/src/component_example.hpp``
+     - Interface of the component
+   * - ``score/component_example/src/component_example.cpp``
+     - Implementation
+   * - ``score/component_example/src/component_example_test.cpp``
+     - Unit test
+   * - ``score/component_example/tests/component_example_test.cpp``
+     - Component integration test
+   * - ``score/component_example/BUILD``
+     - Bazel targets of the component
+   * - ``score/component_example/docs/``
+     - Documentation of the component, see :doc:`documentation generation <doc_generation>`
+   * - ``score/tests/test_main.cpp``, ``score/tests/test_main.rs``, ``score/tests/BUILD``
+     - Feature integration tests of the module in C++ and Rust
 
-Service interface
------------------
-An mw::com service is described by a C++ interface template. The platform info service has a single *field*,
-``platform_info``, i.e. a value that the service sets and that clients subscribe to (``WithNotifier``):
+The code
+--------
+The interface declares two functions:
 
 .. code-block:: cpp
     :linenos:
 
-    // Fixed-size, zero-terminated strings: the value lives in shared memory.
-    struct ModuleVersion
-    {
-        std::array<char, kNameSize> name;
-        std::array<char, kVersionSize> version;
-    };
+    namespace score {
+    namespace component_example {
 
-    struct PlatformInfo
-    {
-        std::array<char, kTimestampSize> known_good_timestamp;
-        std::uint32_t module_count;
-        std::array<ModuleVersion, kMaxModules> modules;
-        std::uint32_t crc32;
-    };
+    // Unit
+    std::string make_hello();
 
-    template <typename Trait>
-    class PlatformInfoInterface : public Trait::Base
-    {
-      public:
-        using Trait::Base::Base;
+    // Component API
+    std::string make_hello_message(const std::string& name);
 
-        typename Trait::template Field<PlatformInfo, score::mw::com::WithNotifier> platform_info_{*this, "platform_info"};
-    };
+    }  // namespace component_example
+    }  // namespace score
 
-    using PlatformInfoSkeleton = score::mw::com::AsSkeleton<PlatformInfoInterface>;
-    using PlatformInfoProxy = score::mw::com::AsProxy<PlatformInfoInterface>;
-
-The same interface yields both sides of the communication: the *skeleton* is used by the service to provide the field,
-the *proxy* is used by the client to access it. Because mw::com exchanges the data via shared memory,
-``PlatformInfo`` only contains fixed-size types.
-
-The service implementation is short: it creates a logger, creates the skeleton for the instance specifier
-``score/platform/info``, publishes the value and offers the service until it is stopped:
+``make_hello()`` stands for a *unit*, the smallest part of the component which is tested on its own.
+``make_hello_message()`` is the *component API*, which other components and modules use.
+The implementation combines both:
 
 .. code-block:: cpp
     :linenos:
+    :emphasize-lines: 7
 
-    score::mw::com::runtime::InitializeRuntime(score::string_manipulation::GetArguments(argc, argv));
-    auto& logger = score::mw::log::CreateLogger("PINF", "platform info");
+    #include "score/component_example/src/component_example.hpp"
 
-    auto instance_specifier = score::mw::com::InstanceSpecifier::Create(std::string{kInstanceSpecifier});
-    auto skeleton = PlatformInfoSkeleton::Create(std::move(instance_specifier).value());
-
-    const auto platform_info = MakePlatformInfo();
-    skeleton->platform_info_.Update(platform_info);
-    skeleton->OfferService();
-    logger.LogInfo() << "platform_info_service: offering " + std::string{kInstanceSpecifier} + " for S-CORE " +
-                            ToString(platform_info);
-
-The client does the opposite: it searches the service via service discovery, creates a proxy,
-subscribes to the field and checks the received value:
-
-.. code-block:: cpp
-    :linenos:
-
-    auto found = PlatformInfoProxy::FindService(instance_specifier.value());
-    auto proxy = PlatformInfoProxy::Create(handles.front());
-
-    proxy->platform_info_.Subscribe(1U);
-    proxy->platform_info_.GetNewSamples(
-        [&info](score::mw::com::SamplePtr<PlatformInfo> sample) noexcept { info = *sample; }, 1U);
-
-    if (!score::platform::info::IsValid(info.value()))  // CRC32 check with score_baselibs
-    {
-        return Fail("the S-CORE version reported by the platform fails the CRC32 check");
+    std::string make_hello() {
+        return "Hello";
     }
-    const auto differences = score::platform::info::Compare(score::platform::info::MakePlatformInfo(), info.value());
 
-The snippets omit the error handling and the timeouts; see the source files for the complete implementation.
-Both programs log via the mw::log logger with the context id ``PINF``. How these logs are configured and collected
-is described in the :doc:`collecting logs <collecting_logs>` chapter.
+    // req-traceability: comp_req__mod_temp_component_name__some_title
+    std::string make_hello_message(const std::string& name) {
+        return make_hello() + ", " + name + "!";
+    }
 
-mw::com configuration
----------------------
-Which service type, binding and instance belong to the instance specifier ``score/platform/info`` is not compiled
-into the binaries, but defined in the mw::com configuration
-`etc/mw_com_config.json <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/etc/mw_com_config.json>`_:
-
-.. code-block:: json
-    :linenos:
-
-    "serviceInstances": [
-      {
-        "instanceSpecifier": "score/platform/info",
-        "serviceTypeName": "/score/platform/PlatformInfo",
-        "instances": [
-          {
-            "instanceId": 1,
-            "asil-level": "QM",
-            "binding": "SHM",
-            "fields": [
-              { "fieldName": "platform_info", "numberOfSampleSlots": 2, "maxSubscribers": 5 }
-            ]
-          }
-        ]
-      }
-    ]
-
-mw::com reads ``./etc/mw_com_config.json`` relative to the working directory, or the file passed with the
-command line option ``--service_instance_manifest``. Service and client use the same file, so they agree on the
-service definition.
+Line 7 links the implementation to the component requirement it implements. The
+:doc:`documentation generation <doc_generation>` chapter shows how this link appears in the documentation.
+Include paths start at the root of the repository, e.g. ``score/component_example/src/...``.
 
 Bazel targets
 -------------
-The Bazel targets of the service are defined in
-`deploy/platform_info/BUILD <https://github.com/eclipse-score/reference_integration/blob/main/deploy/platform_info/BUILD>`_:
+The Bazel targets of the component are defined in
+`score/component_example/BUILD <https://github.com/eclipse-score/module_template/blob/main/score/component_example/BUILD>`_:
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 4, 20, 21, 25, 30, 41
 
-    # The S-CORE module versions the platform is built from, as compile-time constants.
-    genrule(
-        name = "platform_info_data",
-        srcs = ["//:known_good.json"],
-        outs = ["platform_info_data.h"],
-        cmd = "$(execpath :gen_platform_info) $(execpath //:known_good.json) $@",
-        tools = [":gen_platform_info"],
-    )
-
-    # Service interface and version check: shared by service and consumer.
     cc_library(
-        name = "platform_info_interface",
-        srcs = [
-            "platform_info.cpp",
-            ":platform_info_data",
-        ],
-        hdrs = ["platform_info.h"],
-        visibility = ["//showcases:__subpackages__"],
-        deps = [
-            "@score_baselibs//score/hash/code/crc:crc_ieee",
-            "@score_communication//score/mw/com",
-        ],
+        name = "component_example",
+        srcs = ["src/component_example.cpp"],
+        hdrs = ["src/component_example.hpp"],
+        visibility = ["//visibility:public"],
     )
 
     cc_test(
-        name = "platform_info_test",
-        srcs = ["platform_info_test.cpp"],
+        name = "component_example_unit_tests",
+        size = "small",
+        srcs = ["src/component_example_test.cpp"],
         deps = [
-            ":platform_info_interface",
+            ":component_example",
             "@googletest//:gtest_main",
         ],
     )
 
-    cc_binary(
-        name = "platform_info_service",
-        srcs = ["platform_info_service.cpp"],
+    cc_test(
+        name = "component_example_component_integration_tests",
+        size = "small",
+        srcs = ["tests/component_example_test.cpp"],
         deps = [
-            ":platform_info_interface",
-            "@score_baselibs//score/string_manipulation/arguments",
-            "@score_communication//score/mw/com",
-            "@score_logging//score/mw/log",
+            ":component_example",
+            "@googletest//:gtest_main",
         ],
     )
 
-- The `genrule <https://bazel.build/reference/be/general#genrule>`_ ``platform_info_data`` generates the header
-  ``platform_info_data.h`` from ``known_good.json``. Bazel regenerates it whenever ``known_good.json`` changes,
-  so service and consumer always carry the versions they were built from.
-- The `cc_library <https://bazel.build/reference/be/c-cpp#cc_library>`_ ``platform_info_interface`` contains
-  the shared interface. Its dependencies reference targets of other Bazel modules with the ``@<module>//<package>:<target>``
-  syntax, here mw::com and the CRC32 calculation.
-- The `cc_test <https://bazel.build/reference/be/c-cpp#cc_test>`_ ``platform_info_test`` contains the unit tests of the
-  library, written with GoogleTest.
-- The `cc_binary <https://bazel.build/reference/be/c-cpp#cc_binary>`_ ``platform_info_service`` produces the
-  executable of the service. It additionally depends on mw::log from ``score_logging``.
+- The `cc_library <https://bazel.build/reference/be/c-cpp#cc_library>`_ ``component_example`` contains the code of the
+  component. ``visibility = ["//visibility:public"]`` allows other packages and modules to use it.
+- The two `cc_test <https://bazel.build/reference/be/c-cpp#cc_test>`_ targets build the tests with GoogleTest.
+  ``gtest_main`` provides the ``main()`` function, so the test files only contain the test cases.
+- The ``BUILD`` file additionally contains the ``docs_bundle`` of the component, which is explained in the
+  :doc:`documentation generation <doc_generation>` chapter.
 
-The consumer is defined in the same way in
-`showcases/standalone/BUILD <https://github.com/eclipse-score/reference_integration/blob/main/showcases/standalone/BUILD>`_
-and depends on the shared interface library:
+Targets of other modules are referenced with the ``@<module>//<package>:<target>`` syntax, e.g.
+``@googletest//:gtest_main``. To use an S-CORE module, declare it with ``bazel_dep`` in ``MODULE.bazel``
+(see :doc:`first_score_module`) and add its targets to ``deps``, e.g. the CRC32 calculation of ``score_baselibs``:
 
 .. code-block:: python
-    :linenos:
 
-    cc_binary(
-        name = "platform_info_consumer",
-        srcs = ["platform_info_consumer.cpp"],
-        deps = [
-            "//deploy/platform_info:platform_info_interface",
-            "@score_baselibs//score/string_manipulation/arguments",
-            "@score_communication//score/mw/com",
-            "@score_logging//score/mw/log",
-        ],
-    )
+    deps = [
+        "@score_baselibs//score/hash/code/crc:crc_ieee",
+    ],
+
+Test levels
+-----------
+S-CORE distinguishes the test levels described in the :ref:`software verification plan <software_verification_plan>`.
+The template contains an example for each of them:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 28 50
+
+   * - Test level
+     - Location
+     - Example
+   * - Unit test
+     - ``score/<component>/src/``
+     - ``component_example_unit_tests`` tests the unit ``make_hello()``
+   * - Component integration test
+     - ``score/<component>/tests/``
+     - ``component_example_component_integration_tests`` tests the component API ``make_hello_message()``
+       against the component requirement
+   * - Feature integration test
+     - ``score/tests/``
+     - ``feature_integration_tests_cpp`` and ``feature_integration_tests_rust`` test the module as a whole;
+       the Rust test is only a placeholder
+
+The component integration test shows how a test declares what it verifies:
+
+.. code-block:: cpp
+    :linenos:
+    :emphasize-lines: 2, 3, 4, 5
+
+    TEST(ComponentExampleTest, MakeHelloMessageReturnsExpectedGreeting) {
+        RecordProperty("PartiallyVerifies", "comp_req__mod_temp_component_name__some_title");
+        RecordProperty("TestType", "requirements-based");
+        RecordProperty("DerivationTechnique", "requirements-analysis");
+        RecordProperty("Description", "Verify make_hello_message returns the greeting for each name.");
+
+        EXPECT_EQ(make_hello_message("World"), "Hello, World!");
+        EXPECT_EQ(make_hello_message("SCORE"), "Hello, SCORE!");
+    }
+
+GoogleTest writes these properties into the test result. The documentation build reads them and links the test
+to the requirement, see :doc:`documentation generation <doc_generation>`.
+
 
 Toolchains and platforms
 ------------------------
@@ -283,98 +225,73 @@ combines each platform with its toolchains into a build configuration:
     build:score-qnx-x86_64 --extra_toolchains=@score_qcc_x86_64_toolchain//:x86_64-qnx-sdp_8.0.0
     build:score-qnx-x86_64 --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_pc_nto_qnx800
 
-The reference integration uses the same setup, but names its configurations after the reference images:
-``linux-x86_64``, ``linux-aarch64``, ``qnx-x86_64``, ``qnx-aarch64``, ``autosd-x86_64`` and ``eb-aarch64``
-(see its `.bazelrc <https://github.com/eclipse-score/reference_integration/blob/main/.bazelrc>`_).
-There, the shared configuration ``_common`` also sets build settings of the integrated modules, e.g.:
-
-.. code-block:: text
-
-    build:_common --@score_communication//score/memory/shared/flags:use_typedshmd=False
-    build:_common --@score_baselibs//score/json:base_library=nlohmann
-
-These options must be set in the repository that builds the binaries, because Bazel builds all dependent modules
-within the configuration of the root module.
+Without ``--config``, Bazel builds for the host with the LLVM toolchain that the template registers in ``MODULE.bazel``
+(``toolchains_llvm``). This is fine for a quick local test run; for the S-CORE target platforms, always use
+one of the ``score-*`` configurations.
 
 .. tip::
     The CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
     the QNX compiler locally, you need a QNX license, e.g. the free community license *QNX Everywhere*, installed at
     ``/opt/score_qnx/license/licenses``, and access to the QNX SDP download. The setup is described in the
     `QNX integration guide <https://github.com/eclipse-score/bazel_cpp_toolchains/blob/main/docs/qnx_integration.md>`_
-    of ``score_bazel_cpp_toolchains``. Running the QNX images in QEMU additionally needs the host setup described in the
-    `QNX QEMU runner README <https://github.com/eclipse-score/reference_integration/blob/main/runners/qemu_x86_64/README.md>`_.
+    of ``score_bazel_cpp_toolchains``.
 
-Building the binaries
----------------------
-Always use an explicit build configuration. In the reference integration:
-
-**Linux x86_64:**
-
-.. code-block:: bash
-    :linenos:
-
-    bazel build --config=linux-x86_64 //deploy/platform_info:platform_info_service //showcases/standalone:platform_info_consumer
-
-**QNX x86_64 cross-compilation:**
-
-.. code-block:: bash
-    :linenos:
-
-    bazel build --config=qnx-x86_64 //deploy/platform_info:platform_info_service //showcases/standalone:platform_info_consumer
-
-In your own module, use the configurations of the template instead, e.g.
-``bazel build --config=score-linux-x86_64 //score/...``.
-
-After a successful build, the binaries can be found in the build folder:
-
-.. code-block:: text
-    :linenos:
-
-    bazel-bin/deploy/platform_info/platform_info_service
-    bazel-bin/showcases/standalone/platform_info_consumer
-
-Running the example
--------------------
-The Linux binaries can be started directly on the host. mw::com needs the directory for its service discovery,
-the service is started in the background in its directory, so that it finds its configuration in ``etc/``,
-and the consumer gets the deployed mw::com configuration and its own logging configuration:
-
-.. code-block:: bash
-    :linenos:
-
-    mkdir -p /tmp/mw_com_lola/service_discovery
-    cd deploy/platform_info
-    ../../bazel-bin/deploy/platform_info/platform_info_service &
-    MW_LOG_CONFIG_FILE=../../showcases/standalone/configs/platform_info_consumer.json \
-      ../../bazel-bin/showcases/standalone/platform_info_consumer --service_instance_manifest etc/mw_com_config.json
-    kill %1
-
-The service logs the S-CORE version it reports, and the consumer confirms that it found the service and that the
-versions match. The output looks like this (shortened):
-
-.. code-block:: text
-
-    ... ECU1 PINS PINF log info verbose 1 platform_info_service: offering score/platform/info for S-CORE known_good 2026-08-28T09:19:12Z
-      score_baselibs 41f5a4c92163dc1f597116094ed34881ddee7fa3
-      ...
-    ... ECU1 PINC PINF log info verbose 1 platform_info_consumer: found the platform info service
-    ... ECU1 PINC PINF log info verbose 1 platform_info_consumer: platform runs S-CORE known_good 2026-08-28T09:19:12Z
-      ...
-    ... ECU1 PINC PINF log info verbose 1 platform_info_consumer: S-CORE version check passed (8 modules match)
-
-``PINS`` and ``PINC`` are the application ids of service and consumer, ``PINF`` is the context id of their messages.
-Further lines, e.g. messages with the context id ``lola`` from mw::com or status output of the logging client such as
-``TryOpenClientConnection``, can be ignored here; the :doc:`collecting logs <collecting_logs>` chapter explains the logging.
-
-If the service is not running, or reports a different S-CORE version, the consumer exits with ``1`` and names the reason,
-e.g. the module whose version differs.
-
-Running the unit tests
-----------------------
-The unit tests of the version check and of the header generator run on the host:
+Building and running the tests
+------------------------------
+Build all targets of the module for Linux x86_64:
 
 .. code-block:: bash
 
-    bazel test --config=linux-x86_64 //deploy/platform_info:platform_info_test //deploy/platform_info:gen_platform_info_test
+    bazel build --config=score-linux-x86_64 //score/...
 
-Now it is time to make sure that every change is built and tested automatically.
+Run all tests of the module, or only the tests of one test level:
+
+.. code-block:: bash
+
+    # all tests
+    bazel test --config=score-linux-x86_64 //score/...
+
+    # unit tests of the component
+    bazel test --config=score-linux-x86_64 //score/component_example:component_example_unit_tests
+
+    # component integration tests of the component
+    bazel test --config=score-linux-x86_64 //score/component_example:component_example_component_integration_tests
+
+    # feature integration tests
+    bazel test --config=score-linux-x86_64 //score/tests/...
+
+The first run takes a while, because Bazel downloads the toolchains and dependencies. Afterwards, Bazel only
+rebuilds what has changed and reuses the results of unchanged tests; such tests are marked as ``(cached)``
+in the test summary.
+
+The results of each test, incl. the JUnit XML file ``test.xml``, are stored in ``bazel-testlogs/``, e.g.
+``bazel-testlogs/score/component_example/component_example_unit_tests/``.
+
+Checks before a pull request
+----------------------------
+The CI/CD workflows of your repository run further checks on every pull request. Run them locally before you push:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - Command
+     - Check
+   * - ``pre-commit run --all-files``
+     - Whitespace, copyright and REUSE headers, YAML formatting and the Bazel lockfile,
+       as configured in ``.pre-commit-config.yaml``; install the tool with ``pip install pre-commit`` if needed
+   * - ``bazel test //:format.check``
+     - Formatting of the source code, e.g. C++, Rust, Python and Starlark; ``bazel run //:format.fix`` fixes it
+   * - ``bazel run //:copyright.check``
+     - Copyright headers of the files in ``score/``, ``BUILD`` and ``MODULE.bazel``
+
+Adding a component
+------------------
+To add a component, create a new folder ``score/<component>/`` with the same structure as ``component_example``:
+``src/`` with code and unit tests, ``tests/`` with component integration tests, ``docs/`` with the component
+documentation and a ``BUILD`` file with the library, the tests and the ``docs_bundle``. Then add the bundle of
+the component to the ``docs`` macro in the top-level ``BUILD`` file, see
+:doc:`documentation generation <doc_generation>`. Code shared by several components can be placed in
+``score/common/src/``.
+
+The next chapter shows how the component is documented and how requirements, code and tests are linked.

@@ -29,9 +29,8 @@ Becoming a contributor
    build a solid foundation of S-CORE knowledge.
 
 #. **Run the reference integration showcases** — Build and run the
-   `reference integration <https://github.com/eclipse-score/reference_integration>`_ locally, e.g. the
-   *Platform Version Check* used as example in :ref:`contribute_own_module`, to experience the
-   full development loop (build, test, CI/CD) on the integrated platform.
+   `reference integration <https://github.com/eclipse-score/reference_integration>`_ locally
+   to experience the full development loop (build, test, CI/CD) on the integrated platform.
 
 #. **Implement an open issue and create a pull request** — Pick up an open issue in any S-CORE
    module repository, implement your fix or improvement, and go through the pull-request review

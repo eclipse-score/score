@@ -15,7 +15,7 @@
 CI/CD Workflows
 ================
 
-After successfully building the binaries, we need to ensure that future changes do not break the build.
+After building and testing the module locally, we need to ensure that future changes do not break it.
 In Eclipse S-CORE, this is done by `GitHub Actions <https://docs.github.com/en/actions>`_ workflows which run on every
 pull request. Instead of implementing the workflow logic in every repository, most workflows call the reusable workflows
 from `eclipse-score/cicd-workflows <https://github.com/eclipse-score/cicd-workflows>`_.
@@ -41,14 +41,15 @@ the basic workflows:
    * - ``on-daily.yml``
      - Daily maintenance, e.g. cleanup of outdated documentation previews
    * - ``sync-template.yml``
-     - Keeps the repository in sync with later changes of the template
+     - Opens a pull request with the changes of the template once a month,
+       see :doc:`first_score_module`
 
 The documentation workflow shows the typical pattern: a short workflow file in the module repository which calls a
 reusable workflow, pinned to a commit of ``cicd-workflows``:
 
 .. code-block:: yaml
     :linenos:
-    :emphasize-lines: 2, 14, 21
+    :emphasize-lines: 2, 16, 23
 
     name: Documentation CI
     on:
@@ -58,6 +59,8 @@ reusable workflow, pinned to a commit of ``cicd-workflows``:
           - main
         tags:
           - "v*"
+      release:
+        types: [published]
       merge_group:
         types: [checks_requested]
 
@@ -71,16 +74,19 @@ reusable workflow, pinned to a commit of ``cicd-workflows``:
           id-token: write
         with:
           bazel-target: "--lockfile_mode=error //:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
+          retention-days: 3
 
-- Line 2 defines when the workflow runs: for every pull request, for changes on ``main``, for release tags and in the merge queue.
-- Line 14 calls the reusable workflow. Pin it to a commit (and note the version in a comment), so that changes in
+- Line 2 defines when the workflow runs: for every pull request, for changes on ``main``, for release tags and
+  published releases, and in the merge queue.
+- Line 16 calls the reusable workflow. Pin it to a commit (and note the version in a comment), so that changes in
   ``cicd-workflows`` do not unexpectedly change your pipeline.
-- Line 21 passes the Bazel command that the reusable workflow executes, here the documentation build from the
+- Line 23 passes the Bazel command that the reusable workflow executes, here the documentation build from the
   :doc:`documentation generation <doc_generation>` chapter.
 
 Build and test workflow
 ^^^^^^^^^^^^^^^^^^^^^^^
-Add a workflow which builds and tests your code for the supported platforms, e.g. ``.github/workflows/build.yml``.
+The template does not contain a workflow which builds and tests the code yet. Add one for the supported platforms,
+e.g. ``.github/workflows/build.yml``.
 The reusable workflows ``tests.yml`` and ``qnx-build.yml`` take care of the Bazel setup, the caches and,
 for QNX, the license handling:
 
@@ -119,7 +125,7 @@ for QNX, the license handling:
 
 - Lines 8 and 14: the job ``linux`` builds and runs all tests for Linux x86_64 with the same Bazel command you use locally.
 - Line 16: the job ``qnx`` cross-compiles the code with the QNX toolchain.
-- Line 23: the build configuration from the :doc:`building source code <building_source_code>` chapter.
+- Line 23: the build configuration from the :doc:`build and test <building_source_code>` chapter.
 - Line 24: the QNX job runs in the GitHub environment ``workflow-approval``. It is created for every module repository
   and requires the approval of an S-CORE committer before the job gets access to the QNX secrets.
 - Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
@@ -132,29 +138,12 @@ and its result is shown in the *Actions* tab of your repository and in the check
 The reusable workflows provide further checks, e.g. static code analysis, coverage and CodeQL scans;
 they are listed in the `cicd-workflows README <https://github.com/eclipse-score/cicd-workflows>`_.
 
-Workflows of the reference integration
---------------------------------------
-The running example is part of the reference integration, so it is checked by the workflows of that repository
-on every pull request:
+If the documentation workflow should show the test results, as described in
+:doc:`documentation generation <doc_generation>`, the tests have to run in the same workflow before the
+documentation build. The template's documentation workflow only builds the documentation, so its published
+documentation shows the links from requirements to code, but no test results.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Workflow
-     - What it checks for the example
-   * - `build_and_test_linux.yml <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_linux.yml>`_,
-       ``build_and_test_qnx.yml``, ``build_and_test_autosd.yml``, ``build_and_test_ebclfsa.yml``
-     - Service and consumer build for every target platform and are packaged into the reference images
-   * - `test_and_docs.yml <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_and_docs.yml>`_
-     - Runs the platform integration tests (``bazel test --config=linux-x86_64 //platform_integration_tests:pit``),
-       incl. ``test_platform_version`` which starts the *Platform Version Check* on the Linux image,
-       uploads the DLT logs of the platform run as artifact ``platform-run-dlt-<commit>``
-       and builds the documentation with the test results
-   * - ``build_and_test_linux_target.yml``
-     - Unpacks the release archives (platform and showcases) into plain Ubuntu and Debian containers,
-       runs all showcases there and requires ``S-CORE platform run: PASSED``
-   * - ``known_good_correct.yml``, ``bzlmod-lock.yml``
-     - Check that ``known_good.json``, the generated Bazel files and the lockfile are consistent
-
-How the example gets into the reference images and how its test is defined is shown in the next chapter.
+Next steps
+----------
+Once your module is released, it can be integrated into the S-CORE platform. How module versions get into the
+reference integration and into an S-CORE release is described in the :ref:`integration process <integration_process>`.
