@@ -46,6 +46,7 @@ By the end of this section you will:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    first_score_module.rst
    building_source_code.rst
