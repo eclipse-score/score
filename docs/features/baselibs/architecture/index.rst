@@ -208,8 +208,8 @@ of individual functions is defined at component level, independently of this gro
    information, where exposed by the wrapper's contract, is accessed through
    :need:`logic_arc_int_op__baselibs__osal_error_info`.
 
-.. logic_arc_int:: Base64
-   :id: logic_arc_int__baselibs__utils_base64
+.. logic_arc_int:: Base64 Encoding
+   :id: logic_arc_int__baselibs__base64_encoding
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
@@ -217,14 +217,73 @@ of individual functions is defined at component level, independently of this gro
    :version: 1
    :fulfils: feat_req__baselibs__utils_library[version==2]
 
-.. logic_arc_int:: Scoped Operation
-   :id: logic_arc_int__baselibs__utils_scoped_op
+   Encodes byte data as Base64 text.
+
+.. logic_arc_int:: Base64 Decoding
+   :id: logic_arc_int__baselibs__base64_decoding
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
    :fulfils: feat_req__baselibs__utils_library[version==2]
+
+   Decodes Base64 text into byte data.
+
+.. logic_arc_int:: Thread-Safe Singleton
+   :id: logic_arc_int__baselibs__threadsafe_singleton
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
+
+   Creates one singleton instance when multiple threads access it concurrently.
+
+.. logic_arc_int:: Static Destruction Guard
+   :id: logic_arc_int__baselibs__static_guard
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
+
+   Keeps a static object alive until all guards that use the object are destroyed.
+
+.. logic_arc_int:: String Registry
+   :id: logic_arc_int__baselibs__string_registry
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
+
+   Deduplicates registered strings and provides stable storage for returned views.
+
+.. logic_arc_int:: Registry String View
+   :id: logic_arc_int__baselibs__registry_string_view
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
+
+   Provides immutable registry-owned string views with identity-based equality and hashing.
+
+.. logic_arc_int:: Scope Exit
+   :id: logic_arc_int__baselibs__scope_exit
+   :included_by: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :fulfils: feat_req__baselibs__utils_library[version==2]
+
+   Invokes a stored callback on scope exit unless the guard is released or moved from.
 
 .. logic_arc_int:: Promise
    :id: logic_arc_int__baselibs__promise
