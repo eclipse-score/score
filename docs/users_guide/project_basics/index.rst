@@ -32,6 +32,7 @@ to understand how the platform is structured and what drives its design:
 .. toctree::
    :maxdepth: 1
    :glob:
+   :hidden:
 
    technology_overview.rst
    software_architecture_overview.rst
