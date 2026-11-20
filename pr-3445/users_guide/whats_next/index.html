@@ -657,6 +657,68 @@ personally until your first task is assigned, and stays available for potential 
 support on request.</p></li>
 </ol>
 </section>
+<section id="learn-from-examples">
+<h2>Learn from examples<a class="headerlink" href="#learn-from-examples" title="Link to this heading">#</a></h2>
+<p>The best way to learn how the interfaces of the S-CORE modules are used is to look at their example
+applications. Most modules provide them in their repository:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>baselibs</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/baselibs/tree/main/examples">examples</a>, e.g. the logging frontends
+<code class="docutils literal notranslate"><span class="pre">log_builtin</span></code>, <code class="docutils literal notranslate"><span class="pre">log_custom</span></code> and <code class="docutils literal notranslate"><span class="pre">log_cpp_init</span></code>, <code class="docutils literal notranslate"><span class="pre">result</span></code> and <code class="docutils literal notranslate"><span class="pre">flatbuffers</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>communication</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/doc/tutorial">mw::com tutorial</a>
+with producer and consumer applications</p></td>
+</tr>
+<tr class="row-even"><td><p>config_management</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/config_management/tree/main/examples">examples</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>kyron</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/kyron/tree/main/examples">examples</a>, e.g. <code class="docutils literal notranslate"><span class="pre">main_macro</span></code>,
+<code class="docutils literal notranslate"><span class="pre">safety_task</span></code> and <code class="docutils literal notranslate"><span class="pre">select</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>lifecycle</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/lifecycle/tree/main/examples">examples</a>: supervised applications in C, C++
+and Rust and a control application for the launch manager</p></td>
+</tr>
+<tr class="row-odd"><td><p>logging</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/logging/tree/main/examples">examples</a> and the
+<a class="reference external" href="https://github.com/eclipse-score/logging/tree/main/score/mw/log/custom_recorder_example">custom recorder example</a></p></td>
+</tr>
+<tr class="row-even"><td><p>persistency</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/examples">examples</a> and the
+<a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/score/kvs/rust_kvs/examples">Rust KVS examples</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>time</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/time/tree/main/examples/time">examples/time</a>: <code class="docutils literal notranslate"><span class="pre">steady_time</span></code>,
+<code class="docutils literal notranslate"><span class="pre">high_res_steady_time</span></code>, <code class="docutils literal notranslate"><span class="pre">system_time</span></code> and <code class="docutils literal notranslate"><span class="pre">vehicle_time</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference integration</a> shows how these
+examples run on the integrated platform. Its
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/showcases">showcases</a> build the example
+applications directly from the module repositories, e.g. <code class="docutils literal notranslate"><span class="pre">&#64;score_kyron//examples:safety_task</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&#64;score_time//examples/time/steady_time</span></code>, and combine modules, e.g. lifecycle with communication.
+The <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/platform_integration_tests">platform integration tests</a>
+(PIT) start these showcases on the reference images and check their results.</p>
+<p>To integrate your own module into the reference integration, follow its
+<a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html">integration process</a>.
+It describes step by step how a module is registered in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>, built for all target platforms,
+deployed onto the images as showcase, tested and included in the reports. If you integrate S-CORE modules into
+your own distribution, use the reference integration and this guide as a blueprint.</p>
+</section>
 <section id="good-first-issue">
 <h2>Good first issue<a class="headerlink" href="#good-first-issue" title="Link to this heading">#</a></h2>
 <p>S-CORE consists of many <a class="reference external" href="https://github.com/orgs/eclipse-score/repositories">repositories</a>, each
@@ -741,6 +803,7 @@ alternative time slot.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#becoming-a-contributor">Becoming a contributor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-from-examples">Learn from examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-first-issue">Good first issue</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-feature-requests">Explore Feature Requests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reach-out-to-project-leads">Reach out to Project Leads</a></li>
