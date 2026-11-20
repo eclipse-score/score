@@ -179,7 +179,6 @@ To actually use the registered toolchains, we also need to configure them in the
     common --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_unknown_linux_gnu
 
     common --@score_baselibs//score/memory/shared/flags:use_typedshmd=False
-    common --@score_baselibs//score/mw/log/flags:KRemote_Logging=False
 
     build:_common --@score_baselibs//score/json:base_library=nlohmann
     build:_common --cxxopt=-Wno-error=mismatched-new-delete
@@ -198,8 +197,8 @@ The Ferrocene Linux toolchain is registered as a ``common`` toolchain so that pr
 (compiled on the host) and QNX target crates share the same compiler metadata format,
 which is required for cross-compilation compatibility.
 
-Lines 4-5 set feature flags required by ``score_baselibs`` that are not applicable in
-this demo (proprietary shared memory driver and remote logging backend).
+Line 4 sets feature flag required by ``score_baselibs`` that are not applicable in
+this demo (proprietary shared memory driver).
 These options must be set globally because Bazel builds all dependent modules within
 the context of your module’s configuration.
 
