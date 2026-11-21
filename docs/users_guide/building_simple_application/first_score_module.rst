@@ -67,6 +67,12 @@ documentation and sets up the GitHub environment for the QNX builds. Incubation 
       description: "Incubation repository for SOME/IP gateway feature",
     },
 
+The ``subcategory`` has no technical effect on the repository: it is stored as a custom property and only groups
+the repositories in the auto-generated overview of the GitHub organization. Set ``"incubation"`` for incubator
+repositories (prefix ``inc_``), which are created to try out the content of a feature request before it is written
+down, see the incubation step in the :ref:`feature request process <feature_request_guideline>`.
+A regular module repository doesn't need a ``subcategory``.
+
 Then, create a PR in the `eclipse-score/.eclipsefdn <https://github.com/eclipse-score/.eclipsefdn>`_ repository. The PR must be approved by:
 
 - Eclipse S-CORE project lead
@@ -102,17 +108,20 @@ Below is an overview of the most relevant files and folders.
    * - File / folder
      - Content
    * - ``.github/workflows/``
-     - CI/CD workflows, based on the reusable workflows of ``cicd-workflows``
+     - CI/CD workflows, based on the reusable workflows of ``cicd-workflows``,
+       see :doc:`CI/CD workflows <cicd_workflows>`
    * - ``.devcontainer/``
-     - Development container based on the common S-CORE devcontainer image
+     - Development container based on the common `S-CORE devcontainer <https://github.com/eclipse-score/devcontainer>`_
+       image with all required tools; open the repository in VS Code and select *Reopen in Container*
    * - ``.vscode/``
-     - Recommended VS Code settings, extensions and snippets
+     - Recommended VS Code settings, extensions and snippets, e.g. code completion for requirements and architecture
    * - ``docs/``
      - Module documentation (rst): feature and module documents, safety and security management, release notes
-       and verification report
+       and verification report, see :doc:`documentation generation <doc_generation>`
    * - ``score/<component>/``
      - One folder per component, e.g. ``score/component_example``: source code and unit tests in ``src/``,
-       component integration tests in ``tests/``, component documentation in ``docs/``
+       component integration tests in ``tests/``, component documentation in ``docs/``,
+       see :doc:`build and test <building_source_code>`
    * - ``score/tests/``
      - Feature integration tests of the module
    * - ``examples/``
@@ -126,43 +135,7 @@ Below is an overview of the most relevant files and folders.
    * - ``LICENSE``, ``NOTICE``, ``REUSE.toml``, ``LICENSES/``
      - License and copyright information
 
-
-.github/workflows/
-------------------
-Contains the CI/CD workflows, e.g. pre-commit checks, license check and documentation build.
-They are described in the :doc:`CI/CD workflows <cicd_workflows>` chapter.
-
-
-.devcontainer and .vscode
--------------------------
-``.devcontainer/`` references the common `S-CORE devcontainer <https://github.com/eclipse-score/devcontainer>`_ image,
-which contains all required tools pre-installed. Open the repository with the
-`VS Code Dev Containers extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers>`_
-and select *Reopen in Container* to skip manual toolchain setup entirely.
-
-``.vscode/`` provides the Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements
-and architecture in
-`.vscode/restructuredtext.code-snippets <https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets>`_.
-
-
-docs
------
-Place the module documentation here in `rst format <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_;
-the documentation of each component is placed next to its code in ``score/<component>/docs``.
-The :doc:`documentation generation <doc_generation>` chapter shows how both are built together.
-
-.. tip::
-    We try to describe the most :ref:`common workflows <contribute_contribution_guideline>`
-    for developers. It is worth checking them.
-
-score/
--------
-The code of the module, one folder per component, e.g. ``score/component_example/``. Each component keeps
-its source code and unit tests in ``src/``, its component integration tests in ``tests/`` and its documentation
-in ``docs/``, so code, tests and documentation of a component are changed together.
-Feature integration tests of the module are placed in ``score/tests/``.
-The folder determines the test level, see :ref:`module folder structure <module_folder_structure>`.
-The :doc:`build and test <building_source_code>` chapter walks through the example component.
+The folder of a test determines its test level, see :ref:`module folder structure <module_folder_structure>`.
 
 
 Adapting the template
