@@ -193,7 +193,7 @@ Programming languages have their own feature set and idioms. It is crucial for a
 #. :need:`Language Idioms <feat_req__com__lang_idioms>`
 #. :need:`Language infrastructure <feat_req__com__lang_infra>`
 
-Since S-CORE supports multiple :need:`programming languages <stkh_req__dev_experience__prog_languages>`, this leads to multiple APIs that might diverge significantly from each other, but provide the same feature set to the user.
+Since S-CORE supports multiple :need:`programming languages <stkh_req__dev__programming_languages>`, this leads to multiple APIs that might diverge significantly from each other, but provide the same feature set to the user.
 To support something like this, without reimplementing the full communication stack in both languages, an abstraction
 layer within the communication framework is unavoidable.
 
@@ -245,8 +245,8 @@ Bindings are specified in the deployment configuration.
 Some possible bindings are:
 
 - :need:`IPC <stkh_req__communication__inter_process>`
-- :need:`SOME/IP <stkh_req__communication__supported_net>`
-- :need:`DDS <stkh_req__communication__supported_net>`
+- :need:`SOME/IP <stkh_req__communication__someip>`
+- :need:`DDS <stkh_req__communication__dds>`
 - :ref:`fake binding<mock_binding>` (for testing)
 
 In the beginning, S-CORE will only provide inter-process communication.
@@ -283,7 +283,7 @@ This information is enriched through a runtime `Service discovery`.
 Tracing
 -------
 
-The communication framework must support :need:`tracing of communication events <stkh_req__dev_experience__tracing_of_comm>`. In a framework with multiple bindings, this requires a zero-copy binding-agnostic tracing solution in the abstraction layer.
+The communication framework must support :need:`tracing of communication events <stkh_req__observability__com_tracing>`. In a framework with multiple bindings, this requires a zero-copy binding-agnostic tracing solution in the abstraction layer.
 
 :need:`feat_req__com__tracing`
 

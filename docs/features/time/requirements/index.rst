@@ -139,7 +139,7 @@ Note (providing tracebility as long as safety analysis is not available):
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__debugging[version==1]
+   :derived_from: stkh_req__dev__debugging[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -233,7 +233,7 @@ Time Synchronization to absolute external sources
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__debugging[version==1]
+   :derived_from: stkh_req__dev__debugging[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1
@@ -285,7 +285,7 @@ Testability
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__mockup_public_apis[version==1]
+   :derived_from: stkh_req__test__mockable_interfaces[version==1]
    :satisfied_by: feat__time[version==1]
    :status: valid
    :version: 1

@@ -22,7 +22,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__gen_ai__enablement[version==1]
+   :derived_from: stkh_req__ai__genai_workloads[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -35,7 +35,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :derived_from: stkh_req__ai__interactive_genai[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -48,7 +48,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__gen_ai__safety_filter[version==1]
+   :derived_from: stkh_req__ai__action_governance[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -61,7 +61,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__gen_ai__vehicle_com[version==1]
+   :derived_from: stkh_req__ai__vehicle_integration[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -74,7 +74,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :derived_from: stkh_req__ai__interactive_genai[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -87,7 +87,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :derived_from: stkh_req__ai__interactive_genai[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -100,7 +100,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :derived_from: stkh_req__ai__interactive_genai[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -113,7 +113,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__gen_ai__interaction[version==1]
+   :derived_from: stkh_req__ai__interactive_genai[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -127,7 +127,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__gen_ai__enablement[version==1]
+   :derived_from: stkh_req__ai__genai_workloads[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -140,7 +140,7 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__gen_ai__enablement[version==1]
+   :derived_from: stkh_req__ai__genai_workloads[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1
@@ -154,7 +154,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__ai_platform__model_security[version==1]
+   :derived_from: stkh_req__ai__model_integrity[version==1]
    :satisfied_by: feat__gen_ai[version==1]
    :status: valid
    :version: 1

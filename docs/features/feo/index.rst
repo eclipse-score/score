@@ -62,8 +62,8 @@ This is particularly crucial for safety-critical applications where the executio
 of tasks is essential for the correct operation of the system. The FEO framework is designed
 for applications supporting data-driven and time-driven applications
 mainly in the ADAS domain, ensuring a fixed execution order and supporting reprocessing.
-(See also :need:`stkh_req__app_architectures__support_data`, :
-need:`stkh_req__app_architectures__support_time`, `stkh_req__dev_experience__reprocessing`)
+(See also :need:`stkh_req__execution__data_driven`, :
+need:`stkh_req__execution__time_based`, `stkh_req__test__reprocessing`)
 
 Key aspects of S-CORE and FEO framework are:
 

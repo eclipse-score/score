@@ -31,7 +31,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
@@ -44,7 +44,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__overall_goals__reuse_of_app_soft[version==1], stkh_req__execution_model__processes[version==1], stkh_req__execution_model__low_power[version==1]
+   :derived_from: stkh_req__compatibility__managed_app_apis[version==1], stkh_req__execution__process_lifecycle[version==1], stkh_req__performance__low_power[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
@@ -57,7 +57,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__operating_system[version==1]
+   :derived_from: stkh_req__portability__posix[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
@@ -72,7 +72,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :derived_from: stkh_req__execution__data_driven[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
@@ -85,7 +85,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__dev_experience__logging_support[version==1]
+   :derived_from: stkh_req__logging__support[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
@@ -98,7 +98,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1
@@ -111,7 +111,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__daal[version==1]
    :status: valid
    :version: 1

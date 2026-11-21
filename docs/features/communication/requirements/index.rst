@@ -30,7 +30,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__communication__safe[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__time_based[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -43,7 +43,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_data[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__data_driven[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -56,7 +56,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__request_driven[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -69,7 +69,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__communication__safe[version==1], stkh_req__app_architectures__support_request[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__data_driven[version==1], stkh_req__execution__time_based[version==1], stkh_req__communication__safe[version==1], stkh_req__execution__request_driven[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -86,7 +86,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -105,7 +105,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1], stkh_req__communication__safe[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__request_driven[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -128,7 +128,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_request[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__request_driven[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -153,7 +153,7 @@ Communication Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_time[version==1], stkh_req__communication__safe[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__time_based[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -361,7 +361,7 @@ Performance
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_data[version==1], stkh_req__app_architectures__support_request[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__data_driven[version==1], stkh_req__execution__request_driven[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -380,7 +380,7 @@ User friendly API for information exchange
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__prog_languages[version==1]
+   :derived_from: stkh_req__dev__programming_languages[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -393,7 +393,7 @@ User friendly API for information exchange
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__prog_languages[version==1]
+   :derived_from: stkh_req__dev__programming_languages[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -406,7 +406,7 @@ User friendly API for information exchange
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__prog_languages[version==1]
+   :derived_from: stkh_req__dev__programming_languages[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -694,7 +694,7 @@ Tracing
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__dev_experience__tracing_of_comm[version==1], stkh_req__communication__safe[version==1]
+   :derived_from: stkh_req__observability__com_tracing[version==1], stkh_req__communication__safe[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -711,7 +711,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__dependability__security_features[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__security__iam[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -724,7 +724,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__dependability__security_features[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__security__iam[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -737,7 +737,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__dependability__security_features[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__security__iam[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -752,7 +752,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__dependability__security_features[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__security__iam[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1

@@ -34,7 +34,7 @@ For the communication module the following safety related stakeholder requiremen
 
 - :need:`stkh_req__communication__inter_process` - is QM, but is always compined with the next requirement
 - :need:`stkh_req__communication__safe`
-- :need:`stkh_req__app_architectures__support_time`
+- :need:`stkh_req__execution__time_based`
 
 The safe IPC communication interfaces supported are defined as:
 
