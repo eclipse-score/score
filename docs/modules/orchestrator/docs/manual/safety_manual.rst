@@ -33,9 +33,9 @@ Assumed Platform Safety Requirements
 ------------------------------------
 For the orchestrator module name the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the module. I.e. from these all the feature and component requirements implemented are derived.
 
-- :need:`stkh_req__execution_model__processes` - this requirement is QM and not fully covered as ASIL, only combined with the following requirements
-- :need:`stkh_req__dependability__automotive_safety`
-- :need:`stkh_req__app_architectures__support_time`
+- :need:`stkh_req__execution__process_lifecycle` - this requirement is QM and not fully covered as ASIL, only combined with the following requirements
+- :need:`stkh_req__safety__asil_b_support`
+- :need:`stkh_req__execution__time_based`
 
 The user needs to check orchestration feature level requirements to see which functionalities are provided as ASIL B.
 

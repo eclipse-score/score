@@ -34,8 +34,8 @@ Symmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -47,8 +47,8 @@ Symmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -60,8 +60,8 @@ Symmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -73,8 +73,8 @@ Symmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -86,8 +86,8 @@ Symmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -102,8 +102,8 @@ Asymmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -115,8 +115,8 @@ Asymmetric Encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -132,8 +132,8 @@ Digital Signatures
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -145,8 +145,8 @@ Digital Signatures
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -158,8 +158,8 @@ Digital Signatures
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -174,8 +174,8 @@ Message Authentication Code (MAC)
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -191,8 +191,8 @@ Hashing
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -204,8 +204,8 @@ Hashing
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -217,8 +217,8 @@ Hashing
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -238,7 +238,7 @@ Key Derivation Functions (KDF)
    :status: valid
    :version: 1
    :valid_from: v1.0.0
-   :derived_from: stkh_req__dependability__security_features[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
 
    The crypto component shall provide Key Derivation Functions (KDFs) to derive one or more
    secret keys from a master key or password.
@@ -251,8 +251,8 @@ Random Number Generation
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__secure_random[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -264,8 +264,8 @@ Random Number Generation
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__secure_random[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -280,8 +280,8 @@ Certificate Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__certificate_management[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -297,8 +297,8 @@ Key Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__key_management[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -310,8 +310,8 @@ Key Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__key_management[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -323,8 +323,8 @@ Key Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__key_management[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -336,8 +336,8 @@ Key Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__key_management[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -349,8 +349,8 @@ Key Management
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -366,8 +366,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v2.0.0
@@ -380,8 +380,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -394,8 +394,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -407,8 +407,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -420,8 +420,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -434,8 +434,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__logging__support[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -448,8 +448,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cal_2_support[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -462,8 +462,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -475,8 +475,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -488,8 +488,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__key_management[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -502,8 +502,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -515,8 +515,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -529,8 +529,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -542,8 +542,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -555,8 +555,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -569,8 +569,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__iam[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -583,8 +583,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__event_reporting[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -597,8 +597,8 @@ Non-Functional Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0
@@ -615,8 +615,8 @@ Secure Communication Protocols
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__dependability__security_features[version==1]
-   :satisfied_by: feat__crypto[version==1]
+   :derived_from: stkh_req__security__cryptographic_services[version==1]
+   :satisfied_by: feat__security_crypto[version==1]
    :status: valid
    :version: 1
    :valid_from: v1.0.0

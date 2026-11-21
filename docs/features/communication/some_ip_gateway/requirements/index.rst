@@ -24,7 +24,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__extensible_external[version==1], stkh_req__communication__supported_net[version==1]
+   :derived_from: stkh_req__communication__extensible_external[version==1], stkh_req__communication__technologies[version==1], stkh_req__communication__someip[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -50,7 +50,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__supported_net[version==1]
+   :derived_from: stkh_req__communication__technologies[version==1], stkh_req__communication__someip[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -63,7 +63,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__supported_net[version==1]
+   :derived_from: stkh_req__communication__technologies[version==1], stkh_req__communication__someip[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1
@@ -76,7 +76,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__communication__supported_net[version==1]
+   :derived_from: stkh_req__communication__technologies[version==1], stkh_req__communication__someip[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1

@@ -23,7 +23,7 @@ Terms and definitions
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -36,7 +36,7 @@ Terms and definitions
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -52,7 +52,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -65,7 +65,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -78,7 +78,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -91,7 +91,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -104,7 +104,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -117,7 +117,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -130,7 +130,7 @@ Data Housekeeping
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -146,7 +146,7 @@ Parameter Provision
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -159,7 +159,7 @@ Parameter Provision
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -175,7 +175,7 @@ Parameter Qualification
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__safe_config[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
@@ -188,7 +188,7 @@ Parameter Qualification
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__safe_config[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1

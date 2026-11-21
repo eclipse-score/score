@@ -28,7 +28,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -41,7 +41,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dev_experience__prog_languages[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__dev__programming_languages[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -54,7 +54,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -67,7 +67,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -84,7 +84,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid
    :version: 1
@@ -97,7 +97,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -110,7 +110,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid
    :version: 2
@@ -124,7 +124,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -137,7 +137,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__communication__abi_compatible[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__communication__x_lang_comp[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid
    :version: 2
@@ -150,7 +150,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -163,7 +163,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -176,7 +176,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__base_libraries[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid
    :version: 1
@@ -195,7 +195,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -208,7 +208,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid_inspected
    :version: 2
@@ -221,7 +221,7 @@ Baselibs Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__base_libraries[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__common__base_libraries[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__baselibs[version==1]
    :status: valid
    :version: 2

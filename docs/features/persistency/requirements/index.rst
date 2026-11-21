@@ -31,7 +31,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__dev_experience__prog_languages[version==1]
+   :derived_from: stkh_req__dev__programming_languages[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -44,7 +44,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__operating_system[version==1]
+   :derived_from: stkh_req__portability__posix[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -57,7 +57,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__overall_goals__variant_management[version==1]
+   :derived_from:  stkh_req__configuration__variant_management[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -70,7 +70,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -88,7 +88,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :derived_from: stkh_req__storage__data_persistency[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -101,7 +101,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -117,7 +117,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__dependability__security_features[version==1]
+   :derived_from: stkh_req__security__mandatory_access_control[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -134,7 +134,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 2
@@ -165,7 +165,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -179,7 +179,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -192,7 +192,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -206,7 +206,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -219,7 +219,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -236,7 +236,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -249,7 +249,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -263,7 +263,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :derived_from: stkh_req__storage__data_persistency[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -276,7 +276,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -293,7 +293,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -309,7 +309,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -327,7 +327,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :derived_from: stkh_req__execution__data_driven[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -344,7 +344,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :derived_from: stkh_req__storage__data_persistency[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -357,7 +357,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -370,7 +370,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -383,7 +383,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__functional_req__data_persistency[version==1]
+   :derived_from: stkh_req__storage__data_persistency[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -399,7 +399,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 2
@@ -418,7 +418,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__dependability__availability[version==1], stkh_req__app_architectures__support_request[version==1]
+   :derived_from: stkh_req__dependability__availability[version==1], stkh_req__execution__request_driven[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -431,7 +431,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__app_architectures__support_data[version==1]
+   :derived_from: stkh_req__storage__data_persistency[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -444,7 +444,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -462,7 +462,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -475,7 +475,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -501,7 +501,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__app_architectures__support_time[version==1], stkh_req__dependability__error_report_timing[version==1]
+   :derived_from: stkh_req__execution__time_based[version==1], stkh_req__safety__error_report_timing[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -515,7 +515,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -532,7 +532,7 @@ Persistency Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__overall_goals__variant_management[version==1]
+   :derived_from:  stkh_req__configuration__variant_management[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -548,7 +548,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__short_app_cycles[version==1]
+   :derived_from: stkh_req__performance__short_cycles[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1
@@ -561,7 +561,7 @@ Persistency Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__functional_req__support_of_store[version==1]
+   :derived_from: stkh_req__storage__key_value_store[version==1], stkh_req__storage__safe[version==1]
    :satisfied_by: feat__persistency[version==1]
    :status: valid
    :version: 1

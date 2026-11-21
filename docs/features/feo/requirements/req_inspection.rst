@@ -84,7 +84,7 @@ FEO Feature Requirement Inspection Checklist
         - Is the *linkage to the parent requirement* correct?
         - Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.
         - No
-        - stkh_req__execution_model__processes is QM, but feature depends on that, so it looks furhter AoU are needed
+        - stkh_req__execution__process_lifecycle is QM, but feature depends on that, so it looks furhter AoU are needed
         - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
       * - REQ_04_01
         - Is the requirement *internally and externally consistent*?

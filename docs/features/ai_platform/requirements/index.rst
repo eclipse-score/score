@@ -32,7 +32,7 @@ AI Platform Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__ai_platform__enablement[version==1]
+   :derived_from: stkh_req__ai__ml_workloads[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -45,7 +45,7 @@ AI Platform Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__safety_critical[version==1]
+   :derived_from: stkh_req__ai__safety_support[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -58,7 +58,7 @@ AI Platform Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__ai_platform__runtime_efficiency[version==1]
+   :derived_from: stkh_req__performance__runtime_efficiency[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -71,7 +71,7 @@ AI Platform Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__ai_platform__platform_portability[version==1]
+   :derived_from: stkh_req__portability__posix[version==1], stkh_req__compatibility__qnx[version==1], stkh_req__compatibility__linux[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -84,7 +84,7 @@ AI Platform Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__ai_platform__model_security[version==1]
+   :derived_from: stkh_req__ai__model_integrity[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -97,7 +97,7 @@ AI Platform Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :derived_from: stkh_req__ai__predictable_execution[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -110,7 +110,7 @@ AI Platform Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__ai_platform__agent_execution[version==1]
+   :derived_from: stkh_req__ai__ml_workloads[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -123,7 +123,7 @@ AI Platform Requirements
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :derived_from: stkh_req__ai_platform__model_lifecycle[version==1]
+   :derived_from: stkh_req__ai__model_lifecycle[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
@@ -136,7 +136,7 @@ AI Platform Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__ai_platform__observability[version==1]
+   :derived_from: stkh_req__observability__ai_workloads[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
