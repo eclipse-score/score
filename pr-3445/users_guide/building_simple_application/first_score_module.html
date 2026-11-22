@@ -683,6 +683,11 @@ newDependableElementRepo('inc_someip_gateway', subcategory = "incubation") {
 },
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">subcategory</span></code> has no technical effect on the repository: it is stored as a custom property and only groups
+the repositories in the auto-generated overview of the GitHub organization. Set <code class="docutils literal notranslate"><span class="pre">&quot;incubation&quot;</span></code> for incubator
+repositories (prefix <code class="docutils literal notranslate"><span class="pre">inc_</span></code>), which are created to try out the content of a feature request before it is written
+down, see the incubation step in the <a class="reference internal" href="../../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">feature request process</span></a>.
+A regular module repository doesn’t need a <code class="docutils literal notranslate"><span class="pre">subcategory</span></code>.</p>
 <p>Then, create a PR in the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
 <ul class="simple">
 <li><p>Eclipse S-CORE project lead</p></li>
@@ -719,21 +724,24 @@ Below is an overview of the most relevant files and folders.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code></p></td>
-<td><p>CI/CD workflows, based on the reusable workflows of <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code></p></td>
+<td><p>CI/CD workflows, based on the reusable workflows of <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code>,
+see <a class="reference internal" href="cicd_workflows.html"><span class="doc">CI/CD workflows</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code></p></td>
-<td><p>Development container based on the common S-CORE devcontainer image</p></td>
+<td><p>Development container based on the common <a class="reference external" href="https://github.com/eclipse-score/devcontainer">S-CORE devcontainer</a>
+image with all required tools; open the repository in VS Code and select <em>Reopen in Container</em></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.vscode/</span></code></p></td>
-<td><p>Recommended VS Code settings, extensions and snippets</p></td>
+<td><p>Recommended VS Code settings, extensions and snippets, e.g. code completion for requirements and architecture</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></td>
 <td><p>Module documentation (rst): feature and module documents, safety and security management, release notes
-and verification report</p></td>
+and verification report, see <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/</span></code></p></td>
 <td><p>One folder per component, e.g. <code class="docutils literal notranslate"><span class="pre">score/component_example</span></code>: source code and unit tests in <code class="docutils literal notranslate"><span class="pre">src/</span></code>,
-component integration tests in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>, component documentation in <code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></td>
+component integration tests in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>, component documentation in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>,
+see <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/tests/</span></code></p></td>
 <td><p>Feature integration tests of the module</p></td>
@@ -756,106 +764,17 @@ component integration tests in <code class="docutils literal notranslate"><span 
 </tbody>
 </table>
 </div>
+<p>The folder of a test determines its test level, see <a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.</p>
 </section>
-</section>
-<section id="github-workflows">
-<h2>.github/workflows/<a class="headerlink" href="#github-workflows" title="Link to this heading">#</a></h2>
-<p>Contains the CI/CD workflows, e.g. pre-commit checks, license check and documentation build.
-They are described in the <a class="reference internal" href="cicd_workflows.html"><span class="doc">CI/CD workflows</span></a> chapter.</p>
-</section>
-<section id="devcontainer-and-vscode">
-<h2>.devcontainer and .vscode<a class="headerlink" href="#devcontainer-and-vscode" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code> references the common <a class="reference external" href="https://github.com/eclipse-score/devcontainer">S-CORE devcontainer</a> image,
-which contains all required tools pre-installed. Open the repository with the
-<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">VS Code Dev Containers extension</a>
-and select <em>Reopen in Container</em> to skip manual toolchain setup entirely.</p>
-<p><code class="docutils literal notranslate"><span class="pre">.vscode/</span></code> provides the Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements
-and architecture in
-<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets">.vscode/restructuredtext.code-snippets</a>.</p>
-</section>
-<section id="docs">
-<h2>docs<a class="headerlink" href="#docs" title="Link to this heading">#</a></h2>
-<p>Place the module documentation here in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">rst format</a>;
-the documentation of each component is placed next to its code in <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/docs</span></code>.
-The <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter shows how both are built together.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>We try to describe the most <a class="reference internal" href="../../contribute/contribution_request/index.html#contribute-contribution-guideline"><span class="std std-ref">common workflows</span></a>
-for developers. It is worth checking them.</p>
-</div>
-</section>
-<section id="score">
-<h2>score/<a class="headerlink" href="#score" title="Link to this heading">#</a></h2>
-<p>The code of the module, one folder per component, e.g. <code class="docutils literal notranslate"><span class="pre">score/component_example/</span></code>. Each component keeps
-its source code and unit tests in <code class="docutils literal notranslate"><span class="pre">src/</span></code>, its component integration tests in <code class="docutils literal notranslate"><span class="pre">tests/</span></code> and its documentation
-in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>, so code, tests and documentation of a component are changed together.
-Feature integration tests of the module are placed in <code class="docutils literal notranslate"><span class="pre">score/tests/</span></code>.
-The folder determines the test level, see <a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.
-The <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter walks through the example component.</p>
 </section>
 <section id="adapting-the-template">
 <h2>Adapting the template<a class="headerlink" href="#adapting-the-template" title="Link to this heading">#</a></h2>
-<p>The template is a working example, not an empty skeleton. Adapt the following parts to your module:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 35.0%" />
-<col style="width: 65.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Where</p></th>
-<th class="head"><p>What to change</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code></p></td>
-<td><p>The module name <code class="docutils literal notranslate"><span class="pre">score_module_template</span></code>, see <a class="reference internal" href="#first-module-module-bazel"><span class="std std-ref">MODULE.bazel</span></a> below</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/</span></code></p></td>
-<td><p>Rename the folder, the Bazel targets, the include paths and the C++ namespace to your component,
-or use it as a pattern for a new component</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BUILD</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">project</span></code>, <code class="docutils literal notranslate"><span class="pre">project_url</span></code> and the <code class="docutils literal notranslate"><span class="pre">bundles</span></code> of the <code class="docutils literal notranslate"><span class="pre">docs</span></code> macro, see <a class="reference internal" href="#first-module-build"><span class="std std-ref">BUILD</span></a> below</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code></p></td>
-<td><p>The safety level and the languages of your module, see <a class="reference internal" href="#project-config-bzl">project_config.bzl</a> below</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docs/</span></code> and <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/docs/</span></code></p></td>
-<td><p>Titles, IDs and contents of the documents. IDs of the template contain <code class="docutils literal notranslate"><span class="pre">mod_temp</span></code> or <code class="docutils literal notranslate"><span class="pre">example_feature</span></code>,
-e.g. <code class="docutils literal notranslate"><span class="pre">comp__mod_temp_component_name_template</span></code>; replace them by IDs of your module.
-Each document contains <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">attention::</span></code> boxes which list what needs to be adapted; remove them afterwards.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.github/CODEOWNERS</span></code></p></td>
-<td><p>Description of your module and the maintainers who review the pull requests</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="bazelrc">
-<h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
-<p>Defines the Bazel configuration of the module. Important entries in the
-<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.bazelrc">.bazelrc</a> file include:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span>common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
-</span><span class="hll"><span class="linenos">2</span>common --registry=https://bcr.bazel.build
-</span><span class="linenos">3</span>
-<span class="linenos">4</span># Import toolchain bazelrc file
-<span class="hll"><span class="linenos">5</span>try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
-</span></pre></div>
-</div>
-<ul class="simple">
-<li><p>Line 1 points to the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">Eclipse S-CORE Bazel registry</a>,
-where all official versions of Eclipse S-CORE modules are published.</p></li>
-<li><p>Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.</p></li>
-<li><p>Line 5 imports the S-CORE build configurations, e.g. <code class="docutils literal notranslate"><span class="pre">--config=score-linux-x86_64</span></code> or <code class="docutils literal notranslate"><span class="pre">--config=score-qnx-x86_64</span></code>.
-They select the target platform and the matching toolchains and are explained in the
-<a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p></li>
-</ul>
-<p>This means, once we reference a dependency in our module,
-Bazel will search for it in one of these two registries.</p>
-</section>
+<p>The template is a working example, not an empty skeleton: it builds, tests and documents the example component
+<code class="docutils literal notranslate"><span class="pre">component_example</span></code> out of the box. To turn it into your module, go through the following files in this order.
+Each section explains what the file is for and what you need to adapt.</p>
 <section id="module-bazel">
-<span id="first-module-module-bazel"></span><h2>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h2>
+<span id="first-module-module-bazel"></span><h3>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the module name and the dependencies of your code.</p>
 <p>This file turns your repository into a Bazel module.
 The template starts with a minimal module declaration:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_module_template"</span><span class="p">)</span>
@@ -923,8 +842,30 @@ checkout without changing <code class="docutils literal notranslate"><span class
 </ul>
 </div>
 </section>
+<section id="bazelrc">
+<h3>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> nothing; add own settings to <code class="docutils literal notranslate"><span class="pre">user.bazelrc</span></code>, which is imported if it exists.</p>
+<p>The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.bazelrc">.bazelrc</a> file tells Bazel where to
+find the modules declared in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> and how to build for the S-CORE target platforms:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+<span class="linenos">2</span>common --registry=https://bcr.bazel.build
+<span class="linenos">3</span>
+<span class="linenos">4</span>try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Line 1 points to the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">Eclipse S-CORE Bazel registry</a>,
+where all official versions of Eclipse S-CORE modules are published.</p></li>
+<li><p>Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.</p></li>
+<li><p>Line 4 imports the S-CORE build configurations, e.g. <code class="docutils literal notranslate"><span class="pre">--config=score-linux-x86_64</span></code> or <code class="docutils literal notranslate"><span class="pre">--config=score-qnx-x86_64</span></code>.
+They select the target platform and the matching toolchains and are explained in the
+<a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p></li>
+</ul>
+</section>
 <section id="build">
-<span id="first-module-build"></span><h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
+<span id="first-module-build"></span><h3>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> <code class="docutils literal notranslate"><span class="pre">project</span></code> and <code class="docutils literal notranslate"><span class="pre">project_url</span></code> of the <code class="docutils literal notranslate"><span class="pre">docs</span></code> macro, and its <code class="docutils literal notranslate"><span class="pre">bundles</span></code> when you rename or add
+components.</p>
 <p>The Bazel <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/BUILD">BUILD</a> file
 contains the main Bazel targets on the top level of the module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_docs_as_code//:docs.bzl"</span><span class="p">,</span> <span class="s2">"docs"</span><span class="p">)</span>
@@ -986,7 +927,8 @@ This functionality is implemented in <a class="reference external" href="https:/
 and described in the <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter.</p>
 </section>
 <section id="project-config-bzl">
-<h2>project_config.bzl<a class="headerlink" href="#project-config-bzl" title="Link to this heading">#</a></h2>
+<h3>project_config.bzl<a class="headerlink" href="#project-config-bzl" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the safety level and the languages of your module.</p>
 <p>Every Eclipse S-CORE module provides a <code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code> file in its root directory.
 This file declares project-level metadata that is consumed by shared Bazel macros such as <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>.</p>
 <p>A minimal example:</p>
@@ -1006,6 +948,25 @@ and point <code class="docutils literal notranslate"><span class="pre">dash_lice
 <p>Start with <code class="docutils literal notranslate"><span class="pre">&quot;asil_level&quot;:</span> <span class="pre">&quot;QM&quot;</span></code> during initial development.
 The level can be raised once the module’s safety concept is established.</p>
 </div>
+</section>
+<section id="component-code-and-documentation">
+<h3>Component code and documentation<a class="headerlink" href="#component-code-and-documentation" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the example component and the documents of the module.</p>
+<ul class="simple">
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">score/component_example/</span></code> to your component, incl. its Bazel targets, include paths and C++ namespace,
+or keep it as a pattern and add your own component next to it. The <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a>
+chapter walks through the example component.</p></li>
+<li><p>Adapt the titles, IDs and contents of the documents in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> and <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/docs/</span></code>.
+IDs of the template contain <code class="docutils literal notranslate"><span class="pre">mod_temp</span></code> or <code class="docutils literal notranslate"><span class="pre">example_feature</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">comp__mod_temp_component_name_template</span></code>;
+replace them by IDs of your module. Each document contains <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">attention::</span></code> boxes which list what needs to be
+adapted; remove them afterwards. The <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter explains the documents.</p></li>
+</ul>
+</section>
+<section id="readme-md-and-codeowners">
+<h3>README.md and CODEOWNERS<a class="headerlink" href="#readme-md-and-codeowners" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the description of your module in <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, and the maintainers in <code class="docutils literal notranslate"><span class="pre">.github/CODEOWNERS</span></code>,
+who review the pull requests of your repository.</p>
+</section>
 </section>
 <section id="keeping-up-with-the-template">
 <h2>Keeping up with the template<a class="headerlink" href="#keeping-up-with-the-template" title="Link to this heading">#</a></h2>
@@ -1068,15 +1029,15 @@ it can touch files which you have adapted to your module.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-layout">Repository Layout</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-workflows">.github/workflows/</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#devcontainer-and-vscode">.devcontainer and .vscode</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docs">docs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score">score/</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-template">Adapting the template</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazelrc">.bazelrc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-bazel">MODULE.bazel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-template">Adapting the template</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-bazel">MODULE.bazel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bazelrc">.bazelrc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-code-and-documentation">Component code and documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md-and-codeowners">README.md and CODEOWNERS</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-up-with-the-template">Keeping up with the template</a></li>
 </ul>
   </nav></div>
