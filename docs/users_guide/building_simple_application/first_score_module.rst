@@ -140,61 +140,17 @@ The folder of a test determines its test level, see :ref:`module folder structur
 
 Adapting the template
 ---------------------
-The template is a working example, not an empty skeleton. Adapt the following parts to your module:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - Where
-     - What to change
-   * - ``MODULE.bazel``
-     - The module name ``score_module_template``, see :ref:`MODULE.bazel <first_module_module_bazel>` below
-   * - ``score/component_example/``
-     - Rename the folder, the Bazel targets, the include paths and the C++ namespace to your component,
-       or use it as a pattern for a new component
-   * - ``BUILD``
-     - ``project``, ``project_url`` and the ``bundles`` of the ``docs`` macro, see :ref:`BUILD <first_module_build>` below
-   * - ``project_config.bzl``
-     - The safety level and the languages of your module, see `project_config.bzl`_ below
-   * - ``docs/`` and ``score/<component>/docs/``
-     - Titles, IDs and contents of the documents. IDs of the template contain ``mod_temp`` or ``example_feature``,
-       e.g. ``comp__mod_temp_component_name_template``; replace them by IDs of your module.
-       Each document contains ``.. attention::`` boxes which list what needs to be adapted; remove them afterwards.
-   * - ``README.md``, ``.github/CODEOWNERS``
-     - Description of your module and the maintainers who review the pull requests
-
-
-.bazelrc
---------
-Defines the Bazel configuration of the module. Important entries in the
-`.bazelrc <https://github.com/eclipse-score/module_template/blob/main/.bazelrc>`_ file include:
-
-.. code-block:: text
-    :linenos:
-    :emphasize-lines: 1, 2, 5
-
-    common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
-    common --registry=https://bcr.bazel.build
-
-    # Import toolchain bazelrc file
-    try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
-
-- Line 1 points to the `Eclipse S-CORE Bazel registry <https://github.com/eclipse-score/bazel_registry>`_,
-  where all official versions of Eclipse S-CORE modules are published.
-- Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.
-- Line 5 imports the S-CORE build configurations, e.g. ``--config=score-linux-x86_64`` or ``--config=score-qnx-x86_64``.
-  They select the target platform and the matching toolchains and are explained in the
-  :doc:`build and test <building_source_code>` chapter.
-
-This means, once we reference a dependency in our module,
-Bazel will search for it in one of these two registries.
+The template is a working example, not an empty skeleton: it builds, tests and documents the example component
+``component_example`` out of the box. To turn it into your module, go through the following files in this order.
+Each section explains what the file is for and what you need to adapt.
 
 
 .. _first_module_module_bazel:
 
 MODULE.bazel
--------------
+^^^^^^^^^^^^
+**To adapt:** the module name and the dependencies of your code.
+
 This file turns your repository into a Bazel module.
 The template starts with a minimal module declaration:
 
@@ -277,10 +233,36 @@ directly in your ``BUILD`` files.
       checkout without changing ``MODULE.bazel``.
 
 
+.bazelrc
+^^^^^^^^
+**To adapt:** nothing; add own settings to ``user.bazelrc``, which is imported if it exists.
+
+The `.bazelrc <https://github.com/eclipse-score/module_template/blob/main/.bazelrc>`_ file tells Bazel where to
+find the modules declared in ``MODULE.bazel`` and how to build for the S-CORE target platforms:
+
+.. code-block:: text
+    :linenos:
+
+    common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+    common --registry=https://bcr.bazel.build
+
+    try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
+
+- Line 1 points to the `Eclipse S-CORE Bazel registry <https://github.com/eclipse-score/bazel_registry>`_,
+  where all official versions of Eclipse S-CORE modules are published.
+- Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.
+- Line 4 imports the S-CORE build configurations, e.g. ``--config=score-linux-x86_64`` or ``--config=score-qnx-x86_64``.
+  They select the target platform and the matching toolchains and are explained in the
+  :doc:`build and test <building_source_code>` chapter.
+
+
 .. _first_module_build:
 
 BUILD
------
+^^^^^
+**To adapt:** ``project`` and ``project_url`` of the ``docs`` macro, and its ``bundles`` when you rename or add
+components.
+
 The Bazel `BUILD <https://github.com/eclipse-score/module_template/blob/main/BUILD>`_ file
 contains the main Bazel targets on the top level of the module:
 
@@ -352,7 +334,9 @@ and described in the :doc:`documentation generation <doc_generation>` chapter.
 
 
 project_config.bzl
-------------------
+^^^^^^^^^^^^^^^^^^
+**To adapt:** the safety level and the languages of your module.
+
 Every Eclipse S-CORE module provides a ``project_config.bzl`` file in its root directory.
 This file declares project-level metadata that is consumed by shared Bazel macros such as ``dash_license_checker``.
 
@@ -375,6 +359,25 @@ and point ``dash_license_checker`` to its dependency file.
 .. tip::
     Start with ``"asil_level": "QM"`` during initial development.
     The level can be raised once the module's safety concept is established.
+
+
+Component code and documentation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**To adapt:** the example component and the documents of the module.
+
+- Rename ``score/component_example/`` to your component, incl. its Bazel targets, include paths and C++ namespace,
+  or keep it as a pattern and add your own component next to it. The :doc:`build and test <building_source_code>`
+  chapter walks through the example component.
+- Adapt the titles, IDs and contents of the documents in ``docs/`` and ``score/<component>/docs/``.
+  IDs of the template contain ``mod_temp`` or ``example_feature``, e.g. ``comp__mod_temp_component_name_template``;
+  replace them by IDs of your module. Each document contains ``.. attention::`` boxes which list what needs to be
+  adapted; remove them afterwards. The :doc:`documentation generation <doc_generation>` chapter explains the documents.
+
+
+README.md and CODEOWNERS
+^^^^^^^^^^^^^^^^^^^^^^^^
+**To adapt:** the description of your module in ``README.md``, and the maintainers in ``.github/CODEOWNERS``,
+who review the pull requests of your repository.
 
 
 Keeping up with the template
