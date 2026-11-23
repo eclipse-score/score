@@ -143,22 +143,34 @@ The template contains an example for each of them:
 
 .. list-table::
    :header-rows: 1
-   :widths: 22 28 50
+   :widths: 20 22 18 40
 
    * - Test level
      - Location
+     - Framework
      - Example
    * - Unit test
      - ``score/<component>/src/``
+     - GoogleTest
      - ``component_example_unit_tests`` tests the unit ``make_hello()``
    * - Component integration test
      - ``score/<component>/tests/``
+     - GoogleTest
      - ``component_example_component_integration_tests`` tests the component API ``make_hello_message()``
        against the component requirement
    * - Feature integration test
      - ``score/tests/``
+     - GoogleTest, Rust test
      - ``feature_integration_tests_cpp`` and ``feature_integration_tests_rust`` test the module as a whole;
        the Rust test is only a placeholder
+
+The template uses the simplest form for all levels: plain GoogleTest tests for C++ and the built-in test framework
+for Rust. For more extensive tests, S-CORE provides dedicated frameworks: the test scenarios from
+`testing_tools <https://github.com/eclipse-score/testing_tools>`_ for component integration tests, which are
+implemented in C++ or Rust and driven by pytest, and the
+`Integration Testing Framework (ITF) <https://github.com/eclipse-score/itf>`_ for feature integration tests,
+which runs pytest-based tests on Docker containers, QEMU virtual machines or real hardware.
+See :ref:`Overview of technologies <technology_overview>` for details.
 
 The component integration test shows how a test declares what it verifies:
 
