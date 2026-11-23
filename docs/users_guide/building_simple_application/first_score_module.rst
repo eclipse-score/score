@@ -378,6 +378,24 @@ Component code and documentation
   adapted; remove them afterwards. The :doc:`documentation generation <doc_generation>` chapter explains the documents.
 
 
+LICENSE, NOTICE and REUSE.toml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**To adapt:** nothing in ``LICENSE`` and ``NOTICE``; extend ``REUSE.toml`` for files which cannot carry a header.
+
+The license files come with the template, so every S-CORE module is published under the same terms:
+
+- ``LICENSE`` and ``LICENSES/Apache-2.0.txt`` contain the Apache License 2.0, the license of all S-CORE modules.
+- ``NOTICE`` contains the notices of the Eclipse S-CORE project: project home, trademarks, copyright, the declared
+  license and the cryptography notice.
+- Every source file starts with the copyright and license header of the Eclipse Foundation, as in the files of the
+  template. Files which cannot contain a comment, e.g. JSON files or lock files, are listed in
+  `REUSE.toml <https://github.com/eclipse-score/module_template/blob/main/REUSE.toml>`_ instead.
+  When you add such files, add them there as well.
+
+The pre-commit checks and ``bazel run //:copyright.check`` report files without a valid header,
+see :doc:`build and test <building_source_code>`.
+
+
 README.md and CODEOWNERS
 ^^^^^^^^^^^^^^^^^^^^^^^^
 **To adapt:** the description of your module in ``README.md``, and the maintainers in ``.github/CODEOWNERS``,
