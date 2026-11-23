@@ -76,6 +76,8 @@ once one is.
 
 ``fep:fcp`` is applied to the FEP PR only while it is in its Final Comment Period. Adding it starts
 the FCP; the FCP bot mirrors it to the tracking Issue and removes it from both once the FCP closes.
+Only the Architecture Community chair or proxy may add or remove it: the bot removes the label again
+if anybody else adds it, and adds it back if anybody else removes it during the FCP.
 
 ``fep:breaking-change`` is applied to the FEP PR of a Breaking Change FEP (see `Breaking Change FEPs -
 Additional Requirements`_), so that the FCP bot requires the explicit approval quorum.
@@ -176,6 +178,8 @@ The FCP is tracked by a bot (``.github/workflows/fep-fcp.yml``):
   ``fep/fcp`` commit status.
 * **Reset**: the Shepherd or the chair/proxy comments ``/fcp reset`` on the FEP PR to restart the
   14 days once, which notifies all stakeholders again.
+* **Cancel**: the chair/proxy comments ``/fcp cancel`` on the FEP PR (or removes the ``fep:fcp``
+  label) to stop the FCP without a decision, e.g. when it was started too early.
 
 **Phase 3 - Decision** (status: ``Accepted`` | ``Rejected`` | ``Withdrawn``)
 

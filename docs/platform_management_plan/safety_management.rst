@@ -15,7 +15,7 @@
 .. document:: Platform Safety Plan
    :id: doc__score_platform_safety_plan
    :status: draft
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: NO
    :realizes: wp__platform_safety_plan[version==1], wp__safety_tailoring[version==1]
@@ -42,7 +42,7 @@ And:
 * to coordinate and track the progress of safety activities in accordance with the safety plan
 * to ensure a correct progression of the safety activities throughout the safety lifecycle
 * to plan to create a comprehensible safety case (collection of the safety related work products)
-* to judge whether the SW achieves functional safety process conformance (i.e. the functional safety audit, confirmation reviews)
+* to judge whether the SW achieves functional safety process conformance (i.e. the functional safety audit)
 
 Objectives and Scope
 ++++++++++++++++++++
@@ -135,11 +135,14 @@ The following  ISO 26262 defined safety work products are not relevant for the S
 But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
 
 * Because those are not relevant for ASIL_B: :need:`std_req__iso26262__system_6423`,
-  :need:`std_req__iso26262__system_6424`, :need:`std_req__iso26262__system_6425`
+  :need:`std_req__iso26262__system_6424`, :need:`std_req__iso26262__system_6425`, :need:`std_req__iso26262__support_12423`
 
 * Because S-CORE is not planning to do a safety assessment: :need:`std_req__iso26262__management_64121`, :need:`std_req__iso26262__management_64122`, :need:`std_req__iso26262__management_64123`,
   :need:`std_req__iso26262__management_64124`, :need:`std_req__iso26262__management_64125`, :need:`std_req__iso26262__management_64126`, :need:`std_req__iso26262__management_64127`, :need:`std_req__iso26262__management_64128`,
   :need:`std_req__iso26262__management_64129`, :need:`std_req__iso26262__management_641210`, :need:`std_req__iso26262__management_641211`, :need:`std_req__iso26262__management_641212`, :need:`std_req__iso26262__management_641213`
+
+* Because S-CORE only performs verification reviews (called formal document review) and no confirmation reviews: :need:`std_req__iso26262__management_64101`,
+  :need:`std_req__iso26262__management_64102`, :need:`std_req__iso26262__management_64103`, :need:`std_req__iso26262__management_64104`, :need:`std_req__iso26262__management_64105`
 
 Approach
 ++++++++

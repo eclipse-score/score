@@ -51,7 +51,7 @@ The purpose of this safety plan formal review checklist is to report status of t
           - <Rationale for result>
 
         * - 3
-          - Does the safety plan define all needed activities for safety management (incl. Confirmation review and Safety Audit)?
+          - Does the safety plan define all needed activities for safety management (incl. Safety Audit)?
           - [YES | NO ]
           - <Rationale for result>
 

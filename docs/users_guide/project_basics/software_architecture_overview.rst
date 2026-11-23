@@ -45,7 +45,7 @@ The platform is organized in layers. From top to bottom:
 - **Operating System** and **Hypervisor / Hardware** — S-CORE builds on existing POSIX-compliant operating
   systems (e.g. QNX, Linux) instead of developing its own. The expectations towards the operating system are
   described in the :ref:`OS module <comp_doc_os>` and as assumptions of use in the
-  :doc:`platform assumptions </requirements/platform_assumptions/index>`.
+  :doc:`platform assumptions <../../requirements/platform_assumptions/index>`.
 
 The colors indicate the status of each building block: *in development*, *for future*, *not part of development*,
 *out of scope*, or *part of the operating system / hardware specific implementation*.
@@ -81,7 +81,7 @@ All **past feature requests** are documented in the corresponding
 `Feature Requests / Modification <https://github.com/orgs/eclipse-score/projects/4/views/1>`_ GitHub project.
 
 **Submitting a FEP** is described in the :ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>` guideline.
-Larger architectural decisions are documented as decision records in the :doc:`design decisions </design_decisions/index>` section.
+Larger architectural decisions are documented as decision records in the :doc:`design decisions <../../design_decisions/index>` section.
 Participation in the architecture process is encouraged.
 
 The **software architecture community regularly organizes workshops** where contributors can:

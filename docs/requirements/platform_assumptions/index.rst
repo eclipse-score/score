@@ -20,7 +20,7 @@ SW-platform Assumptions
 .. document:: SW-platform Assumptions
    :id: doc__platform_assumptions
    :status: draft
-   :version: 1
+   :version: 2
    :security: YES
    :safety: ASIL_B
    :realizes: wp__requirements_sw_platform_aou[version==1]
@@ -282,6 +282,22 @@ This is the highest level of integration. This is the level where the S-CORE SW-
 
    Note: This includes all the modules of the S-CORE SW platform used by the system integrator.
    The relevant safety critical bugs or safety anomalies are published by S-CORE as defined in the :need:`doc__platform_problem_resolution_plan`.
+
+.. aou_req:: Integrator safety confirmation
+   :id: aou_req__platform__safety_confirmation
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :tags: user
+
+   If the system using the SW-platform has safety goals, the system integrator shall
+   perform the following safety related confirmation measures on the S-CORE platform,
+   because those are tailored out in :need:`doc__score_platform_safety_plan`:
+
+   * safety assessment
+   * confirmation review (using as input :need:`wp__fdr_reports` on platform and module levels)
 
 
 Assumptions on Applications

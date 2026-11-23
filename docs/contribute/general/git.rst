@@ -199,7 +199,7 @@ it is that such overlaps occur and conflicts arise.
 So, there are three stategies to deal with this:
 
 1. Avoid long-living branches by splitting work into smaller units of work and merge
-   them frequently into the main branch.
+   them frequently into the main branch. See :ref:`pr_scope_and_size`.
 2. If long-living branches are unavoidable, perform the changes in a way that anticipate this
    and make conflicts less likely. For example, in case of documentation changes write the new
    content in a separate file until the work is done. Then, only in a last step integrate the

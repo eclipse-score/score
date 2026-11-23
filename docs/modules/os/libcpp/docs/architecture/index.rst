@@ -17,7 +17,7 @@ libcpp Component Architecture
 
 .. comp:: libcpp (C++ Std Library)
    :id: comp__os_libcpp
-   :status: valid
+   :status: invalid
    :version: 1
    :safety: ASIL_B
    :implements: logic_arc_int__os__libcpp[version==1]
@@ -35,7 +35,7 @@ libcpp Component Architecture
    :included_by: feat__os
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    .. needarch::

@@ -19,7 +19,7 @@ Message Passing Component Architecture
    :id: comp__os_message_passing
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
    :implements: logic_arc_int__os__message_passing[version==1]
    :belongs_to: feat__os[version==1]
@@ -34,7 +34,7 @@ Message Passing Component Architecture
    :id: logic_arc_int__os__message_passing
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    .. needarch::

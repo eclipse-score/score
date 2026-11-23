@@ -104,9 +104,10 @@ Logical Interfaces
    :id: logic_arc_int__baselibs__flatbuffers
    :included_by: feat__baselibs
    :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :status: valid
    :version: 1
+   :fulfils: feat_req__baselibs__flatbuffers_library[version==2]
 
 .. logic_arc_int:: Filesystem
    :id: logic_arc_int__baselibs__filesystem
@@ -130,7 +131,7 @@ of individual functions is defined at component level, independently of this gro
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    Provides C++ abstractions of POSIX and C standard library services shared by Linux and QNX.
@@ -188,7 +189,7 @@ of individual functions is defined at component level, independently of this gro
    :included_by: feat__baselibs
    :security: YES
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
    :version: 1
 
    Provides C++ abstractions of QNX-specific services. These services complement the general OSAL
