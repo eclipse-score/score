@@ -139,10 +139,12 @@ and its result is shown in the *Actions* tab of your repository and in the check
 The reusable workflows provide further checks, e.g. static code analysis, coverage and CodeQL scans;
 they are listed in the `cicd-workflows README <https://github.com/eclipse-score/cicd-workflows>`_.
 
-If the documentation workflow should show the test results, as described in
-:doc:`documentation generation <doc_generation>`, the tests have to run in the same workflow before the
-documentation build. The template's documentation workflow only builds the documentation, so its published
-documentation shows the links from requirements to code, but no test results.
+.. attention::
+
+   If the documentation workflow should show the test results, as described in
+   :doc:`documentation generation <doc_generation>`, the tests have to run in the same workflow before the
+   documentation build. The template's documentation workflow only builds the documentation, so its published
+   documentation shows the links from requirements to code, but no test results.
 
 Next steps
 ----------
