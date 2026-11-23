@@ -85,7 +85,8 @@ reusable workflow, pinned to a commit of ``cicd-workflows``:
 
 Build and test workflow
 ^^^^^^^^^^^^^^^^^^^^^^^
-The template does not contain a workflow which builds and tests the code yet. Add one for the supported platforms,
+None of the template's workflows compiles the code or runs the tests: they check formatting, headers and licenses
+and build the documentation. Add a workflow which builds and tests your code for the supported platforms,
 e.g. ``.github/workflows/build.yml``.
 The reusable workflows ``tests.yml`` and ``qnx-build.yml`` take care of the Bazel setup, the caches and,
 for QNX, the license handling:
