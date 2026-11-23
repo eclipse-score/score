@@ -737,27 +737,31 @@ for QNX, the license handling:</p>
 <span class="hll"><span class="linenos">14</span><span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"test</span><span class="nv"> </span><span class="s">--config=score-linux-x86_64</span><span class="nv"> </span><span class="s">//score/..."</span>
 </span><span class="linenos">15</span>
 <span class="hll"><span class="linenos">16</span><span class="w">  </span><span class="nt">qnx</span><span class="p">:</span>
-</span><span class="linenos">17</span><span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/qnx-build.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
-<span class="linenos">18</span><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
-<span class="linenos">19</span><span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
-<span class="linenos">20</span><span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
-<span class="linenos">21</span><span class="w">    </span><span class="nt">with</span><span class="p">:</span>
-<span class="linenos">22</span><span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"//score/..."</span>
-<span class="hll"><span class="linenos">23</span><span class="w">      </span><span class="nt">bazel-config</span><span class="p">:</span><span class="w"> </span><span class="s">"score-qnx-x86_64"</span>
-</span><span class="hll"><span class="linenos">24</span><span class="w">      </span><span class="nt">environment-name</span><span class="p">:</span><span class="w"> </span><span class="s">"workflow-approval"</span>
-</span><span class="hll"><span class="linenos">25</span><span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
-</span><span class="linenos">26</span><span class="w">      </span><span class="nt">score-qnx-license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_LICENSE }}</span>
-<span class="linenos">27</span><span class="w">      </span><span class="nt">score-qnx-user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_USER }}</span>
-<span class="linenos">28</span><span class="w">      </span><span class="nt">score-qnx-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_PASSWORD }}</span>
+</span><span class="linenos">17</span><span class="w">    </span><span class="c1"># Pull requests from forks get no secrets: build QNX only for own branches and in the merge queue.</span>
+<span class="hll"><span class="linenos">18</span><span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.event_name == 'merge_group' || github.event.pull_request.head.repo.full_name == github.repository</span>
+</span><span class="linenos">19</span><span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/qnx-build.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="linenos">21</span><span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos">22</span><span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos">23</span><span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="linenos">24</span><span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"//score/..."</span>
+<span class="hll"><span class="linenos">25</span><span class="w">      </span><span class="nt">bazel-config</span><span class="p">:</span><span class="w"> </span><span class="s">"score-qnx-x86_64"</span>
+</span><span class="linenos">26</span><span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="hll"><span class="linenos">27</span><span class="w">      </span><span class="nt">score-qnx-license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_LICENSE }}</span>
+</span><span class="linenos">28</span><span class="w">      </span><span class="nt">score-qnx-user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_USER }}</span>
+<span class="linenos">29</span><span class="w">      </span><span class="nt">score-qnx-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_PASSWORD }}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Lines 8 and 14: the job <code class="docutils literal notranslate"><span class="pre">linux</span></code> builds and runs all tests for Linux x86_64 with the same Bazel command you use locally.</p></li>
 <li><p>Line 16: the job <code class="docutils literal notranslate"><span class="pre">qnx</span></code> cross-compiles the code with the QNX toolchain.</p></li>
-<li><p>Line 23: the build configuration from the <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p></li>
-<li><p>Line 24: the QNX job runs in the GitHub environment <code class="docutils literal notranslate"><span class="pre">workflow-approval</span></code>. It is created for every module repository
-and requires the approval of an S-CORE committer before the job gets access to the QNX secrets.</p></li>
-<li><p>Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
+<li><p>Line 18: workflows triggered by <code class="docutils literal notranslate"><span class="pre">pull_request</span></code> don’t get the repository secrets for pull requests from forks,
+so the QNX job only runs for pull requests from branches of your repository and in the merge queue.
+The <a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/.github/workflows">persistency</a> repository uses the
+same condition. <code class="docutils literal notranslate"><span class="pre">qnx-build.yml</span></code> also supports an approval-gated QNX build for forks, which needs a separate
+workflow triggered by <code class="docutils literal notranslate"><span class="pre">pull_request_target</span></code>.</p></li>
+<li><p>Line 25: the build configuration from the <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p></li>
+<li><p>Line 27: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
 The QNX job also expects the credential helper script <code class="docutils literal notranslate"><span class="pre">.github/tools/qnx_credential_helper.py</span></code>, which is not part
 of the template; copy it e.g. from the <a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/.github/tools">persistency</a>
 repository or pass another path with the input <code class="docutils literal notranslate"><span class="pre">credential-helper</span></code>.</p></li>
@@ -768,10 +772,27 @@ The reusable workflows provide further checks, e.g. static code analysis, covera
 they are listed in the <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">cicd-workflows README</a>.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>If the documentation workflow should show the test results, as described in
-<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a>, the tests have to run in the same workflow before the
-documentation build. The template’s documentation workflow only builds the documentation, so its published
-documentation shows the links from requirements to code, but no test results.</p>
+<p>If the documentation should show the test results, as described in
+<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a>, the test results have to be handed over to the documentation
+build: the reusable workflows run in separate jobs with separate workspaces. Upload the results in the test job
+with <code class="docutils literal notranslate"><span class="pre">upload-name</span></code> and download them in the documentation job with <code class="docutils literal notranslate"><span class="pre">tests-report-artifact</span></code>. Both jobs must be
+in the same workflow, and the documentation job has to wait for the test job (excerpt):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">linux</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/tests.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"test</span><span class="nv"> </span><span class="s">--config=score-linux-x86_64</span><span class="nv"> </span><span class="s">//score/..."</span>
+<span class="w">      </span><span class="nt">upload-name</span><span class="p">:</span><span class="w"> </span><span class="s">"tests-report"</span>
+
+<span class="w">  </span><span class="nt">build-docs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/docs.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tests-report-artifact</span><span class="p">:</span><span class="w"> </span><span class="s">"tests-report"</span>
+</pre></div>
+</div>
+<p>The template’s documentation workflow only builds the documentation, so its published documentation shows the
+links from requirements to code, but no test results.</p>
 </div>
 <p>The next chapter shows where to find examples of how the S-CORE modules are used and how your module gets
 into the S-CORE platform.</p>
