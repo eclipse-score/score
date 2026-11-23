@@ -569,6 +569,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -782,7 +783,7 @@ The template starts with a minimal module declaration:</p>
 </div>
 <p>Rename the module and replace <em>score_module_template</em> by your module name.
 According to Eclipse S-CORE’s naming convention, all module names must start with the <em>score_</em> prefix,
-e.g. <em>score_my_module</em>. The version is not maintained in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>: it is taken from the release tag
+e.g. <em>score_my_module</em>. The version of your module is not maintained in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>: it is taken from the release tag
 (<code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code>, following <a class="reference external" href="https://semver.org/">semantic versioning</a>) when the release is added to the
 Bazel registry. Other modules can depend on a released version of your module with <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> only after it was
 published in the Eclipse S-CORE Bazel registry; before that, they need a <code class="docutils literal notranslate"><span class="pre">git_override</span></code>.</p>
@@ -823,7 +824,11 @@ It is explained in the <a class="reference internal" href="building_source_code.
 </pre></div>
 </div>
 <p>The available versions can be looked up in the <a class="reference external" href="https://eclipse-score.github.io/bazel_registry_ui/">Bazel registry UI</a>.
-Choose versions that fit to each other and to the toolchains of your module; the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> of a module version
+Choose versions that fit to each other and to the toolchains of your module. A good starting point is the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference integration</a>: it contains the consolidated state of
+all S-CORE modules, which are built and tested together. Its
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/known_good.json">known_good.json</a> lists the
+integrated version of each module. The <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> of a module version
 in the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry/tree/main/modules">registry</a> shows which versions it depends on.
 If Bazel reports <em>“the root module requires module version X, but got Y in the resolved dependency graph”</em>,
 another module needs a newer version of this dependency; update the version in your <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> accordingly.
@@ -956,11 +961,31 @@ The level can be raised once the module’s safety concept is established.</p>
 <li><p>Rename <code class="docutils literal notranslate"><span class="pre">score/component_example/</span></code> to your component, incl. its Bazel targets, include paths and C++ namespace,
 or keep it as a pattern and add your own component next to it. The <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a>
 chapter walks through the example component.</p></li>
+<li><p>For every further component, create a folder <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/</span></code> with the same structure: <code class="docutils literal notranslate"><span class="pre">src/</span></code>, <code class="docutils literal notranslate"><span class="pre">tests/</span></code>,
+<code class="docutils literal notranslate"><span class="pre">docs/</span></code> and a <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file with the library, the tests and the <code class="docutils literal notranslate"><span class="pre">docs_bundle</span></code>. Add the bundle of the component
+to the <code class="docutils literal notranslate"><span class="pre">bundles</span></code> of the <code class="docutils literal notranslate"><span class="pre">docs</span></code> macro in the top-level <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file. Code shared by several components
+can be placed in <code class="docutils literal notranslate"><span class="pre">score/common/src/</span></code>.</p></li>
 <li><p>Adapt the titles, IDs and contents of the documents in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> and <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/docs/</span></code>.
 IDs of the template contain <code class="docutils literal notranslate"><span class="pre">mod_temp</span></code> or <code class="docutils literal notranslate"><span class="pre">example_feature</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">comp__mod_temp_component_name_template</span></code>;
 replace them by IDs of your module. Each document contains <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">attention::</span></code> boxes which list what needs to be
 adapted; remove them afterwards. The <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter explains the documents.</p></li>
 </ul>
+</section>
+<section id="license-notice-and-reuse-toml">
+<h3>LICENSE, NOTICE and REUSE.toml<a class="headerlink" href="#license-notice-and-reuse-toml" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> nothing in <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code>; extend <code class="docutils literal notranslate"><span class="pre">REUSE.toml</span></code> for files which cannot carry a header.</p>
+<p>The license files come with the template, so every S-CORE module is published under the same terms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">LICENSES/Apache-2.0.txt</span></code> contain the Apache License 2.0, the license of all S-CORE modules.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> contains the notices of the Eclipse S-CORE project: project home, trademarks, copyright, the declared
+license and the cryptography notice.</p></li>
+<li><p>Every source file starts with the copyright and license header of the Eclipse Foundation, as in the files of the
+template. Files which cannot contain a comment, e.g. JSON files or lock files, are listed in
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/REUSE.toml">REUSE.toml</a> instead.
+When you add such files, add them there as well.</p></li>
+</ul>
+<p>The pre-commit checks and <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:copyright.check</span></code> report files without a valid header,
+see <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a>.</p>
 </section>
 <section id="readme-md-and-codeowners">
 <h3>README.md and CODEOWNERS<a class="headerlink" href="#readme-md-and-codeowners" title="Link to this heading">#</a></h3>
@@ -1035,6 +1060,7 @@ it can touch files which you have adapted to your module.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-code-and-documentation">Component code and documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-notice-and-reuse-toml">LICENSE, NOTICE and REUSE.toml</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md-and-codeowners">README.md and CODEOWNERS</a></li>
 </ul>
 </li>

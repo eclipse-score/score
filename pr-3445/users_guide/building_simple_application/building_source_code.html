@@ -569,6 +569,7 @@
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -766,34 +767,46 @@ component. <code class="docutils literal notranslate"><span class="pre">visibili
 The template contains an example for each of them:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
+<col style="width: 20.0%" />
 <col style="width: 22.0%" />
-<col style="width: 28.0%" />
-<col style="width: 50.0%" />
+<col style="width: 18.0%" />
+<col style="width: 40.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Test level</p></th>
 <th class="head"><p>Location</p></th>
+<th class="head"><p>Framework</p></th>
 <th class="head"><p>Example</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Unit test</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/src/</span></code></p></td>
+<td><p>GoogleTest</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">component_example_unit_tests</span></code> tests the unit <code class="docutils literal notranslate"><span class="pre">make_hello()</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Component integration test</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/tests/</span></code></p></td>
+<td><p>GoogleTest</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">component_example_component_integration_tests</span></code> tests the component API <code class="docutils literal notranslate"><span class="pre">make_hello_message()</span></code>
 against the component requirement</p></td>
 </tr>
 <tr class="row-even"><td><p>Feature integration test</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">score/tests/</span></code></p></td>
+<td><p>GoogleTest, Rust test</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">feature_integration_tests_cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">feature_integration_tests_rust</span></code> test the module as a whole;
 the Rust test is only a placeholder</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>The template uses the simplest form for all levels: plain GoogleTest tests for C++ and the built-in test framework
+for Rust. For more extensive tests, S-CORE provides dedicated frameworks: the test scenarios from
+<a class="reference external" href="https://github.com/eclipse-score/testing_tools">testing_tools</a> for component integration tests, which are
+implemented in C++ or Rust and driven by pytest, and the
+<a class="reference external" href="https://github.com/eclipse-score/itf">Integration Testing Framework (ITF)</a> for feature integration tests,
+which runs pytest-based tests on Docker containers, QEMU virtual machines or real hardware.
+See <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Overview of technologies</span></a> for details.</p>
 <p>The component integration test shows how a test declares what it verifies:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">TEST</span><span class="p">(</span><span class="n">ComponentExampleTest</span><span class="p">,</span><span class="w"> </span><span class="n">MakeHelloMessageReturnsExpectedGreeting</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="hll"><span class="linenos">2</span><span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">"PartiallyVerifies"</span><span class="p">,</span><span class="w"> </span><span class="s">"comp_req__mod_temp_component_name__some_title"</span><span class="p">);</span>
@@ -814,8 +827,8 @@ to the requirement, see <a class="reference internal" href="doc_generation.html"
 <p>Before building the binaries, it is helpful to introduce two fundamental Bazel concepts: toolchains and platforms.</p>
 <p>A complete explanation is beyond the scope of this small tutorial, but the following brief overview is sufficient:</p>
 <ul class="simple">
-<li><p>A <a class="reference external" href="https://bazel.build/extending/toolchain">Bazel toolchain</a> specifies which compiler and linker are used (e.g., GCC, QCC, Ferrocene).</p></li>
-<li><p>A <a class="reference external" href="https://bazel.build/extending/platform">Bazel platform</a> defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).</p></li>
+<li><p>A <a class="reference external" href="https://bazel.build/extending/toolchains">Bazel toolchain</a> specifies which compiler and linker are used (e.g., GCC, QCC, Ferrocene).</p></li>
+<li><p>A <a class="reference external" href="https://bazel.build/extending/platforms">Bazel platform</a> defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).</p></li>
 </ul>
 <p>All S-CORE modules use the same toolchains, provided by
 <a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">score_bazel_cpp_toolchains</a> (GCC and QCC) and
@@ -912,15 +925,6 @@ as configured in <code class="docutils literal notranslate"><span class="pre">.p
 </tbody>
 </table>
 </div>
-</section>
-<section id="adding-a-component">
-<h2>Adding a component<a class="headerlink" href="#adding-a-component" title="Link to this heading">#</a></h2>
-<p>To add a component, create a new folder <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/</span></code> with the same structure as <code class="docutils literal notranslate"><span class="pre">component_example</span></code>:
-<code class="docutils literal notranslate"><span class="pre">src/</span></code> with code and unit tests, <code class="docutils literal notranslate"><span class="pre">tests/</span></code> with component integration tests, <code class="docutils literal notranslate"><span class="pre">docs/</span></code> with the component
-documentation and a <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file with the library, the tests and the <code class="docutils literal notranslate"><span class="pre">docs_bundle</span></code>. Then add the bundle of
-the component to the <code class="docutils literal notranslate"><span class="pre">docs</span></code> macro in the top-level <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file, see
-<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a>. Code shared by several components can be placed in
-<code class="docutils literal notranslate"><span class="pre">score/common/src/</span></code>.</p>
 <p>The next chapter shows how the component is documented and how requirements, code and tests are linked.</p>
 </section>
 </section>
@@ -978,7 +982,6 @@ the component to the <code class="docutils literal notranslate"><span class="pre
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-platforms">Toolchains and platforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-and-running-the-tests">Building and running the tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-before-a-pull-request">Checks before a pull request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-component">Adding a component</a></li>
 </ul>
   </nav></div>
 

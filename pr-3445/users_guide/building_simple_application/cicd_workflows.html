@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="What’s Next?" href="../whats_next/index.html" />
+    <link rel="next" title="Learn from examples" href="learn_from_examples.html" />
     <link rel="prev" title="Documentation generation" href="doc_generation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -569,6 +569,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">CI/CD Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -715,7 +716,8 @@ published releases, and in the merge queue.</p></li>
 </ul>
 <section id="build-and-test-workflow">
 <h3>Build and test workflow<a class="headerlink" href="#build-and-test-workflow" title="Link to this heading">#</a></h3>
-<p>The template does not contain a workflow which builds and tests the code yet. Add one for the supported platforms,
+<p>None of the template’s workflows compiles the code or runs the tests: they check formatting, headers and licenses
+and build the documentation. Add a workflow which builds and tests your code for the supported platforms,
 e.g. <code class="docutils literal notranslate"><span class="pre">.github/workflows/build.yml</span></code>.
 The reusable workflows <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">qnx-build.yml</span></code> take care of the Bazel setup, the caches and,
 for QNX, the license handling:</p>
@@ -764,16 +766,16 @@ repository or pass another path with the input <code class="docutils literal not
 and its result is shown in the <em>Actions</em> tab of your repository and in the checks of the pull request.
 The reusable workflows provide further checks, e.g. static code analysis, coverage and CodeQL scans;
 they are listed in the <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">cicd-workflows README</a>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
 <p>If the documentation workflow should show the test results, as described in
 <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a>, the tests have to run in the same workflow before the
 documentation build. The template’s documentation workflow only builds the documentation, so its published
 documentation shows the links from requirements to code, but no test results.</p>
+</div>
+<p>The next chapter shows where to find examples of how the S-CORE modules are used and how your module gets
+into the S-CORE platform.</p>
 </section>
-</section>
-<section id="next-steps">
-<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
-<p>Once your module is released, it can be integrated into the S-CORE platform. How module versions get into the
-reference integration and into an S-CORE release is described in the <a class="reference internal" href="../project_basics/integration_process.html#integration-process"><span class="std std-ref">integration process</span></a>.</p>
 </section>
 </section>
 
@@ -797,11 +799,11 @@ reference integration and into an S-CORE release is described in the <a class="r
       </div>
     </a>
     <a class="right-next"
-       href="../whats_next/index.html"
+       href="learn_from_examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What’s Next?</p>
+        <p class="prev-next-title">Learn from examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -828,7 +830,6 @@ reference integration and into an S-CORE release is described in the <a class="r
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-test-workflow">Build and test workflow</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next steps</a></li>
 </ul>
   </nav></div>
 
