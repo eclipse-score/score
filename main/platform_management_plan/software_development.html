@@ -647,7 +647,7 @@
                   
   <section id="software-development-plan">
 <span id="sw-development"></span><h1>Software Development Plan<a class="headerlink" href="#software-development-plan" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9b9876fc">
+<div class="need_container docutils container" id="SNCB-f47b324c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__software_development_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -757,8 +757,17 @@ which is based on experience. The criteria for selection are based on the follow
 <p><strong>C++ with the language set of C++17</strong> - in case additional elements from C++20 are needed this will be considered by
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_roles.html#rl__safety_manager">rl__safety_manager</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_roles.html#rl__security_manager">rl__security_manager</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_roles.html#rl__quality_manager">rl__quality_manager</a>
 and based on their analysis decided by the project lead circle (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a>).</p>
-<p><strong>Rust - in Edition 2021</strong> - selection of language edition has still to be done in the S-CORE project.
-For the Rust code of ASIL rated units the “safe subset” shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)</p>
+<p><strong>Rust - in Edition 2021</strong> - the edition used for compilation is set centrally by the <code class="docutils literal notranslate"><span class="pre">default_edition</span></code> of the
+Rust toolchain provided by <a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a>;
+Bazel targets shall not set a different edition via their own <code class="docutils literal notranslate"><span class="pre">edition</span></code> attribute. The formatter edition in the central
+<code class="docutils literal notranslate"><span class="pre">rustfmt.toml</span></code> of <a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies</a> is kept
+consistent with it, but does not determine the compiled language edition.
+A change of the edition is decided in the same way as described for C++ above and applied to both settings.
+For the Rust code of ASIL rated units the “safe subset” shall be used where possible, which is checked by the compiler
+by configuration of <code class="docutils literal notranslate"><span class="pre">#![forbid(unsafe_code)]</span></code> in <code class="docutils literal notranslate"><span class="pre">lib.rs</span></code>. Where <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> code cannot be avoided
+(e.g. FFI, shared memory or low-level synchronization), it shall be kept to a minimum, encapsulated behind a safe API,
+and every <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> block shall be justified by a <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">SAFETY:</span></code> comment, which is checked in the code review
+and by the Clippy lint <code class="docutils literal notranslate"><span class="pre">undocumented_unsafe_blocks</span></code> once provided by the central Rust policies (see below).</p>
 <p>C language is allowed in incubation phase, as long it is compilable be the selected compiler, but not for a S-CORE release.</p>
 <p>For specifying <strong>Detailed Design</strong> (like for the Architecture) a mixture of UML diagrams and natural language is used.
 Additionally for the Detailed Design linking to code, Doxygen style comments are used.
@@ -781,6 +790,45 @@ and <a class="reference internal" href="../contribute/development/rust/rust_api_
 <section id="sw-configuration-guideline">
 <h3>SW configuration guideline<a class="headerlink" href="#sw-configuration-guideline" title="Link to this heading">#</a></h3>
 <p>The configuration of the software is done by the code. Which means that there are no external configuration files.</p>
+</section>
+<section id="compiler-settings-and-static-code-analysis-configuration">
+<h3>Compiler settings and static code analysis configuration<a class="headerlink" href="#compiler-settings-and-static-code-analysis-configuration" title="Link to this heading">#</a></h3>
+<p>Compiler settings and the configuration of the static code analysis tools are not defined per module,
+but maintained centrally as versioned Bazel modules, which every S-CORE module consumes via <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>:</p>
+<p><strong>C++</strong> - <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies">score_cpp_policies</a> provides</p>
+<ul class="simple">
+<li><p>the GCC compiler warning levels <code class="docutils literal notranslate"><span class="pre">minimal_warnings</span></code>, <code class="docutils literal notranslate"><span class="pre">strict_warnings</span></code>, <code class="docutils literal notranslate"><span class="pre">all_wall_warnings</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">warnings_as_errors</span></code> toggle for Linux and QNX
+(see <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies/blob/main/docs/warnings.md">warnings documentation</a>).
+All C++ code shall be built at least with <code class="docutils literal notranslate"><span class="pre">minimal_warnings</span></code> together with <code class="docutils literal notranslate"><span class="pre">warnings_as_errors</span></code>.
+For code of safety- or security-relevant components <code class="docutils literal notranslate"><span class="pre">strict_warnings</span></code> is recommended.
+A module may define its own warning features instead, if they are at least equivalent to the central ones.</p></li>
+<li><p>the clang-tidy baseline configuration
+(see <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies/blob/main/clang_tidy/.clang-tidy">.clang-tidy</a>).
+Each module maintains its own <code class="docutils literal notranslate"><span class="pre">.clang-tidy</span></code>, which shall contain at least the checks of the baseline and may
+extend them (tailoring per module). clang-tidy shall be executed in the CI of each module.</p></li>
+<li><p>the sanitizer configurations used for dynamic code analysis.</p></li>
+</ul>
+<p>The toolchains themselves (compiler versions, target platforms) are provided by
+<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">score_bazel_cpp_toolchains</a>.</p>
+<p><strong>Rust</strong> - <a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies</a> provides the Clippy
+integration in a <code class="docutils literal notranslate"><span class="pre">strict</span></code> variant (for safety-relevant code) and a <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> variant (for tooling and tests)
+as well as the <code class="docutils literal notranslate"><span class="pre">rustfmt</span></code> configuration.</p>
+<ul class="simple">
+<li><p>Each module shall run Clippy in its CI via the <code class="docutils literal notranslate"><span class="pre">clippy_strict</span></code> aspect of <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>
+with <code class="docutils literal notranslate"><span class="pre">fail_on_violation=true</span></code>. Currently this applies Clippy’s default lint groups
+(correctness, suspicious, style, complexity, perf), because both Clippy variants only define the minimum
+supported Rust version.</p></li>
+<li><p>The additional lints and the release profile listed in <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a> describe the
+target state and become mandatory once they are provided centrally in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>.
+<code class="docutils literal notranslate"><span class="pre">[lints]</span></code> and <code class="docutils literal notranslate"><span class="pre">[profile]</span></code> sections in a module’s <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> are not applied to Bazel builds.</p></li>
+<li><p>Modules containing <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> code should run Miri in CI to detect undefined behavior.</p></li>
+</ul>
+<p>Static code analysis is performed per module. The reference integration does not run Clippy or clang-tidy again,
+but runs CodeQL across the integrated modules. The Rust toolchains are provided by
+<a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a>.</p>
+<p>The rationale and the mapping of these settings to the coding guidelines are described in
+<a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp_code_analysis" title="doc__cpp_code_analysis"><em class="xref need">Static Code Analysis C++ (doc__cpp_code_analysis)</em></a> and <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a>.</p>
 </section>
 <section id="sw-development-tools">
 <h3>SW development tools<a class="headerlink" href="#sw-development-tools" title="Link to this heading">#</a></h3>
@@ -816,7 +864,8 @@ as it generates compiler warnings, offers sanitizers and builds unit tests and b
 <p class="rubric">Target Compiler C++</p>
 <p>QCC the qualify-able compiler/linker from Blackberry offered together with its Posix conform Operating System QNX is planned to be used for target compilation.</p>
 <p class="rubric">Clang-tidy</p>
-<p>is used in conjunction with the Clang compiler to perform static analysis.</p>
+<p>is used in conjunction with the Clang compiler to perform static analysis. The baseline configuration is
+maintained in <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies">score_cpp_policies</a>.</p>
 <p class="rubric">GitHub CodeQL</p>
 <p>For Static Code Analysis, <a class="reference external" href="https://codeql.github.com/">CodeQL</a> is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
 It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.</p>
@@ -841,7 +890,8 @@ It is integrated into the CI pipeline to ensure that any new code changes are au
 <p>Custom queries can be developed to identify specific patterns or issues that are relevant to the project’s security and quality standards.
 This allows for a tailored approach to static code analysis that aligns with the project’s specific requirements and goals.</p>
 <p class="rubric">Host Compiler Rust</p>
-<p>There is currently no selection of a Rust host compiler for S-CORE. Pick your own favourite.</p>
+<p>The pre-built Ferrocene toolchains provided by
+<a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a> are used for host (Linux) builds.</p>
 <p class="rubric">Target Compiler Rust</p>
 <p>The qualified <a class="reference external" href="https://github.com/ferrocene">Ferrocene</a> compiler is planned to be used.</p>
 <p class="rubric">Bazel</p>
@@ -906,6 +956,7 @@ components, documentation, and automated tests.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-guidelines">API guidelines</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guidelines">Coding guidelines</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sw-configuration-guideline">SW configuration guideline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-settings-and-static-code-analysis-configuration">Compiler settings and static code analysis configuration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sw-development-tools">SW development tools</a></li>
 </ul>
 </li>
