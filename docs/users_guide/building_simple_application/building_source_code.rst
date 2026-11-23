@@ -198,8 +198,8 @@ Before building the binaries, it is helpful to introduce two fundamental Bazel c
 
 A complete explanation is beyond the scope of this small tutorial, but the following brief overview is sufficient:
 
-- A `Bazel toolchain <https://bazel.build/extending/toolchain>`_ specifies which compiler and linker are used (e.g., GCC, QCC, Ferrocene).
-- A `Bazel platform <https://bazel.build/extending/platform>`_ defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).
+- A `Bazel toolchain <https://bazel.build/extending/toolchains>`_ specifies which compiler and linker are used (e.g., GCC, QCC, Ferrocene).
+- A `Bazel platform <https://bazel.build/extending/platforms>`_ defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).
 
 All S-CORE modules use the same toolchains, provided by
 `score_bazel_cpp_toolchains <https://github.com/eclipse-score/bazel_cpp_toolchains>`_ (GCC and QCC) and
