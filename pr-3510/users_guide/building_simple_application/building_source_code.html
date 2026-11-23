@@ -793,10 +793,6 @@ This means that you must always list all required module dependencies explicitly
 The Ferrocene Linux toolchain is registered as a <code class="docutils literal notranslate"><span class="pre">common</span></code> toolchain so that proc macro crates
 (compiled on the host) and QNX target crates share the same compiler metadata format,
 which is required for cross-compilation compatibility.</p>
-<p>Lines 4-5 set feature flags required by <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> that are not applicable in
-this demo (proprietary shared memory driver and remote logging backend).
-These options must be set globally because Bazel builds all dependent modules within
-the context of your module’s configuration.</p>
 <p>Lines 11-17 (highlighted) configure Bazel to target the QNX SDP 8.0.0 platform and
 select the appropriate QNX and Ferrocene toolchains.</p>
 <p>Finally, we can compile the code. Always use an explicit build configuration:</p>
