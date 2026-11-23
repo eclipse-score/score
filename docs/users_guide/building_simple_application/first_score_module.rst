@@ -372,6 +372,10 @@ Component code and documentation
 - Rename ``score/component_example/`` to your component, incl. its Bazel targets, include paths and C++ namespace,
   or keep it as a pattern and add your own component next to it. The :doc:`build and test <building_source_code>`
   chapter walks through the example component.
+- For every further component, create a folder ``score/<component>/`` with the same structure: ``src/``, ``tests/``,
+  ``docs/`` and a ``BUILD`` file with the library, the tests and the ``docs_bundle``. Add the bundle of the component
+  to the ``bundles`` of the ``docs`` macro in the top-level ``BUILD`` file. Code shared by several components
+  can be placed in ``score/common/src/``.
 - Adapt the titles, IDs and contents of the documents in ``docs/`` and ``score/<component>/docs/``.
   IDs of the template contain ``mod_temp`` or ``example_feature``, e.g. ``comp__mod_temp_component_name_template``;
   replace them by IDs of your module. Each document contains ``.. attention::`` boxes which list what needs to be

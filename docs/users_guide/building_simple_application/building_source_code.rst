@@ -297,13 +297,4 @@ The CI/CD workflows of your repository run further checks on every pull request.
    * - ``bazel run //:copyright.check``
      - Copyright headers of the files in ``score/``, ``BUILD`` and ``MODULE.bazel``
 
-Adding a component
-------------------
-To add a component, create a new folder ``score/<component>/`` with the same structure as ``component_example``:
-``src/`` with code and unit tests, ``tests/`` with component integration tests, ``docs/`` with the component
-documentation and a ``BUILD`` file with the library, the tests and the ``docs_bundle``. Then add the bundle of
-the component to the ``docs`` macro in the top-level ``BUILD`` file, see
-:doc:`documentation generation <doc_generation>`. Code shared by several components can be placed in
-``score/common/src/``.
-
 The next chapter shows how the component is documented and how requirements, code and tests are linked.
