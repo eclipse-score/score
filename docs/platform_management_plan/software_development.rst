@@ -84,9 +84,12 @@ S-CORE allows the use of two programming languages:
 :need:`rl__safety_manager`, :need:`rl__security_manager` and :need:`rl__quality_manager`
 and based on their analysis decided by the project lead circle (:need:`rl__project_lead`).
 
-**Rust - in Edition 2021** - the language edition is set centrally by the
-`score_rust_policies <https://github.com/eclipse-score/score_rust_policies>`__ module (``rustfmt.toml``).
-A change of the edition is decided in the same way as described for C++ above.
+**Rust - in Edition 2021** - the edition used for compilation is set centrally by the ``default_edition`` of the
+Rust toolchain provided by `score_toolchains_rust <https://github.com/eclipse-score/toolchains_rust>`__;
+Bazel targets shall not set a different edition via their own ``edition`` attribute. The formatter edition in the central
+``rustfmt.toml`` of `score_rust_policies <https://github.com/eclipse-score/score_rust_policies>`__ is kept
+consistent with it, but does not determine the compiled language edition.
+A change of the edition is decided in the same way as described for C++ above and applied to both settings.
 For the Rust code of ASIL rated units the "safe subset" shall be used where possible, which is checked by the compiler
 by configuration of ``#![forbid(unsafe_code)]`` in ``lib.rs``. Where ``unsafe`` code cannot be avoided
 (e.g. FFI, shared memory or low-level synchronization), it shall be kept to a minimum, encapsulated behind a safe API,
