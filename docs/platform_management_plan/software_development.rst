@@ -84,8 +84,14 @@ S-CORE allows the use of two programming languages:
 :need:`rl__safety_manager`, :need:`rl__security_manager` and :need:`rl__quality_manager`
 and based on their analysis decided by the project lead circle (:need:`rl__project_lead`).
 
-**Rust - in Edition 2021** - selection of language edition has still to be done in the S-CORE project.
-For the Rust code of ASIL rated units the "safe subset" shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)
+**Rust - in Edition 2021** - the language edition is set centrally by the
+`score_rust_policies <https://github.com/eclipse-score/score_rust_policies>`__ module (``rustfmt.toml``).
+A change of the edition is decided in the same way as described for C++ above.
+For the Rust code of ASIL rated units the "safe subset" shall be used where possible, which is checked by the compiler
+by configuration of ``#![forbid(unsafe_code)]`` in ``lib.rs``. Where ``unsafe`` code cannot be avoided
+(e.g. FFI, shared memory or low-level synchronization), it shall be kept to a minimum, encapsulated behind a safe API,
+and every ``unsafe`` block shall be justified by a ``// SAFETY:`` comment, which is checked in the code review
+and by the Clippy lint ``undocumented_unsafe_blocks`` once provided by the central Rust policies (see below).
 
 C language is allowed in incubation phase, as long it is compilable be the selected compiler, but not for a S-CORE release.
 
@@ -115,6 +121,49 @@ SW configuration guideline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The configuration of the software is done by the code. Which means that there are no external configuration files.
+
+Compiler settings and static code analysis configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Compiler settings and the configuration of the static code analysis tools are not defined per module,
+but maintained centrally as versioned Bazel modules, which every S-CORE module consumes via ``bazel_dep``:
+
+**C++** - `score_cpp_policies <https://github.com/eclipse-score/score_cpp_policies>`__ provides
+
+* the GCC compiler warning levels ``minimal_warnings``, ``strict_warnings``, ``all_wall_warnings`` and the
+  ``warnings_as_errors`` toggle for Linux and QNX
+  (see `warnings documentation <https://github.com/eclipse-score/score_cpp_policies/blob/main/docs/warnings.md>`__).
+  All C++ code shall be built at least with ``minimal_warnings`` together with ``warnings_as_errors``.
+  For code of safety- or security-relevant components ``strict_warnings`` is recommended.
+  A module may define its own warning features instead, if they are at least equivalent to the central ones.
+* the clang-tidy baseline configuration
+  (see `.clang-tidy <https://github.com/eclipse-score/score_cpp_policies/blob/main/clang_tidy/.clang-tidy>`__).
+  Each module maintains its own ``.clang-tidy``, which shall contain at least the checks of the baseline and may
+  extend them (tailoring per module). clang-tidy shall be executed in the CI of each module.
+* the sanitizer configurations used for dynamic code analysis.
+
+The toolchains themselves (compiler versions, target platforms) are provided by
+`score_bazel_cpp_toolchains <https://github.com/eclipse-score/bazel_cpp_toolchains>`__.
+
+**Rust** - `score_rust_policies <https://github.com/eclipse-score/score_rust_policies>`__ provides the Clippy
+integration in a ``strict`` variant (for safety-relevant code) and a ``relaxed`` variant (for tooling and tests)
+as well as the ``rustfmt`` configuration.
+
+* Each module shall run Clippy in its CI via the ``clippy_strict`` aspect of ``score_rust_policies``
+  with ``fail_on_violation=true``. Currently this applies Clippy's default lint groups
+  (correctness, suspicious, style, complexity, perf), because both Clippy variants only define the minimum
+  supported Rust version.
+* The additional lints and the release profile listed in :need:`doc__rust_coding_guidelines` describe the
+  target state and become mandatory once they are provided centrally in ``score_rust_policies``.
+  ``[lints]`` and ``[profile]`` sections in a module's ``Cargo.toml`` are not applied to Bazel builds.
+* Modules containing ``unsafe`` code should run Miri in CI to detect undefined behavior.
+
+Static code analysis is performed per module. The reference integration does not run Clippy or clang-tidy again,
+but runs CodeQL across the integrated modules. The Rust toolchains are provided by
+`score_toolchains_rust <https://github.com/eclipse-score/toolchains_rust>`__.
+
+The rationale and the mapping of these settings to the coding guidelines are described in
+:need:`doc__cpp_code_analysis` and :need:`doc__rust_coding_guidelines`.
 
 SW development tools
 ^^^^^^^^^^^^^^^^^^^^
@@ -168,7 +217,8 @@ QCC the qualify-able compiler/linker from Blackberry offered together with its P
 
 .. rubric:: Clang-tidy
 
-is used in conjunction with the Clang compiler to perform static analysis.
+is used in conjunction with the Clang compiler to perform static analysis. The baseline configuration is
+maintained in `score_cpp_policies <https://github.com/eclipse-score/score_cpp_policies>`__.
 
 .. rubric:: GitHub CodeQL
 
@@ -199,7 +249,8 @@ This allows for a tailored approach to static code analysis that aligns with the
 
 .. rubric:: Host Compiler Rust
 
-There is currently no selection of a Rust host compiler for S-CORE. Pick your own favourite.
+The pre-built Ferrocene toolchains provided by
+`score_toolchains_rust <https://github.com/eclipse-score/toolchains_rust>`__ are used for host (Linux) builds.
 
 .. rubric:: Target Compiler Rust
 

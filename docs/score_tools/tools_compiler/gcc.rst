@@ -91,12 +91,13 @@ If your project uses multiple toolchains or configurations, update the `.bazelrc
 
 In this case default host toolchain is set to GCC and it will be used for all cc_* rules in the project.
 
-Detailed instructions for setting up and tuning of GCC toolchain can be found in the S-CORE toolchains documentation, i.e. https://github.com/eclipse-score/toolchains_gcc
+Detailed instructions for setting up and tuning of GCC toolchain can be found in the S-CORE toolchains documentation, i.e. https://github.com/eclipse-score/bazel_cpp_toolchains
 
 Integration
 ~~~~~~~~~~~
 GCC is invoked by Bazel as the C/C++ compiler for cc_* targets.
-The specific compiler flags and configurations are defined in the Bazel build files and can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).
+The compiler warning flags are maintained centrally in `score_cpp_policies <https://github.com/eclipse-score/score_cpp_policies/blob/main/docs/warnings.md>`__
+and enabled via the toolchain configuration. Further flags can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).
 
 Environment
 ~~~~~~~~~~~

@@ -272,9 +272,9 @@ settings are maintained centrally in the
 CodeQL is handled separately from this repository; see *Rust Tooling: CodeQL*
 above and :doc:`../../../platform_management_plan/software_verification`.
 
-* `Practical baseline (relaxed) <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml>`_ —
+* `Practical baseline (relaxed) <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/clippy.toml>`_ —
   suitable for general SCORE components.
-* `Strict / ASIL variant <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/Cargo.toml>`_ —
+* `Strict / ASIL variant <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/clippy.toml>`_ —
   for safety-critical code requiring stricter enforcement.
 
 Rust Tooling Configuration and Evidence
@@ -283,6 +283,15 @@ Rust Tooling Configuration and Evidence
 The settings below are thematically aligned with the Safety-Critical Rust
 Coding Guidelines, especially their sections on errors, concurrency, unsafety,
 FFI, compilation, and compliance.
+
+.. note::
+
+   The lint set and release profile described in this section are the **target state** and are
+   **not yet enforced**. The ``strict`` and ``relaxed`` Clippy configurations in ``score_rust_policies``
+   currently only define the minimum supported Rust version, so modules running Clippy via the
+   ``clippy_strict`` aspect apply Clippy's default lint groups only. ``[lints]`` and ``[profile]``
+   sections in a ``Cargo.toml`` are not applied to Bazel builds. The settings become mandatory once
+   they are provided centrally in ``score_rust_policies`` (see :need:`doc__software_development_plan`).
 
 The concrete ``rustc`` and Clippy lints, their levels, and the release profile
 are project policy decisions maintained in ``score_rust_policies``. The
