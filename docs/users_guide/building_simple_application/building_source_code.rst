@@ -67,9 +67,12 @@ The implementation combines both:
 
 .. code-block:: cpp
     :linenos:
-    :emphasize-lines: 7
+    :emphasize-lines: 10
 
     #include "score/component_example/src/component_example.hpp"
+
+    namespace score {
+    namespace component_example {
 
     std::string make_hello() {
         return "Hello";
@@ -80,7 +83,10 @@ The implementation combines both:
         return make_hello() + ", " + name + "!";
     }
 
-Line 7 links the implementation to the component requirement it implements. The
+    }  // namespace component_example
+    }  // namespace score
+
+Line 10 links the implementation to the component requirement it implements. The
 :doc:`documentation generation <doc_generation>` chapter shows how this link appears in the documentation.
 Include paths start at the root of the repository, e.g. ``score/component_example/src/...``.
 

@@ -93,7 +93,7 @@ for QNX, the license handling:
 
 .. code-block:: yaml
     :linenos:
-    :emphasize-lines: 8, 14, 16, 23, 24, 25
+    :emphasize-lines: 8, 14, 16, 18, 25, 27
 
     name: Build & Test
     on:
@@ -111,6 +111,8 @@ for QNX, the license handling:
           bazel-target: "test --config=score-linux-x86_64 //score/..."
 
       qnx:
+        # Pull requests from forks get no secrets: build QNX only for own branches and in the merge queue.
+        if: github.event_name == 'merge_group' || github.event.pull_request.head.repo.full_name == github.repository
         uses: eclipse-score/cicd-workflows/.github/workflows/qnx-build.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67 # v0.0.3
         permissions:
           contents: read
@@ -118,7 +120,6 @@ for QNX, the license handling:
         with:
           bazel-target: "//score/..."
           bazel-config: "score-qnx-x86_64"
-          environment-name: "workflow-approval"
         secrets:
           score-qnx-license: ${{ secrets.SCORE_QNX_LICENSE }}
           score-qnx-user: ${{ secrets.SCORE_QNX_USER }}
@@ -126,10 +127,13 @@ for QNX, the license handling:
 
 - Lines 8 and 14: the job ``linux`` builds and runs all tests for Linux x86_64 with the same Bazel command you use locally.
 - Line 16: the job ``qnx`` cross-compiles the code with the QNX toolchain.
-- Line 23: the build configuration from the :doc:`build and test <building_source_code>` chapter.
-- Line 24: the QNX job runs in the GitHub environment ``workflow-approval``. It is created for every module repository
-  and requires the approval of an S-CORE committer before the job gets access to the QNX secrets.
-- Line 25: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
+- Line 18: workflows triggered by ``pull_request`` don't get the repository secrets for pull requests from forks,
+  so the QNX job only runs for pull requests from branches of your repository and in the merge queue.
+  The `persistency <https://github.com/eclipse-score/persistency/tree/main/.github/workflows>`_ repository uses the
+  same condition. ``qnx-build.yml`` also supports an approval-gated QNX build for forks, which needs a separate
+  workflow triggered by ``pull_request_target``.
+- Line 25: the build configuration from the :doc:`build and test <building_source_code>` chapter.
+- Line 27: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
   The QNX job also expects the credential helper script ``.github/tools/qnx_credential_helper.py``, which is not part
   of the template; copy it e.g. from the `persistency <https://github.com/eclipse-score/persistency/tree/main/.github/tools>`_
   repository or pass another path with the input ``credential-helper``.
@@ -141,10 +145,29 @@ they are listed in the `cicd-workflows README <https://github.com/eclipse-score/
 
 .. attention::
 
-   If the documentation workflow should show the test results, as described in
-   :doc:`documentation generation <doc_generation>`, the tests have to run in the same workflow before the
-   documentation build. The template's documentation workflow only builds the documentation, so its published
-   documentation shows the links from requirements to code, but no test results.
+   If the documentation should show the test results, as described in
+   :doc:`documentation generation <doc_generation>`, the test results have to be handed over to the documentation
+   build: the reusable workflows run in separate jobs with separate workspaces. Upload the results in the test job
+   with ``upload-name`` and download them in the documentation job with ``tests-report-artifact``. Both jobs must be
+   in the same workflow, and the documentation job has to wait for the test job (excerpt):
+
+   .. code-block:: yaml
+
+      jobs:
+        linux:
+          uses: eclipse-score/cicd-workflows/.github/workflows/tests.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67 # v0.0.3
+          with:
+            bazel-target: "test --config=score-linux-x86_64 //score/..."
+            upload-name: "tests-report"
+
+        build-docs:
+          needs: linux
+          uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67 # v0.0.3
+          with:
+            tests-report-artifact: "tests-report"
+
+   The template's documentation workflow only builds the documentation, so its published documentation shows the
+   links from requirements to code, but no test results.
 
 The next chapter shows where to find examples of how the S-CORE modules are used and how your module gets
 into the S-CORE platform.
