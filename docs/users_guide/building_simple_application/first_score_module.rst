@@ -161,7 +161,7 @@ The template starts with a minimal module declaration:
 
 Rename the module and replace *score_module_template* by your module name.
 According to Eclipse S-CORE's naming convention, all module names must start with the *score\_* prefix,
-e.g. *score_my_module*. The version is not maintained in ``MODULE.bazel``: it is taken from the release tag
+e.g. *score_my_module*. The version of your module is not maintained in ``MODULE.bazel``: it is taken from the release tag
 (``vX.Y.Z``, following `semantic versioning <https://semver.org/>`_) when the release is added to the
 Bazel registry. Other modules can depend on a released version of your module with ``bazel_dep`` only after it was
 published in the Eclipse S-CORE Bazel registry; before that, they need a ``git_override``.
@@ -213,7 +213,11 @@ Finally, add the S-CORE modules your code uses, e.g. ``score_baselibs``:
     bazel_dep(name = "score_baselibs", version = "<version>")
 
 The available versions can be looked up in the `Bazel registry UI <https://eclipse-score.github.io/bazel_registry_ui/>`_.
-Choose versions that fit to each other and to the toolchains of your module; the ``MODULE.bazel`` of a module version
+Choose versions that fit to each other and to the toolchains of your module. A good starting point is the
+`reference integration <https://github.com/eclipse-score/reference_integration>`_: it contains the consolidated state of
+all S-CORE modules, which are built and tested together. Its
+`known_good.json <https://github.com/eclipse-score/reference_integration/blob/main/known_good.json>`_ lists the
+integrated version of each module. The ``MODULE.bazel`` of a module version
 in the `registry <https://github.com/eclipse-score/bazel_registry/tree/main/modules>`_ shows which versions it depends on.
 If Bazel reports *"the root module requires module version X, but got Y in the resolved dependency graph"*,
 another module needs a newer version of this dependency; update the version in your ``MODULE.bazel`` accordingly.
