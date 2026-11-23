@@ -38,13 +38,17 @@ Checking those rules can partially be automated and implemented by a combination
    object "Compiler Warnings" as cw
    object gcc
    object clang
-   object "Coverity" as cov
+   object "CodeQL" as codeql
 
    static --> ct
    static --> cw
    cw --> gcc
    cw --> clang
-   static --> cov
+   static --> codeql
+
+The configuration of the compiler warnings and the clang-tidy baseline is maintained centrally in
+`score_cpp_policies <https://github.com/eclipse-score/score_cpp_policies>`__ (see also :need:`doc__software_development_plan`).
+CodeQL is integrated into the CI pipeline as described in :need:`doc__software_development_plan`.
 
 One of the reasons why this tooling setup is selected is, that it was already proven in use. Also with a combination of the two compilers a lager set of findings could be addressed.
 
