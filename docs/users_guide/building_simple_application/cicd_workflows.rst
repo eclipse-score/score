@@ -146,7 +146,5 @@ they are listed in the `cicd-workflows README <https://github.com/eclipse-score/
    documentation build. The template's documentation workflow only builds the documentation, so its published
    documentation shows the links from requirements to code, but no test results.
 
-Next steps
-----------
-Once your module is released, it can be integrated into the S-CORE platform. How module versions get into the
-reference integration and into an S-CORE release is described in the :ref:`integration process <integration_process>`.
+The next chapter shows where to find examples of how the S-CORE modules are used and how your module gets
+into the S-CORE platform.

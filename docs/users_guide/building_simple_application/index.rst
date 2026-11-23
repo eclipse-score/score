@@ -42,7 +42,8 @@ By the end of this section you will:
 - know how to request a module repository and what the template contains,
 - build the module and run its unit, component integration and feature integration tests,
 - document requirements and architecture and trace them to code and tests in the generated documentation,
-- know the CI/CD workflows that check every pull request.
+- know the CI/CD workflows that check every pull request,
+- know where to find examples of how the S-CORE modules are used and how your module is integrated.
 
 .. toctree::
    :maxdepth: 1
@@ -52,3 +53,4 @@ By the end of this section you will:
    building_source_code.rst
    doc_generation.rst
    cicd_workflows.rst
+   learn_from_examples.rst
