@@ -566,10 +566,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -636,26 +636,30 @@
                   
   <section id="contribute-own-module">
 <span id="id1"></span><h1>Contribute own module<a class="headerlink" href="#contribute-own-module" title="Link to this heading">#</a></h1>
-<p>This guide walks you through contributing a new platform module to Eclipse S-CORE end-to-end.
-As a running example you will build a small demo application called
-<a class="reference external" href="https://github.com/eclipse-score/scrample/tree/v0.1.2-simple-app">scrample</a>, which shows how
-to compose existing S-CORE platform modules into new functionality.</p>
-<p>By the end of this section you will have:</p>
+<p>This guide walks you through contributing a new module to Eclipse S-CORE.
+Every new module repository is created from the
+<a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE module template</a>, so the guide follows the template
+step by step and explains what it already provides and how to adapt it to your module.</p>
+<p>As a running example it uses the component <code class="docutils literal notranslate"><span class="pre">component_example</span></code> of the template
+(<a class="reference external" href="https://github.com/eclipse-score/module_template/tree/main/score/component_example">score/component_example</a>):
+a small C++ library which returns a greeting, e.g. <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">World!</span></code>. The code is deliberately simple, so that you
+can focus on what makes an S-CORE module: the structure of the repository, the build with Bazel, the tests on the
+different test levels, the documentation of requirements and architecture and the traceability between them.</p>
+<p>You don’t need your own repository to follow the guide. Clone the template and try every step there:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eclipse-score/module_template.git
+<span class="nb">cd</span><span class="w"> </span>module_template
+</pre></div>
+</div>
+<p>Open the folder in the S-CORE devcontainer (see <a class="reference internal" href="../../contribute/development/development_environment.html#setting-up-dev-env"><span class="std std-ref">Setting Up the Development Environment</span></a>), then all required tools are available.</p>
+<p>By the end of this section you will:</p>
 <ul class="simple">
-<li><p>Created a properly structured S-CORE module from scratch.</p></li>
-<li><p>Generated documentation from source and integrated it into the platform docs.</p></li>
-<li><p>Built the module with Bazel and verified it compiles cleanly.</p></li>
-<li><p>Wired up CI/CD workflows so every change is automatically validated.</p></li>
-<li><p>Plugged the module into the reference integration so it becomes part of the platform.</p></li>
+<li><p>know how to request a module repository and what the template contains,</p></li>
+<li><p>build the module and run its unit, component integration and feature integration tests,</p></li>
+<li><p>document requirements and architecture and trace them to code and tests in the generated documentation,</p></li>
+<li><p>know the CI/CD workflows that check every pull request,</p></li>
+<li><p>know where to find examples of how the S-CORE modules are used and how your module is integrated.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
-</ul>
 </div>
 </section>
 
