@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Building source code &#8212; S-CORE  documentation</title>
+    <title>Build and test &#8212; S-CORE  documentation</title>
   
   
   
@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CI/CD Workflows" href="cicd_workflows.html" />
-    <link rel="prev" title="Documentation generation" href="doc_generation.html" />
+    <link rel="next" title="Documentation generation" href="doc_generation.html" />
+    <link rel="prev" title="First Eclipse S-CORE Module" href="first_score_module.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -566,10 +566,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
-<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -620,7 +620,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contribute own module</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Building source code</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Build and test</span></li>
   </ul>
 </nav>
 </div>
@@ -637,189 +637,301 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="building-source-code">
-<span id="id1"></span><h1>Building source code<a class="headerlink" href="#building-source-code" title="Link to this heading">#</a></h1>
-<p>SCRAMPLE provides two minimal “Hello World” applications — one in C++ and one in Rust — that
-both use the S-CORE <code class="docutils literal notranslate"><span class="pre">mw::log</span></code> logging library.</p>
-<section id="c-application-src-cpp-build">
-<h2>C++ Application (<code class="docutils literal notranslate"><span class="pre">src_cpp/BUILD</span></code>)<a class="headerlink" href="#c-application-src-cpp-build" title="Link to this heading">#</a></h2>
-<p>Let’s begin with the C++ application, starting with the bazel
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_cpp/BUILD">src_cpp/BUILD</a> file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">cc_binary</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"scrample_cpp"</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"main.cpp"</span><span class="p">],</span>
-<span class="linenos">4</span>    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//config:logging.json"</span><span class="p">],</span>
-<span class="linenos">5</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
-<span class="linenos">6</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">7</span>        <span class="s2">"@score_logging//score/mw/log"</span><span class="p">,</span>
-<span class="linenos">8</span>    <span class="p">],</span>
-<span class="linenos">9</span><span class="p">)</span>
+  <section id="build-and-test">
+<span id="building-source-code"></span><h1>Build and test<a class="headerlink" href="#build-and-test" title="Link to this heading">#</a></h1>
+<p>The running example is the component <code class="docutils literal notranslate"><span class="pre">component_example</span></code> of the module template. It consists of the following files
+in <a class="reference external" href="https://github.com/eclipse-score/module_template/tree/main/score/component_example">score/component_example</a>
+and <a class="reference external" href="https://github.com/eclipse-score/module_template/tree/main/score/tests">score/tests</a>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/src/component_example.hpp</span></code></p></td>
+<td><p>Interface of the component</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/src/component_example.cpp</span></code></p></td>
+<td><p>Implementation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/src/component_example_test.cpp</span></code></p></td>
+<td><p>Unit test</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/tests/component_example_test.cpp</span></code></p></td>
+<td><p>Component integration test</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/BUILD</span></code></p></td>
+<td><p>Bazel targets of the component</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/component_example/docs/</span></code></p></td>
+<td><p>Documentation of the component, see <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/tests/test_main.cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">score/tests/test_main.rs</span></code>, <code class="docutils literal notranslate"><span class="pre">score/tests/BUILD</span></code></p></td>
+<td><p>Feature integration tests of the module in C++ and Rust</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="the-code">
+<h2>The code<a class="headerlink" href="#the-code" title="Link to this heading">#</a></h2>
+<p>The interface declares two functions:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">namespace</span><span class="w"> </span><span class="nn">score</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="k">namespace</span><span class="w"> </span><span class="nn">component_example</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">// Unit</span>
+<span class="linenos"> 5</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">make_hello</span><span class="p">();</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">// Component API</span>
+<span class="linenos"> 8</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">make_hello_message</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="p">}</span><span class="w">  </span><span class="c1">// namespace component_example</span>
+<span class="linenos">11</span><span class="p">}</span><span class="w">  </span><span class="c1">// namespace score</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">cc_binary</a> produces a C++ binary.
-The attributes of <em>cc_binary</em> are documented in detail in the Bazel documentation.
-The <em>scrample_cpp</em> binary depends on:</p>
-<ul class="simple">
-<li><p>the <em>score_logging</em> module (<code class="docutils literal notranslate"><span class="pre">mw::log</span></code> logging library)</p></li>
-</ul>
-<p>The logging configuration is provided via <code class="docutils literal notranslate"><span class="pre">//config:logging.json</span></code>, which is made available
-at runtime through Bazel’s runfiles mechanism.</p>
-</section>
-<section id="rust-application-src-rust-build">
-<h2>Rust Application (<code class="docutils literal notranslate"><span class="pre">src_rust/BUILD</span></code>)<a class="headerlink" href="#rust-application-src-rust-build" title="Link to this heading">#</a></h2>
-<p>The Rust application is defined in
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_rust/BUILD">src_rust/BUILD</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@rules_rust//rust:defs.bzl"</span><span class="p">,</span> <span class="s2">"rust_binary"</span><span class="p">)</span>
+<p><code class="docutils literal notranslate"><span class="pre">make_hello()</span></code> stands for a <em>unit</em>, the smallest part of the component which is tested on its own.
+<code class="docutils literal notranslate"><span class="pre">make_hello_message()</span></code> is the <em>component API</em>, which other components and modules use.
+The implementation combines both:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"score/component_example/src/component_example.hpp"</span>
 <span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="n">RUSTC_FLAGS</span> <span class="o">=</span> <span class="n">select</span><span class="p">({</span>
-<span class="linenos"> 4</span>    <span class="s2">"@platforms//os:qnx"</span><span class="p">:</span> <span class="p">[</span>
-<span class="linenos"> 5</span>        <span class="s2">"-Clink-arg=-lc++"</span><span class="p">,</span>
-<span class="linenos"> 6</span>        <span class="s2">"-Clink-arg=-lm"</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="p">],</span>
-<span class="linenos"> 8</span>    <span class="s2">"//conditions:default"</span><span class="p">:</span> <span class="p">[</span>
-<span class="linenos"> 9</span>        <span class="s2">"-Clink-arg=-lstdc++"</span><span class="p">,</span>
-<span class="linenos">10</span>        <span class="s2">"-Clink-arg=-lm"</span><span class="p">,</span>
-<span class="linenos">11</span>        <span class="s2">"-Clink-arg=-lc"</span><span class="p">,</span>
-<span class="linenos">12</span>    <span class="p">],</span>
-<span class="linenos">13</span><span class="p">})</span>
+<span class="linenos"> 3</span><span class="k">namespace</span><span class="w"> </span><span class="nn">score</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="k">namespace</span><span class="w"> </span><span class="nn">component_example</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">make_hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="c1">// req-traceability: comp_req__mod_temp_component_name__some_title</span>
+</span><span class="linenos">11</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">make_hello_message</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">make_hello</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"!"</span><span class="p">;</span>
+<span class="linenos">13</span><span class="p">}</span>
 <span class="linenos">14</span>
-<span class="linenos">15</span><span class="n">rust_binary</span><span class="p">(</span>
-<span class="linenos">16</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"scrample_rust"</span><span class="p">,</span>
-<span class="linenos">17</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"main.rs"</span><span class="p">],</span>
-<span class="linenos">18</span>    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//config:logging.json"</span><span class="p">],</span>
-<span class="linenos">19</span>    <span class="n">edition</span> <span class="o">=</span> <span class="s2">"2021"</span><span class="p">,</span>
-<span class="linenos">20</span>    <span class="n">rustc_flags</span> <span class="o">=</span> <span class="n">RUSTC_FLAGS</span><span class="p">,</span>
-<span class="linenos">21</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos">15</span><span class="p">}</span><span class="w">  </span><span class="c1">// namespace component_example</span>
+<span class="linenos">16</span><span class="p">}</span><span class="w">  </span><span class="c1">// namespace score</span>
+</pre></div>
+</div>
+<p>Line 10 links the implementation to the component requirement it implements. The
+<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter shows how this link appears in the documentation.
+Include paths start at the root of the repository, e.g. <code class="docutils literal notranslate"><span class="pre">score/component_example/src/...</span></code>.</p>
+</section>
+<section id="bazel-targets">
+<h2>Bazel targets<a class="headerlink" href="#bazel-targets" title="Link to this heading">#</a></h2>
+<p>The Bazel targets of the component are defined in
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/score/component_example/BUILD">score/component_example/BUILD</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_library</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"component_example"</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"src/component_example.cpp"</span><span class="p">],</span>
+<span class="linenos"> 4</span>    <span class="n">hdrs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"src/component_example.hpp"</span><span class="p">],</span>
+<span class="linenos"> 5</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos"> 6</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">cc_test</span><span class="p">(</span>
+<span class="linenos"> 9</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"component_example_unit_tests"</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">size</span> <span class="o">=</span> <span class="s2">"small"</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"src/component_example_test.cpp"</span><span class="p">],</span>
+<span class="linenos">12</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">13</span>        <span class="s2">":component_example"</span><span class="p">,</span>
+<span class="linenos">14</span>        <span class="s2">"@googletest//:gtest_main"</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="p">],</span>
+<span class="linenos">16</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="n">cc_test</span><span class="p">(</span>
+<span class="linenos">19</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"component_example_component_integration_tests"</span><span class="p">,</span>
+<span class="linenos">20</span>    <span class="n">size</span> <span class="o">=</span> <span class="s2">"small"</span><span class="p">,</span>
+<span class="linenos">21</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"tests/component_example_test.cpp"</span><span class="p">],</span>
 <span class="linenos">22</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">23</span>        <span class="s2">"@score_baselibs_rust//src/log/score_log"</span><span class="p">,</span>
-<span class="linenos">24</span>        <span class="s2">"@score_logging//score/mw/log/rust/score_log_bridge"</span><span class="p">,</span>
+<span class="linenos">23</span>        <span class="s2">":component_example"</span><span class="p">,</span>
+<span class="linenos">24</span>        <span class="s2">"@googletest//:gtest_main"</span><span class="p">,</span>
 <span class="linenos">25</span>    <span class="p">],</span>
 <span class="linenos">26</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The Rust binary uses:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">score_log</span></code> from the <em>score_baselibs_rust</em> module as a Rust logging facade</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">score_log_bridge</span></code> from the <em>score_logging</em> module to bridge Rust logging to the <code class="docutils literal notranslate"><span class="pre">mw::log</span></code> C++ backend</p></li>
+<li><p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">cc_library</a> <code class="docutils literal notranslate"><span class="pre">component_example</span></code> contains the code of the
+component. <code class="docutils literal notranslate"><span class="pre">visibility</span> <span class="pre">=</span> <span class="pre">[&quot;//visibility:public&quot;]</span></code> allows other packages and modules to use it.</p></li>
+<li><p>The two <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_test">cc_test</a> targets build the tests with GoogleTest.
+<code class="docutils literal notranslate"><span class="pre">gtest_main</span></code> provides the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function, so the test files only contain the test cases.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file additionally contains the <code class="docutils literal notranslate"><span class="pre">docs_bundle</span></code> of the component, which is explained in the
+<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter.</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">RUSTC_FLAGS</span></code> select expression ensures correct C++ standard library linking on both Linux and QNX targets.</p>
-<p>Now that the targets are defined, we can build the binaries.</p>
-<p>Before continuing, it is helpful to introduce two fundamental Bazel concepts: toolchains and platforms.</p>
+<p>Targets of other modules are referenced with the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;module&gt;//&lt;package&gt;:&lt;target&gt;</span></code> syntax, e.g.
+<code class="docutils literal notranslate"><span class="pre">&#64;googletest//:gtest_main</span></code>. To use an S-CORE module, declare it with <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>
+(see <a class="reference internal" href="first_score_module.html"><span class="doc">First Eclipse S-CORE Module</span></a>) and add its targets to <code class="docutils literal notranslate"><span class="pre">deps</span></code>, e.g. the CRC32 calculation of <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"@score_baselibs//score/hash/code/crc:crc_ieee"</span><span class="p">,</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="test-levels">
+<h2>Test levels<a class="headerlink" href="#test-levels" title="Link to this heading">#</a></h2>
+<p>S-CORE distinguishes the test levels described in the <a class="reference internal" href="../../platform_management_plan/software_verification.html#software-verification-plan"><span class="std std-ref">software verification plan</span></a>.
+The template contains an example for each of them:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 22.0%" />
+<col style="width: 18.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Test level</p></th>
+<th class="head"><p>Location</p></th>
+<th class="head"><p>Framework</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Unit test</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/src/</span></code></p></td>
+<td><p>GoogleTest</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">component_example_unit_tests</span></code> tests the unit <code class="docutils literal notranslate"><span class="pre">make_hello()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Component integration test</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/tests/</span></code></p></td>
+<td><p>GoogleTest</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">component_example_component_integration_tests</span></code> tests the component API <code class="docutils literal notranslate"><span class="pre">make_hello_message()</span></code>
+against the component requirement</p></td>
+</tr>
+<tr class="row-even"><td><p>Feature integration test</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">score/tests/</span></code></p></td>
+<td><p>GoogleTest, Rust test</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feature_integration_tests_cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">feature_integration_tests_rust</span></code> test the module as a whole;
+the Rust test is only a placeholder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The template uses the simplest form for all levels: plain GoogleTest tests for C++ and the built-in test framework
+for Rust. For more extensive tests, S-CORE provides dedicated frameworks: the test scenarios from
+<a class="reference external" href="https://github.com/eclipse-score/testing_tools">testing_tools</a> for component integration tests, which are
+implemented in C++ or Rust and driven by pytest, and the
+<a class="reference external" href="https://github.com/eclipse-score/itf">Integration Testing Framework (ITF)</a> for feature integration tests,
+which runs pytest-based tests on Docker containers, QEMU virtual machines or real hardware.
+See <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Overview of technologies</span></a> for details.</p>
+<p>The component integration test shows how a test declares what it verifies:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">TEST</span><span class="p">(</span><span class="n">ComponentExampleTest</span><span class="p">,</span><span class="w"> </span><span class="n">MakeHelloMessageReturnsExpectedGreeting</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">2</span><span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">"PartiallyVerifies"</span><span class="p">,</span><span class="w"> </span><span class="s">"comp_req__mod_temp_component_name__some_title"</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">3</span><span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">"TestType"</span><span class="p">,</span><span class="w"> </span><span class="s">"requirements-based"</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">"DerivationTechnique"</span><span class="p">,</span><span class="w"> </span><span class="s">"requirements-analysis"</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">5</span><span class="w">    </span><span class="n">RecordProperty</span><span class="p">(</span><span class="s">"Description"</span><span class="p">,</span><span class="w"> </span><span class="s">"Verify make_hello_message returns the greeting for each name."</span><span class="p">);</span>
+</span><span class="linenos">6</span>
+<span class="linenos">7</span><span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">make_hello_message</span><span class="p">(</span><span class="s">"World"</span><span class="p">),</span><span class="w"> </span><span class="s">"Hello, World!"</span><span class="p">);</span>
+<span class="linenos">8</span><span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">make_hello_message</span><span class="p">(</span><span class="s">"SCORE"</span><span class="p">),</span><span class="w"> </span><span class="s">"Hello, SCORE!"</span><span class="p">);</span>
+<span class="linenos">9</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>GoogleTest writes these properties into the test result. The documentation build reads them and links the test
+to the requirement, see <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a>.</p>
+</section>
+<section id="toolchains-and-platforms">
+<h2>Toolchains and platforms<a class="headerlink" href="#toolchains-and-platforms" title="Link to this heading">#</a></h2>
+<p>Before building the binaries, it is helpful to introduce two fundamental Bazel concepts: toolchains and platforms.</p>
 <p>A complete explanation is beyond the scope of this small tutorial, but the following brief overview is sufficient:</p>
 <ul class="simple">
-<li><p>A <a class="reference external" href="https://bazel.build/extending/toolchain">Bazel toolchain</a> specifies which compiler and linker are used (e.g., GCC, Ferrocene).</p></li>
-<li><p>A <a class="reference external" href="https://bazel.build/extending/platform">Bazel platform</a> defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).</p></li>
+<li><p>A <a class="reference external" href="https://bazel.build/extending/toolchains">Bazel toolchain</a> specifies which compiler and linker are used (e.g., GCC, QCC, Ferrocene).</p></li>
+<li><p>A <a class="reference external" href="https://bazel.build/extending/platforms">Bazel platform</a> defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).</p></li>
 </ul>
-<p>SCRAMPLE uses the same toolchain setup as the other S-CORE modules, provided by
-<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">score_bazel_cpp_toolchains</a>.
-To add these toolchains to our module, we extend the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a>
-file with the corresponding configuration:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)</span>
-<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_bazel_cpp_toolchains"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.5.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">"@score_bazel_cpp_toolchains//extensions:gcc.bzl"</span><span class="p">,</span> <span class="s2">"gcc"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 5</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos"> 6</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"linux"</span><span class="p">,</span>
-<span class="linenos"> 9</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">10</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
-<span class="linenos">11</span><span class="p">)</span>
-<span class="linenos">12</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos">13</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_qcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos">14</span>    <span class="n">sdp_version</span> <span class="o">=</span> <span class="s2">"8.0.0"</span><span class="p">,</span>
-<span class="linenos">15</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
-<span class="linenos">16</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"qnx"</span><span class="p">,</span>
-<span class="linenos">17</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
-<span class="linenos">19</span><span class="p">)</span>
-<span class="linenos">20</span><span class="n">use_repo</span><span class="p">(</span>
-<span class="linenos">21</span>    <span class="n">gcc</span><span class="p">,</span>
-<span class="linenos">22</span>    <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos">23</span>    <span class="s2">"score_qcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos">24</span><span class="p">)</span>
-<span class="linenos">25</span>
-<span class="linenos">26</span><span class="c1"># Ferrocene Rust toolchains (QNX cross-compilation support)</span>
-<span class="linenos">27</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_toolchains_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.9.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<p>All S-CORE modules use the same toolchains, provided by
+<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">score_bazel_cpp_toolchains</a> (GCC and QCC) and
+<a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a> (Ferrocene),
+and the platforms defined in <a class="reference external" href="https://github.com/eclipse-score/bazel_platforms">score_bazel_platforms</a>.
+In the module template, they are registered in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> block <em>S-CORE Toolchains (DO NOT MODIFY)</em>, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">"@score_bazel_cpp_toolchains//extensions:gcc.bzl"</span><span class="p">,</span> <span class="s2">"gcc"</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
+<span class="linenos">4</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
+<span class="linenos">5</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
+<span class="linenos">6</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"linux"</span><span class="p">,</span>
+<span class="linenos">7</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">8</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
+<span class="linenos">9</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> module provides GCC 12.2.0 for both Linux host builds and
-QNX SDP 8.0.0 cross-compilation. The <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> module provides pre-built
-<a class="reference external" href="https://ferrous-systems.com/ferrocene/">Ferrocene</a> toolchains for Rust.</p>
+<p>The template contains such toolchains for Linux (x86_64, aarch64), QNX SDP 8.0 (x86_64, aarch64),
+Red Hat AutoSD and Elektrobit corbos Linux for Safety Applications.
+The file <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/score.bazelrc/score_toolchain.bazelrc">score.bazelrc/score_toolchain.bazelrc</a>
+combines each platform with its toolchains into a build configuration:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>build:score-linux-x86_64 --config=_score_common
+<span class="linenos">2</span>build:score-linux-x86_64 --extra_toolchains=@score_gcc_x86_64_toolchain//:x86_64-linux-gcc_12.2.0
+<span class="linenos">3</span>build:score-linux-x86_64 --platforms=@score_bazel_platforms//:x86_64-linux-gcc_12.2.0-posix
+<span class="linenos">4</span>
+<span class="linenos">5</span>build:score-qnx-x86_64 --config=_score_common
+<span class="linenos">6</span>build:score-qnx-x86_64 --platforms=@score_bazel_platforms//:x86_64-qnx-sdp_8.0.0-posix
+<span class="linenos">7</span>build:score-qnx-x86_64 --extra_toolchains=@score_qcc_x86_64_toolchain//:x86_64-qnx-sdp_8.0.0
+<span class="linenos">8</span>build:score-qnx-x86_64 --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_pc_nto_qnx800
+</pre></div>
+</div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">--config</span></code>, Bazel builds for the host with the LLVM toolchain that the template registers in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>
+(<code class="docutils literal notranslate"><span class="pre">toolchains_llvm</span></code>). This is fine for a quick local test run; for the S-CORE target platforms, always use
+one of the <code class="docutils literal notranslate"><span class="pre">score-*</span></code> configurations.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
-the QNX compiler locally, you must acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
-as described in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/runners/qemu_x86_64/README.md">QNX &amp; QEMU set-up tutorial</a>.</p>
+<p>The CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
+the QNX compiler locally, you need a QNX license, e.g. the free community license <em>QNX Everywhere</em>, installed at
+<code class="docutils literal notranslate"><span class="pre">/opt/score_qnx/license/licenses</span></code>, and access to the QNX SDP download. The setup is described in the
+<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains/blob/main/docs/qnx_integration.md">QNX integration guide</a>
+of <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code>.</p>
 </div>
-<p>Since our applications depend on the logging and base libraries (as defined in the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_cpp/BUILD">src_cpp/BUILD</a> and
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_rust/BUILD">src_rust/BUILD</a> files),
-we also need to add the dependencies to these modules into the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a> file:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.7"</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.2"</span><span class="p">)</span>
-<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_logging"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.1"</span><span class="p">)</span>
+</section>
+<section id="building-and-running-the-tests">
+<h2>Building and running the tests<a class="headerlink" href="#building-and-running-the-tests" title="Link to this heading">#</a></h2>
+<p>Build all targets of the module for Linux x86_64:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>score-linux-x86_64<span class="w"> </span>//score/...
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"platforms"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.0.0"</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_bazel_platforms"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.2"</span><span class="p">)</span>
+<p>Run all tests of the module, or only the tests of one test level:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># all tests</span>
+bazel<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--config<span class="o">=</span>score-linux-x86_64<span class="w"> </span>//score/...
+
+<span class="c1"># unit tests of the component</span>
+bazel<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--config<span class="o">=</span>score-linux-x86_64<span class="w"> </span>//score/component_example:component_example_unit_tests
+
+<span class="c1"># component integration tests of the component</span>
+bazel<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--config<span class="o">=</span>score-linux-x86_64<span class="w"> </span>//score/component_example:component_example_component_integration_tests
+
+<span class="c1"># feature integration tests</span>
+bazel<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--config<span class="o">=</span>score-linux-x86_64<span class="w"> </span>//score/tests/...
 </pre></div>
 </div>
-<p>Bazel modules don’t inherit transitive dependencies automatically.
-This means that you must always list all required module dependencies explicitly in your <em>MODULE.bazel</em> file.</p>
-<p>To actually use the registered toolchains, we also need to configure them in the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.bazelrc">.bazelrc</a> file:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="n">common</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_gcc_x86_64_toolchain</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc_12</span><span class="mf">.2.0</span>
-</span><span class="hll"><span class="linenos"> 2</span><span class="n">common</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_toolchains_rust</span><span class="o">//</span><span class="n">toolchains</span><span class="o">/</span><span class="n">ferrocene</span><span class="p">:</span><span class="n">ferrocene_x86_64_unknown_linux_gnu</span>
-</span><span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="n">common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
-<span class="linenos"> 7</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">mismatched</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">delete</span>
-<span class="linenos"> 8</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">deprecated</span><span class="o">-</span><span class="n">declarations</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">_common</span>
-<span class="hll"><span class="linenos">11</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">noexperimental_merged_skyframe_analysis_execution</span>
-</span><span class="hll"><span class="linenos">12</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_enable_cc_toolchain_resolution</span>
-</span><span class="linenos">13</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_strict_action_env</span>
-<span class="linenos">14</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">platforms</span><span class="o">=</span><span class="nd">@score_bazel_platforms</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span><span class="o">-</span><span class="n">sdp_8</span><span class="mf">.0.0</span><span class="o">-</span><span class="n">posix</span>
-<span class="linenos">15</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_qcc_x86_64_toolchain</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span><span class="o">-</span><span class="n">sdp_8</span><span class="mf">.0.0</span>
-<span class="linenos">16</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_toolchains_rust</span><span class="o">//</span><span class="n">toolchains</span><span class="o">/</span><span class="n">ferrocene</span><span class="p">:</span><span class="n">ferrocene_x86_64_pc_nto_qnx800</span>
-</pre></div>
+<p>The first run takes a while, because Bazel downloads the toolchains and dependencies. Afterwards, Bazel only
+rebuilds what has changed and reuses the results of unchanged tests; such tests are marked as <code class="docutils literal notranslate"><span class="pre">(cached)</span></code>
+in the test summary.</p>
+<p>The results of each test, incl. the JUnit XML file <code class="docutils literal notranslate"><span class="pre">test.xml</span></code>, are stored in <code class="docutils literal notranslate"><span class="pre">bazel-testlogs/</span></code>, e.g.
+<code class="docutils literal notranslate"><span class="pre">bazel-testlogs/score/component_example/component_example_unit_tests/</span></code>.</p>
+</section>
+<section id="checks-before-a-pull-request">
+<h2>Checks before a pull request<a class="headerlink" href="#checks-before-a-pull-request" title="Link to this heading">#</a></h2>
+<p>The CI/CD workflows of your repository run further checks on every pull request. Run them locally before you push:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Check</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code></p></td>
+<td><p>Whitespace, copyright and REUSE headers, YAML formatting and the Bazel lockfile,
+as configured in <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>; install the tool with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pre-commit</span></code> if needed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">test</span> <span class="pre">//:format.check</span></code></p></td>
+<td><p>Formatting of the source code, e.g. C++, Rust, Python and Starlark; <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:format.fix</span></code> fixes it</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:copyright.check</span></code></p></td>
+<td><p>Copyright headers of the files in <code class="docutils literal notranslate"><span class="pre">score/</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> and <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Lines 1-2 (highlighted) register the GCC and Ferrocene toolchains for all builds.
-The Ferrocene Linux toolchain is registered as a <code class="docutils literal notranslate"><span class="pre">common</span></code> toolchain so that proc macro crates
-(compiled on the host) and QNX target crates share the same compiler metadata format,
-which is required for cross-compilation compatibility.</p>
-<p>Line 4 sets feature flag required by <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> that are not applicable in
-this demo (proprietary shared memory driver).
-These options must be set globally because Bazel builds all dependent modules within
-the context of your module’s configuration.</p>
-<p>Lines 11-17 (highlighted) configure Bazel to target the QNX SDP 8.0.0 platform and
-select the appropriate QNX and Ferrocene toolchains.</p>
-<p>Finally, we can compile the code. Always use an explicit build configuration:</p>
-<p><strong>Host build (Linux x86_64):</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>host<span class="w"> </span>//src_cpp:scrample_cpp
-<span class="linenos">2</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>host<span class="w"> </span>//src_rust:scrample_rust
-</pre></div>
-</div>
-<p><strong>QNX cross-compilation:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>x86_64-qnx<span class="w"> </span>//src_cpp:scrample_cpp
-<span class="linenos">2</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>x86_64-qnx<span class="w"> </span>//src_rust:scrample_rust
-</pre></div>
-</div>
-<p>After a successful host build, the binaries can be found in the build folder:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>bazel-bin/src_cpp/scrample_cpp
-<span class="linenos">2</span>bazel-bin/src_rust/scrample_rust
-</pre></div>
-</div>
-<p>Both apps produce the same log output to the console:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2026/05/22 12:00:00.0000000 00000000 000 ECU1 SCRM scra log info verbose 1 Hello from SCRAMPLE!
-</pre></div>
-</div>
-<p>Now it is time to run the binary in the reference QNX QEMU image.</p>
+<p>The next chapter shows how the component is documented and how requirements, code and tests are linked.</p>
 </section>
 </section>
 
@@ -834,20 +946,20 @@ select the appropriate QNX and Ferrocene toolchains.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="doc_generation.html"
+       href="first_score_module.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Documentation generation</p>
+        <p class="prev-next-title">First Eclipse S-CORE Module</p>
       </div>
     </a>
     <a class="right-next"
-       href="cicd_workflows.html"
+       href="doc_generation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CI/CD Workflows</p>
+        <p class="prev-next-title">Documentation generation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -870,8 +982,12 @@ select the appropriate QNX and Ferrocene toolchains.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-application-src-cpp-build">C++ Application (<code class="docutils literal notranslate"><span class="pre">src_cpp/BUILD</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-application-src-rust-build">Rust Application (<code class="docutils literal notranslate"><span class="pre">src_rust/BUILD</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-targets">Bazel targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-levels">Test levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-platforms">Toolchains and platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-and-running-the-tests">Building and running the tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-before-a-pull-request">Checks before a pull request</a></li>
 </ul>
   </nav></div>
 
