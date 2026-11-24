@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=5737673c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=6a6a7ab0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=f381fa98" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
@@ -640,7 +640,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-f4997f9a">
+  <div class="need_container docutils container" id="SNCB-16626d63">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__gcc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -750,12 +750,13 @@
 </pre></div>
 </div>
 <p>In this case default host toolchain is set to GCC and it will be used for all cc_* rules in the project.</p>
-<p>Detailed instructions for setting up and tuning of GCC toolchain can be found in the S-CORE toolchains documentation, i.e. <a class="github reference external" href="https://github.com/eclipse-score/toolchains_gcc">eclipse-score/toolchains_gcc</a></p>
+<p>Detailed instructions for setting up and tuning of GCC toolchain can be found in the S-CORE toolchains documentation, i.e. <a class="github reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">eclipse-score/bazel_cpp_toolchains</a></p>
 </section>
 <section id="integration">
 <h3>Integration<a class="headerlink" href="#integration" title="Link to this heading">#</a></h3>
 <p>GCC is invoked by Bazel as the C/C++ compiler for cc_* targets.
-The specific compiler flags and configurations are defined in the Bazel build files and can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).</p>
+The compiler warning flags are maintained centrally in <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies/blob/main/docs/warnings.md">score_cpp_policies</a>
+and enabled via the toolchain configuration. Further flags can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).</p>
 </section>
 <section id="environment">
 <h3>Environment<a class="headerlink" href="#environment" title="Link to this heading">#</a></h3>

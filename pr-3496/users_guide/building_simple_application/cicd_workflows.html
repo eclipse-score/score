@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=5737673c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=6a6a7ab0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=f381fa98" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="How to Integrate a New Module into the Reference Integration" href="reference_integration.html" />
-    <link rel="prev" title="Building source code" href="building_source_code.html" />
+    <link rel="next" title="Learn from examples" href="learn_from_examples.html" />
+    <link rel="prev" title="Documentation generation" href="doc_generation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -566,10 +566,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -639,57 +639,165 @@
                   
   <section id="ci-cd-workflows">
 <h1>CI/CD Workflows<a class="headerlink" href="#ci-cd-workflows" title="Link to this heading">#</a></h1>
-<p>After successfully building the scrample binary, we need to ensure that future changes do not break the build.</p>
-<p>To achieve this, create a CI/CD workflow that triggers a <a class="reference external" href="https://docs.github.com/en/actions">GitHub action</a>
-to build the scrample application whenever a new PR is opened. Start by creating a workflow file named
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.github/workflows/build.yml">build.yml</a>
-in the <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> folder.</p>
-<p>Then fill the workflow file with the following content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>name: Scrample Build
-<span class="hll"><span class="linenos"> 2</span>on:
-</span><span class="linenos"> 3</span>    pull_request:
-<span class="linenos"> 4</span>        types: [opened, reopened, synchronize]
-<span class="linenos"> 5</span>    merge_group:
-<span class="linenos"> 6</span>        types: [checks_requested]
-<span class="linenos"> 7</span>jobs:
-<span class="hll"><span class="linenos"> 8</span>    build_target:
-</span><span class="linenos"> 9</span>        runs-on: ubuntu-latest
-<span class="linenos">10</span>        steps:
-<span class="hll"><span class="linenos">11</span>        - name: Checkout repository
-</span><span class="linenos">12</span>            uses: actions/checkout@v4.2.2
-<span class="linenos">13</span>        - name: Setup Bazel
-<span class="linenos">14</span>            uses: bazel-contrib/setup-bazel@0.9.1
-<span class="hll"><span class="linenos">15</span>        - name: Setup QNX License
-</span><span class="linenos">16</span>            env:
-<span class="linenos">17</span>            SCORE_QNX_LICENSE: ${{ secrets.SCORE_QNX_LICENSE }}
-<span class="linenos">18</span>            run: |
-<span class="linenos">19</span>            mkdir -p /opt/score_qnx/license
-<span class="linenos">20</span>            echo "${SCORE_QNX_LICENSE}" | base64 --decode &gt; /opt/score_qnx/license/licenses
-<span class="hll"><span class="linenos">21</span>        - name: Bazel build scrample with qnx toolchain
-</span><span class="linenos">22</span>            env:
-<span class="linenos">23</span>            SCORE_QNX_USER: ${{ secrets.SCORE_QNX_USER }}
-<span class="linenos">24</span>            SCORE_QNX_PASSWORD: ${{ secrets.SCORE_QNX_PASSWORD }}
-<span class="linenos">25</span>            run: |
-<span class="hll"><span class="linenos">26</span>            bazel build --config x86_64-qnx --credential_helper=*.qnx.com=${{ github.workspace }}/.github/tools/qnx_credential_helper.py -- \
-</span><span class="linenos">27</span>            //src:scrample
-<span class="hll"><span class="linenos">28</span>        - name: Cleanup QNX License
-</span><span class="linenos">29</span>            if: always()
-<span class="linenos">30</span>            run: rm -rf /opt/score_qnx
+<p>After building and testing the module locally, we need to ensure that future changes do not break it.
+In Eclipse S-CORE, this is done by <a class="reference external" href="https://docs.github.com/en/actions">GitHub Actions</a> workflows which run on every
+pull request. Instead of implementing the workflow logic in every repository, most workflows call the reusable workflows
+from <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">eclipse-score/cicd-workflows</a>.</p>
+<section id="workflows-of-a-module-repository">
+<h2>Workflows of a module repository<a class="headerlink" href="#workflows-of-a-module-repository" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/eclipse-score/module_template/tree/main/.github/workflows">module template</a> already contains
+the basic workflows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Workflow</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">on-pr.yml</span></code></p></td>
+<td><p>Runs the pre-commit checks on every pull request, e.g. whitespace, copyright and REUSE headers,
+YAML formatting and the Bazel lockfile</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">on-pr_target.yml</span></code></p></td>
+<td><p>Runs the license check with the Eclipse Dash license tool</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> / <code class="docutils literal notranslate"><span class="pre">docs-publish.yml</span></code></p></td>
+<td><p>Builds the documentation and publishes it to GitHub Pages</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">on-daily.yml</span></code></p></td>
+<td><p>Daily maintenance, e.g. cleanup of outdated documentation previews</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sync-template.yml</span></code></p></td>
+<td><p>Opens a pull request with the changes of the template once a month,
+see <a class="reference internal" href="first_score_module.html"><span class="doc">First Eclipse S-CORE Module</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The documentation workflow shows the typical pattern: a short workflow file in the module repository which calls a
+reusable workflow, pinned to a commit of <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Documentation CI</span>
+<span class="hll"><span class="linenos"> 2</span><span class="nt">on</span><span class="p">:</span>
+</span><span class="linenos"> 3</span><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="linenos"> 6</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"v*"</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">release</span><span class="p">:</span>
+<span class="linenos">10</span><span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">published</span><span class="p p-Indicator">]</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">merge_group</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">checks_requested</span><span class="p p-Indicator">]</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="nt">jobs</span><span class="p">:</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nt">build-docs</span><span class="p">:</span>
+<span class="hll"><span class="linenos">16</span><span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/docs.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+</span><span class="linenos">17</span><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos">19</span><span class="w">      </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos">20</span><span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos">21</span><span class="w">      </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos">22</span><span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="hll"><span class="linenos">23</span><span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"--lockfile_mode=error</span><span class="nv"> </span><span class="s">//:docs</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">--github_user=${{</span><span class="nv"> </span><span class="s">github.repository_owner</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--github_repo=${{</span><span class="nv"> </span><span class="s">github.event.repository.name</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span class="linenos">24</span><span class="w">      </span><span class="nt">retention-days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </pre></div>
 </div>
-<p>First, as shown in line 2 we define when the workflow should run.
-In this case, it is triggered whenever a PR is opened, created or synchronized.</p>
-<p>Next, we specify the job to be executed. For now, there is a single job that builds the scrample application, as shown in the line 8.
-Finally, we need to define the steps of the build job:</p>
 <ul class="simple">
-<li><p>Line 11: checkout the repository.</p></li>
-<li><p>Line 13: set up bazel.</p></li>
-<li><p>Line 15: set up the QNX license using the CI secrets stored in the CI infrastructure.</p></li>
-<li><p>Line 21: uild the scrample binary using the same bazel command executed locally.</p></li>
-<li><p>Line 28: clean-up temporary QNX files from the remote build machine.</p></li>
+<li><p>Line 2 defines when the workflow runs: for every pull request, for changes on <code class="docutils literal notranslate"><span class="pre">main</span></code>, for release tags and
+published releases, and in the merge queue.</p></li>
+<li><p>Line 16 calls the reusable workflow. Pin it to a commit (and note the version in a comment), so that changes in
+<code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code> do not unexpectedly change your pipeline.</p></li>
+<li><p>Line 23 passes the Bazel command that the reusable workflow executes, here the documentation build from the
+<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter.</p></li>
 </ul>
-<p>Once the workflow is merged into the repository, every new PR we will automatically trigger the build and its result in the
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions">Actions sections</a>.</p>
+<section id="build-and-test-workflow">
+<h3>Build and test workflow<a class="headerlink" href="#build-and-test-workflow" title="Link to this heading">#</a></h3>
+<p>None of the template’s workflows compiles the code or runs the tests: they check formatting, headers and licenses
+and build the documentation. Add a workflow which builds and tests your code for the supported platforms,
+e.g. <code class="docutils literal notranslate"><span class="pre">.github/workflows/build.yml</span></code>.
+The reusable workflows <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">qnx-build.yml</span></code> take care of the Bazel setup, the caches and,
+for QNX, the license handling:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build &amp; Test</span>
+<span class="linenos"> 2</span><span class="nt">on</span><span class="p">:</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">opened</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reopened</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">synchronize</span><span class="p p-Indicator">]</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nt">merge_group</span><span class="p">:</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">checks_requested</span><span class="p p-Indicator">]</span>
+<span class="linenos"> 7</span><span class="nt">jobs</span><span class="p">:</span>
+<span class="hll"><span class="linenos"> 8</span><span class="w">  </span><span class="nt">linux</span><span class="p">:</span>
+</span><span class="linenos"> 9</span><span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/tests.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="linenos">10</span><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos">12</span><span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="hll"><span class="linenos">14</span><span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"test</span><span class="nv"> </span><span class="s">--config=score-linux-x86_64</span><span class="nv"> </span><span class="s">//score/..."</span>
+</span><span class="linenos">15</span>
+<span class="hll"><span class="linenos">16</span><span class="w">  </span><span class="nt">qnx</span><span class="p">:</span>
+</span><span class="linenos">17</span><span class="w">    </span><span class="c1"># Pull requests from forks get no secrets: build QNX only for own branches and in the merge queue.</span>
+<span class="hll"><span class="linenos">18</span><span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.event_name == 'merge_group' || github.event.pull_request.head.repo.full_name == github.repository</span>
+</span><span class="linenos">19</span><span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/qnx-build.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="linenos">21</span><span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos">22</span><span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos">23</span><span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="linenos">24</span><span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"//score/..."</span>
+<span class="hll"><span class="linenos">25</span><span class="w">      </span><span class="nt">bazel-config</span><span class="p">:</span><span class="w"> </span><span class="s">"score-qnx-x86_64"</span>
+</span><span class="linenos">26</span><span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="hll"><span class="linenos">27</span><span class="w">      </span><span class="nt">score-qnx-license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_LICENSE }}</span>
+</span><span class="linenos">28</span><span class="w">      </span><span class="nt">score-qnx-user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_USER }}</span>
+<span class="linenos">29</span><span class="w">      </span><span class="nt">score-qnx-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SCORE_QNX_PASSWORD }}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Lines 8 and 14: the job <code class="docutils literal notranslate"><span class="pre">linux</span></code> builds and runs all tests for Linux x86_64 with the same Bazel command you use locally.</p></li>
+<li><p>Line 16: the job <code class="docutils literal notranslate"><span class="pre">qnx</span></code> cross-compiles the code with the QNX toolchain.</p></li>
+<li><p>Line 18: workflows triggered by <code class="docutils literal notranslate"><span class="pre">pull_request</span></code> don’t get the repository secrets for pull requests from forks,
+so the QNX job only runs for pull requests from branches of your repository and in the merge queue.
+The <a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/.github/workflows">persistency</a> repository uses the
+same condition. <code class="docutils literal notranslate"><span class="pre">qnx-build.yml</span></code> also supports an approval-gated QNX build for forks, which needs a separate
+workflow triggered by <code class="docutils literal notranslate"><span class="pre">pull_request_target</span></code>.</p></li>
+<li><p>Line 25: the build configuration from the <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p></li>
+<li><p>Line 27: the QNX license and credentials are provided as organization secrets by the CI infrastructure.
+The QNX job also expects the credential helper script <code class="docutils literal notranslate"><span class="pre">.github/tools/qnx_credential_helper.py</span></code>, which is not part
+of the template; copy it e.g. from the <a class="reference external" href="https://github.com/eclipse-score/persistency/tree/main/.github/tools">persistency</a>
+repository or pass another path with the input <code class="docutils literal notranslate"><span class="pre">credential-helper</span></code>.</p></li>
+</ul>
+<p>Once the workflow is merged into the repository, every new pull request automatically triggers the build,
+and its result is shown in the <em>Actions</em> tab of your repository and in the checks of the pull request.
+The reusable workflows provide further checks, e.g. static code analysis, coverage and CodeQL scans;
+they are listed in the <a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">cicd-workflows README</a>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If the documentation should show the test results, as described in
+<a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a>, the test results have to be handed over to the documentation
+build: the reusable workflows run in separate jobs with separate workspaces. Upload the results in the test job
+with <code class="docutils literal notranslate"><span class="pre">upload-name</span></code> and download them in the documentation job with <code class="docutils literal notranslate"><span class="pre">tests-report-artifact</span></code>. Both jobs must be
+in the same workflow, and the documentation job has to wait for the test job (excerpt):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">linux</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/tests.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">bazel-target</span><span class="p">:</span><span class="w"> </span><span class="s">"test</span><span class="nv"> </span><span class="s">--config=score-linux-x86_64</span><span class="nv"> </span><span class="s">//score/..."</span>
+<span class="w">      </span><span class="nt">upload-name</span><span class="p">:</span><span class="w"> </span><span class="s">"tests-report"</span>
+
+<span class="w">  </span><span class="nt">build-docs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eclipse-score/cicd-workflows/.github/workflows/docs.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67</span><span class="w"> </span><span class="c1"># v0.0.3</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tests-report-artifact</span><span class="p">:</span><span class="w"> </span><span class="s">"tests-report"</span>
+</pre></div>
+</div>
+<p>The template’s documentation workflow only builds the documentation, so its published documentation shows the
+links from requirements to code, but no test results.</p>
+</div>
+<p>The next chapter shows where to find examples of how the S-CORE modules are used and how your module gets
+into the S-CORE platform.</p>
+</section>
+</section>
 </section>
 
 
@@ -703,20 +811,20 @@ Finally, we need to define the steps of the build job:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="building_source_code.html"
+       href="doc_generation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Building source code</p>
+        <p class="prev-next-title">Documentation generation</p>
       </div>
     </a>
     <a class="right-next"
-       href="reference_integration.html"
+       href="learn_from_examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">How to Integrate a New Module into the Reference Integration</p>
+        <p class="prev-next-title">Learn from examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -730,6 +838,21 @@ Finally, we need to define the steps of the build job:</p>
                 <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflows-of-a-module-repository">Workflows of a module repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-test-workflow">Build and test workflow</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
