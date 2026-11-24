@@ -26,15 +26,15 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=415257cb" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=82a1844f" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=8048e6ee" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=6a6a7ab0" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=f381fa98" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
@@ -46,17 +46,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script src="../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
     <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
     <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
     <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
@@ -64,7 +64,7 @@
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'platform_management_plan/software_development';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -126,7 +126,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -145,8 +145,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/Eclipse-S-CORE-colour-horizontal.png" class="logo__image only-light" alt="Eclipse S-CORE documentation - Home"/>
+    <img src="../_static/Eclipse-S-CORE-dark.png" class="logo__image only-dark pst-js-only" alt="Eclipse S-CORE documentation - Home"/>
   
-    <p class="title logo__title">Eclipse S-CORE</p>
   
 </a></div>
     
@@ -290,14 +296,14 @@
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -352,7 +358,7 @@
   
 
   
-    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -366,7 +372,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
@@ -493,14 +499,14 @@
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -616,7 +622,7 @@
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
@@ -641,7 +647,7 @@
                   
   <section id="software-development-plan">
 <span id="sw-development"></span><h1>Software Development Plan<a class="headerlink" href="#software-development-plan" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4bea3cd5">
+<div class="need_container docutils container" id="SNCB-ed8daeda">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__software_development_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -715,7 +721,7 @@ which is based on experience. The criteria for selection are based on the follow
 </ul>
 <p>The selected languages form the stakeholder requirements were analysed in the following table:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 83 </span><span class="caption-text">Selection of design and programming language</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 89 </span><span class="caption-text">Selection of design and programming language</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 33.3%" />
@@ -751,8 +757,17 @@ which is based on experience. The criteria for selection are based on the follow
 <p><strong>C++ with the language set of C++17</strong> - in case additional elements from C++20 are needed this will be considered by
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_roles.html#rl__safety_manager">rl__safety_manager</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_roles.html#rl__security_manager">rl__security_manager</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_roles.html#rl__quality_manager">rl__quality_manager</a>
 and based on their analysis decided by the project lead circle (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a>).</p>
-<p><strong>Rust - in Edition 2021</strong> - selection of language edition has still to be done in the S-CORE project.
-For the Rust code of ASIL rated units the “safe subset” shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)</p>
+<p><strong>Rust - in Edition 2021</strong> - the edition used for compilation is set centrally by the <code class="docutils literal notranslate"><span class="pre">default_edition</span></code> of the
+Rust toolchain provided by <a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a>;
+Bazel targets shall not set a different edition via their own <code class="docutils literal notranslate"><span class="pre">edition</span></code> attribute. The formatter edition in the central
+<code class="docutils literal notranslate"><span class="pre">rustfmt.toml</span></code> of <a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies</a> is kept
+consistent with it, but does not determine the compiled language edition.
+A change of the edition is decided in the same way as described for C++ above and applied to both settings.
+For the Rust code of ASIL rated units the “safe subset” shall be used where possible, which is checked by the compiler
+by configuration of <code class="docutils literal notranslate"><span class="pre">#![forbid(unsafe_code)]</span></code> in <code class="docutils literal notranslate"><span class="pre">lib.rs</span></code>. Where <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> code cannot be avoided
+(e.g. FFI, shared memory or low-level synchronization), it shall be kept to a minimum, encapsulated behind a safe API,
+and every <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> block shall be justified by a <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">SAFETY:</span></code> comment, which is checked in the code review
+and by the Clippy lint <code class="docutils literal notranslate"><span class="pre">undocumented_unsafe_blocks</span></code> once provided by the central Rust policies (see below).</p>
 <p>C language is allowed in incubation phase, as long it is compilable be the selected compiler, but not for a S-CORE release.</p>
 <p>For specifying <strong>Detailed Design</strong> (like for the Architecture) a mixture of UML diagrams and natural language is used.
 Additionally for the Detailed Design linking to code, Doxygen style comments are used.
@@ -775,6 +790,45 @@ and <a class="reference internal" href="../contribute/development/rust/rust_api_
 <section id="sw-configuration-guideline">
 <h3>SW configuration guideline<a class="headerlink" href="#sw-configuration-guideline" title="Link to this heading">#</a></h3>
 <p>The configuration of the software is done by the code. Which means that there are no external configuration files.</p>
+</section>
+<section id="compiler-settings-and-static-code-analysis-configuration">
+<h3>Compiler settings and static code analysis configuration<a class="headerlink" href="#compiler-settings-and-static-code-analysis-configuration" title="Link to this heading">#</a></h3>
+<p>Compiler settings and the configuration of the static code analysis tools are not defined per module,
+but maintained centrally as versioned Bazel modules, which every S-CORE module consumes via <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>:</p>
+<p><strong>C++</strong> - <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies">score_cpp_policies</a> provides</p>
+<ul class="simple">
+<li><p>the GCC compiler warning levels <code class="docutils literal notranslate"><span class="pre">minimal_warnings</span></code>, <code class="docutils literal notranslate"><span class="pre">strict_warnings</span></code>, <code class="docutils literal notranslate"><span class="pre">all_wall_warnings</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">warnings_as_errors</span></code> toggle for Linux and QNX
+(see <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies/blob/main/docs/warnings.md">warnings documentation</a>).
+All C++ code shall be built at least with <code class="docutils literal notranslate"><span class="pre">minimal_warnings</span></code> together with <code class="docutils literal notranslate"><span class="pre">warnings_as_errors</span></code>.
+For code of safety- or security-relevant components <code class="docutils literal notranslate"><span class="pre">strict_warnings</span></code> is recommended.
+A module may define its own warning features instead, if they are at least equivalent to the central ones.</p></li>
+<li><p>the clang-tidy baseline configuration
+(see <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies/blob/main/clang_tidy/.clang-tidy">.clang-tidy</a>).
+Each module maintains its own <code class="docutils literal notranslate"><span class="pre">.clang-tidy</span></code>, which shall contain at least the checks of the baseline and may
+extend them (tailoring per module). clang-tidy shall be executed in the CI of each module.</p></li>
+<li><p>the sanitizer configurations used for dynamic code analysis.</p></li>
+</ul>
+<p>The toolchains themselves (compiler versions, target platforms) are provided by
+<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">score_bazel_cpp_toolchains</a>.</p>
+<p><strong>Rust</strong> - <a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies</a> provides the Clippy
+integration in a <code class="docutils literal notranslate"><span class="pre">strict</span></code> variant (for safety-relevant code) and a <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> variant (for tooling and tests)
+as well as the <code class="docutils literal notranslate"><span class="pre">rustfmt</span></code> configuration.</p>
+<ul class="simple">
+<li><p>Each module shall run Clippy in its CI via the <code class="docutils literal notranslate"><span class="pre">clippy_strict</span></code> aspect of <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>
+with <code class="docutils literal notranslate"><span class="pre">fail_on_violation=true</span></code>. Currently this applies Clippy’s default lint groups
+(correctness, suspicious, style, complexity, perf), because both Clippy variants only define the minimum
+supported Rust version.</p></li>
+<li><p>The additional lints and the release profile listed in <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a> describe the
+target state and become mandatory once they are provided centrally in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>.
+<code class="docutils literal notranslate"><span class="pre">[lints]</span></code> and <code class="docutils literal notranslate"><span class="pre">[profile]</span></code> sections in a module’s <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> are not applied to Bazel builds.</p></li>
+<li><p>Modules containing <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> code should run Miri in CI to detect undefined behavior.</p></li>
+</ul>
+<p>Static code analysis is performed per module. The reference integration does not run Clippy or clang-tidy again,
+but runs CodeQL across the integrated modules. The Rust toolchains are provided by
+<a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a>.</p>
+<p>The rationale and the mapping of these settings to the coding guidelines are described in
+<a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp_code_analysis" title="doc__cpp_code_analysis"><em class="xref need">Static Code Analysis C++ (doc__cpp_code_analysis)</em></a> and <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a>.</p>
 </section>
 <section id="sw-development-tools">
 <h3>SW development tools<a class="headerlink" href="#sw-development-tools" title="Link to this heading">#</a></h3>
@@ -810,7 +864,8 @@ as it generates compiler warnings, offers sanitizers and builds unit tests and b
 <p class="rubric">Target Compiler C++</p>
 <p>QCC the qualify-able compiler/linker from Blackberry offered together with its Posix conform Operating System QNX is planned to be used for target compilation.</p>
 <p class="rubric">Clang-tidy</p>
-<p>is used in conjunction with the Clang compiler to perform static analysis.</p>
+<p>is used in conjunction with the Clang compiler to perform static analysis. The baseline configuration is
+maintained in <a class="reference external" href="https://github.com/eclipse-score/score_cpp_policies">score_cpp_policies</a>.</p>
 <p class="rubric">GitHub CodeQL</p>
 <p>For Static Code Analysis, <a class="reference external" href="https://codeql.github.com/">CodeQL</a> is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
 It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.</p>
@@ -835,7 +890,8 @@ It is integrated into the CI pipeline to ensure that any new code changes are au
 <p>Custom queries can be developed to identify specific patterns or issues that are relevant to the project’s security and quality standards.
 This allows for a tailored approach to static code analysis that aligns with the project’s specific requirements and goals.</p>
 <p class="rubric">Host Compiler Rust</p>
-<p>There is currently no selection of a Rust host compiler for S-CORE. Pick your own favourite.</p>
+<p>The pre-built Ferrocene toolchains provided by
+<a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">score_toolchains_rust</a> are used for host (Linux) builds.</p>
 <p class="rubric">Target Compiler Rust</p>
 <p>The qualified <a class="reference external" href="https://github.com/ferrocene">Ferrocene</a> compiler is planned to be used.</p>
 <p class="rubric">Bazel</p>
@@ -880,7 +936,7 @@ components, documentation, and automated tests.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -900,6 +956,7 @@ components, documentation, and automated tests.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-guidelines">API guidelines</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guidelines">Coding guidelines</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sw-configuration-guideline">SW configuration guideline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-settings-and-static-code-analysis-configuration">Compiler settings and static code analysis configuration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sw-development-tools">SW development tools</a></li>
 </ul>
 </li>
@@ -935,8 +992,8 @@ components, documentation, and automated tests.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -959,7 +1016,7 @@ components, documentation, and automated tests.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.24.0.
 </p></div>
       
     </div>

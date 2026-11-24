@@ -89,7 +89,17 @@ td.footer_right {
 } */
 
 html[data-theme="dark"] {
-    --sn-color-need-bg-head: #20242b;
+    --sn-color-need-bg: var(--pst-color-surface);
+    --sn-color-need-bg-head: var(--score-color-active);
+    --sn-color-need-border: var(--pst-color-border);
+    --sn-color-datatable-label: var(--pst-color-text-base);
+}
+
+html[data-theme="light"] {
+    --sn-color-need-bg: var(--pst-color-surface);
+    --sn-color-need-bg-head: var(--score-color-active);
+    --sn-color-need-border: var(--pst-color-border);
+    --sn-color-datatable-label: var(--pst-color-text-base);
 }
 
 /* No hover effect (same color) for need objects */
@@ -99,12 +109,6 @@ html[data-theme="dark"] {
 .table.need tbody tr:nth-child(2n):hover {
     background-color: var(--pst-color-table-row-zebra-high-bg);
 }
-
-html[data-theme="dark"] {
-    --sn-color-need-bg-head: #20242b;
-    --sn-color-datatable-label: var(--pst-color-text-base)
-}
-
 
 html[data-theme="dark"] #logo_center_light {
    display:none;

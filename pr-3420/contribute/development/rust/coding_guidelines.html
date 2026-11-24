@@ -26,15 +26,15 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=415257cb" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=82a1844f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=8048e6ee" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=6a6a7ab0" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=f381fa98" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
@@ -46,17 +46,17 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../../_static/design-tabs.js?v=fcb327ea"></script>
     <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
     <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
     <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
@@ -64,7 +64,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/development/rust/coding_guidelines';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Rust API design guidelines" href="rust_api_design.html" />
+    <link rel="next" title="Rust Coding Rules (MISRA-derived draft)" href="coding_rules/index.html" />
     <link rel="prev" title="Static Analysis" href="certification/tools/static_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -126,7 +126,7 @@
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -145,8 +145,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/Eclipse-S-CORE-colour-horizontal.png" class="logo__image only-light" alt="Eclipse S-CORE documentation - Home"/>
+    <img src="../../../_static/Eclipse-S-CORE-dark.png" class="logo__image only-dark pst-js-only" alt="Eclipse S-CORE documentation - Home"/>
   
-    <p class="title logo__title">Eclipse S-CORE</p>
   
 </a></div>
     
@@ -290,14 +296,14 @@
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -352,7 +358,7 @@
   
 
   
-    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -366,7 +372,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
@@ -493,14 +499,14 @@
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -568,6 +574,7 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Rust</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="certification/index.html">Certification</a></li>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">Writing Rust Code incl. Coding Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding_rules/index.html">Rust Coding Rules (MISRA-derived draft)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rust_api_design.html">Rust API design guidelines</a></li>
 </ul>
 </details></li>
@@ -613,7 +620,7 @@
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
@@ -644,7 +651,7 @@
                   
   <section id="writing-rust-code-incl-coding-guidelines">
 <h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-2e4e8e5b">
+<div class="need_container docutils container" id="SNCB-9dd30a4f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -890,18 +897,24 @@ enforced. If possible the usage of <cite>unsafe</cite> is avoided. To keep the c
 S-CORE process and MISRA references (including
 <a class="reference external" href="https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf">MISRA C:2025 Addendum 6 Applicability of MISRA C:2025 to the Rust Programming Language</a>).
 Research sources such as
-<a class="reference external" href="https://arxiv.org/html/2605.23490v1">MISRust (arXiv:2605.23490v1), Table 3</a>
+<a class="reference external" href="https://arxiv.org/pdf/2605.23490v2">MISRust (arXiv:2605.23490v2), Table 3</a>
 are used as supporting rationale for topic prioritization, not as normative
 compliance criteria.</p>
+<p>Proposed S-CORE rule text for the MISRA C++:2023 guidelines that the SCRC’s own
+cross-reference marks as applicable to Rust, together with an applicability register
+and the evidence expected per rule, is maintained as a draft in
+<a class="reference internal" href="coding_rules/index.html#doc__rust_coding_rules" title="doc__rust_coding_rules"><em class="xref need">Rust Coding Rules (doc__rust_coding_rules)</em></a>. It supplements the
+lint profile described here and binds a component only once adopted through its
+Software Development Plan.</p>
 <p>The recommended <code class="docutils literal notranslate"><span class="pre">[lints.rust]</span></code>, <code class="docutils literal notranslate"><span class="pre">[lints.clippy]</span></code>, and <code class="docutils literal notranslate"><span class="pre">[profile.release]</span></code>
 settings are maintained centrally in the
 <a class="reference external" href="https://github.com/eclipse-score/score_rust_policies">score_rust_policies repository</a>:</p>
 <p>CodeQL is handled separately from this repository; see <em>Rust Tooling: CodeQL</em>
 above and <a class="reference internal" href="../../../platform_management_plan/software_verification.html"><span class="doc">Software Verification Plan</span></a>.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml">Practical baseline (relaxed)</a> —
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/clippy.toml">Practical baseline (relaxed)</a> —
 suitable for general SCORE components.</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/Cargo.toml">Strict / ASIL variant</a> —
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/clippy.toml">Strict / ASIL variant</a> —
 for safety-critical code requiring stricter enforcement.</p></li>
 </ul>
 <section id="rust-tooling-configuration-and-evidence">
@@ -909,6 +922,15 @@ for safety-critical code requiring stricter enforcement.</p></li>
 <p>The settings below are thematically aligned with the Safety-Critical Rust
 Coding Guidelines, especially their sections on errors, concurrency, unsafety,
 FFI, compilation, and compliance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The lint set and release profile described in this section are the <strong>target state</strong> and are
+<strong>not yet enforced</strong>. The <code class="docutils literal notranslate"><span class="pre">strict</span></code> and <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> Clippy configurations in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>
+currently only define the minimum supported Rust version, so modules running Clippy via the
+<code class="docutils literal notranslate"><span class="pre">clippy_strict</span></code> aspect apply Clippy’s default lint groups only. <code class="docutils literal notranslate"><span class="pre">[lints]</span></code> and <code class="docutils literal notranslate"><span class="pre">[profile]</span></code>
+sections in a <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> are not applied to Bazel builds. The settings become mandatory once
+they are provided centrally in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> (see <a class="reference internal" href="../../../platform_management_plan/software_development.html#doc__software_development_plan" title="doc__software_development_plan"><em class="xref need">Software Development Plan (doc__software_development_plan)</em></a>).</p>
+</div>
 <p>The concrete <code class="docutils literal notranslate"><span class="pre">rustc</span></code> and Clippy lints, their levels, and the release profile
 are project policy decisions maintained in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>. The
 following external, authoritative sources document the semantics and effects of
@@ -1107,11 +1129,11 @@ high-performance domains.</p>
       </div>
     </a>
     <a class="right-next"
-       href="rust_api_design.html"
+       href="coding_rules/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Rust API design guidelines</p>
+        <p class="prev-next-title">Rust Coding Rules (MISRA-derived draft)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1122,7 +1144,7 @@ high-performance domains.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -1183,8 +1205,8 @@ high-performance domains.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1207,7 +1229,7 @@ high-performance domains.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.24.0.
 </p></div>
       
     </div>
