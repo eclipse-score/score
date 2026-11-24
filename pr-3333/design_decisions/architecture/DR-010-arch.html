@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DR-010-Arch: Introduce System Monitoring (SMon) Middleware Component &#8212; S-CORE  documentation</title>
+    <title>DR-010-Arch: Introduce System Monitoring (SMon) Middleware Feature &#8212; S-CORE  documentation</title>
   
   
   
@@ -563,7 +563,7 @@
 <li class="toctree-l2"><a class="reference internal" href="DR-002-arch.html">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DR-003-arch.html">DR-003-Arch: Public Header Location and Directory Structure for C++ Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DR-009-arch.html">DR-009-ddsgw: Introduce DDS communication for mw::com</a></li>
-<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">DR-010-Arch: Introduce System Monitoring (SMon) Middleware Component</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">DR-010-Arch: Introduce System Monitoring (SMon) Middleware Feature</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
@@ -616,7 +616,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Architecture</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-010-Arch: Introduce System Monitoring (SMon) Middleware Component</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-010-Arch: Introduce System Monitoring (SMon) Middleware Feature</span></li>
   </ul>
 </nav>
 </div>
@@ -633,12 +633,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dr-010-arch-introduce-system-monitoring-smon-middleware-component">
-<h1>DR-010-Arch: Introduce System Monitoring (SMon) Middleware Component<a class="headerlink" href="#dr-010-arch-introduce-system-monitoring-smon-middleware-component" title="Link to this heading">#</a></h1>
+  <section id="dr-010-arch-introduce-system-monitoring-smon-middleware-feature">
+<h1>DR-010-Arch: Introduce System Monitoring (SMon) Middleware Feature<a class="headerlink" href="#dr-010-arch-introduce-system-monitoring-smon-middleware-feature" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Date:</strong></p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-caff5fec">
+<div class="need_container docutils container" id="SNCB-f8b264f4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__introduce_smon_middleware">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -659,7 +659,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_consequences"><span class="needs_label">consequences: </span><span class="needs_data">S-CORE project will get a new feature team and extra code to maintain</span></span></div>
 <div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Architecture</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Introduces a portable SMon middleware component with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Introduces a portable SMon middleware feature with standardized CPU and memory monitoring, threshold alerting, and decoupled integration interfaces across Linux and QNX.</span></span></div>
 <div class="line"><span class="needs_tracking"><span class="needs_label">tracking: </span><span class="needs_data"><a class="reference external" href="https://github.com/eclipse-score/score/issues/3340">score#3340</a></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
@@ -689,13 +689,13 @@
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
 <p>This feature request proposes introducing <strong>System Monitoring (SMon)</strong> as a reusable
-S-CORE middleware component for monitoring CPU and volatile memory
+S-CORE middleware feature for monitoring CPU and volatile memory
 resource utilization on automotive ECUs running Linux or QNX.</p>
 <p>SMon provides periodic resource measurements, configurable threshold
 evaluation, and standardized integration interfaces for error
 reporting, diagnostic fault recording, and logging.</p>
 <p>On a Domain Controller ECU, multiple applications share CPU and memory resources simultaneously.
-There is currently no standardized S-CORE middleware component that:</p>
+There is currently no standardized S-CORE middleware feature that:</p>
 <ul class="simple">
 <li><p>Periodically measures CPU and memory load at the <strong>system, core, process, and
 application-group</strong> level</p></li>
@@ -705,7 +705,7 @@ application-group</strong> level</p></li>
 <li><p>Exposes <strong>well-defined required interfaces</strong> for error reporting, DTC recording, and logging —
 fully decoupled from any specific backend implementation</p></li>
 </ul>
-<p>Without such a component, each project team implements ad-hoc monitoring logic, leading to
+<p>Without such a feature, each project team implements ad-hoc monitoring logic, leading to
 fragmentation, inconsistency, and missed faults across vehicle programs.</p>
 <section id="detailed-feature-requirements">
 <h3>Detailed Feature Requirements<a class="headerlink" href="#detailed-feature-requirements" title="Link to this heading">#</a></h3>
@@ -777,7 +777,7 @@ fragmentation, inconsistency, and missed faults across vehicle programs.</p>
 </section>
 <section id="integration-context">
 <h3>Integration Context<a class="headerlink" href="#integration-context" title="Link to this heading">#</a></h3>
-<p>The SMon component integrates with three <strong>platform-provided services</strong> via required interfaces:</p>
+<p>The SMon feature integrates with three <strong>platform-provided services</strong> via required interfaces:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>External Service</p></th>
@@ -845,7 +845,7 @@ future extensions:</p>
 <hr class="docutils" />
 <section id="consequences">
 <h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
-<p>S-CORE gains another component that must be developed, integrated, deployed, tested, and maintained, including platform-specific support for Linux and QNX. It will also require a new Feature team.</p>
+<p>S-CORE gains another feature that must be developed, integrated, deployed, tested, and maintained, including platform-specific support for Linux and QNX. It will also require a new Feature team.</p>
 </section>
 <hr class="docutils" />
 <section id="alternatives-considered">
@@ -855,7 +855,7 @@ future extensions:</p>
 <hr class="docutils" />
 <section id="justification-for-the-decision">
 <h2>Justification for the Decision<a class="headerlink" href="#justification-for-the-decision" title="Link to this heading">#</a></h2>
-<p>Introducing SMon as a middleware component addresses the growing complexity of multi-application
+<p>Introducing SMon as a middleware feature addresses the growing complexity of multi-application
 Domain Controller ECUs. It centralizes resource observation, prevents silent resource exhaustion,
 and standardizes fault escalation across different vehicle programs and operating systems,
 fulfilling requirements from platform adopters Valeo and BMW.</p>
