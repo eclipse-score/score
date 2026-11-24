@@ -188,7 +188,7 @@ Parameter Qualification
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__configuration__file_based[version==1]
+   :derived_from: stkh_req__configuration__file_based[version==1], stkh_req__configuration__safe[version==1]
    :satisfied_by: feat__config_mgmt[version==1]
    :status: valid
    :version: 1
