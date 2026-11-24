@@ -110,7 +110,7 @@ AI Platform Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__ai__ml_workloads[version==1]
+   :derived_from: stkh_req__ai__ml_workloads[version==1], stkh_req__performance__qos[version==1]
    :satisfied_by: feat__ai_platform[version==1]
    :status: valid
    :version: 1
