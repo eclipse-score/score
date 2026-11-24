@@ -17,24 +17,40 @@
 Contribute own module
 =====================
 
-This guide walks you through contributing a new platform module to Eclipse S-CORE end-to-end.
-As a running example you will build a small demo application called
-`scrample <https://github.com/eclipse-score/scrample/tree/v0.1.2-simple-app>`_, which shows how
-to compose existing S-CORE platform modules into new functionality.
+This guide walks you through contributing a new module to Eclipse S-CORE.
+Every new module repository is created from the
+`Eclipse S-CORE module template <https://github.com/eclipse-score/module_template>`_, so the guide follows the template
+step by step and explains what it already provides and how to adapt it to your module.
 
-By the end of this section you will have:
+As a running example it uses the component ``component_example`` of the template
+(`score/component_example <https://github.com/eclipse-score/module_template/tree/main/score/component_example>`_):
+a small C++ library which returns a greeting, e.g. ``Hello, World!``. The code is deliberately simple, so that you
+can focus on what makes an S-CORE module: the structure of the repository, the build with Bazel, the tests on the
+different test levels, the documentation of requirements and architecture and the traceability between them.
 
-- Created a properly structured S-CORE module from scratch.
-- Generated documentation from source and integrated it into the platform docs.
-- Built the module with Bazel and verified it compiles cleanly.
-- Wired up CI/CD workflows so every change is automatically validated.
-- Plugged the module into the reference integration so it becomes part of the platform.
+You don't need your own repository to follow the guide. Clone the template and try every step there:
+
+.. code-block:: bash
+
+   git clone https://github.com/eclipse-score/module_template.git
+   cd module_template
+
+Open the folder in the S-CORE devcontainer (see :ref:`setting_up_dev_env`), then all required tools are available.
+
+By the end of this section you will:
+
+- know how to request a module repository and what the template contains,
+- build the module and run its unit, component integration and feature integration tests,
+- document requirements and architecture and trace them to code and tests in the generated documentation,
+- know the CI/CD workflows that check every pull request,
+- know where to find examples of how the S-CORE modules are used and how your module is integrated.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    first_score_module.rst
-   doc_generation.rst
    building_source_code.rst
+   doc_generation.rst
    cicd_workflows.rst
-   reference_integration.rst
+   learn_from_examples.rst
