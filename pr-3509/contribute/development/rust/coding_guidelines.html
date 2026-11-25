@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=5737673c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=6a6a7ab0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=f381fa98" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=6a604523" />
@@ -651,7 +651,7 @@
                   
   <section id="writing-rust-code-incl-coding-guidelines">
 <h1>Writing Rust Code incl. Coding Guidelines<a class="headerlink" href="#writing-rust-code-incl-coding-guidelines" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c9272c88">
+<div class="need_container docutils container" id="SNCB-34edbfcd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -912,9 +912,9 @@ settings are maintained centrally in the
 <p>CodeQL is handled separately from this repository; see <em>Rust Tooling: CodeQL</em>
 above and <a class="reference internal" href="../../../platform_management_plan/software_verification.html"><span class="doc">Software Verification Plan</span></a>.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml">Practical baseline (relaxed)</a> —
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/clippy.toml">Practical baseline (relaxed)</a> —
 suitable for general SCORE components.</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/Cargo.toml">Strict / ASIL variant</a> —
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/clippy.toml">Strict / ASIL variant</a> —
 for safety-critical code requiring stricter enforcement.</p></li>
 </ul>
 <section id="rust-tooling-configuration-and-evidence">
@@ -922,6 +922,15 @@ for safety-critical code requiring stricter enforcement.</p></li>
 <p>The settings below are thematically aligned with the Safety-Critical Rust
 Coding Guidelines, especially their sections on errors, concurrency, unsafety,
 FFI, compilation, and compliance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The lint set and release profile described in this section are the <strong>target state</strong> and are
+<strong>not yet enforced</strong>. The <code class="docutils literal notranslate"><span class="pre">strict</span></code> and <code class="docutils literal notranslate"><span class="pre">relaxed</span></code> Clippy configurations in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>
+currently only define the minimum supported Rust version, so modules running Clippy via the
+<code class="docutils literal notranslate"><span class="pre">clippy_strict</span></code> aspect apply Clippy’s default lint groups only. <code class="docutils literal notranslate"><span class="pre">[lints]</span></code> and <code class="docutils literal notranslate"><span class="pre">[profile]</span></code>
+sections in a <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> are not applied to Bazel builds. The settings become mandatory once
+they are provided centrally in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> (see <a class="reference internal" href="../../../platform_management_plan/software_development.html#doc__software_development_plan" title="doc__software_development_plan"><em class="xref need">Software Development Plan (doc__software_development_plan)</em></a>).</p>
+</div>
 <p>The concrete <code class="docutils literal notranslate"><span class="pre">rustc</span></code> and Clippy lints, their levels, and the release profile
 are project policy decisions maintained in <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code>. The
 following external, authoritative sources document the semantics and effects of

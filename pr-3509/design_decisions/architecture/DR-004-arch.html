@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=5737673c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=6a6a7ab0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=f381fa98" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
@@ -648,7 +648,7 @@
 <p class="admonition-title">Warning</p>
 <p>Working draft, 2026-11-20; not accepted or ready for Final Comment Period (FCP). TODO DR004-18: recheck provisional DR numbering before merge; no conflict was found on 2026-11-20.</p>
 </div>
-<div class="need_container docutils container" id="SNCB-258b46b9">
+<div class="need_container docutils container" id="SNCB-c6d3e800">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__etas_kvs_integration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -669,7 +669,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">ETAS offers an existing proprietary KVS implementation requiring an agreed integration, compatibility and verification strategy.</span></span></div>
 <div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Propose bottom-up integration alongside the existing KVS, followed by a gated switch to the ETAS C++ implementation and a Rust binding.</span></span></div>
-<div class="line"><span class="needs_tracking"><span class="needs_label">tracking: </span><span class="needs_data"><a class="reference external" href="https://github.com/eclipse-score/persistency/issues/739">persistency#739</a></span></span></div>
+<div class="line"><span class="needs_tracking"><span class="needs_label">tracking: </span><span class="needs_data"><a class="reference external" href="https://github.com/eclipse-score/score/issues/3513">score#3513</a></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -694,30 +694,30 @@
 </div>
 </div>
 <ul class="simple">
-<li><p>TODO DR004-01: ETAS to nominate the separate author; support from <a class="reference external" href="https://github.com/tizava">&#64;tizava</a>.</p></li>
-<li><p>Shepherd: <code class="docutils literal notranslate"><span class="pre">&#64;umaucher</span></code>; separate from the author.</p></li>
+<li><p>Author: <a class="reference external" href="https://github.com/tizava">&#64;tizava</a>.</p></li>
+<li><p>Shepherd: <a class="reference external" href="https://github.com/umaucher">&#64;umaucher</a>.</p></li>
 <li><p>Classification: Enhancement / major Feature Modification proposed; see TODO DR004-07 in the impact analysis.</p></li>
 <li><p>Umbrella epic: <a class="reference external" href="https://github.com/eclipse-score/persistency/issues/735">eclipse-score/persistency#735</a>; focused delivery topics use sub-issues.</p></li>
 </ul>
 <section id="context-problem">
 <h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
-<p>Persistency currently provides C++ and Rust implementations. ETAS offers an existing implementation with reported improvements in internal data handling and configuration. TODO DR004-03: substantiate benefits and replacement rationale against the alternatives below. The umbrella epic records prior Architecture discussion and the FEP route; replacement and Rust backend consolidation require agreement with integrators.</p>
+<p>Persistency currently provides C++ and Rust implementations. ETAS proposes integrating its existing KVS implementation to improve internal data handling and configuration. The <a class="reference external" href="https://github.com/user-attachments/files/35339296/PersistencyImprovements_2026_11_02.pdf">ETAS component presentation</a> provides supporting details on the improvements, benefits and replacement rationale.</p>
 </section>
 <section id="decision-proposed">
 <h2>Decision proposed<a class="headerlink" href="#decision-proposed" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Retain the existing C++ implementation for S-CORE v1.0.0; TODO DR004-04: confirm this baseline and the v1.1.0 switch target with release owners.</p></li>
+<li><p>Retain the existing C++ implementation for S-CORE v1.0.</p></li>
 <li><p>After FEP acceptance and applicable contribution clearance, integrate reviewable ETAS component batches bottom-up under <code class="docutils literal notranslate"><span class="pre">score/kvs/&lt;component&gt;</span></code>.</p></li>
 <li><p>Keep implementations side-by-side temporarily, using distinct build targets and explicit selection; do not silently change existing defaults.</p></li>
 <li><p>Provide a Rust interface to the incoming C++ backend, replacing the independent Rust backend only after contract and FFI verification.</p></li>
 <li><p>Target the default switch and old-backend retirement for v1.1.0, conditional on completed compatibility/migration evidence, FIT, documentation and assurance reviews. Each component batch already needs its own tests and review documentation.</p></li>
 </ol>
-<p>TODO DR004-05: ETAS supplies the before/after component model, dependency graph, configuration flow, changed interface definitions and explicit coexistence/build selection before FCP. TODO DR004-06: specify the Rust binding’s ownership/lifetimes, errors, panic/exception containment, concurrency and supported build/link targets.</p>
-<p>Under TODO DR004-03, distinguish replacement parity from separately planned enhancements listed in the umbrella epic; they are not automatically committed scope.</p>
+<p>The FEP establishes the integration approach and architectural boundaries, not a complete implementation design. Component models, dependencies, configuration flows, interfaces and build-selection details are refined incrementally and reviewed with the corresponding component integration PRs. Each batch includes the documentation and tests needed to assess it; merging a batch does not replace the existing implementation or change its default selection.</p>
+<p>Rust-binding planning and design/verification follow-up are tracked in <a class="reference external" href="https://github.com/eclipse-score/persistency/issues/772">eclipse-score/persistency#772</a>. The independent Rust backend is replaced only after the binding’s contract and verification are complete.</p>
 </section>
 <section id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
-<p>Compatibility is intended, not proven; explicit changes may be agreed. TODO DR004-07 in <a class="reference internal" href="DR-004-arch/impact-analysis.html"><span class="doc">ETAS KVS change impact analysis</span></a> owns compatibility and conditional migration requirements. Breaking-change governance is tracked under TODO DR004-16 in the tracking issue.</p>
+<p>API compatibility is the goal; expected non-API changes and transition requirements are described in <a class="reference internal" href="DR-004-arch/impact-analysis.html"><span class="doc">ETAS KVS change impact analysis</span></a> under TODO DR004-07.</p>
 </section>
 <section id="alternatives-considered">
 <h2>Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Link to this heading">#</a></h2>
@@ -733,11 +733,11 @@
 </section>
 <section id="consequences">
 <h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
-<p>Complete <a class="reference internal" href="DR-004-arch/impact-analysis.html"><span class="doc">ETAS KVS change impact analysis</span></a> and update its identified work products; neither draft replaces the required requirements, architecture or assurance evidence. Coordination, delivery sub-issues and lifecycle status belong in <a class="reference external" href="https://github.com/eclipse-score/persistency/issues/739">eclipse-score/persistency#739</a>.</p>
+<p>Complete <a class="reference internal" href="DR-004-arch/impact-analysis.html"><span class="doc">ETAS KVS change impact analysis</span></a> and update its identified work products; neither draft replaces the required requirements, architecture or assurance evidence. Coordination, delivery sub-issues and lifecycle status belong in <a class="reference external" href="https://github.com/eclipse-score/score/issues/3513">eclipse-score/score#3513</a>.</p>
 </section>
 <section id="readiness-gates">
 <h2>Readiness gates<a class="headerlink" href="#readiness-gates" title="Link to this heading">#</a></h2>
-<p>Before FCP, resolve proposal-shaping TODOs and agree the impact assessment and realization plan with affected owners. Publication and review actions are tracked in the issue, not duplicated here.</p>
+<p>Before FCP, establish the integration scope, architectural boundaries, compatibility approach and impact assessment sufficiently for stakeholders to judge the proposal. Detailed component and Rust-binding design may mature through the reviewed implementation work described above; decisions needed to assess the proposal cannot be deferred as implementation details. Publication, review and Feature Team planning are tracked in GitHub.</p>
 <p>TODO DR004-19: before default switch/removal, merge required components, Rust binding, documentation and FIT; demonstrate accepted contracts or approved migrations; obtain assurance/integration/release dispositions; verify data-safe rollback or explicitly agree downgrade restrictions. Material deviations from the accepted design require a follow-up FEP.</p>
 </section>
 <section id="references">
@@ -746,6 +746,7 @@
 <li><p><a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/contribution_request/feature_request.html">Current FEP guide</a></p></li>
 <li><p><a class="reference external" href="https://eclipse-score.github.io/score/main/design_decisions/process/DR-002-proc.html">DR-002-Proc</a></p></li>
 <li><p><a class="reference external" href="https://eclipse-score.github.io/score/main/platform_management_plan/change_management.html">Change Management Plan</a></p></li>
+<li><p><a class="reference external" href="https://github.com/user-attachments/files/35339296/PersistencyImprovements_2026_11_02.pdf">ETAS component presentation</a> (2026-11-02)</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
