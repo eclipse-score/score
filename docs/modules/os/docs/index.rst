@@ -24,6 +24,7 @@
 .. mod:: OS
    :id: mod__os
    :status: valid
+   :maturity: preview
    :version: 1
    :safety: ASIL_B
    :security: YES
