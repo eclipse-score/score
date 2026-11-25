@@ -17,7 +17,7 @@ ETAS KVS change impact analysis
 
 .. warning::
 
-   Draft template for :doc:`../DR-004-arch`, not an approved assessment. Follows the recommended `Impact Analysis Template <https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_impact_analysis_template.html>`_. Responsible GitHub usernames are resolved under TODO DR004-10; completion status belongs in the FEP tracker.
+   Draft template for :doc:`../DR-004-arch`, not an approved assessment. Follows the recommended `Impact Analysis Template <https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_impact_analysis_template.html>`_. Completion status belongs in the FEP tracker.
 
 Type and dependencies
 ---------------------
@@ -27,27 +27,25 @@ Change type: see the FEP. TODO DR004-08: identify dependent change requests or e
 Affected elements and work products
 ------------------------------------------------------------
 
-TODO DR004-08: pin revisions and reference the FEP's component/dependency model and connected consumers. Use traceability links to list affected requirements, architecture/interfaces, implementation/build/dependencies, verification/integration, assurance, manuals and release material. For each, record whether modification is needed, the responsible GitHub username and evidence link.
+TODO DR004-08: identify affected work products and required updates, referencing baseline revisions and component integration PRs.
+
+Known consumers: `config_management <https://github.com/eclipse-score/config_management>`_ and `reference_integration <https://github.com/eclipse-score/reference_integration>`_; assess impact during module/integration builds.
 
 Compatibility and platform impact
 ---------------------------------
 
-TODO DR004-07: assess intended compatibility and record the before/after contract, affected consumers, severity, owner and evidence for each surface:
+The goal is to preserve C++/Rust APIs; any later breaking change follows S-CORE's applicable process. Stored data/snapshots, configuration and runtime behavior will change, with documentation and tests reviewed during integration. Transition may use conversion where feasible and needed, or recreation/reset where acceptable to affected consumers, explicitly accounting for data loss.
 
-* C++/Rust APIs, errors, lifecycle and build/link interfaces; representative unchanged consumers.
-* Stored data/snapshots, checksums, versions, defaults and recovery; old-data readability and reverse readability wherever downgrade is promised.
-* Configuration schemas/defaults, paths, permissions, tooling and invalid-input behavior.
-* Flush/durability, reset, concurrency, corruption handling and resource limits.
-* Known consumers and reference integration on the agreed Linux/QNX architecture matrix.
-
-TODO DR004-07: if breaking, complete the impact inventory of integrators/configurations/deliverables, migration steps and effort, deprecation timeline or rationale for none, rollback constraints and affected-team lead acknowledgments. Otherwise provide evidence supporting the non-breaking classification. Record the disposition before FCP; execute the agreed verification before cutover.
+TODO DR004-07: clarify affected consumers and transition requirements, and assess whether the non-API changes are breaking. DR004-16 is currently not applicable but must be reconsidered if a break is identified.
 
 Verification and realization
 ----------------------------
 
-TODO DR004-09: link verification methods for each changed work product, baseline/differential tests, validation of the FEP's FFI contract, measurable resource/performance budgets, target matrix and acceptance evidence.
+Each component integration PR includes unit tests using (GoogleTest) and CIT using ITF. Reuse/adapt existing FIT and, where feasible, run CIT/FIT against both implementations for comparison/regression testing; the `KVS tool <https://github.com/eclipse-score/persistency/issues/441>`_ may support this. Rust-binding verification is planned in `eclipse-score/persistency#772 <https://github.com/eclipse-score/persistency/issues/772>`_.
 
-TODO DR004-10: estimate effort, resources and risks; nominate ETAS/S-CORE owners and reviewers by GitHub username, including cross-organization responsibilities and ongoing maintenance. Confirm implementation/verification milestones and dependencies against the FEP's release assumptions.
+Component integration issues define test targets and acceptance criteria; their PRs provide verification evidence.
+
+The DR records the rough release schedule. The Persistency Feature Team owns detailed implementation and verification planning under `eclipse-score/persistency#735 <https://github.com/eclipse-score/persistency/issues/735>`_; component integration issues capture effort, resources, risks, responsible GitHub usernames, cross-organization responsibilities, ongoing maintenance, milestones and dependencies.
 
 Security impact
 ---------------
@@ -62,4 +60,6 @@ The Persistency module declares ASIL_B; incoming implementation suitability is u
 License impact
 --------------
 
-TODO DR004-13, ETAS/project committers: confirm contribution authorization before source publication, applicable Eclipse review route, origins/third-party inventory, license compatibility, copyright/notices and SBOM changes. FEP acceptance does not grant contribution clearance.
+ETAS will contribute the implementation under Apache-2.0. Integration PRs undergo the standard S-CORE contribution and license checks.
+
+TODO DR004-13: ETAS/project committers confirm contribution authorization and whether third-party content requires additional review.
