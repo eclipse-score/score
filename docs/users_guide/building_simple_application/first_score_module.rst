@@ -16,55 +16,73 @@ First Eclipse S-CORE Module
 =================================
 
 Before starting, ensure you are an official contributor to the Eclipse S-CORE project.
-Otherwise, you will not have required permissions. Instructions can be found in
-`Actions to ensure Proper Contribution Attribution in Eclipse S-CORE <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#>`_.
+Otherwise, you will not have the required permissions. Instructions can be found in
+:ref:`Actions to ensure Proper Contribution Attribution in Eclipse S-CORE <contribution_attribution>`.
 
 Once you have created an Eclipse account,
-accepted Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse Account,
-contact one of the Eclipse S-CORE Project Leads (listed at the official `Eclipse SDV S-Core webpage <https://projects.eclipse.org/projects/automotive.score/who>`_).
+accepted the Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse account,
+contact one of the Eclipse S-CORE Project Leads (listed at the official `Eclipse SDV S-CORE webpage <https://projects.eclipse.org/projects/automotive.score/who>`_).
 They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.
 
 The recommended communication channel to approach Eclipse S-CORE project leads is the
-`eclipse sdv slack channel <https://sdv.eclipse.org/get-engaged/>`_.
+`project lead circle Slack channel <https://sdvworkinggroup.slack.com/archives/C085F44D2CS>`_
+in the Eclipse SDV Slack workspace.
+
+.. note::
+
+   You do not need your own repository to follow this guide: clone the
+   `module template <https://github.com/eclipse-score/module_template>`_ and try the steps there.
+   The following sections describe what you need when you contribute your own module.
 
 
 Creating a Repository for Your Module
 ------------------------------------------
-After becoming part of Eclipse S-CORE GitHub organization, you can create a repository for your module.
+After becoming part of the Eclipse S-CORE GitHub organization, you can request a repository for your module.
 Repository creation follows Eclipse organizational rules.
 Most configuration is handled via `otterdog configuration <https://otterdog.readthedocs.io/en/latest/>`_ located in:
 
 - `eclipse-score/.eclipsefdn <https://github.com/eclipse-score/.eclipsefdn>`_
 
-Create a private fork of this repository and modify the file:
+Create a fork of this repository and modify the file:
 
 - `otterdog/eclipse-score.jsonnet <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
 
-Add your repository definition, e.g.:
+Add your repository definition next to the existing ones. Module repositories are declared with
+``newDependableElementRepo``: it creates the repository from the module template, enables GitHub Pages for the
+documentation and sets up the GitHub environment for the QNX builds. Incubation repositories additionally set
+``subcategory = "incubation"``:
 
-.. code-block:: python
-    :emphasize-lines: 4, 5, 6
+.. code-block:: text
+    :emphasize-lines: 5, 6, 7
 
-    newModuleRepo('logging') {
-        description: "Repository for logging framework",
+    newDependableElementRepo('lifecycle') {
+      description: "Repository for the lifecycle feature",
     },
-    newModuleRepo('scrample') {
-        description: "Repository for example component",
+
+    newDependableElementRepo('my_module') {
+      description: "Repository for my module",
     },
-    newModuleRepo('inc_abi_compatible_datatypes') {
-        description: "Incubation repository for ABI compatible data types feature",
+
+    newDependableElementRepo('inc_someip_gateway', subcategory = "incubation") {
+      description: "Incubation repository for SOME/IP gateway feature",
     },
+
+The ``subcategory`` has no technical effect on the repository: it is stored as a custom property and only groups
+the repositories in the auto-generated overview of the GitHub organization. Set ``"incubation"`` for incubator
+repositories (prefix ``inc_``), which are created to try out the content of a feature request before it is written
+down, see the incubation step in the :ref:`feature request process <feature_request_guideline>`.
+A regular module repository doesn't need a ``subcategory``.
 
 Then, create a PR in the `eclipse-score/.eclipsefdn <https://github.com/eclipse-score/.eclipsefdn>`_ repository. The PR must be approved by:
 
 - Eclipse S-CORE project lead
-- Eclipse Foundation Security Team
+- Eclipse Foundation Security Team, which is the code owner of the otterdog configuration
 
 .. tip::
 
     To speed up approval, mention both groups in your PR comment:
 
-    .. code-block:: python
+    .. code-block:: text
 
         @eclipse-score/automotive-score-project-leads
         @eclipse-score/eclipsefdn-security
@@ -76,210 +94,181 @@ Repository Layout
 ^^^^^^^^^^^^^^^^^^
 Once merged, your new repository will appear in the Eclipse S-CORE GitHub organization repositories overview.
 
-.. image:: ../_assets/repository_layout.png
-   :alt: repository layout
-   :width: 500
-   :align: center
-
-All repositories are created using the `Eclipse S-CORE module template <https://github.com/eclipse-score/module_template>`_.
-
-The `README.md <https://github.com/eclipse-score/module_template/blob/main/README.md>`_ file already explains the basic structure.
+New repositories are based on the `Eclipse S-CORE module template <https://github.com/eclipse-score/module_template>`_.
+Its `README.md <https://github.com/eclipse-score/module_template/blob/main/README.md>`_ explains how to build and test the
+template, its `template information <https://eclipse-score.github.io/module_template/main/template/index.html>`_
+shows the complete folder tree, and the rules behind it are described in
+:ref:`module folder structure <module_folder_structure>`.
 Below is an overview of the most relevant files and folders.
 
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
 
-.github/workflows/
-------------------
-Contains CI/CD workflows (build, unit-tests,
-:ref:`integration gate <integration_process>` checks).
+   * - File / folder
+     - Content
+   * - ``.github/workflows/``
+     - CI/CD workflows, based on the reusable workflows of ``cicd-workflows``,
+       see :doc:`CI/CD workflows <cicd_workflows>`
+   * - ``.devcontainer/``
+     - Development container based on the common `S-CORE devcontainer <https://github.com/eclipse-score/devcontainer>`_
+       image with all required tools; open the repository in VS Code and select *Reopen in Container*
+   * - ``.vscode/``
+     - Recommended VS Code settings, extensions and snippets, e.g. code completion for requirements and architecture
+   * - ``docs/``
+     - Module documentation (rst): feature and module documents, safety and security management, release notes
+       and verification report, see :doc:`documentation generation <doc_generation>`
+   * - ``score/<component>/``
+     - One folder per component, e.g. ``score/component_example``: source code and unit tests in ``src/``,
+       component integration tests in ``tests/``, component documentation in ``docs/``,
+       see :doc:`build and test <building_source_code>`
+   * - ``score/tests/``
+     - Feature integration tests of the module
+   * - ``examples/``
+     - An example of architecture modeling with sphinx-needs and the ``Cargo.lock`` used by the license check
+   * - ``.bazelrc``, ``score.bazelrc/``
+     - Bazel configuration incl. the S-CORE build configurations per target platform
+   * - ``MODULE.bazel``, ``BUILD``
+     - Bazel module definition and top-level targets
+   * - ``project_config.bzl``
+     - Project metadata used by shared Bazel macros
+   * - ``LICENSE``, ``NOTICE``, ``REUSE.toml``, ``LICENSES/``
+     - License and copyright information
 
-
-.vscode
-------------------
-Provides Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements and architecture in
-`.vscode/restructuredtext.code-snippets <https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets>`_.
-
-.. tip::
-    The Eclipse S-CORE project provides a ready-to-use
-    `Dev Container <https://github.com/eclipse-score/devcontainer>`_
-    with all required tools pre-installed.
-    Open any module repository with the
-    `VS Code Dev Containers extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers>`_
-    to skip manual toolchain setup entirely.
-
-
-docs
------
-Place all module documentation here in `rst format <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_.
-Examples follow later in this guide.
-
-.. tip::
-    We try to describe most `common workflows <https://eclipse-score.github.io/score/main/contribute/contribution_request/index.html#doc__contr_guideline>`_
-    for developers. It is worth checking it.
-
-score/
--------
-Source files and unit tests for the module.
-Follows the naming convention ``score/<module_name>/``.
-
-tests/
--------
-Component Integration Tests (CIT) and Feature Integration Tests (FIT).
-See the :ref:`Technology Overview <technology_overview>` for details on test levels.
+The folder of a test determines its test level, see :ref:`module folder structure <module_folder_structure>`.
 
 
-.bazelrc
---------
-Defines bazel configuration for your the module.
-Important entries in `.bazelrc <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.bazelrc>`_ file include:
+Adapting the template
+---------------------
+The template is a working example, not an empty skeleton: it builds, tests and documents the example component
+``component_example`` out of the box. To turn it into your module, go through the following files in this order.
+Each section explains what the file is for and what you need to adapt.
 
-.. code-block:: python
-    :linenos:
-    :emphasize-lines: 8, 9
 
-    build --java_language_version=17
-    build --tool_java_language_version=17
-    build --java_runtime_version=remotejdk_17
-    build --tool_java_runtime_version=remotejdk_17
-
-    test --test_output=errors
-
-    common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
-    common --registry=https://bcr.bazel.build
-
-- Line number 8 points to the Eclipse S-CORE https://github.com/eclipse-score/bazel_registry,
-  where all official versions of Eclipse S-CORE modules are published.
-
-- Line number 9 points to the common bazel registry, where common bazel modules are made available for everyone.
-
-This means, once we´re referencing a depending module with our scrample application,
-bazel will start searching it in one of these two locations.
-
+.. _first_module_module_bazel:
 
 MODULE.bazel
--------------
-This file turns your repository into a bazel module.
+^^^^^^^^^^^^
+**To adapt:** the module name and the dependencies of your code.
 
-Let us check `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel>`_ initial content:
-
-.. code-block:: python
-    :linenos:
-
-    module(
-        name = "cpp_rust_template_repository",
-        version = "1.0",
-    )
-
-Here, we´re making the first declaration of our module by defining a name and a version.
-Please be aware, that only after our module was published in the Eclipse S-CORE bazel registry, other modules can access it.
-
-Rename the module and replace *cpp_rust_template_repository* by your module name, in our case *score_scrample*.
-Use `semantic versioning <https://semver.org/>`_ for the module version, starting at ``0.1.0``.
+This file turns your repository into a Bazel module.
+The template starts with a minimal module declaration:
 
 .. code-block:: python
     :linenos:
 
-    module(
-        name = "score_scrample",
-        version = "0.1.0",
-    )
+    module(name = "score_module_template")
 
-Please be aware, according to Eclipse S-CORE´s naming convention all module names must start with *score\_* prefix.
+Rename the module and replace *score_module_template* by your module name.
+According to Eclipse S-CORE's naming convention, all module names must start with the *score\_* prefix,
+e.g. *score_my_module*. The version of your module is not maintained in ``MODULE.bazel``: it is taken from the release tag
+(``vX.Y.Z``, following `semantic versioning <https://semver.org/>`_) when the release is added to the
+Bazel registry. Other modules can depend on a released version of your module with ``bazel_dep`` only after it was
+published in the Eclipse S-CORE Bazel registry; before that, they need a ``git_override``.
 
-.. code-block:: python
-    :linenos:
-
-    bazel_dep(name = "rules_python", version = "1.4.1")
-
-    PYTHON_VERSION = "3.12"
-
-    python = use_extension("@rules_python//python/extensions:python.bzl", "python")
-    python.toolchain(
-        is_default = True,
-        python_version = PYTHON_VERSION,
-    )
-    use_repo(python, "python_versions")
-
-    # Add GoogleTest dependency
-    bazel_dep(name = "googletest", version = "1.17.0")
-
-    # Rust rules for Bazel
-    bazel_dep(name = "rules_rust", version = "0.63.0")
-
-    # C/C++ rules for Bazel
-    bazel_dep(name = "rules_cc", version = "0.2.1")
-
-In the code snippet above, we declare dependencies to modules, that are publicly available in common bazel registry, e.g.
-for unit test execution with gtest.
+Next, the template declares dependencies to modules that are publicly available in the Bazel Central Registry,
+e.g. GoogleTest for the C++ tests, the C++ and Rust rules, and an LLVM toolchain for builds without an explicit
+build configuration:
 
 .. code-block:: python
     :linenos:
 
-    # C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)
-    bazel_dep(name = "score_bazel_cpp_toolchains", version = "0.5.1", dev_dependency = True)
+    bazel_dep(name = "googletest", version = "...", dev_dependency = True)
+    bazel_dep(name = "rules_rust", version = "...")
+    bazel_dep(name = "rules_cc", version = "...")
+    bazel_dep(name = "toolchains_llvm", version = "...", dev_dependency = True)
 
-    gcc = use_extension("@score_bazel_cpp_toolchains//extensions:gcc.bzl", "gcc", dev_dependency = True)
-    gcc.toolchain(
-        name = "score_gcc_x86_64_toolchain",
-        target_cpu = "x86_64",
-        target_os = "linux",
-        use_default_package = True,
-        version = "12.2.0",
-    )
-    gcc.toolchain(
-        name = "score_qcc_x86_64_toolchain",
-        sdp_version = "8.0.0",
-        target_cpu = "x86_64",
-        target_os = "qnx",
-        use_default_package = True,
-        version = "12.2.0",
-    )
-    use_repo(
-        gcc,
-        "score_gcc_x86_64_toolchain",
-        "score_qcc_x86_64_toolchain",
-    )
-
-    # Ferrocene Rust toolchains (QNX cross-compilation support)
-    bazel_dep(name = "score_toolchains_rust", version = "0.9.1", dev_dependency = True)
-
-Here we add C++ and Rust toolchains using ``score_bazel_cpp_toolchains`` and ``score_toolchains_rust``.
-These provide GCC 12.2.0 for Linux host builds, QCC (QNX SDP 8.0.0) for QNX cross-compilation,
-and Ferrocene toolchains for Rust (including QNX support).
-In upcoming chapters, we will talk about this in more detail.
+Then follow the dependencies to Eclipse S-CORE modules that are used during development (excerpt):
 
 .. code-block:: python
     :linenos:
 
-    # tooling
-    bazel_dep(name = "score_tooling", version = "1.1.2")
+    bazel_dep(name = "score_tooling", version = "...", dev_dependency = True)
+    bazel_dep(name = "score_docs_as_code", version = "...")
+    bazel_dep(name = "score_process_description", version = "...")
+    bazel_dep(name = "score_devcontainer", version = "...", dev_dependency = True)
+    bazel_dep(name = "score_cpp_policies", version = "...", dev_dependency = True)
 
-    # docs-as-code
-    bazel_dep(name = "score_docs_as_code", version = "4.0.3")
+- **score_tooling**: enables tooling checks such as copyright, formatting and license verification.
+- **score_docs_as_code** and **score_process_description**: enable documentation builds with Sphinx and sphinx-needs
+  and the references to the process description.
+- **score_devcontainer**: makes the tools of the devcontainer available to Bazel.
+- **score_cpp_policies**: provides the shared C++ quality rules, e.g. compiler warnings, sanitizers and clang-tidy.
+  For Rust code, ``score_rust_policies`` provides the shared Clippy configuration.
 
-    # Rust linting and formatting policies
-    bazel_dep(name = "score_rust_policies", version = "0.0.3")
+The versions are left out here on purpose: the template is kept up to date by automated pull requests, so take the
+current versions from its `MODULE.bazel <https://github.com/eclipse-score/module_template/blob/main/MODULE.bazel>`_.
+``dev_dependency = True`` marks dependencies which are only needed to develop the module itself, e.g. for tests
+and checks. They are ignored when another module depends on your module.
 
-Finally, we add dependencies to Eclipse S-CORE native modules:
+The last part of the template, marked *S-CORE Toolchains (DO NOT MODIFY)*, registers the S-CORE toolchains
+from ``score_bazel_cpp_toolchains`` and ``score_toolchains_rust`` for all supported target platforms.
+It is explained in the :doc:`build and test <building_source_code>` chapter.
 
-- **score_tooling**: enables tooling checks such as copyright and license verification.
-- **score_docs_as_code**: enables documentation builds with Sphinx and sphinx-needs.
-- **score_rust_policies**: provides centralised Rust linting (clippy) and formatting (rustfmt) policies.
-  For C++ projects, use ``score_cpp_policies`` instead.
+Finally, add the S-CORE modules your code uses, e.g. ``score_baselibs``:
+
+.. code-block:: python
+    :linenos:
+
+    bazel_dep(name = "score_baselibs", version = "<version>")
+
+The available versions can be looked up in the `Bazel registry UI <https://eclipse-score.github.io/bazel_registry_ui/>`_.
+Choose versions that fit to each other and to the toolchains of your module. A good starting point is the
+`reference integration <https://github.com/eclipse-score/reference_integration>`_: it contains the consolidated state of
+all S-CORE modules, which are built and tested together. Its
+`known_good.json <https://github.com/eclipse-score/reference_integration/blob/main/known_good.json>`_ lists the
+integrated version of each module. The ``MODULE.bazel`` of a module version
+in the `registry <https://github.com/eclipse-score/bazel_registry/tree/main/modules>`_ shows which versions it depends on.
+If Bazel reports *"the root module requires module version X, but got Y in the resolved dependency graph"*,
+another module needs a newer version of this dependency; update the version in your ``MODULE.bazel`` accordingly.
+Bazel modules don't make transitive dependencies available to your code: list every module whose targets you use
+directly in your ``BUILD`` files.
 
 .. tip::
     Working across multiple modules and repositories can be challenging. Use the following approach during development:
 
     - use `git_override()  <https://bazel.build/rules/lib/globals/module#git_override>`_
-      if you want to use a version of another module, that is currently not officially availabe in the bazel registry.
+      if you want to use a version of another module that is currently not officially available in the Bazel registry.
 
     - use `local_path_override()  <https://bazel.build/rules/lib/globals/module#local_path_override>`_
       if you want to use your local version of the module, e.g. during active development.
 
+    - use the command line option ``--override_module=<module>=<path>`` (e.g. with ``bazel build``) to try out a local
+      checkout without changing ``MODULE.bazel``.
+
+
+.bazelrc
+^^^^^^^^
+**To adapt:** nothing; add own settings to ``user.bazelrc``, which is imported if it exists.
+
+The `.bazelrc <https://github.com/eclipse-score/module_template/blob/main/.bazelrc>`_ file tells Bazel where to
+find the modules declared in ``MODULE.bazel`` and how to build for the S-CORE target platforms:
+
+.. code-block:: text
+    :linenos:
+
+    common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+    common --registry=https://bcr.bazel.build
+
+    try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
+
+- Line 1 points to the `Eclipse S-CORE Bazel registry <https://github.com/eclipse-score/bazel_registry>`_,
+  where all official versions of Eclipse S-CORE modules are published.
+- Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.
+- Line 4 imports the S-CORE build configurations, e.g. ``--config=score-linux-x86_64`` or ``--config=score-qnx-x86_64``.
+  They select the target platform and the matching toolchains and are explained in the
+  :doc:`build and test <building_source_code>` chapter.
+
+
+.. _first_module_build:
 
 BUILD
------
-The bazel `BUILD <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/BUILD>`_ file
-contains main bazel targets on the top level of the scrample project:
+^^^^^
+**To adapt:** ``project`` and ``project_url`` of the ``docs`` macro, and its ``bundles`` when you rename or add
+components.
+
+The Bazel `BUILD <https://github.com/eclipse-score/module_template/blob/main/BUILD>`_ file
+contains the main Bazel targets on the top level of the module:
 
 .. code-block:: python
     :linenos:
@@ -288,8 +277,8 @@ contains main bazel targets on the top level of the scrample project:
     load("@score_tooling//:defs.bzl", "copyright_checker", "dash_license_checker", "setup_starpls", "use_format_targets")
     load("//:project_config.bzl", "PROJECT_CONFIG")
 
-First, we load bazel rules and macros, implemented in Eclipse S-CORE context from the modules,
-that we’ve defined as dependencies in the MODULE.bazel file, e.g. https://github.com/eclipse-score/docs-as-code.
+First, we load Bazel rules and macros implemented in the Eclipse S-CORE context from the modules
+that we've defined as dependencies in the ``MODULE.bazel`` file, e.g. https://github.com/eclipse-score/docs-as-code.
 
 .. code-block:: python
     :linenos:
@@ -297,8 +286,7 @@ that we’ve defined as dependencies in the MODULE.bazel file, e.g. https://gith
     copyright_checker(
         name = "copyright",
         srcs = [
-            "src_cpp",
-            "tests",
+            "score",
             "//:BUILD",
             "//:MODULE.bazel",
         ],
@@ -314,24 +302,46 @@ that we’ve defined as dependencies in the MODULE.bazel file, e.g. https://gith
         visibility = ["//visibility:public"],
     )
 
-Second, we define bazel targets for *copyright_checker* and *dash_license_checker*,
-based on bazel rules implemented and imported from https://github.com/eclipse-score/tooling module.
+    # Add target for formatting checks
+    use_format_targets()
+
+Second, we define the targets for the copyright check (``bazel run //:copyright.check``), the license check
+with the Eclipse Dash license tool and the formatting check (``bazel test //:format.check``),
+based on Bazel rules implemented in the https://github.com/eclipse-score/tooling module.
 
 .. code-block:: python
     :linenos:
 
     docs(
+        bundles = [
+            {
+                "bundle": "//score/component_example:docs",
+                "mount_at": "components/component_example",
+            },
+            {
+                "bundle": "//examples:docs",
+                "mount_at": "examples",
+            },
+        ],
+        external_needs = [
+            "@score_process_description//:needs_json",
+        ],
+        project = "Module Template Project",
+        project_url = "https://eclipse-score.github.io/module_template/",
         source_dir = "docs",
     )
 
-Finally, the *docs* target builds all documentation in the .rst format, which is located in the
-`docs <https://github.com/eclipse-score/docs-as-code/tree/main/docs>`_ folder and all its subfolders.
-This functionality is implemented in `eclipse-score/docs-as-code <https://github.com/eclipse-score/docs-as-code>`_.
+Finally, the *docs* macro creates all documentation targets for the rst files located in the
+``docs`` folder and the documentation bundles of the components, which are mounted into it.
+This functionality is implemented in `eclipse-score/docs-as-code <https://github.com/eclipse-score/docs-as-code>`_
+and described in the :doc:`documentation generation <doc_generation>` chapter.
 
 
 project_config.bzl
-------------------
-Every Eclipse S-CORE module must provide a ``project_config.bzl`` file in its root directory.
+^^^^^^^^^^^^^^^^^^
+**To adapt:** the safety level and the languages of your module.
+
+Every Eclipse S-CORE module provides a ``project_config.bzl`` file in its root directory.
 This file declares project-level metadata that is consumed by shared Bazel macros such as ``dash_license_checker``.
 
 A minimal example:
@@ -344,10 +354,62 @@ A minimal example:
         "source_code": ["cpp"],    # Languages used: "cpp", "rust", or both
     }
 
-The ``asil_level`` is used by tooling to apply the appropriate quality and compliance checks.
-The ``source_code`` list determines which license file types are scanned by ``dash_license_checker``
-(e.g., ``Cargo.lock`` for Rust, ``requirements.txt`` for Python).
+The ``asil_level`` documents the safety level of the module.
+The ``source_code`` list is evaluated by ``dash_license_checker``: if no ``file_type`` is given,
+it determines which dependency file is scanned (e.g., ``Cargo.lock`` for Rust, ``requirements.txt`` for Python).
+The template declares ``["rust"]`` and scans ``examples/Cargo.lock``; set the list to the languages of your module
+and point ``dash_license_checker`` to its dependency file.
 
 .. tip::
     Start with ``"asil_level": "QM"`` during initial development.
     The level can be raised once the module's safety concept is established.
+
+
+Component code and documentation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**To adapt:** the example component and the documents of the module.
+
+- Rename ``score/component_example/`` to your component, incl. its Bazel targets, include paths and C++ namespace,
+  or keep it as a pattern and add your own component next to it. The :doc:`build and test <building_source_code>`
+  chapter walks through the example component.
+- For every further component, create a folder ``score/<component>/`` with the same structure: ``src/``, ``tests/``,
+  ``docs/`` and a ``BUILD`` file with the library, the tests and the ``docs_bundle``. Add the bundle of the component
+  to the ``bundles`` of the ``docs`` macro in the top-level ``BUILD`` file. Code shared by several components
+  can be placed in ``score/common/src/``.
+- Adapt the titles, IDs and contents of the documents in ``docs/`` and ``score/<component>/docs/``.
+  IDs of the template contain ``mod_temp`` or ``example_feature``, e.g. ``comp__mod_temp_component_name_template``;
+  replace them by IDs of your module. Each document contains ``.. attention::`` boxes which list what needs to be
+  adapted; remove them afterwards. The :doc:`documentation generation <doc_generation>` chapter explains the documents.
+
+
+LICENSE, NOTICE and REUSE.toml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**To adapt:** nothing in ``LICENSE`` and ``NOTICE``; extend ``REUSE.toml`` for files which cannot carry a header.
+
+The license files come with the template, so every S-CORE module is published under the same terms:
+
+- ``LICENSE`` and ``LICENSES/Apache-2.0.txt`` contain the Apache License 2.0, the license of all S-CORE modules.
+- ``NOTICE`` contains the notices of the Eclipse S-CORE project: project home, trademarks, copyright, the declared
+  license and the cryptography notice.
+- Every source file starts with the copyright and license header of the Eclipse Foundation, as in the files of the
+  template. Files which cannot contain a comment, e.g. JSON files or lock files, are listed in
+  `REUSE.toml <https://github.com/eclipse-score/module_template/blob/main/REUSE.toml>`_ instead.
+  When you add such files, add them there as well.
+
+The pre-commit checks and ``bazel run //:copyright.check`` report files without a valid header,
+see :doc:`build and test <building_source_code>`.
+
+
+README.md and CODEOWNERS
+^^^^^^^^^^^^^^^^^^^^^^^^
+**To adapt:** the description of your module in ``README.md``, and the maintainers in ``.github/CODEOWNERS``,
+who review the pull requests of your repository.
+
+
+Keeping up with the template
+----------------------------
+The template evolves, e.g. with new tool versions and workflow improvements. The workflow
+`sync-template.yml <https://github.com/eclipse-score/module_template/blob/main/.github/workflows/sync-template.yml>`_
+in your repository checks for changes of the template once a month (or when started manually in the *Actions* tab)
+and opens a pull request *[Template Sync] Upstream template update*. Review it like any other pull request:
+it can touch files which you have adapted to your module.

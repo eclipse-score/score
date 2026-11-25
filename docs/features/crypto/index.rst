@@ -12,17 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Security & Cryptography
-#######################
+Crypto
+######
 
-.. document:: Security & Crpyto Feature Requirements
-   :id: doc__security_crypto_feat_reqs
+.. document:: Crpyto
+   :id: doc__crypto
    :status: valid
    :version: 1
    :safety: QM
    :security: YES
    :realizes: wp__feat_request[version==1]
-
+   :tags: feature_request, crypto
 
 .. toctree::
    :hidden:

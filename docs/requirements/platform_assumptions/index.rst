@@ -20,7 +20,7 @@ SW-platform Assumptions
 .. document:: SW-platform Assumptions
    :id: doc__platform_assumptions
    :status: draft
-   :version: 1
+   :version: 2
    :security: YES
    :safety: ASIL_B
    :realizes: wp__requirements_sw_platform_aou[version==1]
@@ -253,8 +253,21 @@ This is the highest level of integration. This is the level where the S-CORE SW-
 
    If the system using the SW-platform has safety goals, the system integrator shall check for correctness and completeness of SW-platform testing and add verification where needed.
 
-   Note: The SW-platform integtion tests provided by S-CORE for :need:`aou_req__platform__testing` are for demonstration purpose only,
+   Note: The SW-platform integration tests provided by S-CORE for :need:`aou_req__platform__testing` are for demonstration purpose only,
    as described in the tailoring section of :need:`doc__score_platform_safety_plan` and thus do not claim correctness and completeness.
+
+.. aou_req:: Unit test execution across build configurations and target systems
+   :id: aou_req__platform__ut_execution_consistency
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :tags: user
+
+   If the system using the SW-platform has safety goals, the system integrator shall build and execute the relevant unit tests for every relevant build configuration and target system. At a minimum, the unit tests shall be executed on Linux both with and without code-coverage instrumentation, and on each relevant target system, such as QNX, without code-coverage instrumentation. The non-coverage builds shall use the compiler options permitted for the safety and security product.
+
+   Note: Code-coverage instrumentation requires compiler options that differ from the options recommended or permitted for the safety product. Consequently, the results of a coverage-instrumented build do not provide the same assurance as results from a build using the safety-permitted compiler options. The system integrator shall therefore treat the non-coverage execution on each relevant target system as a separate safety-relevant verification activity and shall ensure that the test results are equivalent across the coverage and non-coverage executions. Any difference shall be analyzed and resolved or documented in the system's verification and safety documentation.
 
 .. aou_req:: Integrator safety anomaly reporting
    :id: aou_req__platform__integration_safety_anomaly
@@ -269,6 +282,22 @@ This is the highest level of integration. This is the level where the S-CORE SW-
 
    Note: This includes all the modules of the S-CORE SW platform used by the system integrator.
    The relevant safety critical bugs or safety anomalies are published by S-CORE as defined in the :need:`doc__platform_problem_resolution_plan`.
+
+.. aou_req:: Integrator safety confirmation
+   :id: aou_req__platform__safety_confirmation
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :version: 1
+   :tags: user
+
+   If the system using the SW-platform has safety goals, the system integrator shall
+   perform the following safety related confirmation measures on the S-CORE platform,
+   because those are tailored out in :need:`doc__score_platform_safety_plan`:
+
+   * safety assessment
+   * confirmation review (using as input :need:`wp__fdr_reports` on platform and module levels)
 
 
 Assumptions on Applications

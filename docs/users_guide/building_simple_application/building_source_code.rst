@@ -14,105 +14,210 @@
 
 .. _building_source_code:
 
-Building source code
-=====================
+Build and test
+==============
 
-SCRAMPLE provides two minimal “Hello World” applications — one in C++ and one in Rust — that
-both use the S-CORE ``mw::log`` logging library.
+The running example is the component ``component_example`` of the module template. It consists of the following files
+in `score/component_example <https://github.com/eclipse-score/module_template/tree/main/score/component_example>`_
+and `score/tests <https://github.com/eclipse-score/module_template/tree/main/score/tests>`_:
 
-C++ Application (``src_cpp/BUILD``)
--------------------------------------
+.. list-table::
+   :header-rows: 1
+   :widths: 45 55
 
-Let’s begin with the C++ application, starting with the bazel
-`src_cpp/BUILD <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_cpp/BUILD>`_ file.
+   * - File
+     - Content
+   * - ``score/component_example/src/component_example.hpp``
+     - Interface of the component
+   * - ``score/component_example/src/component_example.cpp``
+     - Implementation
+   * - ``score/component_example/src/component_example_test.cpp``
+     - Unit test
+   * - ``score/component_example/tests/component_example_test.cpp``
+     - Component integration test
+   * - ``score/component_example/BUILD``
+     - Bazel targets of the component
+   * - ``score/component_example/docs/``
+     - Documentation of the component, see :doc:`documentation generation <doc_generation>`
+   * - ``score/tests/test_main.cpp``, ``score/tests/test_main.rs``, ``score/tests/BUILD``
+     - Feature integration tests of the module in C++ and Rust
+
+The code
+--------
+The interface declares two functions:
+
+.. code-block:: cpp
+    :linenos:
+
+    namespace score {
+    namespace component_example {
+
+    // Unit
+    std::string make_hello();
+
+    // Component API
+    std::string make_hello_message(const std::string& name);
+
+    }  // namespace component_example
+    }  // namespace score
+
+``make_hello()`` stands for a *unit*, the smallest part of the component which is tested on its own.
+``make_hello_message()`` is the *component API*, which other components and modules use.
+The implementation combines both:
+
+.. code-block:: cpp
+    :linenos:
+    :emphasize-lines: 10
+
+    #include "score/component_example/src/component_example.hpp"
+
+    namespace score {
+    namespace component_example {
+
+    std::string make_hello() {
+        return "Hello";
+    }
+
+    // req-traceability: comp_req__mod_temp_component_name__some_title
+    std::string make_hello_message(const std::string& name) {
+        return make_hello() + ", " + name + "!";
+    }
+
+    }  // namespace component_example
+    }  // namespace score
+
+Line 10 links the implementation to the component requirement it implements. The
+:doc:`documentation generation <doc_generation>` chapter shows how this link appears in the documentation.
+Include paths start at the root of the repository, e.g. ``score/component_example/src/...``.
+
+Bazel targets
+-------------
+The Bazel targets of the component are defined in
+`score/component_example/BUILD <https://github.com/eclipse-score/module_template/blob/main/score/component_example/BUILD>`_:
 
 .. code-block:: python
     :linenos:
 
-    cc_binary(
-        name = "scrample_cpp",
-        srcs = ["main.cpp"],
-        data = ["//config:logging.json"],
+    cc_library(
+        name = "component_example",
+        srcs = ["src/component_example.cpp"],
+        hdrs = ["src/component_example.hpp"],
         visibility = ["//visibility:public"],
+    )
+
+    cc_test(
+        name = "component_example_unit_tests",
+        size = "small",
+        srcs = ["src/component_example_test.cpp"],
         deps = [
-            "@score_logging//score/mw/log",
+            ":component_example",
+            "@googletest//:gtest_main",
         ],
     )
 
-The `cc_binary <https://bazel.build/reference/be/c-cpp#cc_binary>`_ produces a C++ binary.
-The attributes of *cc_binary* are documented in detail in the Bazel documentation.
-The *scrample_cpp* binary depends on:
+    cc_test(
+        name = "component_example_component_integration_tests",
+        size = "small",
+        srcs = ["tests/component_example_test.cpp"],
+        deps = [
+            ":component_example",
+            "@googletest//:gtest_main",
+        ],
+    )
 
-- the *score_logging* module (``mw::log`` logging library)
+- The `cc_library <https://bazel.build/reference/be/c-cpp#cc_library>`_ ``component_example`` contains the code of the
+  component. ``visibility = ["//visibility:public"]`` allows other packages and modules to use it.
+- The two `cc_test <https://bazel.build/reference/be/c-cpp#cc_test>`_ targets build the tests with GoogleTest.
+  ``gtest_main`` provides the ``main()`` function, so the test files only contain the test cases.
+- The ``BUILD`` file additionally contains the ``docs_bundle`` of the component, which is explained in the
+  :doc:`documentation generation <doc_generation>` chapter.
 
-The logging configuration is provided via ``//config:logging.json``, which is made available
-at runtime through Bazel’s runfiles mechanism.
-
-Rust Application (``src_rust/BUILD``)
---------------------------------------
-
-The Rust application is defined in
-`src_rust/BUILD <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_rust/BUILD>`_:
+Targets of other modules are referenced with the ``@<module>//<package>:<target>`` syntax, e.g.
+``@googletest//:gtest_main``. To use an S-CORE module, declare it with ``bazel_dep`` in ``MODULE.bazel``
+(see :doc:`first_score_module`) and add its targets to ``deps``, e.g. the CRC32 calculation of ``score_baselibs``:
 
 .. code-block:: python
+
+    deps = [
+        "@score_baselibs//score/hash/code/crc:crc_ieee",
+    ],
+
+Test levels
+-----------
+S-CORE distinguishes the test levels described in the :ref:`software verification plan <software_verification_plan>`.
+The template contains an example for each of them:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 22 18 40
+
+   * - Test level
+     - Location
+     - Framework
+     - Example
+   * - Unit test
+     - ``score/<component>/src/``
+     - GoogleTest
+     - ``component_example_unit_tests`` tests the unit ``make_hello()``
+   * - Component integration test
+     - ``score/<component>/tests/``
+     - GoogleTest
+     - ``component_example_component_integration_tests`` tests the component API ``make_hello_message()``
+       against the component requirement
+   * - Feature integration test
+     - ``score/tests/``
+     - GoogleTest, Rust test
+     - ``feature_integration_tests_cpp`` and ``feature_integration_tests_rust`` test the module as a whole;
+       the Rust test is only a placeholder
+
+The template uses the simplest form for all levels: plain GoogleTest tests for C++ and the built-in test framework
+for Rust. For more extensive tests, S-CORE provides dedicated frameworks: the test scenarios from
+`testing_tools <https://github.com/eclipse-score/testing_tools>`_ for component integration tests, which are
+implemented in C++ or Rust and driven by pytest, and the
+`Integration Testing Framework (ITF) <https://github.com/eclipse-score/itf>`_ for feature integration tests,
+which runs pytest-based tests on Docker containers, QEMU virtual machines or real hardware.
+See :ref:`Overview of technologies <technology_overview>` for details.
+
+The component integration test shows how a test declares what it verifies:
+
+.. code-block:: cpp
     :linenos:
+    :emphasize-lines: 2, 3, 4, 5
 
-    load("@rules_rust//rust:defs.bzl", "rust_binary")
+    TEST(ComponentExampleTest, MakeHelloMessageReturnsExpectedGreeting) {
+        RecordProperty("PartiallyVerifies", "comp_req__mod_temp_component_name__some_title");
+        RecordProperty("TestType", "requirements-based");
+        RecordProperty("DerivationTechnique", "requirements-analysis");
+        RecordProperty("Description", "Verify make_hello_message returns the greeting for each name.");
 
-    RUSTC_FLAGS = select({
-        "@platforms//os:qnx": [
-            "-Clink-arg=-lc++",
-            "-Clink-arg=-lm",
-        ],
-        "//conditions:default": [
-            "-Clink-arg=-lstdc++",
-            "-Clink-arg=-lm",
-            "-Clink-arg=-lc",
-        ],
-    })
+        EXPECT_EQ(make_hello_message("World"), "Hello, World!");
+        EXPECT_EQ(make_hello_message("SCORE"), "Hello, SCORE!");
+    }
 
-    rust_binary(
-        name = "scrample_rust",
-        srcs = ["main.rs"],
-        data = ["//config:logging.json"],
-        edition = "2021",
-        rustc_flags = RUSTC_FLAGS,
-        visibility = ["//visibility:public"],
-        deps = [
-            "@score_baselibs_rust//src/log/score_log",
-            "@score_logging//score/mw/log/rust/score_log_bridge",
-        ],
-    )
+GoogleTest writes these properties into the test result. The documentation build reads them and links the test
+to the requirement, see :doc:`documentation generation <doc_generation>`.
 
-The Rust binary uses:
 
-- ``score_log`` from the *score_baselibs_rust* module as a Rust logging facade
-- ``score_log_bridge`` from the *score_logging* module to bridge Rust logging to the ``mw::log`` C++ backend
-
-The ``RUSTC_FLAGS`` select expression ensures correct C++ standard library linking on both Linux and QNX targets.
-
-Now that the targets are defined, we can build the binaries.
-
-Before continuing, it is helpful to introduce two fundamental Bazel concepts: toolchains and platforms.
+Toolchains and platforms
+------------------------
+Before building the binaries, it is helpful to introduce two fundamental Bazel concepts: toolchains and platforms.
 
 A complete explanation is beyond the scope of this small tutorial, but the following brief overview is sufficient:
 
-- A `Bazel toolchain <https://bazel.build/extending/toolchain>`_ specifies which compiler and linker are used (e.g., GCC, Ferrocene).
-- A `Bazel platform <https://bazel.build/extending/platform>`_ defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).
+- A `Bazel toolchain <https://bazel.build/extending/toolchains>`_ specifies which compiler and linker are used (e.g., GCC, QCC, Ferrocene).
+- A `Bazel platform <https://bazel.build/extending/platforms>`_ defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).
 
-SCRAMPLE uses the same toolchain setup as the other S-CORE modules, provided by
-`score_bazel_cpp_toolchains <https://github.com/eclipse-score/bazel_cpp_toolchains>`_.
-To add these toolchains to our module, we extend the
-`MODULE.bazel <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel>`_
-file with the corresponding configuration:
+All S-CORE modules use the same toolchains, provided by
+`score_bazel_cpp_toolchains <https://github.com/eclipse-score/bazel_cpp_toolchains>`_ (GCC and QCC) and
+`score_toolchains_rust <https://github.com/eclipse-score/toolchains_rust>`_ (Ferrocene),
+and the platforms defined in `score_bazel_platforms <https://github.com/eclipse-score/bazel_platforms>`_.
+In the module template, they are registered in the ``MODULE.bazel`` block *S-CORE Toolchains (DO NOT MODIFY)*, e.g.:
 
 .. code-block:: python
     :linenos:
 
-    # C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)
-    bazel_dep(name = "score_bazel_cpp_toolchains", version = "0.5.1", dev_dependency = True)
+    gcc = use_extension("@score_bazel_cpp_toolchains//extensions:gcc.bzl", "gcc")
 
-    gcc = use_extension("@score_bazel_cpp_toolchains//extensions:gcc.bzl", "gcc", dev_dependency = True)
     gcc.toolchain(
         name = "score_gcc_x86_64_toolchain",
         target_cpu = "x86_64",
@@ -120,122 +225,82 @@ file with the corresponding configuration:
         use_default_package = True,
         version = "12.2.0",
     )
-    gcc.toolchain(
-        name = "score_qcc_x86_64_toolchain",
-        sdp_version = "8.0.0",
-        target_cpu = "x86_64",
-        target_os = "qnx",
-        use_default_package = True,
-        version = "12.2.0",
-    )
-    use_repo(
-        gcc,
-        "score_gcc_x86_64_toolchain",
-        "score_qcc_x86_64_toolchain",
-    )
 
-    # Ferrocene Rust toolchains (QNX cross-compilation support)
-    bazel_dep(name = "score_toolchains_rust", version = "0.9.1", dev_dependency = True)
+The template contains such toolchains for Linux (x86_64, aarch64), QNX SDP 8.0 (x86_64, aarch64),
+Red Hat AutoSD and Elektrobit corbos Linux for Safety Applications.
+The file `score.bazelrc/score_toolchain.bazelrc <https://github.com/eclipse-score/module_template/blob/main/score.bazelrc/score_toolchain.bazelrc>`_
+combines each platform with its toolchains into a build configuration:
 
-The ``score_bazel_cpp_toolchains`` module provides GCC 12.2.0 for both Linux host builds and
-QNX SDP 8.0.0 cross-compilation. The ``score_toolchains_rust`` module provides pre-built
-`Ferrocene <https://ferrous-systems.com/ferrocene/>`_ toolchains for Rust.
+.. code-block:: text
+    :linenos:
+
+    build:score-linux-x86_64 --config=_score_common
+    build:score-linux-x86_64 --extra_toolchains=@score_gcc_x86_64_toolchain//:x86_64-linux-gcc_12.2.0
+    build:score-linux-x86_64 --platforms=@score_bazel_platforms//:x86_64-linux-gcc_12.2.0-posix
+
+    build:score-qnx-x86_64 --config=_score_common
+    build:score-qnx-x86_64 --platforms=@score_bazel_platforms//:x86_64-qnx-sdp_8.0.0-posix
+    build:score-qnx-x86_64 --extra_toolchains=@score_qcc_x86_64_toolchain//:x86_64-qnx-sdp_8.0.0
+    build:score-qnx-x86_64 --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_pc_nto_qnx800
+
+Without ``--config``, Bazel builds for the host with the LLVM toolchain that the template registers in ``MODULE.bazel``
+(``toolchains_llvm``). This is fine for a quick local test run; for the S-CORE target platforms, always use
+one of the ``score-*`` configurations.
 
 .. tip::
-    CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
-    the QNX compiler locally, you must acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
-    as described in the `QNX & QEMU set-up tutorial <https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/runners/qemu_x86_64/README.md>`_.
+    The CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
+    the QNX compiler locally, you need a QNX license, e.g. the free community license *QNX Everywhere*, installed at
+    ``/opt/score_qnx/license/licenses``, and access to the QNX SDP download. The setup is described in the
+    `QNX integration guide <https://github.com/eclipse-score/bazel_cpp_toolchains/blob/main/docs/qnx_integration.md>`_
+    of ``score_bazel_cpp_toolchains``.
 
-Since our applications depend on the logging and base libraries (as defined in the
-`src_cpp/BUILD <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_cpp/BUILD>`_ and
-`src_rust/BUILD <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_rust/BUILD>`_ files),
-we also need to add the dependencies to these modules into the
-`MODULE.bazel <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel>`_ file:
-
-.. code-block:: python
-    :linenos:
-
-    bazel_dep(name = "score_baselibs", version = "0.2.7")
-    bazel_dep(name = "score_baselibs_rust", version = "0.1.2")
-    bazel_dep(name = "score_logging", version = "0.2.1")
-
-.. code-block:: python
-    :linenos:
-
-    bazel_dep(name = "platforms", version = "1.0.0")
-    bazel_dep(name = "score_bazel_platforms", version = "0.1.2")
-
-Bazel modules don’t inherit transitive dependencies automatically.
-This means that you must always list all required module dependencies explicitly in your *MODULE.bazel* file.
-
-To actually use the registered toolchains, we also need to configure them in the
-`.bazelrc <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.bazelrc>`_ file:
-
-.. code-block:: python
-    :linenos:
-    :emphasize-lines: 1, 2, 11, 12
-
-    common --extra_toolchains=@score_gcc_x86_64_toolchain//:x86_64-linux-gcc_12.2.0
-    common --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_unknown_linux_gnu
-
-    common --@score_baselibs//score/memory/shared/flags:use_typedshmd=False
-    common --@score_baselibs//score/mw/log/flags:KRemote_Logging=False
-
-    build:_common --@score_baselibs//score/json:base_library=nlohmann
-    build:_common --cxxopt=-Wno-error=mismatched-new-delete
-    build:_common --cxxopt=-Wno-error=deprecated-declarations
-
-    build:x86_64-qnx --config=_common
-    build:x86_64-qnx --noexperimental_merged_skyframe_analysis_execution
-    build:x86_64-qnx --incompatible_enable_cc_toolchain_resolution
-    build:x86_64-qnx --incompatible_strict_action_env
-    build:x86_64-qnx --platforms=@score_bazel_platforms//:x86_64-qnx-sdp_8.0.0-posix
-    build:x86_64-qnx --extra_toolchains=@score_qcc_x86_64_toolchain//:x86_64-qnx-sdp_8.0.0
-    build:x86_64-qnx --extra_toolchains=@score_toolchains_rust//toolchains/ferrocene:ferrocene_x86_64_pc_nto_qnx800
-
-Lines 1-2 (highlighted) register the GCC and Ferrocene toolchains for all builds.
-The Ferrocene Linux toolchain is registered as a ``common`` toolchain so that proc macro crates
-(compiled on the host) and QNX target crates share the same compiler metadata format,
-which is required for cross-compilation compatibility.
-
-Lines 4-5 set feature flags required by ``score_baselibs`` that are not applicable in
-this demo (proprietary shared memory driver and remote logging backend).
-These options must be set globally because Bazel builds all dependent modules within
-the context of your module’s configuration.
-
-Lines 11-17 (highlighted) configure Bazel to target the QNX SDP 8.0.0 platform and
-select the appropriate QNX and Ferrocene toolchains.
-
-Finally, we can compile the code. Always use an explicit build configuration:
-
-**Host build (Linux x86_64):**
+Building and running the tests
+------------------------------
+Build all targets of the module for Linux x86_64:
 
 .. code-block:: bash
-    :linenos:
 
-    bazel build --config=host //src_cpp:scrample_cpp
-    bazel build --config=host //src_rust:scrample_rust
+    bazel build --config=score-linux-x86_64 //score/...
 
-**QNX cross-compilation:**
+Run all tests of the module, or only the tests of one test level:
 
 .. code-block:: bash
-    :linenos:
 
-    bazel build --config=x86_64-qnx //src_cpp:scrample_cpp
-    bazel build --config=x86_64-qnx //src_rust:scrample_rust
+    # all tests
+    bazel test --config=score-linux-x86_64 //score/...
 
-After a successful host build, the binaries can be found in the build folder:
+    # unit tests of the component
+    bazel test --config=score-linux-x86_64 //score/component_example:component_example_unit_tests
 
-.. code-block:: text
-    :linenos:
+    # component integration tests of the component
+    bazel test --config=score-linux-x86_64 //score/component_example:component_example_component_integration_tests
 
-    bazel-bin/src_cpp/scrample_cpp
-    bazel-bin/src_rust/scrample_rust
+    # feature integration tests
+    bazel test --config=score-linux-x86_64 //score/tests/...
 
-Both apps produce the same log output to the console:
+The first run takes a while, because Bazel downloads the toolchains and dependencies. Afterwards, Bazel only
+rebuilds what has changed and reuses the results of unchanged tests; such tests are marked as ``(cached)``
+in the test summary.
 
-.. code-block:: text
+The results of each test, incl. the JUnit XML file ``test.xml``, are stored in ``bazel-testlogs/``, e.g.
+``bazel-testlogs/score/component_example/component_example_unit_tests/``.
 
-    2026/05/22 12:00:00.0000000 00000000 000 ECU1 SCRM scra log info verbose 1 Hello from SCRAMPLE!
+Checks before a pull request
+----------------------------
+The CI/CD workflows of your repository run further checks on every pull request. Run them locally before you push:
 
-Now it is time to run the binary in the reference QNX QEMU image.
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - Command
+     - Check
+   * - ``pre-commit run --all-files``
+     - Whitespace, copyright and REUSE headers, YAML formatting and the Bazel lockfile,
+       as configured in ``.pre-commit-config.yaml``; install the tool with ``pip install pre-commit`` if needed
+   * - ``bazel test //:format.check``
+     - Formatting of the source code, e.g. C++, Rust, Python and Starlark; ``bazel run //:format.fix`` fixes it
+   * - ``bazel run //:copyright.check``
+     - Copyright headers of the files in ``score/``, ``BUILD`` and ``MODULE.bazel``
+
+The next chapter shows how the component is documented and how requirements, code and tests are linked.

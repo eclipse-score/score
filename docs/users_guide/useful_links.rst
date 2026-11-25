@@ -55,8 +55,8 @@ Build System (Bazel)
 - `Bazel Build System <https://bazel.build/>`_ — official Bazel documentation
 - `Bazel Modules (Bzlmod) <https://bazel.build/external/module>`_ — dependency management with Bazel modules
 - `Bazel Central Registry <https://bcr.bazel.build>`_ — official public Bazel module registry
-- `Bazel Toolchains <https://bazel.build/extending/toolchain>`_ — configuring compiler toolchains in Bazel
-- `Bazel Platforms <https://bazel.build/extending/platform>`_ — defining target CPU architectures
+- `Bazel Toolchains <https://bazel.build/extending/toolchains>`_ — configuring compiler toolchains in Bazel
+- `Bazel Platforms <https://bazel.build/extending/platforms>`_ — defining target CPU architectures
 - `Bazel Rules <https://bazel.build/extending/rules>`_ — writing custom Bazel rules
 - `Bazel Macros <https://bazel.build/extending/macros>`_ — writing reusable Bazel macros
 

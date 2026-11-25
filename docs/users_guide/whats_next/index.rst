@@ -28,8 +28,17 @@ Becoming a contributor
 #. **Read the User's Guide** — Work through the complete :ref:`users_guide` from start to finish to
    build a solid foundation of S-CORE knowledge.
 
-#. **Start the S-CORE test application "scrample"** — Run `scrample <https://github.com/eclipse-score/scrample/tree/v0.1.1>`_ locally to experience the
-   full development loop (build, test, CI/CD) on a real, self-contained project.
+#. **Run the reference integration showcases** — Build and run the
+   `reference integration <https://github.com/eclipse-score/reference_integration>`_ locally
+   to experience the full development loop (build, test, CI/CD) on the integrated platform.
+
+#. **Do the contributor training** — Work through the
+   `contributor training <https://github.com/eclipse-score/contributor_training>`_ in a copy in
+   your own GitHub account: build, review, fix and rebase in a fictive S-CORE module.
+
+#. **Keep your first pull request small** — Read the rules for the
+   :ref:`scope and size of a pull request <pr_scope_and_size>`: one concern per pull request,
+   reviewable in one sitting, every change with a stated reason.
 
 #. **Implement an open issue and create a pull request** — Pick up an open issue in any S-CORE
    module repository, implement your fix or improvement, and go through the pull-request review

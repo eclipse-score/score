@@ -254,9 +254,16 @@ Source usage note: normative decisions in this document are based on the
 S-CORE process and MISRA references (including
 `MISRA C:2025 Addendum 6 Applicability of MISRA C:2025 to the Rust Programming Language <https://misra.org.uk/app/uploads/2025/03/MISRA-C-2025-ADD6.pdf>`_).
 Research sources such as
-`MISRust (arXiv:2605.23490v1), Table 3 <https://arxiv.org/html/2605.23490v1>`_
+`MISRust (arXiv:2605.23490v2), Table 3 <https://arxiv.org/pdf/2605.23490v2>`_
 are used as supporting rationale for topic prioritization, not as normative
 compliance criteria.
+
+Proposed S-CORE rule text for the MISRA C++:2023 guidelines that the SCRC's own
+cross-reference marks as applicable to Rust, together with an applicability register
+and the evidence expected per rule, is maintained as a draft in
+:need:`doc__rust_coding_rules`. It supplements the
+lint profile described here and binds a component only once adopted through its
+Software Development Plan.
 
 The recommended ``[lints.rust]``, ``[lints.clippy]``, and ``[profile.release]``
 settings are maintained centrally in the
@@ -265,9 +272,9 @@ settings are maintained centrally in the
 CodeQL is handled separately from this repository; see *Rust Tooling: CodeQL*
 above and :doc:`../../../platform_management_plan/software_verification`.
 
-* `Practical baseline (relaxed) <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/Cargo.toml>`_ —
+* `Practical baseline (relaxed) <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/relaxed/clippy.toml>`_ —
   suitable for general SCORE components.
-* `Strict / ASIL variant <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/Cargo.toml>`_ —
+* `Strict / ASIL variant <https://github.com/eclipse-score/score_rust_policies/blob/main/clippy/strict/clippy.toml>`_ —
   for safety-critical code requiring stricter enforcement.
 
 Rust Tooling Configuration and Evidence
@@ -276,6 +283,15 @@ Rust Tooling Configuration and Evidence
 The settings below are thematically aligned with the Safety-Critical Rust
 Coding Guidelines, especially their sections on errors, concurrency, unsafety,
 FFI, compilation, and compliance.
+
+.. note::
+
+   The lint set and release profile described in this section are the **target state** and are
+   **not yet enforced**. The ``strict`` and ``relaxed`` Clippy configurations in ``score_rust_policies``
+   currently only define the minimum supported Rust version, so modules running Clippy via the
+   ``clippy_strict`` aspect apply Clippy's default lint groups only. ``[lints]`` and ``[profile]``
+   sections in a ``Cargo.toml`` are not applied to Bazel builds. The settings become mandatory once
+   they are provided centrally in ``score_rust_policies`` (see :need:`doc__software_development_plan`).
 
 The concrete ``rustc`` and Clippy lints, their levels, and the release profile
 are project policy decisions maintained in ``score_rust_policies``. The

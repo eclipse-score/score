@@ -1,0 +1,180 @@
+Source ID,Draft SCRC assessment,MISRust class,Source level,Proposed Rust rules,Assessment
+0.0.1,safe,C3,Required,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC draft: applies. Unreachable code shall be removed; unreachable_code is a partial diagnostic that depends on lint activation and cannot prove absence (SCR-RUST-002).
+0.0.2,safe,C6,Advisory,:ref:`SCR-RUST-003 <scr-rust-003>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-003.
+0.1.1,safe,C6,Advisory,:ref:`SCR-RUST-003 <scr-rust-003>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-003.
+0.1.2,safe,C6,Required,:ref:`SCR-RUST-004 <scr-rust-004>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-004.
+0.2.1,safe,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC draft: applies. Unused declarations shall be removed or justified; warning activation and suppressions decide coverage (SCR-RUST-002).
+0.2.2,safe,C3,Required,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC draft: applies. Unused parameters compile; underscore-prefixed names and allow attributes need a documented policy (SCR-RUST-002).
+0.2.3,safe,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC draft: applies. Unused types shall be removed or justified; diagnostics depend on visibility and configuration (SCR-RUST-002).
+0.2.4,safe,C3,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC draft: applies. Unused functions shall be removed or justified; diagnostics depend on visibility and configuration (SCR-RUST-002).
+0.3.1,safe,C6,Advisory,:ref:`SCR-RUST-005 <scr-rust-005>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-005.
+0.3.2,safe,C6,Required,:ref:`SCR-RUST-006 <scr-rust-006>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-006.
+4.1.1,safe,C5,Required,:ref:`SCR-RUST-001 <scr-rust-001>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-001.
+4.1.2,safe,C6,Advisory,:ref:`SCR-RUST-002 <scr-rust-002>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-002.
+4.1.3,safe,C4,Required,:ref:`SCR-RUST-007 <scr-rust-007>`,"SCRC draft: applies; the SCRC draft authors question the safe classification in their rationale, so the safe/unsafe scope is an open item (SCR-RUST-007)."
+4.6.1,not applicable,C4,Required,not applicable,SCRC draft: not applicable. Rust evaluation order is well defined. S-CORE agrees; no open item.
+5.0.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.7.1,safe,C3,Required,:ref:`SCR-RUST-009 <scr-rust-009>`,SCRC draft: applies to safe Rust; nested block comments make accidental commenting-out likely.
+5.7.2,safe,C6,Advisory,:ref:`SCR-RUST-009 <scr-rust-009>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-009.
+5.7.3,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.10.1,safe,C3,Required,rule assignment pending,SCRC draft: applies to safe Rust; follow Rust API Guidelines naming. No S-CORE rule yet (naming conventions).
+5.13.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.13.2,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.13.3,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.13.4,safe,C3,Required,rule assignment pending,SCRC draft: applies to safe Rust; unsuffixed literals fall back to i32 through inference. No S-CORE rule yet.
+5.13.5,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.13.6,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+5.13.7,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+6.0.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+6.0.2,not applicable,C6,Advisory,not applicable,SCRC draft: not applicable. Follows MISRA C mapping; arrays carry their extent. S-CORE agrees; no open item.
+6.0.3,unsafe,C5,Advisory,:ref:`SCR-RUST-013 <scr-rust-013>`,SCRC draft: applies to safe Rust: no_mangle items enter the global symbol namespace; moved to the exported-symbol rule (SCR-RUST-013).
+6.0.4,safe,C6,Required,:ref:`SCR-RUST-012 <scr-rust-012>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-012.
+6.2.1,unsafe,C4,Required,:ref:`SCR-RUST-013 <scr-rust-013>`,SCRC draft: Check symbol attributes across editions; edition 2021 and 2024 differ in unsafe-attribute syntax.
+6.2.2,unsafe,C3,Required,:ref:`SCR-RUST-013 <scr-rust-013>`,SCRC draft: applies to unsafe Rust; extern declarations shall be type-compatible with the C declaration.
+6.2.3,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+6.2.4,not applicable,C4,Required,not applicable,SCRC draft: not applicable. No header/linkage mechanism; covered by 6.2.1. S-CORE agrees; no open item.
+6.4.1,safe,C6,Required,:ref:`SCR-RUST-014 <scr-rust-014>`,SCRC draft: Adaptation permits clear same-name transformations; this differs from a blanket shadowing prohibition.
+6.4.2,not applicable,C5,Required,not applicable,SCRC draft: not applicable until supertrait_item_shadowing stabilizes. S-CORE agrees; the inherent/trait method-resolution policy in SCR-RUST-014 is an S-CORE addition without this source.
+6.4.3,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+6.5.1,not applicable,C5,Advisory,not applicable,SCRC draft: not applicable. No header files; module system defines the interface. S-CORE agrees; no open item.
+6.5.2,not applicable,C4,Advisory,not applicable,SCRC draft: not applicable. Symbol export requires explicit no_mangle/link_name/extern. S-CORE agrees; no open item.
+6.7.1,safe,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,SCRC draft: applies to safe Rust too: safe interior-mutability/global synchronization still needs design review.
+6.7.2,safe,C4,Required,:ref:`SCR-RUST-008 <scr-rust-008>`,SCRC draft: applies to safe Rust too: Send is not a mutual-exclusion mechanism; globals can use safe interior mutability.
+6.8.1,unsafe,C4,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-015.
+6.8.2,unsafe,C3,Mandatory,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC draft: applies. A function shall not return a raw pointer to its local storage; the borrow checker covers references only (SCR-RUST-015).
+6.8.3,unsafe,C3,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC draft: applies. A raw pointer to a local shall not be stored beyond the local's lifetime; compiler guarantees cover references only (SCR-RUST-015).
+6.8.4,unsafe,C4,Advisory,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-015.
+6.9.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+6.9.2,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+7.0.1,safe,C6,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,"SCRC draft: applies; the SCRC draft authors question the safe classification in their rationale, so the safe/unsafe scope is an open item (SCR-RUST-016)."
+7.0.2,unsafe,C4,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-016.
+7.0.3,not applicable,C4,Required,not applicable,SCRC draft: not applicable. char converts only explicitly via u32. S-CORE agrees; no open item.
+7.0.4,safe,C3,Required,:ref:`SCR-RUST-026 <scr-rust-026>`,SCRC draft: applies. The shift count shall be non-negative and below the bit width of the left operand; draft SCRC guideline gui_RHvQj8BHlz9b (SCR-RUST-026).
+7.0.5,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+7.0.6,not applicable,C6,Required,not applicable,SCRC draft: not applicable. No integral promotion or overload sets. S-CORE agrees; no open item.
+7.11.1,not applicable,C4,Required,not applicable,SCRC draft: not applicable: the source concerns the spelling of the C++ null pointer constant and overload resolution. S-CORE agrees; the typed-null policy in SCR-RUST-017 is an S-CORE adaptation without this source.
+7.11.2,not applicable,C3,Required,not applicable,SCRC draft: not applicable. Arrays do not decay to pointers. S-CORE agrees; no open item.
+7.11.3,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+8.0.1,safe,C6,Advisory,:ref:`SCR-RUST-018 <scr-rust-018>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-018.
+8.1.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+8.1.2,unsafe,C3,Advisory,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC draft: applies to unsafe Rust; closures can capture raw pointers outside borrow-checker guarantees.
+8.2.1,unsafe,C4,Required,:ref:`SCR-RUST-019 <scr-rust-019>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-019.
+8.2.2,safe,C3,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,"SCRC draft: applies to safe Rust (gui_ADHABsmK9FXz, Advisory); `as` casts hide intent, prefer specific conversion functions."
+8.2.3,unsafe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,SCRC draft: Raw-pointer mutability casts can be safe syntax; validity of subsequent access still needs review.
+8.2.4,unsafe,C4,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,SCRC draft: Safe function-pointer casts exist; do not infer ABI correctness from absence of unsafe syntax.
+8.2.5,unsafe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,SCRC draft: transmute is not generally a safer alternative to a cast; review all representation invariants.
+8.2.6,unsafe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,SCRC draft: Pointer casts/reconstruction may occur outside unsafe blocks; scan all code.
+8.2.7,unsafe,C4,Advisory,:ref:`SCR-RUST-020 <scr-rust-020>`,SCRC draft: Correction: pointer-to-integer casts do not require an unsafe block.
+8.2.8,safe,C4,Required,:ref:`SCR-RUST-020 <scr-rust-020>`,SCRC draft: Address width and provenance obligations apply even when the cast is safe syntax.
+8.2.9,not applicable,C4,Required,not applicable,SCRC draft: not applicable. type_id/type_name are compile-time. S-CORE agrees; no open item.
+8.2.10,safe,C6,Required,:ref:`SCR-RUST-022 <scr-rust-022>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-022.
+8.2.11,unsafe,C4,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-021.
+8.3.1,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+8.3.2,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+8.7.1,unsafe,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,SCRC draft: Pointer APIs differ: some wrapping operations permit intermediate out-of-bounds values.
+8.7.2,unsafe,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-023.
+8.9.1,safe,C4,Required,:ref:`SCR-RUST-023 <scr-rust-023>`,SCRC draft: Correction: raw-pointer relational comparisons can be safe expressions; project ordering restrictions still apply.
+8.14.1,safe,C6,Advisory,:ref:`SCR-RUST-024 <scr-rust-024>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-024.
+8.18.1,unsafe,C4,Mandatory,:ref:`SCR-RUST-025 <scr-rust-025>`,SCRC draft: Use the Rust API contract: ptr::copy permits overlap; copy_nonoverlapping does not.
+8.18.2,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+8.19.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+8.20.1,safe,C6,Advisory,:ref:`SCR-RUST-026 <scr-rust-026>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-026.
+9.2.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. let syntax prevents the confusion. S-CORE agrees; no open item.
+9.3.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+9.4.1,safe,C6,Required,:ref:`SCR-RUST-027 <scr-rust-027>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-027.
+9.4.2,safe,C3,Required,rule assignment pending,SCRC draft: applies to safe Rust in part (sub-rules on braces/compound statements). No S-CORE rule yet.
+9.5.1,safe,C3,Advisory,rule assignment pending,SCRC draft: applies to safe Rust; prefer iterators over index-modifying while loops. No S-CORE rule yet.
+9.5.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+9.6.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+9.6.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+9.6.3,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+9.6.4,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+9.6.5,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+10.0.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+10.1.1,safe,C3,Advisory,rule assignment pending,"SCRC draft: applies to safe Rust; take &mut only when needed, with trait-definition exception. No S-CORE rule yet."
+10.1.2,unsafe,C4,Required,:ref:`SCR-RUST-028 <scr-rust-028>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-028.
+10.2.1,safe,C3,Required,rule assignment pending,"SCRC draft: applies to safe Rust; explicit enum representation, except data-carrying enums. No S-CORE rule yet."
+10.2.2,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+10.2.3,safe,C3,Required,:ref:`SCR-RUST-016 <scr-rust-016>`,SCRC draft: applies to safe Rust; `as` casts of enum discriminants to narrow integers can overflow.
+10.3.1,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+10.4.1,unsafe,C4,Required,:ref:`SCR-RUST-029 <scr-rust-029>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-029.
+11.3.1,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+11.3.2,safe,C4,Advisory,:ref:`SCR-RUST-030 <scr-rust-030>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-030.
+11.6.1,unsafe,C4,Advisory,:ref:`SCR-RUST-031 <scr-rust-031>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-031.
+11.6.2,unsafe,C4,Mandatory,:ref:`SCR-RUST-031 <scr-rust-031>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-031.
+11.6.3,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+12.2.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+12.2.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+12.2.3,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+12.3.1,unsafe,C5,Required,:ref:`SCR-RUST-032 <scr-rust-032>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-032.
+13.1.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+13.1.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+13.3.1,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+13.3.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+13.3.3,safe,C6,Required,:ref:`SCR-RUST-033 <scr-rust-033>`,SCRC draft: Rust accepts underscore parameter patterns; names and unused-role policy need explicit interpretation.
+13.3.4,safe,C2,Required,rule assignment pending,SCRC draft: applies to safe Rust; function/vtable pointer comparison is unspecified. No S-CORE rule yet.
+14.1.1,safe,C6,Advisory,:ref:`SCR-RUST-034 <scr-rust-034>`,SCRC draft: Adapt structural public/private restriction into invariant protection; record as project interpretation.
+15.0.1,safe,C5,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,"SCRC draft: Pin is a type, not a trait; review Unpin/structural pinning only where used."
+15.0.2,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. No move constructors; Clone signature fixed by the trait. S-CORE agrees; no open item.
+15.1.1,not applicable,C3,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+15.1.2,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+15.1.3,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+15.1.4,unsafe,C3,Advisory,:ref:`SCR-RUST-031 <scr-rust-031>`,SCRC draft: applies to unsafe Rust; MaybeUninit and similar bypass initialization checks.
+15.1.5,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+15.8.1,unsafe,C3,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,SCRC draft: applies to unsafe Rust; Pin-based move emulation must define self-assignment behavior.
+16.5.1,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+16.5.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+16.6.1,not applicable,C3,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+17.8.1,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+18.1.1,unsafe,C2,Required,:ref:`SCR-RUST-036 <scr-rust-036>`,SCRC draft: applies to unsafe Rust; raw-pointer panic payloads (panic_any) have unclear ownership.
+18.1.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+18.3.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+18.3.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+18.3.3,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+18.4.1,safe,C2,Required,:ref:`SCR-RUST-036 <scr-rust-036>`,SCRC draft: applies. Restore related obligation from C2: Drop can panic and a second panic during unwinding can abort.
+18.5.1,safe,C5,Advisory,:ref:`SCR-RUST-036 <scr-rust-036>`; :ref:`SCR-RUST-042 <scr-rust-042>`,"SCRC draft: applies. Unwinding across a foreign-language boundary; a panic reaching a non-unwinding extern ""C"" boundary aborts and a foreign exception entering Rust is undefined behavior (SCR-RUST-036, SCR-RUST-042)."
+18.5.2,safe,C6,Advisory,:ref:`SCR-RUST-036 <scr-rust-036>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-036.
+19.0.1,not applicable,C5,Required,:ref:`SCR-RUST-037 <scr-rust-037>`,SCRC draft: not applicable (cfg attaches to the next item). Retained by S-CORE for the cfg-name typo hazard: a misspelled cfg predicate silently disables code unless check-cfg is enforced (SCR-RUST-037).
+19.0.2,safe,C2,Required,:ref:`SCR-RUST-038 <scr-rust-038>`,"SCRC draft: applies to safe Rust; prefer functions over function-like macros, variadic macros excepted."
+19.0.3,safe,C6,Advisory,:ref:`SCR-RUST-011 <scr-rust-011>`,SCRC draft: applies to safe Rust. Interpreted by SCR-RUST-011.
+19.0.4,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.1.1,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.1.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.1.3,not applicable,C4,Required,not applicable,SCRC draft: not applicable. Undefined identifiers are compile errors. S-CORE agrees; no open item.
+19.2.1,safe,C3,Required,:ref:`SCR-RUST-011 <scr-rust-011>`,SCRC draft: applies to safe Rust; include! and path attributes can shadow items in outer scopes.
+19.2.2,not applicable,C5,Required,not applicable,SCRC draft: not applicable. Invalid include paths are compile errors. S-CORE agrees; no open item.
+19.2.3,not applicable,C4,Required,not applicable,SCRC draft: not applicable: the source concerns characters in header-file names. S-CORE agrees; include!/path provenance is covered by SCR-RUST-011 without this source.
+19.3.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.3.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.3.3,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.3.4,safe,C4,Required,:ref:`SCR-RUST-038 <scr-rust-038>`,SCRC draft: Macro expression matching does not ensure single evaluation or absence of hidden effects.
+19.3.5,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+19.6.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+21.2.1,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+21.2.2,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+21.2.3,safe,C1,Required,rule assignment pending,SCRC draft: applies to safe Rust; std::process::Command has platform path-search hazards. No S-CORE rule yet.
+21.2.4,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+21.6.1,safe,C6,Advisory,:ref:`SCR-RUST-039 <scr-rust-039>`,SCRC draft: Controlled allocation is a proposed project adaptation; do not silently impose a blanket allocation ban.
+21.6.2,safe,C5,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,SCRC draft: Drop is not guaranteed to run; mem::forget and leaks are safe operations.
+21.6.3,unsafe,C4,Required,:ref:`SCR-RUST-039 <scr-rust-039>`,SCRC draft: applies to unsafe Rust. Interpreted by SCR-RUST-039.
+21.6.4,not applicable,C2,Required,not applicable,"SCRC draft: not applicable: GlobalAlloc::dealloc always receives the layout, so the sized/unsized delete pairing has no counterpart. S-CORE agrees; allocator customization is represented by 21.6.3."
+21.6.5,not applicable,C4,Required,not applicable,SCRC draft: not applicable. No incomplete types. S-CORE agrees; no open item.
+21.10.1,unsafe,C1,Required,:ref:`SCR-RUST-021 <scr-rust-021>`,SCRC draft: applies to unsafe Rust; C-variadic arguments (VaList) carry the same hazards as in C.
+21.10.2,unsafe,C1,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC draft: applies to unsafe Rust; setjmp/longjmp reachable through FFI or inline assembly and often UB.
+21.10.3,unsafe,C1,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC draft: applies to unsafe Rust; signal handling only through platform APIs.
+22.3.1,safe,C5,Required,:ref:`SCR-RUST-040 <scr-rust-040>`,SCRC draft: A constant argument to ordinary assert! does not by itself force compile-time evaluation.
+22.4.1,unsafe,C2,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC draft: applies to unsafe Rust; errno is writable only through platform APIs.
+23.11.1,unsafe,C2,Advisory,:ref:`SCR-RUST-020 <scr-rust-020>`,"SCRC draft: applies. Reassess C2: raw pointers can be constructed in safe Rust; audit boundaries by operations, not unsafe keywords."
+24.5.1,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+24.5.2,unsafe,C1,Required,:ref:`SCR-RUST-025 <scr-rust-025>`,SCRC draft: applies to unsafe Rust; ptr::copy and copy_nonoverlapping are the memmove/memcpy analogues.
+25.5.1,unsafe,C1,Required,:ref:`SCR-RUST-042 <scr-rust-042>`,SCRC draft: applies to unsafe Rust; locale handling requires FFI.
+25.5.2,unsafe,C1,Mandatory,:ref:`SCR-RUST-042 <scr-rust-042>`,"SCRC draft: applies to unsafe Rust; only the FFI part (OS error strings, setenv) is in scope; std::env::var returns owned data."
+25.5.3,unsafe,C1,Mandatory,:ref:`SCR-RUST-042 <scr-rust-042>`,"SCRC draft: applies to unsafe Rust; time zone, locale and errno access through FFI."
+26.3.1,not applicable,C2,Advisory,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+28.3.1,safe,C2,Required,rule assignment pending,SCRC draft: applies to safe Rust; stateful predicates in iterator adapters. No S-CORE rule yet.
+28.6.1,safe,C4,Required,:ref:`SCR-RUST-035 <scr-rust-035>`,"SCRC draft: Comment describes a C++-specific move issue; native moves are compiler-checked, custom owners still need review."
+28.6.2,not applicable,C2,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+28.6.3,unsafe,C2,Required,:ref:`SCR-RUST-015 <scr-rust-015>`,SCRC draft: applies to unsafe Rust; a raw pointer can observe a moved-from location.
+28.6.4,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+30.0.1,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.
+30.0.2,not applicable,C1,Required,not applicable,SCRC draft: not applicable. S-CORE agrees; no open item.

@@ -62,7 +62,7 @@ Education and Skills:
 - Safety related SW development and project management (in aerospace) > 10 years - letters of recommendation from employers
 - Trainer for DO-178B SW safety standard - election certificate
 - Process development CMMI - letters of recommendation from employers
-- Safety trainings by Exida (ISO 26262) - part of Safety Case Safe Posix SW platform
+- Safety trainings by exida (ISO 26262) - part of Safety Case Safe Posix SW platform
 
 S-CORE Commits:
 
@@ -85,7 +85,7 @@ Education and Skills:
 - `Universities degrees <https://www.linkedin.com/in/markus-schu-7a689b5/details/education/>`_
 - `Safety related SW development (see section Experiences) <https://www.linkedin.com/in/markus-schu-7a689b5/>`_
 - `Certifications (ASPICE, Product Safety, Cybersecurity) <https://www.linkedin.com/in/markus-schu-7a689b5/details/certifications/>`_
-- Safety & Security trainings by EXIDA (ISO 26262, ISO/SAE 21434)
+- Safety & Security trainings by exida (ISO 26262, ISO/SAE 21434)
 
 S-CORE Commits:
 

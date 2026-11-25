@@ -15,7 +15,7 @@
 .. document:: Change Management Plan
    :id: doc__platform_change_management_plan
    :status: valid
-   :version: 2
+   :version: 3
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
@@ -46,7 +46,7 @@ Change Management Goals
 * Change Requests are analyzed, affected work products are identified, and the impact is estimated.
 * Change Requests are approved before implementation.
 * Change Requests are implemented and monitored.
-* Changes Requests are tracked until closure and and communicated to affected parties.
+* Change Requests are tracked until closure and communicated to affected parties.
 * Change Requests and affected work products are bidirectionally traced.
 
 Change Management Scope
@@ -94,24 +94,28 @@ is used to create a Change Request including required attributes as defined in
 
   Change Request Simple Overview
 
-Therefore the Change Template :need:`gd_temp__change_feature_request` or
-:need:`gd_temp__change_component_request` shall be used.
-In addition  :need:`Impact Analysis Template <gd_temp__change_impact_analysis>` should be
+Therefore the :need:`Feature Request Template <gd_temp__change_feature_request>` or the
+:need:`Component Request Template <gd_temp__change_component_request>` shall be used.
+In addition the :need:`Impact Analysis Template <gd_temp__change_impact_analysis>` should be
 used, if applicable.
 
-The template covers the affected element, its interfaces and connected elements, the change
-type, work products affected versus those requiring modification, parties and
+The Impact Analysis Template covers the affected element, its interfaces and connected elements,
+the change type, work products affected versus those requiring modification, parties and
 responsibilities for distributed development, safety impact, and the
 implementation/verification schedule.
 
 .. note::
-  Parts of the template are automatically included in the ISSUE **Change Request**.
-  Use ISSUE **Change Request** to request a change in **S-CORE**.
+  Parts of these templates are automatically included in the ISSUE templates
+  **Feature Request** and **Component Request**. Use ISSUE **Feature Request** to request a new
+  feature or a modification of an existing feature, and ISSUE **Component Request** to request a
+  new component or a modification of an existing component in **S-CORE**.
 
-  .. figure:: _assets/score_change_request_change.drawio.svg
+  .. figure:: _assets/score_change_request_issue_templates.drawio.svg
     :width: 100%
     :align: center
-    :alt: Change Request Change
+    :alt: Feature Request and Component Request ISSUE templates
+
+    Feature Request and Component Request ISSUE templates
 
 The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
 Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE
@@ -135,16 +139,20 @@ Changes are clustered in the following types:
      - Infrastructure
    * - Feature
      - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new feature
-     - ISSUE with label ``feature_request``
+     - ISSUE of type ``Feature Request`` with label ``feature_request``
    * - Feature Modification
      - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
-     - ISSUE with label ``feature_modification``
+     - ISSUE of type ``Feature Request`` with label ``feature_modification``
    * - Component
      - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new component
-     - ISSUE with label ``component_request``
+     - ISSUE of type ``Component Request`` with label ``component_request``
    * - Component Modification
      - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
-     - ISSUE with label ``component_modification``
+     - ISSUE of type ``Component Request`` with label ``component_modification``
+
+The ISSUE type is set automatically by the selected ISSUE template. The label distinguishes a new
+feature/component from a modification of an existing one and is set by the
+:need:`Contributor <rl__contributor>` or the reviewing :need:`Committer <rl__committer>`.
 
 
 Change Request Traceability Impact Analysis requires the following tools:
@@ -276,33 +284,37 @@ state, the state in the Projects dashboard view and the PR status.
 :need:`[[title]] <gd_req__change_attr_title>` is identical to the ISSUE title.
 
 :need:`[[title]] <gd_req__change_attr_impact_description>` is initially provided in the
-Description and Impact analysis part of the ISSUE. Further detailed analysis results are part of
-the linked PR, provided as part of the feature/request templates.
+Feature/Component Request / Modification Description and Impact analysis parts of the ISSUE.
+Further detailed analysis results are part of the linked PR, provided as part of the
+Feature/Component Request templates and the Impact Analysis Template.
 
 The request date is the ISSUE creation date, recorded automatically by the Issue Tracking
 System. The starting release version is the main branch state (or applicable baseline)
 at the time the Change Request is created, identifiable via the base commit of the linked PR;
 this is distinct from the Expected Implementation Version, which identifies the target release.
 
-Further information about detailed implementation can be provided in the Realize part of the ISSUE.
+Further information about detailed implementation can be provided in the linked PR.
 
 :need:`[[title]] <gd_req__change_attr_impact_safety>`,
 :need:`[[title]] <gd_req__change_attr_impact_security>` are provided in the Safety or
 Security relevance part of the ISSUE.
 
-Combinations of them are allowed. If nothing is selected, Quality is relevant by default.
+Select ``none``, ``Safety relevant``, ``Security relevant`` or a combination of the latter two.
+If ``none`` is selected, Quality is relevant only.
 
-Use the ASIL classification part of the ISSUE to document the ASIL level concerned, e.g. ASIL_B.
+Use the Expected required ASIL classification part of the ISSUE to document the ASIL level
+concerned, i.e. ``QM`` or ``ASIL_B``.
 
-:need:`[[title]] <gd_req__change_attr_types>` is provided in the Change Request Type
-part of the ISSUE, further in the linked PR for feature or component request.
+:need:`[[title]] <gd_req__change_attr_types>` is provided by the ISSUE type (``Feature Request``
+or ``Component Request``) and the label (see Change Request Types above), further in the linked
+PR for feature or component request.
 
 :need:`[[title]] <gd_req__change_attr_affected_wp>` is initially provided in the
-Affected work products part of the ISSUE. Further detailed affected work products are part of the
-linked PR or other ISSUEs.
+Expected Changes of work products part of the ISSUE. Further detailed affected work products are
+part of the linked PR or other ISSUEs.
 
 :need:`[[title]] <gd_req__change_attr_milestone>` is provided in the Expected Implementation
-Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
+Version (Release) part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
 
 For an accepted Change Request, who implements it is recorded via the Assignees part of the
 ISSUE and/or the assignees of linked implementation PRs/Issues, considering the interfaces
@@ -316,7 +328,7 @@ Change Request Workflow
 
 In general, every Change Request follows the following steps:
 
-(color is referring to the following figure: Problem Resolution Simple Workflow Overview)
+(color is referring to the following figure: Change Request Simple Workflow Overview)
 
 * 1. Create the Change Request (grey color)
 * 2. Analyze the Change Request (blue color)
@@ -333,13 +345,15 @@ thus an ISSUE must be linked at least to one or more PRs.
 
 The figure below shows the workflow for the simplest case of a Change Request.
 
-An ISSUE with the with the type ``Enhancement`` is created in status ``Open``.
+An ISSUE is created from the ISSUE template **Feature Request** or **Component Request**, which sets
+the type ``Feature Request`` or ``Component Request``, in status ``Open``. The label according to
+the Change Request type is added (see Change Request Types above).
 The title of the ISSUE reflects the potential change. Further fill out the provided template
 content accordingly.
 
 The description of the ISSUE may give a brief description and impact analysis of the requested
 change. The details are part of the Feature/Component Request and Impact Analysis provided by a PR,
-which is linked  to the ISSUE in status ``Draft`` or ``Open``.
+which is linked to the ISSUE in status ``Draft`` or ``Open``.
 
 For a new Feature/Component Request the provided templates :need:`Feature Request<gd_temp__change_feature_request>`,
 or :need:`Component Request<gd_temp__change_component_request>` must be used. For a
@@ -400,7 +414,7 @@ Change Request: Change Request status: ``rejected`` set the ISSUE status to ``Cl
 **To 3. Initiate the implementation of the Change Request and track it to closure:**
 
 :need:`Contributor <rl__contributor>` starts all required activities to implement the
-change request. These may include further planning  activities by creating ISSUEs and required PRs.
+change request. These may include further planning activities by creating ISSUEs and required PRs.
 All additional ISSUEs or PRs created to implement are linked to the Change Request ISSUE to enable
 monitoring of the activities.
 

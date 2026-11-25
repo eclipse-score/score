@@ -23,7 +23,7 @@ jobs:
   # Common S-CORE Workflow
 
   common:
-    uses: eclipse-score/cicd-workflows/.github/workflows/on-pr.yml@88cb460c47cb49efeb25cd7b73c8945dd1c5bce2 # on-pr/v0.0.0
+    uses: eclipse-score/cicd-workflows/.github/workflows/on-pr.yml@200f97be787848974e55d1f4ef5615efbaa97ff8 # on-pr/v0.0.1
     permissions:
       contents: read
 
@@ -33,6 +33,8 @@ jobs:
     name: check-commit-messages
     runs-on: ubuntu-24.04
     if: ${{ github.event_name == 'pull_request' }}
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v7

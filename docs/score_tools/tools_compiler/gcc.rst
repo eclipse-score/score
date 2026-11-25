@@ -34,6 +34,8 @@ GCC is open-source C/C++ compiler. It is widely used in the software development
 
 In the context of the S-CORE project, GCC is used as a development tool to compile software components during the development phase. However, it is not used for production builds of safety-related software components.
 
+The GCC toolchain also provides ``gcov`` for coverage instrumentation/reporting. This capability is available in the project environment if needed, but it is not the primary structural-coverage reporting path used in S-CORE.
+
 Therefore, the safety and security impact of GCC is "NO".
 
 
@@ -89,12 +91,13 @@ If your project uses multiple toolchains or configurations, update the `.bazelrc
 
 In this case default host toolchain is set to GCC and it will be used for all cc_* rules in the project.
 
-Detailed instructions for setting up and tuning of GCC toolchain can be found in the S-CORE toolchains documentation, i.e. https://github.com/eclipse-score/toolchains_gcc
+Detailed instructions for setting up and tuning of GCC toolchain can be found in the S-CORE toolchains documentation, i.e. https://github.com/eclipse-score/bazel_cpp_toolchains
 
 Integration
 ~~~~~~~~~~~
 GCC is invoked by Bazel as the C/C++ compiler for cc_* targets.
-The specific compiler flags and configurations are defined in the Bazel build files and can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).
+The compiler warning flags are maintained centrally in `score_cpp_policies <https://github.com/eclipse-score/score_cpp_policies/blob/main/docs/warnings.md>`__
+and enabled via the toolchain configuration. Further flags can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).
 
 Environment
 ~~~~~~~~~~~
@@ -198,6 +201,7 @@ Result
 ------
 GCC is not used for production builds nor during software verification phases.
 The tool is used for development purposes only to support early-stage issue identification and resolution.
+Coverage with ``gcov`` remains technically available through the GCC toolchain for dedicated use cases.
 
 
 .. [1] The tool version mentioned in this document is preliminary. It is subject to change and will be updated in future.

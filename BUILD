@@ -62,11 +62,10 @@ setup_starpls(
 )
 
 docs(
-    data = [
-        "@score_docs_as_code//:needs_json",
-        "@score_process_description//:needs_json",
+    external_needs = [
+        "@score_docs_as_code//:needs_json_file",
+        "@score_process_description//:needs_json_file",
     ],
-    source_dir = "docs",
 )
 
 # Exposed (without a nested BUILD file, to avoid excluding it from //:docs'

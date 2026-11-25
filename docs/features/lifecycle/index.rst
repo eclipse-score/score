@@ -175,7 +175,15 @@ License Impact
 How to Teach This
 =================
 
-TBD
+Start with the three parts of the feature: Lifecycle Management, Health Monitoring, and External
+Monitoring. Then use the :need:`doc__lifecycle_architecture` to trace how an application interacts
+with the Lifecycle interfaces, and the :need:`doc__lifecycle_requirements` to review the expected
+behavior for process launching, dependencies, sandbox configuration, monitoring, and recovery.
+
+For a hands-on exercise, define a Run State with two dependent components, start and stop it, and
+observe how readiness and liveness reports affect process supervision. Discuss which recovery action
+should follow a missed report or a process failure. The feature's safety and security concepts are
+still open issues; do not treat this exercise as guidance for production safety or security measures.
 
 
 Rejected Ideas

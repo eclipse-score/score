@@ -36,13 +36,19 @@ Logging Architecture
 Interfaces
 ----------
 
-.. logic_arc_int:: Logging
+.. logic_arc_int:: Logging C++
    :id: logic_arc_int__log_cpp__logging
    :included_by: feat__logging
    :security: YES
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils:
+      feat_req__logging__log_sources[version==1],
+      feat_req__logging__log_sources_user_app[version==1],
+      feat_req__logging__severity_levels[version==1],
+      feat_req__logging__entity_identifier[version==1],
+      feat_req__logging__asil_support[version==1]
 
 
 .. logic_arc_int:: Logging Rust
@@ -52,6 +58,12 @@ Interfaces
    :safety: ASIL_B
    :status: valid
    :version: 1
+   :fulfils:
+      feat_req__logging__compat_languages[version==1],
+      feat_req__logging__log_sources_user_app[version==1],
+      feat_req__logging__severity_levels[version==1],
+      feat_req__logging__entity_identifier[version==1],
+      feat_req__logging__asil_support[version==1]
 
 .. logic_arc_int_op:: Log
    :id: logic_arc_int_op__logging__log
