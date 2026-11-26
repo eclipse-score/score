@@ -150,5 +150,6 @@ approved by the maintainers of all integrated modules. An official S-CORE releas
 - **Additional documents as required**
 
 This marks the complete and validated version of the Eclipse S-CORE platform for that release milestone.
-All releases are listed on the `releases page <https://github.com/eclipse-score/reference_integration/releases>`_
-of the reference integration; the release plan and roadmap are described in :ref:`releases`.
+All releases are listed in the
+`release notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_
+of the reference integration.
