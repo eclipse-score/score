@@ -93,7 +93,7 @@ Get started with S-CORE
 
       :octicon:`book;1.5em`
 
-      Overview
+      Technical Overview
       ^^^
       Explore the S-CORE platform structure, technology stack and software
       architecture. Understand the core concepts before you start building.

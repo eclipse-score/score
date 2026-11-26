@@ -13,8 +13,8 @@
    # *******************************************************************************
 .. _project_basics:
 
-Overview
-========
+Technical Overview
+==================
 
 This section gives you the conceptual foundation for working with S-CORE.
 Before diving into code or contribution workflows, read through these pages
