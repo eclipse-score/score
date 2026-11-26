@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=d7d4a875" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=5737673c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=6a6a7ab0" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=f381fa98" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Documentation generation" href="doc_generation.html" />
+    <link rel="next" title="Build and test" href="building_source_code.html" />
     <link rel="prev" title="Contribute own module" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -566,10 +566,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Build and test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_from_examples.html">Learn from examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -640,276 +640,301 @@
   <section id="first-eclipse-s-core-module">
 <h1>First Eclipse S-CORE Module<a class="headerlink" href="#first-eclipse-s-core-module" title="Link to this heading">#</a></h1>
 <p>Before starting, ensure you are an official contributor to the Eclipse S-CORE project.
-Otherwise, you will not have required permissions. Instructions can be found in
-<a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#">Actions to ensure Proper Contribution Attribution in Eclipse S-CORE</a>.</p>
+Otherwise, you will not have the required permissions. Instructions can be found in
+<a class="reference internal" href="../../contribute/general/contribution_attribution.html#contribution-attribution"><span class="std std-ref">Actions to ensure Proper Contribution Attribution in Eclipse S-CORE</span></a>.</p>
 <p>Once you have created an Eclipse account,
-accepted Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse Account,
-contact one of the Eclipse S-CORE Project Leads (listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-Core webpage</a>).
+accepted the Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse account,
+contact one of the Eclipse S-CORE Project Leads (listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-CORE webpage</a>).
 They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.</p>
 <p>The recommended communication channel to approach Eclipse S-CORE project leads is the
-<a class="reference external" href="https://sdv.eclipse.org/get-engaged/">eclipse sdv slack channel</a>.</p>
+<a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C085F44D2CS">project lead circle Slack channel</a>
+in the Eclipse SDV Slack workspace.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You do not need your own repository to follow this guide: clone the
+<a class="reference external" href="https://github.com/eclipse-score/module_template">module template</a> and try the steps there.
+The following sections describe what you need when you contribute your own module.</p>
+</div>
 <section id="creating-a-repository-for-your-module">
 <h2>Creating a Repository for Your Module<a class="headerlink" href="#creating-a-repository-for-your-module" title="Link to this heading">#</a></h2>
-<p>After becoming part of Eclipse S-CORE GitHub organization, you can create a repository for your module.
+<p>After becoming part of the Eclipse S-CORE GitHub organization, you can request a repository for your module.
 Repository creation follows Eclipse organizational rules.
 Most configuration is handled via <a class="reference external" href="https://otterdog.readthedocs.io/en/latest/">otterdog configuration</a> located in:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a></p></li>
 </ul>
-<p>Create a private fork of this repository and modify the file:</p>
+<p>Create a fork of this repository and modify the file:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a></p></li>
 </ul>
-<p>Add your repository definition, e.g.:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">'logging'</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">description</span><span class="p">:</span> <span class="s2">"Repository for logging framework"</span><span class="p">,</span>
-<span class="p">},</span>
-<span class="hll"><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">'scrample'</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">    <span class="n">description</span><span class="p">:</span> <span class="s2">"Repository for example component"</span><span class="p">,</span>
-</span><span class="hll"><span class="p">},</span>
-</span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">'inc_abi_compatible_datatypes'</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">description</span><span class="p">:</span> <span class="s2">"Incubation repository for ABI compatible data types feature"</span><span class="p">,</span>
-<span class="p">},</span>
+<p>Add your repository definition next to the existing ones. Module repositories are declared with
+<code class="docutils literal notranslate"><span class="pre">newDependableElementRepo</span></code>: it creates the repository from the module template, enables GitHub Pages for the
+documentation and sets up the GitHub environment for the QNX builds. Incubation repositories additionally set
+<code class="docutils literal notranslate"><span class="pre">subcategory</span> <span class="pre">=</span> <span class="pre">&quot;incubation&quot;</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>newDependableElementRepo('lifecycle') {
+  description: "Repository for the lifecycle feature",
+},
+
+<span class="hll">newDependableElementRepo('my_module') {
+</span><span class="hll">  description: "Repository for my module",
+</span><span class="hll">},
+</span>
+newDependableElementRepo('inc_someip_gateway', subcategory = "incubation") {
+  description: "Incubation repository for SOME/IP gateway feature",
+},
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">subcategory</span></code> has no technical effect on the repository: it is stored as a custom property and only groups
+the repositories in the auto-generated overview of the GitHub organization. Set <code class="docutils literal notranslate"><span class="pre">&quot;incubation&quot;</span></code> for incubator
+repositories (prefix <code class="docutils literal notranslate"><span class="pre">inc_</span></code>), which are created to try out the content of a feature request before it is written
+down, see the incubation step in the <a class="reference internal" href="../../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">feature request process</span></a>.
+A regular module repository doesn’t need a <code class="docutils literal notranslate"><span class="pre">subcategory</span></code>.</p>
 <p>Then, create a PR in the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
 <ul class="simple">
 <li><p>Eclipse S-CORE project lead</p></li>
-<li><p>Eclipse Foundation Security Team</p></li>
+<li><p>Eclipse Foundation Security Team, which is the code owner of the otterdog configuration</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>To speed up approval, mention both groups in your PR comment:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">automotive</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">project</span><span class="o">-</span><span class="n">leads</span>
-<span class="nd">@eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">eclipsefdn</span><span class="o">-</span><span class="n">security</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@eclipse-score/automotive-score-project-leads
+@eclipse-score/eclipsefdn-security
 
-<span class="n">Please</span> <span class="n">approve</span><span class="o">.</span>
+Please approve.
 </pre></div>
 </div>
 </div>
 <section id="repository-layout">
 <h3>Repository Layout<a class="headerlink" href="#repository-layout" title="Link to this heading">#</a></h3>
 <p>Once merged, your new repository will appear in the Eclipse S-CORE GitHub organization repositories overview.</p>
-<a class="reference internal image-reference" href="../../_images/repository_layout.png"><img alt="repository layout" class="align-center" src="../../_images/repository_layout.png" width="500" />
-</a>
-<p>All repositories are created using the <a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE module template</a>.</p>
-<p>The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> file already explains the basic structure.
+<p>New repositories are based on the <a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE module template</a>.
+Its <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> explains how to build and test the
+template, its <a class="reference external" href="https://eclipse-score.github.io/module_template/main/template/index.html">template information</a>
+shows the complete folder tree, and the rules behind it are described in
+<a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.
 Below is an overview of the most relevant files and folders.</p>
-</section>
-</section>
-<section id="github-workflows">
-<h2>.github/workflows/<a class="headerlink" href="#github-workflows" title="Link to this heading">#</a></h2>
-<p>Contains CI/CD workflows (build, unit-tests,
-<a class="reference internal" href="../project_basics/integration_process.html#integration-process"><span class="std std-ref">integration gate</span></a> checks).</p>
-</section>
-<section id="vscode">
-<h2>.vscode<a class="headerlink" href="#vscode" title="Link to this heading">#</a></h2>
-<p>Provides Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements and architecture in
-<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets">.vscode/restructuredtext.code-snippets</a>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The Eclipse S-CORE project provides a ready-to-use
-<a class="reference external" href="https://github.com/eclipse-score/devcontainer">Dev Container</a>
-with all required tools pre-installed.
-Open any module repository with the
-<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">VS Code Dev Containers extension</a>
-to skip manual toolchain setup entirely.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File / folder</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code></p></td>
+<td><p>CI/CD workflows, based on the reusable workflows of <code class="docutils literal notranslate"><span class="pre">cicd-workflows</span></code>,
+see <a class="reference internal" href="cicd_workflows.html"><span class="doc">CI/CD workflows</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.devcontainer/</span></code></p></td>
+<td><p>Development container based on the common <a class="reference external" href="https://github.com/eclipse-score/devcontainer">S-CORE devcontainer</a>
+image with all required tools; open the repository in VS Code and select <em>Reopen in Container</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.vscode/</span></code></p></td>
+<td><p>Recommended VS Code settings, extensions and snippets, e.g. code completion for requirements and architecture</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></td>
+<td><p>Module documentation (rst): feature and module documents, safety and security management, release notes
+and verification report, see <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/</span></code></p></td>
+<td><p>One folder per component, e.g. <code class="docutils literal notranslate"><span class="pre">score/component_example</span></code>: source code and unit tests in <code class="docutils literal notranslate"><span class="pre">src/</span></code>,
+component integration tests in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>, component documentation in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>,
+see <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">score/tests/</span></code></p></td>
+<td><p>Feature integration tests of the module</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">examples/</span></code></p></td>
+<td><p>An example of architecture modeling with sphinx-needs and the <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> used by the license check</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.bazelrc</span></code>, <code class="docutils literal notranslate"><span class="pre">score.bazelrc/</span></code></p></td>
+<td><p>Bazel configuration incl. the S-CORE build configurations per target platform</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD</span></code></p></td>
+<td><p>Bazel module definition and top-level targets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code></p></td>
+<td><p>Project metadata used by shared Bazel macros</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>, <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code>, <code class="docutils literal notranslate"><span class="pre">REUSE.toml</span></code>, <code class="docutils literal notranslate"><span class="pre">LICENSES/</span></code></p></td>
+<td><p>License and copyright information</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p>The folder of a test determines its test level, see <a class="reference internal" href="../../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">module folder structure</span></a>.</p>
 </section>
-<section id="docs">
-<h2>docs<a class="headerlink" href="#docs" title="Link to this heading">#</a></h2>
-<p>Place all module documentation here in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">rst format</a>.
-Examples follow later in this guide.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>We try to describe most <a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/contribution_request/index.html#doc__contr_guideline">common workflows</a>
-for developers. It is worth checking it.</p>
-</div>
 </section>
-<section id="score">
-<h2>score/<a class="headerlink" href="#score" title="Link to this heading">#</a></h2>
-<p>Source files and unit tests for the module.
-Follows the naming convention <code class="docutils literal notranslate"><span class="pre">score/&lt;module_name&gt;/</span></code>.</p>
-</section>
-<section id="tests">
-<h2>tests/<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
-<p>Component Integration Tests (CIT) and Feature Integration Tests (FIT).
-See the <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a> for details on test levels.</p>
-</section>
-<section id="bazelrc">
-<h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
-<p>Defines bazel configuration for your the module.
-Important entries in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.bazelrc">.bazelrc</a> file include:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">build</span> <span class="o">--</span><span class="n">java_language_version</span><span class="o">=</span><span class="mi">17</span>
-<span class="linenos">2</span><span class="n">build</span> <span class="o">--</span><span class="n">tool_java_language_version</span><span class="o">=</span><span class="mi">17</span>
-<span class="linenos">3</span><span class="n">build</span> <span class="o">--</span><span class="n">java_runtime_version</span><span class="o">=</span><span class="n">remotejdk_17</span>
-<span class="linenos">4</span><span class="n">build</span> <span class="o">--</span><span class="n">tool_java_runtime_version</span><span class="o">=</span><span class="n">remotejdk_17</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span><span class="n">test</span> <span class="o">--</span><span class="n">test_output</span><span class="o">=</span><span class="n">errors</span>
-<span class="linenos">7</span>
-<span class="hll"><span class="linenos">8</span><span class="n">common</span> <span class="o">--</span><span class="n">registry</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">bazel_registry</span><span class="o">/</span><span class="n">main</span><span class="o">/</span>
-</span><span class="hll"><span class="linenos">9</span><span class="n">common</span> <span class="o">--</span><span class="n">registry</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bcr</span><span class="o">.</span><span class="n">bazel</span><span class="o">.</span><span class="n">build</span>
-</span></pre></div>
-</div>
-<ul class="simple">
-<li><p>Line number 8 points to the Eclipse S-CORE <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a>,
-where all official versions of Eclipse S-CORE modules are published.</p></li>
-<li><p>Line number 9 points to the common bazel registry, where common bazel modules are made available for everyone.</p></li>
-</ul>
-<p>This means, once we´re referencing a depending module with our scrample application,
-bazel will start searching it in one of these two locations.</p>
-</section>
+<section id="adapting-the-template">
+<h2>Adapting the template<a class="headerlink" href="#adapting-the-template" title="Link to this heading">#</a></h2>
+<p>The template is a working example, not an empty skeleton: it builds, tests and documents the example component
+<code class="docutils literal notranslate"><span class="pre">component_example</span></code> out of the box. To turn it into your module, go through the following files in this order.
+Each section explains what the file is for and what you need to adapt.</p>
 <section id="module-bazel">
-<h2>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h2>
-<p>This file turns your repository into a bazel module.</p>
-<p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a> initial content:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"cpp_rust_template_repository"</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.0"</span><span class="p">,</span>
-<span class="linenos">4</span><span class="p">)</span>
+<span id="first-module-module-bazel"></span><h3>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the module name and the dependencies of your code.</p>
+<p>This file turns your repository into a Bazel module.
+The template starts with a minimal module declaration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_module_template"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here, we´re making the first declaration of our module by defining a name and a version.
-Please be aware, that only after our module was published in the Eclipse S-CORE bazel registry, other modules can access it.</p>
-<p>Rename the module and replace <em>cpp_rust_template_repository</em> by your module name, in our case <em>score_scrample</em>.
-Use <a class="reference external" href="https://semver.org/">semantic versioning</a> for the module version, starting at <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_scrample"</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.0"</span><span class="p">,</span>
-<span class="linenos">4</span><span class="p">)</span>
+<p>Rename the module and replace <em>score_module_template</em> by your module name.
+According to Eclipse S-CORE’s naming convention, all module names must start with the <em>score_</em> prefix,
+e.g. <em>score_my_module</em>. The version of your module is not maintained in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>: it is taken from the release tag
+(<code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code>, following <a class="reference external" href="https://semver.org/">semantic versioning</a>) when the release is added to the
+Bazel registry. Other modules can depend on a released version of your module with <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> only after it was
+published in the Eclipse S-CORE Bazel registry; before that, they need a <code class="docutils literal notranslate"><span class="pre">git_override</span></code>.</p>
+<p>Next, the template declares dependencies to modules that are publicly available in the Bazel Central Registry,
+e.g. GoogleTest for the C++ tests, the C++ and Rust rules, and an LLVM toolchain for builds without an explicit
+build configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"googletest"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_cc"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"toolchains_llvm"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Please be aware, according to Eclipse S-CORE´s naming convention all module names must start with <em>score_</em> prefix.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_python"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.4.1"</span><span class="p">)</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">"3.12"</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="n">python</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">"@rules_python//python/extensions:python.bzl"</span><span class="p">,</span> <span class="s2">"python"</span><span class="p">)</span>
-<span class="linenos"> 6</span><span class="n">python</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos"> 7</span>    <span class="n">is_default</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="n">python_version</span> <span class="o">=</span> <span class="n">PYTHON_VERSION</span><span class="p">,</span>
-<span class="linenos"> 9</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="s2">"python_versions"</span><span class="p">)</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span><span class="c1"># Add GoogleTest dependency</span>
-<span class="linenos">13</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"googletest"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.17.0"</span><span class="p">)</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="c1"># Rust rules for Bazel</span>
-<span class="linenos">16</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.63.0"</span><span class="p">)</span>
-<span class="linenos">17</span>
-<span class="linenos">18</span><span class="c1"># C/C++ rules for Bazel</span>
-<span class="linenos">19</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"rules_cc"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.2.1"</span><span class="p">)</span>
+<p>Then follow the dependencies to Eclipse S-CORE modules that are used during development (excerpt):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tooling"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_process_description"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_devcontainer"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_cpp_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the code snippet above, we declare dependencies to modules, that are publicly available in common bazel registry, e.g.
-for unit test execution with gtest.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)</span>
-<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_bazel_cpp_toolchains"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.5.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">"@score_bazel_cpp_toolchains//extensions:gcc.bzl"</span><span class="p">,</span> <span class="s2">"gcc"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 5</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos"> 6</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"linux"</span><span class="p">,</span>
-<span class="linenos"> 9</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">10</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
-<span class="linenos">11</span><span class="p">)</span>
-<span class="linenos">12</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos">13</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"score_qcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos">14</span>    <span class="n">sdp_version</span> <span class="o">=</span> <span class="s2">"8.0.0"</span><span class="p">,</span>
-<span class="linenos">15</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">"x86_64"</span><span class="p">,</span>
-<span class="linenos">16</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">"qnx"</span><span class="p">,</span>
-<span class="linenos">17</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">"12.2.0"</span><span class="p">,</span>
-<span class="linenos">19</span><span class="p">)</span>
-<span class="linenos">20</span><span class="n">use_repo</span><span class="p">(</span>
-<span class="linenos">21</span>    <span class="n">gcc</span><span class="p">,</span>
-<span class="linenos">22</span>    <span class="s2">"score_gcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos">23</span>    <span class="s2">"score_qcc_x86_64_toolchain"</span><span class="p">,</span>
-<span class="linenos">24</span><span class="p">)</span>
-<span class="linenos">25</span>
-<span class="linenos">26</span><span class="c1"># Ferrocene Rust toolchains (QNX cross-compilation support)</span>
-<span class="linenos">27</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_toolchains_rust"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.9.1"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Here we add C++ and Rust toolchains using <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> and <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code>.
-These provide GCC 12.2.0 for Linux host builds, QCC (QNX SDP 8.0.0) for QNX cross-compilation,
-and Ferrocene toolchains for Rust (including QNX support).
-In upcoming chapters, we will talk about this in more detail.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># tooling</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tooling"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"1.1.2"</span><span class="p">)</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="c1"># docs-as-code</span>
-<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"4.0.3"</span><span class="p">)</span>
-<span class="linenos">6</span>
-<span class="linenos">7</span><span class="c1"># Rust linting and formatting policies</span>
-<span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_rust_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.0.3"</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Finally, we add dependencies to Eclipse S-CORE native modules:</p>
 <ul class="simple">
-<li><p><strong>score_tooling</strong>: enables tooling checks such as copyright and license verification.</p></li>
-<li><p><strong>score_docs_as_code</strong>: enables documentation builds with Sphinx and sphinx-needs.</p></li>
-<li><p><strong>score_rust_policies</strong>: provides centralised Rust linting (clippy) and formatting (rustfmt) policies.
-For C++ projects, use <code class="docutils literal notranslate"><span class="pre">score_cpp_policies</span></code> instead.</p></li>
+<li><p><strong>score_tooling</strong>: enables tooling checks such as copyright, formatting and license verification.</p></li>
+<li><p><strong>score_docs_as_code</strong> and <strong>score_process_description</strong>: enable documentation builds with Sphinx and sphinx-needs
+and the references to the process description.</p></li>
+<li><p><strong>score_devcontainer</strong>: makes the tools of the devcontainer available to Bazel.</p></li>
+<li><p><strong>score_cpp_policies</strong>: provides the shared C++ quality rules, e.g. compiler warnings, sanitizers and clang-tidy.
+For Rust code, <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> provides the shared Clippy configuration.</p></li>
 </ul>
+<p>The versions are left out here on purpose: the template is kept up to date by automated pull requests, so take the
+current versions from its <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/MODULE.bazel">MODULE.bazel</a>.
+<code class="docutils literal notranslate"><span class="pre">dev_dependency</span> <span class="pre">=</span> <span class="pre">True</span></code> marks dependencies which are only needed to develop the module itself, e.g. for tests
+and checks. They are ignored when another module depends on your module.</p>
+<p>The last part of the template, marked <em>S-CORE Toolchains (DO NOT MODIFY)</em>, registers the S-CORE toolchains
+from <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> and <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> for all supported target platforms.
+It is explained in the <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p>
+<p>Finally, add the S-CORE modules your code uses, e.g. <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_baselibs"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"&lt;version&gt;"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The available versions can be looked up in the <a class="reference external" href="https://eclipse-score.github.io/bazel_registry_ui/">Bazel registry UI</a>.
+Choose versions that fit to each other and to the toolchains of your module. A good starting point is the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference integration</a>: it contains the consolidated state of
+all S-CORE modules, which are built and tested together. Its
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/known_good.json">known_good.json</a> lists the
+integrated version of each module. The <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> of a module version
+in the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry/tree/main/modules">registry</a> shows which versions it depends on.
+If Bazel reports <em>“the root module requires module version X, but got Y in the resolved dependency graph”</em>,
+another module needs a newer version of this dependency; update the version in your <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> accordingly.
+Bazel modules don’t make transitive dependencies available to your code: list every module whose targets you use
+directly in your <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> files.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Working across multiple modules and repositories can be challenging. Use the following approach during development:</p>
 <ul class="simple">
 <li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#git_override">git_override()</a>
-if you want to use a version of another module, that is currently not officially availabe in the bazel registry.</p></li>
+if you want to use a version of another module that is currently not officially available in the Bazel registry.</p></li>
 <li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#local_path_override">local_path_override()</a>
 if you want to use your local version of the module, e.g. during active development.</p></li>
+<li><p>use the command line option <code class="docutils literal notranslate"><span class="pre">--override_module=&lt;module&gt;=&lt;path&gt;</span></code> (e.g. with <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>) to try out a local
+checkout without changing <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>.</p></li>
 </ul>
 </div>
 </section>
+<section id="bazelrc">
+<h3>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> nothing; add own settings to <code class="docutils literal notranslate"><span class="pre">user.bazelrc</span></code>, which is imported if it exists.</p>
+<p>The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.bazelrc">.bazelrc</a> file tells Bazel where to
+find the modules declared in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> and how to build for the S-CORE target platforms:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+<span class="linenos">2</span>common --registry=https://bcr.bazel.build
+<span class="linenos">3</span>
+<span class="linenos">4</span>try-import %workspace%/score.bazelrc/score_toolchain.bazelrc
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Line 1 points to the <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">Eclipse S-CORE Bazel registry</a>,
+where all official versions of Eclipse S-CORE modules are published.</p></li>
+<li><p>Line 2 points to the Bazel Central Registry, where common Bazel modules are made available for everyone.</p></li>
+<li><p>Line 4 imports the S-CORE build configurations, e.g. <code class="docutils literal notranslate"><span class="pre">--config=score-linux-x86_64</span></code> or <code class="docutils literal notranslate"><span class="pre">--config=score-qnx-x86_64</span></code>.
+They select the target platform and the matching toolchains and are explained in the
+<a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a> chapter.</p></li>
+</ul>
+</section>
 <section id="build">
-<h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
-<p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/BUILD">BUILD</a> file
-contains main bazel targets on the top level of the scrample project:</p>
+<span id="first-module-build"></span><h3>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> <code class="docutils literal notranslate"><span class="pre">project</span></code> and <code class="docutils literal notranslate"><span class="pre">project_url</span></code> of the <code class="docutils literal notranslate"><span class="pre">docs</span></code> macro, and its <code class="docutils literal notranslate"><span class="pre">bundles</span></code> when you rename or add
+components.</p>
+<p>The Bazel <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/BUILD">BUILD</a> file
+contains the main Bazel targets on the top level of the module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_docs_as_code//:docs.bzl"</span><span class="p">,</span> <span class="s2">"docs"</span><span class="p">)</span>
 <span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_tooling//:defs.bzl"</span><span class="p">,</span> <span class="s2">"copyright_checker"</span><span class="p">,</span> <span class="s2">"dash_license_checker"</span><span class="p">,</span> <span class="s2">"setup_starpls"</span><span class="p">,</span> <span class="s2">"use_format_targets"</span><span class="p">)</span>
 <span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">"//:project_config.bzl"</span><span class="p">,</span> <span class="s2">"PROJECT_CONFIG"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>First, we load bazel rules and macros, implemented in Eclipse S-CORE context from the modules,
-that we’ve defined as dependencies in the MODULE.bazel file, e.g. <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
+<p>First, we load Bazel rules and macros implemented in the Eclipse S-CORE context from the modules
+that we’ve defined as dependencies in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file, e.g. <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">copyright_checker</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"copyright"</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 4</span>        <span class="s2">"src_cpp"</span><span class="p">,</span>
-<span class="linenos"> 5</span>        <span class="s2">"tests"</span><span class="p">,</span>
-<span class="linenos"> 6</span>        <span class="s2">"//:BUILD"</span><span class="p">,</span>
-<span class="linenos"> 7</span>        <span class="s2">"//:MODULE.bazel"</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="p">],</span>
-<span class="linenos"> 9</span>    <span class="n">config</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:config"</span><span class="p">,</span>
-<span class="linenos">10</span>    <span class="n">template</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:templates"</span><span class="p">,</span>
-<span class="linenos">11</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
-<span class="linenos">12</span><span class="p">)</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span><span class="n">dash_license_checker</span><span class="p">(</span>
-<span class="linenos">15</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">"//examples:cargo_lock"</span><span class="p">,</span>
-<span class="linenos">16</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
-<span class="linenos">17</span>    <span class="n">project_config</span> <span class="o">=</span> <span class="n">PROJECT_CONFIG</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
-<span class="linenos">19</span><span class="p">)</span>
+<span class="linenos"> 4</span>        <span class="s2">"score"</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">"//:BUILD"</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">"//:MODULE.bazel"</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">],</span>
+<span class="linenos"> 8</span>    <span class="n">config</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:config"</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">template</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:templates"</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos">11</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">dash_license_checker</span><span class="p">(</span>
+<span class="linenos">14</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">"//examples:cargo_lock"</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
+<span class="linenos">16</span>    <span class="n">project_config</span> <span class="o">=</span> <span class="n">PROJECT_CONFIG</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos">18</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="c1"># Add target for formatting checks</span>
+<span class="linenos">21</span><span class="n">use_format_targets</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Second, we define bazel targets for <em>copyright_checker</em> and <em>dash_license_checker</em>,
-based on bazel rules implemented and imported from <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a> module.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">docs</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">"docs"</span><span class="p">,</span>
-<span class="linenos">3</span><span class="p">)</span>
+<p>Second, we define the targets for the copyright check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:copyright.check</span></code>), the license check
+with the Eclipse Dash license tool and the formatting check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">test</span> <span class="pre">//:format.check</span></code>),
+based on Bazel rules implemented in the <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a> module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">docs</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">bundles</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 3</span>        <span class="p">{</span>
+<span class="linenos"> 4</span>            <span class="s2">"bundle"</span><span class="p">:</span> <span class="s2">"//score/component_example:docs"</span><span class="p">,</span>
+<span class="linenos"> 5</span>            <span class="s2">"mount_at"</span><span class="p">:</span> <span class="s2">"components/component_example"</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="p">},</span>
+<span class="linenos"> 7</span>        <span class="p">{</span>
+<span class="linenos"> 8</span>            <span class="s2">"bundle"</span><span class="p">:</span> <span class="s2">"//examples:docs"</span><span class="p">,</span>
+<span class="linenos"> 9</span>            <span class="s2">"mount_at"</span><span class="p">:</span> <span class="s2">"examples"</span><span class="p">,</span>
+<span class="linenos">10</span>        <span class="p">},</span>
+<span class="linenos">11</span>    <span class="p">],</span>
+<span class="linenos">12</span>    <span class="n">external_needs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">13</span>        <span class="s2">"@score_process_description//:needs_json"</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="p">],</span>
+<span class="linenos">15</span>    <span class="n">project</span> <span class="o">=</span> <span class="s2">"Module Template Project"</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">project_url</span> <span class="o">=</span> <span class="s2">"https://eclipse-score.github.io/module_template/"</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">"docs"</span><span class="p">,</span>
+<span class="linenos">18</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, the <em>docs</em> target builds all documentation in the .rst format, which is located in the
-<a class="reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">docs</a> folder and all its subfolders.
-This functionality is implemented in <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
+<p>Finally, the <em>docs</em> macro creates all documentation targets for the rst files located in the
+<code class="docutils literal notranslate"><span class="pre">docs</span></code> folder and the documentation bundles of the components, which are mounted into it.
+This functionality is implemented in <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>
+and described in the <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter.</p>
 </section>
 <section id="project-config-bzl">
-<h2>project_config.bzl<a class="headerlink" href="#project-config-bzl" title="Link to this heading">#</a></h2>
-<p>Every Eclipse S-CORE module must provide a <code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code> file in its root directory.
+<h3>project_config.bzl<a class="headerlink" href="#project-config-bzl" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the safety level and the languages of your module.</p>
+<p>Every Eclipse S-CORE module provides a <code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code> file in its root directory.
 This file declares project-level metadata that is consumed by shared Bazel macros such as <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>.</p>
 <p>A minimal example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">PROJECT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
@@ -918,14 +943,63 @@ This file declares project-level metadata that is consumed by shared Bazel macro
 <span class="linenos">4</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">asil_level</span></code> is used by tooling to apply the appropriate quality and compliance checks.
-The <code class="docutils literal notranslate"><span class="pre">source_code</span></code> list determines which license file types are scanned by <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>
-(e.g., <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for Rust, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for Python).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">asil_level</span></code> documents the safety level of the module.
+The <code class="docutils literal notranslate"><span class="pre">source_code</span></code> list is evaluated by <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>: if no <code class="docutils literal notranslate"><span class="pre">file_type</span></code> is given,
+it determines which dependency file is scanned (e.g., <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for Rust, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for Python).
+The template declares <code class="docutils literal notranslate"><span class="pre">[&quot;rust&quot;]</span></code> and scans <code class="docutils literal notranslate"><span class="pre">examples/Cargo.lock</span></code>; set the list to the languages of your module
+and point <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code> to its dependency file.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Start with <code class="docutils literal notranslate"><span class="pre">&quot;asil_level&quot;:</span> <span class="pre">&quot;QM&quot;</span></code> during initial development.
 The level can be raised once the module’s safety concept is established.</p>
 </div>
+</section>
+<section id="component-code-and-documentation">
+<h3>Component code and documentation<a class="headerlink" href="#component-code-and-documentation" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the example component and the documents of the module.</p>
+<ul class="simple">
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">score/component_example/</span></code> to your component, incl. its Bazel targets, include paths and C++ namespace,
+or keep it as a pattern and add your own component next to it. The <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a>
+chapter walks through the example component.</p></li>
+<li><p>For every further component, create a folder <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/</span></code> with the same structure: <code class="docutils literal notranslate"><span class="pre">src/</span></code>, <code class="docutils literal notranslate"><span class="pre">tests/</span></code>,
+<code class="docutils literal notranslate"><span class="pre">docs/</span></code> and a <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file with the library, the tests and the <code class="docutils literal notranslate"><span class="pre">docs_bundle</span></code>. Add the bundle of the component
+to the <code class="docutils literal notranslate"><span class="pre">bundles</span></code> of the <code class="docutils literal notranslate"><span class="pre">docs</span></code> macro in the top-level <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file. Code shared by several components
+can be placed in <code class="docutils literal notranslate"><span class="pre">score/common/src/</span></code>.</p></li>
+<li><p>Adapt the titles, IDs and contents of the documents in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> and <code class="docutils literal notranslate"><span class="pre">score/&lt;component&gt;/docs/</span></code>.
+IDs of the template contain <code class="docutils literal notranslate"><span class="pre">mod_temp</span></code> or <code class="docutils literal notranslate"><span class="pre">example_feature</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">comp__mod_temp_component_name_template</span></code>;
+replace them by IDs of your module. Each document contains <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">attention::</span></code> boxes which list what needs to be
+adapted; remove them afterwards. The <a class="reference internal" href="doc_generation.html"><span class="doc">documentation generation</span></a> chapter explains the documents.</p></li>
+</ul>
+</section>
+<section id="license-notice-and-reuse-toml">
+<h3>LICENSE, NOTICE and REUSE.toml<a class="headerlink" href="#license-notice-and-reuse-toml" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> nothing in <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code>; extend <code class="docutils literal notranslate"><span class="pre">REUSE.toml</span></code> for files which cannot carry a header.</p>
+<p>The license files come with the template, so every S-CORE module is published under the same terms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">LICENSES/Apache-2.0.txt</span></code> contain the Apache License 2.0, the license of all S-CORE modules.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> contains the notices of the Eclipse S-CORE project: project home, trademarks, copyright, the declared
+license and the cryptography notice.</p></li>
+<li><p>Every source file starts with the copyright and license header of the Eclipse Foundation, as in the files of the
+template. Files which cannot contain a comment, e.g. JSON files or lock files, are listed in
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/REUSE.toml">REUSE.toml</a> instead.
+When you add such files, add them there as well.</p></li>
+</ul>
+<p>The pre-commit checks and <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:copyright.check</span></code> report files without a valid header,
+see <a class="reference internal" href="building_source_code.html"><span class="doc">build and test</span></a>.</p>
+</section>
+<section id="readme-md-and-codeowners">
+<h3>README.md and CODEOWNERS<a class="headerlink" href="#readme-md-and-codeowners" title="Link to this heading">#</a></h3>
+<p><strong>To adapt:</strong> the description of your module in <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, and the maintainers in <code class="docutils literal notranslate"><span class="pre">.github/CODEOWNERS</span></code>,
+who review the pull requests of your repository.</p>
+</section>
+</section>
+<section id="keeping-up-with-the-template">
+<h2>Keeping up with the template<a class="headerlink" href="#keeping-up-with-the-template" title="Link to this heading">#</a></h2>
+<p>The template evolves, e.g. with new tool versions and workflow improvements. The workflow
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.github/workflows/sync-template.yml">sync-template.yml</a>
+in your repository checks for changes of the template once a month (or when started manually in the <em>Actions</em> tab)
+and opens a pull request <em>[Template Sync] Upstream template update</em>. Review it like any other pull request:
+it can touch files which you have adapted to your module.</p>
 </section>
 </section>
 
@@ -949,11 +1023,11 @@ The level can be raised once the module’s safety concept is established.</p>
       </div>
     </a>
     <a class="right-next"
-       href="doc_generation.html"
+       href="building_source_code.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Documentation generation</p>
+        <p class="prev-next-title">Build and test</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -980,15 +1054,17 @@ The level can be raised once the module’s safety concept is established.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-layout">Repository Layout</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-workflows">.github/workflows/</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vscode">.vscode</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docs">docs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score">score/</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">tests/</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazelrc">.bazelrc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-bazel">MODULE.bazel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-template">Adapting the template</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-bazel">MODULE.bazel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bazelrc">.bazelrc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-code-and-documentation">Component code and documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-notice-and-reuse-toml">LICENSE, NOTICE and REUSE.toml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md-and-codeowners">README.md and CODEOWNERS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-up-with-the-template">Keeping up with the template</a></li>
 </ul>
   </nav></div>
 

@@ -118,6 +118,12 @@ html .pst-navbar-icon:hover {
     margin-right: 0 !important;
 }
 
+@media (min-width: 960px) {
+    .bd-header .navbar-header-items__end {
+        margin-left: auto;
+    }
+}
+
 .bd-header {
     padding-top: 24px;
 }
@@ -133,11 +139,11 @@ ul.navbar-nav li a {
 .bd-header ul.navbar-nav > li.nav-item > .nav-link {
     display: inline-flex;
     align-items: center;
-    font-size: 14.4px;
+    font-size: 0.9rem;
     font-weight: 700 !important;
     line-height: normal;
-    min-height: 42px;
-    padding: 0 10px;
+    min-height: max(42px, 2.625rem);
+    padding: 0 0.625rem;
     border-radius: 5px;
     box-shadow: inset 0 -3px transparent;
     color: var(--score-nav-color) !important;
