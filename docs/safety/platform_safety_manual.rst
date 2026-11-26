@@ -29,7 +29,7 @@ Introduction/Scope
 ------------------
 https://github.com/eclipse-score/score/issues/3439
 
-This safety manual applies to the S-CORE SW platform, defined by its modules, see tbd
+This safety manual applies to the S-CORE SW platform, defined by its modules, see :ref:`modules`
 It covers all assumed (Technical) Safety Requirements of the S-CORE SW platform and all general
 Assumptions of Use which are relevant for all users of any platform module.
 The specific Assumptions of Use relevant only for the users of a specific module are documented in the module's safety manual.
