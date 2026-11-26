@@ -179,7 +179,8 @@ the normal Issue/PR flow.
    * - 4 Implementation
      - The tracking Issue stays open until the implementation is merged
 
-The TLC triages incoming requests and is informed when a FEP enters its Final Comment Period.
+As defined in the :doc:`Project Management Plan </platform_management_plan/project_management>`, the TLC triages
+incoming requests and is notified once a FEP enters its Final Comment Period.
 
 Decision Record (DR)
 ^^^^^^^^^^^^^^^^^^^^
