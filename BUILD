@@ -12,7 +12,8 @@
 # *******************************************************************************
 
 load("@score_docs_as_code//:docs.bzl", "docs")
-load("@score_tooling//:defs.bzl", "cli_helper", "copyright_checker", "setup_starpls")
+load("@score_tooling//:defs.bzl", "cli_helper", "setup_starpls")
+load("@score_tools//cr_checker:cr_checker.bzl", "copyright_checker")
 
 test_suite(
     name = "format.check",
@@ -32,17 +33,10 @@ alias(
     ],
 )
 
+# The shared PR workflow runs //:copyright.check. The macro discovers its
+# inputs through Git at the workspace root and exposes //:copyright.fix too.
 copyright_checker(
     name = "copyright",
-    srcs = [
-        ".github",
-        "docs",
-        "tools",
-        "//:BUILD",
-        "//:MODULE.bazel",
-    ],
-    config = "@score_tooling//cr_checker/resources:config",
-    template = "@score_tooling//cr_checker/resources:templates",
     visibility = ["//visibility:public"],
 )
 
