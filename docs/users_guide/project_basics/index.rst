@@ -20,6 +20,9 @@ This section gives you the conceptual foundation for working with S-CORE.
 Before diving into code or contribution workflows, read through these pages
 to understand how the platform is structured and what drives its design:
 
+- **Project at a Glance** — the short track: how the project is organized, the most
+  important meetings, key processes (feature requests, decision records, integration
+  and release, module maturity) and the most important links. Start here.
 - **Technologies** — the toolchain and infrastructure that power S-CORE, from
   build system and development environment to documentation, CI/CD and testing.
 - **Software Architecture** — the high-level decomposition of the platform into
@@ -34,6 +37,7 @@ to understand how the platform is structured and what drives its design:
    :glob:
    :hidden:
 
+   project_at_a_glance.rst
    technology_overview.rst
    software_architecture_overview.rst
    module_structure_overview.rst
