@@ -146,7 +146,7 @@ Feature Request (FEP)
 ^^^^^^^^^^^^^^^^^^^^^
 
 New features and changes with impact on the platform or other teams go through the
-**Feature & Enhancement Proposal (FEP)** track (:ref:`feature_request_guideline`); changes inside one team use
+**Feature & Enhancement Proposal (FEP)** track (:ref:`FEP guideline <feature_request_guideline>`); changes inside one team use
 the normal Issue/PR flow.
 
 .. list-table::
