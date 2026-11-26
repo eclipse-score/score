@@ -65,9 +65,9 @@ Project Organization
 Org Chart and Main Platform Management Plan Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: _assets/score_project_management_organization_orgchart.drawio.svg
-   :width: 900
-   :alt: Infrastructure overview
+.. image:: _assets/project_organization.drawio.svg
+   :width: 75%
+   :alt: S-CORE project organization: Project Lead Circle, Communities and Feature Teams
    :align: center
 
 .. _pmp_pm_steering_committees:
@@ -576,10 +576,86 @@ The project internal communication is ensured with help of:
 - *GitHub issues* and *GitHub pull requests*
 - online communication using Slack
 
+.. _pmp_pm_meetings:
+
 Meetings
 ^^^^^^^^
 All meetings are scheduled in the `Eclipse S-CORE Calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_ , are open for everyone
-but mentioned team members are mandatory. Meeting minutes are public and stored in the project specific *GitHub Team Wikis*.
+but mentioned team members are mandatory. The *General Information* discussion of each team and community (*info*)
+names its members, meeting, Slack channel and backlog; the meeting minutes are public and posted in the
+`GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`_.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 54 18
+
+   * - Meeting
+     - What happens
+     - Links
+   * - **Project Lead Circle (PLC)**
+     - Status of milestones, bugs and open feature requests; review of product increments, epics and tasks;
+       decisions on releases, versioning, scope and escalations.
+     - `info <https://github.com/orgs/eclipse-score/discussions/104>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/516>`__
+   * - **Leads Alignment** (Project Leads, Community Leads, Feature Team Leads)
+     - All leads sync: cross-team dependencies, blockers, information from the PLC to the teams and
+       escalations from the teams to the PLC.
+     - `minutes <https://github.com/orgs/eclipse-score/discussions/434>`__
+   * - **Architecture Community**
+     - Architecture questions, contribution pitches and FEP reviews; cancelled when there are no agenda items.
+     - `info <https://github.com/orgs/eclipse-score/discussions/110>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/2457>`__
+   * - **SW Development Process Community**
+     - Process development (news, updates, improvements), safety, security and quality management, process
+       implementation in the tooling.
+     - `info <https://github.com/orgs/eclipse-score/discussions/108>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/407>`__
+   * - **Safety Topics / Safety Management**
+     - Safety management and safety analyses across modules.
+     - `minutes <https://github.com/orgs/eclipse-score/discussions/2234>`__
+   * - **Security Topics / Security Management**
+     - Security management, threat analyses and security topics across modules.
+     - `minutes <https://github.com/orgs/eclipse-score/discussions/2226>`__
+   * - **Infrastructure Community**
+     - Toolchains (C++, Rust, Python), CI/CD, devcontainer, docs-as-code, repository standards.
+     - `info <https://github.com/orgs/eclipse-score/discussions/107>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/236>`__
+   * - **Testing Community**
+     - Test strategy, ITF and test tooling.
+     - `info <https://github.com/orgs/eclipse-score/discussions/109>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/2391>`__
+   * - **Integration & Release** (reference_integration)
+     - Integration status, results of the weekly pre-release check, release preparation (release branches,
+       release notes, known issues).
+     - `info <https://github.com/orgs/eclipse-score/discussions/2884>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/1595>`__
+   * - **Feature Team meetings**
+     - Progress, issue and PR triage, planning of the module:
+       Baselibs (`info <https://github.com/orgs/eclipse-score/discussions/1223>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2390>`__),
+       Communication/IPC (`info <https://github.com/orgs/eclipse-score/discussions/112>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/categories/communication-ft>`__),
+       Lifecycle (`info <https://github.com/orgs/eclipse-score/discussions/1798>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2386>`__),
+       Logging (`info <https://github.com/orgs/eclipse-score/discussions/114>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/categories/logging-ft>`__),
+       Persistency (`info <https://github.com/orgs/eclipse-score/discussions/116>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2518>`__),
+       Config Management (`info <https://github.com/orgs/eclipse-score/discussions/2283>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2311>`__),
+       Time (`info <https://github.com/orgs/eclipse-score/discussions/2890>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2645>`__).
+     - see each team
+
+.. _pmp_pm_meetings_interaction:
+
+How the meetings work together
+""""""""""""""""""""""""""""""
+
+.. image:: _assets/project_meetings.drawio.svg
+   :alt: S-CORE meetings and the main processes between them
+   :align: center
+   :width: 75%
+
+|
+
+#. **Feature request:** a Feature Team (or any contributor) brings a FEP to the **Architecture Community**;
+   it is reviewed there, goes through the Final Comment Period and ends as a Decision Record, which the
+   **PLC** sees for its roadmap.
+#. **Integration & release:** Feature Teams release their modules; the **reference_integration** meeting
+   checks them every week in the pre-release check and prepares the platform release, which the **PLC**
+   approves.
+#. **Status & escalation:** Feature Teams report status and blockers to the **Leads Alignment**; what cannot
+   be solved there goes to the **PLC**, and decisions flow back the same way.
+#. **Rules & tooling:** the **Process, Safety and Security** meetings define the rules, **Infrastructure and
+   Testing** provide toolchains, CI and test frameworks that all Feature Teams use.
 
 
 .. _pmp_pm_repository_structure:

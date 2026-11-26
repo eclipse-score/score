@@ -90,6 +90,17 @@ major version.
 
 For the release execution follow the steps described in :ref:`module_release_manual`.
 
+.. _pmp_rm_pre_release_check:
+
+Weekly Pre-Release Check
+""""""""""""""""""""""""
+
+Every week the reference integration runs a pre-release check: on a pre-release branch all modules are bumped to
+their latest release, so that problems between module releases are found early and not only during the release
+preparation. Modules already pinned to a newer, not yet released commit keep that commit, so the check may also
+include unreleased code. The results are discussed in the Integration & Release meeting
+(see :ref:`pmp_pm_meetings`).
+
 Release Verification and Approval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
