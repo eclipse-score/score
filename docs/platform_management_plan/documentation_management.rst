@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,107 +12,212 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Documentation Management Plan
-   :id: doc__documentation_mgt_plan
+.. document:: PF Documentation Management Plan
+   :id: doc__platform_documentation_mgt_plan
    :status: valid
-   :version: 4
+   :version: 5
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
    :realizes: wp__document_mgt_plan[version==1]
 
-Documentation Management Plan
------------------------------
+PF Documentation Management Plan
+================================
 
 Purpose
-+++++++
+-------
 
-The documentation management plan describes how documents are handled in the S-CORE project.
+The S-CORE Documentation Management Plan defines how documents are managed
+throughout the project lifecycle. It establishes a consistent approach to
+identifying, maintaining, reviewing, approving, and versioning project
+documentation.
 
-Objectives and scope
-++++++++++++++++++++
 
-Goal of this plan is to describe
+Objectives and Scope
+--------------------
 
-* which documents exist
-* which attributes and lifecycle they have
-* how they are reviewed
+This plan defines:
 
-Approach
-++++++++
+* the documents managed by the S-CORE project;
+* the attributes used to identify and classify these documents;
+* the document lifecycle;
+* the rules for reviewing and approving documents; and
+* the mechanisms for maintaining the document inventory.
 
-Some of the work products of the S-CORE project are modelled specifically
-(e.g. the requirements and architecture have a specific set of attributes)
-Others are modelled as general documents (e.g. the plans which are part of the program management plan or the verification reports).
+This plan applies to work products managed as general documents. Work products
+with dedicated information models, such as requirements or architecture
+elements, are managed according to their applicable definitions and processes.
 
-This plan deals with these documents, which have the following manually set attributes:
+Documentation Approach
+----------------------
 
-* Title: The name of the document (mandatory)
-* Unique Id: Id following the naming pattern of the document Title (mandatory)
-* Safety: Which ASIL the document supports (mandatory)
-* Author: Who is the main committer to the document (mandatory, but set automatically by the github information)
-* Status: Describing where in the lifecycle of the document it currently is (mandatory)
-* Tags: Can be used to group documents for subsequent filtering (optional)
+S-CORE work products are represented in different ways depending on their
+purpose, content, and required structure.
 
-Also the "Documentation Management" is a document, so an example for a correct document definition
-can be seen in the header section above, see :need:`doc__documentation_mgt_plan`.
+Some work products have dedicated information models. For example, requirements
+and architecture elements have specific attributes and relationships defined
+for their respective work-product types.
 
-The following additional attributes of the document are generated automatically during the documentation build:
+Other work products are managed as general documents. These include, for
+example, plans that form part of the Platform Management Plan and verification
+reports.
 
-* Approver: from the github information on who was the last CODEOWNER performing the github review
-* Reviewer: any additional reviewer performing the github review without CODEOWNER rights
+This Documentation Management Plan primarily defines the management of these
+general documents. It also provides the document inventory for all documents
+included in the platform documentation build, including documents that contain
+work products with dedicated information models.
 
-The lifecycle of S-CORE documents has two states:
+Document Attributes
+-------------------
 
-* Draft: The document is filled with content but not completed, the existing content is reviewed and already applicable
-* Valid: The document is completed and approved
+Each document is described by a defined set of attributes.
 
-If a document is invalidated it is removed from the project entirely. A document can also transition from valid to draft,
-for example if a release was done with a valid verification report and then the development for the next release is started.
+The following attributes are maintained as part of the document definition:
 
-Invalidated documents are still observable as part of the git history in the unlikely case of later referral
-(e.g. for design decisions or audit). In this way, there is even an option to recover the content.
+* **Title:** identifies the document by name. Mandatory.
+* **Unique ID:** uniquely identifies the document according to the applicable
+  naming convention. Mandatory.
+* **Version:** identifies the version of the document definition. Mandatory.
+* **Safety:** indicates the safety classification applicable to the document.
+  Mandatory.
+* **Security:** indicates whether the document is security-relevant. Mandatory.
+* **Status:** indicates the current lifecycle state of the document. Mandatory.
+* **Tags:** provide additional classification for grouping and filtering
+  documents. Optional.
 
-The review of each document is done as defined for this type of work product in the respective process description.
-This means that for some of the work products dedicated checklists are defined, but for others there are not.
-In any case the reviews are done in a github review at least by one CODEOWNER who is not the author of the document.
+The Documentation Management Plan is itself managed as a document. The document
+definition in the header of this file therefore provides an example. See
+:need:`doc__platform_documentation_mgt_plan`.
 
-Generally all work products (specific and general documents) are subject to a documentation build,
-which always contains the latest version of the documents for each pull-request.
-Versioning of documents is done as for every work product with github means and is defined in the configuration management plan.
 
-The time schedule is not part of the documentation management plan. As described in the project management plan GitHub issues
-is used to plan and track the work.
+Automatically Derived Attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following tables list all documents. The documentation is structured in several folders :ref:`platform_folder_structure`,
-each representing a specific aspect of the project. First the documents of the platform folders are listed.
-Afterwards the documents are listed per feature: for each feature the feature documents are followed by the
-documents of the implementing modules and their components. Finally all further documents, which do not belong
-to one of these sections, are listed.
+Additional information is recorded through Git and GitHub:
 
-.. note::
+* **Author:** the contributor who created or modified the document content.
+* **Approver:** the CODEOWNER who performed the applicable GitHub review and
+  approved the change.
+* **Reviewer:** any additional reviewer who participated in the GitHub review
+  without acting as the approving CODEOWNER.
 
-   The tables of this plan are generated during the documentation build from the documents which are part of
-   that build. Therefore this plan looks different depending on where it is built:
+This information is derived from the Git history and Pull Request review records
+and does not need to be maintained manually in the document definition.
 
-   * **S-CORE platform repository**: only the documents of the platform repository are listed. The module
-     repositories are not part of this build, so the module and component tables are empty. Only the module
-     documentation still located in the folder ``docs/modules`` of the platform repository is listed there.
-     This documentation is not yet transferred into the module repositories, see :ref:`module_folder_structure`.
-     Also the section "Further documents" is empty.
-   * **Reference integration**: the module repositories and further dependencies (e.g. the process description
-     and docs-as-code) are part of the build. Therefore the tables additionally contain the module and component
-     documents of these repositories and the section "Further documents" lists the documents of the other dependencies.
+Document Lifecycle
+------------------
 
-   The structure of the plan is the same in both cases.
+S-CORE documents have two lifecycle states:
+
+* **Draft:** the document is under development and is not yet considered
+  complete. Existing content may already have been reviewed and may be
+  applicable within its documented scope.
+* **Valid:** the document is complete, reviewed, and approved for its intended
+  use.
+
+A document may transition from **Valid** back to **Draft** when changes requiring
+further development or review are introduced.
+
+For example, a verification report may have status **Valid** for a completed
+release. When the report is updated for a subsequent release, its status may
+return to **Draft** until the updated content has been completed, reviewed, and
+approved.
+
+Documents that are no longer applicable are removed from the active project
+documentation rather than being assigned a separate lifecycle state.
+
+Removed documents and their previous versions remain available through the Git
+history and, where applicable, through release baselines. This preserves
+traceability and allows historical document versions to be inspected or
+recovered when required, for example to understand previous decisions or to
+provide audit evidence.
+
+
+Document Review and Approval
+----------------------------
+
+Each document shall be reviewed according to the review requirements defined
+for the corresponding work-product type in the applicable process description.
+
+Where defined for the work-product type, the applicable review checklist shall
+be used.
+
+The review and approval are performed through a GitHub Pull Request. At least
+one CODEOWNER who is not an author of the reviewed changes shall review and
+approve the document.
+
+The GitHub Pull Request review record provides the approval evidence for the
+document. Where an applicable review checklist requires additional evidence,
+that evidence shall be recorded or referenced by the Pull Request.
+
+
+Documentation Build
+-------------------
+
+All documentation work products, including both work products with dedicated
+information models and general documents, are included in the documentation
+build.
+
+For each Pull Request, the documentation build represents the version of the
+work products resulting from the proposed changes. This allows documentation
+changes to be reviewed together with the corresponding project changes.
+
+Document versioning and change history are managed using Git and GitHub in the
+same manner as for other project work products. The applicable versioning,
+baselining, and configuration-management rules are defined in
+:need:`doc__platform_config_mgt_plan`.
+
+
+Planning and Tracking
+---------------------
+
+The schedule for creating or updating documents is outside the scope of this
+Documentation Management Plan.
+
+The corresponding activities are planned and tracked through GitHub ISSUEs as
+defined in the applicable Project Management Plan.
+
+
+Document Inventory
+------------------
+
+The following tables provide the inventory of documents included in the
+documentation build.
+
+The S-CORE documentation is organized into folders as defined in
+:ref:`platform_folder_structure`. Each folder represents a specific aspect of
+the project or a defined documentation scope.
+
+The inventory is generated automatically from the document definitions included
+in the documentation build. Consequently, only documents available to the
+corresponding build configuration are included.
 
 
 .. _project_documents_list:
 
-Platform documentation
-++++++++++++++++++++++
+Platform Documents List
+~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _documents_docs_root:
+The following table lists all documents included in the documentation build.
+
+.. needtable::
+   :style: table
+   :types: document
+   :columns: title;id;version;status;safety;security
+   :sort: title
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"]:
+           results.append(need)
+
+
+.. note::
+
+   The following folder-based tables are retained temporarily for compatibility
+   with the current Platform Management Plan structure. They will be removed after the Platform Management Plan has been fully updated.
+
 
 docs
 ####

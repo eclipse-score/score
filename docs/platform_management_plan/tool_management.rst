@@ -76,7 +76,7 @@ the relevant information.
 
 :need:`gd_chklst__tool_cr_review` shall be used to check that all relevant information is considered.
 
-The configuration of tools is part of the :need:`doc__config_mgt_plan`.
+The configuration of tools is part of the :need:`doc__platform_config_mgt_plan`.
 
 The output after this stage is the :need:`wp__tool_verification_report` in status: `identified`.
 
