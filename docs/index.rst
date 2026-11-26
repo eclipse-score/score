@@ -277,6 +277,7 @@ Infrastructure and Tooling
 
       | :doc:`features/index`
       | :doc:`requirements/index`
+      | :doc:`modules/index`
       | :doc:`score_releases/index`
 
    .. grid-item::
@@ -316,12 +317,13 @@ Infrastructure and Tooling
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
    design_decisions/index
 
+
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    introduction/index
-
+   modules/index
 
 .. raw:: html
 
