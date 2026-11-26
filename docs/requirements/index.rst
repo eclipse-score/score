@@ -25,3 +25,4 @@ The following stakeholder functional and non-functional requirements and platfor
 
    stakeholder/index
    platform_assumptions/index
+   platform_assumptions/chklst_aou_inspection
