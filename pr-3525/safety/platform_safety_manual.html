@@ -630,7 +630,7 @@
                   
   <section id="platform-safety-manual">
 <h1>Platform Safety Manual<a class="headerlink" href="#platform-safety-manual" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b288e3fc">
+<div class="need_container docutils container" id="SNCB-9facea52">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_platform_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -796,18 +796,18 @@ the respective feature DFA see <a class="external_link reference external" href=
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Shared Resource Interference Protection</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Safe SW-platform state</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__safe_state">stkh_req__safety__safe_state</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Shared Resource Interference Protection</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__shared_resource_protection">stkh_req__safety__shared_resource_protection</a></p></td>
-<td class="needs_status"><p>valid</p></td>
+<td class="needs_status"><p>invalid</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Redundant Software Execution</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Redundant Software Execution</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__sw_lockstep">stkh_req__safety__sw_lockstep</a></p></td>
-<td class="needs_status"><p>valid</p></td>
-<td class="needs_safety"><p>ASIL_B</p></td>
-</tr>
-<tr class="need row-odd"><td class="needs_title"><p>Reaction to Unrecoverable Errors</p></td>
-<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__unrecoverable_error">stkh_req__safety__unrecoverable_error</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 </tr>
@@ -836,6 +836,87 @@ the respective feature DFA see <a class="external_link reference external" href=
 </div>
 </div>
 </section>
+<section id="safety-mechanisms">
+<h2>Safety Mechanisms<a class="headerlink" href="#safety-mechanisms" title="Link to this heading">#</a></h2>
+<p>The following stakeholder requirements identify safety mechanisms expected
+at platform level. These mechanisms address safety concerns resulting from
+the complexity of the realizing software elements or from dependencies on
+hardware capabilities.</p>
+<p>The applicability and adequacy of these safety mechanisms shall be confirmed
+during the safety analysis of the derived feature requirements and
+architecture.</p>
+<div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-1">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-safety/platform_safety_manual-1-table_node">
+<caption><span class="caption-text">Expected Safety Mechanisms</span><a class="headerlink" href="#needtable-safety/platform_safety_manual-1-table_node" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Title</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_title"><p>Direct Memory Access (DMA) Protection</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__dma_protection">stkh_req__safety__dma_protection</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>End-to-End (E2E) Protection</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__e2e_protection">stkh_req__safety__e2e_protection</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Error Reporting and Propagation</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__error_reporting">stkh_req__safety__error_reporting</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>External Supervision</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__external_supervision">stkh_req__safety__external_supervision</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Program Flow Monitoring</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__flow_monitoring">stkh_req__safety__flow_monitoring</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Health Management</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__health_management">stkh_req__safety__health_management</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Hardware Self-Test</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__hw_self_test">stkh_req__safety__hw_self_test</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Memory Error Detection and Correction</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__mem_error_correction">stkh_req__safety__mem_error_correction</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Memory Protection</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__memory_protection">stkh_req__safety__memory_protection</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Safe Startup and Reset</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__safe_startup_reset">stkh_req__safety__safe_startup_reset</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Safe SW-platform state</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__safe_state">stkh_req__safety__safe_state</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Shared Resource Interference Protection</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__shared_resource_protection">stkh_req__safety__shared_resource_protection</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Redundant Software Execution</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__safety__sw_lockstep">stkh_req__safety__sw_lockstep</a></p></td>
+<td class="needs_tags"><p>safety_mechanism</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="assumptions-of-use">
 <h2>Assumptions of Use<a class="headerlink" href="#assumptions-of-use" title="Link to this heading">#</a></h2>
 <section id="assumptions-on-the-environment">
@@ -843,8 +924,8 @@ the respective feature DFA see <a class="external_link reference external" href=
 <p>Generally the assumption of the project platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</p>
 <p><strong>The platform repository does not add implementation, so the user has to check each of the module’s safety manuals of the modules he incorporates in his SW platform to collect the full list of the OS functions required to be at least ASIL B qualified.</strong></p>
 <p>List of AoUs expected from the environment the platform runs on:</p>
-<div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-1">
-<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-safety/platform_safety_manual-1-table_node">
+<div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-2">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-safety/platform_safety_manual-2-table_node">
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 33.3%" />
@@ -895,8 +976,8 @@ Additionally the components of the platform may have additional specific assumpt
 <li><p>There are assumption which can be fulfilled by a safety mechanism realized by some other project platform component and are therefore not relevant for an user who uses the whole platform. But those are relevant if you chose to use the module SEooC stand-alone - in this case the AoU is marked as “module”. An example would be the “JSON read” which requires “The user shall provide a string as input which is not corrupted due to HW or QM SW errors.” - which is covered when using together with safe project platform persistency feature.</p></li>
 </ol>
 <p>List of AoUs on the user of the platform features or the module of this safety manual:</p>
-<div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-2">
-<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-safety/platform_safety_manual-2-table_node">
+<div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-3">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-safety/platform_safety_manual-3-table_node">
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 33.3%" />
@@ -1061,6 +1142,7 @@ separate process and may remain QM.</p>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-scope">Introduction/Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumed-platform-safety-requirements">Assumed Platform Safety Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-mechanisms">Safety Mechanisms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-of-use">Assumptions of Use</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-on-the-environment">Assumptions on the Environment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-on-the-user">Assumptions on the User</a></li>
