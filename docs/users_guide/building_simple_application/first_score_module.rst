@@ -184,20 +184,22 @@ Then follow the dependencies to Eclipse S-CORE modules that are used during deve
     :linenos:
 
     bazel_dep(name = "score_tooling", version = "...", dev_dependency = True)
+    bazel_dep(name = "score_tools", version = "0.0.5", dev_dependency = True)
     bazel_dep(name = "score_docs_as_code", version = "...")
     bazel_dep(name = "score_process_description", version = "...")
     bazel_dep(name = "score_devcontainer", version = "...", dev_dependency = True)
     bazel_dep(name = "score_cpp_policies", version = "...", dev_dependency = True)
 
-- **score_tooling**: enables tooling checks such as copyright, formatting and license verification.
+- **score_tooling** enables tooling checks such as formatting and license verification.
+- **score_tools** provides the copyright checker.
 - **score_docs_as_code** and **score_process_description**: enable documentation builds with Sphinx and sphinx-needs
   and the references to the process description.
 - **score_devcontainer**: makes the tools of the devcontainer available to Bazel.
 - **score_cpp_policies**: provides the shared C++ quality rules, e.g. compiler warnings, sanitizers and clang-tidy.
   For Rust code, ``score_rust_policies`` provides the shared Clippy configuration.
 
-The versions are left out here on purpose: the template is kept up to date by automated pull requests, so take the
-current versions from its `MODULE.bazel <https://github.com/eclipse-score/module_template/blob/main/MODULE.bazel>`_.
+The template is kept up to date by automated pull requests. Take the versions for its dependencies from its
+`MODULE.bazel <https://github.com/eclipse-score/module_template/blob/main/MODULE.bazel>`_.
 ``dev_dependency = True`` marks dependencies which are only needed to develop the module itself, e.g. for tests
 and checks. They are ignored when another module depends on your module.
 
@@ -274,7 +276,8 @@ contains the main Bazel targets on the top level of the module:
     :linenos:
 
     load("@score_docs_as_code//:docs.bzl", "docs")
-    load("@score_tooling//:defs.bzl", "copyright_checker", "dash_license_checker", "setup_starpls", "use_format_targets")
+    load("@score_tooling//:defs.bzl", "dash_license_checker", "setup_starpls", "use_format_targets")
+    load("@score_tools//cr_checker:cr_checker.bzl", "copyright_checker")
     load("//:project_config.bzl", "PROJECT_CONFIG")
 
 First, we load Bazel rules and macros implemented in the Eclipse S-CORE context from the modules
@@ -285,13 +288,6 @@ that we've defined as dependencies in the ``MODULE.bazel`` file, e.g. https://gi
 
     copyright_checker(
         name = "copyright",
-        srcs = [
-            "score",
-            "//:BUILD",
-            "//:MODULE.bazel",
-        ],
-        config = "@score_tooling//cr_checker/resources:config",
-        template = "@score_tooling//cr_checker/resources:templates",
         visibility = ["//visibility:public"],
     )
 
@@ -306,8 +302,7 @@ that we've defined as dependencies in the ``MODULE.bazel`` file, e.g. https://gi
     use_format_targets()
 
 Second, we define the targets for the copyright check (``bazel run //:copyright.check``), the license check
-with the Eclipse Dash license tool and the formatting check (``bazel test //:format.check``),
-based on Bazel rules implemented in the https://github.com/eclipse-score/tooling module.
+with the Eclipse Dash license tool and the formatting check (``bazel test //:format.check``).
 
 .. code-block:: python
     :linenos:
