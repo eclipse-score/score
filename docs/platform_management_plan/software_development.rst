@@ -123,7 +123,25 @@ Coding guidelines
 SW configuration guideline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The configuration of the software is done by the code. Which means that there are no external configuration files.
+S-CORE distinguishes two kinds of static configuration:
+
+* **Pre-compile time configuration** (e.g. feature selection, compile-time constants)
+  is done in code and via the Bazel build configuration. It is covered by the coding
+  guidelines and the compiler settings.
+* **Post-compile time static configuration** of platform and application components
+  (e.g. instance specifiers, multiple instantiation, provided/required capabilities)
+  shall follow the common S-CORE configuration guideline and configuration model,
+  see :need:`doc__configuration_model`.
+
+The configuration guideline will define binding rules for naming conventions, usage of
+unique identifiers, storage location and format of configuration files, and the
+structure of configuration parameters (mandatory/optional fields, default values).
+
+Until the guideline is released, the following practice applies: post-compile time
+configuration is provided as JSON files, which are validated against a JSON schema
+provided by the module where available. Each module documents the location and
+format of its configuration files. The integrator provides the configuration
+files for the target deployment (see the reference integration).
 
 Compiler settings and static code analysis configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
