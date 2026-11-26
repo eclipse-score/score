@@ -705,7 +705,7 @@ Planning Issues
 
 A *Product Increment* represents the highest level in the work package hierarchy and
 cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
-labels have to be used. One *Product Increment* is the planning element for a version of a :ref:`Module <modules>`
+labels have to be used. One *Product Increment* is the planning element for a version of a :ref:`Module <modules>`.
 
 A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* are owned by
 :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.

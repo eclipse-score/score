@@ -33,10 +33,12 @@ The architecture is described on two levels, which you will find again in all S-
 - A **Feature** is a logical entity of the platform (e.g. *Persistency* or *Communication*).
   Feature requirements and the feature architecture are maintained in this repository,
   see :ref:`Platform Features <features>`.
-- A **Module** is the physically built and released unit that implements one or more features.
-  Each module lives in its own repository and contains the component requirements, component architecture,
-  detailed design, implementation and tests, see :ref:`Modules <modules>` and the
-  :doc:`module structure overview <module_structure_overview>`.
+- A **Module** is an independently developed and delivered software building block consisting
+  of one or more components. The components of a module contribute to the realization of one
+  or more features. Modules are maintained in dedicated module repositories, which may host
+  one or more related modules. Component requirements, component architecture, detailed design,
+  implementation and tests are maintained with the respective module, see :ref:`Modules <modules>`
+  and the :doc:`module structure overview <module_structure_overview>`.
 
 The relation between both levels is explained in the
 `building blocks concept <https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html>`_
