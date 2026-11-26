@@ -129,16 +129,3 @@ Safety Anomalies
 ----------------
 
 Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_.
-
-References
-----------
-
-:need:`doc__platform_handbook`
-
-`Baselibs Safety Manual <https://eclipse-score.github.io/baselibs/main/module/manuals/safety_manual.html>`_
-
-.. tbd: `Communication Safety Manual <https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html>`_
-
-`Lifecycle Safety Manual <https://eclipse-score.github.io/lifecycle/main/module/manuals/safety_manual.html>`_
-
-`Persistency Safety Manual <https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html>`_
