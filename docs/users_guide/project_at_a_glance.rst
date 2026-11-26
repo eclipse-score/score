@@ -23,7 +23,7 @@ and where to find the details.
 .. image:: _assets/project_organization.drawio.svg
    :alt: S-CORE project organization: Technical Lead Circle, Communities and Feature Teams
    :align: center
-   :width: 50%
+   :width: 75%
 
 Who does what
 -------------
@@ -74,7 +74,7 @@ All meetings are open to everyone; times in CET/CEST, from the
    * - **SW Development Process Community**
        (`minutes <https://github.com/orgs/eclipse-score/discussions/407>`__)
      - weekly, Thu 09:30
-     - Process development (news, updates, improvements), safety and quality management, process
+     - Process development (news, updates, improvements), safety, security and quality management, process
        implementation in the tooling.
    * - **Safety Topics / Safety Management**
      - weekly, Tue 09:00
@@ -105,7 +105,7 @@ How the meetings work together
 .. image:: _assets/project_meetings.drawio.svg
    :alt: S-CORE meetings and the main processes between them
    :align: center
-   :width: 50%
+   :width: 75%
 
 #. **Feature request:** a Feature Team (or any contributor) brings a FEP to the **Architecture Community**;
    it is reviewed there, goes through the Final Comment Period and ends as a Decision Record, which the
@@ -238,25 +238,5 @@ users how far each one is.
 Most important links
 --------------------
 
-**Organization & meetings**
-
-- :doc:`/platform_management_plan/project_management` (organization, teams, planning)
-- `S-CORE Calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`__
-  · `Meeting minutes (GitHub Discussions) <https://github.com/orgs/eclipse-score/discussions>`__
-- `Members, leads and committers (Eclipse) <https://projects.eclipse.org/projects/automotive.score/who>`__
-
-**Contributing & decisions**
-
-- :doc:`/contribute/general/contribution_guide`
-- :ref:`Feature Request (FEP) guideline <feature_request_guideline>`
-- :doc:`/platform_management_plan/change_management` (incl. FEP track)
-- :doc:`Decision Records </design_decisions/index>`
-- `Process Description <https://eclipse-score.github.io/process_description/main/>`__
-
-**Platform, integration & release**
-
-- :doc:`/features/index`
-- `Integration Process (reference_integration) <https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html>`__
-- `S-CORE v1.x Target <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/roadmap/roadmap.html>`__
-  · `Release Notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`__
-- `S-CORE Bazel Registry <https://github.com/eclipse-score/bazel_registry>`__
+All links to organization, meetings, contribution, decisions, integration & release, repositories and tooling
+are collected in :ref:`useful_links`.

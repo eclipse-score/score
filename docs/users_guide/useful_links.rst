@@ -16,14 +16,36 @@
 Useful Links
 ============
 
-Community & Governance
-----------------------
+Organization & Meetings
+-----------------------
 
-- `Eclipse SDV Slack <https://sdv.eclipse.org/get-engaged/>`_ — join the community chat to ask questions and connect with contributors
+- :ref:`project_at_a_glance` — short track: organization, most important meetings and key processes on one page
+- `Project Management <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_ — organization, teams, planning and tracking in detail
 - `Eclipse S-CORE Project Leads <https://projects.eclipse.org/projects/automotive.score/who>`_ — official list of project leads and committers
-- `Architecture Community Discussions <https://github.com/orgs/eclipse-score/discussions/categories/architecture-community>`_ — GitHub discussion board for architecture topics
-- `Feature Requests & Modifications Board <https://github.com/orgs/eclipse-score/projects/4/views/1>`_ — overview of open feature requests and planned changes
 - `Eclipse Community Calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_ — public calendar with Feature Team and Community meetings
+- `Meeting Minutes (GitHub Discussions) <https://github.com/orgs/eclipse-score/discussions>`_ — minutes and general information of every team and community
+- `Architecture Community Discussions <https://github.com/orgs/eclipse-score/discussions/categories/architecture-community>`_ — GitHub discussion board for architecture topics
+- `Eclipse SDV Slack <https://sdv.eclipse.org/get-engaged/>`_ — join the community chat to ask questions and connect with contributors
+
+Contributing & Decisions
+------------------------
+
+- `Contribution Guidelines <https://eclipse-score.github.io/score/main/contribute/contribution_request/index.html#doc__contr_guideline>`_ — step-by-step guide for common contribution workflows
+- `Contribution Guide <https://eclipse-score.github.io/score/main/contribute/general/contribution_guide.html>`_ — general rules for contributions
+- `Feature Request (FEP) Guideline <https://eclipse-score.github.io/score/main/contribute/contribution_request/feature_request.html>`_ — how to propose a new feature or a change with platform impact
+- `Feature Requests & Modifications Board <https://github.com/orgs/eclipse-score/projects/4/views/1>`_ — overview of open feature requests and planned changes
+- `Change Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/change_management.html>`_ — change requests incl. the FEP track
+- `Decision Records <https://eclipse-score.github.io/score/main/design_decisions/index.html>`_ — architectural and process decision records for the S-CORE project
+- `Contribution Attribution <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html>`_ — how to properly attribute contributions
+
+Platform, Integration & Release
+-------------------------------
+
+- `Platform Features <https://eclipse-score.github.io/score/main/features/index.html>`_ — features, feature requirements and architecture
+- `Integration Process <https://eclipse-score.github.io/reference_integration/main/integration_process/integration_process.html>`_ — step-by-step guide to integrate a module into the reference integration
+- `S-CORE v1.x Target <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/roadmap/roadmap.html>`_ — scope of the S-CORE v1.x release
+- `Release Notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_ — S-CORE platform release notes
+- `Milestones <https://github.com/eclipse-score/score/milestones>`_ — releases and other project milestones
 
 Key Repositories
 ----------------
@@ -41,10 +63,7 @@ Project Documentation
 ---------------------
 
 - `S-CORE Documentation <https://eclipse-score.github.io/score/main/>`_ — rendered project documentation (requirements, architecture, safety)
-- `Decision Records <https://eclipse-score.github.io/score/main/design_decisions/index.html>`_ — architectural and process decision records for the S-CORE project
 - `Platform Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/index.html>`_ — project governance and management plan
-- `Contribution Guidelines <https://eclipse-score.github.io/score/main/contribute/contribution_request/index.html#doc__contr_guideline>`_ — step-by-step guide for common contribution workflows
-- `Contribution Attribution <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html>`_ — how to properly attribute contributions
 - `Process Description Documentation <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_ — general concepts of the S-CORE process
 - `Verification Concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html>`_ — verification approach and testing strategy
 - `Docs-as-Code How-To <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_ — guide for writing and generating documentation
