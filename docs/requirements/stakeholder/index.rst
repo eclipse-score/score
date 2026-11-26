@@ -601,7 +601,7 @@ Safety-related Communication
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide communication capabilities that protect
+   The SW-platform shall provide communication capabilities that maintain
    the integrity of safety-related information exchanged between software
    components.
 
@@ -1103,8 +1103,21 @@ Fault Detection and Monitoring
    :tags: safety_mechanism
    :valid_from: v1.0.0
 
-   The SW-platform shall provide mechanisms for monitoring the expected
-   execution sequence of safety-related application activities.
+   Safety-relevant SW-platform components shall use program flow monitoring to
+   detect runtime errors or justify in their safety concept why program flow
+   monitoring is not required.
+
+   .. note::
+
+      Reasons for not requiring program flow monitoring may include execution
+      environments that already provide sufficient timing and execution
+      guarantees, or cases where missing or late execution does not violate the
+      applicable safety requirements.
+
+   .. note::
+
+      Program flow monitoring capabilities are provided by
+      :need:`stkh_req__safety__health_management`.
 
 
 .. stkh_req:: End-to-End (E2E) Protection
