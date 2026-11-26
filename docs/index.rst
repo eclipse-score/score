@@ -70,9 +70,21 @@ Introduction
 Get started with S-CORE
 -----------------------
 
-.. grid:: 3
+.. grid:: 1 2 4 4
    :gutter: 3
    :class-container: score-grid score-grid-getstarted
+
+   .. grid-item-card::
+      :link: users_guide/project_at_a_glance
+      :link-type: doc
+      :text-align: center
+
+      :octicon:`organization;1.5em`
+
+      Project at a Glance
+      ^^^
+      The short track: how S-CORE is organized, the most important meetings,
+      key processes and links on one page.
 
    .. grid-item-card::
       :link: users_guide/project_basics/index
