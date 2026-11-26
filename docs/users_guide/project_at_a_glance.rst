@@ -21,7 +21,7 @@ The short track through S-CORE: how the project is organized, which meetings mat
 and where to find the details.
 
 .. image:: _assets/project_organization.drawio.svg
-   :alt: S-CORE project organization: Technical Lead Circle, Communities and Feature Teams
+   :alt: S-CORE project organization: Project Lead Circle, Communities and Feature Teams
    :align: center
    :width: 75%
 
@@ -34,11 +34,11 @@ Who does what
 
    * - Body
      - Responsibility
-   * - **Project / Technical Lead Circle (PLC/TLC)**
+   * - **Project Lead Circle (PLC)**
      - Strategic and technical decisions, triage of feature requests, adding/removing repositories,
        release planning and approval, escalation
    * - **Communities**
-     - Topics that span all modules; each has a Community Lead
+     - Topics that span all modules; each has a Community Lead and a deputy
    * - **Feature Teams**
      - One module each, from architecture to integration test; each has a Lead and at least one Committer
 
@@ -58,13 +58,13 @@ and backlog, and the minutes are posted in the
    * - Meeting
      - What happens
      - Links
-   * - **Technical Lead Circle**
+   * - **Project Lead Circle (PLC)**
      - Status of milestones, bugs and open feature requests; review of product increments, epics and tasks;
        decisions on releases, versioning, scope and escalations.
      - `info <https://github.com/orgs/eclipse-score/discussions/104>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/516>`__
-   * - **Leads Alignment** (Tech Leads, Community Leads, Feature Team Leads)
-     - All leads sync: cross-team dependencies, blockers, information from the TLC to the teams and
-       escalations from the teams to the TLC.
+   * - **Leads Alignment** (Project Leads, Community Leads, Feature Team Leads)
+     - All leads sync: cross-team dependencies, blockers, information from the PLC to the teams and
+       escalations from the teams to the PLC.
      - `minutes <https://github.com/orgs/eclipse-score/discussions/434>`__
    * - **Architecture Community**
      - Architecture questions, contribution pitches and FEP reviews; cancelled when there are no agenda items.
@@ -112,12 +112,12 @@ How the meetings work together
 
 #. **Feature request:** a Feature Team (or any contributor) brings a FEP to the **Architecture Community**;
    it is reviewed there, goes through the Final Comment Period and ends as a Decision Record, which the
-   **TLC** sees for its roadmap.
+   **PLC** sees for its roadmap.
 #. **Integration & release:** Feature Teams release their modules; the **reference_integration** meeting
-   checks them every week in the pre-release check and prepares the platform release, which the **TLC**
+   checks them every week in the pre-release check and prepares the platform release, which the **PLC**
    approves.
 #. **Status & escalation:** Feature Teams report status and blockers to the **Leads Alignment**; what cannot
-   be solved there goes to the **TLC**, and decisions flow back the same way.
+   be solved there goes to the **PLC**, and decisions flow back the same way.
 #. **Rules & tooling:** the **Process, Safety and Security** meetings define the rules, **Infrastructure and
    Testing** provide toolchains, CI and test frameworks that all Feature Teams use.
 
@@ -137,9 +137,9 @@ Most important concepts
 Common
 ^^^^^^
 
-- **Decisions go up, work goes sideways:** the TLC decides; Communities set common rules; Feature Teams build
+- **Decisions go up, work goes sideways:** the PLC decides; Communities set common rules; Feature Teams build
   the modules.
-- **Teams are created or closed by the TLC.** A new team gets a GitHub team, repositories, CODEOWNERS, a
+- **Teams are created or closed by the PLC.** A new team gets a GitHub team, repositories, CODEOWNERS, a
   project board, a label (``community:`` / ``ft:``) and a Slack channel.
 - **Everything is open:** all meetings are in the S-CORE calendar and open to everyone; minutes are public in
   the GitHub Discussions.
@@ -149,28 +149,11 @@ Feature Request (FEP)
 ^^^^^^^^^^^^^^^^^^^^^
 
 New features and changes with impact on the platform or other teams go through the
-**Feature & Enhancement Proposal (FEP)** track (:ref:`FEP guideline <feature_request_guideline>`); changes inside one team use
-the normal Issue/PR flow.
+**Feature & Enhancement Proposal (FEP)** track: the proposal is reviewed by the Architecture Community and
+decided after a Final Comment Period; changes inside one team use the normal Issue/PR flow. The process is
+described in the :ref:`FEP guideline <feature_request_guideline>`.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 25 75
-
-   * - Phase
-     - What happens
-   * - 0 Idea
-     - Post the idea in the architecture Slack channel, find a **Shepherd** (Architecture Community committer)
-   * - 1 Draft
-     - FEP as PR (Decision Record template) + tracking Issue *Feature Request*, label ``fep``;
-       optional incubator repository ``inc_<topic>``
-   * - 2 Final Comment Period
-     - 14 days, a bot notifies all module maintainers; **silence = approval**, only substantive objections block
-   * - 3 Decision
-     - Accepted (PR merged as Decision Record), Rejected or Withdrawn; breaking changes need an explicit quorum
-   * - 4 Implementation
-     - The tracking Issue stays open until the implementation is merged
-
-As defined in the :doc:`Project Management Plan </platform_management_plan/project_management>`, the TLC triages
+As defined in the :doc:`Project Management Plan </platform_management_plan/project_management>`, the PLC triages
 incoming requests and is notified once a FEP enters its Final Comment Period.
 
 Decision Record (DR)
@@ -188,7 +171,7 @@ Integration & Release process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Releases** are `milestones <https://github.com/eclipse-score/score/milestones>`__ in the score repository,
-  planned and approved by the TLC.
+  planned and approved by the PLC.
 - **Modules** release independently (strict SemVer) into the
   `S-CORE Bazel registry <https://github.com/eclipse-score/bazel_registry>`__. SemVer applies to the
   **public API and features**: only a backward-incompatible change (breaking API change, removed or
@@ -201,10 +184,7 @@ Integration & Release process
   branch to see early whether they still work together; modules already pinned to a newer, not yet released
   commit keep that commit, so the check may also include unreleased code.
 - **Release:** release candidate branch → release note with module versions and **maturity** per module
-  (Release / Experimental / Preview, DR-003).
-- **Platform versions** (``1.0``, ``1.1``, …) follow a release train, not SemVer (proposal, to be confirmed).
-  **For now, breaking API changes are allowed between all platform versions.** Small fixes may be carried as
-  patches in ``reference_integration`` until the module releases them.
+  (Release / Experimental / Preview, :need:`DR-003 <dec_rec__strat__module_maturity_levels>`).
 
 Module Maturity
 ^^^^^^^^^^^^^^^
