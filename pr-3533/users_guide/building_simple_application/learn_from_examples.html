@@ -696,6 +696,11 @@ applications directly from the module repositories, e.g. <code class="docutils l
 <code class="docutils literal notranslate"><span class="pre">&#64;score_time//examples/time/steady_time</span></code>, and combine modules, e.g. lifecycle with communication.
 The <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/platform_integration_tests">platform integration tests</a>
 (PIT) start these showcases on the reference images and check their results.</p>
+<p>A larger end-to-end example is the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/showcases/drive_replay">Drive Replay Demo</a>:
+a scripted highway drive is replayed into a forward collision warning, all processes are started and supervised by
+the launch manager (lifecycle), and communication, persistency and logging work together; if the warning hangs or
+crashes, the system falls back to a degraded mode and recovers. The README contains a video of a real run.</p>
 </section>
 <section id="integrating-your-module">
 <h2>Integrating your module<a class="headerlink" href="#integrating-your-module" title="Link to this heading">#</a></h2>
