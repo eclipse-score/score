@@ -632,7 +632,7 @@
 <span id="id1"></span><h1>Project at a Glance<a class="headerlink" href="#project-at-a-glance" title="Link to this heading">#</a></h1>
 <p>The short track through S-CORE: how the project is organized, which meetings matter, the key processes
 and where to find the details.</p>
-<a class="reference internal image-reference" href="../_images/project_organization.drawio.svg"><img alt="S-CORE project organization: Technical Lead Circle, Communities and Feature Teams" class="align-center" src="../_images/project_organization.drawio.svg" style="width: 75%;" />
+<a class="reference internal image-reference" href="../_images/project_organization.drawio.svg"><img alt="S-CORE project organization: Project Lead Circle, Communities and Feature Teams" class="align-center" src="../_images/project_organization.drawio.svg" style="width: 75%;" />
 </a>
 <section id="who-does-what">
 <h2>Who does what<a class="headerlink" href="#who-does-what" title="Link to this heading">#</a></h2>
@@ -647,12 +647,12 @@ and where to find the details.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Project / Technical Lead Circle (PLC/TLC)</strong></p></td>
+<tr class="row-even"><td><p><strong>Project Lead Circle (PLC)</strong></p></td>
 <td><p>Strategic and technical decisions, triage of feature requests, adding/removing repositories,
 release planning and approval, escalation</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Communities</strong></p></td>
-<td><p>Topics that span all modules; each has a Community Lead</p></td>
+<td><p>Topics that span all modules; each has a Community Lead and a deputy</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Feature Teams</strong></p></td>
 <td><p>One module each, from architecture to integration test; each has a Lead and at least one Committer</p></td>
@@ -681,14 +681,14 @@ and backlog, and the minutes are posted in the
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Technical Lead Circle</strong></p></td>
+<tr class="row-even"><td><p><strong>Project Lead Circle (PLC)</strong></p></td>
 <td><p>Status of milestones, bugs and open feature requests; review of product increments, epics and tasks;
 decisions on releases, versioning, scope and escalations.</p></td>
 <td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/104">info</a> · <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/516">minutes</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Leads Alignment</strong> (Tech Leads, Community Leads, Feature Team Leads)</p></td>
-<td><p>All leads sync: cross-team dependencies, blockers, information from the TLC to the teams and
-escalations from the teams to the TLC.</p></td>
+<tr class="row-odd"><td><p><strong>Leads Alignment</strong> (Project Leads, Community Leads, Feature Team Leads)</p></td>
+<td><p>All leads sync: cross-team dependencies, blockers, information from the PLC to the teams and
+escalations from the teams to the PLC.</p></td>
 <td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/434">minutes</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Architecture Community</strong></p></td>
@@ -745,12 +745,12 @@ Time (<a class="reference external" href="https://github.com/orgs/eclipse-score/
 <ol class="arabic simple">
 <li><p><strong>Feature request:</strong> a Feature Team (or any contributor) brings a FEP to the <strong>Architecture Community</strong>;
 it is reviewed there, goes through the Final Comment Period and ends as a Decision Record, which the
-<strong>TLC</strong> sees for its roadmap.</p></li>
+<strong>PLC</strong> sees for its roadmap.</p></li>
 <li><p><strong>Integration &amp; release:</strong> Feature Teams release their modules; the <strong>reference_integration</strong> meeting
-checks them every week in the pre-release check and prepares the platform release, which the <strong>TLC</strong>
+checks them every week in the pre-release check and prepares the platform release, which the <strong>PLC</strong>
 approves.</p></li>
 <li><p><strong>Status &amp; escalation:</strong> Feature Teams report status and blockers to the <strong>Leads Alignment</strong>; what cannot
-be solved there goes to the <strong>TLC</strong>, and decisions flow back the same way.</p></li>
+be solved there goes to the <strong>PLC</strong>, and decisions flow back the same way.</p></li>
 <li><p><strong>Rules &amp; tooling:</strong> the <strong>Process, Safety and Security</strong> meetings define the rules, <strong>Infrastructure and
 Testing</strong> provide toolchains, CI and test frameworks that all Feature Teams use.</p></li>
 </ol>
@@ -772,9 +772,9 @@ Testing</strong> provide toolchains, CI and test frameworks that all Feature Tea
 <section id="common">
 <h3>Common<a class="headerlink" href="#common" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Decisions go up, work goes sideways:</strong> the TLC decides; Communities set common rules; Feature Teams build
+<li><p><strong>Decisions go up, work goes sideways:</strong> the PLC decides; Communities set common rules; Feature Teams build
 the modules.</p></li>
-<li><p><strong>Teams are created or closed by the TLC.</strong> A new team gets a GitHub team, repositories, CODEOWNERS, a
+<li><p><strong>Teams are created or closed by the PLC.</strong> A new team gets a GitHub team, repositories, CODEOWNERS, a
 project board, a label (<code class="docutils literal notranslate"><span class="pre">community:</span></code> / <code class="docutils literal notranslate"><span class="pre">ft:</span></code>) and a Slack channel.</p></li>
 <li><p><strong>Everything is open:</strong> all meetings are in the S-CORE calendar and open to everyone; minutes are public in
 the GitHub Discussions.</p></li>
@@ -784,39 +784,10 @@ the GitHub Discussions.</p></li>
 <section id="feature-request-fep">
 <h3>Feature Request (FEP)<a class="headerlink" href="#feature-request-fep" title="Link to this heading">#</a></h3>
 <p>New features and changes with impact on the platform or other teams go through the
-<strong>Feature &amp; Enhancement Proposal (FEP)</strong> track (<a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP guideline</span></a>); changes inside one team use
-the normal Issue/PR flow.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 75.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Phase</p></th>
-<th class="head"><p>What happens</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0 Idea</p></td>
-<td><p>Post the idea in the architecture Slack channel, find a <strong>Shepherd</strong> (Architecture Community committer)</p></td>
-</tr>
-<tr class="row-odd"><td><p>1 Draft</p></td>
-<td><p>FEP as PR (Decision Record template) + tracking Issue <em>Feature Request</em>, label <code class="docutils literal notranslate"><span class="pre">fep</span></code>;
-optional incubator repository <code class="docutils literal notranslate"><span class="pre">inc_&lt;topic&gt;</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>2 Final Comment Period</p></td>
-<td><p>14 days, a bot notifies all module maintainers; <strong>silence = approval</strong>, only substantive objections block</p></td>
-</tr>
-<tr class="row-odd"><td><p>3 Decision</p></td>
-<td><p>Accepted (PR merged as Decision Record), Rejected or Withdrawn; breaking changes need an explicit quorum</p></td>
-</tr>
-<tr class="row-even"><td><p>4 Implementation</p></td>
-<td><p>The tracking Issue stays open until the implementation is merged</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>As defined in the <a class="reference internal" href="../platform_management_plan/project_management.html"><span class="doc">Project Management Plan</span></a>, the TLC triages
+<strong>Feature &amp; Enhancement Proposal (FEP)</strong> track: the proposal is reviewed by the Architecture Community and
+decided after a Final Comment Period; changes inside one team use the normal Issue/PR flow. The process is
+described in the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#feature-request-guideline"><span class="std std-ref">FEP guideline</span></a>.</p>
+<p>As defined in the <a class="reference internal" href="../platform_management_plan/project_management.html"><span class="doc">Project Management Plan</span></a>, the PLC triages
 incoming requests and is notified once a FEP enters its Final Comment Period.</p>
 </section>
 <section id="decision-record-dr">
@@ -835,7 +806,7 @@ may evolve separately.</p></li>
 <h3>Integration &amp; Release process<a class="headerlink" href="#integration-release-process" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Releases</strong> are <a class="reference external" href="https://github.com/eclipse-score/score/milestones">milestones</a> in the score repository,
-planned and approved by the TLC.</p></li>
+planned and approved by the PLC.</p></li>
 <li><p><strong>Modules</strong> release independently (strict SemVer) into the
 <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">S-CORE Bazel registry</a>. SemVer applies to the
 <strong>public API and features</strong>: only a backward-incompatible change (breaking API change, removed or
@@ -848,10 +819,7 @@ platforms (see <a class="reference internal" href="project_basics/integration_pr
 branch to see early whether they still work together; modules already pinned to a newer, not yet released
 commit keep that commit, so the check may also include unreleased code.</p></li>
 <li><p><strong>Release:</strong> release candidate branch → release note with module versions and <strong>maturity</strong> per module
-(Release / Experimental / Preview, DR-003).</p></li>
-<li><p><strong>Platform versions</strong> (<code class="docutils literal notranslate"><span class="pre">1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1</span></code>, …) follow a release train, not SemVer (proposal, to be confirmed).
-<strong>For now, breaking API changes are allowed between all platform versions.</strong> Small fixes may be carried as
-patches in <code class="docutils literal notranslate"><span class="pre">reference_integration</span></code> until the module releases them.</p></li>
+(Release / Experimental / Preview, <a class="reference internal" href="../design_decisions/strategy/DR-003-strat.html#dec_rec__strat__module_maturity_levels" title="dec_rec__strat__module_maturity_levels"><em class="xref need">DR-003 (dec_rec__strat__module_maturity_levels)</em></a>).</p></li>
 </ul>
 </section>
 <section id="module-maturity">
