@@ -64,6 +64,7 @@ All meetings are open to everyone; times in CET/CEST, from the
        **Thu:** review of product increments, epics and tasks; decisions on releases, versioning, scope and
        escalations.
    * - **Leads Alignment** (Tech Leads, Community Leads, Feature Team Leads)
+       (`minutes <https://github.com/orgs/eclipse-score/discussions/434>`__)
      - weekly, Mon 10:00
      - All leads sync: cross-team dependencies, blockers, information from the TLC to the teams and
        escalations from the teams to the TLC.
@@ -77,15 +78,19 @@ All meetings are open to everyone; times in CET/CEST, from the
      - Process development (news, updates, improvements), safety, security and quality management, process
        implementation in the tooling.
    * - **Safety Topics / Safety Management**
+       (`minutes <https://github.com/orgs/eclipse-score/discussions/2234>`__)
      - weekly, Tue 09:00
      - Safety management and safety analyses across modules.
    * - **Security Topics / Security Management**
+       (`minutes <https://github.com/orgs/eclipse-score/discussions/2226>`__)
      - weekly, Wed 10:00
      - Security management, threat analyses and security topics across modules.
    * - **Infrastructure Weekly**
+       (`minutes <https://github.com/orgs/eclipse-score/discussions/236>`__)
      - weekly, Mon 15:00
      - Toolchains (C++, Rust, Python), CI/CD, devcontainer, docs-as-code, repository standards.
    * - **Testing Team**
+       (`minutes <https://github.com/orgs/eclipse-score/discussions/2391>`__)
      - every 2 weeks, Wed 14:30
      - Test strategy, ITF and test tooling.
    * - **reference_integration** (Integration & Release,
@@ -95,9 +100,14 @@ All meetings are open to everyone; times in CET/CEST, from the
        release notes, known issues).
    * - **Feature Team weeklies**
      - weekly, per team
-     - Progress, issue and PR triage, planning of the module: Baselibs (Wed 13:00), Communication/IPC
-       (Mon 15:00), Lifecycle (Wed 10:00), Logging (Tue 11:00), Persistency (Thu 13:30),
-       Config Management (Tue 13:30), Time (Fri 09:30).
+     - Progress, issue and PR triage, planning of the module. Minutes:
+       `Baselibs <https://github.com/orgs/eclipse-score/discussions/2390>`__ (Wed 13:00),
+       `Communication/IPC <https://github.com/orgs/eclipse-score/discussions/categories/communication-ft>`__ (Mon 15:00),
+       `Lifecycle <https://github.com/orgs/eclipse-score/discussions/2386>`__ (Wed 10:00),
+       `Logging <https://github.com/orgs/eclipse-score/discussions/categories/logging-ft>`__ (Tue 11:00),
+       `Persistency <https://github.com/orgs/eclipse-score/discussions/2518>`__ (Thu 13:30),
+       `Config Management <https://github.com/orgs/eclipse-score/discussions/2311>`__ (Tue 13:30),
+       `Time <https://github.com/orgs/eclipse-score/discussions/2645>`__ (Fri 09:30).
 
 How the meetings work together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,6 +116,8 @@ How the meetings work together
    :alt: S-CORE meetings and the main processes between them
    :align: center
    :width: 75%
+
+|
 
 #. **Feature request:** a Feature Team (or any contributor) brings a FEP to the **Architecture Community**;
    it is reviewed there, goes through the Final Comment Period and ends as a Decision Record, which the
