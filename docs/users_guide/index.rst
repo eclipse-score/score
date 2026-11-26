@@ -24,10 +24,23 @@ on top of S-CORE, and points you to further resources for deeper involvement.
 .. toctree::
    :hidden:
 
+   project_at_a_glance.rst
    project_basics/index.rst
    building_simple_application/index.rst
    whats_next/index.rst
    useful_links.rst
+
+.. grid:: 1
+   :gutter: 3
+   :class-container: score-grid
+
+   .. grid-item-card::
+      :link: project_at_a_glance
+      :link-type: doc
+
+      Project at a Glance
+      ^^^^^^^^^^^^^^^^^^^
+      The short track: organization, most important meetings, key processes and links on one page.
 
 .. grid:: 2
    :gutter: 3

@@ -20,7 +20,7 @@ Project at a Glance
 The short track through S-CORE: how the project is organized, which meetings matter, the key processes
 and where to find the details.
 
-.. image:: ../_assets/project_organization.drawio.svg
+.. image:: _assets/project_organization.drawio.svg
    :alt: S-CORE project organization: Technical Lead Circle, Communities and Feature Teams
    :align: center
    :width: 50%
@@ -102,7 +102,7 @@ All meetings are open to everyone; times in CET/CEST, from the
 How the meetings work together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: ../_assets/project_meetings.drawio.svg
+.. image:: _assets/project_meetings.drawio.svg
    :alt: S-CORE meetings and the main processes between them
    :align: center
    :width: 50%
