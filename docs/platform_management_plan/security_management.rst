@@ -85,79 +85,37 @@ Tailoring of security activities:
 
 The following ISO SAE 21434 defined security work products are not relevant for the S-CORE SW platform development:
 
-Because Eclipse OSS project handbook applies and all content is public: :need:`std_wp__isosae21434__org_management_551`,
+* Because Eclipse OSS project handbook applies and all content is public: :need:`std_wp__isosae21434__org_management_551`
 
-Supplier capability and request for quotation (ISO/SAE 21434 clauses 7.4.1 and 7.4.2) are tailored out, because
-S-CORE is an open-source project and does not select suppliers. These clauses have no work products.
+* Because these are in responsibility of the system integrator: :need:`std_wp__isosae21434__org_management_555`
+
+* Because the platform is developed out of context and has no item, damage scenarios and impact ratings depend on the item.
+  Without them no risk values and no risk treatment decisions can be determined. These are determined by the system integrator:
+  :need:`std_wp__isosae21434__assessment_15331`, :need:`std_wp__isosae21434__assessment_15531`,
+  :need:`std_wp__isosae21434__assessment_15831`, :need:`std_wp__isosae21434__assessment_15931`
+
+  The security analysis on platform, feature and component level covers the asset identification, the threat scenario
+  identification, the attack path analysis and the attack feasibility rating (see :need:`gd_guidl__security_analysis`).
+
+* Because S-CORE is not planning to do a cybersecurity assessment, as also no finalized cybersecurity case is planned:
+  :need:`std_wp__isosae21434__prj_management_653`
+
+But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
+
+* Because no risk values and no risk treatment decisions are determined (see above): :need:`std_req__isosae21434__assessment_15821`,
+  :need:`std_req__isosae21434__assessment_15822`, :need:`std_req__isosae21434__assessment_15921`
+
+* Because S-CORE is not planning to do a cybersecurity assessment: the requirements of ISO/SAE 21434 clause 6.4.8 (RQ-06-24 to RQ-06-32),
+  ``std_req__isosae21434__prj_management_6481`` to ``std_req__isosae21434__prj_management_6489``
+
+The clauses 7, 9, 11, 12 and 14 of ISO/SAE 21434 are not relevant for the platform, as defined in the process description
+(clause 7 because the project is organized as open source project, the others because they are in responsibility of the system integrator).
 
 Summary: :need:`wp__tailoring_work_products` links to all the work products which are tailored out in the platform security plan,
 to be able to demonstrate completeness in `REPLACE_external_standards`
 
-The formal security reviews are not tailored out. They check the tailoring rationales (RQ-06-14) and the rationale of the
-assessment decision (RQ-06-25). An "external" security manager from the pool of platform security managers, who did not create
-or approve the reviewed work product, performs them, as for the formal safety reviews.
-
-The security audit of the process (RQ-05-17) is performed before the assessment for maturity level 3.
-Rationale: for maturity level 2 the conformity of the security activities is judged by the formal security reviews and by the
-cybersecurity assessment, whose scope includes this plan and all work products identified in it (RQ-06-30).
-
-Decision on the cybersecurity assessment (RQ-06-24): the platform performs a cybersecurity assessment before its first release
-for post-development. Rationale: the platform is cybersecurity relevant, it is developed out of context for several integrators,
-and it consists of many features and open-source components, so an independent judgement of its cybersecurity is needed before
-it is released. The rationale is reviewed independently in the formal review of this plan (RQ-06-25). The assessment is performed
-by the security external auditor, who is independent of the assessed activities (RQ-06-27, clause 6.4.8), and its report confirms
-the cybersecurity case for the release for post-development (RQ-06-34).
-
-Treatment of the clauses that are not fully in the platform's scope:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 40 40
-
-   * - Clause
-     - Treatment
-     - Reason
-   * - 5 Organizational management
-     - Configuration information for maintenance (RQ-05-12) is claimed by the security management guideline and provided by the SBOM. Quality management (RQ-05-11) is claimed by the security management guideline (ASPICE as quality standard), tool management (RQ-05-14) by the tool management area.
-     - Those requirements are organizational; this plan relies on the areas that implement them.
-   * - 7 Distributed activities
-     - Partly relevant: the cybersecurity interface with the integrator (7.4.3), see below. Supplier capability and request for quotation (7.4.1, 7.4.2) are tailored out.
-     - The integrator performs the item-level activities. S-CORE selects no suppliers.
-   * - 9 Concept
-     - Partly relevant: platform level (item definition, TARA, goals, claims and concept of the platform)
-     - The platform analysis is S-CORE's. The item level stays with the integrator (see clause 7).
-   * - 10 Product development
-     - Claimed by the security engineering area, not by this plan
-     - Development requirements are the work of the security engineering process.
-   * - 11, 12, 14 Validation, production, end of support
-     - Performed by the integrator, distributed through the cybersecurity interface
-     - The platform part (security manual, requirements for post-development, end of cybersecurity support of a release) is provided by the platform.
-   * - 13 Operations and maintenance
-     - For each cybersecurity incident an incident response plan is recorded in the security problem issue and implemented (RQ-13-01, RQ-13-02), see :need:`doc__platform_vulnerability_mgt_plan`. Field updates (RQ-13-03) are performed by the integrator.
-     - The platform has no vehicles in the field. Field updates reach the platform through the interface, and the platform part is the release for post-development.
-
-Cybersecurity Interface
-^^^^^^^^^^^^^^^^^^^^^^^
-
-The platform is developed out of context and delivered to integrators who are not known during development.
-The cybersecurity activities that the integrator performs (the item-level TARA and concept, validation, production,
-the cybersecurity case and the assessment of the item, field updates and decommissioning) are distributed activities
-(ISO/SAE 21434 clause 7). The platform part of the cybersecurity interface agreement (WP-07-01) is published in the
-platform security manual. It contains:
-
-* the points of contact for cybersecurity: the platform security manager and the confidential reporting channels of the
-  :need:`doc__platform_vulnerability_mgt_plan`;
-* the activities: the platform performs the activities of this plan; the integrator performs the item-level activities above;
-* the joint tailoring: the tailoring of this plan, which the integrator considers for the item;
-* the information and work products shared: the security manual (assumptions of use, cybersecurity requirements for
-  post-development, known vulnerabilities), the security package, the SBOM and the assessment report of each release;
-  integrators report cybersecurity issues through the confidential channels;
-* the milestones: the releases for post-development of the platform; and
-* the end of cybersecurity support: stated per release in the release notes.
-
-An integrator who uses the platform adopts this interface or agrees a specific one with the project. For a vulnerability to
-be managed, the actions and the responsibility for them are agreed with the affected integrators in the security problem issue
-(RQ-07-06). Unclear, infeasible or conflicting requirements are reported in both directions through the same channels (RQ-07-07).
+The requirements in literal notation are defined in the next release of the process description; they are linked when
+the process description dependency is updated.
 
 Approach
 ++++++++
@@ -287,7 +245,7 @@ The security lifecycle of the S-CORE project is initiated at the project set-up 
 Note that the Eclipse Foundation also defines `project phases <https://www.eclipse.org/projects/handbook/#starting-project-phases>`_.
 Eclipse definition is more about the process maturity for the whole project, if we are in Mature Phase, we latest will have the project lifecycle as defined in our process description.
 Nevertheless, Security Development and even Security Package release is independent from Mature and Incubation Phase as the completeness and appropriateness of the platform process and artifacts
-is determined by the cybersecurity assessment and, from maturity level 3 on, by the security audit of the process, and not by Eclipse project reviews.
+is determined by Security Audit and not be Eclipse project reviews.
 
 Security Requirements
 ^^^^^^^^^^^^^^^^^^^^^
@@ -367,27 +325,7 @@ Security Specific SW Platform Work Products
     * - :need:`wp__audit_report_security`
       - performed by external experts
       - n/a
-      - planned before the assessment for maturity level 3
-
-    * - ``wp__security_assessment_report``
-      - performed by the security external auditor
-      - not performed yet: planned before the first release for post-development
-      - not produced
-
-    * - ``wp__release_post_development_security``
-      - part of the monitor workflow
-      - not produced yet: created with the first release for post-development
-      - not produced
-
-    * - ``wp__sw_component_oss_assessment``
-      - performed by the security engineer
-      - not produced yet: one assessment per off-the-shelf and open-source component of the SBOM
-      - not produced
-
-    * - ``wp__security_incident_response_plan``
-      - part of the monitor workflow
-      - one per cybersecurity incident, in its security problem issue; no incident so far
-      - not applicable yet
+      - currently tailored out
 
     * - :need:`wp__platform_security_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_security_manual')`
@@ -403,9 +341,6 @@ Security Specific SW Platform Work Products
       - :ndf:`copy('status', need_id='wf__cr_mt_security_sbom')`
       - not produced yet: no platform SBOM exists in this repository
       - not produced
-
-The work products in literal notation are defined in the next release of the process description; they are linked when
-the process description dependency is updated.
 
 Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
 
