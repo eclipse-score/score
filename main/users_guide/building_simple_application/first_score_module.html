@@ -798,22 +798,24 @@ build configuration:</p>
 </div>
 <p>Then follow the dependencies to Eclipse S-CORE modules that are used during development (excerpt):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tooling"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
-<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_process_description"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
-<span class="linenos">4</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_devcontainer"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_cpp_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_tools"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.0.5"</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_docs_as_code"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_process_description"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_devcontainer"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"score_cpp_policies"</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>score_tooling</strong>: enables tooling checks such as copyright, formatting and license verification.</p></li>
+<li><p><strong>score_tooling</strong> enables tooling checks such as formatting and license verification.</p></li>
+<li><p><strong>score_tools</strong> provides the copyright checker.</p></li>
 <li><p><strong>score_docs_as_code</strong> and <strong>score_process_description</strong>: enable documentation builds with Sphinx and sphinx-needs
 and the references to the process description.</p></li>
 <li><p><strong>score_devcontainer</strong>: makes the tools of the devcontainer available to Bazel.</p></li>
 <li><p><strong>score_cpp_policies</strong>: provides the shared C++ quality rules, e.g. compiler warnings, sanitizers and clang-tidy.
 For Rust code, <code class="docutils literal notranslate"><span class="pre">score_rust_policies</span></code> provides the shared Clippy configuration.</p></li>
 </ul>
-<p>The versions are left out here on purpose: the template is kept up to date by automated pull requests, so take the
-current versions from its <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/MODULE.bazel">MODULE.bazel</a>.
+<p>The template is kept up to date by automated pull requests. Take the versions for its dependencies from its
+<a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/MODULE.bazel">MODULE.bazel</a>.
 <code class="docutils literal notranslate"><span class="pre">dev_dependency</span> <span class="pre">=</span> <span class="pre">True</span></code> marks dependencies which are only needed to develop the module itself, e.g. for tests
 and checks. They are ignored when another module depends on your module.</p>
 <p>The last part of the template, marked <em>S-CORE Toolchains (DO NOT MODIFY)</em>, registers the S-CORE toolchains
@@ -874,38 +876,31 @@ components.</p>
 <p>The Bazel <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/BUILD">BUILD</a> file
 contains the main Bazel targets on the top level of the module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_docs_as_code//:docs.bzl"</span><span class="p">,</span> <span class="s2">"docs"</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_tooling//:defs.bzl"</span><span class="p">,</span> <span class="s2">"copyright_checker"</span><span class="p">,</span> <span class="s2">"dash_license_checker"</span><span class="p">,</span> <span class="s2">"setup_starpls"</span><span class="p">,</span> <span class="s2">"use_format_targets"</span><span class="p">)</span>
-<span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">"//:project_config.bzl"</span><span class="p">,</span> <span class="s2">"PROJECT_CONFIG"</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_tooling//:defs.bzl"</span><span class="p">,</span> <span class="s2">"dash_license_checker"</span><span class="p">,</span> <span class="s2">"setup_starpls"</span><span class="p">,</span> <span class="s2">"use_format_targets"</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">"@score_tools//cr_checker:cr_checker.bzl"</span><span class="p">,</span> <span class="s2">"copyright_checker"</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">load</span><span class="p">(</span><span class="s2">"//:project_config.bzl"</span><span class="p">,</span> <span class="s2">"PROJECT_CONFIG"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>First, we load Bazel rules and macros implemented in the Eclipse S-CORE context from the modules
 that we’ve defined as dependencies in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file, e.g. <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">copyright_checker</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"copyright"</span><span class="p">,</span>
-<span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 4</span>        <span class="s2">"score"</span><span class="p">,</span>
-<span class="linenos"> 5</span>        <span class="s2">"//:BUILD"</span><span class="p">,</span>
-<span class="linenos"> 6</span>        <span class="s2">"//:MODULE.bazel"</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="p">],</span>
-<span class="linenos"> 8</span>    <span class="n">config</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:config"</span><span class="p">,</span>
-<span class="linenos"> 9</span>    <span class="n">template</span> <span class="o">=</span> <span class="s2">"@score_tooling//cr_checker/resources:templates"</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
+<span class="linenos"> 4</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">dash_license_checker</span><span class="p">(</span>
+<span class="linenos"> 7</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">"//examples:cargo_lock"</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
+<span class="linenos"> 9</span>    <span class="n">project_config</span> <span class="o">=</span> <span class="n">PROJECT_CONFIG</span><span class="p">,</span>
 <span class="linenos">10</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
 <span class="linenos">11</span><span class="p">)</span>
 <span class="linenos">12</span>
-<span class="linenos">13</span><span class="n">dash_license_checker</span><span class="p">(</span>
-<span class="linenos">14</span>    <span class="n">src</span> <span class="o">=</span> <span class="s2">"//examples:cargo_lock"</span><span class="p">,</span>
-<span class="linenos">15</span>    <span class="n">file_type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>  <span class="c1"># let it auto-detect based on project_config</span>
-<span class="linenos">16</span>    <span class="n">project_config</span> <span class="o">=</span> <span class="n">PROJECT_CONFIG</span><span class="p">,</span>
-<span class="linenos">17</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"//visibility:public"</span><span class="p">],</span>
-<span class="linenos">18</span><span class="p">)</span>
-<span class="linenos">19</span>
-<span class="linenos">20</span><span class="c1"># Add target for formatting checks</span>
-<span class="linenos">21</span><span class="n">use_format_targets</span><span class="p">()</span>
+<span class="linenos">13</span><span class="c1"># Add target for formatting checks</span>
+<span class="linenos">14</span><span class="n">use_format_targets</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Second, we define the targets for the copyright check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:copyright.check</span></code>), the license check
-with the Eclipse Dash license tool and the formatting check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">test</span> <span class="pre">//:format.check</span></code>),
-based on Bazel rules implemented in the <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a> module.</p>
+with the Eclipse Dash license tool and the formatting check (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">test</span> <span class="pre">//:format.check</span></code>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">docs</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">bundles</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos"> 3</span>        <span class="p">{</span>
