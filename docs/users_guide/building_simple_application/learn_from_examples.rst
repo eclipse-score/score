@@ -60,6 +60,12 @@ applications directly from the module repositories, e.g. ``@score_kyron//example
 The `platform integration tests <https://github.com/eclipse-score/reference_integration/tree/main/platform_integration_tests>`_
 (PIT) start these showcases on the reference images and check their results.
 
+A larger end-to-end example is the
+`Drive Replay Demo <https://github.com/eclipse-score/reference_integration/tree/main/showcases/drive_replay>`_:
+a scripted highway drive is replayed into a forward collision warning, all processes are started and supervised by
+the launch manager (lifecycle), and communication, persistency and logging work together; if the warning hangs or
+crashes, the system falls back to a degraded mode and recovers. The README contains a video of a real run.
+
 Integrating your module
 -----------------------
 Once your module is released, it can be integrated into the S-CORE platform. Follow the

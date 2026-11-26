@@ -22,6 +22,10 @@ Every new module repository is created from the
 `Eclipse S-CORE module template <https://github.com/eclipse-score/module_template>`_, so the guide follows the template
 step by step and explains what it already provides and how to adapt it to your module.
 
+The guide is also applicable in general for **application developers**: building with Bazel, testing on the
+different test levels, documenting requirements and architecture and tracing them work the same way for an
+application on top of S-CORE as for an S-CORE module.
+
 As a running example it uses the component ``component_example`` of the template
 (`score/component_example <https://github.com/eclipse-score/module_template/tree/main/score/component_example>`_):
 a small C++ library which returns a greeting, e.g. ``Hello, World!``. The code is deliberately simple, so that you
