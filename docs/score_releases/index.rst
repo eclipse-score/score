@@ -14,7 +14,13 @@
 
 .. _releases:
 
-Releases and Roadmap
-====================
+Releases
+========
 
-Releases and roadmap are documented under the following link: `Reference Integration V1.0 <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/>`_.
+The S-CORE platform releases are built and published by the reference integration:
+
+- `Release Notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_ —
+  all S-CORE platform releases with their module versions, module maturity and changes.
+- `S-CORE v1.x Target <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/roadmap/roadmap.html>`_ —
+  scope of the S-CORE v1.x release.
+- `Milestones <https://github.com/eclipse-score/score/milestones>`_ — planned releases and other project milestones.
