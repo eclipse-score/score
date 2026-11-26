@@ -40,7 +40,7 @@ determined individually for each component based on the safety requirements allo
 its intended execution context, rather than being derived solely from the classification of the module
 as a whole. Components that are intended to execute within an ASIL context are in scope of the
 applicable ASIL safety lifecycle and shall be developed, verified, and released according to
-the corresponding ASIL process, see :need:`stkh_req__dependability__no_mixed_asil`.
+the corresponding ASIL process, see :need:`stkh_req__safety__asil_consistency_process`.
 Components that are not intended to execute within an ASIL context may remain QM,
 provided that freedom from interference with the safety context is justified in
 the respective feature DFA see :need:`wp__feature_dfa`.
@@ -55,6 +55,26 @@ For the S-CORE Platform the following functional safety related stakeholder requ
    :style: table
    :columns: title; id; status; safety
    :colwidths: 30,30,15,15
+
+Safety Mechanisms
+-----------------
+
+The following stakeholder requirements identify safety mechanisms expected
+at platform level. These mechanisms address safety concerns resulting from
+the complexity of the realizing software elements or from dependencies on
+hardware capabilities.
+
+The applicability and adequacy of these safety mechanisms shall be confirmed
+during the safety analysis of the derived feature requirements and
+architecture.
+
+.. needtable:: Expected Safety Mechanisms
+   :filter: "safety_mechanism" in tags and type == "stkh_req" and is_external == False
+   :style: table
+   :columns: title; id; tags
+   :colwidths: 30,30,30
+
+
 
 Assumptions of Use
 ------------------

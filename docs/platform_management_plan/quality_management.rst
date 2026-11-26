@@ -120,25 +120,25 @@ Objectives and scope
       - **Metric**
     * - 1
       - One Platform process audit per release
-      - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
+      - :need:`stkh_req__safety__asil_b_support`, :doc:`../requirements/stakeholder/index`
       - 100% of the Platform process audit has be done for every release
       - Delta audit allowed to achieve 100%
       - Ensured by the process quality management, :need:`wf__exe_pltprocess_audit` - Platform process audit is available
     * - 2
       - One process conformance check for every feature release
-      - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
+      - :need:`stkh_req__safety__asil_b_support`, :doc:`../requirements/stakeholder/index`
       - One process conformance check has been done for every stable feature release
       - Feature is released as experimental
       - Ensured by the process quality management, :need:`wp__qms_report` - Process conformance is available
     * - 3
       - Only quality-assured project/platform work products are delivered to the community
-      - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
+      - :need:`stkh_req__safety__asil_b_support`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform work products are quality-assured
       - Feature is released as experimental
       - Ensured by the process verification, :need:`wp__verification_platform_ver_report` - Verification report contains the verification results of the work products
     * - 4
       - Only quality-assured project/platform releases are delivered to the community
-      - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
+      - :need:`stkh_req__safety__asil_b_support`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform releases delivered to the community are quality-assured
       - Feature is released as experimental
       - Ensured by the process release management, :need:`wp__platform_sw_release_note` contain
@@ -147,13 +147,13 @@ Objectives and scope
         :need:`doc__platform_release_management_plan`
     * - 5
       - Only quality-trained personnel are part of the :need:`rl__committer`
-      - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
+      - :need:`stkh_req__safety__asil_b_support`, :doc:`../requirements/stakeholder/index`
       - 100% of personnel are trained as per committer role description in :need:`rl__committer`
       - None
       - Ensured by the process platform management, :need:`wp__training_path` contain the training material and evidences for conducted trainings
     * - 6
       - No overdue quality assurance closure activities
-      - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
+      - :need:`stkh_req__safety__asil_b_support`, :doc:`../requirements/stakeholder/index`
       - 100% of the quality improvement, non-conformance issues are closed
       - None
       - Ensured by the process quality management, :need:`wp__issue_track_system` contain improvements and non-conformance

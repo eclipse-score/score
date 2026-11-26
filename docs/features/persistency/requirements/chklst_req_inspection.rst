@@ -126,7 +126,7 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
       - Is the *linkage to the parent requirement* correct?
       - Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.
       - Proposal: YES
-      - - :need:`feat_req__persistency__cfg_priority` -> :need:`stkh_req__functional_req__file_based` is correct.
+      - - :need:`feat_req__persistency__cfg_priority` -> :need:`stkh_req__configuration__file_based` is correct.
         - Removed requirements: parent of ``dev_mode`` / ``prod_mode`` does not exist anymore; :need:`stkh_req__dependability__availability` is still covered by :need:`feat_req__persistency__async_api` after removal of ``direct_access``.
         - ASIL_B children of QM parents (e.g. :need:`feat_req__persistency__cfg`, :need:`feat_req__persistency__update_mechanism`) are allowed by :need:`gd_req__req_linkage_safety`; the safety relevance comes from the safety analysis.
       -
@@ -194,8 +194,8 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
       - Is the requirement description *complete* ?
       - For every requirement in the inspection, follow to its parent (stakeholder) requirement(s) and then check if this/these are fulfilled completely by its/their linked children (feature requirements, including those which are not in scope of the inspection).
       - Proposal: YES
-      - - :need:`stkh_req__functional_req__support_of_store` ("safe key/value store") remains covered after removal of the redundancy part of :need:`feat_req__persistency__storage_backends` (reset resistance, recovery, integrity check).
-        - :need:`stkh_req__dependability__security_features` is covered by :need:`feat_req__persistency__access_control` only - to be confirmed with the security analysis.
+      - - :need:`stkh_req__storage__key_value_store`, :need:`stkh_req__storage__safe` ("safe key/value store") remains covered after removal of the redundancy part of :need:`feat_req__persistency__storage_backends` (reset resistance, recovery, integrity check).
+        - :need:`stkh_req__security__mandatory_access_control` is covered by :need:`feat_req__persistency__access_control` only - to be confirmed with the security analysis.
         - Not covered by this checkpoint: completeness of the component requirements against the feature requirements, see REQ_10_01 of ``doc__kvs_req_inspection`` in the persistency module.
       -
 

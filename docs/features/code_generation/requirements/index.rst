@@ -31,7 +31,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__dev_experience__idl_support[version==1]
+   :derived_from: stkh_req__dev__idl_support[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -46,7 +46,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -60,7 +60,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -74,7 +74,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -89,7 +89,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -103,7 +103,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -119,7 +119,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :derived_from: stkh_req__ai__predictable_execution[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -136,7 +136,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :derived_from: stkh_req__ai__predictable_execution[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1
@@ -152,7 +152,7 @@ Code Generation Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__ai_platform__runtime_determinism[version==1]
+   :derived_from: stkh_req__ai__predictable_execution[version==1]
    :satisfied_by: feat__code_generation[version==1]
    :status: valid
    :version: 1

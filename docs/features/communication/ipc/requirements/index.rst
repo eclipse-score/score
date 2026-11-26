@@ -30,7 +30,7 @@ IPC Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__app_architectures__support_data[version==1]
+   :derived_from: stkh_req__communication__inter_process[version==1], stkh_req__execution__data_driven[version==1]
    :satisfied_by: feat__com_communication[version==1]
    :status: valid
    :version: 1

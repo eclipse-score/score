@@ -100,7 +100,7 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
       - Is the *linkage to the parent requirement* correct?
       - Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.
       - YES
-      - Missing links to :need:`stkh_req__dependability__automotive_safety` added with https://github.com/eclipse-score/score/issues/2885
+      - Missing links to :need:`stkh_req__safety__asil_b_support` added with https://github.com/eclipse-score/score/issues/2885
       -
     * - REQ_04_01
       - Is the requirement *internally and externally consistent*?
@@ -136,7 +136,7 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
       - Is the *security* attribute set correctly?
       - For feature requirements this checklist item is supported by automated check: "Every requirement which satisfies a stakeholder requirement with security attribute set to YES inherits this". But the feature requirements/architecture may additionally also be subject to a :need:`wp__feature_security_analysis`
       - YES
-      - All the feature requirements here inherit from :need:`stkh_req__functional_req__base_libraries` have the security=YES attribute set.
+      - All the feature requirements here inherit from :need:`stkh_req__common__base_libraries` have the security=YES attribute set.
       -
     * - REQ_08_01
       - Is the requirement *verifiable*?
@@ -182,7 +182,7 @@ See also :need:`doc_concept__wp_inspections` for further information about revie
 
         - stkh_req__functional_req__base_libraries :  correctly links to all current baselibs feature requirements
         - stkh_req__dependability__automotive_safety : correctly links to all current baselibs feature requirements for ASIL_B components, is used to discriminate between safety/non safety feature requirements also in other features
-        - stkh_req__dev_experience__prog_languages : correctly linked in baselibs, but missing in other features, e.g. lifecycle.
+        - stkh_req__dev__programming_languages : correctly linked in baselibs, but missing in other features, e.g. lifecycle.
           Additionally the stakeholder requirement refers to C as supported user interface language, which is not correct. - both see `#3090 <https://github.com/eclipse-score/score/issues/3090>`_
       -
 

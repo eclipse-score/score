@@ -37,7 +37,7 @@ Task Management
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -50,7 +50,7 @@ Task Management
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -63,7 +63,7 @@ Task Management
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -79,7 +79,7 @@ Special Tasks and Preemption
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
@@ -92,7 +92,7 @@ Special Tasks and Preemption
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
@@ -108,7 +108,7 @@ Thread Pool Configuration
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -121,7 +121,7 @@ Thread Pool Configuration
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -134,7 +134,7 @@ Thread Pool Configuration
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -147,7 +147,7 @@ Thread Pool Configuration
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -163,7 +163,7 @@ Task Scheduling
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -176,7 +176,7 @@ Task Scheduling
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -189,7 +189,7 @@ Task Scheduling
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -208,7 +208,7 @@ Program Definition
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -221,7 +221,7 @@ Program Definition
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -234,7 +234,7 @@ Program Definition
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -247,7 +247,7 @@ Program Definition
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -263,7 +263,7 @@ API Design
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -279,7 +279,7 @@ Execution Model
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -292,7 +292,7 @@ Execution Model
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -305,7 +305,7 @@ Execution Model
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__app_architectures__support_time[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__execution__time_based[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -321,7 +321,7 @@ Special Safety Task Integration
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
@@ -337,7 +337,7 @@ Observability Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dev_experience__tracing_of_exec[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__observability__exec_tracing[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -350,7 +350,7 @@ Observability Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dev_experience__tracing_of_exec[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__observability__exec_tracing[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -363,7 +363,7 @@ Observability Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dev_experience__tracing_of_exec[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__observability__exec_tracing[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -376,7 +376,7 @@ Observability Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dev_experience__tracing_of_exec[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__observability__exec_tracing[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -392,7 +392,7 @@ External Supervision Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -405,7 +405,7 @@ External Supervision Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -421,7 +421,7 @@ General Constraints
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :derived_from: stkh_req__execution_model__processes[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: valid
    :version: 1
@@ -434,7 +434,7 @@ General Constraints
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__safety__asil_b_support[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1
@@ -447,7 +447,7 @@ General Constraints
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
-   :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__automotive_safety[version==1], stkh_req__dependability__security_features[version==1], stkh_req__communication__inter_process[version==1]
+   :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__safety__asil_b_support[version==1], stkh_req__security__mandatory_access_control[version==1], stkh_req__communication__inter_process[version==1]
    :satisfied_by: feat__orchestration[version==1]
    :status: invalid
    :version: 1

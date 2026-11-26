@@ -34,10 +34,10 @@ Assumed Platform Safety Requirements
 ------------------------------------
 For FEO module the following safety related stakeholder requirements are assumed to define the top level functionality (purpose). I.e. from these all the feature and component requirements implemented are derived.
 
-- :need:`stkh_req__app_architectures__support_time`
-- :need:`stkh_req__app_architectures__support_data`
-- :need:`stkh_req__dependability__health_management`
-- :need:`stkh_req__dependability__safe_startup_reset`
+- :need:`stkh_req__execution__time_based`
+- :need:`stkh_req__execution__data_driven`
+- :need:`stkh_req__safety__health_management`
+- :need:`stkh_req__safety__safe_startup_reset`
 
 Assumptions of Use
 ------------------

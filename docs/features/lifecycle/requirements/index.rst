@@ -31,7 +31,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -44,7 +44,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -58,7 +58,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -76,7 +76,7 @@ Conditional Launching
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -93,7 +93,7 @@ Process Management
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -110,7 +110,7 @@ Process Management
     :status: invalid
     :version: 1
     :valid_from: v1.0.0
-    :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
+    :derived_from: stkh_req__compatibility__standard_interface[version==1]
 
     The :term:`Lifecycle Feature` shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
 
@@ -123,7 +123,7 @@ Run targets
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -141,7 +141,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -154,7 +154,7 @@ Terminating Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -172,7 +172,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -186,7 +186,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -200,7 +200,7 @@ Control Interface
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -220,7 +220,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -233,7 +233,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -248,7 +248,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -262,7 +262,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -277,7 +277,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -291,7 +291,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1], stkh_req__dependability__health_management[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1], stkh_req__safety__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -304,7 +304,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__health_management[version==1], stkh_req__dev_experience__prog_languages[version==1]
+    :derived_from: stkh_req__safety__health_management[version==1], stkh_req__dev__programming_languages[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -317,7 +317,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__health_management[version==1]
+    :derived_from: stkh_req__safety__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -331,7 +331,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__health_management[version==1]
+    :derived_from: stkh_req__safety__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -345,7 +345,7 @@ Monitoring, Notification and Recovery
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__dependability__health_management[version==1]
+    :derived_from: stkh_req__safety__health_management[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -362,7 +362,7 @@ Logging
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -380,7 +380,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__functional_req__file_based[version==1]
+    :derived_from: stkh_req__configuration__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -394,7 +394,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__functional_req__file_based[version==1]
+    :derived_from: stkh_req__configuration__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -409,7 +409,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__functional_req__file_based[version==1]
+    :derived_from: stkh_req__configuration__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
@@ -423,7 +423,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :derived_from: stkh_req__functional_req__file_based[version==1]
+    :derived_from: stkh_req__configuration__file_based[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: valid
     :version: 1
@@ -437,7 +437,7 @@ Configuration file
     :reqtype: Functional
     :security: NO
     :safety: QM
-    :derived_from: stkh_req__execution_model__processes[version==1]
+    :derived_from: stkh_req__execution__process_lifecycle[version==1]
     :satisfied_by: feat__lifecycle[version==1]
     :status: invalid
     :version: 1
