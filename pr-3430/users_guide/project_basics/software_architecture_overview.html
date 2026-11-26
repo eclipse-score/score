@@ -650,10 +650,12 @@ single source of truth. The architecture is continuously refined and will evolve
 <li><p>A <strong>Feature</strong> is a logical entity of the platform (e.g. <em>Persistency</em> or <em>Communication</em>).
 Feature requirements and the feature architecture are maintained in this repository,
 see <a class="reference internal" href="../../features/index.html#features"><span class="std std-ref">Platform Features</span></a>.</p></li>
-<li><p>A <strong>Module</strong> is the physically built and released unit that implements one or more features.
-Each module lives in its own repository and contains the component requirements, component architecture,
-detailed design, implementation and tests, see <a class="reference internal" href="../../modules/index.html#modules"><span class="std std-ref">Modules</span></a> and the
-<a class="reference internal" href="module_structure_overview.html"><span class="doc">module structure overview</span></a>.</p></li>
+<li><p>A <strong>Module</strong> is an independently developed and delivered software building block consisting
+of one or more components. The components of a module contribute to the realization of one
+or more features. Modules are maintained in dedicated module repositories, which may host
+one or more related modules. Component requirements, component architecture, detailed design,
+implementation and tests are maintained with the respective module, see <a class="reference internal" href="../../modules/index.html#modules"><span class="std std-ref">Modules</span></a>
+and the <a class="reference internal" href="module_structure_overview.html"><span class="doc">module structure overview</span></a>.</p></li>
 </ul>
 <p>The relation between both levels is explained in the
 <a class="reference external" href="https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html">building blocks concept</a>
