@@ -12,25 +12,16 @@
 # *******************************************************************************
 
 load("@score_docs_as_code//:docs.bzl", "docs")
-load("@score_tooling//:defs.bzl", "cli_helper", "setup_starpls")
 load("@score_tools//cr_checker:cr_checker.bzl", "copyright_checker")
 
 test_suite(
     name = "format.check",
-    tags = [
-        "cli_help=Check formatting:\n" +
-        "bazel test //:format.check",
-    ],
     tests = ["//tools/format:format.check"],
 )
 
 alias(
     name = "format.fix",
     actual = "//tools/format:format.fix",
-    tags = [
-        "cli_help=Fix formatting:\n" +
-        "bazel run //:format.fix",
-    ],
 )
 
 # The shared PR workflow runs //:copyright.check. The macro discovers its
@@ -40,20 +31,10 @@ copyright_checker(
     visibility = ["//visibility:public"],
 )
 
-cli_helper(
-    name = "cli-help",
-    visibility = ["//visibility:public"],
-)
-
 exports_files([
     "MODULE.bazel",
     "BUILD",
 ])
-
-setup_starpls(
-    name = "starpls_server",
-    visibility = ["//visibility:public"],
-)
 
 docs(
     external_needs = [
