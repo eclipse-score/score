@@ -187,13 +187,15 @@ Integration & Release process
   planned and approved by the TLC.
 - **Modules** release independently (strict SemVer) into the
   `S-CORE Bazel registry <https://github.com/eclipse-score/bazel_registry>`__. SemVer applies to the
-  **public API and features**: a breaking API change or a removed/changed feature means a new MAJOR version.
+  **public API and features**: only a backward-incompatible change (breaking API change, removed or
+  incompatibly changed feature) means a new MAJOR version; compatible enhancements are MINOR, fixes PATCH.
 - **Reference Integration** pins every module in
   `known_good.json <https://github.com/eclipse-score/reference_integration/blob/main/known_good.json>`__
   (release or exact commit), builds them together and runs tests, showcases and images on all target
   platforms (see :ref:`integration_process`).
 - **Weekly pre-release check:** every week all modules are bumped to their latest release on a pre-release
-  branch to see early whether they still work together.
+  branch to see early whether they still work together; modules already pinned to a newer, not yet released
+  commit keep that commit, so the check may also include unreleased code.
 - **Release:** release candidate branch → release note with module versions and **maturity** per module
   (Release / Experimental / Preview, DR-003).
 - **Platform versions** (``1.0``, ``1.1``, …) follow a release train, not SemVer (proposal, to be confirmed).
