@@ -833,13 +833,15 @@ may evolve separately.</p></li>
 planned and approved by the TLC.</p></li>
 <li><p><strong>Modules</strong> release independently (strict SemVer) into the
 <a class="reference external" href="https://github.com/eclipse-score/bazel_registry">S-CORE Bazel registry</a>. SemVer applies to the
-<strong>public API and features</strong>: a breaking API change or a removed/changed feature means a new MAJOR version.</p></li>
+<strong>public API and features</strong>: only a backward-incompatible change (breaking API change, removed or
+incompatibly changed feature) means a new MAJOR version; compatible enhancements are MINOR, fixes PATCH.</p></li>
 <li><p><strong>Reference Integration</strong> pins every module in
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/known_good.json">known_good.json</a>
 (release or exact commit), builds them together and runs tests, showcases and images on all target
 platforms (see <a class="reference internal" href="project_basics/integration_process.html#integration-process"><span class="std std-ref">Integration process</span></a>).</p></li>
 <li><p><strong>Weekly pre-release check:</strong> every week all modules are bumped to their latest release on a pre-release
-branch to see early whether they still work together.</p></li>
+branch to see early whether they still work together; modules already pinned to a newer, not yet released
+commit keep that commit, so the check may also include unreleased code.</p></li>
 <li><p><strong>Release:</strong> release candidate branch → release note with module versions and <strong>maturity</strong> per module
 (Release / Experimental / Preview, DR-003).</p></li>
 <li><p><strong>Platform versions</strong> (<code class="docutils literal notranslate"><span class="pre">1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1</span></code>, …) follow a release train, not SemVer (proposal, to be confirmed).
