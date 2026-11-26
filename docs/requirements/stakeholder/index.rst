@@ -2005,7 +2005,7 @@ Observability and Tracing
    :id: stkh_req__dev_experience__tracing_of_comm
    :reqtype: Non-Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: tbd
    :status: valid
    :version: 1
