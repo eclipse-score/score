@@ -15,6 +15,7 @@
 .. mod:: Tracing
    :id: mod__tracing
    :status: valid
+   :maturity: preview
    :version: 1
    :safety: ASIL_B
    :security: YES
