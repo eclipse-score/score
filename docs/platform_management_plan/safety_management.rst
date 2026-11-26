@@ -480,19 +480,6 @@ tbd: https://github.com/eclipse-score/score/issues/3439
 
 `Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/features/safety_planning/index.html>`__
 
-.. :need:`doc__com_ipc_safety_wp`
-
-`Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/features/lifecycle/safety_planning/index.html>`__
-
-`Logging Safety Planning <https://eclipse-score.github.io/logging/main/features/logging/safety_planning/index.html>`__ (FFI capability only)
-
-`Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/features/persistency/safety_planning/index.html>`__
-
-
-Note: planned list of features according to :ref:`releases` - all features missing in the above list have no safety planning performed.
-
-Note2: FFI is "Freedom from Interference" and means in this context that the feature's function is delivered in QM quality
-but the API offered by the feature can be used by ASIL components without harm to their safety function.
 
 
 Platform Management Plan - Documents Status Chart
