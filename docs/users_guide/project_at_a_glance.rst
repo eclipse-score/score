@@ -45,69 +45,60 @@ Who does what
 Most important meetings
 -----------------------
 
-All meetings are open to everyone; times in CET/CEST, from the
-`S-CORE calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`__
-(check there for changes). Minutes are posted in the
-`GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`__ of each team and community.
+All meetings are open to everyone. Dates and times are in the
+`S-CORE calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`__;
+the *General Information* discussion of each team and community (*info*) names its members, meeting, Slack channel
+and backlog, and the minutes are posted in the
+`GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`__.
 
 .. list-table::
    :header-rows: 1
-   :widths: 25 20 55
+   :widths: 28 54 18
 
    * - Meeting
-     - When
      - What happens
+     - Links
    * - **Technical Lead Circle**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/516>`__)
-     - twice a week: Mon (status), Thu 14:00 (board review)
-     - **Mon:** status of milestones, bugs and open feature requests.
-       **Thu:** review of product increments, epics and tasks; decisions on releases, versioning, scope and
-       escalations.
+     - Status of milestones, bugs and open feature requests; review of product increments, epics and tasks;
+       decisions on releases, versioning, scope and escalations.
+     - `info <https://github.com/orgs/eclipse-score/discussions/104>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/516>`__
    * - **Leads Alignment** (Tech Leads, Community Leads, Feature Team Leads)
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/434>`__)
-     - weekly, Mon 10:00
      - All leads sync: cross-team dependencies, blockers, information from the TLC to the teams and
        escalations from the teams to the TLC.
+     - `minutes <https://github.com/orgs/eclipse-score/discussions/434>`__
    * - **Architecture Community**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/2457>`__)
-     - weekly, Mon 14:00
      - Architecture questions, contribution pitches and FEP reviews; cancelled when there are no agenda items.
+     - `info <https://github.com/orgs/eclipse-score/discussions/110>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/2457>`__
    * - **SW Development Process Community**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/407>`__)
-     - weekly, Thu 09:30
      - Process development (news, updates, improvements), safety, security and quality management, process
        implementation in the tooling.
+     - `info <https://github.com/orgs/eclipse-score/discussions/108>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/407>`__
    * - **Safety Topics / Safety Management**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/2234>`__)
-     - weekly, Tue 09:00
      - Safety management and safety analyses across modules.
+     - `minutes <https://github.com/orgs/eclipse-score/discussions/2234>`__
    * - **Security Topics / Security Management**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/2226>`__)
-     - weekly, Wed 10:00
      - Security management, threat analyses and security topics across modules.
-   * - **Infrastructure Weekly**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/236>`__)
-     - weekly, Mon 15:00
+     - `minutes <https://github.com/orgs/eclipse-score/discussions/2226>`__
+   * - **Infrastructure Community**
      - Toolchains (C++, Rust, Python), CI/CD, devcontainer, docs-as-code, repository standards.
-   * - **Testing Team**
-       (`minutes <https://github.com/orgs/eclipse-score/discussions/2391>`__)
-     - every 2 weeks, Wed 14:30
+     - `info <https://github.com/orgs/eclipse-score/discussions/107>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/236>`__
+   * - **Testing Community**
      - Test strategy, ITF and test tooling.
-   * - **reference_integration** (Integration & Release,
-       `minutes <https://github.com/orgs/eclipse-score/discussions/1595>`__)
-     - weekly, Tue 10:00
+     - `info <https://github.com/orgs/eclipse-score/discussions/109>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/2391>`__
+   * - **Integration & Release** (reference_integration)
      - Integration status, results of the weekly pre-release check, release preparation (release branches,
        release notes, known issues).
-   * - **Feature Team weeklies**
-     - weekly, per team
-     - Progress, issue and PR triage, planning of the module. Minutes:
-       `Baselibs <https://github.com/orgs/eclipse-score/discussions/2390>`__ (Wed 13:00),
-       `Communication/IPC <https://github.com/orgs/eclipse-score/discussions/categories/communication-ft>`__ (Mon 15:00),
-       `Lifecycle <https://github.com/orgs/eclipse-score/discussions/2386>`__ (Wed 10:00),
-       `Logging <https://github.com/orgs/eclipse-score/discussions/categories/logging-ft>`__ (Tue 11:00),
-       `Persistency <https://github.com/orgs/eclipse-score/discussions/2518>`__ (Thu 13:30),
-       `Config Management <https://github.com/orgs/eclipse-score/discussions/2311>`__ (Tue 13:30),
-       `Time <https://github.com/orgs/eclipse-score/discussions/2645>`__ (Fri 09:30).
+     - `info <https://github.com/orgs/eclipse-score/discussions/2884>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/1595>`__
+   * - **Feature Team meetings**
+     - Progress, issue and PR triage, planning of the module:
+       Baselibs (`info <https://github.com/orgs/eclipse-score/discussions/1223>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2390>`__),
+       Communication/IPC (`info <https://github.com/orgs/eclipse-score/discussions/112>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/categories/communication-ft>`__),
+       Lifecycle (`info <https://github.com/orgs/eclipse-score/discussions/1798>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2386>`__),
+       Logging (`info <https://github.com/orgs/eclipse-score/discussions/114>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/categories/logging-ft>`__),
+       Persistency (`info <https://github.com/orgs/eclipse-score/discussions/116>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2518>`__),
+       Config Management (`info <https://github.com/orgs/eclipse-score/discussions/2283>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2311>`__),
+       Time (`info <https://github.com/orgs/eclipse-score/discussions/2890>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2645>`__).
+     - see each team
 
 How the meetings work together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
