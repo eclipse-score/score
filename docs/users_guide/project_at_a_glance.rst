@@ -20,7 +20,7 @@ Project at a Glance
 The short track through S-CORE: how the project is organized, which meetings matter, the key processes
 and where to find the details.
 
-.. image:: _assets/project_organization.drawio.svg
+.. image:: ../platform_management_plan/_assets/project_organization.drawio.svg
    :alt: S-CORE project organization: Project Lead Circle, Communities and Feature Teams
    :align: center
    :width: 75%
@@ -42,94 +42,25 @@ Who does what
    * - **Feature Teams**
      - One module each, from architecture to integration test; each has a Lead and at least one Committer
 
+The bodies, their members and owned repositories are described in :ref:`Project Organization <pmp_pm_organization>`.
+
 Most important meetings
 -----------------------
 
-All meetings are open to everyone. Dates and times are in the
-`S-CORE calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`__;
-the *General Information* discussion of each team and community (*info*) names its members, meeting, Slack channel
-and backlog, and the minutes are posted in the
-`GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`__.
+All meetings are open to everyone; dates and times are in the
+`S-CORE calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`__.
+The most important ones (Project Lead Circle, Leads Alignment, Community and Feature Team meetings), what happens
+there and the links to their general information and minutes are listed in :ref:`Meetings <pmp_pm_meetings>`.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 28 54 18
-
-   * - Meeting
-     - What happens
-     - Links
-   * - **Project Lead Circle (PLC)**
-     - Status of milestones, bugs and open feature requests; review of product increments, epics and tasks;
-       decisions on releases, versioning, scope and escalations.
-     - `info <https://github.com/orgs/eclipse-score/discussions/104>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/516>`__
-   * - **Leads Alignment** (Project Leads, Community Leads, Feature Team Leads)
-     - All leads sync: cross-team dependencies, blockers, information from the PLC to the teams and
-       escalations from the teams to the PLC.
-     - `minutes <https://github.com/orgs/eclipse-score/discussions/434>`__
-   * - **Architecture Community**
-     - Architecture questions, contribution pitches and FEP reviews; cancelled when there are no agenda items.
-     - `info <https://github.com/orgs/eclipse-score/discussions/110>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/2457>`__
-   * - **SW Development Process Community**
-     - Process development (news, updates, improvements), safety, security and quality management, process
-       implementation in the tooling.
-     - `info <https://github.com/orgs/eclipse-score/discussions/108>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/407>`__
-   * - **Safety Topics / Safety Management**
-     - Safety management and safety analyses across modules.
-     - `minutes <https://github.com/orgs/eclipse-score/discussions/2234>`__
-   * - **Security Topics / Security Management**
-     - Security management, threat analyses and security topics across modules.
-     - `minutes <https://github.com/orgs/eclipse-score/discussions/2226>`__
-   * - **Infrastructure Community**
-     - Toolchains (C++, Rust, Python), CI/CD, devcontainer, docs-as-code, repository standards.
-     - `info <https://github.com/orgs/eclipse-score/discussions/107>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/236>`__
-   * - **Testing Community**
-     - Test strategy, ITF and test tooling.
-     - `info <https://github.com/orgs/eclipse-score/discussions/109>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/2391>`__
-   * - **Integration & Release** (reference_integration)
-     - Integration status, results of the weekly pre-release check, release preparation (release branches,
-       release notes, known issues).
-     - `info <https://github.com/orgs/eclipse-score/discussions/2884>`__ · `minutes <https://github.com/orgs/eclipse-score/discussions/1595>`__
-   * - **Feature Team meetings**
-     - Progress, issue and PR triage, planning of the module:
-       Baselibs (`info <https://github.com/orgs/eclipse-score/discussions/1223>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2390>`__),
-       Communication/IPC (`info <https://github.com/orgs/eclipse-score/discussions/112>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/categories/communication-ft>`__),
-       Lifecycle (`info <https://github.com/orgs/eclipse-score/discussions/1798>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2386>`__),
-       Logging (`info <https://github.com/orgs/eclipse-score/discussions/114>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/categories/logging-ft>`__),
-       Persistency (`info <https://github.com/orgs/eclipse-score/discussions/116>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2518>`__),
-       Config Management (`info <https://github.com/orgs/eclipse-score/discussions/2283>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2311>`__),
-       Time (`info <https://github.com/orgs/eclipse-score/discussions/2890>`__, `minutes <https://github.com/orgs/eclipse-score/discussions/2645>`__).
-     - see each team
-
-How the meetings work together
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. image:: _assets/project_meetings.drawio.svg
+.. image:: ../platform_management_plan/_assets/project_meetings.drawio.svg
    :alt: S-CORE meetings and the main processes between them
    :align: center
    :width: 75%
 
 |
 
-#. **Feature request:** a Feature Team (or any contributor) brings a FEP to the **Architecture Community**;
-   it is reviewed there, goes through the Final Comment Period and ends as a Decision Record, which the
-   **PLC** sees for its roadmap.
-#. **Integration & release:** Feature Teams release their modules; the **reference_integration** meeting
-   checks them every week in the pre-release check and prepares the platform release, which the **PLC**
-   approves.
-#. **Status & escalation:** Feature Teams report status and blockers to the **Leads Alignment**; what cannot
-   be solved there goes to the **PLC**, and decisions flow back the same way.
-#. **Rules & tooling:** the **Process, Safety and Security** meetings define the rules, **Infrastructure and
-   Testing** provide toolchains, CI and test frameworks that all Feature Teams use.
-
-Communities in one line
------------------------
-
-- **Architecture:** platform architecture, new features (FEP review), coding guidelines
-- **Process:** development process incl. safety, security, quality (``process_description``)
-- **Infrastructure:** toolchains, devcontainer, docs-as-code, CI/CD, Bazel registry
-- **Testing:** test strategy, ITF, testing tools
-- **Integration & Release:** ``reference_integration``, platform releases
-- **Marketing & Communication:** website, events, public relations
+The diagram shows the main processes between the meetings, explained in
+:ref:`How the meetings work together <pmp_pm_meetings_interaction>`.
 
 Most important concepts
 -----------------------
@@ -139,8 +70,7 @@ Common
 
 - **Decisions go up, work goes sideways:** the PLC decides; Communities set common rules; Feature Teams build
   the modules.
-- **Teams are created or closed by the PLC.** A new team gets a GitHub team, repositories, CODEOWNERS, a
-  project board, a label (``community:`` / ``ft:``) and a Slack channel.
+- **Teams are created or closed by the PLC** (see :doc:`/platform_management_plan/project_management`).
 - **Everything is open:** all meetings are in the S-CORE calendar and open to everyone; minutes are public in
   the GitHub Discussions.
 - **Members and leads are defined by the CODEOWNERS** of the owned repositories.
@@ -180,9 +110,8 @@ Integration & Release process
   `known_good.json <https://github.com/eclipse-score/reference_integration/blob/main/known_good.json>`__
   (release or exact commit), builds them together and runs tests, showcases and images on all target
   platforms (see :ref:`integration_process`).
-- **Weekly pre-release check:** every week all modules are bumped to their latest release on a pre-release
-  branch to see early whether they still work together; modules already pinned to a newer, not yet released
-  commit keep that commit, so the check may also include unreleased code.
+- **Weekly pre-release check:** problems between module releases are found early, see
+  :ref:`Weekly Pre-Release Check <pmp_rm_pre_release_check>`.
 - **Release:** release candidate branch → release note with module versions and **maturity** per module
   (Release / Experimental / Preview, :need:`DR-003 <dec_rec__strat__module_maturity_levels>`).
 
