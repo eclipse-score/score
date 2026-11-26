@@ -22,9 +22,6 @@ Follow [instructions](https://eclipse-score.github.io/score/main/contribute/deve
 Some important commands to get you started:
 
 ```sh
-# Display useful bazel commands
-bazel run //:help
-
 # Check formatting
 bazel test //:format.check
 
