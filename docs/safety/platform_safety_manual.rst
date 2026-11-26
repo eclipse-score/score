@@ -128,4 +128,4 @@ separate process and may remain QM.
 Safety Anomalies
 ----------------
 
-Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_.
+Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes.
