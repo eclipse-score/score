@@ -82,13 +82,12 @@ Configuration Capability
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :rationale: Configuration data may influence safety-related behavior and therefore needs to maintain the integrity required by the safety concept.
+   :rationale: Configuration data may influence safety-related behavior; loss of its integrity could therefore lead to unintended safety-related behavior of the SW-platform.
    :status: valid
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall provide mechanisms to protect the integrity of
-   safety-related configuration data.
+   The SW-platform shall protect the integrity of safety-related configuration data.
 
 .. stkh_req:: Secure Configuration
    :id: stkh_req__configuration__secure
@@ -131,7 +130,7 @@ Logging Capabilities
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall preserve relevant log data across platform restart
+   The SW-platform shall preserve configured log data across platform restart
    cycles to enable analysis after a restart.
 
 
@@ -143,7 +142,7 @@ Logging Capabilities
    :rationale: Diagnostic information generated during early platform startup is required to analyze initialization and startup failures.
    :status: valid
    :version: 1
-   :valid_from: v1.0.0
+   :valid_from: v2.0.0
 
    The SW-platform shall provide logging capabilities during early platform
    startup.
@@ -478,8 +477,7 @@ Operational Mode Management
    :valid_from: v2.0.0
 
    The SW-platform shall support controlled transitions between engineering
-   and field operation modes while enforcing the safety and security
-   constraints applicable to the target mode.
+   and field operation modes.
 
 
 Communication Capabilities
@@ -575,7 +573,7 @@ Communication Technologies
    :status: valid
    :version: 1
    :valid_from: v1.0.0
- 
+
    The SW-platform shall support SOME/IP communication.
 
 .. stkh_req:: DDS Communication
@@ -1041,8 +1039,8 @@ AI Security
    :valid_from: v2.0.0
 
    The SW-platform shall verify the authenticity and integrity of AI model
-   artifacts before they are used for execution.
-
+   artifacts before they are used for execution and shall prevent their execution
+   if authenticity or integrity cannot be successfully verified.
 
 Automotive Safety
 -----------------
@@ -1186,6 +1184,13 @@ Freedom from Interference
    unintended memory access between software components of different
    criticality.
 
+   .. note::
+
+      Support means that memory protection mechanisms provided by hardware
+      or external software, such as an operating system, may need to be
+      configured and used by the SW-platform.
+
+
 .. stkh_req:: Direct Memory Access (DMA) Protection
    :id: stkh_req__safety__dma_protection
    :reqtype: Functional
@@ -1200,13 +1205,19 @@ Freedom from Interference
    The SW-platform shall support mechanisms that restrict DMA-capable
    hardware to permitted memory regions.
 
+   .. note::
+
+      Support means that DMA protection mechanisms provided by hardware
+      or external software, such as an operating system, may need to be
+      configured and used by the SW-platform.
+
 .. stkh_req:: Shared Resource Interference Protection
    :id: stkh_req__safety__shared_resource_protection
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
    :rationale: Software components of different criticality may share hardware resources and may interfere with each other's timing or execution behavior.
-   :status: valid
+   :status: invalid
    :version: 1
    :tags: safety_mechanism
    :valid_from: v1.0.0
@@ -1269,7 +1280,6 @@ Fault Reaction
       watchdog, voltage monitoring, or a power management integrated circuit
       (PMIC).
 
-
 .. stkh_req:: Error Reporting and Propagation
    :id: stkh_req__safety__error_reporting
    :reqtype: Functional
@@ -1282,11 +1292,11 @@ Fault Reaction
    :valid_from: v2.0.0
 
    The SW-platform shall report detected safety-relevant errors to the
-   affected application or responsible supervision mechanism.
+   affected application.
 
 
-.. stkh_req:: Reaction to Unrecoverable Errors
-   :id: stkh_req__safety__unrecoverable_error
+.. stkh_req:: Safe SW-platform state
+   :id: stkh_req__safety__safe_state
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -1559,7 +1569,7 @@ Timing and Latency
    :valid_from: v1.0.0
 
    The SW-platform shall support application cycle times below 5 ms on
-   target configurations providing sufficient processing resources.
+   supported target configurations under defined reference conditions.
 
 
 .. stkh_req:: Real-Time Execution Support
@@ -1572,8 +1582,8 @@ Timing and Latency
    :version: 1
    :valid_from: v2.0.0
 
-   The SW-platform shall support execution with defined and bounded response
-   times for time-critical application activities and events.
+   The SW-platform shall support execution of time-critical application
+   activities and events for which explicit response-time bounds are specified.
 
 Startup Performance
 ~~~~~~~~~~~~~~~~~~~
@@ -1588,8 +1598,8 @@ Startup Performance
    :version: 1
    :valid_from: v2.0.0
 
-   The SW-platform shall support defined startup-time requirements for
-   cold startup and resume from hibernation.
+   The SW-platform shall support bounded startup and resume times for cold
+   startup and resume from supported low-power states.
 
 Quality of Service and Resource Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1974,9 +1984,10 @@ Development
    * C++
    * Rust
 
-   The supported programming languages shall be usable for applications
-   developed up to the highest ASIL level supported by the SW-platform as
-   defined in :need:`stkh_req__safety__asil_b_support`.
+   The SW-platform development environment shall support the use of these
+   programming languages for applications developed up to the highest ASIL
+   level supported by the SW-platform as defined in
+   :need:`stkh_req__safety__asil_b_support`.
 
 Debugging
 ~~~~~~~~~
@@ -1991,8 +2002,8 @@ Debugging
    :version: 1
    :valid_from: v1.0.0
 
-   The SW-platform shall support debugging of SW-platform components and
-   applications on target systems, including during in-vehicle operation.
+   The SW-platform shall support target debugging during in-vehicle operation
+   when enabled by the applicable operational mode.
 
 Observability and Tracing
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2007,15 +2018,14 @@ Observability and Tracing
    :version: 1
    :valid_from: v2.0.0
 
-   The SW-platform shall support tracing of execution events of software
-   entities and execution contexts across supported computation units,
-   including:
+   The SW-platform shall support tracing of execution events required to
+   reconstruct the temporal execution behavior of software entities and
+   execution contexts across supported computation units, including:
 
    * CPU
    * GPU
    * Neural processing units
    * Image processing units
-
 
 .. stkh_req:: Communication Tracing
    :id: stkh_req__observability__com_tracing

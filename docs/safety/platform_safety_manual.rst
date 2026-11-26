@@ -56,6 +56,26 @@ For the S-CORE Platform the following functional safety related stakeholder requ
    :columns: title; id; status; safety
    :colwidths: 30,30,15,15
 
+Safety Mechanisms
+-----------------
+
+The following stakeholder requirements identify safety mechanisms expected
+at platform level. These mechanisms address safety concerns resulting from
+the complexity of the realizing software elements or from dependencies on
+hardware capabilities.
+
+The applicability and adequacy of these safety mechanisms shall be confirmed
+during the safety analysis of the derived feature requirements and
+architecture.
+
+.. needtable:: Expected Safety Mechanisms
+   :filter: "safety_mechanism" in tags and type == "stkh_req" and is_external == False
+   :style: table
+   :columns: title; id; tags
+   :colwidths: 30,30,30
+
+
+
 Assumptions of Use
 ------------------
 

@@ -346,7 +346,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    Safety applications using the SW-platform shall read error information from the requested S-CORE functions and perform an appropriate reaction.
 
    Note: For many errors detected by SW-platform elements there could be mitigation actions to be applied by the user application.
-   So the SW-platform reports the errors to the user application and does not stop execution as a standard reaction. See :need:`stkh_req__safety__unrecoverable_error`.
+   So the SW-platform reports the errors to the user application and does not stop execution as a standard reaction. See :need:`stkh_req__safety__safe_state`.
 
 .. aou_req:: Success Expected
    :id: aou_req__platform__success_expected
