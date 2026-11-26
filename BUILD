@@ -12,7 +12,11 @@
 # *******************************************************************************
 
 load("@score_docs_as_code//:docs.bzl", "docs")
-load("@score_tooling//:defs.bzl", "cli_helper", "setup_starpls")
+
+# Load the developer tools from their own packages to keep Dash's Starlark
+# dependencies out of the Score root package.
+load("@score_tooling//cli_helper:cli_helper.bzl", "cli_helper")
+load("@score_tooling//starpls:starpls.bzl", "setup_starpls")
 load("@score_tools//cr_checker:cr_checker.bzl", "copyright_checker")
 
 test_suite(
