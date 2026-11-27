@@ -329,6 +329,7 @@ Infrastructure and Tooling
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
    design_decisions/index
 
+
 .. toctree::
    :maxdepth: 1
    :hidden:

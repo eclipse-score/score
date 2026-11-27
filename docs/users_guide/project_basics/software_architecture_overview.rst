@@ -24,33 +24,6 @@ single source of truth. The architecture is continuously refined and will evolve
    :alt: Eclipse S-CORE platform architecture overview
    :align: center
 
-|
-
-Reading the picture
--------------------
-
-The platform is organized in layers. From top to bottom:
-
-- **Frameworks** — domain-specific frameworks on which applications are built, e.g. for ADAS the
-  *Fixed Execution Order (FEO)* framework and the *Deterministic App Abstraction Layer (DAAL)*,
-  or the *AI Platform*. Applications and domain frameworks for other domains (e.g. telematics) are shown
-  for context only.
-- **Platform API** — the native C++ and Rust APIs that applications use, e.g. for logging, persistency,
-  time, lifecycle, communication, diagnostics and crypto.
-- **Platform services** — the implementations behind these APIs, grouped into *Base Services*
-  (logging, tracing, persistency, time, software update), *Application Management* (lifecycle, health management),
-  *Communication* (zero-copy IPC, SOME/IP and DDS gateways), *Diagnosis* and *Security*.
-- **Common** — functionality shared by all other parts, such as the base libraries (*baselibs*)
-  and configuration management.
-- **Operating System** and **Hypervisor / Hardware** — S-CORE builds on existing POSIX-compliant operating
-  systems (e.g. QNX, Linux) instead of developing its own. The expectations towards the operating system are
-  described in the :ref:`OS module <comp_doc_os>` and as assumptions of use in the
-  :doc:`platform assumptions <../../requirements/platform_assumptions/index>`.
-
-The colors indicate the status of each building block: *in development*, *for future*, *not part of development*,
-*out of scope*, or *part of the operating system / hardware specific implementation*.
-The box on the right side shows that S-CORE can run next to a non-converged system, e.g. an IVI system with Android.
-
 
 From features to modules
 ------------------------
@@ -60,10 +33,12 @@ The architecture is described on two levels, which you will find again in all S-
 - A **Feature** is a logical entity of the platform (e.g. *Persistency* or *Communication*).
   Feature requirements and the feature architecture are maintained in this repository,
   see :ref:`Platform Features <features>`.
-- A **Module** is the physically built and released unit that implements one or more features.
-  Each module lives in its own repository and contains the component requirements, component architecture,
-  detailed design, implementation and tests, see :ref:`Modules <modules>` and the
-  :doc:`module structure overview <module_structure_overview>`.
+- A **Module** is an independently developed and delivered software building block consisting
+  of one or more components. The components of a module contribute to the realization of one
+  or more features. Modules are maintained in dedicated module repositories, which may host
+  one or more related modules. Component requirements, component architecture, detailed design,
+  implementation and tests are maintained with the respective module, see :ref:`Modules <modules>`
+  and the :doc:`module structure overview <module_structure_overview>`.
 
 The relation between both levels is explained in the
 `building blocks concept <https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html>`_

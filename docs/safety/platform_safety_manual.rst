@@ -27,6 +27,7 @@ Platform Safety Manual
 
 Introduction/Scope
 ------------------
+https://github.com/eclipse-score/score/issues/3439
 
 This safety manual applies to the S-CORE SW platform, defined by its modules, see :ref:`modules`
 It covers all assumed (Technical) Safety Requirements of the S-CORE SW platform and all general
@@ -127,17 +128,4 @@ separate process and may remain QM.
 Safety Anomalies
 ----------------
 
-Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes <https://eclipse-score.github.io/reference_integration/main/s_core_v_1/releases/releases.html>`_.
-
-References
-----------
-
-:need:`doc__platform_handbook`
-
-`Baselibs Safety Manual <https://eclipse-score.github.io/baselibs/main/module/manuals/safety_manual.html>`_
-
-`Communication Safety Manual <https://eclipse-score.github.io/score/main/modules/communication/docs/manual/safety_manual.html>`_
-
-`Lifecycle Safety Manual <https://eclipse-score.github.io/lifecycle/main/module/manuals/safety_manual.html>`_
-
-`Persistency Safety Manual <https://eclipse-score.github.io/persistency/main/module/manuals/safety_manual.html>`_
+Anomalies (bugs in ASIL SW, detected by testing or by users, which could not be fixed) known before release are documented in the platform/module release notes.

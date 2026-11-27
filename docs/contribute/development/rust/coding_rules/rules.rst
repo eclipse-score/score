@@ -1867,4 +1867,3 @@ Separate test/tooling profiles shall not suppress production library obligations
 
    **Coverage limit:** A clean lint/SARIF report proves neither full rule coverage nor functional
    safety. This draft defines obligations; it installs no checker and grants no approval.
-
