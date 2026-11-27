@@ -14,7 +14,7 @@
 
 .. document:: Configuration Management Plan
    :id: doc__config_mgt_plan
-   :status: draft
+   :status: valid
    :version: 1
    :safety: ASIL_B
    :security: YES
