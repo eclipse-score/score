@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tracing &#8212; S-CORE  documentation</title>
+    <title>Log and Trace Glossary &#8212; S-CORE  documentation</title>
   
   
   
@@ -26,43 +26,43 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=5737673c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=6a6a7ab0" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=f381fa98" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=6a604523" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=5737673c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=6a6a7ab0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=f381fa98" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../../_static/design-tabs.js?v=fcb327ea"></script>
-    <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
-    <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
-    <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
-    <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
-    <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'features/log_and_trace/tracing/index';</script>
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/log_and_trace/glossary';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
@@ -71,19 +71,19 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Tracing Architecture" href="architecture/index.html" />
-    <link rel="prev" title="Logging Glossary" href="../logging/glossary.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Orchestration" href="../orchestration/index.html" />
+    <link rel="prev" title="Log and Trace Architecture" href="architecture/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
   
     
-    <script src="../../../_static/searchtools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <script src="../../../searchindex.js"></script>
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
   
   </head>
   <body data-default-mode="">
@@ -103,7 +103,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="../../../search.html"
+      action="../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -139,7 +139,7 @@
     
   
 
-<a class="navbar-brand logo" href="../../../index.html">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -150,8 +150,8 @@
       
     
     
-    <img src="../../../_static/Eclipse-S-CORE-colour-horizontal.png" class="logo__image only-light" alt="Eclipse S-CORE documentation - Home"/>
-    <img src="../../../_static/Eclipse-S-CORE-dark.png" class="logo__image only-dark pst-js-only" alt="Eclipse S-CORE documentation - Home"/>
+    <img src="../../_static/Eclipse-S-CORE-colour-horizontal.png" class="logo__image only-light" alt="Eclipse S-CORE documentation - Home"/>
+    <img src="../../_static/Eclipse-S-CORE-dark.png" class="logo__image only-dark pst-js-only" alt="Eclipse S-CORE documentation - Home"/>
   
   
 </a></div>
@@ -167,35 +167,35 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
     User’s Guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
     Platform Architecture
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../index.html">
+  <a class="nav-link nav-internal" href="../index.html">
     Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../requirements/index.html">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
     Platform Requirements
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../contribute/index.html">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
     Contribute
   </a>
 </li>
@@ -209,35 +209,35 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../quality/qms_report.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../quality/qms_report.html">
     Quality
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
     Releases
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
     Tools
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../platform_management_plan/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
     PMP
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../safety/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
     Safety
   </a>
 </li>
@@ -251,21 +251,21 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../design_decisions/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
     Decision Records
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../introduction/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../modules/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../modules/index.html">
     Modules
   </a>
 </li>
@@ -389,70 +389,70 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
+  <a class="nav-link nav-internal" href="../../users_guide/index.html">
     User’s Guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+  <a class="nav-link nav-internal" href="../../architecture/index.html">
     Platform Architecture
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../index.html">
+  <a class="nav-link nav-internal" href="../index.html">
     Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../requirements/index.html">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
     Platform Requirements
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../contribute/index.html">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
     Contribute
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../quality/qms_report.html">
+  <a class="nav-link nav-internal" href="../../quality/qms_report.html">
     Quality
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../score_releases/index.html">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
     Releases
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../score_tools/index.html">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
     Tools
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../platform_management_plan/index.html">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
     PMP
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../safety/index.html">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
     Safety
   </a>
 </li>
@@ -466,21 +466,21 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../design_decisions/index.html">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
     Decision Records
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../modules/index.html">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
     Modules
   </a>
 </li>
@@ -563,13 +563,13 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Baselibs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../crypto/index.html">Crypto</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../daal/index.html">Deterministic App Abstraction Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Baselibs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crypto/index.html">Crypto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../daal/index.html">Deterministic App Abstraction Layer</a></li>
 
 
 
@@ -577,20 +577,19 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../feo/index.html">Fixed Execution Order</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Log and Trace</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../logging/index.html">Logging</a></li>
-<li class="toctree-l2 current active has-children"><a aria-current="page" class="current reference internal" href="#">Tracing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Tracing Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feo/index.html">Fixed Execution Order</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Log and Trace</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Log and Trace Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/chklst_req_inspection.html">Log and Trace Requirement Inspection Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Log and Trace Architecture</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Log and Trace Glossary</a></li>
 </ul>
 </details></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Time</a></li>
 </ul>
 </div>
 </nav></div>
@@ -627,17 +626,17 @@
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../../../index.html" class="nav-link" aria-label="Home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Log and Trace</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Log and Trace</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Tracing</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Log and Trace Glossary</span></li>
   </ul>
 </nav>
 </div>
@@ -654,13 +653,30 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="tracing">
-<h1>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="architecture/index.html">Tracing Architecture</a></li>
-</ul>
-</div>
+  <section id="log-and-trace-glossary">
+<h1>Log and Trace Glossary<a class="headerlink" href="#log-and-trace-glossary" title="Link to this heading">#</a></h1>
+<dl class="simple glossary">
+<dt id="term-logging-node">logging node<a class="headerlink" href="#term-logging-node" title="Link to this term">#</a></dt><dd><p>ECU or Partition (real or virtual) which generates log messages</p>
+</dd>
+<dt id="term-DLT">DLT<a class="headerlink" href="#term-DLT" title="Link to this term">#</a></dt><dd><p>Diagnostic Log and Trace</p>
+</dd>
+<dt id="term-framework">framework<a class="headerlink" href="#term-framework" title="Link to this term">#</a></dt><dd><p>Framework is a structured and extensible foundation for developing specific types of functionality, in this case logging and tracing. It supplies a set of default behaviors and configurable options, allowing developers to tailor and extend its capabilities to meet their application and system need.</p>
+</dd>
+<dt id="term-platform">platform<a class="headerlink" href="#term-platform" title="Link to this term">#</a></dt><dd><p>Platform is the execution environment on which S-CORE runs. It includes, for example, hardware (HW), operating system (OS), …</p>
+</dd>
+<dt id="term-component">component<a class="headerlink" href="#term-component" title="Link to this term">#</a></dt><dd><p>Component is a S-CORE component</p>
+</dd>
+<dt id="term-log-level">log level<a class="headerlink" href="#term-log-level" title="Link to this term">#</a></dt><dd><p>Log Level is the severity of a log message, necessary to categorize logs based on their importance e.g., FATAL, ERROR, WARN, INFO, DEBUG, VERBOSE such as in DLT</p>
+</dd>
+<dt id="term-logging-entity">logging entity<a class="headerlink" href="#term-logging-entity" title="Link to this term">#</a></dt><dd><p>SW entity which generates log messages</p>
+</dd>
+<dt id="term-logging-entity-identifier">logging entity identifier<a class="headerlink" href="#term-logging-entity-identifier" title="Link to this term">#</a></dt><dd><p>unique identifier for the logging entity, e.g., ECU ID / application ID / context ID, similar to DLT.</p>
+</dd>
+<dt id="term-log-storage-strategy">log storage strategy<a class="headerlink" href="#term-log-storage-strategy" title="Link to this term">#</a></dt><dd><p>strategy to write/sync the cached log messages in the log storage location e.g., on system shutdown, on each message, on demand, on file size, on cache size, with circular or linear buffer</p>
+</dd>
+<dt id="term-QoS">QoS<a class="headerlink" href="#term-QoS" title="Link to this term">#</a></dt><dd><p>Quality of Service</p>
+</dd>
+</dl>
 </section>
 
 
@@ -674,20 +690,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../logging/glossary.html"
+       href="architecture/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Logging Glossary</p>
+        <p class="prev-next-title">Log and Trace Architecture</p>
       </div>
     </a>
     <a class="right-next"
-       href="architecture/index.html"
+       href="../orchestration/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tracing Architecture</p>
+        <p class="prev-next-title">Orchestration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -706,7 +722,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/log_and_trace/tracing/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/log_and_trace/glossary.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -731,8 +747,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">

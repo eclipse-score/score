@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../../" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Logging Requirements &#8212; S-CORE  documentation</title>
+    <title>Log and Trace Requirements &#8212; S-CORE  documentation</title>
   
   
   
@@ -26,43 +26,43 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css?v=5737673c" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_needs.css?v=6a6a7ab0" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_design.css?v=f381fa98" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=6a604523" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=2e2696d1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=5737673c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=6a6a7ab0" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=f381fa98" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2e2696d1" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
-    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../../../_static/design-tabs.js?v=fcb327ea"></script>
-    <script src="../../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
-    <script src="../../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
-    <script src="../../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
-    <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
-    <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'features/log_and_trace/logging/requirements/index';</script>
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/log_and_trace/requirements/index';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
@@ -71,19 +71,19 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="index" title="Index" href="../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Requirement Inspection Checklist" href="chklst_req_inspection.html" />
-    <link rel="prev" title="Logging" href="../index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Log and Trace Requirement Inspection Checklist" href="chklst_req_inspection.html" />
+    <link rel="prev" title="Log and Trace" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
   
     
-    <script src="../../../../_static/searchtools.js"></script>
-    <script src="../../../../_static/language_data.js"></script>
-    <script src="../../../../searchindex.js"></script>
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
   
   </head>
   <body data-default-mode="">
@@ -103,7 +103,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="../../../../search.html"
+      action="../../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -139,7 +139,7 @@
     
   
 
-<a class="navbar-brand logo" href="../../../../index.html">
+<a class="navbar-brand logo" href="../../../index.html">
   
   
   
@@ -150,8 +150,8 @@
       
     
     
-    <img src="../../../../_static/Eclipse-S-CORE-colour-horizontal.png" class="logo__image only-light" alt="Eclipse S-CORE documentation - Home"/>
-    <img src="../../../../_static/Eclipse-S-CORE-dark.png" class="logo__image only-dark pst-js-only" alt="Eclipse S-CORE documentation - Home"/>
+    <img src="../../../_static/Eclipse-S-CORE-colour-horizontal.png" class="logo__image only-light" alt="Eclipse S-CORE documentation - Home"/>
+    <img src="../../../_static/Eclipse-S-CORE-dark.png" class="logo__image only-dark pst-js-only" alt="Eclipse S-CORE documentation - Home"/>
   
   
 </a></div>
@@ -167,35 +167,35 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../users_guide/index.html">
+  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
     User’s Guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../architecture/index.html">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
     Platform Architecture
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../index.html">
+  <a class="nav-link nav-internal" href="../../index.html">
     Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
     Platform Requirements
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
+  <a class="nav-link nav-internal" href="../../../contribute/index.html">
     Contribute
   </a>
 </li>
@@ -209,35 +209,35 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../quality/qms_report.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../quality/qms_report.html">
     Quality
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
     Tools
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../platform_management_plan/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../platform_management_plan/index.html">
     PMP
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../safety/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../safety/index.html">
     Safety
   </a>
 </li>
@@ -251,21 +251,21 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../design_decisions/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../design_decisions/index.html">
     Decision Records
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../introduction/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../modules/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../modules/index.html">
     Modules
   </a>
 </li>
@@ -389,70 +389,70 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../users_guide/index.html">
+  <a class="nav-link nav-internal" href="../../../users_guide/index.html">
     User’s Guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../architecture/index.html">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
     Platform Architecture
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../../index.html">
+  <a class="nav-link nav-internal" href="../../index.html">
     Platform Features and Logical Interfaces
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
     Platform Requirements
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
+  <a class="nav-link nav-internal" href="../../../contribute/index.html">
     Contribute
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../quality/qms_report.html">
+  <a class="nav-link nav-internal" href="../../../quality/qms_report.html">
     Quality
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
+  <a class="nav-link nav-internal" href="../../../score_releases/index.html">
     Releases
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+  <a class="nav-link nav-internal" href="../../../score_tools/index.html">
     Tools
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../platform_management_plan/index.html">
+  <a class="nav-link nav-internal" href="../../../platform_management_plan/index.html">
     PMP
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../safety/index.html">
+  <a class="nav-link nav-internal" href="../../../safety/index.html">
     Safety
   </a>
 </li>
@@ -466,21 +466,21 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../design_decisions/index.html">
+  <a class="nav-link nav-internal" href="../../../design_decisions/index.html">
     Decision Records
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../introduction/index.html">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
     Modules
   </a>
 </li>
@@ -563,13 +563,13 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../ai_platform/index.html">AI Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Baselibs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../code_generation/index.html">Code Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../crypto/index.html">Crypto</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../daal/index.html">Deterministic App Abstraction Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Baselibs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../crypto/index.html">Crypto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../daal/index.html">Deterministic App Abstraction Layer</a></li>
 
 
 
@@ -577,23 +577,19 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">Fixed Execution Order</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Log and Trace</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Logging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">Logging Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="chklst_req_inspection.html">Requirement Inspection Checklist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../architecture/index.html">Logging Architecture</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../glossary.html">Logging Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../feo/index.html">Fixed Execution Order</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Log and Trace</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Log and Trace Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chklst_req_inspection.html">Log and Trace Requirement Inspection Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Log and Trace Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary.html">Log and Trace Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tracing/index.html">Tracing</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../time/index.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
 </div>
 </nav></div>
@@ -630,20 +626,17 @@
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Platform Features and Logical Interfaces</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Log and Trace</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Log and Trace</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Logging</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Logging Requirements</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Log and Trace Requirements</span></li>
   </ul>
 </nav>
 </div>
@@ -660,13 +653,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="logging-requirements">
-<h1>Logging Requirements<a class="headerlink" href="#logging-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a681395d">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__logging_requirements">
+  <section id="log-and-trace-requirements">
+<h1>Log and Trace Requirements<a class="headerlink" href="#log-and-trace-requirements" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-4f97229b">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__log_and_trace_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Logging Requirements</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Log and Trace Requirements</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -693,7 +686,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__logging_requirements" title="doc__logging_requirements">doc__logging_requirements</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__log_and_trace_requirements" title="doc__log_and_trace_requirements">doc__log_and_trace_requirements</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -706,7 +699,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6cfab08f">
+<div class="need_container docutils container" id="SNCB-015b037f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__timestamping_local">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -730,8 +723,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__timestamping_local">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__timestamping_local">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__timestamping_local">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__timestamping_local">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -753,7 +746,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b0ffa477">
+<div class="need_container docutils container" id="SNCB-66839f3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__timestamping_original">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -777,8 +770,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__timestamping_original">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__timestamping_original">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__timestamping_original">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__timestamping_original">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -800,7 +793,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-451d267f">
+<div class="need_container docutils container" id="SNCB-48ff24aa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__timestamping_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -824,8 +817,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__timestamping_sync">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__timestamping_sync">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__timestamping_sync">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__timestamping_sync">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -847,7 +840,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1e04c867">
+<div class="need_container docutils container" id="SNCB-a8a526f3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__severity_levels">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -871,8 +864,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__severity_levels">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__severity_levels">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__severity_levels">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__severity_levels">feat__log_and_trace</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__log_cpp__logging" title="feat_req__logging__severity_levels">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__log_rust__logging_rust" title="feat_req__logging__severity_levels">logic_arc_int__log_rust__logging_rust</a></span></span></div>
 </span></div>
 </div>
@@ -895,7 +888,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9f485ef0">
+<div class="need_container docutils container" id="SNCB-2f0c77b9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__prioritization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -919,8 +912,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__prioritization">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__prioritization">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__prioritization">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__prioritization">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -942,7 +935,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c9794c58">
+<div class="need_container docutils container" id="SNCB-399e124d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__early_startup">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -966,8 +959,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__early_startup">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__early_startup">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__early_startup">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__early_startup">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -989,7 +982,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4433a058">
+<div class="need_container docutils container" id="SNCB-6cc51e77">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__entity_identifier">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1013,8 +1006,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__entity_identifier">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__entity_identifier">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__entity_identifier">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__entity_identifier">feat__log_and_trace</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__log_cpp__logging" title="feat_req__logging__entity_identifier">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__log_rust__logging_rust" title="feat_req__logging__entity_identifier">logic_arc_int__log_rust__logging_rust</a></span></span></div>
 </span></div>
 </div>
@@ -1037,7 +1030,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dfc14479">
+<div class="need_container docutils container" id="SNCB-fec718b0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__filtering_log_levels">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1061,8 +1054,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__filtering_log_levels">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__filtering_log_levels">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__filtering_log_levels">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__filtering_log_levels">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1084,7 +1077,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d35318a2">
+<div class="need_container docutils container" id="SNCB-2d42d53f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__filtering_entity_id">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1108,8 +1101,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__filtering_entity_id">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__filtering_entity_id">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__filtering_entity_id">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__filtering_entity_id">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1131,7 +1124,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-59c42db1">
+<div class="need_container docutils container" id="SNCB-f3f77299">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__message_loss_detection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1155,8 +1148,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__message_loss_detection">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__message_loss_detection">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__message_loss_detection">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__message_loss_detection">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1178,7 +1171,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1ddb7a3d">
+<div class="need_container docutils container" id="SNCB-edc22cbb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__message_loss_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1202,8 +1195,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__message_loss_handling">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__message_loss_handling">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__message_loss_handling">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__message_loss_handling">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1227,7 +1220,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6e53abcb">
+<div class="need_container docutils container" id="SNCB-9b9e7acb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__context_log_level">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1251,8 +1244,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__context_log_level">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__context_log_level">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__context_log_level">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__context_log_level">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1274,7 +1267,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9d4d833e">
+<div class="need_container docutils container" id="SNCB-46874949">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sources_user_app">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1298,8 +1291,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sources_user_app">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sources_user_app">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sources_user_app">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sources_user_app">feat__log_and_trace</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__log_cpp__logging" title="feat_req__logging__log_sources_user_app">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__log_rust__logging_rust" title="feat_req__logging__log_sources_user_app">logic_arc_int__log_rust__logging_rust</a></span></span></div>
 </span></div>
 </div>
@@ -1322,7 +1315,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-69fbdc32">
+<div class="need_container docutils container" id="SNCB-0aa00087">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sources">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1346,8 +1339,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sources">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sources">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sources">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sources">feat__log_and_trace</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__log_cpp__logging" title="feat_req__logging__log_sources">logic_arc_int__log_cpp__logging</a></span></span></div>
 </span></div>
 </div>
@@ -1370,7 +1363,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-38708023">
+<div class="need_container docutils container" id="SNCB-d9e9db5e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sinks_console">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1394,8 +1387,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_console">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sinks_console">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_console">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sinks_console">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1417,7 +1410,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-62bb5bec">
+<div class="need_container docutils container" id="SNCB-42110ed5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sinks_local_fs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1441,8 +1434,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_local_fs">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sinks_local_fs">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_local_fs">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sinks_local_fs">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1464,7 +1457,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eca2f8b0">
+<div class="need_container docutils container" id="SNCB-3f39bd4f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sinks_cloud_drive">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1488,8 +1481,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_cloud_drive">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sinks_cloud_drive">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_cloud_drive">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sinks_cloud_drive">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1511,7 +1504,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7979a813">
+<div class="need_container docutils container" id="SNCB-c3e1405d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sinks_network">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1535,8 +1528,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_network">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sinks_network">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_network">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sinks_network">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1558,7 +1551,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9dee4d80">
+<div class="need_container docutils container" id="SNCB-34f24045">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__log_sinks_stdout">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1582,8 +1575,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_stdout">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__log_sinks_stdout">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__log_sinks_stdout">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__log_sinks_stdout">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1605,7 +1598,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0793ddc4">
+<div class="need_container docutils container" id="SNCB-a8af47fc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__boot_logging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1629,8 +1622,8 @@
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__boot_logging" title="feat_req__logging__boot_logging">stkh_req__dev_experience__boot_logging</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__boot_logging">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__boot_logging" title="feat_req__logging__boot_logging">stkh_req__dev_experience__boot_logging</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__boot_logging">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1653,7 +1646,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-54a9b2b5">
+<div class="need_container docutils container" id="SNCB-5ae6ebdd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_log_level">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1677,8 +1670,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_log_level">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_log_level">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_log_level">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_log_level">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1700,7 +1693,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bb62a85d">
+<div class="need_container docutils container" id="SNCB-ca033ac0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__sink_device">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1724,8 +1717,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__sink_device">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__sink_device">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__sink_device">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__sink_device">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1747,7 +1740,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2156469c">
+<div class="need_container docutils container" id="SNCB-ca3c7646">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__sink_multiple_device">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1771,8 +1764,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__sink_multiple_device">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__sink_multiple_device">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__sink_multiple_device">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__sink_multiple_device">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1794,7 +1787,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a8c6bc1e">
+<div class="need_container docutils container" id="SNCB-28149e32">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__sink_strategy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1818,8 +1811,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__sink_strategy">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__sink_strategy">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__sink_strategy">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__sink_strategy">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1841,7 +1834,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-48052282">
+<div class="need_container docutils container" id="SNCB-711f4b2a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_buffer_size">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1865,8 +1858,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_buffer_size">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_buffer_size">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_buffer_size">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_buffer_size">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1888,7 +1881,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-55729bdf">
+<div class="need_container docutils container" id="SNCB-5c51d2e6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_storage_size">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1912,8 +1905,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_storage_size">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_storage_size">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_storage_size">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_storage_size">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1935,7 +1928,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c57d7704">
+<div class="need_container docutils container" id="SNCB-adffc600">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_permissions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1959,8 +1952,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_permissions">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_permissions">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_permissions">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_permissions">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1982,7 +1975,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-271a7e77">
+<div class="need_container docutils container" id="SNCB-7e29ea57">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_log_filter">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2006,8 +1999,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_log_filter">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_log_filter">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_log_filter">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_log_filter">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2029,7 +2022,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-91de88ca">
+<div class="need_container docutils container" id="SNCB-a85ebbec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_entity_id">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2053,8 +2046,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_entity_id">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_entity_id">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_entity_id">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_entity_id">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2076,7 +2069,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-36541a91">
+<div class="need_container docutils container" id="SNCB-a8167d5e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_on_demand">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2100,8 +2093,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_on_demand">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_on_demand">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_on_demand">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_on_demand">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2123,7 +2116,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-456efffc">
+<div class="need_container docutils container" id="SNCB-e1ae0064">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_fallback">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2147,8 +2140,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_fallback">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_fallback">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_fallback">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_fallback">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2170,7 +2163,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-db7240f0">
+<div class="need_container docutils container" id="SNCB-43a4f567">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__config_custom_types">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2194,8 +2187,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_custom_types">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__config_custom_types">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__config_custom_types">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__config_custom_types">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2217,7 +2210,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4aa1a5e2">
+<div class="need_container docutils container" id="SNCB-4b2869dc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__error_handling_recoverable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2241,8 +2234,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__error_handling_recoverable">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__error_handling_recoverable">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__error_handling_recoverable">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__error_handling_recoverable">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2264,7 +2257,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-db0f53e5">
+<div class="need_container docutils container" id="SNCB-2bd9b93e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__log__err_handling_nonrec">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2288,8 +2281,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__log__err_handling_nonrec">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__log__err_handling_nonrec">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__log__err_handling_nonrec">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__log__err_handling_nonrec">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2311,7 +2304,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bc18aaa9">
+<div class="need_container docutils container" id="SNCB-20c37a58">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__error_handling_isolation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2335,8 +2328,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__error_handling_isolation">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__error_handling_isolation">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__error_handling_isolation">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__error_handling_isolation">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2358,7 +2351,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-55cf3934">
+<div class="need_container docutils container" id="SNCB-32c8c040">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__compat_os">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2382,8 +2375,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__compat_os">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__compat_os">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__compat_os">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__compat_os">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2405,7 +2398,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2efd9bd0">
+<div class="need_container docutils container" id="SNCB-7be82b10">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__compat_languages">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2429,8 +2422,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__compat_languages">stkh_req__dev_experience__logging_support</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__logging__compat_languages">stkh_req__dev_experience__prog_languages</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__compat_languages">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__compat_languages">stkh_req__dev_experience__logging_support</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__logging__compat_languages">stkh_req__dev_experience__prog_languages</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__compat_languages">feat__log_and_trace</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__log_rust__logging_rust" title="feat_req__logging__compat_languages">logic_arc_int__log_rust__logging_rust</a></span></span></div>
 </span></div>
 </div>
@@ -2453,7 +2446,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-43a8735f">
+<div class="need_container docutils container" id="SNCB-a9ebf1ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__resource_storage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2477,8 +2470,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_storage">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__resource_storage">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_storage">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__resource_storage">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2500,7 +2493,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d44e2b16">
+<div class="need_container docutils container" id="SNCB-c7bf5f5c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__resource_comm_channel">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2524,8 +2517,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_comm_channel">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__resource_comm_channel">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_comm_channel">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__resource_comm_channel">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2547,7 +2540,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5199f513">
+<div class="need_container docutils container" id="SNCB-2193cf94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__resource_runtime">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2571,8 +2564,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_runtime">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__resource_runtime">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_runtime">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__resource_runtime">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2594,7 +2587,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-306bd3aa">
+<div class="need_container docutils container" id="SNCB-1297c80c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__resource_performance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2618,8 +2611,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_performance">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__resource_performance">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__resource_performance">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__resource_performance">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2641,7 +2634,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d2804468">
+<div class="need_container docutils container" id="SNCB-15f6d03d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__qos_message_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2665,14 +2658,14 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__qos_message_handling">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__qos_message_handling">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__qos_message_handling">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__qos_message_handling">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The logging <a class="reference internal" href="../glossary.html#term-framework"><span class="xref std std-term">framework</span></a> shall provide:term:` QoS` for handling overflows or dropping log messages.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The logging <a class="reference internal" href="../glossary.html#term-framework"><span class="xref std std-term">framework</span></a> shall provide <a class="reference internal" href="../glossary.html#term-QoS"><span class="xref std std-term">QoS</span></a> for handling overflows or dropping log messages.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__logging__qos_message_handling" title="feat_req__logging__qos_message_handling">feat_req__logging__qos_message_handling</a></span></span></div>
@@ -2688,7 +2681,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-935cf16c">
+<div class="need_container docutils container" id="SNCB-25f8f953">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__compat_dlt">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2712,8 +2705,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__compat_dlt">stkh_req__dev_experience__logging_support</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__overall_goals__enable_cooperation" title="feat_req__logging__compat_dlt">stkh_req__overall_goals__enable_cooperation</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__compat_dlt">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__compat_dlt">stkh_req__dev_experience__logging_support</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__overall_goals__enable_cooperation" title="feat_req__logging__compat_dlt">stkh_req__overall_goals__enable_cooperation</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__compat_dlt">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2737,7 +2730,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-67c5304c">
+<div class="need_container docutils container" id="SNCB-6d7c8339">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__security_log_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2761,8 +2754,8 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__logging__security_log_access">stkh_req__dependability__security_features</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__security_log_access">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__security_log_access">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__logging__security_log_access">stkh_req__dependability__security_features</a>, <a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__security_log_access">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__security_log_access">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2784,11 +2777,11 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2c6135ed">
+<div class="need_container docutils container" id="SNCB-4df930f9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__asil_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Safety - ASIL Level Support</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Safety - Freedom from Interference</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -2808,16 +2801,16 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v1.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__safe_comput" title="feat_req__logging__asil_support">stkh_req__functional_req__safe_comput</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__asil_support">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__functional_req__safe_comput" title="feat_req__logging__asil_support">stkh_req__functional_req__safe_comput</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__asil_support">feat__log_and_trace</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__log_cpp__logging" title="feat_req__logging__asil_support">logic_arc_int__log_cpp__logging</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__log_rust__logging_rust" title="feat_req__logging__asil_support">logic_arc_int__log_rust__logging_rust</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The logging <a class="reference internal" href="../glossary.html#term-framework"><span class="xref std std-term">framework</span></a> shall support the ASIL level of the user function to ensure compliance with the safety requirements of the application.</p>
-<p>Additional Information: Freedom from interfernce must be guaranteed with regard to the calling components.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The logging <a class="reference internal" href="../glossary.html#term-framework"><span class="xref std std-term">framework</span></a> shall maintain freedom from interference with calling ASIL B applications.</p>
+<p>Additional Information: The ASIL B scope concerns freedom from interference, not the safety integrity of logging output.</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -2834,11 +2827,11 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8685c961">
+<div class="need_container docutils container" id="SNCB-18c3c494">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__logging__system_class">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Safety - System Classification</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Safety - Log Output Classification</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -2858,14 +2851,14 @@ cycle.</p></td>
 <div class="line"><span class="needs_valid_from"><span class="needs_label">valid_from: </span><span class="needs_data">v2.0.0</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
-<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__system_class">stkh_req__dev_experience__logging_support</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__logging" title="feat_req__logging__system_class">feat__logging</a></span></span></div>
+<div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__logging_support" title="feat_req__logging__system_class">stkh_req__dev_experience__logging_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfied_by"><span><a class="reference internal" href="../architecture/index.html#feat__log_and_trace" title="feat_req__logging__system_class">feat__log_and_trace</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The logging <a class="reference internal" href="../glossary.html#term-framework"><span class="xref std std-term">framework</span></a> shall be classified according to the overall system’s safety concept if logging information is part of the verification strategy.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Logging output shall be classified as QM. No safety decision shall be based on logging output.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__logging__system_class" title="feat_req__logging__system_class">feat_req__logging__system_class</a></span></span></div>
@@ -2899,7 +2892,7 @@ cycle.</p></td>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Logging</p>
+        <p class="prev-next-title">Log and Trace</p>
       </div>
     </a>
     <a class="right-next"
@@ -2907,7 +2900,7 @@ cycle.</p></td>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirement Inspection Checklist</p>
+        <p class="prev-next-title">Log and Trace Requirement Inspection Checklist</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2926,7 +2919,7 @@ cycle.</p></td>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/log_and_trace/logging/requirements/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/log_and_trace/requirements/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -2951,8 +2944,8 @@ cycle.</p></td>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">

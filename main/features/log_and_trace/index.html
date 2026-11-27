@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Logging" href="logging/index.html" />
+    <link rel="next" title="Log and Trace Requirements" href="requirements/index.html" />
     <link rel="prev" title="Lifecycle Glossary" href="../lifecycle/glossary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -581,8 +581,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../feo/index.html">Fixed Execution Order</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Log and Trace</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html">Logging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tracing/index.html">Tracing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Log and Trace Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/chklst_req_inspection.html">Log and Trace Requirement Inspection Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Log and Trace Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Log and Trace Glossary</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
@@ -650,28 +652,145 @@
                   
   <section id="log-and-trace">
 <h1>Log and Trace<a class="headerlink" href="#log-and-trace" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-a9a4edd6">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__log_and_trace">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Log and Trace</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__log_and_trace" title="doc__log_and_trace">doc__log_and_trace</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="feature-flag">
+<h2>Feature flag<a class="headerlink" href="#feature-flag" title="Link to this heading">#</a></h2>
+<p>To activate logging, use the following feature flag:</p>
+<p><code class="docutils literal notranslate"><span class="pre">experimental_logging</span></code></p>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>This feature request proposes the development of a safe, efficient and robust logging and tracing framework within S-CORE.</p>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>A common logging and tracing feature is needed to support debugging and analysis
+of platform components and applications.</p>
+</section>
+<section id="rationale">
+<h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
+<p>Logging and tracing help developers understand the running system by capturing
+information about system events and application-level activities.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="requirements/index.html"><span class="doc">feature requirements</span></a> specify functionality,
+configuration, error handling, resource consumption, compatibility, security,
+and safety.</p>
+<p>The <a class="reference internal" href="architecture/index.html"><span class="doc">feature architecture</span></a> describes the logging and
+tracing interfaces. Terms are defined in the <a class="reference internal" href="glossary.html"><span class="doc">glossary</span></a>.</p>
+</section>
+<section id="backwards-compatibility">
+<h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
+<p>Existing requirement and interface IDs are retained. The previously published
+Bazel label for the logging requirements remains available as an alias to the
+moved requirements file.</p>
+</section>
+<section id="security-impact">
+<h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>only authorized users should be able to access the log files</p></li>
+</ul>
+</section>
+<section id="safety-impact">
+<h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Logging output is QM only and must not be used as the basis for safety decisions.</p></li>
+<li><dl class="simple">
+<dt>The ASIL B scope of the logging framework concerns freedom from interference</dt><dd><p>with the calling application, not the safety integrity of the log output.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="license-impact">
+<h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>not known</p></li>
+</ul>
+</section>
+<section id="how-to-teach-this">
+<h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
+<p>How to Use: Logging Guideline</p>
+</section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h2>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading">#</a></h3>
+<p>Logging records messages about application and system activity, including:</p>
+<ul class="simple">
+<li><p>state changes</p></li>
+<li><p>informational messages</p></li>
+<li><p>warnings</p></li>
+<li><p>errors</p></li>
+</ul>
+<p>The <a class="reference internal" href="glossary.html#term-logging-entity-identifier"><span class="xref std std-term">logging entity identifier</span></a> associates a log entry with its application
+and context. For a shared library, this identifies both the emitting application
+and the library context; the library name alone does not identify the application.</p>
+</section>
+<section id="tracing">
+<h3>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h3>
+<p>Tracing captures execution events and data for analysis. For example, developers
+can correlate kernel and user-space traces or follow application control flow
+at function-call granularity.</p>
+</section>
+<section id="recompute">
+<h3>Recompute<a class="headerlink" href="#recompute" title="Link to this heading">#</a></h3>
+<p>Captured data can be an input to offline analysis. This feature does not provide
+a recompute or replay framework.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="logging/index.html">Logging</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#feature-flag">Feature flag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#abstract">Abstract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#rationale">Rationale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#specification">Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#backwards-compatibility">Backwards Compatibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#security-impact">Security Impact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#safety-impact">Safety Impact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#license-impact">License Impact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#how-to-teach-this">How to Teach This</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging/index.html#definitions">Definitions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tracing/index.html">Tracing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tracing/architecture/index.html">Tracing Architecture</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Log and Trace Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/chklst_req_inspection.html">Log and Trace Requirement Inspection Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/index.html">Log and Trace Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Log and Trace Glossary</a></li>
 </ul>
 </div>
+</section>
+</section>
 </section>
 
 
@@ -694,11 +813,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="logging/index.html"
+       href="requirements/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logging</p>
+        <p class="prev-next-title">Log and Trace Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -712,6 +831,33 @@
                 <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-flag">Feature flag</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-impact">License Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logging">Logging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracing">Tracing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recompute">Recompute</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
