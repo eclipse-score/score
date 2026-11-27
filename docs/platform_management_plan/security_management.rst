@@ -85,16 +85,37 @@ Tailoring of security activities:
 
 The following ISO SAE 21434 defined security work products are not relevant for the S-CORE SW platform development:
 
-Because Eclipse OSS project handbook applies and all content is public: :need:`std_wp__isosae21434__org_management_551`,
+* Because Eclipse OSS project handbook applies and all content is public: :need:`std_wp__isosae21434__org_management_551`
 
-Because these are in responsibility of the system integrator: :need:`std_wp__isosae21434__org_management_551`,
-:need:`std_wp__isosae21434__org_management_555`, :need:`std_wp__isosae21434__prj_management_653`,
-:need:`std_wp__isosae21434__assessment_15331`, :need:`std_wp__isosae21434__assessment_15332`,
-:need:`std_wp__isosae21434__assessment_15431`, :need:`std_wp__isosae21434__assessment_15531`
+* Because these are in responsibility of the system integrator: :need:`std_wp__isosae21434__org_management_555`
+
+* Because the platform is developed out of context and has no item, damage scenarios and impact ratings depend on the item.
+  Without them no risk values and no risk treatment decisions can be determined. These are determined by the system integrator:
+  :need:`std_wp__isosae21434__assessment_15331`, :need:`std_wp__isosae21434__assessment_15531`,
+  :need:`std_wp__isosae21434__assessment_15831`, :need:`std_wp__isosae21434__assessment_15931`
+
+  The security analysis on platform, feature and component level covers the asset identification, the threat scenario
+  identification, the attack path analysis and the attack feasibility rating (see :need:`gd_guidl__security_analysis`).
+
+* Because S-CORE is not planning to do a cybersecurity assessment, as also no finalized cybersecurity case is planned:
+  :need:`std_wp__isosae21434__prj_management_653`
+
+But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
+
+* Because no risk values and no risk treatment decisions are determined (see above): :need:`std_req__isosae21434__assessment_15821`,
+  :need:`std_req__isosae21434__assessment_15822`, :need:`std_req__isosae21434__assessment_15921`
+
+* Because S-CORE is not planning to do a cybersecurity assessment: the requirements of ISO/SAE 21434 clause 6.4.8 (RQ-06-24 to RQ-06-32),
+  ``std_req__isosae21434__prj_management_6481`` to ``std_req__isosae21434__prj_management_6489``
+
+The clauses 7, 9, 11, 12 and 14 of ISO/SAE 21434 are not relevant for the platform, as defined in the process description
+(clause 7 because the project is organized as open source project, the others because they are in responsibility of the system integrator).
 
 Summary: :need:`wp__tailoring_work_products` links to all the work products which are tailored out in the platform security plan,
 to be able to demonstrate completeness in `REPLACE_external_standards`
 
+The requirements in literal notation are defined in the next release of the process description; they are linked when
+the process description dependency is updated.
 
 Approach
 ++++++++
@@ -283,23 +304,23 @@ Security Specific SW Platform Work Products
 
     * - :need:`wp__platform_security_package`
       - :ndf:`copy('status', need_id='wf__cr_mt_security_package')`
-      - <Link to WP>
-      - <automated>
+      - not produced yet: the package is compiled per release from its work products; no platform package exists in this repository
+      - not produced
 
     * - :need:`wp__fdr_reports_security` (platform Security Plan)
       - :ndf:`copy('status', need_id='wf__p_formal_security_rv')`
-      - <Link to WP>
-      - <automated>
+      - not performed yet: the review of this plan takes place on release
+      - not produced
 
     * - :need:`wp__fdr_reports_security` (platform Security Package)
       - :ndf:`copy('status', need_id='wf__p_formal_security_rv')`
-      - <Link to WP>
-      - <automated>
+      - not performed yet: the review of the package takes place with the package
+      - not produced
 
     * - :need:`wp__fdr_reports_security` (feature's Security Analyses)
-      - <Process Status>
-      - <Link to WP>
-      - <automated>
+      - not started (no feature analysis)
+      - not performed yet: no feature security analysis exists in this repository
+      - not produced
 
     * - :need:`wp__audit_report_security`
       - performed by external experts
@@ -308,8 +329,8 @@ Security Specific SW Platform Work Products
 
     * - :need:`wp__platform_security_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_security_manual')`
-      - <Link to WP>
-      - <automated>
+      - not produced yet: the platform security manual is not in this repository
+      - not produced
 
     * - :need:`wp__tailoring_work_products` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
@@ -318,8 +339,8 @@ Security Specific SW Platform Work Products
 
     * - :need:`wp__sw_platform_sbom`
       - :ndf:`copy('status', need_id='wf__cr_mt_security_sbom')`
-      - <Link to WP>
-      - <automated>
+      - not produced yet: no platform SBOM exists in this repository
+      - not produced
 
 Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
 
