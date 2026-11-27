@@ -205,6 +205,16 @@ This section outlines the safety evaluation of GitHub for its use within the S-C
      - yes
      - no
      - high
+   * - 12
+     - Release note creation
+     - | Diff between two github baselines is incorrect.
+       | Readers of the release note would have wrong expectation of the content (changes, bugs fixed)
+     - yes
+     - | Manual review of release notes.
+       | Release acceptance is mainly based on requirements and their tests, so discrepancies should be detected.
+     - yes
+     - no
+     - high
 
 Security evaluation
 -------------------
