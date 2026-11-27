@@ -645,7 +645,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-49194bce">
+  <div class="need_container docutils container" id="SNCB-04d5b79a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_release_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -746,6 +746,14 @@ With increasing maturity of the modules it is expected that this period can be r
 Major version updates denote API incompatibility, so the modules in a platform release are expected to have the same
 major version.</p>
 <p>For the release execution follow the steps described in <a class="reference internal" href="../contribute/general/release_guide.html#module-release-manual"><span class="std std-ref">Module Release Manual</span></a>.</p>
+<section id="weekly-pre-release-check">
+<span id="pmp-rm-pre-release-check"></span><h4>Weekly Pre-Release Check<a class="headerlink" href="#weekly-pre-release-check" title="Link to this heading">#</a></h4>
+<p>Every week the reference integration runs a pre-release check: on a pre-release branch all modules are bumped to
+their latest release, so that problems between module releases are found early and not only during the release
+preparation. Modules already pinned to a newer, not yet released commit keep that commit, so the check may also
+include unreleased code. The results are discussed in the Integration &amp; Release meeting
+(see <a class="reference internal" href="project_management.html#pmp-pm-meetings"><span class="std std-ref">Meetings</span></a>).</p>
+</section>
 </section>
 <section id="release-verification-and-approval">
 <h3>Release Verification and Approval<a class="headerlink" href="#release-verification-and-approval" title="Link to this heading">#</a></h3>
@@ -875,7 +883,10 @@ template state (see “Work Product Quality Goals” in <a class="reference inte
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-scope">Release Scope</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-types">Release Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-planning-and-execution">Release Planning and Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-planning-and-execution">Release Planning and Execution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-pre-release-check">Weekly Pre-Release Check</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-verification-and-approval">Release Verification and Approval</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">Identification</a></li>
 </ul>

@@ -563,7 +563,8 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_at_a_glance.html">Project at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Technical Overview</a></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Build and test</a></li>
@@ -640,6 +641,9 @@
 Every new module repository is created from the
 <a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE module template</a>, so the guide follows the template
 step by step and explains what it already provides and how to adapt it to your module.</p>
+<p>The guide is also applicable in general for <strong>application developers</strong>: building with Bazel, testing on the
+different test levels, documenting requirements and architecture and tracing them work the same way for an
+application on top of S-CORE as for an S-CORE module.</p>
 <p>As a running example it uses the component <code class="docutils literal notranslate"><span class="pre">component_example</span></code> of the template
 (<a class="reference external" href="https://github.com/eclipse-score/module_template/tree/main/score/component_example">score/component_example</a>):
 a small C++ library which returns a greeting, e.g. <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">World!</span></code>. The code is deliberately simple, so that you
